@@ -74,23 +74,18 @@ var styled_comp_1 = require("../../styled-comp");
 var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
 var useComment_1 = __importDefault(require("../../useHooks/useComment"));
 var CommentItems_1 = __importDefault(require("./CommentItems"));
-var react_redux_1 = require("react-redux");
-var PreloadContext_1 = require("../../lib/PreloadContext");
-var Comment_1 = require("../../modules/Comment");
 var axios_1 = __importDefault(require("../../lib/axios"));
 var fa_1 = require("react-icons/fa");
 function CommentContainer(_a) {
     var _this = this;
     var postid = _a.postid, topic = _a.topic;
     var csrf = useCSRF_1.default();
-    var dispatch = react_redux_1.useDispatch();
     var _b = useComment_1.default(), list = _b.list, getComment = _b.getComment;
     var _c = react_1.useState(""), cmt = _c[0], setCmt = _c[1];
     var _d = react_1.useState({
         cmt_user: "",
         cmt_pwd: "",
     }), auth = _d[0], setAuth = _d[1];
-    PreloadContext_1.usePreloader(function () { return dispatch(Comment_1.onGetComment(postid)); });
     react_1.useEffect(function () {
         getComment(postid);
     }, [postid]);

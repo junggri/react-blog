@@ -35,10 +35,10 @@ function savePost(folderName: string, data: ITextInitialProps) {
 }
 
 async function poolConnction<T>(query: string, dep?: T[]) {
-   let conn = await connection();
+   const conn = await connection();
    if (conn !== undefined)
       try {
-         let [result] = await conn.execute(query, dep);
+         const [result] = await conn.execute(query, dep);
          conn.release();
          return { state: true, data: result };
       } catch (e) {
@@ -67,9 +67,12 @@ const contentModel = {
       const conn = await connection();
       if (conn !== undefined)
          try {
-            const query = `UPDATE ${topic} set comment = comment-${length} where uid = ?`;
-            const dep = [postid];
-            await conn.execute(query, dep);
+            const [result]: any = await conn.execute(`select comment from ${topic} where uid = ?`, [postid]);
+            if (result > 1) {
+               const query = `UPDATE ${topic} set comment = comment-${length} where uid = ?`;
+               const dep = [postid];
+               await conn.execute(query, dep);
+            }
             conn.release();
          } catch (e) {
             console.error(e);

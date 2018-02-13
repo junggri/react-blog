@@ -9,14 +9,16 @@ var io5_1 = require("react-icons/io5");
 var hi_1 = require("react-icons/hi");
 var di_1 = require("react-icons/di");
 var si_1 = require("react-icons/si");
+var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 function AboutContainer() {
     return (react_1.default.createElement(styled_comp_1.AboutContainerComp, null,
+        react_1.default.createElement(useHelmet_1.default, { title: "이정수라는 사람이란.", keywords: "노력, 희망, 열심 ,열정", description: "배는 항구에 있을때에 가장 안전하지만, 그것이 배의 존재의 이유는 아니다." }),
         react_1.default.createElement("div", { className: "about-me" }, "\uC774\uC815\uC218"),
         react_1.default.createElement("div", { className: "about-me-nickname" }, "junggri"),
         react_1.default.createElement("div", { className: "about-icon-box" },
             react_1.default.createElement("a", { href: "https://github.com/junggri", target: "_blank", rel: "noreferrer" },
                 react_1.default.createElement(di_1.DiGithubFull, { className: "aib-github" })),
-            react_1.default.createElement("a", { href: "mailto:jjuu6933@naver.com" },
+            react_1.default.createElement("a", { href: "mailto:junggri.blog@gmail.com" },
                 react_1.default.createElement(si_1.SiGmail, { className: "aib-mail" }))),
         react_1.default.createElement("ul", { className: "about-detail" },
             react_1.default.createElement("div", { className: "about-detail-slo" },
@@ -42,10 +44,10 @@ function AboutContainer() {
                 "2019\uB144 10\uC6D4 \uD504\uB85C\uADF8\uB798\uBC0D \uB3C5\uD559 \uC2DC\uC791"),
             react_1.default.createElement("li", null,
                 react_1.default.createElement(io5_1.IoRemoveOutline, null),
-                "2020\uB144 \uC57D1\uB144\uB3D9\uC548 \uACF5\uBD80\uB97C \uD588\uC9C0\uB9CC, \uBC29\uD5A5\uD0A4\uB97C \uC798\uBABB\uC7A1\uACE0 \uACF5\uBD80\uD568."),
+                "2020\uB144 \uC57D1 \uB144\uB3D9\uC548 \uACF5\uBD80\uB97C \uD588\uC9C0\uB9CC, \uBC29\uD5A5\uD0A4\uB97C \uC798\uBABB\uC7A1\uACE0 \uACF5\uBD80\uD568."),
             react_1.default.createElement("li", null,
                 react_1.default.createElement(io5_1.IoRemoveOutline, null),
-                "2020\uB144 6-9\uC6D4\uAE4C\uC9C0 \uCF54\uB85C\uB098\uB85C \uBC1C\uC0DD\uD55C \uBB38\uC81C\uB97C \uD574\uACB0\uD574\uBCF4\uAE30 \uC704\uD558\uC5EC \uC6F9\uC0AC\uC774\uD2B8 \uBF08\uB300 \uAD6C\uCD95(50%)"),
+                "2020\uB144 6-9\uC6D4\uAE4C\uC9C0 \uCF54\uB85C\uB098\uB85C \uBC1C\uC0DD\uD55C \uBB38\uC81C\uB97C \uD574\uACB0\uD574\uBCF4\uAE30 \uC704\uD558\uC5EC \uC6F9\uC0AC\uC774\uD2B8 \uBF08\uB300 \uAD6C\uCD95"),
             react_1.default.createElement("li", null,
                 react_1.default.createElement(io5_1.IoRemoveOutline, null),
                 "2020\uB144 10\uC6D4 \uBC29\uD5A5\uD0A4\uB97C \uC7AC\uB300\uB85C \uC7A1\uACE0, \uC6F9 \uACF5\uBD80\uB97C \uB2E4\uC2DC \uAE30\uCD08\uBD80\uD130 \uC2DC\uC791\uD568"),

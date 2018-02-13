@@ -43,6 +43,41 @@ const rotate = keyframes`
   }
 `;
 
+const mediaMixin = css`
+  @media(max-width:369px){
+    width:92%;
+  }
+  @media(min-width:369px){
+    width:92%;
+  }
+  @media(min-width:768px){
+    width:92%;
+  }
+  @media(min-width:1024px){
+    width:92%
+  }
+  @media(min-width:1025px){
+    width:1025px
+  }
+`;
+
+const postMediaMixin = css`
+  @media(max-width:369px){
+    width:92%;
+  }
+  @media(min-width:369px){
+    width:92%;
+  }
+  @media(min-width:768px){
+    width:92%;
+  }
+  @media(min-width:1024px){
+    width:92%
+  }
+  @media(min-width:1025px){
+    width:800px;
+  }
+`;
 
 const postsContainerMixin = css`
   ${media.mobile`
@@ -65,7 +100,6 @@ const postsContainerMixin = css`
   position: absolute;
   top:0;
   & .content-cmt-box{
- 
     display: flex;
     opacity: 0.6;
     margin-top:20px;
@@ -86,15 +120,8 @@ const postsContainerMixin = css`
 export const EntryContainerComp = styled.div`
   position:relative;
   margin:0 auto;
-  @media(min-width:${_width + "px"}){
-    max-width:${_width + "px"};
-  };
-  ${media.desktop`
-    width:80%;
-  `}  
-  ${media.mobile`
-    width:90%;
-  `};
+  width:${_width + "px"};
+  ${mediaMixin}
 `;
 
 const postsItemMixin = css`  
@@ -434,12 +461,7 @@ export const SpecificTopicItemsComp = styled.div`
 
 export const PostsContainerComp = styled.section`
   width: ${_width * 0.8 + "px"};
-  ${media.desktop`
-    width:80%;
-  `}  
-  ${media.mobile`
-    width:90%;
-  `};
+  ${postMediaMixin};
   position: relative;
   margin: 0 auto;
   padding-bottom: 30px;
@@ -537,12 +559,7 @@ export const CommentContainerComp = styled.div`
   position: relative;
   margin:60px auto;
   width: ${_width * 0.8 + "px"};
-  ${media.desktop`
-    width:80%;
-  `}  
-  ${media.mobile`
-    width:90%;
-  `};
+  ${postMediaMixin};
   & .blank_space{
     height:100px;
   }  

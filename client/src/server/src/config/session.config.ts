@@ -25,6 +25,6 @@ export const sessionConfig = {
    }),
    cookie: {
       httpOnly: true,
-      secure: true, //true,
+      secure: process.env.NODE_ENV === "production",
    },
 };

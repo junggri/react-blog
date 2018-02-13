@@ -58,48 +58,36 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decryptoPwd = exports.cryptoPwd = void 0;
-var crypto_1 = __importDefault(require("crypto"));
-var util_1 = __importDefault(require("util"));
+var promise_1 = __importDefault(require("mysql2/promise"));
 var dotenv = __importStar(require("dotenv"));
+var server_env_json_1 = __importDefault(require("../../../../server.env.json"));
 dotenv.config();
-var promiseSalt = util_1.default.promisify(crypto_1.default.randomBytes);
-var promise = util_1.default.promisify(crypto_1.default.pbkdf2);
-function cryptoPwd(pwd) {
+var option = {
+    host: process.env.REACT_APP_DB_HOST,
+    user: process.env.REACT_APP_DB_USER,
+    password: server_env_json_1.default.DB_PWD,
+    database: server_env_json_1.default.DB_DATABASE,
+    waitForConnections: true,
+};
+function getConnection() {
     return __awaiter(this, void 0, void 0, function () {
-        var buf, salt, key, _pwd;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, promiseSalt(Number(process.env.REACT_APP_CRYPTO_NUM))];
-                case 1:
-                    buf = _a.sent();
-                    salt = buf.toString("base64");
-                    return [4 /*yield*/, promise(pwd, salt, Number(process.env.REACT_APP_CRYPTO_ITER), Number(process.env.REACT_APP_CRYPTO_NUM), String(process.env.REACT_APP_CRYPTO_ALGO))];
-                case 2:
-                    key = _a.sent();
-                    _pwd = key.toString("base64");
-                    // let _key = await promise(pwd, salt, Number(process.env.REACT_APP_CRYPTO_ITER), Number(process.env.REACT_APP_CRYPTO_NUM), String(process.env.REACT_APP_CRYPTO_ALGO));
-                    // console.log(_pwd === _key.toString("base64"));
-                    return [2 /*return*/, { salt: salt, _pwd: _pwd }];
-            }
-        });
-    });
-}
-exports.cryptoPwd = cryptoPwd;
-function decryptoPwd(data, pwd, writer) {
-    return __awaiter(this, void 0, void 0, function () {
-        var key;
+        var pool, conn, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(data.writer === writer)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, promise(pwd, data.salt, Number(process.env.REACT_APP_CRYPTO_ITER), Number(process.env.REACT_APP_CRYPTO_NUM), String(process.env.REACT_APP_CRYPTO_ALGO))];
+                    _a.trys.push([0, 2, , 3]);
+                    pool = promise_1.default.createPool(option);
+                    return [4 /*yield*/, pool.getConnection()];
                 case 1:
-                    key = _a.sent();
-                    return [2 /*return*/, data.pwd === key.toString("base64")];
-                case 2: return [2 /*return*/, false];
+                    conn = _a.sent();
+                    return [2 /*return*/, conn];
+                case 2:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
 }
-exports.decryptoPwd = decryptoPwd;
+exports.default = getConnection;

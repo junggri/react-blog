@@ -9,10 +9,8 @@ interface ISizes {
 }
 
 const sizes: ISizes = {
-   inherit: 1800,
    desktop: 1250,
-   postBox: 992,
-   tablet: 930,
+   tablet: 1024,
    bigMoblie: 600,
    mobile: 500,
    small: 262,

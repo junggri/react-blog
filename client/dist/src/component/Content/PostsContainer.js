@@ -34,6 +34,7 @@ var PreloadContext_1 = require("../../lib/PreloadContext");
 var Posts_1 = require("../../modules/Posts");
 var react_redux_1 = require("react-redux");
 var Comment_1 = __importDefault(require("./Comment"));
+var Comment_2 = require("../../modules/Comment");
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
@@ -41,6 +42,7 @@ function PostsContainer(_a) {
     var data = post.data;
     var dispatch = react_redux_1.useDispatch();
     PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })); });
+    PreloadContext_1.usePreloader(function () { return dispatch(Comment_2.onGetComment(match.params.postsId)); });
     react_1.useEffect(function () {
         getPost(match.params.topic, match.params.postsId);
         return function () { return onCleatPostData(); };

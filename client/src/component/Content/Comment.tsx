@@ -3,35 +3,18 @@ import { CommentContainerComp, CommentInputItem } from "../../styled-comp";
 import useCSRF from "../../useHooks/useCSRF";
 import useComment from "../../useHooks/useComment";
 import CommentItems from "./CommentItems";
-import { useDispatch } from "react-redux";
-import { usePreloader } from "../../lib/PreloadContext";
-import { onGetComment } from "../../modules/Comment";
 import util from "../../lib/axios";
 import { FaRegCommentDots } from "react-icons/fa";
 
-interface ICommnet {
-   board: number
-   bgroup: number
-   parent: number
-   sorts: number
-   depth: number
-   cmt: string
-   writer: string
-   created: string
-}
 
 function CommentContainer({ postid, topic }: { postid: string, topic: string }) {
    const csrf = useCSRF();
-   const dispatch = useDispatch();
    const { list, getComment } = useComment();
    const [cmt, setCmt] = useState("");
    const [auth, setAuth] = useState({
       cmt_user: "",
       cmt_pwd: "",
    });
-
-   usePreloader(() => dispatch(onGetComment(postid)));
-
 
    useEffect(() => {
       getComment(postid);

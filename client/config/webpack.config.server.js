@@ -145,12 +145,8 @@ module.exports = {
       ],
    },
    resolve: {
-      modules: ["node_modules", "react-helmet"],
+      modules: ["node_modules"],
    },
-   externals: [
-      nodeExternals({
-         allowlist: [/@babel/],
-      }),
-   ],
+   externals: [nodeExternals({ allowlist: [/@babel/] }), "react-helmet"],
    plugins: [new webpack.DefinePlugin(env.stringified), new MiniCssExtractPlugin({ filename: "_asset.style.css" })],
 };
