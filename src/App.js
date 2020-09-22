@@ -1,19 +1,13 @@
 import React from "react";
-import logo from "./logo.svg";
+import MyName from "./myname";
+import Counter from "./counter";
+
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        hello wolld
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return <Counter />;
+  }
 }
 
 export default App;
