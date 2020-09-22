@@ -45,7 +45,7 @@ class Counter extends React.Component {
     });
   };
   render() {
-    if (this.state.error) return <h1>에러발생!</h1>;
+    if (this.state.error) return <h1>에러발생ss!</h1>;
     return (
       <div>
         <h1>카운터</h1>
