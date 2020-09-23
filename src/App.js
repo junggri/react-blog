@@ -1,12 +1,17 @@
 import React from "react";
-import MyName from "./myname";
-import Counter from "./counter";
-
+import PhoneForm from "./component/PhoneForm";
 import "./App.css";
 
 class App extends React.Component {
+  handleCreate = (data) => {
+    console.log(data);
+  };
   render() {
-    return <Counter />;
+    return (
+      <div>
+        <PhoneForm onCreate={this.handleCreate} />
+      </div>
+    );
   }
 }
 
