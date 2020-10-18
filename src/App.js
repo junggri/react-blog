@@ -1,5 +1,10 @@
 import React from "react";
+
+//components
 import NavBar from "./component/navbar";
+import MainSection from "./component/mainsection/mainSection";
+
+//style
 import "./style/App.css";
 
 class App extends React.Component {
@@ -8,7 +13,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavBar web={this.state.a}></NavBar>
+        <NavBar></NavBar>
+        <MainSection></MainSection>
       </div>
     );
   }
