@@ -2,7 +2,11 @@ import React from "react";
 
 class NavBar extends React.Component {
   render() {
-    return <nav className="nav-bar"></nav>;
+    let _width = window.screen.width * 0.8 + "px";
+    let navStyle = {
+      width: _width,
+    };
+    return <nav className="nav-bar" style={navStyle}></nav>;
   }
 }
 
