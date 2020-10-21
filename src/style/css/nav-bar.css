@@ -3,5 +3,10 @@
   position: relative;
   margin: 0 auto;
   height: 64px;
-  width: 1090px;
+}
+@media (max-width: 768px) {
+  .nav-bar {
+    width: 70% !important;
+    background-color: red;
+  }
 }

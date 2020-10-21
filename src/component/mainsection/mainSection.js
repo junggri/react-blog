@@ -6,8 +6,12 @@ import MainSectionCenter from "./mainSection-center";
 
 class MainSection extends React.Component {
   render() {
+    let _width = window.screen.width * 0.75 + "px";
+    let navStyle = {
+      width: _width,
+    };
     return (
-      <section className="main-section">
+      <section className="main-section" style={navStyle}>
         <MainSectionLeft></MainSectionLeft>
         <MainSectionCenter></MainSectionCenter>
         <MainSectionRight></MainSectionRight>

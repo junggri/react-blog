@@ -2,7 +2,11 @@ import React from "react";
 
 class MainSectionCenter extends React.Component {
   render() {
-    return <section className="main-section_cneter">center</section>;
+    return (
+      <section className="main-section_center">
+        <span>center</span>
+      </section>
+    );
   }
 }
 
