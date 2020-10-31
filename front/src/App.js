@@ -1,74 +1,106 @@
-import React, { useRef, useState } from "react";
-import UserList from "./UserList";
-import CreateUser from "./CounterUser";
+import React, { useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import Button from "./comp/Button";
+import Dialog from "./comp/Dialog";
+
+const AppBlock = styled.div`
+  width: 512px;
+  margin: 0 auto;
+  margin-top: 4rem;
+  border: 1px solid black;
+  padding: 1rem;
+`;
+
+const ButtonGroup = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
+
 function App() {
-  const [inputs, setInputs] = useState({
-    username: "",
-    email: "",
-  });
-  const { username, email } = inputs;
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
+  const [dialog, setDialog] = useState(false);
+  const onClick = () => {
+    setDialog(true);
+  };
+  const onConfirm = () => {
+    console.log("확인");
+    setDialog(false);
+  };
+  const onCancel = () => {
+    console.log("취소");
+    setDialog(false);
   };
 
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      username: "velopert",
-      email: "public.velopert@gmail.com",
-      active: true,
-    },
-    {
-      id: 2,
-      username: "tester",
-      email: "tester@example.com",
-      active: false,
-    },
-    {
-      id: 3,
-      username: "liz",
-      email: "liz@example.com",
-      active: false,
-    },
-  ]);
-
-  const nextId = useRef(5);
-
-  const onCreate = () => {
-    const user = {
-      id: nextId.current,
-      username,
-      email,
-    };
-    setUsers(users.concat(user));
-
-    setInputs({
-      username: "",
-      email: "",
-    });
-    nextId.current += 1;
-  };
-  const onRemove = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
-  };
-
-  const onToggle = (id) => {
-    setUsers(
-      users.map((user) => {
-        return user.id === id ? { ...user, active: !user.active } : user;
-      })
-    );
-  };
   return (
-    <div>
-      <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} />
-      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
-    </div>
+    <ThemeProvider
+      theme={{
+        palette: {
+          blue: "#228be6",
+          gray: "#495057",
+          pink: "#f06595",
+        },
+      }}
+    >
+      <>
+        <AppBlock>
+          <ButtonGroup>
+            <Button size="large">BUTTON</Button>
+            <Button>BUTTON</Button>
+            <Button size="small">BUTTON</Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button color="gray" size="large">
+              BUTTON
+            </Button>
+            <Button color="gray">BUTTON</Button>
+            <Button color="gray" size="small">
+              BUTTON
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button color="pink" size="large">
+              BUTTON
+            </Button>
+            <Button color="pink">BUTTON</Button>
+            <Button color="pink" size="small">
+              BUTTON
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button size="large" outline>
+              BUTTON
+            </Button>
+            <Button color="gray" outline>
+              BUTTON
+            </Button>
+            <Button color="pink" size="small" outline>
+              BUTTON
+            </Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button size="large" fullWidth>
+              BUTTON
+            </Button>
+            <Button size="large" color="gray" fullWidth>
+              BUTTON
+            </Button>
+            <Button size="large" color="pink" fullWidth onClick={onClick}>
+              삭제
+            </Button>
+          </ButtonGroup>
+        </AppBlock>
+        <Dialog
+          title="정말로 삭제하시겠습니까?"
+          confirmText="삭제"
+          cancelText="취소"
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+          visible={dialog}
+        >
+          데이터를 정말로 삭제하시겠습니까?
+        </Dialog>
+      </>
+    </ThemeProvider>
   );
 }
 
