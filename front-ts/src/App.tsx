@@ -1,14 +1,8 @@
 import React from "react";
-import MyForm from "./a";
-
-import NavBar from "../src/component/nav-bar";
+import TopView from "./component/topView";
 
 function App() {
-  const onSubmit = (form: { name: string; description: string }) => {
-    console.log(form);
-  };
-  return <MyForm onSubmit={onSubmit} />;
-  // return <NavBar />;
+  return <TopView></TopView>;
 }
 
 export default App;
