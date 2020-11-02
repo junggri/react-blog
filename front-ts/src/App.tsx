@@ -1,8 +1,7 @@
 import React from "react";
-import TopView from "./component/topView";
+import NavBar from "./component/topView";
 
 function App() {
-  return <TopView></TopView>;
+  return <NavBar name="hell0"></NavBar>;
 }
-
 export default App;
