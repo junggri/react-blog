@@ -1,7 +1,12 @@
 import React from "react";
 import NavBar from "./component/topView";
-
+import MainView from "./component/mainView";
 function App() {
-  return <NavBar name="hell0"></NavBar>;
+  return (
+    <div>
+      <NavBar name="asd" />
+      <MainView></MainView>
+    </div>
+  );
 }
 export default App;
