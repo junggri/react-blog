@@ -1,11 +1,12 @@
 import React from "react";
-import NavBar from "./component/topView";
+import TopView from "./component/topView";
 import MainView from "./component/mainView";
 function App() {
+  const width = window.screen.width * 0.75 + "px";
   return (
     <div>
-      <NavBar name="asd" />
-      <MainView></MainView>
+      <TopView width={width} />
+      <MainView width={width}></MainView>
     </div>
   );
 }

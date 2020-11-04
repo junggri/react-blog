@@ -1,8 +1,19 @@
 import React from "react";
-import { MainView } from "../styled-comp";
+import { MainView, MainViewLeft, MainViewCenter } from "../styled-comp";
 
-function MainSection() {
-  return <MainView></MainView>;
+interface Props {
+  children?: string;
+  width: string;
 }
 
-export default MainSection;
+function mainView({ width }: Props) {
+  console.log(width);
+  return (
+    <MainView width={width}>
+      <MainViewLeft></MainViewLeft>
+      <MainViewCenter></MainViewCenter>
+    </MainView>
+  );
+}
+
+export default mainView;
