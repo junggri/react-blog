@@ -1,10 +1,19 @@
 import React from "react";
-import { MainViewLeft } from "../../styled-comp";
+import { MainViewLeft, MainViewLeftSubjectBox, MainSubList } from "../../styled-comp";
 
-function LeftView() {
+interface Props {
+  list: string[];
+}
+
+function LeftView({ list }: Props) {
   return (
     <MainViewLeft>
-      <div className="asd">asd</div>
+      <div className="main-left-slo">slo</div>
+      <MainViewLeftSubjectBox>
+        {list.map((e) => (
+          <MainSubList>{e}</MainSubList>
+        ))}
+      </MainViewLeftSubjectBox>
     </MainViewLeft>
   );
 }

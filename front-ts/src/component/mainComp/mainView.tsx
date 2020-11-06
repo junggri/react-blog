@@ -10,9 +10,10 @@ interface Props {
 }
 
 function mainView({ width }: Props) {
+  let a = ["a", "b", "c", "d", "e"];
   return (
     <MainView width={width}>
-      <LeftView></LeftView>
+      <LeftView list={a}></LeftView>
       <CenterView></CenterView>
       <RightView></RightView>
     </MainView>

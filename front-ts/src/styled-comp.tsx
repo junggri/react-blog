@@ -18,6 +18,8 @@ export const TopView = styled.div<Width>`
   }
 `;
 
+//main-view-comps
+
 export const MainView = styled.div<Width>`
   border: 1px solid black;
   margin: 0 auto;
@@ -25,23 +27,50 @@ export const MainView = styled.div<Width>`
   width: ${(props) => props.width};
   max-width: ${(props) => props.width};
   display: flex;
+  justify-content: space-between;
 `;
 
+//main-view-top
 export const MainViewLeft = styled.section`
-  flex-grow: 0.3;
-  & .asd {
-    color: red;
-    border: 1px solid black;
+  width: 250px;
+
+  & .main-left-slo {
+    font-size: 32px;
     text-align: center;
     margin-top: 33px;
   }
 `;
 
-export const MainViewCenter = styled.section`
-  border: 1px solid black;
-  flex-grow: 1;
+export const MainViewLeftSubjectBox = styled.div`
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 40px;
 `;
 
-export const MainViewRight = styled.section`
-  flex-grow: 0.3;
+export const MainSubList = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: inline-block;
+  width: 100px;
+  padding: 7px;
+  margin-bottom: 13px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
+
+//main-view-left
+
+export const MainViewCenter = styled.section`
+  border: 1px solid red;
+`;
+
+//center
+
+export const MainViewRight = styled.section`
+  border: 1px solid red;
+  width: 250px;
+`;
+
+//
