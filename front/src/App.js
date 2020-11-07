@@ -1,106 +1,43 @@
-import React, { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import Button from "./comp/Button";
-import Dialog from "./comp/Dialog";
+import React from "react";
+import { Route, Link } from "react-router-dom";
+import Home from "./Home";
+import Profiles from "./Profiles";
+import About from "./About";
+import HostotySample from "./HistorySample";
+import styled from "styled-components";
+import HistorySample from "./HistorySample";
 
-const AppBlock = styled.div`
-  width: 512px;
-  margin: 0 auto;
-  margin-top: 4rem;
-  border: 1px solid black;
-  padding: 1rem;
-`;
-
-const ButtonGroup = styled.div`
-  & + & {
-    margin-top: 1rem;
-  }
-`;
+// const TopView = styled.div`
+//   border: 1px solid black;
+//   margin: 0 auto;
+//   width: ${(props) => props.width};
+// `;
 
 function App() {
-  const [dialog, setDialog] = useState(false);
-  const onClick = () => {
-    setDialog(true);
-  };
-  const onConfirm = () => {
-    console.log("확인");
-    setDialog(false);
-  };
-  const onCancel = () => {
-    console.log("취소");
-    setDialog(false);
-  };
-
+  console.log(1);
+  // return <TopView width="120px"></TopView>;
   return (
-    <ThemeProvider
-      theme={{
-        palette: {
-          blue: "#228be6",
-          gray: "#495057",
-          pink: "#f06595",
-        },
-      }}
-    >
-      <>
-        <AppBlock>
-          <ButtonGroup>
-            <Button size="large">BUTTON</Button>
-            <Button>BUTTON</Button>
-            <Button size="small">BUTTON</Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button color="gray" size="large">
-              BUTTON
-            </Button>
-            <Button color="gray">BUTTON</Button>
-            <Button color="gray" size="small">
-              BUTTON
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button color="pink" size="large">
-              BUTTON
-            </Button>
-            <Button color="pink">BUTTON</Button>
-            <Button color="pink" size="small">
-              BUTTON
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button size="large" outline>
-              BUTTON
-            </Button>
-            <Button color="gray" outline>
-              BUTTON
-            </Button>
-            <Button color="pink" size="small" outline>
-              BUTTON
-            </Button>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button size="large" fullWidth>
-              BUTTON
-            </Button>
-            <Button size="large" color="gray" fullWidth>
-              BUTTON
-            </Button>
-            <Button size="large" color="pink" fullWidth onClick={onClick}>
-              삭제
-            </Button>
-          </ButtonGroup>
-        </AppBlock>
-        <Dialog
-          title="정말로 삭제하시겠습니까?"
-          confirmText="삭제"
-          cancelText="취소"
-          onConfirm={onConfirm}
-          onCancel={onCancel}
-          visible={dialog}
-        >
-          데이터를 정말로 삭제하시겠습니까?
-        </Dialog>
-      </>
-    </ThemeProvider>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+        <li>
+          <Link to="/profiles">프로필 목록</Link>
+        </li>
+        <li>
+          <Link to="/history">예제</Link>
+        </li>
+      </ul>
+      <hr />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/profiles" component={Profiles} />
+      <Route path="/history" component={HistorySample} />
+    </div>
   );
 }
 
