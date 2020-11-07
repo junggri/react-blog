@@ -8,7 +8,6 @@ interface Props {
 }
 
 function topView({ width }: Props) {
-  console.log(window.screen.width * 0.7 + "px");
   return <TopView width={width}></TopView>;
 }
 export default topView;

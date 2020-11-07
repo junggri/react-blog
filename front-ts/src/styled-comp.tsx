@@ -21,7 +21,6 @@ export const TopView = styled.div<Width>`
 //main-view-comps
 
 export const MainView = styled.div<Width>`
-  border: 1px solid black;
   margin: 0 auto;
   /* height: 200px; */
   width: ${(props) => props.width};
@@ -57,6 +56,10 @@ export const MainSubList = styled.div`
   margin-bottom: 13px;
   &:hover {
     cursor: pointer;
+  }
+  & > .list-num {
+    color: red;
+    margin-right: 5px;
   }
 `;
 

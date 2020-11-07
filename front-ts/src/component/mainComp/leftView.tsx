@@ -10,8 +10,11 @@ function LeftView({ list }: Props) {
     <MainViewLeft>
       <div className="main-left-slo">slo</div>
       <MainViewLeftSubjectBox>
-        {list.map((e) => (
-          <MainSubList>{e}</MainSubList>
+        {list.map((e, i) => (
+          <MainSubList key={i}>
+            <span className="list-num">{i}</span>
+            {e}
+          </MainSubList>
         ))}
       </MainViewLeftSubjectBox>
     </MainViewLeft>
