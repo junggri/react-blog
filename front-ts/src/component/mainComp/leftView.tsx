@@ -8,7 +8,7 @@ interface Props {
 function LeftView({ list }: Props) {
   return (
     <MainViewLeft>
-      <div className="main-left-slo">slo</div>
+      <div className="main-left-slo">CONTENT</div>
       <MainViewLeftSubjectBox>
         {list.map((e, i) => (
           <MainSubList key={i}>

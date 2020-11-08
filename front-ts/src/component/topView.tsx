@@ -4,7 +4,7 @@ import { TopView } from "../styled-comp";
 interface Props {
   name?: string;
   children?: string;
-  width: string;
+  width: number;
 }
 
 function topView({ width }: Props) {
