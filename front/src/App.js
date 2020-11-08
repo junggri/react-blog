@@ -14,11 +14,10 @@ import HistorySample from "./HistorySample";
 // `;
 
 function App() {
-  console.log(1);
   // return <TopView width="120px"></TopView>;
   return (
     <div>
-      <ul>
+      {/* <ul>
         <li>
           <Link to="/">홈</Link>
         </li>
@@ -36,7 +35,7 @@ function App() {
       <Route path="/" exact={true} component={Home} />
       <Route path="/about" component={About} />
       <Route path="/profiles" component={Profiles} />
-      <Route path="/history" component={HistorySample} />
+      <Route path="/history" component={HistorySample} /> */}
     </div>
   );
 }
