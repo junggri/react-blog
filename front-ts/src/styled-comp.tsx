@@ -2,7 +2,9 @@ import styled, { css } from "styled-components";
 import polished, { darken, lighten } from "polished";
 
 import { Width } from "./interface";
+//
 //INTERFACE
+//위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
 const leftWidth = 300;
 const rightWidth = 250;
@@ -22,7 +24,7 @@ export const TopView = styled.div<Width>`
 //MAIN_VIEW---------------COMPONENTS
 
 export const MainView = styled.div<Width>`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0 auto;
   width: ${(props) => props.width + "px"};
   max-width: ${(props) => props.width + "px"};
@@ -88,7 +90,6 @@ export const MainViewCenter = styled.section<Width>`
 `;
 
 export const MainViewCenterContentBox = styled.section<Width>`
-  border: 1px solid black;
   margin-top: 100px;
 `;
 

@@ -8,7 +8,9 @@ import "./exercise";
 ReactDOM.render(
   <BrowserRouter>
     <App />
+    <input name="department" value="컴퓨터공학과" readonly />
   </BrowserRouter>,
+
   document.getElementById("root"),
 );
 
