@@ -1,6 +1,6 @@
 import React from "react";
 import TopView from "./component/topView";
-import MainView from "./component/mainComp/mainView";
+import MainView from "./component/mainComp/ContentBox";
 
 function App() {
   const width = window.screen.width * 0.78;
