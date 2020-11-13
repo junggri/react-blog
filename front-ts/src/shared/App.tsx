@@ -1,20 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Home, Content, Write } from "pages";
-
-// function App() {
-//   return (
-//     <div>
-//
-//       <Route path="/" exact component={Home}></Route>
-//       <Switch>
-//         <Route path="/about" component={About}></Route>
-//         <Route path="/about/:name" component={About}></Route>
-//       </Switch>
-//       <Route path="/posts" component={Posts}></Route>
-//     </div>
-//   );
-// }
 
 function App() {
   return (

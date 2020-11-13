@@ -29,10 +29,32 @@ const GlobalStyles = createGlobalStyle`
     }
     h1, h2, h3, h4, h5, h6 {
     font-family:'Maven Pro', sans-serif;
-  }
-  #App{
-      height:2000px;
-  }
+    }
+    html,body{
+        height:100%;
+    }
+    b { 
+        font-weight: bold !important; 
+    }
+    i { 
+        font-style : italic;
+    }
+
+    .ql-container.ql-snow{
+        border:none;
+    }
+    .quill-box{
+        max-width:900px;
+        width:900px;
+        display:inline-block;
+    }
+  
+    .preview-quill{
+        border:1px solid black;
+        display:inline-block;
+        vertical-align:top;
+        width:120px;
+    }
 `;
 
 export default GlobalStyles;
