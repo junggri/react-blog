@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 import { Post } from "pages";
-import { math } from "polished";
 
 const Posts = ({ match }: any) => {
   return (

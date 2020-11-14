@@ -62,7 +62,7 @@ const store = createStore(reducer);
 
 console.log(store.getState());
 
-const linster = () => {
+const listener = () => {
   const state = store.getState();
   console.log(state);
 };

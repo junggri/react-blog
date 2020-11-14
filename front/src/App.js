@@ -1,8 +1,14 @@
 import React from "react";
-
+import CounterContainer from "./components/CounterContainer";
+import TodosContainer from "./components/TodosContainer";
 function App() {
-  // return <TopView width="120px"></TopView>;
-  return <div></div>;
+  return (
+    <>
+      <CounterContainer />
+      <hr />
+      <TodosContainer />
+    </>
+  );
 }
 
 export default App;

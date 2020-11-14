@@ -1,16 +1,19 @@
 import React from "react";
-import queryString from "query-string";
-import TopView from "component/topView";
-import ContentView from "component/mainComp/ContentBox";
 
-const Content = (props: any) => {
-  console.log(props);
+import { MainView } from "../styled-comp";
+import { TopView, ContentNav, ContentCenter, ContentRight } from "component";
+
+const Content = () => {
   const width = window.screen.width * 0.78;
-
+  let list = ["a", "b", "c", "d", "e"];
   return (
     <>
       <TopView width={width} />
-      <ContentView width={width} />
+      <MainView width={width}>
+        <ContentNav list={list}></ContentNav>
+        <ContentCenter width={width}></ContentCenter>
+        <ContentRight></ContentRight>
+      </MainView>
     </>
   );
 };

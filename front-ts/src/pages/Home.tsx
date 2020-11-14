@@ -1,14 +1,16 @@
 import React from "react";
-import TopView from "component/topView";
-import HomeView from "component/HomeView";
+import { MainView } from "../styled-comp";
+import { TopView, ContentNav } from "component";
 
 const Home = () => {
   const width = window.screen.width * 0.78;
-
+  let list = ["a", "b", "c", "d", "e"];
   return (
     <>
       <TopView width={width} />
-      <HomeView width={width} />
+      <MainView width={width}>
+        <ContentNav list={list}></ContentNav>
+      </MainView>
     </>
   );
 };
