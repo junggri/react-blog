@@ -6,9 +6,9 @@
 <div>
   <ul>
     feature
-     <li>react - <create-react-app></li>
-     <li>server </br>express ? nest</li>
-
+     <li>react - (create-react-app) 공식문서로 직접빌드해보았으나 cra가 더 구조적으로 단단하여</li>
+     <li>server </br>express ? nest => nest와 express 중 택 1</li>
+     <li>redux(상태관리)</li>
   </ul>  
 </div>
 
