@@ -6,7 +6,9 @@
 <div>
   <ul>
     feature
-     <li>react</li>
+     <li>react - <create-react-app></li>
+     <li>server </br>express ? nest</li>
+
   </ul>  
 </div>
 
