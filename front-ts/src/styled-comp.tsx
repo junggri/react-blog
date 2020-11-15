@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import polished, { darken, lighten } from "polished";
 
 import { Width } from "./interface";
+
 //
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
@@ -9,7 +10,9 @@ import { Width } from "./interface";
 const leftWidth = 300;
 const rightWidth = 250;
 
-export const TopView = styled.div<Width>`
+const heigth = window.innerHeight;
+
+export const TopMainView = styled.div<Width>`
   border: 1px solid black;
   position: relative;
   margin: 0 auto;
@@ -40,19 +43,20 @@ export const TopView = styled.div<Width>`
 //MAIN_VIEW---------------COMPONENTS
 
 export const MainView = styled.div<Width>`
-  /* border: 1px solid black; */
   margin: 0 auto;
+  position: relative;
   width: ${(props) => props.width + "px"};
   max-width: ${(props) => props.width + "px"};
   display: flex;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
+  height: 100%;
 `;
 
 //MAIN_VIEW---------------TOP
 
 export const ContentCenter = styled.section<Width>`
+  position: absolute;
+  left: ${leftWidth + "px"};
   width: ${(props) => props.width - (leftWidth + rightWidth) + "px"};
   padding: 0px 20px;
   & > h1 {
@@ -67,16 +71,16 @@ export const ContentCenter = styled.section<Width>`
     font-weight: 100;
     float: right;
   }
+  border: 1px solid black;
 `;
 
 export const ContentCenterArticleBox = styled.section<Width>`
   margin-top: 100px;
 `;
 
-//MAIN_VIEW---------------CENTER
-
-export const MainViewRight = styled.section`
-  /* border: 1px solid red;  */
+export const ContentRight = styled.section`
+  position: absolute;
+  right: 0;
   width: ${rightWidth + "px"};
   padding: 0px 35px;
   & > p {
@@ -84,16 +88,9 @@ export const MainViewRight = styled.section`
   }
 `;
 
-//
-export const MainHomeView = styled.div<Width>`
-  width: ${(props) => props.width + "px"};
-  border: 1px solid blakc;
-  margin: 0 auto;
-`;
-
 export const ContentNavComp = styled.section`
+  position: absolute;
   width: ${leftWidth + "px"};
-  border: 1px solid red;
   & .main-left-slo {
     font-size: 32px;
     text-align: center;
@@ -124,4 +121,30 @@ export const ContentItemsComp = styled.div`
     color: red;
     margin-right: 5px;
   }
+`;
+
+//home Content
+export const HomeContentListBox = styled.section<Width>`
+  width: ${(props) => props.width - leftWidth + "px"};
+  padding: 20px 20px;
+`;
+
+export const HomeContentList = styled.div`
+  border: 1px solid black;
+  height: 200px;
+  margin-bottom: 50px;
+`;
+
+interface Props {
+  ref: any;
+  children?: any;
+}
+export const WritePreview = styled.div<Props>`
+  height: ${heigth + "px"};
+  flex-grow: 1;
+`;
+export const WriteBox = styled.div`
+  border: 1px solid black;
+  height: 100%;
+  display: flex;
 `;

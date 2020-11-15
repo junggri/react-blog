@@ -1,19 +1,17 @@
 import React from "react";
+import { TopView, ContentBox } from "component";
 
-import { MainView } from "../styled-comp";
-import { TopView, ContentNav, ContentCenter, ContentRight } from "component";
+interface Props {
+  match: any;
+}
 
-const Content = () => {
+const Content = ({ match }: Props) => {
+  let params = match.params.content;
   const width = window.screen.width * 0.78;
-  let list = ["a", "b", "c", "d", "e"];
   return (
     <>
       <TopView width={width} />
-      <MainView width={width}>
-        <ContentNav list={list}></ContentNav>
-        <ContentCenter width={width}></ContentCenter>
-        <ContentRight></ContentRight>
-      </MainView>
+      <ContentBox width={width} params={params}></ContentBox>
     </>
   );
 };

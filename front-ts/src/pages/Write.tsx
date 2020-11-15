@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactQuill, { Quill } from "react-quill";
+import { WritePreview, WriteBox } from "../styled-comp";
 import "../../node_modules/react-quill/dist/quill.snow.css";
 
 const bold = Quill.import("formats/bold");
@@ -12,6 +13,8 @@ Quill.register(italic, true);
 
 function Write() {
   const [value, setValue] = useState("");
+  const [html, setHtml] = useState("");
+  let text: any = useRef();
 
   const modules = {
     toolbar: [
@@ -49,11 +52,28 @@ function Write() {
     "video",
   ];
 
+  const rteChange = (content: any, delta: any, source: any, editor: any) => {
+    // console.log(editor.getHTML()); // rich text
+    // console.log(editor.getText()); // plain text
+    // setHtml(editor.getHTML());
+    // setValue(text);
+  };
+
+  const handleEditor = (value: string) => {
+    setValue(value);
+  };
+
+  function ToHtml(value: string) {
+    return { __html: value };
+  }
+
   return (
-    <div className="my-quill-box">
-      <ReactQuill className="quill-box" theme="snow" value={value} onChange={setValue} modules={modules} formats={formats} placeholder="입력하세요." />
-      <section className="preview-quill"></section>
-    </div>
+    <WriteBox>
+      <ReactQuill theme="snow" value={value} onChange={handleEditor} modules={modules} formats={formats} placeholder="입력하세요." />
+      <WritePreview ref={text}>
+        <div dangerouslySetInnerHTML={ToHtml(value)}></div>
+      </WritePreview>
+    </WriteBox>
   );
 }
 

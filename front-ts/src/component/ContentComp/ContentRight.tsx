@@ -1,11 +1,11 @@
 import React from "react";
-import { MainViewRight } from "../../styled-comp";
+import { ContentRight } from "../../styled-comp";
 
 function RightView() {
   return (
-    <MainViewRight>
+    <ContentRight>
       <p>asdas</p>
-    </MainViewRight>
+    </ContentRight>
   );
 }
 

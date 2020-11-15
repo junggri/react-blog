@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { MainView } from "../../styled-comp";
 import ContentNav from "./ContentNav";
 import ContentCenter from "./ContentCenter";
@@ -8,14 +7,15 @@ import ContentRight from "./ContentRight";
 interface Props {
   width: number;
   children?: string;
+  params: any;
 }
 
-function Main({ width }: Props) {
+function Main({ width, params }: Props) {
   let list = ["a", "b", "c", "d", "e"];
   return (
     <MainView width={width}>
       <ContentNav list={list}></ContentNav>
-      <ContentCenter width={width}></ContentCenter>
+      <ContentCenter width={width} params={params}></ContentCenter>
       <ContentRight></ContentRight>
     </MainView>
   );

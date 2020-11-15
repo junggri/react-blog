@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
+const width = window.innerWidth;
+console.log(width);
 const GlobalStyles = createGlobalStyle`
  ${reset}
     *{
@@ -31,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
     font-family:'Maven Pro', sans-serif;
     }
     html,body{
+        position:relative;
         height:100%;
     }
     b { 
@@ -39,22 +42,12 @@ const GlobalStyles = createGlobalStyle`
     i { 
         font-style : italic;
     }
-
+    .quill{
+        height:600px;
+    }
     .ql-container.ql-snow{
         border:none;
-    }
-    .quill-box{
-        max-width:900px;
-        width:900px;
-        display:inline-block;
-    }
-  
-    .preview-quill{
-        border:1px solid black;
-        display:inline-block;
-        vertical-align:top;
-        width:120px;
-    }
+    } 
 `;
 
 export default GlobalStyles;
