@@ -14,7 +14,7 @@ function Main({ width, params }: Props) {
   let list = ["a", "b", "c", "d", "e"];
   return (
     <MainView width={width}>
-      <ContentNav list={list}></ContentNav>
+      {/* <ContentNav list={list}></ContentNav> */}
       <ContentCenter width={width} params={params}></ContentCenter>
       <ContentRight></ContentRight>
     </MainView>

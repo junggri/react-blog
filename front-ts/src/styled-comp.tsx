@@ -12,7 +12,12 @@ const rightWidth = 250;
 
 const heigth = window.innerHeight;
 
-export const TopMainView = styled.div<Width>`
+interface topView {
+  width: number;
+  ref?: any;
+}
+
+export const TopMainView = styled.div<topView>`
   border: 1px solid black;
   position: relative;
   margin: 0 auto;
@@ -88,13 +93,21 @@ export const ContentRight = styled.section`
   }
 `;
 
-export const ContentNavComp = styled.section`
+interface ContentBox {
+  ref: any;
+}
+
+export const ContentNavComp = styled.section<ContentBox>`
   position: absolute;
   width: ${leftWidth + "px"};
-  & .main-left-slo {
+  &.main-left-slo {
     font-size: 32px;
     text-align: center;
     margin-top: 78px;
+  }
+  &.fixed {
+    position: fixed;
+    top: 0;
   }
 `;
 
@@ -126,6 +139,8 @@ export const ContentItemsComp = styled.div`
 //home Content
 export const HomeContentListBox = styled.section<Width>`
   width: ${(props) => props.width - leftWidth + "px"};
+  position: absolute;
+  right: 0;
   padding: 20px 20px;
 `;
 
@@ -135,16 +150,41 @@ export const HomeContentList = styled.div`
   margin-bottom: 50px;
 `;
 
+export const WriteBox = styled.div`
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 0px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+`;
+
 interface Props {
-  ref: any;
   children?: any;
 }
+
 export const WritePreview = styled.div<Props>`
   height: ${heigth + "px"};
-  flex-grow: 1;
+  background: #dee2e6;
+  padding: 20px 40px;
+  /* & blockquote {
+  } */
 `;
-export const WriteBox = styled.div`
-  border: 1px solid black;
-  height: 100%;
-  display: flex;
+
+export const WriteBtnComp = styled.button`
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 15px 25px;
+  font-size: 17px;
+  border-radius: 4px;
+  font-weight: 100;
+  letter-spacing: 1.2px;
+  transition: 0.3s all;
+  position: absolute;
+  right: 0;
+  &:hover {
+    cursor: pointer;
+    background-color: ${darken(0.1, "#FFCD64")};
+  }
 `;

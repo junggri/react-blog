@@ -43,11 +43,53 @@ const GlobalStyles = createGlobalStyle`
         font-style : italic;
     }
     .quill{
-        height:600px;
+        height:700px;
     }
+ 
     .ql-container.ql-snow{
         border:none;
     } 
+    .ql-size-huge{
+        font-size:4rem !important;
+    }
+    .content-title{
+        width:100%;
+        height:100px;
+        resize:none;
+        border:none;
+        outline-style:none;
+        padding:20px;
+        font-size:3rem;
+    }
+    .content-title::placeholder{
+        font-size:3rem;
+        font-style:italic
+    }
+    .preview-title{
+        border:1px solid black;
+        font-size:3rem;
+        word-break:break-all;
+        margin-bottom:100px;
+    }
+    .ql-editor.ql-blank{
+        height:100%;
+    }
+    .ql-container.ql-snow{
+        height:90%
+    }
+    .ql-toolbar.ql-snow{
+        border-left:none;
+        border-right:none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .write-btn-box{
+        position:relative;
+        margin:0 auto;
+        width:70%;
+        margin-top:20px;
+    }
+
 `;
 
 export default GlobalStyles;

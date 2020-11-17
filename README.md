@@ -9,7 +9,5 @@
      <li>react - (create-react-app) 공식문서로 직접 빌드해봤으나 cra가 더 구조적으로 단단한 느낌이 들어서</li>
      <li>server </br>express ? nest => nest와 express 중 택 1</li>
      <li>redux(상태관리)</li>
-  </ul>  
+  </ul> 
 </div>
-
-    
