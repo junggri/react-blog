@@ -18,7 +18,7 @@ interface topView {
 }
 
 export const TopMainView = styled.div<topView>`
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
   margin: 0 auto;
   height: 320px;
@@ -63,7 +63,8 @@ export const ContentCenter = styled.section<Width>`
   position: absolute;
   left: ${leftWidth + "px"};
   width: ${(props) => props.width - (leftWidth + rightWidth) + "px"};
-  padding: 0px 20px;
+  padding: 0px 40px;
+  word-break: break-all;
   & > h1 {
     font-size: 30px;
     text-align: center;
@@ -76,7 +77,7 @@ export const ContentCenter = styled.section<Width>`
     font-weight: 100;
     float: right;
   }
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 export const ContentCenterArticleBox = styled.section<Width>`
@@ -100,11 +101,6 @@ interface ContentBox {
 export const ContentNavComp = styled.section<ContentBox>`
   position: absolute;
   width: ${leftWidth + "px"};
-  &.main-left-slo {
-    font-size: 32px;
-    text-align: center;
-    margin-top: 78px;
-  }
   &.fixed {
     position: fixed;
     top: 0;
@@ -112,18 +108,20 @@ export const ContentNavComp = styled.section<ContentBox>`
 `;
 
 export const ContentBoxComp = styled.div`
-  display: grid;
+  /* display: grid;
   justify-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); */
   margin-top: 70px;
+  /* border: 1px solid black; */
 `;
 
 export const ContentItemsComp = styled.div`
+  position: relative;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   display: inline-block;
-  width: 100px;
-  padding: 7px;
+  width: 100%;
+  height: 50px;
   margin-bottom: 13px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   &:hover {
@@ -132,7 +130,11 @@ export const ContentItemsComp = styled.div`
   }
   & > .list-num {
     color: red;
-    margin-right: 5px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(0%, -50%);
   }
 `;
 
@@ -141,7 +143,7 @@ export const HomeContentListBox = styled.section<Width>`
   width: ${(props) => props.width - leftWidth + "px"};
   position: absolute;
   right: 0;
-  padding: 20px 20px;
+  border: 1px solid black;
 `;
 
 export const HomeContentList = styled.div`

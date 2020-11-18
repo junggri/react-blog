@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-const width = window.innerWidth;
-console.log(width);
 const GlobalStyles = createGlobalStyle`
  ${reset}
     *{

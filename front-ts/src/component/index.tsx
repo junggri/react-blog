@@ -1,8 +1,8 @@
-export { default as TopView } from "component/topView";
-
-export { default as ContentBox } from "component/ContentComp/ContentBox";
-export { default as ContentCenter } from "component/ContentComp/ContentCenter";
-export { default as ContentNav } from "component/ContentComp/ContentNav";
-export { default as ContentRight } from "component/ContentComp/ContentRight";
+export { default as ContentCenter } from "component/ContentCenter";
+export { default as ContentNav } from "component/ContentNav";
+export { default as ContentRight } from "component/ContentRight";
 
 export { default as HomeContentBox } from "component/HomeContent";
+
+export { default as HomeContentContainer } from "component/components/HomeMainContainer";
+export { default as ContentContainer } from "component/components/ContentContainer";
