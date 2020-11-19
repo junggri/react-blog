@@ -10,8 +10,10 @@ import session from "express-session";
 import cors from "cors";
 import compression from "compression";
 import createError from "http-errors";
-import jwt from "jsonwebtoken";
+import jsonwebtoken from "jsonwebtoken";
+import jwt from "express-jwt";
 import csrf from "csurf";
+import api from "./api";
 
 const app = express();
 
@@ -19,6 +21,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || "development";
 console.log(app.get("env")); //개발 단계확인\
 
 // app.set("env", "production");
+
+app.get("/", (req, res) => {
+  res.render("index.html");
+});
 
 const RedisStore = connectRedis(session);
 const _client = redis.createClient();
@@ -42,12 +48,7 @@ const sessionConfig = {
 };
 
 app.disable("x-powered-by");
-
-app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200 }));
-
-app.get("/", (req, res) => {
-  res.status(200).send({ token: "asdasd" });
-});
+app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200, credentials: true }));
 
 app
   .use(logger("dev"))
@@ -60,21 +61,24 @@ app
   .use(helmet.frameguard({ action: "deny" }))
   .use(bodyParser.urlencoded({ extended: false }));
 
-app.use(
-  csrf({
-    cookie: {
-      key: "awas",
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 3600, // 1-hour
-    },
-  })
-);
-// app.use(express.static(path.join(__dirname + "/../webpack")));
+app.use("/api", api);
 
-// app.use(express.static(path.join(__dirname, "../static/css")));
-// app.use(express.static(path.join(__dirname, "../static/image")));
-// app.use(express.static(path.join(__dirname, "../upload")));
+// app.use(
+//   csrf({
+//     cookie: {
+//       key: "awas",
+//       httpOnly: true,
+//       secure: process.env.NODE_ENV === "production",
+//       maxAge: 3600, // 1-hour
+//     },
+//   })
+// );
+
+app.set("views", __dirname + "/../../front-ts/build");
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
+
+app.use(express.static(path.join(__dirname, "../../front-ts/build")));
 
 app.set("port", process.env.PORT || 4000);
 
@@ -84,8 +88,6 @@ app.use((req, res, next) => {
 });
 
 app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
-  // 라우트에서 new Error 생성하고 next 인자로 주면 에러 스택에 내용이나온다
-
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
   res.status(err.status || 500);

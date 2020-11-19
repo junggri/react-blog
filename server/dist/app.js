@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var path_1 = __importDefault(require("path"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var helmet_1 = __importDefault(require("helmet"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
@@ -14,11 +15,14 @@ var express_session_1 = __importDefault(require("express-session"));
 var cors_1 = __importDefault(require("cors"));
 var compression_1 = __importDefault(require("compression"));
 var http_errors_1 = __importDefault(require("http-errors"));
-var csurf_1 = __importDefault(require("csurf"));
+var api_1 = __importDefault(require("./api"));
 var app = express_1.default();
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 console.log(app.get("env")); //개발 단계확인\
 // app.set("env", "production");
+app.get("/", function (req, res) {
+    res.render("index.html");
+});
 var RedisStore = connect_redis_1.default(express_session_1.default);
 var _client = redis_1.default.createClient();
 var sessionConfig = {
@@ -38,10 +42,7 @@ var sessionConfig = {
     },
 };
 app.disable("x-powered-by");
-app.use(cors_1.default({ origin: "http://localhost:3000", optionsSuccessStatus: 200 }));
-app.get("/", function (req, res) {
-    res.status(200).send({ token: "asdasd" });
-});
+app.use(cors_1.default({ origin: "http://localhost:3000", optionsSuccessStatus: 200, credentials: true }));
 app
     .use(morgan_1.default("dev"))
     .use(compression_1.default())
@@ -52,25 +53,27 @@ app
     .use(cookie_parser_1.default("asdunvajnsr"))
     .use(helmet_1.default.frameguard({ action: "deny" }))
     .use(body_parser_1.default.urlencoded({ extended: false }));
-app.use(csurf_1.default({
-    cookie: {
-        key: "awas",
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: 3600,
-    },
-}));
-// app.use(express.static(path.join(__dirname + "/../webpack")));
-// app.use(express.static(path.join(__dirname, "../static/css")));
-// app.use(express.static(path.join(__dirname, "../static/image")));
-// app.use(express.static(path.join(__dirname, "../upload")));
+app.use("/api", api_1.default);
+// app.use(
+//   csrf({
+//     cookie: {
+//       key: "awas",
+//       httpOnly: true,
+//       secure: process.env.NODE_ENV === "production",
+//       maxAge: 3600, // 1-hour
+//     },
+//   })
+// );
+app.set("views", __dirname + "/../../front-ts/build");
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
+app.use(express_1.default.static(path_1.default.join(__dirname, "../../front-ts/build")));
 app.set("port", process.env.PORT || 4000);
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");
     next(http_errors_1.default(404));
 });
 app.use(function (err, req, res, next) {
-    // 라우트에서 new Error 생성하고 next 인자로 주면 에러 스택에 내용이나온다
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
     res.status(err.status || 500);
