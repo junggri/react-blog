@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 import { HomeContentContainer, ContentContainer } from "component";
 import { Link } from "react-router-dom";
 import { MainView, TopMainView } from "../styled-comp"; //styled-component

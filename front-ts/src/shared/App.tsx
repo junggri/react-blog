@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Main, Write } from "pages";
+import axios from "axios";
 
 function App() {
+  useEffect(() => {
+    let result = async () => {
+      let res = await axios.get("http://localhost:4000");
+      console.log(res);
+    };
+    result();
+  }, []);
   return (
     <div id="App">
       <Switch>
