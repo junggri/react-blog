@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
-import { HomeContentContainer, ContentContainer } from "component";
+import { HomeContentContainer, ContentContainer, TopNavBar } from "component";
 import { Link } from "react-router-dom";
 import { MainView, TopMainView } from "../styled-comp"; //styled-component
 
@@ -12,11 +11,11 @@ interface home {
 }
 
 const Home = ({ match }: home) => {
+  let component;
   const [height, setHeight] = useState(0);
   let params = match.params.content;
   const width = window.screen.width * 0.78;
-  let component;
-  let list = ["a", "b", "c", "d", "e"];
+  let list = ["content1", "content", "content", "content", "content"];
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,6 +33,7 @@ const Home = ({ match }: home) => {
   return (
     <>
       <TopMainView width={width} ref={ref}>
+        <TopNavBar />
         <Link to="/write">
           <span className="write-article-btn">새 글 쓰기</span>
         </Link>

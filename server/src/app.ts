@@ -10,24 +10,27 @@ import session from "express-session";
 import cors from "cors";
 import compression from "compression";
 import createError from "http-errors";
-import jsonwebtoken from "jsonwebtoken";
-import jwt from "express-jwt";
+
 import csrf from "csurf";
 import api from "./api";
 
 const app = express();
+
+const RedisStore = connectRedis(session);
+const _client = redis.createClient();
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 console.log(app.get("env")); //개발 단계확인\
 
 // app.set("env", "production");
 
-app.get("/", (req, res) => {
-  res.render("index.html");
+const csrfProtection = csrf({
+  cookie: {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    // maxAge: 3600, // 1-houra
+  },
 });
-
-const RedisStore = connectRedis(session);
-const _client = redis.createClient();
 
 const sessionConfig = {
   secret: "asdunvajnsr",
@@ -47,7 +50,16 @@ const sessionConfig = {
   },
 };
 
+app.set("views", __dirname + "/../../front-ts/build");
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
+
+app.set("port", process.env.PORT || 4000);
+
 app.disable("x-powered-by");
+
+app.use(express.static(path.join(__dirname, "../../front-ts/build")));
+
 app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200, credentials: true }));
 
 app
@@ -59,28 +71,10 @@ app
   .use(session(sessionConfig))
   .use(cookieParser("asdunvajnsr"))
   .use(helmet.frameguard({ action: "deny" }))
-  .use(bodyParser.urlencoded({ extended: false }));
+  .use(bodyParser.urlencoded({ extended: false }))
+  .use(csrfProtection);
 
 app.use("/api", api);
-
-// app.use(
-//   csrf({
-//     cookie: {
-//       key: "awas",
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV === "production",
-//       maxAge: 3600, // 1-hour
-//     },
-//   })
-// );
-
-app.set("views", __dirname + "/../../front-ts/build");
-app.set("view engine", "ejs");
-app.engine("html", require("ejs").renderFile);
-
-app.use(express.static(path.join(__dirname, "../../front-ts/build")));
-
-app.set("port", process.env.PORT || 4000);
 
 app.use((req, res, next) => {
   res.status(404).send("Sorry cant find that!");

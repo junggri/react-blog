@@ -40,12 +40,7 @@ const ContentNav = ({ list, height }: Props) => {
       <ContentBoxComp>
         {list.map((e, i) => (
           <Link to={`/content/${e}`} key={i}>
-            <ContentItemsComp>
-              <span className="list-num">
-                {i}
-                {e}
-              </span>
-            </ContentItemsComp>
+            <ContentItemsComp>{e}</ContentItemsComp>
           </Link>
         ))}
       </ContentBoxComp>
@@ -53,4 +48,4 @@ const ContentNav = ({ list, height }: Props) => {
   );
 };
 
-export default ContentNav;
+export default React.memo(ContentNav);

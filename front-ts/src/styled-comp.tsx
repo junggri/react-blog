@@ -45,6 +45,30 @@ export const TopMainView = styled.div<topView>`
   }
 `;
 
+export const TopNavBarComp = styled.nav`
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  & > * {
+    display: inline-block;
+    margin: auto 0;
+  }
+  & .tnb-rightBox span {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    transition: 0.3s all;
+  }
+
+  & .tnb-rightBox span:hover {
+    font-weight: 600;
+  }
+  & > *:hover {
+    cursor: pointer;
+  }
+`;
+
 //MAIN_VIEW---------------COMPONENTS
 
 export const MainView = styled.div<Width>`
@@ -101,40 +125,39 @@ interface ContentBox {
 export const ContentNavComp = styled.section<ContentBox>`
   position: absolute;
   width: ${leftWidth + "px"};
+  margin-top: 70px;
   &.fixed {
     position: fixed;
-    top: 0;
+    top: -0px;
   }
 `;
 
 export const ContentBoxComp = styled.div`
   /* display: grid;
+  
   justify-items: center;
   grid-template-columns: repeat(2, 1fr); */
-  margin-top: 70px;
+
   /* border: 1px solid black; */
+  font-size: 0;
+  & .click {
+    font-weight: 600;
+  }
 `;
 
 export const ContentItemsComp = styled.div`
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
   display: inline-block;
   width: 100%;
   height: 50px;
-  margin-bottom: 13px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  /* margin-bottom: 13px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); */
+  font-size: 15px;
+  font-weight: 100;
+  transition: all 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: ${darken(0.1, "#FFCD64")};
-  }
-  & > .list-num {
-    color: red;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translate(0%, -50%);
+    font-weight: 600;
   }
 `;
 
@@ -143,12 +166,14 @@ export const HomeContentListBox = styled.section<Width>`
   width: ${(props) => props.width - leftWidth + "px"};
   position: absolute;
   right: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  margin-top: 70px;
+  padding: 0px 0px 0px 50px;
 `;
 
 export const HomeContentList = styled.div`
   border: 1px solid black;
-  height: 200px;
+  height: 350px;
   margin-bottom: 50px;
 `;
 

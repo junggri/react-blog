@@ -15,16 +15,20 @@ var express_session_1 = __importDefault(require("express-session"));
 var cors_1 = __importDefault(require("cors"));
 var compression_1 = __importDefault(require("compression"));
 var http_errors_1 = __importDefault(require("http-errors"));
+var csurf_1 = __importDefault(require("csurf"));
 var api_1 = __importDefault(require("./api"));
 var app = express_1.default();
+var RedisStore = connect_redis_1.default(express_session_1.default);
+var _client = redis_1.default.createClient();
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 console.log(app.get("env")); //개발 단계확인\
 // app.set("env", "production");
-app.get("/", function (req, res) {
-    res.render("index.html");
+var csrfProtection = csurf_1.default({
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+    },
 });
-var RedisStore = connect_redis_1.default(express_session_1.default);
-var _client = redis_1.default.createClient();
 var sessionConfig = {
     secret: "asdunvajnsr",
     name: "sessionID",
@@ -41,7 +45,12 @@ var sessionConfig = {
         secure: false,
     },
 };
+app.set("views", __dirname + "/../../front-ts/build");
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
+app.set("port", process.env.PORT || 4000);
 app.disable("x-powered-by");
+app.use(express_1.default.static(path_1.default.join(__dirname, "../../front-ts/build")));
 app.use(cors_1.default({ origin: "http://localhost:3000", optionsSuccessStatus: 200, credentials: true }));
 app
     .use(morgan_1.default("dev"))
@@ -52,23 +61,9 @@ app
     .use(express_session_1.default(sessionConfig))
     .use(cookie_parser_1.default("asdunvajnsr"))
     .use(helmet_1.default.frameguard({ action: "deny" }))
-    .use(body_parser_1.default.urlencoded({ extended: false }));
+    .use(body_parser_1.default.urlencoded({ extended: false }))
+    .use(csrfProtection);
 app.use("/api", api_1.default);
-// app.use(
-//   csrf({
-//     cookie: {
-//       key: "awas",
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV === "production",
-//       maxAge: 3600, // 1-hour
-//     },
-//   })
-// );
-app.set("views", __dirname + "/../../front-ts/build");
-app.set("view engine", "ejs");
-app.engine("html", require("ejs").renderFile);
-app.use(express_1.default.static(path_1.default.join(__dirname, "../../front-ts/build")));
-app.set("port", process.env.PORT || 4000);
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");
     next(http_errors_1.default(404));
