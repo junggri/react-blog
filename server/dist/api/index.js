@@ -10,6 +10,7 @@ router.get("/cookie", function (req, res) {
     res.json({ token: "asd" });
 });
 router.get("/cookies", function (req, res) {
+    res.cookie("test", "asd");
     res.json(req.csrfToken());
 });
 router.post("/posts", function (req, res) {

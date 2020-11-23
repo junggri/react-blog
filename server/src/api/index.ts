@@ -8,6 +8,7 @@ router.get("/cookie", (req: Request, res: Response): void => {
 });
 
 router.get("/cookies", (req, res) => {
+  res.cookie("test", "asd");
   res.json(req.csrfToken());
 });
 

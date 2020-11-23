@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Main, Write } from "pages";
 import axios from "axios";
@@ -28,13 +28,17 @@ function App() {
     const CSRF = async () => {
       const { data } = await axios.get("/api/cookies");
       axios.defaults.headers.post["X-XSRF-TOKEN"] = data;
-      await axios.post("/api/posts", {
-        body: { asd: "asd", _csrf: data },
-        headers: {
-          "Content-Type": "application/json",
-          "CSRF-Token": data,
+      await axios.post(
+        "/api/posts",
+        {
+          body: { asd: "asd", _csrf: data },
+          headers: {
+            "Content-Type": "application/json",
+            "CSRF-Token": data,
+          },
         },
-      });
+        { withCredentials: true }
+      );
     };
     CSRF();
   }, []);

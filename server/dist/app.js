@@ -51,7 +51,7 @@ app.engine("html", require("ejs").renderFile);
 app.set("port", process.env.PORT || 4000);
 app.disable("x-powered-by");
 app.use(express_1.default.static(path_1.default.join(__dirname, "../../front-ts/build")));
-app.use(cors_1.default({ origin: "http://localhost:3000", optionsSuccessStatus: 200, credentials: true }));
+app.use(cors_1.default({ origin: "http://localhost:3000", credentials: true }));
 app
     .use(morgan_1.default("dev"))
     .use(compression_1.default())
