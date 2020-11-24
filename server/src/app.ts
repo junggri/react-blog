@@ -10,11 +10,12 @@ import session from "express-session";
 import cors from "cors";
 import compression from "compression";
 import createError from "http-errors";
-
 import csrf from "csurf";
-import api from "./api";
+import indexApi from "./router";
 
 const app = express();
+
+app.disable("x-powered-by");
 
 const RedisStore = connectRedis(session);
 const _client = redis.createClient();
@@ -56,8 +57,6 @@ app.engine("html", require("ejs").renderFile);
 
 app.set("port", process.env.PORT || 4000);
 
-app.disable("x-powered-by");
-
 app.use(express.static(path.join(__dirname, "../../front-ts/build")));
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
@@ -74,7 +73,7 @@ app
   .use(bodyParser.urlencoded({ extended: false }))
   .use(csrfProtection);
 
-app.use("/api", api);
+app.use("/api", indexApi);
 
 app.use((req, res, next) => {
   res.status(404).send("Sorry cant find that!");
@@ -88,6 +87,6 @@ app.use(function (err: any, req: Request, res: Response, next: NextFunction) {
   console.log(err);
 });
 
-const server = app.listen(app.get("port"), () => {
+app.listen(app.get("port"), () => {
   console.log("Express server listening on port " + app.get("port"));
 });

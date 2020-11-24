@@ -19,4 +19,4 @@ router.post("/posts", function (req, res) {
     res.json("2");
 });
 exports.default = router;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=api.js.map

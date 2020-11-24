@@ -16,8 +16,9 @@ var cors_1 = __importDefault(require("cors"));
 var compression_1 = __importDefault(require("compression"));
 var http_errors_1 = __importDefault(require("http-errors"));
 var csurf_1 = __importDefault(require("csurf"));
-var api_1 = __importDefault(require("./api"));
+var router_1 = __importDefault(require("./router"));
 var app = express_1.default();
+app.disable("x-powered-by");
 var RedisStore = connect_redis_1.default(express_session_1.default);
 var _client = redis_1.default.createClient();
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
@@ -49,7 +50,6 @@ app.set("views", __dirname + "/../../front-ts/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 app.set("port", process.env.PORT || 4000);
-app.disable("x-powered-by");
 app.use(express_1.default.static(path_1.default.join(__dirname, "../../front-ts/build")));
 app.use(cors_1.default({ origin: "http://localhost:3000", credentials: true }));
 app
@@ -63,7 +63,7 @@ app
     .use(helmet_1.default.frameguard({ action: "deny" }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(csrfProtection);
-app.use("/api", api_1.default);
+app.use("/api", router_1.default);
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");
     next(http_errors_1.default(404));
@@ -74,7 +74,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     console.log(err);
 });
-var server = app.listen(app.get("port"), function () {
+app.listen(app.get("port"), function () {
     console.log("Express server listening on port " + app.get("port"));
 });
 //# sourceMappingURL=app.js.map

@@ -1,20 +1,20 @@
 import mysql from "mysql2/promise";
 
-const option = {
+let option = {
   host: "localhost",
-  user: "test",
+  user: "root",
   password: "wowwjd123",
-  database: "test",
+  database: "contents",
   connectionLimit: 10,
   waitForConnections: true,
-  multipleStatements: false,
+  multipleStatements: true,
 };
 
 async function getConnection() {
-  let pool = mysql.createPool(option);
   try {
-    let connection = await pool.getConnection();
-    return connection;
+    let pool = mysql.createPool(option);
+    let conn = await pool.getConnection();
+    return conn;
   } catch (error) {
     console.error(error);
   }

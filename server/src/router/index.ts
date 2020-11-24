@@ -1,6 +1,12 @@
 import express, { Request, Response, NextFunction } from "express";
-
+import Controller from "../controller/index.controller";
 const router = express.Router();
+
+router.get("/contents", Controller.getContent);
+
+router.post("/contentsd", (req, res) => {
+  res.json({ token: "asd" });
+});
 
 router.get("/cookie", (req: Request, res: Response): void => {
   res.cookie("token", "ASdasd", { httpOnly: true });
@@ -13,7 +19,6 @@ router.get("/cookies", (req, res) => {
 });
 
 router.post("/posts", (req, res) => {
-  console.log(2);
   res.json("2");
 });
 export default router;
