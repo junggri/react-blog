@@ -46,11 +46,11 @@ var sessionConfig = {
         secure: false,
     },
 };
-app.set("views", __dirname + "/../../front-ts/build");
+app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 app.set("port", process.env.PORT || 4000);
-app.use(express_1.default.static(path_1.default.join(__dirname, "../../front-ts/build")));
+app.use(express_1.default.static(path_1.default.join(__dirname, "../../client/build")));
 app.use(cors_1.default({ origin: "http://localhost:3000", credentials: true }));
 app
     .use(morgan_1.default("dev"))
@@ -63,6 +63,15 @@ app
     .use(helmet_1.default.frameguard({ action: "deny" }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(csrfProtection);
+// .use(nocache())
+app.use(function (req, res, next) {
+    res.header("Cache-control", "no-cache, must-revalidate");
+    res.header("Pragma", "no-cache");
+    next();
+});
+// app.get("/", (req, res) => {
+//   res.render("index.html");
+// });
 app.use("/api", router_1.default);
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");

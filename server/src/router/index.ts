@@ -21,4 +21,8 @@ router.get("/cookies", (req, res) => {
 router.post("/posts", (req, res) => {
   res.json("2");
 });
+
+router.post("/content", (req, res) => {
+  console.log(req.body);
+});
 export default router;

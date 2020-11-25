@@ -12,6 +12,7 @@ import compression from "compression";
 import createError from "http-errors";
 import csrf from "csurf";
 import indexApi from "./router";
+import { allowedNodeEnvironmentFlags } from "process";
 
 const app = express();
 
@@ -51,13 +52,13 @@ const sessionConfig = {
   },
 };
 
-app.set("views", __dirname + "/../../front-ts/build");
+app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
 app.set("port", process.env.PORT || 4000);
 
-app.use(express.static(path.join(__dirname, "../../front-ts/build")));
+app.use(express.static(path.join(__dirname, "../../client/build")));
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
@@ -72,6 +73,17 @@ app
   .use(helmet.frameguard({ action: "deny" }))
   .use(bodyParser.urlencoded({ extended: false }))
   .use(csrfProtection);
+// .use(nocache())
+
+app.use(function (req, res, next) {
+  res.header("Cache-control", "no-cache, must-revalidate");
+  res.header("Pragma", "no-cache");
+  next();
+});
+
+// app.get("/", (req, res) => {
+//   res.render("index.html");
+// });
 
 app.use("/api", indexApi);
 
