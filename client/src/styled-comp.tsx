@@ -106,6 +106,7 @@ export const ContentCenter = styled.section<Width>`
 
 export const ContentCenterArticleBox = styled.section<Width>`
   margin-top: 100px;
+  word-break: break-all;
 `;
 
 export const ContentRight = styled.section`
@@ -178,7 +179,9 @@ interface homeContentList {
   children: any;
 }
 export const HomeContentList = styled.div<homeContentList>`
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
   height: 350px;
   margin-bottom: 50px;
 `;

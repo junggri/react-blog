@@ -21,8 +21,6 @@ router.get("/cookies", function (req, res) {
 router.post("/posts", function (req, res) {
     res.json("2");
 });
-router.post("/content", function (req, res) {
-    console.log(req.body);
-});
+router.post("/content", index_controller_1.default.saveContent);
 exports.default = router;
 //# sourceMappingURL=index.js.map

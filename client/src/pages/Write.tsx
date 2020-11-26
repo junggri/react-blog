@@ -17,7 +17,7 @@ const italic = Quill.import("formats/italic");
 italic.tagName = "i"; // Quill uses <em> by default
 Quill.register(italic, true);
 
-function Write() {
+function Write({ history }: any) {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
 
@@ -80,7 +80,8 @@ function Write() {
       contentName: (contentName.current as HTMLTextAreaElement).textContent,
       content: ref.current.state.value,
     };
-    await util.saveContent(data);
+    let result = await util.saveContent(data);
+    if (result) history.push("/");
   };
 
   const onStorage = () => {

@@ -40,6 +40,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_connection_1 = __importDefault(require("../lib/index.connection"));
+var uuid_1 = require("uuid");
+var fs_1 = require("fs");
+var path_1 = __importDefault(require("path"));
+var moment = require("moment");
+require("moment-timezone");
+moment.tz.setDefault("Asia/Seoul");
 var indexModel = {
     getContents: function () { return __awaiter(void 0, void 0, void 0, function () {
         var conn, result, error_1;
@@ -66,6 +72,42 @@ var indexModel = {
             }
         });
     }); },
+    saveContent: function (_a) {
+        var contentName = _a.contentName, content = _a.content;
+        return __awaiter(void 0, void 0, void 0, function () {
+            var conn, uid, writePath, time, query, error_2;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, index_connection_1.default()];
+                    case 1:
+                        conn = _b.sent();
+                        uid = uuid_1.v4();
+                        writePath = path_1.default.join(__dirname + "/../../contents");
+                        time = moment().format("YYYY-MM-DD");
+                        query = "INSERT INTO nodejs(uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)";
+                        if (!(conn !== undefined)) return [3 /*break*/, 7];
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 5, 6, 7]);
+                        return [4 /*yield*/, fs_1.promises.writeFile(writePath + "/" + uid + ".html", content, "utf8")];
+                    case 3:
+                        _b.sent();
+                        return [4 /*yield*/, conn.execute(query, [uid, contentName, time, null, uid + ".html", null])];
+                    case 4:
+                        _b.sent();
+                        return [2 /*return*/, { state: true }];
+                    case 5:
+                        error_2 = _b.sent();
+                        console.error(error_2);
+                        return [2 /*return*/, { state: false }];
+                    case 6:
+                        conn.release();
+                        return [7 /*endfinally*/];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        });
+    },
 };
 exports.default = indexModel;
 //# sourceMappingURL=index.model.js.map

@@ -14,7 +14,6 @@ let util = {
     });
   },
   testPost(data: any) {
-    console.log(data);
     instance.defaults.headers.post["X-XSRF-TOKEN"] = data._csrf;
     return instance({
       url: "/api/posts",
@@ -23,7 +22,6 @@ let util = {
     });
   },
   saveContent(data: any) {
-    console.log(data);
     return instance({
       url: "/api/content",
       method: "post",

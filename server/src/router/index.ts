@@ -22,7 +22,5 @@ router.post("/posts", (req, res) => {
   res.json("2");
 });
 
-router.post("/content", (req, res) => {
-  console.log(req.body);
-});
+router.post("/content", Controller.saveContent);
 export default router;

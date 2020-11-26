@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ContentCenter, ContentCenterArticleBox } from "../styled-comp";
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
 }
 
 function MainCenterView({ width, params }: Props) {
+  useEffect(() => {}, []);
+
   return (
     <ContentCenter width={width}>
       <h1>CONTENT NAME {params}</h1>

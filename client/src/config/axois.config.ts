@@ -1,6 +1,10 @@
 import axios from "axios";
+import { cacheAdapterEnhancer } from "axios-extensions";
 
-const instance = axios.create({});
+const instance = axios.create({
+  baseURL: "/",
+  adapter: cacheAdapterEnhancer((axios.defaults as any).adapter),
+});
 
 instance.interceptors.request.use(
   (config) => {

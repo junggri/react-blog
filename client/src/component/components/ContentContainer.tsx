@@ -9,6 +9,7 @@ interface ContentProp {
   height: number;
   params: string;
 }
+
 const Content = ({ width, list, height, params }: ContentProp) => {
   return (
     <MainView width={width}>

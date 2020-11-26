@@ -1,4 +1,4 @@
-import mysql from "mysql2/promise";
+import mysql, { PoolConnection } from "mysql2/promise";
 
 let option = {
   host: "localhost",
@@ -13,7 +13,7 @@ let option = {
 async function getConnection() {
   try {
     let pool = mysql.createPool(option);
-    let conn = await pool.getConnection();
+    let conn: PoolConnection | undefined = await pool.getConnection();
     return conn;
   } catch (error) {
     console.error(error);

@@ -53,6 +53,18 @@ var indexController = {
             }
         });
     }); },
+    saveContent: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, index_model_1.default.saveContent(req.body)];
+                case 1:
+                    result = _a.sent();
+                    result.state ? res.status(200).json({ state: true }) : res.status(500).json({ state: false });
+                    return [2 /*return*/];
+            }
+        });
+    }); },
 };
 exports.default = indexController;
 //# sourceMappingURL=index.controller.js.map
