@@ -22,7 +22,7 @@ const Home = ({ match }: home) => {
 
   useEffect(() => {
     const getContent = async () => {
-      const { data } = await util.getContent();
+      const { data } = await util.getAllContents();
       setList(data);
       setLoading(true);
     };

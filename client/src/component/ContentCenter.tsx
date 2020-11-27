@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { ContentCenter, ContentCenterArticleBox } from "../styled-comp";
+import util from "../lib/axios";
 
 interface Props {
   width: number;
@@ -7,7 +8,13 @@ interface Props {
 }
 
 function MainCenterView({ width, params }: Props) {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const a = async () => {
+      let b = await util.test();
+      console.log(b);
+    };
+    a();
+  }, []);
 
   return (
     <ContentCenter width={width}>

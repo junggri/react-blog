@@ -12,7 +12,7 @@ import compression from "compression";
 import createError from "http-errors";
 import csrf from "csurf";
 import indexApi from "./router";
-import { allowedNodeEnvironmentFlags } from "process";
+import topicApi from "./router/topic";
 
 const app = express();
 
@@ -52,18 +52,18 @@ const sessionConfig = {
   },
 };
 
+app.set("port", process.env.PORT || 4000);
+
 app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
-
-app.set("port", process.env.PORT || 4000);
-
-app.use(express.static(path.join(__dirname, "../../client/build")));
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 app
   .use(logger("dev"))
+  .use(express.static(path.join(__dirname, "../../client/build")))
+  .use("/contents", express.static(path.join(__dirname, "/../contents")))
   .use(compression())
   .use(helmet.noSniff())
   .use(bodyParser.json())
@@ -73,7 +73,6 @@ app
   .use(helmet.frameguard({ action: "deny" }))
   .use(bodyParser.urlencoded({ extended: false }))
   .use(csrfProtection);
-// .use(nocache())
 
 app.use(function (req, res, next) {
   res.header("Cache-control", "no-cache, must-revalidate");
@@ -85,7 +84,8 @@ app.use(function (req, res, next) {
 //   res.render("index.html");
 // });
 
-app.use("/api", indexApi);
+app.use("/api", indexApi); //공통라우터
+app.use("/topic", topicApi); //콘텐츠 관련 라우터
 
 app.use((req, res, next) => {
   res.status(404).send("Sorry cant find that!");

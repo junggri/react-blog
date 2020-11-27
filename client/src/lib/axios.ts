@@ -1,10 +1,17 @@
 import instance from "../config/axois.config";
 
 let util = {
-  getContent() {
+  getAllContents() {
     return instance({
-      url: "/api/contents",
+      url: "/topic/lists",
       method: "get",
+    });
+  },
+  saveContent(data: any) {
+    return instance({
+      url: "/topic/content",
+      method: "post",
+      data: data,
     });
   },
   getCSRTtoken() {
@@ -21,11 +28,10 @@ let util = {
       data: data,
     });
   },
-  saveContent(data: any) {
+
+  test() {
     return instance({
-      url: "/api/content",
-      method: "post",
-      data: data,
+      url: "/api/test",
     });
   },
 };

@@ -17,6 +17,7 @@ var compression_1 = __importDefault(require("compression"));
 var http_errors_1 = __importDefault(require("http-errors"));
 var csurf_1 = __importDefault(require("csurf"));
 var router_1 = __importDefault(require("./router"));
+var topic_1 = __importDefault(require("./router/topic"));
 var app = express_1.default();
 app.disable("x-powered-by");
 var RedisStore = connect_redis_1.default(express_session_1.default);
@@ -46,14 +47,15 @@ var sessionConfig = {
         secure: false,
     },
 };
+app.set("port", process.env.PORT || 4000);
 app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
-app.set("port", process.env.PORT || 4000);
-app.use(express_1.default.static(path_1.default.join(__dirname, "../../client/build")));
 app.use(cors_1.default({ origin: "http://localhost:3000", credentials: true }));
 app
     .use(morgan_1.default("dev"))
+    .use(express_1.default.static(path_1.default.join(__dirname, "../../client/build")))
+    .use("/contents", express_1.default.static(path_1.default.join(__dirname, "/../contents")))
     .use(compression_1.default())
     .use(helmet_1.default.noSniff())
     .use(body_parser_1.default.json())
@@ -63,7 +65,6 @@ app
     .use(helmet_1.default.frameguard({ action: "deny" }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(csrfProtection);
-// .use(nocache())
 app.use(function (req, res, next) {
     res.header("Cache-control", "no-cache, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -72,7 +73,8 @@ app.use(function (req, res, next) {
 // app.get("/", (req, res) => {
 //   res.render("index.html");
 // });
-app.use("/api", router_1.default);
+app.use("/api", router_1.default); //공통라우터
+app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");
     next(http_errors_1.default(404));
