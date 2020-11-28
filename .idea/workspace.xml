@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/react-blog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/1d79128c-77f3-4fc4-9f3a-2269a7fc96d2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/28f0459c-c91f-4646-9268-4b17065547bf.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/3e49e99b-8d6e-412b-be9c-06812a416756.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/e6626f9a-b724-4ba2-ae6b-43c602ff8905.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/ContentCenter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentCenter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/ContentNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Write.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Write.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/router/authorization.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/authorization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/router/authorization.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/authorization.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/router/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/router/authorization.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/index.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1kuE3QcwO8aoU3yNKblULOgGMJV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.linters.configure.manually.selectedeslint" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="/usr/local/lib/node_modules/eslint" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/component" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="" />
+      <created>1606541877292</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606541877292</updated>
+      <workItem from="1606541879799" duration="1013000" />
+      <workItem from="1606543056497" duration="22000" />
+      <workItem from="1606543086391" duration="3441000" />
+      <workItem from="1606547709933" duration="386000" />
+      <workItem from="1606552554315" duration="370000" />
+      <workItem from="1606552944226" duration="136000" />
+      <workItem from="1606553106470" duration="307000" />
+      <workItem from="1606553428336" duration="317000" />
+      <workItem from="1606559101769" duration="17294000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606553795014">
+      <screen x="0" y="25" width="1792" height="1040" />
+    </state>
+    <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553795014" />
+    <state x="1141" y="399" key="#com.intellij.ide.actionMacro.EditMacrosDialog" timestamp="1606553077417">
+      <screen x="0" y="25" width="1792" height="1040" />
+    </state>
+    <state x="1141" y="399" key="#com.intellij.ide.actionMacro.EditMacrosDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553077417" />
+    <state x="3040" y="238" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606546154375">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="3040" y="238" key="#com.intellij.ide.macro.MacrosDialog/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546154375" />
+    <state x="3021" y="363" key="#com.intellij.tools.ToolEditorDialog" timestamp="1606545968902">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="3021" y="363" key="#com.intellij.tools.ToolEditorDialog/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606545968902" />
+    <state x="2954" y="411" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1606545558443">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2954" y="411" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606545558443" />
+    <state x="2770" y="287" key="EditFileWatcherDialog" timestamp="1606546231853">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2770" y="287" key="EditFileWatcherDialog/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546231853" />
+    <state x="396" y="286" width="1018" height="728" key="SettingsEditor" timestamp="1606569988785">
+      <screen x="0" y="25" width="1792" height="1040" />
+    </state>
+    <state x="396" y="286" width="1018" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606569988785" />
+    <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
+    <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606566014666">
+      <screen x="0" y="25" width="1792" height="1040" />
+    </state>
+    <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1040@0.25.1792.1040" timestamp="1606566014666" />
+    <state x="561" y="256" width="670" height="676" key="search.everywhere.popup" timestamp="1606567154412">
+      <screen x="0" y="25" width="1792" height="1040" />
+    </state>
+    <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606567154412" />
+  </component>
+</project>

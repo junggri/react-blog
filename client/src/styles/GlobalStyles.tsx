@@ -41,7 +41,8 @@ const GlobalStyles = createGlobalStyle`
         font-style : italic;
     }
     .quill{
-        height:700px;
+        height:100%;
+ 
     }
  
     .ql-container.ql-snow{
@@ -79,13 +80,6 @@ const GlobalStyles = createGlobalStyle`
         border-left:none;
         border-right:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    }
-    .write-btn-box{
-        width:60%;
-        margin:0 auto;
-        margin-top:40px;
-        display:flex;
-        justify-content:flex-end
     }
 `;
 
