@@ -8,7 +8,6 @@ interface home {
    path: string;
    url: string;
    parmars: any;
-
    [index: string]: any;
 }
 
@@ -16,25 +15,23 @@ const Home = ({ match }: home) => {
    let component;
    const [height, setHeight] = useState(0);
    const [list, setList] = useState([]);
-   const [loading, setLoading] = useState(false);
+
    let params = match.params.content;
-   const width = window.screen.width * 0.78;
+   const width = window.screen.width * 0.70;
+
    const ref = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
       (async () => {
-         const { data } = await util.getAllContents();
+         const { data } = await util.getContentName();
          setList(data);
-         setLoading(true);
+         if (ref.current !== null) setHeight(ref.current.offsetHeight);
       })();
    }, []);
 
-   useEffect(() => {
-      if (ref.current !== null) setHeight(ref.current.offsetHeight);
-   }, []);
 
    if (match.url === "/") {
-      component = <HomeContentContainer width={width} height={height} list={list} loading={loading} />;
+      component = <HomeContentContainer width={width} height={height} list={list} />;
    } else {
       component = <ContentContainer width={width} height={height} list={list} params={params} />;
    }

@@ -41,11 +41,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var topic_model_1 = __importDefault(require("../model/topic.model"));
 var contentController = {
-    getAllTopics: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    getContentName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, topic_model_1.default.get_all_topics()];
+                case 0: return [4 /*yield*/, topic_model_1.default.getAllPosts()];
                 case 1:
                     result = _a.sent();
                     res.status(200).json(result);
@@ -53,16 +53,28 @@ var contentController = {
             }
         });
     }); },
-    saveContent: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    savePosts: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, topic_model_1.default.save_content(req.body)];
+                case 0: return [4 /*yield*/, topic_model_1.default.savePosts(req.body)];
                 case 1:
                     result = _a.sent();
                     result.state
                         ? res.status(200).json({ state: true })
                         : res.status(500).json({ state: false });
+                    return [2 /*return*/];
+            }
+        });
+    }); },
+    getPostsFromTopicName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.getDataFromParams(req.params.topic)];
+                case 1:
+                    result = _a.sent();
+                    res.status(200).json(result);
                     return [2 /*return*/];
             }
         });

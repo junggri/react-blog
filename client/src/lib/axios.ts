@@ -14,25 +14,31 @@ let util = {
          method: "post",
       });
    },
-   getAllContents() {
+   getContentName() {
       return instance({
-         url: "/topic/lists",
+         url: "/topic/content/name",
          method: "get",
       });
    },
-   saveContent(data: any) {
+   savePost(data: any) {
       return instance({
-         url: "/topic/content",
+         url: "/topic/posts",
          method: "post",
          data: data,
       });
    },
 
-   getSpecificContenct(parmas: string) {},
+   getSpecificPost(parmas: string) {
+      return instance({
+         url: `/topic/posts/${parmas}`,
+         method: "get",
+      });
+   },
 
    test() {
       return instance({
          url: "/api/test",
+         method: "post",
       });
    },
 };

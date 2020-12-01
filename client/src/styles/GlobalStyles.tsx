@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
+
 const GlobalStyles = createGlobalStyle`
  ${reset}
     *{
@@ -9,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     body{
         font-size:14px;
         font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-        background-color:#FFFFFF;
+        background-color:#F9F9FB;
     }
     a{
         text-decoration:none;
@@ -41,12 +42,10 @@ const GlobalStyles = createGlobalStyle`
         font-style : italic;
     }
     .quill{
-        height:100%;
- 
+        height: ${window.innerHeight - 100 + "px"};
     }
- 
     .ql-container.ql-snow{
-        border:none;
+        border:none; 
     } 
     .ql-size-huge{
         font-size:4rem !important;
@@ -59,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
         outline-style:none;
         padding:25px;
         font-size:3rem;
+        background-color:#F9F9FB;
     }
     .content-title::placeholder{
         font-size:3rem;
@@ -70,9 +70,6 @@ const GlobalStyles = createGlobalStyle`
         word-break:break-all;
         margin-bottom:100px;
     }
-    .ql-editor.ql-blank{
-        height:100%;
-    }
     .ql-container.ql-snow{
         height:90%
     }
@@ -80,6 +77,22 @@ const GlobalStyles = createGlobalStyle`
         border-left:none;
         border-right:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+    .ant-checkbox-wrapper{
+         font-size:17px;
+         margin-left:0 !important;
+         width:150px;
+         margin-bottom: 30px;
+    }
+    .ant-checkbox-wrapper:nth-child(2){
+         color:black;
+    }
+    .ant-checkbox-inner{
+         width:20px;
+         height:20px;    
+    }
+    .ant-checkbox-inner::after{
+         left:30% !important;  
     }
 `;
 

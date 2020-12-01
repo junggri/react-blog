@@ -7,6 +7,7 @@ interface Props {
    height: number;
 }
 
+
 const ContentNav = ({ list, height }: Props) => {
    const [fixed, setFixed] = useState(false);
    const [pageY, setPageY] = useState(0);
@@ -25,7 +26,6 @@ const ContentNav = ({ list, height }: Props) => {
       const Reload = () => {
          setNavLoaction();
       };
-
       Reload();
 
       window.addEventListener("scroll", onScroll);

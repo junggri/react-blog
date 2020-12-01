@@ -3,18 +3,20 @@ import axios from "axios";
 
 const instance = axios.create({
    baseURL: "/",
+   // headers: { "Authorization": "Asd" },
    // adapter: cacheAdapterEnhancer((axios.defaults as any).adapter),
 });
-
+instance.defaults.headers.common["Authorization"] = "Asd";
+instance.defaults.headers.common["Content-Type"] = "application/json";
 instance.interceptors.request.use(
    (config) => {
-      // instance.defaults.headers.common["Authorization"] = "Asd";
-      instance.defaults.headers.common["Content-Type"] = "application/json";
+      // config.headers["asdasda"] = "Asdas";
+      console.log(config);
       return config;
    },
    (err) => {
       return Promise.reject(err);
-   }
+   },
 );
 
 export default instance;

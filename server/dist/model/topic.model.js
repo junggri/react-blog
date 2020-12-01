@@ -47,7 +47,7 @@ var moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 var contentModel = {
-    get_all_topics: function () { return __awaiter(void 0, void 0, void 0, function () {
+    getAllPosts: function () { return __awaiter(void 0, void 0, void 0, function () {
         var conn, result, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -72,20 +72,24 @@ var contentModel = {
             }
         });
     }); },
-    save_content: function (_a) {
+    savePosts: function (_a) {
         var contentName = _a.contentName, content = _a.content;
         return __awaiter(void 0, void 0, void 0, function () {
-            var conn, uid, writePath, time, query, queryValue, error_2;
+            var conn, uid, today, dateString, writePath, query, error_2;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0: return [4 /*yield*/, index_connection_1.default()];
                     case 1:
                         conn = _b.sent();
                         uid = uuid_1.v4();
+                        today = new Date();
+                        dateString = today.toLocaleDateString("ko-KR", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        });
                         writePath = path_1.default.join(__dirname + "/../../contents");
-                        time = moment().format("YYYY-MM-DD");
                         query = "INSERT INTO nodejs(uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)";
-                        queryValue = [uid, contentName, time, null, uid + ".html", null,];
                         if (!(conn !== undefined)) return [3 /*break*/, 7];
                         _b.label = 2;
                     case 2:
@@ -93,7 +97,7 @@ var contentModel = {
                         return [4 /*yield*/, fs_1.promises.writeFile(writePath + "/" + uid + ".html", content, "utf8")];
                     case 3:
                         _b.sent();
-                        return [4 /*yield*/, conn.execute(query, queryValue)];
+                        return [4 /*yield*/, conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null])];
                     case 4:
                         _b.sent();
                         return [2 /*return*/, { state: true }];
@@ -109,6 +113,32 @@ var contentModel = {
             });
         });
     },
+    getDataFromParams: function (params) { return __awaiter(void 0, void 0, void 0, function () {
+        var conn, result, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, index_connection_1.default()];
+                case 1:
+                    conn = _a.sent();
+                    if (!(conn !== undefined)) return [3 /*break*/, 6];
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, 5, 6]);
+                    return [4 /*yield*/, conn.execute("SELECT * FROM " + params)];
+                case 3:
+                    result = (_a.sent())[0];
+                    return [2 /*return*/, result];
+                case 4:
+                    e_1 = _a.sent();
+                    console.error(e_1);
+                    return [3 /*break*/, 6];
+                case 5:
+                    conn.release();
+                    return [7 /*endfinally*/];
+                case 6: return [2 /*return*/];
+            }
+        });
+    }); },
 };
 exports.default = contentModel;
 //# sourceMappingURL=topic.model.js.map

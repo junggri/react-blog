@@ -1,23 +1,22 @@
 import styled from "styled-components";
 import { darken } from "polished";
-
 import { Width } from "./interface";
+import React, { memo } from "react";
 
 //
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
-const leftWidth = 300;
-const rightWidth = 250;
+const leftWidth = 200;
+const rightWidth = 180;
 
-const heigth = window.innerHeight;
 
 interface topView {
    width: number;
    ref: any;
 }
 
-export const TopMainView = styled.div<topView>`
+export const TopMainView = memo(styled.div<topView>`
    /* border: 1px solid black; */
    position: relative;
    margin: 0 auto;
@@ -43,7 +42,7 @@ export const TopMainView = styled.div<topView>`
    @media (max-width: ${window.screen.width * 0.7}px) {
       width: ${window.screen.width * 0.5}px;
    }
-`;
+`);
 
 export const TopNavBarComp = styled.nav`
    height: 56px;
@@ -89,26 +88,43 @@ export const ContentCenter = styled.section<Width>`
    width: ${(props) => props.width - (leftWidth + rightWidth) + "px"};
    padding: 0px 40px;
    word-break: break-all;
-   & > h1 {
-      font-size: 30px;
-      text-align: center;
-      margin-top: 78px;
-      margin-bottom: 20px;
-   }
-   & > .content-date {
-      display: inline;
-      font-size: 14px;
-      font-weight: 100;
-      float: right;
-   }
-   /* border: 1px solid black; */
 `;
 
 export const ContentCenterArticleBox = styled.section<Width>`
-   margin-top: 100px;
+   margin-top: 70px; 
    word-break: break-all;
 `;
 
+export const ContentTopicListComp = styled.div`
+  position: relative;
+  padding:10px 0px 60px 13px;
+  //border: 1px solid #ced4da;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  cursor:pointer;
+  margin-bottom: 25px;
+  transition: 0.125s all ease-in;
+  background: #FFFFFF;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
+  & > h1{
+  font-size:22px;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+  color:#74c0fc;
+  }
+  & .content-create{
+  position: absolute;
+  color:#868e96;
+  font-weight: 300;
+  bottom:10%;
+  }
+  &:hover{
+   transform: translateY(-5px);
+   box-shadow: rgba(0, 0, 0, 0.04) 0px 16px 28px 0px;
+  }
+`;
+
+//
 export const ContentRight = styled.section`
    position: absolute;
    right: 0;
@@ -155,6 +171,7 @@ export const ContentItemsComp = styled.div`
    font-weight: 100;
    transition: all 0.2s;
    &:hover {
+      color:black;
       cursor: pointer;
       font-weight: 600;
    }
@@ -186,21 +203,24 @@ export const HomeContentList = styled.div<homeContentList>`
    margin-bottom: 50px;
 `;
 
-export const WriteBox = styled.div`
+//--------------------------------write---------------------------------------
+
+export const WriteBox = memo(styled.div`
    position: absolute;
    border: 1px solid rgba(0, 0, 0, 0.2);
    height: 100%;
    width: 50%;
    border-radius: 4px;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-`;
+   overflow: scroll;
+`);
 
-export const WriteConditionBox = styled.section`
+export const WriteConditionBox = memo(styled.section`
    position: absolute;
    right: 0;
    width: 50%;
    height: 100%;
-`;
+`);
 
 export const WriteBtnComp = styled.button`
    border: 1px solid rgba(0, 0, 0, 0.2);
@@ -221,59 +241,23 @@ export const WriteBtnComp = styled.button`
 `;
 
 export const ArticleContainer = styled.section`
-   position: relative;
-   padding: 30px 46px;
-   width: 50%;
-   height: 60%;
-   left: 50%;
-   top: 50%;
-   transform: translate(-50%, -50%);
-   border-radius: 4px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   & .buttonBox {
-      position: absolute;
-      width: 80%;
-      left: 50%;
-      transform: translate(-50%, 0);
-      bottom: 5%;
-      display: flex;
-      flex-direction: column;
-   }
-   & .topicsBox {
-      height: 60%;
-      overflow-y: scroll;
-      padding: 20px 20px;
-      box-shadow: 0 0px 8px rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 3px;
-   }
+   height: 100%;
 `;
 
-export const TopicItem = styled.li`
-   height: 30px;
-   font-size: 18px;
-   font-weight: 100;
+export const SelectTopicComp = styled.div`
+   padding-top:108px;
+   padding-left:60px;
+   padding-right: 60px;
+   border:1px solid black;
+   & .post-select-box{
    display: flex;
-   align-content: center;
-   margin-bottom: 15px;
-   & div {
-      padding-top: 6px;
-      margin-left: 8px;
-      transition: all 0.3s;
-      display: inline-block;
+   flex-wrap: wrap;
    }
-   & div:hover {
-      cursor: pointer;
-      font-weight: 600;
+   & h1{
+   font-size:2rem;
+   margin-bottom:40px;
+   
    }
-   &:before {
-      content: " ";
-      //border: 1px solid black;
-      display: inline-block;
-      box-sizing: border-box;
-      height: 100%;
-      width: 4px;
-      background: #a5d8ff;
-   }
+   
 `;
+//--------------------------------write---------------------------------------
