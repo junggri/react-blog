@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ContentCenter, ContentCenterArticleBox } from "../styled-comp";
-import { ContentTopicList } from "component";
 import util from "../lib/axios";
+import { ContentTopicItems } from "component";
 
 interface Props {
    width: number;
@@ -14,17 +14,16 @@ function MainCenterView({ width, params }: Props) {
 
    useEffect(() => {
       (async () => {
-         let { data } = await util.getSpecificPost(params);
+         let { data } = await util.getPostFromParams(params);
          setContents(data);
          setLoading(true);
       })();
    }, [params]);
 
-
    return (
       <ContentCenter width={width}>
          <ContentCenterArticleBox width={width}>
-            <ContentTopicList content={contents} loading={loading} />
+            <ContentTopicItems content={contents} loading={loading} />
          </ContentCenterArticleBox>
       </ContentCenter>
    );

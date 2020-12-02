@@ -14,9 +14,9 @@ let util = {
          method: "post",
       });
    },
-   getContentName() {
+   getContentsName() {
       return instance({
-         url: "/topic/content/name",
+         url: "/topic/contents/name",
          method: "get",
       });
    },
@@ -28,7 +28,7 @@ let util = {
       });
    },
 
-   getSpecificPost(parmas: string) {
+   getPostFromParams(parmas: string) {
       return instance({
          url: `/topic/posts/${parmas}`,
          method: "get",

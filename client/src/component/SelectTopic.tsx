@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { SelectTopicComp } from "../styled-comp";
 import { Checkbox } from "antd";
-import "antd/dist/antd.css";
 import util from "../lib/axios";
+import "antd/dist/antd.css";
 
 const SelectTopic = () => {
    const [list, setList] = useState(["a", "b", "c", "d", "e", "f", "g"]);
@@ -14,7 +14,7 @@ const SelectTopic = () => {
 
    useEffect(() => {
       (async () => {
-         let { data } = await util.getContentName();
+         let { data } = await util.getContentsName();
          // data.map((v: any) => console.log(v));
          // setList(data);
       })();
@@ -28,9 +28,7 @@ const SelectTopic = () => {
             {list.map((v) => (
                <Checkbox onChange={onChange}>{1}</Checkbox>
             ))}
-
          </div>
-
       </SelectTopicComp>
    );
 };

@@ -3,7 +3,7 @@ import Controller from "../controller/topic.controller";
 
 const router = express.Router();
 
-router.get("/content/name", Controller.getContentName); //show all list in main view
+router.get("/contents/name", Controller.getContentName); //show all list in main view
 
 router.get("/posts/:topic", Controller.getPostsFromTopicName);
 

@@ -13,18 +13,18 @@ function Write() {
          <WriteConditionBox>
             <ArticleContainer>
                <SelectTopic />
-               {/*   <div className="topicsBox">*/}
-               {/*      <ul>*/}
-               {/*         <TopicsItem>nodejs</TopicsItem>*/}
-               {/*         <TopicsItem>book</TopicsItem>*/}
-               {/*         <TopicsItem>nodejs</TopicsItem>*/}
-               {/*         <TopicsItem>book</TopicsItem>*/}
-               {/*      </ul>*/}
-               {/*   </div>*/}
-               {/*   <div className="buttonBox">*/}
-               {/*      <WriteBtnComp onClick={onSubmit}>작성하기</WriteBtnComp>*/}
-               {/*      <WriteBtnComp onClick={onStorage}>임시저장</WriteBtnComp>*/}
-               {/*   </div>*/}
+               {/*<div className="topicsBox">*/}
+               {/*   <ul>*/}
+               {/*      <TopicsItem>nodejs</TopicsItem>*/}
+               {/*      <TopicsItem>book</TopicsItem>*/}
+               {/*      <TopicsItem>nodejs</TopicsItem>*/}
+               {/*      <TopicsItem>book</TopicsItem>*/}
+               {/*   </ul>*/}
+               {/*</div>*/}
+               {/*<div className="buttonBox">*/}
+               {/*   <WriteBtnComp onClick={onSubmit}>작성하기</WriteBtnComp>*/}
+               {/*   <WriteBtnComp onClick={onStorage}>임시저장</WriteBtnComp>*/}
+               {/*</div>*/}
             </ArticleContainer>
          </WriteConditionBox>
       </>

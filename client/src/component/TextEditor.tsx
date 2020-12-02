@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactQuill, { Quill } from "react-quill";
-import InputContentName from "component/InputContentName";
+import WriteTopicName from "component/WriteTopicName";
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import util from "../lib/axios";
 
@@ -74,7 +74,7 @@ const TextEditor = ({ history }: any) => {
    return (
       <>
          <div>
-            <InputContentName />
+            <WriteTopicName />
             <ReactQuill theme="snow" value={value} onChange={rteChange} modules={modules} formats={formats} placeholder="입력하세요." ref={ref} />
          </div>
       </>

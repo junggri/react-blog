@@ -11,7 +11,7 @@ instance.defaults.headers.common["Content-Type"] = "application/json";
 instance.interceptors.request.use(
    (config) => {
       // config.headers["asdasda"] = "Asdas";
-      console.log(config);
+
       return config;
    },
    (err) => {

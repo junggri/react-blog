@@ -13,11 +13,9 @@ const rightWidth = 180;
 
 interface topView {
    width: number;
-   ref: any;
 }
 
-export const TopMainView = memo(styled.div<topView>`
-   /* border: 1px solid black; */
+export const TopMainView = styled.div<topView>`
    position: relative;
    margin: 0 auto;
    width: ${(props) => props.width + "px"};
@@ -42,7 +40,7 @@ export const TopMainView = memo(styled.div<topView>`
    @media (max-width: ${window.screen.width * 0.7}px) {
       width: ${window.screen.width * 0.5}px;
    }
-`);
+`;
 
 export const TopNavBarComp = styled.nav`
    height: 56px;
@@ -59,9 +57,11 @@ export const TopNavBarComp = styled.nav`
       font-weight: 100;
       transition: 0.3s all;
    }
-
    & .tnb-rightBox span:hover {
-      font-weight: 600;
+      font-weight: 500;
+   }
+   & > a:hover{
+      font-color:black;
    }
    & > *:hover {
       cursor: pointer;

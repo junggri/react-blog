@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentNav, HomeContentBox } from "component";
+import { ContentNav, TopicsContainer } from "component";
 import { MainView } from "../../styled-comp"; //styled-component
 
 interface HomeContentProp {
@@ -10,10 +10,11 @@ interface HomeContentProp {
 }
 
 const HomeMain = ({ width, list, height }: HomeContentProp) => {
+
    return (
       <MainView width={width}>
          <ContentNav list={list} height={height}></ContentNav>
-         <HomeContentBox width={width} list={list}></HomeContentBox>
+         <TopicsContainer width={width} list={list}></TopicsContainer>
       </MainView>
    );
 };

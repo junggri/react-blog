@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ContentContainer, HomeContentContainer, TopNavBar } from "component";
-import { Link } from "react-router-dom";
-import { MainView, TopMainView } from "../styled-comp"; //styled-component
+import { ContentContainer, HomeContentContainer, TopContainer } from "component";
+import { MainView } from "../styled-comp"; //styled-component
 import util from "../lib/axios";
 
 interface home {
@@ -21,9 +20,10 @@ const Home = ({ match }: home) => {
 
    const ref = useRef<HTMLDivElement>(null);
 
+
    useEffect(() => {
       (async () => {
-         const { data } = await util.getContentName();
+         const { data } = await util.getContentsName();
          setList(data);
          if (ref.current !== null) setHeight(ref.current.offsetHeight);
       })();
@@ -38,12 +38,7 @@ const Home = ({ match }: home) => {
 
    return (
       <>
-         <TopMainView width={width} ref={ref}>
-            <TopNavBar />
-            <Link to="/write">
-               <span className="write-article-btn">새 글 쓰기</span>
-            </Link>
-         </TopMainView>
+         <TopContainer width={width} ref={ref} />
          <MainView width={width}>{component}</MainView>
       </>
    );
