@@ -33,6 +33,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="JavaScript">
+      <option name="BLANK_LINES_AROUND_METHOD" value="0" />
       <option name="SOFT_MARGINS" value="400" />
       <indentOptions>
         <option name="INDENT_SIZE" value="3" />

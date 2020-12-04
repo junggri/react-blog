@@ -21,6 +21,7 @@ let util = {
       });
    },
    savePost(data: any) {
+      console.log(data);
       return instance({
          url: "/topic/posts",
          method: "post",

@@ -1,6 +1,7 @@
 import React from "react";
 
 const WriteTopicName = ({ onNameChange }: { onNameChange: any }) => {
+   console.log("wirte");
    const onChange = (e: any) => {
       onNameChange(e.target.value);
    };

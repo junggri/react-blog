@@ -15,7 +15,7 @@ interface topView {
    width: number;
 }
 
-export const TopMainView = styled.div<topView>`
+export const TopMainView = (styled.div<topView>`
    position: relative;
    margin: 0 auto;
    width: ${(props) => props.width + "px"};
@@ -40,7 +40,7 @@ export const TopMainView = styled.div<topView>`
    @media (max-width: ${window.screen.width * 0.7}px) {
       width: ${window.screen.width * 0.5}px;
    }
-`;
+`);
 
 export const TopNavBarComp = styled.nav`
    height: 56px;
@@ -141,20 +141,10 @@ export const ContentNavComp = styled.section<ContentBox>`
    position: absolute;
    width: ${leftWidth + "px"};
    margin-top: 70px;
+   font-size: 0;
    &.fixed {
       position: fixed;
       top: -0px;
-   }
-`;
-
-export const ContentBoxComp = styled.div`
-   /* display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(2, 1fr); */
-   /* border: 1px solid black; */
-   font-size: 0;
-   & .click {
-      font-weight: 600;
    }
 `;
 
@@ -165,7 +155,7 @@ export const ContentItemsComp = styled.div`
    height: 50px;
    /* margin-bottom: 13px; */
    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); */
-   font-size: 15px;
+   font-size: 18px;
    font-weight: 100;
    transition: all 0.2s;
    &:hover {
@@ -220,6 +210,12 @@ export const WriteConditionBox = memo(styled.section`
    height: 100%;
 `);
 
+
+export const WriteBtnBoxComp = styled.div`
+   padding-left:60px;
+   margin-top:30px;
+`;
+
 export const WriteBtnComp = styled.button`
    border: 1px solid rgba(0, 0, 0, 0.2);
    padding: 15px 25px;
@@ -251,9 +247,6 @@ export const SelectTopicBoxComp = styled.div`
    font-size:2rem;
    margin-bottom:40px;
    }
-   & .post-write-btnBox{
-   margin-top:60px;
-   }
 `;
 
 export const SelectTopicItemComp = styled.div`
@@ -273,7 +266,6 @@ export const SelectTopicItemComp = styled.div`
     font-weight: 300;
     margin-top: -1px;
     font-size:120%;
-
   }
 `;
 

@@ -21,10 +21,9 @@ const contentModel = {
       }
    },
 
-   savePosts: async ({ contentName, content }: { contentName: string; content: string; }) => {
+   savePosts: async ({ contentName, content, topic }: { contentName: string; content: string, topic: string }) => {
       let conn = await connection();
       const uid = uuidv4();
-
       const today = new Date();
       const dateString = today.toLocaleDateString("ko-KR", {
          year: "numeric",
@@ -35,7 +34,7 @@ const contentModel = {
       // const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
       const writePath = path.join(__dirname + "/../../contents");
 
-      const query = `INSERT INTO nodejs(uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)`;
+      const query = `INSERT INTO ${topic} (uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)`;
 
       if (conn !== undefined)
          try {

@@ -14,12 +14,10 @@ const Home = ({ match }: home) => {
    let component;
    const [height, setHeight] = useState(0);
    const [list, setList] = useState([]);
+   const ref = useRef<HTMLDivElement>(null);
 
    let params = match.params.content;
    const width = window.screen.width * 0.70;
-
-   const ref = useRef<HTMLDivElement>(null);
-
 
    useEffect(() => {
       (async () => {
@@ -30,11 +28,10 @@ const Home = ({ match }: home) => {
    }, []);
 
 
-   if (match.url === "/") {
-      component = <HomeContentContainer width={width} height={height} list={list} />;
-   } else {
-      component = <ContentContainer width={width} height={height} list={list} params={params} />;
-   }
+   match.url === "/"
+      ? component = <HomeContentContainer width={width} height={height} list={list} />
+      : component = <ContentContainer width={width} height={height} list={list} params={params} />;
+
 
    return (
       <>

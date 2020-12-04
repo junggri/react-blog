@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { SelectTopicBoxComp, SelectTopicItemComp, WriteBtnComp } from "../styled-comp";
+import { SelectTopicBoxComp, SelectTopicItemComp } from "../styled-comp";
 import util from "../lib/axios";
 
+interface Select {
+   onIsChecked: any
+}
 
-const SelectTopic = ({ onIsChecked, onSubmit }: { onIsChecked: any, onSubmit: any }) => {
+const SelectTopic = ({ onIsChecked }: Select) => {
    const [list, setList] = useState([]);
-
-
    useEffect(() => {
       (async () => {
          let { data } = await util.getContentsName();
@@ -30,10 +31,7 @@ const SelectTopic = ({ onIsChecked, onSubmit }: { onIsChecked: any, onSubmit: an
                </SelectTopicItemComp>
             ))}
          </div>
-         <div className="post-write-btnBox">
-            <WriteBtnComp onClick={onSubmit}>등록하기</WriteBtnComp>
-            <WriteBtnComp>임시저장</WriteBtnComp>
-         </div>
+
       </SelectTopicBoxComp>
    );
 };

@@ -18,3 +18,4 @@ export { default as ContentContainer } from "component/components/ContentContain
 export { default as SelectTopic } from "component/SelectTopic";
 export { default as TextEditor } from "component/TextEditor";
 export { default as WriteTopicName } from "component/WriteTopicName";
+export { default as WriteBtnBox } from "component/WriteBtnBox";

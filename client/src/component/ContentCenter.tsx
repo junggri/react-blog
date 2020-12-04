@@ -29,4 +29,4 @@ function MainCenterView({ width, params }: Props) {
    );
 }
 
-export default MainCenterView;
+export default React.memo(MainCenterView);

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ContentBoxComp, ContentItemsComp, ContentNavComp } from "../styled-comp";
+import { ContentItemsComp, ContentNavComp } from "../styled-comp";
 
 interface Props {
    list: string[];
@@ -37,17 +37,15 @@ const ContentNav = ({ list, height }: Props) => {
 
    return (
       <ContentNavComp className={`${fixed ? "fixed" : ""}`} ref={ContentBox}>
-         <ContentBoxComp>
-            {list.map((e: any, i) => {
-               return (
-                  <Link to={`/content/${e.Tables_in_contents}`} key={i}>
-                     <ContentItemsComp>{e.Tables_in_contents}</ContentItemsComp>
-                  </Link>
-               );
-            })}
-         </ContentBoxComp>
+         {list.map((e: any, i) => {
+            return (
+               <Link to={`/content/${e.Tables_in_contents}`} key={i}>
+                  <ContentItemsComp>{e.Tables_in_contents}</ContentItemsComp>
+               </Link>
+            );
+         })}
       </ContentNavComp>
    );
 };
 
-export default ContentNav;
+export default React.memo(ContentNav);

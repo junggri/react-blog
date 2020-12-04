@@ -2,6 +2,7 @@ import React from "react";
 import { HomeContentList, HomeContentListBox } from "../styled-comp";
 
 const ContentTopicsContainer = ({ width, list }: { width: number; list: any[]; }) => {
+
    return (
       <HomeContentListBox width={width}>
          {list.map((e, i) => (

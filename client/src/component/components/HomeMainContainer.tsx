@@ -10,7 +10,6 @@ interface HomeContentProp {
 }
 
 const HomeMain = ({ width, list, height }: HomeContentProp) => {
-
    return (
       <MainView width={width}>
          <ContentNav list={list} height={height}></ContentNav>
