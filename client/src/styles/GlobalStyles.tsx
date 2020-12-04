@@ -60,6 +60,12 @@ const GlobalStyles = createGlobalStyle`
         font-size:3rem;
         background-color:#F9F9FB;
     }
+    .writeBox-inputs{
+        border:1px solid black;
+        width:50%;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
     .content-title::placeholder{
         font-size:3rem;
         font-style:italic
@@ -78,22 +84,7 @@ const GlobalStyles = createGlobalStyle`
         border-right:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
-    .ant-checkbox-wrapper{
-         font-size:17px;
-         margin-left:0 !important;
-         width:150px;
-         margin-bottom: 30px;
-    }
-    .ant-checkbox-wrapper:nth-child(2){
-         color:black;
-    }
-    .ant-checkbox-inner{
-         width:20px;
-         height:20px;    
-    }
-    .ant-checkbox-inner::after{
-         left:30% !important;  
-    }
+
 `;
 
 export default GlobalStyles;

@@ -58,11 +58,9 @@ export const TopNavBarComp = styled.nav`
       transition: 0.3s all;
    }
    & .tnb-rightBox span:hover {
-      font-weight: 500;
+      font-weight: 600;
    }
-   & > a:hover{
-      font-color:black;
-   }
+  
    & > *:hover {
       cursor: pointer;
    }
@@ -205,7 +203,7 @@ export const HomeContentList = styled.div<homeContentList>`
 
 //--------------------------------write---------------------------------------
 
-export const WriteBox = memo(styled.div`
+export const WriteBox = (styled.div`
    position: absolute;
    border: 1px solid rgba(0, 0, 0, 0.2);
    height: 100%;
@@ -229,26 +227,22 @@ export const WriteBtnComp = styled.button`
    border-radius: 4px;
    letter-spacing: 1.2px;
    transition: 0.3s all;
-   margin-top: 30px;
    background: #a5d8ff;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-   color: white;
-   font-weight: 600;
+   color: black;
+   font-weight: 300;
+   margin-right: 30px;
    &:hover {
       cursor: pointer;
       background-color: ${darken(0.1, "#a5d8ff")};
    }
+   
 `;
 
-export const ArticleContainer = styled.section`
-   height: 100%;
-`;
-
-export const SelectTopicComp = styled.div`
-   padding-top:108px;
+export const SelectTopicBoxComp = styled.div`
+   padding-top:50px;
    padding-left:60px;
    padding-right: 60px;
-   border:1px solid black;
    & .post-select-box{
    display: flex;
    flex-wrap: wrap;
@@ -256,8 +250,31 @@ export const SelectTopicComp = styled.div`
    & h1{
    font-size:2rem;
    margin-bottom:40px;
-   
    }
-   
+   & .post-write-btnBox{
+   margin-top:60px;
+   }
 `;
+
+export const SelectTopicItemComp = styled.div`
+  width:150px;
+  margin-bottom: 40px;
+  padding:0;
+  display: flex;
+  align-items: center;
+  & .select-input{
+    width:100px;
+    display: inline-block; 
+    width:20px;
+    height: 20px;
+    margin-right: 15px;
+  }
+  & .select-label{
+    font-weight: 300;
+    margin-top: -1px;
+    font-size:120%;
+
+  }
+`;
+
 //--------------------------------write---------------------------------------

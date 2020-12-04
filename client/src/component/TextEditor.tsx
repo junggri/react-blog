@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import WriteTopicName from "component/WriteTopicName";
 import "../../node_modules/react-quill/dist/quill.snow.css";
-import util from "../lib/axios";
+import { WriteBox, WriteConditionBox } from "../styled-comp";
+import { SelectTopic } from "./index";
 
 const bold = Quill.import("formats/bold");
 bold.tagName = "b"; // Quill uses <strong> by default
@@ -32,51 +33,59 @@ const formats = ["font", "size", "bold", "italic", "underline", "strike", "block
    "code-block", "color", "background", "align", "list", "bullet", "indent", "link", "image", "blockquote", "video", "insert"];
 
 
-const TextEditor = ({ history }: any) => {
+const TextEditor = () => {
    const [value, setValue] = useState("");
+   const [topicName, setTopicName] = useState("");
+   const [topic, setTopic] = useState("");
 
    const ref: any = useRef(null);
-   const contentName = useRef<HTMLTextAreaElement>(null);
-
 
    useEffect(() => {
       ref.current.focus();
    }, []);
 
+   const changeName = (data: string) => {
+      setTopicName(data);
+   };
+
    const rteChange = (content: any, delta: any, source: any, editor: any) => {
-      console.log(editor.getHTML()); // rich text
-      console.log(editor.getText()); // plain text
+      setValue(ref.current.state.value);
+   };
+
+   const checked = (name: string) => {
+      setTopic(name);
    };
 
 
-   const onSubmit = async (e: any) => {
+   const submit = async (e: any) => {
+      e.preventDefault();
       const contents = {
-         contentName: (contentName.current as HTMLTextAreaElement).textContent,
-         content: ref.current.state.value,
+         contentName: topicName,
+         content: value,
+         topic: topic,
       };
-      const { data } = await util.getCSRTtoken();
-      const state = await util.checkCSRFtoken(data);
-      if (state) {
-         let result = await util.savePost(contents);
-         if (result) history.push("/");
-      }
+      console.log(contents);
+      // const { data } = await util.getCSRTtoken();
+      // const state = await util.checkCSRFtoken(data);
+      // if (state) {
+      //    let result = await util.savePost(contents);
+      //    if (result) history.push("/");
+      // }
    };
 
-
-   const onStorage = () => {
-      const data = {
-         contentName: (contentName.current as HTMLTextAreaElement).textContent,
-         content: ref.current.state.value,
-      };
-   };
-
+   const onIsChecked = useCallback((name: string) => checked(name), [topic]);
+   const onSubmit = useCallback((e: any) => submit(e), []);
+   const onNameChange = useCallback((name: string) => changeName(name), [topicName]);
 
    return (
       <>
-         <div>
-            <WriteTopicName />
-            <ReactQuill theme="snow" value={value} onChange={rteChange} modules={modules} formats={formats} placeholder="입력하세요." ref={ref} />
-         </div>
+         <WriteBox>
+            <WriteTopicName onNameChange={onNameChange} />
+            <ReactQuill theme="snow" onChange={rteChange} modules={modules} formats={formats} placeholder="입력하세요." ref={ref} />
+         </WriteBox>
+         <WriteConditionBox>
+            <SelectTopic onIsChecked={onIsChecked} onSubmit={onSubmit} />
+         </WriteConditionBox>
       </>
    );
 };

@@ -4,7 +4,6 @@ import { TopNavBar } from "./index";
 import { Link } from "react-router-dom";
 
 const TopConTainer = React.forwardRef((props: any, ref: any) => {
-   console.log(2);
    return (
       <TopMainView width={props.width} ref={ref}>
          <TopNavBar />
