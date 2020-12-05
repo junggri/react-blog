@@ -73,7 +73,7 @@ var contentModel = {
         });
     }); },
     savePosts: function (_a) {
-        var contentName = _a.contentName, content = _a.content;
+        var contentName = _a.contentName, content = _a.content, topic = _a.topic;
         return __awaiter(void 0, void 0, void 0, function () {
             var conn, uid, today, dateString, writePath, query, error_2;
             return __generator(this, function (_b) {
@@ -89,7 +89,7 @@ var contentModel = {
                             day: "numeric",
                         });
                         writePath = path_1.default.join(__dirname + "/../../contents");
-                        query = "INSERT INTO nodejs(uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)";
+                        query = "INSERT INTO " + topic + " (uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)";
                         if (!(conn !== undefined)) return [3 /*break*/, 7];
                         _b.label = 2;
                     case 2:
@@ -131,6 +131,34 @@ var contentModel = {
                 case 4:
                     e_1 = _a.sent();
                     console.error(e_1);
+                    return [3 /*break*/, 6];
+                case 5:
+                    conn.release();
+                    return [7 /*endfinally*/];
+                case 6: return [2 /*return*/];
+            }
+        });
+    }); },
+    getPostFromPostId: function (params) { return __awaiter(void 0, void 0, void 0, function () {
+        var topic, postsId, conn, result, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    topic = params.topic, postsId = params.postsId;
+                    return [4 /*yield*/, index_connection_1.default()];
+                case 1:
+                    conn = _a.sent();
+                    if (!(conn !== undefined)) return [3 /*break*/, 6];
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 4, 5, 6]);
+                    return [4 /*yield*/, conn.execute("SELECT * FROM " + topic + " where uid = ? ", [postsId])];
+                case 3:
+                    result = (_a.sent())[0];
+                    return [2 /*return*/, result];
+                case 4:
+                    e_2 = _a.sent();
+                    console.error(e_2);
                     return [3 /*break*/, 6];
                 case 5:
                     conn.release();

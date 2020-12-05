@@ -62,6 +62,20 @@ const contentModel = {
             conn.release();
          }
    },
+
+   getPostFromPostId: async (params: any) => {
+      const { topic, postsId } = params;
+      let conn = await connection();
+      if (conn !== undefined)
+         try {
+            let [result] = await conn.execute(`SELECT * FROM ${topic} where uid = ? `, [postsId]);
+            return result;
+         } catch (e) {
+            console.error(e);
+         } finally {
+            conn.release();
+         }
+   },
 };
 
 export default contentModel;

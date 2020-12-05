@@ -7,6 +7,8 @@ router.get("/contents/name", Controller.getContentName); //show all list in main
 
 router.get("/posts/:topic", Controller.getPostsFromTopicName);
 
+router.get("/:topic/posts/:postsId", Controller.getPostsFromPostsId);
+
 router.post("/posts", Controller.savePosts); //save content
 
 

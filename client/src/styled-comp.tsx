@@ -155,7 +155,7 @@ export const ContentItemsComp = styled.div`
    height: 50px;
    /* margin-bottom: 13px; */
    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); */
-   font-size: 18px;
+   font-size: 15px;
    font-weight: 100;
    transition: all 0.2s;
    &:hover {
@@ -189,6 +189,15 @@ export const HomeContentList = styled.div<homeContentList>`
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
    height: 350px;
    margin-bottom: 50px;
+`;
+
+export const PostsBoxComp = styled.div`
+border:1px solid black;
+  & .posts-name{
+      padding:0 40px;
+      font-size: 50px;
+      text-align: center;
+    }
 `;
 
 //--------------------------------write---------------------------------------

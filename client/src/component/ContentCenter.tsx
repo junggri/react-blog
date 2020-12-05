@@ -1,29 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ContentCenter, ContentCenterArticleBox } from "../styled-comp";
-import util from "../lib/axios";
-import { ContentTopicItems } from "component";
+import { Route } from "react-router-dom";
+import { ContentTopicItems, PostsBox } from "./index";
 
 interface Props {
    width: number;
    params: string;
+   children?: any
+   match: any
 }
 
-function MainCenterView({ width, params }: Props) {
-   const [contents, setContents] = useState([]);
-   const [loading, setLoading] = useState(false);
 
-   useEffect(() => {
-      (async () => {
-         let { data } = await util.getPostFromParams(params);
-         setContents(data);
-         setLoading(true);
-      })();
-   }, [params]);
-
+function MainCenterView({ width, params, match }: Props) {
    return (
       <ContentCenter width={width}>
          <ContentCenterArticleBox width={width}>
-            <ContentTopicItems content={contents} loading={loading} />
+            <Route path={"/content/:content"} exact render={() => <ContentTopicItems params={params} />} />
+            <Route path={`/content/:content/:content`} exact render={() => <PostsBox postsId={params} match={match} />} />
          </ContentCenterArticleBox>
       </ContentCenter>
    );

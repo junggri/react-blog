@@ -40,6 +40,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var topic_model_1 = __importDefault(require("../model/topic.model"));
+var fs_1 = require("fs");
+var path_1 = __importDefault(require("path"));
 var contentController = {
     getContentName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
@@ -54,9 +56,17 @@ var contentController = {
         });
     }); },
     savePosts: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
         return __generator(this, function (_a) {
-            console.log(req.body);
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.savePosts(req.body)];
+                case 1:
+                    result = _a.sent();
+                    result.state
+                        ? res.status(200).json({ state: true })
+                        : res.status(500).json({ state: false });
+                    return [2 /*return*/];
+            }
         });
     }); },
     getPostsFromTopicName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -68,6 +78,34 @@ var contentController = {
                     result = _a.sent();
                     res.status(200).json(result);
                     return [2 /*return*/];
+            }
+        });
+    }); },
+    getPostsFromPostsId: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var fileName, content, result, e_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    fileName = path_1.default.join(__dirname + "c/../../contents", req.params.postsId + ".html");
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 4, , 5]);
+                    return [4 /*yield*/, fs_1.promises.readFile(fileName, "utf-8")];
+                case 2:
+                    content = _a.sent();
+                    return [4 /*yield*/, topic_model_1.default.getPostFromPostId(req.params)];
+                case 3:
+                    result = _a.sent();
+                    res.status(200).json({
+                        content: content,
+                        result: result,
+                    });
+                    return [3 /*break*/, 5];
+                case 4:
+                    e_1 = _a.sent();
+                    console.error(e_1);
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
         });
     }); },

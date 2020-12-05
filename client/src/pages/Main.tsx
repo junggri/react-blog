@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ContentContainer, HomeContentContainer, TopContainer } from "component";
 import { MainView } from "../styled-comp"; //styled-component
 import util from "../lib/axios";
+import { Route } from "react-router-dom";
 
 interface home {
    path: string;
@@ -11,7 +12,6 @@ interface home {
 }
 
 const Home = ({ match }: home) => {
-   let component;
    const [height, setHeight] = useState(0);
    const [list, setList] = useState([]);
    const ref = useRef<HTMLDivElement>(null);
@@ -28,15 +28,17 @@ const Home = ({ match }: home) => {
    }, []);
 
 
-   match.url === "/"
-      ? component = <HomeContentContainer width={width} height={height} list={list} />
-      : component = <ContentContainer width={width} height={height} list={list} params={params} />;
-
-
    return (
       <>
          <TopContainer width={width} ref={ref} />
-         <MainView width={width}>{component}</MainView>
+         <MainView width={width}>
+            <Route path="/" exact render={() =>
+               <HomeContentContainer width={width} height={height} list={list} />}
+            />
+            <Route path="/content/:content" render={() =>
+               <ContentContainer width={width} height={height} list={list} params={params} match={match} />}
+            />
+         </MainView>
       </>
    );
 };

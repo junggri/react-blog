@@ -3,6 +3,7 @@ export { default as TopNavBar } from "component/TopNavBar";
 
 export { default as ContentCenter } from "component/ContentCenter";
 export { default as ContentTopicItems } from "component/ContentTopicsItems";
+export { default as PostsBox } from "component/PostsBox";
 
 export { default as ContentNav } from "component/ContentNav";
 export { default as ContentRight } from "component/ContentRight";

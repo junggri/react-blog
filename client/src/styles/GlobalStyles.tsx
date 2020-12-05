@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-size:14px;
-        font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
         background-color:#F9F9FB;
     }
     a{
@@ -84,7 +84,13 @@ const GlobalStyles = createGlobalStyle`
         border-right:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
-
+    .posts-name{
+        font-size: 50px;
+  
+    }
+    .posts-content{
+        margin-top:40px;
+    }
 `;
 
 export default GlobalStyles;

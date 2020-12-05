@@ -8,6 +8,7 @@ function App() {
          <Switch>
             <Route path="/" exact component={Main} />
             <Route path="/content/:content" exact component={Main} />
+            <Route path="/content/:content/:content" component={Main} />
             <Route path="/write" component={Write} />
             <Route render={() => <h1>Not found</h1>} />
          </Switch>

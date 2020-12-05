@@ -21,7 +21,6 @@ let util = {
       });
    },
    savePost(data: any) {
-      console.log(data);
       return instance({
          url: "/topic/posts",
          method: "post",
@@ -35,6 +34,13 @@ let util = {
          method: "get",
       });
    },
+
+   getPostFromPostId({ topic, postsId }: { topic: string, postsId: string }) {
+      return instance({
+         url: `/topic/${topic}/posts/${postsId}`,
+      });
+   },
+
 
    test() {
       return instance({

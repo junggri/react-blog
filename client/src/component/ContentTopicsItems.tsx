@@ -1,24 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import util from "../lib/axios";
+import { Link } from "react-router-dom";
 import { ContentTopicListComp } from "../styled-comp";
 
 interface Prop {
-   content: any[]
-   loading: boolean
+   params: string
+}
+
+interface V {
+   uid: string
+   content_name: string
+   created: string
 }
 
 
-const ContentTopicItems = ({ content, loading }: Prop) => {
-   if (content.length === 0) return <div>자료가 없습니다.</div>;
-   if (content.length !== 0 && loading === false) return <div>로딩중</div>;
+const ContentTopicItems = ({ params }: Prop) => {
+   const [contents, setContents] = useState<any[]>([]);
+   const [loading, setLoading] = useState(false);
+
+   useEffect(() => {
+      (async () => {
+         let { data } = await util.getPostFromParams(params);
+         setContents(data);
+         setLoading(true);
+      })();
+   }, [params]);
+
+
+   if (!loading) return (<div>...로딩중</div>);
+
    return (
       <>
-         {content.map(v => (
-            <div data-uid={v.uid} key={v.uid}>
-               <ContentTopicListComp>
-                  <h1>{v.content_name}</h1>
-                  <span className="content-create">{v.created}</span>
-               </ContentTopicListComp>
-            </div>
+         {contents !== undefined && contents.map(v => (
+            <Link to={`/content/${params}/${v.uid}`} key={v.uid}>
+               <div data-uid={v.uid}>
+                  <ContentTopicListComp>
+                     <h1>{v.content_name}</h1>
+                     <span className="content-create">{v.created}</span>
+                  </ContentTopicListComp>
+               </div>
+            </Link>
          ))}
       </>
    );
