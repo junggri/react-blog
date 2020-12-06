@@ -4,13 +4,23 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./styles/GlobalStyles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import Root from "clients/Root";
+import { applyMiddleware, createStore } from "redux";
+import rootReducer from "./modules";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
+
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
+console.log(store.getState());
 
 ReactDOM.render(
-  <>
-    <GlobalStyles />
-    <Root />
-  </>,
-  document.getElementById("root")
+   <>
+      <Provider store={store}>
+         <GlobalStyles />
+         <Root />
+      </Provider>
+   </>,
+   document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

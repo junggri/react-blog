@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import WriteTopicName from "component/WriteTopicName";
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { WriteBox, WriteConditionBox } from "../styled-comp";
-import { formats, modules } from "../config/textEditor";
+import { formats, modules } from "../config/textEditor.config";
 import { SelectTopic } from "./index";
 import util from "../lib/axios";
 import { WriteBtnBox } from "component";

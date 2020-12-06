@@ -11,8 +11,8 @@ export { default as ContentRight } from "component/ContentRight";
 export { default as TopicsContainer } from "component/ContentTopicsContainer";
 
 //composition with more one component
-export { default as HomeContentContainer } from "component/components/HomeMainContainer";
-export { default as ContentContainer } from "component/components/ContentContainer";
+export { default as HomeContentContainer } from "component/HomeMainContainer";
+export { default as ContentContainer } from "component/ContentContainer";
 
 
 //write--------------------------------------------------------

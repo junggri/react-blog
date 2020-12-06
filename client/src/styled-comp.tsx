@@ -275,6 +275,7 @@ export const SelectTopicItemComp = styled.div`
     font-weight: 300;
     margin-top: -1px;
     font-size:120%;
+    cursor: pointer;
   }
 `;
 

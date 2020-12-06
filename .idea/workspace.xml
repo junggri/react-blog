@@ -20,29 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/component/PostsBox.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/Container/HomeCounter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/Common.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/Data.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/ContentCenter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentCenter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/ContentNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/ContentTopicsItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentTopicsItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/components/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/components/ContentContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TopNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TopNavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/components/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/components/HomeMainContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/HomeMainContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/textEditor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/controller/topic.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/controller/topic.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/controller/topic.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/lib/index.connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/lib/index.connection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/model/topic.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/model/topic.model.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/router/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/topic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/router/topic.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/topic.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/lib/index.connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/index.connection.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +88,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -141,6 +136,8 @@
       <workItem from="1607059550000" duration="97000" />
       <workItem from="1607080992062" duration="12580000" />
       <workItem from="1607157918966" duration="20385000" />
+      <workItem from="1607229113587" duration="7860000" />
+      <workItem from="1607256651945" duration="7556000" />
     </task>
     <servers />
   </component>
@@ -171,6 +168,10 @@
       <screen x="0" y="25" width="1792" height="1040" />
     </state>
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553795014" />
+    <state x="537" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607234236768">
+      <screen x="0" y="25" width="1792" height="1038" />
+    </state>
+    <state x="537" y="345" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1792.1038@0.25.1792.1038" timestamp="1607234236768" />
     <state x="1141" y="399" key="#com.intellij.ide.actionMacro.EditMacrosDialog" timestamp="1606553077417">
       <screen x="0" y="25" width="1792" height="1040" />
     </state>
@@ -195,23 +196,24 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2770" y="287" key="EditFileWatcherDialog/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546231853" />
-    <state x="644" y="163" width="1106" height="728" key="SettingsEditor" timestamp="1607082869728">
-      <screen x="0" y="25" width="1792" height="1038" />
+    <state x="2482" y="165" width="1106" height="728" key="SettingsEditor" timestamp="1607258020440">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607082869728" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
+    <state x="2482" y="165" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607258020440" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606998271816">
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1038@0.25.1792.1038" timestamp="1606998271816" />
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1040@0.25.1792.1040" timestamp="1606646874427" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1607176355786">
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1607264384246">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607163320922" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607176355786" />
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607264384246" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
   </component>
 </project>

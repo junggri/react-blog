@@ -1,6 +1,6 @@
 import React from "react";
-import { ContentCenter, ContentNav, ContentRight } from "component";
-import { MainView } from "../../styled-comp";
+import { ContentCenter, ContentNav, ContentRight } from "component/index";
+import { MainView } from "../styled-comp";
 
 interface ContentProp {
    width: number;
