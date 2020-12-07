@@ -20,23 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/Container/HomeCounter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Common.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Data.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Home/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Home/HomeContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/TopNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TopNavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/components/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/components/HomeMainContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/HomeMainContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/Container/HomeCounter.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/ContentNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/ContentNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/HomeMainContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/HomeMainContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/SelectTopic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TopContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TopContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/config/textEditor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,8 +90,8 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -138,6 +141,12 @@
       <workItem from="1607157918966" duration="20385000" />
       <workItem from="1607229113587" duration="7860000" />
       <workItem from="1607256651945" duration="7556000" />
+      <workItem from="1607339397352" duration="399000" />
+      <workItem from="1607341243476" duration="2386000" />
+      <workItem from="1607343725667" duration="196000" />
+      <workItem from="1607343932441" duration="3610000" />
+      <workItem from="1607349055350" duration="20000" />
+      <workItem from="1607349142654" duration="5414000" />
     </task>
     <servers />
   </component>
@@ -160,6 +169,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2421" y="378" key="#Notifications" timestamp="1607343899479">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2421" y="378" key="#Notifications/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607343899479" />
     <state x="496" y="189" key="#Plugins" timestamp="1606993696290">
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
@@ -196,12 +209,12 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2770" y="287" key="EditFileWatcherDialog/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546231853" />
-    <state x="2482" y="165" width="1106" height="728" key="SettingsEditor" timestamp="1607258020440">
+    <state x="2482" y="165" width="1184" height="728" key="SettingsEditor" timestamp="1607343905663">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607082869728" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
-    <state x="2482" y="165" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607258020440" />
+    <state x="2482" y="165" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607343905663" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606998271816">
       <screen x="0" y="25" width="1792" height="1038" />
@@ -215,5 +228,17 @@
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607264384246" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/client/src/modules/Common.ts</url>
+          <line>11</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

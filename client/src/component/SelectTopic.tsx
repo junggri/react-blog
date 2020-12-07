@@ -10,7 +10,7 @@ const SelectTopic = ({ onIsChecked }: Select) => {
    const [list, setList] = useState([]);
    useEffect(() => {
       (async () => {
-         let { data } = await util.getContentsName();
+         let { data } = await util.getContents();
          setList(data);
       })();
    }, []);

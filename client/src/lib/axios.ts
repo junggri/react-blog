@@ -14,7 +14,7 @@ let util = {
          method: "post",
       });
    },
-   getContentsName() {
+   getContents() {
       return instance({
          url: "/topic/contents/name",
          method: "get",

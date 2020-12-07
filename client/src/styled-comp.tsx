@@ -133,11 +133,8 @@ export const ContentRight = styled.section`
    }
 `;
 
-interface ContentBox {
-   ref: any;
-}
 
-export const ContentNavComp = styled.section<ContentBox>`
+export const ContentNavComp = styled.section`
    position: absolute;
    width: ${leftWidth + "px"};
    margin-top: 70px;

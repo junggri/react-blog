@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ContentItemsComp, ContentNavComp } from "../styled-comp";
 
@@ -12,7 +12,7 @@ interface Props {
 const ContentNav = ({ list, height, onNavClick }: Props) => {
    const [fixed, setFixed] = useState(false);
    const [pageY, setPageY] = useState(0);
-   const ContentBox: any = useRef();
+
 
    useEffect(() => {
       const setNavLoaction = () => {
@@ -33,7 +33,7 @@ const ContentNav = ({ list, height, onNavClick }: Props) => {
 
 
    return (
-      <ContentNavComp className={`${fixed ? "fixed" : ""}`} ref={ContentBox} onClick={onNavClick}>
+      <ContentNavComp className={`${fixed ? "fixed" : ""}`} onClick={onNavClick}>
          {list.map((e: any, i) => {
             return (
                <Link to={`/content/${e.Tables_in_contents}`} key={i}>

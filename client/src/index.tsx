@@ -7,11 +7,12 @@ import Root from "clients/Root";
 import { applyMiddleware, createStore } from "redux";
 import rootReducer from "./modules";
 import { Provider } from "react-redux";
+import Thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
 
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware()));
-console.log(store.getState());
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk)));
+
 
 ReactDOM.render(
    <>
