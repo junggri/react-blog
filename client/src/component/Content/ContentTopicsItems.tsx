@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import util from "../lib/axios";
+import util from "../../lib/axios";
 import { Link } from "react-router-dom";
-import { ContentTopicListComp } from "../styled-comp";
+import { ContentTopicListComp } from "../../styled-comp";
 
 interface Prop {
    params: string

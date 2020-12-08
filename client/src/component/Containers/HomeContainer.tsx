@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { onRequest } from "../../modules/Data";
 import { onSetHeight } from "../../modules/Common";
-import Home from "./Home";
+import Home from "../Home/Home";
 
 interface State {
    Common: { height: number, width: number }
@@ -21,6 +21,8 @@ const HomeCounter = ({ match }: any) => {
 
 
    if (data === null) return null;
+
+
    return (
       <Home width={width} list={data} match={match} height={height} setHeight={setHeight} />
    );

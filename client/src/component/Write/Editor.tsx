@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
-import WriteTopicName from "component/WriteTopicName";
-import "../../node_modules/react-quill/dist/quill.snow.css";
-import { WriteBox, WriteConditionBox } from "../styled-comp";
-import { formats, modules } from "../config/textEditor.config";
-import { SelectTopic } from "./index";
-import util from "../lib/axios";
-import { WriteBtnBox } from "component";
+import WriteTopicName from "component/Write/WriteTopicName";
+import "react-quill/dist/quill.snow.css";
+import { WriteBox, WriteConditionBox } from "../../styled-comp";
+import { formats, modules } from "../../config/textEditor.config";
+import { SelectTopic } from "../index";
+import util from "../../lib/axios";
+import { WriteBtnBox } from "component/index";
 
 
-const TextEditor = ({ history }: any) => {
+const Editor = ({ history }: any) => {
    const [value, setValue] = useState("");
    const [contentName, setContentName] = useState("");
    const [topic, setTopic] = useState("");
@@ -68,4 +68,4 @@ const TextEditor = ({ history }: any) => {
 };
 
 
-export default TextEditor;
+export default Editor;

@@ -15,12 +15,13 @@ interface topView {
    width: number;
 }
 
-export const TopMainView = (styled.div<topView>`
+export const TopCommonSectionComp = (styled.div<topView>`
    position: relative;
    margin: 0 auto;
    width: ${(props) => props.width + "px"};
    height: 320px;
    max-width: ${(props) => props.width + "px"};
+   
    & .write-article-btn {
       border: 1px solid rgba(0, 0, 0, 0.2);
       display: inline-block;
@@ -37,8 +38,11 @@ export const TopMainView = (styled.div<topView>`
       cursor: pointer;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
    }
-   @media (max-width: ${window.screen.width * 0.7}px) {
-      width: ${window.screen.width * 0.5}px;
+   @media (max-width: 1024px) {
+      width:768px;
+   }
+   @media(max-width:768px){
+      width:100%;
    }
 `);
 
@@ -68,7 +72,7 @@ export const TopNavBarComp = styled.nav`
 
 //MAIN_VIEW---------------COMPONENTS
 
-export const MainView = styled.div<Width>`
+export const MainSectionComp = styled.div<Width>`
    margin: 0 auto;
    position: relative;
    width: ${(props) => props.width + "px"};

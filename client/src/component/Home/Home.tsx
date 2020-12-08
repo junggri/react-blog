@@ -1,31 +1,29 @@
-import React, { useEffect, useRef } from "react";
-import { MainView } from "../../styled-comp";
-import { ContentContainer, HomeContentContainer, TopContainer } from "../index";
+import React, { MutableRefObject, useEffect, useRef } from "react";
+import { MainSectionComp } from "../../styled-comp";
+import { ContentSection, HomeMainSection, TopCommonSection } from "../index";
 import { Route } from "react-router-dom";
 
 
 const Home = ({ width, match, list, height, setHeight }: any) => {
 
-   const navEl = useRef<HTMLDivElement>(null);
+   const navEl = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
    const params = match.params.content;
 
    useEffect(() => {
-      if (navEl.current !== null) {
-         setHeight(navEl.current.offsetHeight);
-      }
+      setHeight(navEl.current?.offsetHeight);
    }, [navEl.current]);
 
    return (
       <>
-         <TopContainer width={width} ref={navEl} />
-         <MainView width={width}>
+         <TopCommonSection width={width} ref={navEl} />
+         <MainSectionComp width={width}>
             <Route path="/" exact render={() =>
-               <HomeContentContainer width={width} height={height} list={list} />}
+               <HomeMainSection width={width} height={height} list={list} />}
             />
             <Route path="/content/:content" render={() =>
-               <ContentContainer width={width} height={height} list={list} params={params} match={match} />}
+               <ContentSection width={width} height={height} list={list} params={params} match={match} />}
             />
-         </MainView>
+         </MainSectionComp>
       </>
    );
 };

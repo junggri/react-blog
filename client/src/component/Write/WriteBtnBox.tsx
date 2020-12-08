@@ -1,5 +1,5 @@
 import React from "react";
-import { WriteBtnBoxComp, WriteBtnComp } from "../styled-comp";
+import { WriteBtnBoxComp, WriteBtnComp } from "../../styled-comp";
 
 interface Props {
    onSubmit: any

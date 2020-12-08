@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ContentItemsComp, ContentNavComp } from "../styled-comp";
+import { ContentItemsComp, ContentNavComp } from "../../styled-comp";
 
 interface Props {
    list: string[];

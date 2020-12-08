@@ -1,7 +1,7 @@
 import React from "react";
-import { ContentCenter, ContentCenterArticleBox } from "../styled-comp";
+import { ContentCenter, ContentCenterArticleBox } from "../../styled-comp";
 import { Route } from "react-router-dom";
-import { ContentTopicItems, PostsBox } from "./index";
+import { ContentTopicItems, PostsBox } from "../index";
 
 interface Props {
    width: number;

@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeContentList, HomeContentListBox } from "../styled-comp";
+import { HomeContentList, HomeContentListBox } from "../../styled-comp";
 
 const ContentTopicsContainer = ({ width, list }: { width: number; list: any[]; }) => {
 

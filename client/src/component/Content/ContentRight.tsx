@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentRight } from "../styled-comp";
+import { ContentRight } from "../../styled-comp";
 
 function RightView() {
    return (

@@ -1,6 +1,5 @@
 import React from "react";
 import { ContentCenter, ContentNav, ContentRight } from "component/index";
-import { MainView } from "../styled-comp";
 
 interface ContentProp {
    width: number;
@@ -12,13 +11,12 @@ interface ContentProp {
 
 const Content = ({ width, list, height, params, match }: ContentProp) => {
 
-
    return (
-      <MainView width={width}>
+      <>
          <ContentNav list={list} height={height}></ContentNav>
          <ContentCenter width={width} params={params} match={match}></ContentCenter>
          <ContentRight></ContentRight>
-      </MainView>
+      </>
    );
 };
 export default Content;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { PostsBoxComp } from "../styled-comp";
-import util from "../lib/axios";
+import { PostsBoxComp } from "../../styled-comp";
+import util from "../../lib/axios";
 
 interface Props {
    postsId: string

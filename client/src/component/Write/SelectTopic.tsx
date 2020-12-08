@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { SelectTopicBoxComp, SelectTopicItemComp } from "../styled-comp";
-import util from "../lib/axios";
+import { SelectTopicBoxComp, SelectTopicItemComp } from "../../styled-comp";
+import util from "../../lib/axios";
 
 interface Select {
    onIsChecked: any

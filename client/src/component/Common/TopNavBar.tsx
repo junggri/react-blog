@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { TopNavBarComp } from "../styled-comp";
+import { TopNavBarComp } from "../../styled-comp";
 
 const TopNavBar = () => {
    return (
