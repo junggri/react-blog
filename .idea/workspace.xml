@@ -20,16 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/app.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/dotenv/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/dotenv/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +141,8 @@
       <workItem from="1607513781183" duration="36000" />
       <workItem from="1607519875583" duration="2100000" />
       <workItem from="1607527663835" duration="1373000" />
+      <workItem from="1607529227150" duration="30000" />
+      <workItem from="1607529261657" duration="157000" />
     </task>
     <servers />
   </component>
