@@ -18,6 +18,9 @@ var http_errors_1 = __importDefault(require("http-errors"));
 var csurf_1 = __importDefault(require("csurf"));
 var router_1 = __importDefault(require("./router"));
 var topic_1 = __importDefault(require("./router/topic"));
+var graphql_1 = require("graphql");
+var graphqlHTTP = require("express-graphql").graphqlHTTP;
+require("dotenv").config();
 var app = express_1.default();
 app.disable("x-powered-by");
 var RedisStore = connect_redis_1.default(express_session_1.default);
@@ -63,8 +66,8 @@ app
     .use(express_session_1.default(sessionConfig))
     .use(cookie_parser_1.default("asdunvajnsr"))
     .use(helmet_1.default.frameguard({ action: "deny" }))
-    .use(body_parser_1.default.urlencoded({ extended: false }))
-    .use(csrfProtection);
+    .use(body_parser_1.default.urlencoded({ extended: false }));
+// .use(csrfProtection);
 app.use(function (req, res, next) {
     res.header("Cache-control", "no-cache, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -73,8 +76,24 @@ app.use(function (req, res, next) {
 // app.get("/", (req, res) => {
 //   res.render("index.html");
 // });
+var schema = graphql_1.buildSchema("\n  type Query {\n    hello: String\n    persons: [Person]\n  }\n\n  type Person {\n    name: String\n    age: Int\n  }\n");
+var root = {
+    hello: function () { return "Hello world!"; },
+    persons: function () {
+        return [
+            { name: "kim", age: 20 },
+            { name: "lee", age: 30 },
+            { name: "park", age: 40 },
+        ];
+    },
+};
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
+app.use("/graphql", graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+}));
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");
     next(http_errors_1.default(404));
