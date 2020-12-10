@@ -1,10 +1,21 @@
 // @ts-ignore
-import Quill from "quill";
-import ImageResize from "quill-image-resize-module";
+// import ImageResize from "quill-image-resize-module";
 
-Quill.register("modules/imageResize", ImageResize);
+// Quill.register("modules/imageResize", ImageResize);
+import ImageResize from "quill-image-resize-module";
+import { Quill } from "react-quill";
+
+Quill.register("modules/ImageResize", ImageResize);
 
 export const modules = {
+   ImageResize: {
+      handleStyles: {
+         backgroundColor: "black",
+         border: "none",
+         color: "white",
+         // other camelCase styles for size display
+      },
+   },
    syntax: true,
    toolbar: [
       // [{ header: "1" }, { header: "2" }],
@@ -17,10 +28,8 @@ export const modules = {
       [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link", "image", "video"],
    ],
-   ImageResize: {
-      modules: ["Resize", "DisplaySize", "Toolbar"],
-   },
 };
+
 
 export const formats = ["font", "size", "bold", "italic", "underline", "strike", "blockquote",
    "code-block", "color", "background", "align", "list", "bullet", "indent", "link", "image", "blockquote", "video", "insert"];

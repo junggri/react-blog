@@ -8,7 +8,6 @@ import { SelectTopic } from "../index";
 import util from "../../lib/axios";
 import { WriteBtnBox } from "component/index";
 
-
 const Editor = ({ history }: any) => {
    const [value, setValue] = useState("");
    const [contentName, setContentName] = useState("");
