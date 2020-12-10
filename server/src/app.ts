@@ -13,9 +13,6 @@ import createError from "http-errors";
 import csrf from "csurf";
 import indexApi from "./router";
 import topicApi from "./router/topic";
-import { buildSchema } from "graphql";
-
-const { graphqlHTTP } = require("express-graphql");
 
 require("dotenv").config();
 
@@ -90,38 +87,10 @@ app.use(function(req, res, next) {
 //   res.render("index.html");
 // });
 
-const schema = buildSchema(`
-  type Query {
-    hello: String
-    persons: [Person]
-  }
-
-  type Person {
-    name: String
-    age: Int
-  }
-`);
-
-const root = {
-   hello: () => "Hello world!",
-   persons: () => {
-      return [
-         { name: "kim", age: 20 },
-         { name: "lee", age: 30 },
-         { name: "park", age: 40 },
-      ];
-   },
-};
-
 
 app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터
 
-app.use("/graphql", graphqlHTTP({
-   schema: schema,
-   rootValue: root,
-   graphiql: true,
-}));
 
 app.use((req, res, next) => {
    res.status(404).send("Sorry cant find that!");

@@ -1,3 +1,9 @@
+// @ts-ignore
+import Quill from "quill";
+import ImageResize from "quill-image-resize-module";
+
+Quill.register("modules/imageResize", ImageResize);
+
 export const modules = {
    syntax: true,
    toolbar: [
@@ -11,6 +17,9 @@ export const modules = {
       [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link", "image", "video"],
    ],
+   ImageResize: {
+      modules: ["Resize", "DisplaySize", "Toolbar"],
+   },
 };
 
 export const formats = ["font", "size", "bold", "italic", "underline", "strike", "blockquote",
