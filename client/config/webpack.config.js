@@ -357,13 +357,13 @@ module.exports = function(webpackEnv) {
       module: {
          strictExportPresence: true,
          rules: [
+            // Disable require.ensure as it's not a standard language feature.
+            { parser: { requireEnsure: false } },
             {
                test: /\.js$/,
                exclude: /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/,
                loader: "babel-loader",
             },
-            // Disable require.ensure as it's not a standard language feature.
-            { parser: { requireEnsure: false } },
             {
                // "oneOf" will traverse all following loaders until one will
                // match the requirements. When no loader matches it will fall

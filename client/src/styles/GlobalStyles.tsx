@@ -45,6 +45,13 @@ const GlobalStyles = createGlobalStyle`
     .quill{
         height: ${window.innerHeight - 100 + "px"};
     }
+    .quill img{
+        height: auto;
+        width:auto;
+        max-height: 500px;
+        position: relative;
+        margin :0 auto;
+    }
     .ql-container.ql-snow{
         border:none; 
     } 
@@ -80,6 +87,36 @@ const GlobalStyles = createGlobalStyle`
     .ql-container.ql-snow{
         height:90%
     }
+    .posts-content{
+        margin-top:40px;
+        word-break:break-all;
+        line-height: 1.5;
+        background: aqua;
+        padding: 10px 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+       & img{
+         height:auto;
+         width:auto;
+         max-height: 500px;
+         position: relative;
+         margin :0 auto;
+       }
+    }
+    .ql-syntax{
+     border:1px solid black;
+     padding:10px 10px; 
+     border-radius: 4px;
+     overflow: scroll;
+     background: #23241f;
+     color:white;
+      & span{
+      width:80%;
+      font-size: 16px;
+      font-weight:500;
+
+        }
+    }
     .ql-toolbar.ql-snow{
         border-left:none;
         border-right:none;
@@ -87,11 +124,8 @@ const GlobalStyles = createGlobalStyle`
     }
     .posts-name{
         font-size: 50px;
-  
     }
-    .posts-content{
-        margin-top:40px;
-    }
+   
 `;
 
 export default GlobalStyles;

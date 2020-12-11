@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TopCommonSectionComp } from "../../styled-comp";
 import { TopNavBar } from "../index";
 import { Link } from "react-router-dom";
 
 const TopCommonSection = React.forwardRef((props: any, ref: any) => {
+
+
+   useEffect(() => {
+      props.onGetData(ref.current);
+   }, []);
 
    return (
       <TopCommonSectionComp width={props.width} ref={ref}>

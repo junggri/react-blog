@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { darken } from "polished";
-import { Width } from "./interface";
-import React, { memo } from "react";
+import {darken} from "polished";
+import {Width} from "./interface";
+import React, {memo} from "react";
 
 //
 //INTERFACE
@@ -12,7 +12,7 @@ const rightWidth = 180;
 
 
 interface topView {
-   width: number;
+    width: number;
 }
 
 export const TopCommonSectionComp = (styled.div<topView>`
@@ -88,7 +88,6 @@ export const ContentCenter = styled.section<Width>`
    position: absolute;
    left: ${leftWidth + "px"};
    width: ${(props) => props.width - (leftWidth + rightWidth) + "px"};
-   padding: 0px 40px;
    word-break: break-all;
 `;
 
@@ -154,8 +153,6 @@ export const ContentItemsComp = styled.div`
    display: inline-block;
    width: 100%;
    height: 50px;
-   /* margin-bottom: 13px; */
-   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); */
    font-size: 15px;
    font-weight: 100;
    transition: all 0.2s;
@@ -168,7 +165,7 @@ export const ContentItemsComp = styled.div`
 
 //home Content
 interface ListBox {
-   width: number;
+    width: number;
 }
 
 export const HomeContentListBox = styled.section<ListBox>`
@@ -181,7 +178,7 @@ export const HomeContentListBox = styled.section<ListBox>`
 `;
 
 interface homeContentList {
-   children: any;
+    children: any;
 }
 
 export const HomeContentList = styled.div<homeContentList>`
@@ -193,7 +190,6 @@ export const HomeContentList = styled.div<homeContentList>`
 `;
 
 export const PostsBoxComp = styled.div`
-border:1px solid black;
   & .posts-name{
       padding:0 40px;
       font-size: 50px;

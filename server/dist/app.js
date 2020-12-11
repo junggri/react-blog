@@ -64,8 +64,8 @@ app
     .use(express_session_1.default(sessionConfig))
     .use(cookie_parser_1.default("asdunvajnsr"))
     .use(helmet_1.default.frameguard({ action: "deny" }))
-    .use(body_parser_1.default.urlencoded({ extended: false }));
-// .use(csrfProtection);
+    .use(body_parser_1.default.urlencoded({ extended: false }))
+    .use(csrfProtection);
 app.use(function (req, res, next) {
     res.header("Cache-control", "no-cache, must-revalidate");
     res.header("Pragma", "no-cache");

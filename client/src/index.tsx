@@ -3,13 +3,12 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./styles/GlobalStyles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import Root from "clients/Root";
+import App from "./shared/App";
 import { applyMiddleware, createStore } from "redux";
 import rootReducer from "./modules";
 import { Provider } from "react-redux";
-import Thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
-
+import Thunk from "redux-thunk";
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk)));
 
@@ -18,7 +17,7 @@ ReactDOM.render(
    <>
       <Provider store={store}>
          <GlobalStyles />
-         <Root />
+         <App />
       </Provider>
    </>,
    document.getElementById("root"),

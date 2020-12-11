@@ -22,4 +22,3 @@ export { default as WriteTopicName } from "component/Write/WriteTopicName";
 export { default as WriteBtnBox } from "component/Write/WriteBtnBox";
 
 //////containers
-export { default as HomeContainer } from "component/Containers/HomeContainer";

@@ -1,0 +1,74 @@
+<pre class="ql-syntax" spellcheck="false"><span class="hljs-keyword">
+import</span> React, { useCallback, useEffect, useRef, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> ReactQuill <span class="hljs-keyword">from</span> <span class="hljs-string">"react-quill"</span>;
+<span class="hljs-keyword">import</span> WriteTopicName <span class="hljs-keyword">from</span> <span class="hljs-string">"component/Write/WriteTopicName"</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"react-quill/dist/quill.snow.css"</span>;
+<span class="hljs-keyword">import</span> { WriteBox, WriteConditionBox } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../styled-comp"</span>;
+<span class="hljs-keyword">import</span> { formats, modules } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../config/textEditor.config"</span>;
+<span class="hljs-keyword">import</span> { SelectTopic } <span class="hljs-keyword">from</span> <span class="hljs-string">"../index"</span>;
+<span class="hljs-keyword">import</span> util <span class="hljs-keyword">from</span> <span class="hljs-string">"../../lib/axios"</span>;
+<span class="hljs-keyword">import</span> { WriteBtnBox } <span class="hljs-keyword">from</span> <span class="hljs-string">"component/index"</span>;
+
+<span class="hljs-keyword">const</span> Editor = <span class="hljs-function">(<span class="hljs-params">{ history }: any</span>) =&gt;</span> {
+   <span class="hljs-keyword">const</span> [value, setValue] = useState(<span class="hljs-string">""</span>);
+   <span class="hljs-keyword">const</span> [contentName, setContentName] = useState(<span class="hljs-string">""</span>);
+   <span class="hljs-keyword">const</span> [topic, setTopic] = useState(<span class="hljs-string">""</span>);
+   <span class="hljs-keyword">const</span> ref: any = useRef(<span class="hljs-literal">null</span>);
+
+   useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      ref.current.focus();
+   }, []);
+
+   <span class="hljs-keyword">const</span> onNameChange = useCallback(<span class="hljs-function">(<span class="hljs-params">data: string</span>) =&gt;</span> {
+      setContentName(data);
+   }, []);
+
+   <span class="hljs-keyword">const</span> rteChange = <span class="hljs-function">(<span class="hljs-params">content: any, delta: any, source: any, editor: any</span>) =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(delta.insert.image, delta);
+      setValue(ref.current.state.value);
+   };
+
+   <span class="hljs-keyword">const</span> onIsChecked = useCallback(<span class="hljs-function">(<span class="hljs-params">name: string</span>) =&gt;</span> {
+      setTopic(name);
+   }, []);
+
+
+   <span class="hljs-keyword">const</span> onSubmit = useCallback(<span class="hljs-keyword">async</span> (e: any) =&gt; {
+      e.preventDefault();
+      <span class="hljs-keyword">if</span> (value &amp;&amp; contentName &amp;&amp; topic) {
+         <span class="hljs-keyword">const</span> contents = {
+            <span class="hljs-attr">contentName</span>: contentName,
+            <span class="hljs-attr">content</span>: value,
+            <span class="hljs-attr">topic</span>: topic,
+         };
+         <span class="hljs-keyword">const</span> { data } = <span class="hljs-keyword">await</span> util.getCSRTtoken();
+         <span class="hljs-keyword">const</span> state = <span class="hljs-keyword">await</span> util.checkCSRFtoken(data);
+         <span class="hljs-keyword">if</span> (state) {
+            <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> util.savePost(contents);
+            <span class="hljs-keyword">if</span> (result) history.push(<span class="hljs-string">"/"</span>);
+         }
+      } <span class="hljs-keyword">else</span> {
+         alert(<span class="hljs-string">"내용을 입력하세요"</span>);
+         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      }
+   }, [contentName, value, topic]);
+
+
+   <span class="hljs-keyword">return</span> (
+      &lt;&gt;
+         &lt;WriteBox&gt;
+            &lt;WriteTopicName onNameChange={onNameChange} /&gt;
+            &lt;ReactQuill theme="snow" onChange={rteChange} modules={modules} formats={formats} placeholder="입력하세요." ref={ref} /&gt;
+         &lt;/WriteBox&gt;
+         &lt;WriteConditionBox&gt;
+            &lt;SelectTopic onIsChecked={onIsChecked} /&gt;
+            &lt;WriteBtnBox onSubmit={onSubmit} /&gt;
+         &lt;/WriteConditionBox&gt;
+      &lt;/&gt;
+   );
+};
+
+
+export default Editor;
+
+</pre>

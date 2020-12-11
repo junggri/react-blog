@@ -74,8 +74,8 @@ app
    .use(session(sessionConfig))
    .use(cookieParser("asdunvajnsr"))
    .use(helmet.frameguard({ action: "deny" }))
-   .use(bodyParser.urlencoded({ extended: false }));
-// .use(csrfProtection);
+   .use(bodyParser.urlencoded({ extended: false }))
+   .use(csrfProtection);
 
 app.use(function(req, res, next) {
    res.header("Cache-control", "no-cache, must-revalidate");

@@ -17,6 +17,7 @@ export default function common(state = initialState, action: any) {
 
    switch (action.type) {
       case SET_HEIGHT:
+         console.log(action);
          return {
             ...state,
             height: action.height,
