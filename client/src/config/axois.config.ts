@@ -10,7 +10,7 @@ instance.defaults.headers.common["Authorization"] = "Asd";
 instance.defaults.headers.common["Content-Type"] = "application/json";
 instance.interceptors.request.use(
    (config) => {
-      // config.headers["asdasda"] = "Asdas";
+
       return config;
    },
    (err) => {

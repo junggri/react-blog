@@ -4,7 +4,7 @@ import { ContentRight } from "../../styled-comp";
 function RightView() {
    return (
       <ContentRight>
-         <p>asdas</p>
+
       </ContentRight>
    );
 }

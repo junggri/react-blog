@@ -2,20 +2,29 @@ import React, { MutableRefObject, useRef } from "react";
 import { MainSectionComp } from "../../styled-comp";
 import { ContentSection, HomeMainSection, TopCommonSection } from "../index";
 import { Route } from "react-router-dom";
-import usePosts from "../../useHooks/useData";
+import usePosts from "../../useHooks/usePosts";
+import useCommon from "../../useHooks/useCommon";
 
-
-interface HomeProps {
-   width: number
+interface IPostsProps {
    posts: any[]
-   height: number
    loading: boolean
    error: Error
-   setHeight: (data: number) => void
 }
 
+interface ICommonProps {
+   width: number,
+   height: number;
+   token: string
+   setHeight: (heigth: number) => void
+   e: Error
+}
+
+
 function CommonEntry({ match }: any) {
-   const { width, posts, height, loading, error, setHeight }: HomeProps = usePosts();
+   const { width, height, token, setHeight, e }: ICommonProps = useCommon();
+   const { posts, loading, error }: IPostsProps = usePosts();
+
+
    const navEl = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
    const params = match.params.content;
 
@@ -27,7 +36,7 @@ function CommonEntry({ match }: any) {
    };
    return (
       <>
-         <TopCommonSection width={width} ref={navEl} onGetData={getHeight} />
+         <TopCommonSection width={width} ref={navEl} onGetHeight={getHeight} />
          <MainSectionComp width={width}>
             <Route path="/" exact render={() =>
                <HomeMainSection width={width} height={height} list={posts} />}

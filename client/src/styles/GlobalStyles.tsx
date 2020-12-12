@@ -1,4 +1,4 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 
@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-size:14px;
-        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif !important;
         background-color:#F9F9FB;
     }
 
@@ -87,45 +87,30 @@ const GlobalStyles = createGlobalStyle`
     .ql-container.ql-snow{
         height:90%
     }
-    .posts-content{
-        margin-top:40px;
-        word-break:break-all;
-        line-height: 1.5;
-        background: aqua;
-        padding: 10px 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-       & img{
-         height:auto;
-         width:auto;
-         max-height: 500px;
-         position: relative;
-         margin :0 auto;
-       }
-    }
+  
     .ql-syntax{
-     border:1px solid black;
      padding:10px 10px; 
      border-radius: 4px;
      overflow: scroll;
-     background: #23241f;
-     color:white;
-      & span{
-      width:80%;
-      font-size: 16px;
-      font-weight:500;
-
-        }
+     font-size: 13px;
+     font-weight:300 !important;
+     font-family: monospace;
+     color:gray;
+     & span{
+         width:80%;
+      }
     }
     .ql-toolbar.ql-snow{
         border-left:none;
         border-right:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }   
+    .hljs-keyword,.hljs-string,.hljs-params,.hljs-emphasis{
+       font-weight: 300 !important;
     }
-    .posts-name{
-        font-size: 50px;
+    .hljs-name{
+       color:gray
     }
-   
 `;
 
 export default GlobalStyles;

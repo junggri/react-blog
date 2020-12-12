@@ -4,14 +4,9 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./styles/GlobalStyles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import App from "./shared/App";
-import { applyMiddleware, createStore } from "redux";
-import rootReducer from "./modules";
 import { Provider } from "react-redux";
-import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
-import Thunk from "redux-thunk";
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk)));
-
+import { store } from "./lib/store";
+import "../src/styles/highlight/atom-one-light.css";
 
 ReactDOM.render(
    <>

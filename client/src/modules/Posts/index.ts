@@ -1,4 +1,4 @@
-import util from "../lib/axios";
+import util from "../../lib/axios";
 
 const GET_POSTS = "data/GET_POSTS";
 const GET_POSTS_SUCCESS = "data/GET_POSTS_SUCCESS";
@@ -9,12 +9,12 @@ const GET_POST_SUCCESS = "data/GET_POST_SUCCESS";
 const GET_POST_ERROR = "data/GET_POST_ERROR";
 //액션타입을 생성
 
-//same
+// same;
 // const GET_POSTS = "data/GET_POSTS" as const;
-// const GET_POSTS_SUCCESS = "data/GET_POSTS_SUCCESS as const";
-// const GET_POSTS_ERROR = "data/GET_POSTS_ERROR as const";
+// const GET_POSTS_SUCCESS = "data/GET_POSTS_SUCCESS as const" as const;
+// const GET_POSTS_ERROR = "data/GET_POSTS_ERROR as const" as const;
 
-//same as above 이거는 근데 as const로 정으ㅣ 되있어야함
+// same as above 이거는 근데 as const로 정으ㅣ 되있어야함
 // type DataAction =
 //    | ReturnType<typeof onRequest>
 //    | ReturnType<typeof onRequestSuccuess>
@@ -69,6 +69,7 @@ export default function Posts(state = initialState, action: DataAction) {
          };
       case GET_POSTS_SUCCESS:
          return {
+            ...state,
             posts: action.payload,
          };
       case GET_POSTS_ERROR:

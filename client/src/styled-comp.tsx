@@ -1,9 +1,30 @@
 import styled from "styled-components";
-import {darken} from "polished";
-import {Width} from "./interface";
-import React, {memo} from "react";
+import { darken } from "polished";
+import React, { memo } from "react";
 
-//
+
+export interface Width {
+   width: number;
+}
+
+export interface topView {
+   width: number;
+   logo: any
+}
+
+export interface contentBox {
+   ref: any;
+}
+
+interface homeContentList {
+   children: any;
+}
+
+interface ListBox {
+   width: number;
+}
+
+
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
@@ -11,17 +32,16 @@ const leftWidth = 200;
 const rightWidth = 180;
 
 
-interface topView {
-    width: number;
-}
-
 export const TopCommonSectionComp = (styled.div<topView>`
    position: relative;
    margin: 0 auto;
    width: ${(props) => props.width + "px"};
    height: 320px;
    max-width: ${(props) => props.width + "px"};
-   
+   background-image: url(${props => props.logo});
+   background-repeat:no-repeat ;
+   background-size: contain;
+   background-position: 50% 40%;
    & .write-article-btn {
       border: 1px solid rgba(0, 0, 0, 0.2);
       display: inline-block;
@@ -99,6 +119,7 @@ export const ContentCenterArticleBox = styled.section<Width>`
 export const ContentTopicListComp = styled.div`
   position: relative;
   padding:10px 0px 60px 13px;
+  height:110px;
   //border: 1px solid #ced4da;
   border-radius: 4px;
   display: flex;
@@ -111,18 +132,20 @@ export const ContentTopicListComp = styled.div`
   & > h1{
   font-size:22px;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
-  color:#74c0fc;
+  color:black;
   }
   & .content-create{
   position: absolute;
   color:#868e96;
   font-weight: 300;
+  font-size: 13px;
   bottom:10%;
   }
   &:hover{
    transform: translateY(-5px);
    box-shadow: rgba(0, 0, 0, 0.04) 0px 16px 28px 0px;
   }
+  
 `;
 
 //
@@ -164,9 +187,6 @@ export const ContentItemsComp = styled.div`
 `;
 
 //home Content
-interface ListBox {
-    width: number;
-}
 
 export const HomeContentListBox = styled.section<ListBox>`
    width: ${(props) => props.width - leftWidth + "px"};
@@ -177,9 +197,6 @@ export const HomeContentListBox = styled.section<ListBox>`
    padding: 0px 0px 0px 50px;
 `;
 
-interface homeContentList {
-    children: any;
-}
 
 export const HomeContentList = styled.div<homeContentList>`
    border: 1px solid rgba(0, 0, 0, 0.2);
@@ -195,6 +212,19 @@ export const PostsBoxComp = styled.div`
       font-size: 50px;
       text-align: center;
     }
+  & .posts-content{
+      word-break:break-all;
+      line-height: 1.5;
+      padding: 10px 10px;
+      border-radius: 5px;
+      & img{
+        height:auto;
+        width:auto;
+        max-height: 500px;
+        position: relative;
+        margin :0 auto;
+      }
+  }
 `;
 
 //--------------------------------write---------------------------------------

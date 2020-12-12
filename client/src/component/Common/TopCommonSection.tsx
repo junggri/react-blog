@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import { TopCommonSectionComp } from "../../styled-comp";
 import { TopNavBar } from "../index";
 import { Link } from "react-router-dom";
+import Logo from "../../image/Logo.svg";
 
 const TopCommonSection = React.forwardRef((props: any, ref: any) => {
 
 
    useEffect(() => {
-      props.onGetData(ref.current);
+      props.onGetHeight(ref.current);
    }, []);
 
    return (
-      <TopCommonSectionComp width={props.width} ref={ref}>
+      <TopCommonSectionComp width={props.width} ref={ref} logo={Logo}>
          <TopNavBar />
          <Link to="/write">
             <span className="write-article-btn">새 글 쓰기</span>
