@@ -35,8 +35,11 @@ const ContentTopicItems = ({ params }: Prop) => {
             <Link to={`/content/${params}/${v.uid}`} key={v.uid}>
                <div data-uid={v.uid}>
                   <ContentTopicListComp>
-                     <h1>{v.content_name}</h1>
-                     <span className="content-create">{v.created}</span>
+                     <div className="content-img-box"></div>
+                     <div className="content-meta-data">
+                        <h1>{v.content_name}</h1>
+                        <div className="content-create">{v.created}</div>
+                     </div>
                   </ContentTopicListComp>
                </div>
             </Link>

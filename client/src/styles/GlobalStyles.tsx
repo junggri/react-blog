@@ -87,7 +87,6 @@ const GlobalStyles = createGlobalStyle`
     .ql-container.ql-snow{
         height:90%
     }
-  
     .ql-syntax{
      padding:10px 10px; 
      border-radius: 4px;

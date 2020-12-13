@@ -114,38 +114,48 @@ export const ContentCenter = styled.section<Width>`
 export const ContentCenterArticleBox = styled.section<Width>`
    margin-top: 70px; 
    word-break: break-all;
+   //border:1px solid black;
+   padding:0 40px;
 `;
 
 export const ContentTopicListComp = styled.div`
-  position: relative;
-  padding:10px 0px 60px 13px;
-  height:110px;
-  //border: 1px solid #ced4da;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  cursor:pointer;
-  margin-bottom: 25px;
-  transition: 0.125s all ease-in;
-  background: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
-  & > h1{
-  font-size:22px;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
-  color:black;
+     position: relative;
+     height:550px;
+     border-radius: 3px;
+     display: flex;
+     flex-direction: column;
+     cursor:pointer;
+     margin-bottom: 40px;
+     transition: 0.2s all ease-in;
+     //box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
+  & > .content-meta-data > h1{
+     font-size:35px;
+     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+     color:black;
   }
+  & .content-meta-data{
+     position: absolute;
+     width:100%;
+     padding:2px 10px;
+     height:120px;
+     bottom:0;
+   }
   & .content-create{
-  position: absolute;
-  color:#868e96;
-  font-weight: 300;
-  font-size: 13px;
-  bottom:10%;
+     position:absolute;
+     font-weight: 300;
+     font-size: 13px;
+     font-weight: 300;
+     bottom:10%
+  }
+  & .content-img-box{
+     height:74%;
+     width:100%;
+     border:1px solid rgba(0,0,0,0.1);
   }
   &:hover{
-   transform: translateY(-5px);
-   box-shadow: rgba(0, 0, 0, 0.04) 0px 16px 28px 0px;
+     transform: translateY(-2px);
+     box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px 0px;
   }
-  
 `;
 
 //
