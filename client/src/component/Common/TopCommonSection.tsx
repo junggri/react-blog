@@ -9,7 +9,7 @@ const TopCommonSection = React.forwardRef((props: any, ref: any) => {
 
    useEffect(() => {
       props.onGetHeight(ref.current);
-   }, []);
+   }, [ref.current]);
 
    return (
       <TopCommonSectionComp width={props.width} ref={ref} logo={Logo}>

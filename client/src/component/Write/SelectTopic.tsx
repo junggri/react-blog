@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { SelectTopicBoxComp, SelectTopicItemComp } from "../../styled-comp";
 import util from "../../lib/axios";
 
@@ -6,8 +6,9 @@ interface Select {
    onIsChecked: any
 }
 
-const SelectTopic = ({ onIsChecked }: Select) => {
+function SelectTopic({ onIsChecked }: Select) {
    const [list, setList] = useState([]);
+
    useEffect(() => {
       (async () => {
          let { data } = await util.getContents();
@@ -16,7 +17,7 @@ const SelectTopic = ({ onIsChecked }: Select) => {
    }, []);
 
 
-   const onChange = (e: any) => {
+   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       onIsChecked(e.target.value);
    };
 
@@ -31,7 +32,6 @@ const SelectTopic = ({ onIsChecked }: Select) => {
                </SelectTopicItemComp>
             ))}
          </div>
-
       </SelectTopicBoxComp>
    );
 };

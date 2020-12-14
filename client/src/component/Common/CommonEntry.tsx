@@ -34,6 +34,8 @@ function CommonEntry({ match }: any) {
    const getHeight = (data: any) => {
       setHeight(data.offsetHeight);
    };
+
+
    return (
       <>
          <TopCommonSection width={width} ref={navEl} onGetHeight={getHeight} />

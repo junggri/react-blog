@@ -13,4 +13,4 @@ const WriteBtnBox = ({ onSubmit }: Props) => {
       </WriteBtnBoxComp>
    );
 };
-export default WriteBtnBox;
+export default React.memo(WriteBtnBox);

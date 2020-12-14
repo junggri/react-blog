@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import util from "../../lib/axios";
 import { Link } from "react-router-dom";
 import { ContentTopicListComp } from "../../styled-comp";
+import { BiSubdirectoryRight } from "react-icons/bi";
 
 interface Prop {
    params: string
@@ -16,7 +17,8 @@ interface V {
 
 const ContentTopicItems = ({ params }: Prop) => {
    const [contents, setContents] = useState<any[]>([]);
-   const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState<boolean>(false);
+
 
    useEffect(() => {
       (async () => {
@@ -35,9 +37,13 @@ const ContentTopicItems = ({ params }: Prop) => {
             <Link to={`/content/${params}/${v.uid}`} key={v.uid}>
                <div data-uid={v.uid}>
                   <ContentTopicListComp>
-                     <div className="content-img-box"></div>
+                     {/*<div className="content-img-box"></div>*/}
                      <div className="content-meta-data">
                         <h1>{v.content_name}</h1>
+                        <div className="content-detail-meta-data">
+                           <BiSubdirectoryRight className="meta-data-icons" />
+                           <span>adasd</span>
+                        </div>
                         <div className="content-create">{v.created}</div>
                      </div>
                   </ContentTopicListComp>

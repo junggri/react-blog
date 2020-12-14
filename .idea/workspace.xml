@@ -20,12 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Write/SelectKindOfPosts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Write/WriteBtnBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/WriteBtnBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,8 +82,8 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -178,6 +184,8 @@
       <workItem from="1607761487693" duration="11146000" />
       <workItem from="1607783115282" duration="4450000" />
       <workItem from="1607861246700" duration="5279000" />
+      <workItem from="1607947953989" duration="7732000" />
+      <workItem from="1607957533925" duration="694000" />
     </task>
     <servers />
   </component>
@@ -273,13 +281,14 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="643" y="160" width="1125" height="903" key="SettingsEditor" timestamp="1607745574776">
-      <screen x="0" y="25" width="1792" height="1038" />
+    <state x="2481" y="162" width="1125" height="903" key="SettingsEditor" timestamp="1607957483371">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
+    <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1607957483371" />
     <state x="2482" y="157" width="1184" height="728" key="SettingsEditor/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607693454263" />
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606998271816">
       <screen x="0" y="25" width="1792" height="1038" />
@@ -290,13 +299,14 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="561" y="256" width="670" height="675" key="search.everywhere.popup" timestamp="1607763182508">
-      <screen x="0" y="25" width="1792" height="1038" />
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1607954674304">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1607954674304" />
     <state x="2482" y="361" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1607605347936">
       <screen x="1792" y="25" width="1920" height="998" />
     </state>

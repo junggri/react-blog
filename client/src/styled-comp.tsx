@@ -120,38 +120,49 @@ export const ContentCenterArticleBox = styled.section<Width>`
 
 export const ContentTopicListComp = styled.div`
      position: relative;
-     height:550px;
-     border-radius: 3px;
+     height:100px;
      display: flex;
      flex-direction: column;
      cursor:pointer;
-     margin-bottom: 40px;
+     margin-bottom: 25px;
      transition: 0.2s all ease-in;
      //box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
-  & > .content-meta-data > h1{
-     font-size:35px;
+     padding-left: 10px;
+     padding-top:5px;
+   & > .content-meta-data > h1{
+     font-size:28px;
      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
      color:black;
-  }
-  & .content-meta-data{
-     position: absolute;
-     width:100%;
-     padding:2px 10px;
-     height:120px;
-     bottom:0;
    }
-  & .content-create{
+   & .content-meta-data{
+   }
+   & .content-meta-data > .content-detail-meta-data{
+     font-size:15px;
+     display: flex;
+     align-items: center;
+     margin-top: 4px;
+     color:rgba(0,0,0,0.8)
+   } 
+   & .content-meta-data > .content-detail-meta-data span{
+     font-size:15px;
+     display: flex;
+     justify-content: center;
+     align-items: center; 
+   } 
+   & .content-meta-data > .content-detail-meta-data > .meta-data-icons{
+      font-size:18px;
+   } 
+   & .content-create{
      position:absolute;
-     font-weight: 300;
+     font-weight: 100;
      font-size: 13px;
-     font-weight: 300;
      bottom:10%
-  }
-  & .content-img-box{
-     height:74%;
-     width:100%;
-     border:1px solid rgba(0,0,0,0.1);
-  }
+   }
+  //& .content-img-box{
+  //   height:74%;
+  //   width:100%;
+  //   border:1px solid rgba(0,0,0,0.1);
+  //}
   &:hover{
      transform: translateY(-2px);
      box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px 0px;
@@ -290,7 +301,7 @@ export const SelectTopicBoxComp = styled.div`
    flex-wrap: wrap;
    }
    & h1{
-   font-size:2rem;
+   font-size:1.7rem;
    margin-bottom:40px;
    }
 `;
@@ -314,6 +325,48 @@ export const SelectTopicItemComp = styled.div`
     font-size:120%;
     cursor: pointer;
   }
+`;
+
+
+export const SelectKindOfPostsBoxComp = styled.div`
+   padding-top:50px;
+   padding-left:60px;
+   padding-right: 60px;
+   & .post-select-box{
+   display: flex;
+   flex-wrap: wrap;
+   }
+   & h1{
+   font-size:1.7rem;
+   margin-bottom:40px;
+   }
+`;
+
+export const SelectKindOfPosts = styled.div`
+  width:150px;
+  margin-bottom: 40px;
+  padding:0;
+  display: flex;
+  align-items: center;
+  & .select-input{
+    width:100px;
+    display: inline-block; 
+    width:20px;
+    height: 20px;
+    margin-right: 15px;
+  }
+  & .select-label{
+    font-weight: 300;
+    margin-top: -1px;
+    font-size:120%;
+    cursor: pointer;
+  }
+`;
+
+export const PostsDetailComp = styled.div`
+   padding-top:50px;
+   padding-left:60px;
+   padding-right: 60px;
 `;
 
 //--------------------------------write---------------------------------------

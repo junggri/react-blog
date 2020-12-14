@@ -20,5 +20,6 @@ export { default as SelectTopic } from "component/Write/SelectTopic";
 export { default as Editor } from "component/Write/Editor";
 export { default as WriteTopicName } from "component/Write/WriteTopicName";
 export { default as WriteBtnBox } from "component/Write/WriteBtnBox";
-
+export { default as KindOfPosts } from "component/Write/SelectKindOfPosts";
+export { default as PostsDetail } from "component/Write/PostsDetail";
 //////containers

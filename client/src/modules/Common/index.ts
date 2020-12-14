@@ -37,12 +37,12 @@ interface ICommonState {
    e: Error | null
 }
 
-interface ICommonAction<T> {
+interface ICommonAction {
    type: typeof SET_HEIGHT
       | typeof GET_CSRF
       | typeof GET_CSRF_SUCCESS
       | typeof GET_CSRF_ERROR
-   payload: T
+   payload: number
    e: Error
 
 }
@@ -56,7 +56,7 @@ const initialState: ICommonState = {
 };
 
 
-export default function common<T>(state: ICommonState = initialState, action: ICommonAction<T>) {
+export default function common(state: ICommonState = initialState, action: ICommonAction) {
    switch (action.type) {
       case SET_HEIGHT:
          return {
