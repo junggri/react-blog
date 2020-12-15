@@ -20,19 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/component/Write/SelectKindOfPosts.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Write/CreateNewTopic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/138c63b8-6bc8-488f-8a96-b6f350767c20.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/5f0df94a-310b-4dea-b4c6-aea0ff4279e4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/74f54bb5-eb20-46b1-9fbe-5ebb19e46707.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/b0a84e27-f916-47f1-a742-87c056465c83.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/f46bc10a-a705-4868-ae18-4c423727c458.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Common/ContentNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/ContentNav.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Write/SelectKindOfPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/SelectKindOfPosts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Write/WriteBtnBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/WriteBtnBox.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/model/topic.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/model/topic.model.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +95,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -186,6 +198,7 @@
       <workItem from="1607861246700" duration="5279000" />
       <workItem from="1607947953989" duration="7732000" />
       <workItem from="1607957533925" duration="694000" />
+      <workItem from="1608027163353" duration="13251000" />
     </task>
     <servers />
   </component>

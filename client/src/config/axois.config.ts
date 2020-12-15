@@ -1,6 +1,7 @@
 import axios from "axios";
 // import { cacheAdapterEnhancer } from "axios-extensions";
 
+
 const instance = axios.create({
    baseURL: "/",
    // headers: { "Authorization": "Asd" },
@@ -8,6 +9,7 @@ const instance = axios.create({
 });
 instance.defaults.headers.common["Authorization"] = "Asd";
 instance.defaults.headers.common["Content-Type"] = "application/json";
+
 instance.interceptors.request.use(
    (config) => {
 

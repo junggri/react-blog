@@ -13,8 +13,8 @@ const Content = ({ width, list, height, params, match }: ContentProp) => {
 
    return (
       <>
-         <ContentNav list={list} height={height}></ContentNav>
-         <ContentCenter width={width} params={params} match={match}></ContentCenter>
+         <ContentNav list={list} height={height} />
+         <ContentCenter width={width} params={params} match={match} />
          <ContentRight></ContentRight>
       </>
    );

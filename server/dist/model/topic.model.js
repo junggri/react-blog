@@ -73,7 +73,7 @@ var contentModel = {
         });
     }); },
     savePosts: function (_a) {
-        var contentName = _a.contentName, content = _a.content, topic = _a.topic;
+        var contentName = _a.contentName, content = _a.content, topic = _a.topic, kindOfPosts = _a.kindOfPosts, detail = _a.detail;
         return __awaiter(void 0, void 0, void 0, function () {
             var conn, uid, today, dateString, writePath, query, error_2;
             return __generator(this, function (_b) {
@@ -89,7 +89,7 @@ var contentModel = {
                             day: "numeric",
                         });
                         writePath = path_1.default.join(__dirname + "/../../contents");
-                        query = "INSERT INTO " + topic + " (uid, content_name, created, modified, file, comments) VALUES (?,?,?,?,?,?)";
+                        query = "INSERT INTO " + topic + " (uid, content_name, created, modified, file, comments, kindOfPosts, detail) VALUES (?,?,?,?,?,?,?,?)";
                         if (!(conn !== undefined)) return [3 /*break*/, 7];
                         _b.label = 2;
                     case 2:
@@ -97,7 +97,7 @@ var contentModel = {
                         return [4 /*yield*/, fs_1.promises.writeFile(writePath + "/" + uid + ".html", content, "utf8")];
                     case 3:
                         _b.sent();
-                        return [4 /*yield*/, conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null])];
+                        return [4 /*yield*/, conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail])];
                     case 4:
                         _b.sent();
                         return [2 /*return*/, { state: true }];

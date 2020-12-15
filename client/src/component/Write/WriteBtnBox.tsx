@@ -1,11 +1,11 @@
 import React from "react";
 import { WriteBtnBoxComp, WriteBtnComp } from "../../styled-comp";
 
-interface Props {
+interface IWriteBtnBoxProps {
    onSubmit: any
 }
 
-const WriteBtnBox = ({ onSubmit }: Props) => {
+const WriteBtnBox = ({ onSubmit }: IWriteBtnBoxProps) => {
    return (
       <WriteBtnBoxComp>
          <WriteBtnComp onClick={onSubmit}>등록하기</WriteBtnComp>

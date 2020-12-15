@@ -1,24 +1,30 @@
-import React, { useEffect } from "react";
+import React, { MutableRefObject, useEffect, useRef } from "react";
 import { TopCommonSectionComp } from "../../styled-comp";
 import { TopNavBar } from "../index";
 import { Link } from "react-router-dom";
 import Logo from "../../image/Logo.svg";
 
-const TopCommonSection = React.forwardRef((props: any, ref: any) => {
+interface ITopCommonSectionProps {
+   width: number
+   onGetHeight: (payload: HTMLDivElement) => void
+}
 
+function TopCommonSection({ width, onGetHeight }: ITopCommonSectionProps) {
+   const height = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
 
    useEffect(() => {
-      props.onGetHeight(ref.current);
-   }, [ref.current]);
+      onGetHeight(height.current);
+   }, [height.current]);
+
 
    return (
-      <TopCommonSectionComp width={props.width} ref={ref} logo={Logo}>
+      <TopCommonSectionComp width={width} logo={Logo} ref={height}>
          <TopNavBar />
          <Link to="/write">
             <span className="write-article-btn">새 글 쓰기</span>
          </Link>
       </TopCommonSectionComp>
    );
-});
+};
 
 export default React.memo(TopCommonSection);

@@ -22,4 +22,5 @@ export { default as WriteTopicName } from "component/Write/WriteTopicName";
 export { default as WriteBtnBox } from "component/Write/WriteBtnBox";
 export { default as KindOfPosts } from "component/Write/SelectKindOfPosts";
 export { default as PostsDetail } from "component/Write/PostsDetail";
+export { default as CreateNewTopic } from "component/Write/CreateNewTopic";
 //////containers

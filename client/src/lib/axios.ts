@@ -1,5 +1,18 @@
 import instance from "../config/axois.config";
 
+interface IContentForSave {
+   contentName: string
+   content: string
+   topic: string
+   kindOfPosts: string
+   detail: string
+}
+
+interface IGetPostFromPostId {
+   topic: string,
+   postsId: string
+}
+
 let util = {
    getCSRTtoken() {
       return instance({
@@ -7,24 +20,27 @@ let util = {
          method: "get",
       });
    },
+
    checkCSRFtoken(_csrfToken: string) {
-      instance.defaults.headers.post["X-XSRF-TOKEN"] = _csrfToken;
       return instance({
          url: "/api/check/csrf",
          method: "post",
       });
    },
+
    getContents() {
       return instance({
          url: "/topic/contents/name",
          method: "get",
       });
    },
-   savePost(data: any) {
+
+   savePost(data: IContentForSave, token: string) {
       return instance({
          url: "/topic/posts",
          method: "post",
          data: data,
+         headers: { "X-XSRF-TOKEN": token },
       });
    },
 
@@ -35,7 +51,7 @@ let util = {
       });
    },
 
-   getPostFromPostId({ topic, postsId }: { topic: string, postsId: string }) {
+   getPostFromPostId({ topic, postsId }: IGetPostFromPostId) {
       return instance({
          url: `/topic/${topic}/posts/${postsId}`,
       });

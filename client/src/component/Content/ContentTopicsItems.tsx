@@ -54,4 +54,4 @@ const ContentTopicItems = ({ params }: Prop) => {
    );
 };
 
-export default ContentTopicItems;
+export default React.memo(ContentTopicItems);

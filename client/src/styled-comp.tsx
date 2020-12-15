@@ -10,6 +10,7 @@ export interface Width {
 export interface topView {
    width: number;
    logo: any
+   ref: any
 }
 
 export interface contentBox {
@@ -265,6 +266,7 @@ export const WriteConditionBox = memo(styled.section`
    right: 0;
    width: 50%;
    height: 100%;
+   overflow: scroll;
 `);
 
 
@@ -292,6 +294,7 @@ export const WriteBtnComp = styled.button`
    
 `;
 
+
 export const SelectTopicBoxComp = styled.div`
    padding-top:50px;
    padding-left:60px;
@@ -313,7 +316,6 @@ export const SelectTopicItemComp = styled.div`
   display: flex;
   align-items: center;
   & .select-input{
-    width:100px;
     display: inline-block; 
     width:20px;
     height: 20px;
@@ -324,6 +326,76 @@ export const SelectTopicItemComp = styled.div`
     margin-top: -1px;
     font-size:120%;
     cursor: pointer;
+  }
+`;
+
+export const CreateNewTopicComp = styled.div`
+   padding-top:20px;
+   padding-left:60px;
+   padding-right: 60px;
+   & h1{
+    font-size:20px;
+    margin-bottom: 20px;
+   }
+   & .add-new-topic-btn{
+    color: #dee2e6;
+    font-size:30px;
+    cursor: pointer;
+    margin-top: 10px;
+   }
+   & .add-new-topic-btn:hover{
+    color: gray;
+   } 
+`;
+
+export const CreateNewTopicListBoxComp = styled.div`
+  width:180px;
+`;
+
+export const DeleteTopicIconComp = styled.div`
+  display: flex;
+  font-size:20px;
+  cursor: pointer;
+  opacity: 0;
+  color: #dee2e6;
+  & :hover{
+    color:#ff6b6b;
+  }
+`;
+
+export const AddTopicBtnComp = styled.div`
+  display: flex;
+  align-items: center;
+  & input{
+    padding:8px;
+    border:1px solid rgba(0,0,0.6);
+  }
+  & .make-new-topic-btn{
+    color: #dee2e6;
+    font-size:30px;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  & .make-new-topic-btn:hover{
+    color: gray;
+  } 
+`;
+
+export const CreateNewTopicListItemComp = styled.div`
+  margin-bottom:15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  & span{
+    display: inline-block;
+    width:70%;
+    font-size:22px;
+    font-weight: 100;
+  }
+  &:hover{
+    ${DeleteTopicIconComp}{
+      opacity: 1;
+    }
   }
 `;
 
@@ -341,6 +413,7 @@ export const SelectKindOfPostsBoxComp = styled.div`
    margin-bottom:40px;
    }
 `;
+
 
 export const SelectKindOfPosts = styled.div`
   width:150px;
@@ -367,6 +440,14 @@ export const PostsDetailComp = styled.div`
    padding-top:50px;
    padding-left:60px;
    padding-right: 60px;
+   & h1{
+   font-size:1.7rem;
+   margin-bottom: 30px;
+   }
+   & input{
+   border:1px solid black;
+   width:100%;
+   }
 `;
 
 //--------------------------------write---------------------------------------

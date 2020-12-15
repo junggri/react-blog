@@ -22,7 +22,6 @@ function SelectKindOfPost({ onCheck }: IKindsOfPostsProps) {
             <input className="select-input" type="radio" id="kind-of-posts" onChange={onChange} value="posts" name='kindofpost' />
             <label className="select-label" htmlFor="kind-of-posts">게시물</label>
          </SelectKindOfPosts>
-
       </SelectKindOfPostsBoxComp>
    );
 }
