@@ -1,7 +1,7 @@
 export { default as TopCommonSection } from "component/Common/TopCommonSection";//react memo
 export { default as TopNavBar } from "component/Common/TopNavBar";
 
-export { default as ContentCenter } from "component/Content/ContentCenter";
+
 export { default as ContentTopicItems } from "component/Content/ContentTopicsItems";
 export { default as PostsBox } from "component/Content/PostsBox";
 

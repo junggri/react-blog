@@ -1,28 +1,28 @@
 import styled from "styled-components";
-import { darken } from "polished";
-import React, { memo } from "react";
+import {darken} from "polished";
+import React, {memo} from "react";
 
 
 export interface Width {
-   width: number;
+    width: number;
 }
 
 export interface topView {
-   width: number;
-   logo: any
-   ref: any
+    width: number;
+    logo: any
+    ref: any
 }
 
 export interface contentBox {
-   ref: any;
+    ref: any;
 }
 
 interface homeContentList {
-   children: any;
+    children: any;
 }
 
 interface ListBox {
-   width: number;
+    width: number;
 }
 
 
@@ -37,7 +37,7 @@ export const TopCommonSectionComp = (styled.div<topView>`
    position: relative;
    margin: 0 auto;
    width: ${(props) => props.width + "px"};
-   height: 320px;
+   height: 280px;
    max-width: ${(props) => props.width + "px"};
    background-image: url(${props => props.logo});
    background-repeat:no-repeat ;
@@ -69,6 +69,7 @@ export const TopCommonSectionComp = (styled.div<topView>`
 
 export const TopNavBarComp = styled.nav`
    height: 56px;
+   width:100%;
    display: flex;
    justify-content: space-between;
    & > * {
@@ -105,11 +106,12 @@ export const MainSectionComp = styled.div<Width>`
 
 //MAIN_VIEW---------------TOP
 
-export const ContentCenter = styled.section<Width>`
-   position: absolute;
+export const ContentCenterComp = styled.section<Width>`
+   position: relative;
    left: ${leftWidth + "px"};
    width: ${(props) => props.width - (leftWidth + rightWidth) + "px"};
    word-break: break-all;
+   
 `;
 
 export const ContentCenterArticleBox = styled.section<Width>`
@@ -121,7 +123,7 @@ export const ContentCenterArticleBox = styled.section<Width>`
 
 export const ContentTopicListComp = styled.div`
      position: relative;
-     height:100px;
+     height:90px;
      display: flex;
      flex-direction: column;
      cursor:pointer;
@@ -129,45 +131,47 @@ export const ContentTopicListComp = styled.div`
      transition: 0.2s all ease-in;
      //box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
      padding-left: 10px;
-     padding-top:5px;
-   & > .content-meta-data > h1{
-     font-size:28px;
-     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
-     color:black;
+     padding-top:8px;
+    
+   .content-meta-data{
    }
-   & .content-meta-data{
+   .posts-contentName-box{
+    display: flex;
+    align-items: center;
+      h1{
+       display: inline-block;
+       font-size:23px;
+       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
+       color:black;
+      }  
+      .posts-notice-icon{
+        display: inline-block;
+        margin-right:10px;
+        margin-top:2.5px;
+        font-size:18px;
+        opacity: 0.65;
+     }
    }
-   & .content-meta-data > .content-detail-meta-data{
+   .content-meta-data > .content-detail-meta-data{
      font-size:15px;
      display: flex;
      align-items: center;
      margin-top: 4px;
      color:rgba(0,0,0,0.8)
    } 
-   & .content-meta-data > .content-detail-meta-data span{
-     font-size:15px;
-     display: flex;
-     justify-content: center;
-     align-items: center; 
+   .content-meta-data > .content-detail-meta-data span{
+     font-size:1.125rem; 
    } 
-   & .content-meta-data > .content-detail-meta-data > .meta-data-icons{
-      font-size:18px;
-   } 
-   & .content-create{
+   .content-create{
      position:absolute;
      font-weight: 100;
      font-size: 13px;
      bottom:10%
-   }
-  //& .content-img-box{
-  //   height:74%;
-  //   width:100%;
-  //   border:1px solid rgba(0,0,0,0.1);
-  //}
-  &:hover{
+    }
+   &:hover{
      transform: translateY(-2px);
      box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px 0px;
-  }
+   }
 `;
 
 //
@@ -189,7 +193,7 @@ export const ContentNavComp = styled.section`
    font-size: 0;
    &.fixed {
       position: fixed;
-      top: -0px;
+      top: 0px;
    }
 `;
 

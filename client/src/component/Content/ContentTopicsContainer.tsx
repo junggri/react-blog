@@ -1,17 +1,17 @@
 import React from "react";
-import { HomeContentList, HomeContentListBox } from "../../styled-comp";
+import {HomeContentList, HomeContentListBox} from "../../styled-comp";
 
-const ContentTopicsContainer = ({ width, list }: { width: number; list: any[]; }) => {
+function ContentTopicsContainer({width, list}: { width: number; list: any[]; }) {
 
-   return (
-      <HomeContentListBox width={width}>
-         {list.map((e, i) => (
-            <HomeContentList key={i}>
-               <div>{e["Tables_in_contents"]}</div>
-            </HomeContentList>
-         ))}
-      </HomeContentListBox>
-   );
+    return (
+        <HomeContentListBox width={width}>
+            {list.map((e, i) => (
+                <HomeContentList key={i}>
+                    <div>{e["Tables_in_contents"]}</div>
+                </HomeContentList>
+            ))}
+        </HomeContentListBox>
+    );
 };
 
-export default ContentTopicsContainer;
+export default React.memo(ContentTopicsContainer);

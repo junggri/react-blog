@@ -20,31 +20,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/component/Write/CreateNewTopic.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/138c63b8-6bc8-488f-8a96-b6f350767c20.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/5f0df94a-310b-4dea-b4c6-aea0ff4279e4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/74f54bb5-eb20-46b1-9fbe-5ebb19e46707.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/b0a84e27-f916-47f1-a742-87c056465c83.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/f46bc10a-a705-4868-ae18-4c423727c458.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsUtil.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/modules/Topic/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/useHooks/useTopic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/581d941e-c554-455d-b0a2-57fefb166590.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Common/ContentNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/ContentNav.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Common/TopNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/TopNavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentCenter.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/PostsBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/HomeMainSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/HomeMainSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Write/CreateNewTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/CreateNewTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/SelectKindOfPosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/SelectKindOfPosts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/WriteBtnBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/WriteBtnBox.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Entry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/model/topic.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/model/topic.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/router/topic.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/topic.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +103,8 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -199,6 +208,8 @@
       <workItem from="1607947953989" duration="7732000" />
       <workItem from="1607957533925" duration="694000" />
       <workItem from="1608027163353" duration="13251000" />
+      <workItem from="1608089067167" duration="7627000" />
+      <workItem from="1608107629450" duration="17469000" />
     </task>
     <servers />
   </component>
@@ -221,6 +232,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="530" y="228" key="#Inspections" timestamp="1608111497486">
+      <screen x="0" y="25" width="1792" height="1041" />
+    </state>
+    <state x="530" y="228" key="#Inspections/0.25.1792.1041@0.25.1792.1041" timestamp="1608111497486" />
     <state x="2421" y="378" key="#Notifications" timestamp="1607343899479">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
@@ -256,10 +271,11 @@
     </state>
     <state x="584" y="283" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1606993607862" />
     <state x="2418" y="273" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607520607115" />
-    <state x="651" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607767332105">
-      <screen x="0" y="25" width="1792" height="1038" />
+    <state x="651" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608092562802">
+      <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="651" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607767332105" />
+    <state x="651" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608092562802" />
     <state x="2490" y="275" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607695739857" />
     <state x="3021" y="363" key="#com.intellij.tools.ToolEditorDialog" timestamp="1606545968902">
       <screen x="1792" y="25" width="1920" height="1055" />
@@ -294,14 +310,15 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="2481" y="162" width="1125" height="903" key="SettingsEditor" timestamp="1607957483371">
+    <state x="2481" y="162" width="1125" height="903" key="SettingsEditor" timestamp="1608122555958">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
+    <state x="643" y="160" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1608107949877" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
-    <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1607957483371" />
+    <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608122555958" />
     <state x="2482" y="157" width="1184" height="728" key="SettingsEditor/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607693454263" />
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606998271816">
       <screen x="0" y="25" width="1792" height="1038" />
@@ -312,11 +329,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1607954674304">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup" timestamp="1608111135299">
+      <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1608111135299" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1607954674304" />

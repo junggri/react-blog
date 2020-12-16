@@ -1,9 +1,9 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import posts from "./Posts";
 import common from "./Common";
+import topic from "./Topic";
 
-
-const rootReducer = combineReducers({ posts, common });
+const rootReducer = combineReducers({posts, common, topic});
 
 export default rootReducer;
 

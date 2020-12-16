@@ -109,6 +109,11 @@ var contentController = {
             }
         });
     }); },
+    makeNewTopic: function (rea, res) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/];
+        });
+    }); }
 };
 exports.default = contentController;
 //# sourceMappingURL=topic.controller.js.map

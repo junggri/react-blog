@@ -1,46 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { PostsBoxComp } from "../../styled-comp";
-import util from "../../lib/axios";
+import React, {useEffect} from "react";
+import usePosts from "../../useHooks/usePosts";
+import {useSelector} from "react-redux";
+import {RootState} from "../../modules";
+import {PostsBoxComp} from "../../styled-comp";
 import Highlight from "react-highlight.js";
 
-interface Props {
-   postsId: string
-   match: any
+interface IPostsBoxProps {
+    match: any
 }
 
-const PostsBox = ({ postsId, match }: Props) => {
-   const [posts, setPosts] = useState<any>();
-   const [loading, setLoading] = useState(false);
+interface IPostProps {
+    data: any,
+    loading: boolean | null
+    error: Error | null
+}
+
+const PostsBox = ({match}: IPostsBoxProps) => {
+    const {getPost} = usePosts();
+    const {post} = useSelector((state: RootState) => state.posts);
+    const {data, loading, error}: IPostProps = post;
+
+    useEffect(() => {
+        getPost(match.params.topic, match.params.postid);
+    }, [match.params.topic, match.params.postid]);
 
 
-   useEffect(() => {
-      (async () => {
-         let { data } = await util.getPostFromPostId({
-            topic: match.url.split("/")[2],
-            postsId: match.url.split("/")[3],
-         });
-         setPosts(data);
-         setLoading(true);
+    const MakeHtml = () => ({__html: data.content});
 
-      })();
-   }, []);
+    if (loading) return <div>...로딩중</div>;
+    if (data == null) return null;
 
-   const MakeHtml = () => ({
-      __html: posts.content,
-   });
-
-
-   if (!loading) return (<div>...로딩중</div>);
-   return (
-      <PostsBoxComp>
-         <div className="posts-name">
-            {posts.result[0].content_name}
-         </div>
-         <Highlight language='react'>
-            <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content"></div>
-         </Highlight>
-      </PostsBoxComp>
-   );
+    return (
+        <PostsBoxComp>
+            <div className="posts-name">
+                {data.result[0].content_name}
+            </div>
+            <Highlight language='react'>
+                <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content"></div>
+            </Highlight>
+        </PostsBoxComp>
+    );
 
 };
 export default PostsBox;

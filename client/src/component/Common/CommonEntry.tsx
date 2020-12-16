@@ -1,50 +1,53 @@
 import React from "react";
-import { MainSectionComp } from "../../styled-comp";
-import { ContentSection, HomeMainSection, TopCommonSection } from "../index";
-import { Route } from "react-router-dom";
-import usePosts from "../../useHooks/usePosts";
+import {MainSectionComp} from "../../styled-comp";
+import {ContentSection, HomeMainSection, TopCommonSection} from "../index";
+import {Route} from "react-router-dom";
 import useCommon from "../../useHooks/useCommon";
+import useTopic from "../../useHooks/useTopic";
+import {ITopicinitialState} from "../../modules/Topic";
 
-interface IPostsProps {
-   posts: any[]
-   loading: boolean
-   error: Error
-}
 
 interface ICommonProps {
-   width: number,
-   height: number;
-   token: string
-   setHeight: (heigth: number) => void
-   e: Error
+    width: number,
+    height: number;
+    token: string
+    setHeight: (heigth: number) => void
+    e: Error
 }
 
 
-function CommonEntry({ match }: any) {
-   const { width, height, token, setHeight, e }: ICommonProps = useCommon();
-   const { posts, loading, error }: IPostsProps = usePosts();
+function CommonEntry({match}: any) {
+    const {topic, loading, error}: ITopicinitialState = useTopic();
 
-   const params = match.params.content;
+    const {width, height, setHeight, e}: ICommonProps = useCommon();
 
-   const getHeight = (data: HTMLDivElement) => {
-      setHeight(data.offsetHeight);
-   };
 
-   if (posts === null) return null;
+    const getHeight = (data: HTMLDivElement) => {
+        setHeight(data.offsetHeight);
+    };
 
-   return (
-      <>
-         <TopCommonSection width={width} onGetHeight={getHeight} />
-         <MainSectionComp width={width}>
-            <Route path="/" exact render={() =>
-               <HomeMainSection width={width} height={height} list={posts} />}
-            />
-            <Route path="/content/:content" render={() =>
-               <ContentSection width={width} height={height} list={posts} params={params} match={match} />}
-            />
-         </MainSectionComp>
-      </>
-   );
+    if (topic === null) return null;
+
+    return (
+        <>
+            <TopCommonSection width={width} onGetHeight={getHeight}/>
+            <MainSectionComp width={width}>
+                <Route path="/" exact render={() =>
+                    <HomeMainSection
+                        width={width}
+                        height={height}
+                        list={topic}/>
+                }/>
+                <Route path="/content/:topic" render={() =>
+                    <ContentSection
+                        width={width}
+                        height={height}
+                        list={topic}
+                        match={match}/>
+                }/>
+            </MainSectionComp>
+        </>
+    );
 };
 
 export default CommonEntry;

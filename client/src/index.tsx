@@ -4,18 +4,18 @@ import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./styles/GlobalStyles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import App from "./shared/App";
-import { Provider } from "react-redux";
-import { store } from "./lib/store";
+import {Provider} from "react-redux";
+import {store} from "./lib/store";
 import "../src/styles/highlight/atom-one-light.css";
 
 ReactDOM.render(
-   <>
-      <Provider store={store}>
-         <GlobalStyles />
-         <App />
-      </Provider>
-   </>,
-   document.getElementById("root"),
+    <>
+        <Provider store={store}>
+            <GlobalStyles/>
+            <App/>
+        </Provider>
+    </>,
+    document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

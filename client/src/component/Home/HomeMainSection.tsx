@@ -3,7 +3,7 @@ import { ContentNav, TopicsContainer } from "component/index";
 
 interface HomeContentProp {
    width: any;
-   list: Array<any>;
+   list: any;
    height: any;
 }
 

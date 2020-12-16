@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import {createGlobalStyle} from "styled-components";
 import reset from "styled-reset";
 
 
@@ -7,12 +7,11 @@ const GlobalStyles = createGlobalStyle`
     *{
         box-sizing:border-box;
     }
-    body{
+    body,html{
         font-size:14px;
         font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif !important;
         background-color:#F9F9FB;
     }
-
     a{
         text-decoration:none;
         color:inherit;
