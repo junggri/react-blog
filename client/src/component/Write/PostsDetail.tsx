@@ -6,6 +6,7 @@ interface IPostsDetailProps {
 }
 
 function PostsDetail({ onChangeDetail }: IPostsDetailProps) {
+
    const [value, setValue] = useState<string>("");
 
    const onChange = (e: ChangeEvent<HTMLInputElement>) => {

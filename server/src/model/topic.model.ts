@@ -2,18 +2,13 @@ import connection from "../lib/index.connection";
 import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import path from "path";
+import { ITextEditorProps } from "../../../client/src/modules/TextEditor/textEdit.interface";
+
 
 let moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 
-interface IContentForSave {
-   contentName: string
-   content: string
-   topic: string
-   kindOfPosts: string
-   detail: string
-}
 
 const contentModel = {
    getAllPosts: async () => {
@@ -28,7 +23,7 @@ const contentModel = {
       }
    },
 
-   savePosts: async ({ contentName, content, topic, kindOfPosts, detail }: IContentForSave) => {
+   savePosts: async ({ contentName, content, topicName, kindOfPosts, detail }: ITextEditorProps) => {
       let conn = await connection();
       const uid = uuidv4();
       const today = new Date();
@@ -38,18 +33,15 @@ const contentModel = {
          day: "numeric",
       });
 
-      // const dayName = today.toLocaleDateString("ko-KR", { weekday: "long" });
       const writePath = path.join(__dirname + "/../../contents");
-
-      const query = `INSERT INTO ${topic} (uid, content_name, created, modified, file, comments, kindOfPosts, detail) VALUES (?,?,?,?,?,?,?,?)`;
+      const query = `INSERT INTO ${topicName} (uid, content_name, created, modified, file, comments, kindOfPosts, detail, date) VALUES (?,?,?,?,?,?,?,?,?)`;
       if (conn !== undefined)
          try {
+            await conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()]);
             await fs.writeFile(`${writePath}/${uid}.html`, content, "utf8");
-            await conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail]);
             return { state: true };
          } catch (error) {
             console.error(error);
-            return { state: false };
          } finally {
             conn.release();
          }
@@ -57,10 +49,11 @@ const contentModel = {
    },
 
    getDataFromParams: async (params: string) => {
+      const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , created ASC`;
       let conn = await connection();
       if (conn !== undefined)
          try {
-            let [result] = await conn.execute(`SELECT * FROM ${params}`);
+            let [result] = await conn.execute(query);
             return result;
          } catch (e) {
             console.error(e);

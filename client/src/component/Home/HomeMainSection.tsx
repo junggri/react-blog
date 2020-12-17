@@ -1,13 +1,9 @@
 import React from "react";
 import { ContentNav, TopicsContainer } from "component/index";
+import { IHomeMainSectionProps } from "../../interface/index.interface";
 
-interface HomeContentProp {
-   width: any;
-   list: any;
-   height: any;
-}
 
-const HomeMainSection = ({ width, list, height }: HomeContentProp) => {
+const HomeMainSection = ({ width, list, height }: IHomeMainSectionProps) => {
    return (
       <>
          <ContentNav list={list} height={height}></ContentNav>

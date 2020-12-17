@@ -1,64 +1,59 @@
-import React, {useState} from "react";
-import {
-    AddTopicBtnComp,
-    CreateNewTopicComp,
-    CreateNewTopicListBoxComp,
-    CreateNewTopicListItemComp,
-    DeleteTopicIconComp
-} from "../../styled-comp";
-import {MdDelete} from "react-icons/md";
-import {IoIosAddCircle} from "react-icons/io";
+import React, { useState } from "react";
+import { AddTopicBtnComp, CreateNewTopicComp, CreateNewTopicListBoxComp, CreateNewTopicListItemComp, DeleteTopicIconComp } from "../../styled-comp";
+import { MdDelete } from "react-icons/md";
+import { IoIosAddCircle } from "react-icons/io";
 import util from "../../lib/axios";
 
 interface ICreateNewTopicProps {
-    topic: any[] | null
-    token: string
+   topic: any[] | null
+   token: string
 }
 
-function CreateNewTopic({topic, token}: ICreateNewTopicProps) {
-    const [click, setClick] = useState<boolean>(false);
-    const [newTopic, setNewtopic] = useState<string>("");
+function CreateNewTopic({ topic, token }: ICreateNewTopicProps) {
 
-    const setNewTopicName = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewtopic(e.target.value);
-    };
+   const [click, setClick] = useState<boolean>(false);
+   const [newTopic, setNewtopic] = useState<string>("");
 
-    const previousMakeNewTopic = () => {
-        setClick(!click);
-    };
+   const setNewTopicName = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNewtopic(e.target.value);
+   };
 
-    const MakeNewTopic = async () => {
-        await util.makeNewTopic(newTopic, token);
-        setClick(!click);
-    };
+   const previousMakeNewTopic = () => {
+      setClick(!click);
+   };
 
-    if (topic === null) return null;
+   const MakeNewTopic = async () => {
+      await util.makeNewTopic(newTopic, token);
+      setClick(!click);
+   };
 
-    return (
-        <CreateNewTopicComp>
-            <h1>토픽관리하기</h1>
+   if (topic === null) return null;
 
-            <CreateNewTopicListBoxComp>
-                {topic.map((v: { Tables_in_contents: string }) => (
-                    <CreateNewTopicListItemComp key={v["Tables_in_contents"]}>
-                        <span>{v["Tables_in_contents"]}</span>
-                        <DeleteTopicIconComp>
-                            <MdDelete/>
-                        </DeleteTopicIconComp>
-                    </CreateNewTopicListItemComp>
-                ))}
-            </CreateNewTopicListBoxComp>
+   return (
+      <CreateNewTopicComp>
+         <h1>토픽관리하기</h1>
 
-            {click &&
-            <AddTopicBtnComp>
-                <input type="text" value={newTopic} onChange={setNewTopicName}/>
-                <IoIosAddCircle className="make-new-topic-btn" onClick={MakeNewTopic}/>
-            </AddTopicBtnComp>
-            }
+         <CreateNewTopicListBoxComp>
+            {topic.map((v: { Tables_in_contents: string }) => (
+               <CreateNewTopicListItemComp key={v["Tables_in_contents"]}>
+                  <span>{v["Tables_in_contents"]}</span>
+                  <DeleteTopicIconComp>
+                     <MdDelete />
+                  </DeleteTopicIconComp>
+               </CreateNewTopicListItemComp>
+            ))}
+         </CreateNewTopicListBoxComp>
 
-            <IoIosAddCircle className="add-new-topic-btn" onClick={previousMakeNewTopic}/>
-        </CreateNewTopicComp>
-    );
+         {click &&
+         <AddTopicBtnComp>
+            <input type="text" value={newTopic} onChange={setNewTopicName} />
+            <IoIosAddCircle className="make-new-topic-btn" onClick={MakeNewTopic} />
+         </AddTopicBtnComp>
+         }
+
+         <IoIosAddCircle className="add-new-topic-btn" onClick={previousMakeNewTopic} />
+      </CreateNewTopicComp>
+   );
 }
 
 export default React.memo(CreateNewTopic);

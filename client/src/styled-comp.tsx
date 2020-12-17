@@ -1,28 +1,28 @@
 import styled from "styled-components";
-import {darken} from "polished";
-import React, {memo} from "react";
+import { darken } from "polished";
+import React, { memo } from "react";
 
 
 export interface Width {
-    width: number;
+   width: number;
 }
 
 export interface topView {
-    width: number;
-    logo: any
-    ref: any
+   width: number;
+   logo: any
+   ref: any
 }
 
 export interface contentBox {
-    ref: any;
+   ref: any;
 }
 
 interface homeContentList {
-    children: any;
+   children: any;
 }
 
 interface ListBox {
-    width: number;
+   width: number;
 }
 
 
