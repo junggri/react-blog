@@ -34,10 +34,12 @@ let contentController: Controller = {
    },
 
    getPostsFromPostsId: async (req, res) => {
+      const { topic, postsId } = req.params;
       let fileName = path.join(__dirname + "c/../../contents", `${req.params.postsId}.html`);
       try {
          let content = await fs.readFile(fileName, "utf-8");
-         let result = await model.getPostFromPostId(req.params);
+
+         let result = await model.getPostFromPostId(topic, postsId);
          res.status(200).json({
             content: content,
             result: result,
@@ -48,8 +50,8 @@ let contentController: Controller = {
    },
 
    makeNewTopic: async (req, res) => {
-      let result = await model.CreateNewTopic(req.body.newTopic);
-
+      await model.CreateNewTopic(req.body.newTopic);
+      res.status(200).json({ state: true });
    },
 };
 

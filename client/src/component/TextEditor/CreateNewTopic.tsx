@@ -21,6 +21,7 @@ function CreateNewTopic({ topic, token }: ICreateNewTopicProps) {
 
    const MakeNewTopic = async () => {
       await util.makeNewTopic(newTopic, token);
+      //ㅕ여기서 데이터 삭제하는 거해야함
       setClick(!click);
    };
 

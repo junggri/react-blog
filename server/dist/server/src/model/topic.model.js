@@ -75,43 +75,20 @@ function poolConnction(query, dep) {
 }
 var contentModel = {
     getAllPosts: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var result, conn, result_1, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, poolConnction("show tables")];
-                case 1:
-                    result = _a.sent();
-                    console.log(result);
-                    return [4 /*yield*/, index_connection_1.default()];
-                case 2:
-                    conn = _a.sent();
-                    _a.label = 3;
-                case 3:
-                    _a.trys.push([3, 5, 6, 7]);
-                    return [4 /*yield*/, conn.query("show tables")];
-                case 4:
-                    result_1 = (_a.sent())[0];
-                    return [2 /*return*/, result_1];
-                case 5:
-                    error_1 = _a.sent();
-                    console.error(error_1);
-                    return [3 /*break*/, 7];
-                case 6:
-                    conn.release();
-                    return [7 /*endfinally*/];
-                case 7: return [2 /*return*/];
+                case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); },
     savePosts: function (_a) {
         var contentName = _a.contentName, content = _a.content, topicName = _a.topicName, kindOfPosts = _a.kindOfPosts, detail = _a.detail;
         return __awaiter(void 0, void 0, void 0, function () {
-            var conn, uid, today, dateString, writePath, query, error_2;
+            var uid, today, dateString, writePath, query, dep;
             return __generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0: return [4 /*yield*/, index_connection_1.default()];
-                    case 1:
-                        conn = _b.sent();
+                    case 0:
                         uid = uuid_1.v4();
                         today = new Date();
                         dateString = today.toLocaleDateString("ko-KR", {
@@ -120,83 +97,40 @@ var contentModel = {
                             day: "numeric",
                         });
                         writePath = path_1.default.join(__dirname + "/../../contents");
-                        query = "INSERT INTO " + topicName + " (uid, content_name, created, modified, file, comments, kindOfPosts, detail, date) VALUES (?,?,?,?,?,?,?,?,?)";
-                        if (!(conn !== undefined)) return [3 /*break*/, 7];
-                        _b.label = 2;
-                    case 2:
-                        _b.trys.push([2, 5, 6, 7]);
-                        return [4 /*yield*/, conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()])];
-                    case 3:
+                        query = "INSERT INTO " + topicName + " \n                     (uid, content_name, created, modified, file, comments, kindOfPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?)";
+                        dep = [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()];
+                        return [4 /*yield*/, poolConnction(query, dep)];
+                    case 1:
                         _b.sent();
                         return [4 /*yield*/, fs_1.promises.writeFile(writePath + "/" + uid + ".html", content, "utf8")];
-                    case 4:
+                    case 2:
                         _b.sent();
                         return [2 /*return*/, { state: true }];
-                    case 5:
-                        error_2 = _b.sent();
-                        console.error(error_2);
-                        return [3 /*break*/, 7];
-                    case 6:
-                        conn.release();
-                        return [7 /*endfinally*/];
-                    case 7: return [2 /*return*/];
                 }
             });
         });
     },
     getDataFromParams: function (params) { return __awaiter(void 0, void 0, void 0, function () {
-        var query, conn, result, e_2;
+        var query;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     query = "select * from " + params + " order by field(kindofPosts,'notice','posts') , created ASC";
-                    return [4 /*yield*/, index_connection_1.default()];
-                case 1:
-                    conn = _a.sent();
-                    if (!(conn !== undefined)) return [3 /*break*/, 6];
-                    _a.label = 2;
-                case 2:
-                    _a.trys.push([2, 4, 5, 6]);
-                    return [4 /*yield*/, conn.execute(query)];
-                case 3:
-                    result = (_a.sent())[0];
-                    return [2 /*return*/, result];
-                case 4:
-                    e_2 = _a.sent();
-                    console.error(e_2);
-                    return [3 /*break*/, 6];
-                case 5:
-                    conn.release();
-                    return [7 /*endfinally*/];
-                case 6: return [2 /*return*/];
+                    return [4 /*yield*/, poolConnction(query)];
+                case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); },
     getPostFromPostId: function (params) { return __awaiter(void 0, void 0, void 0, function () {
-        var topic, postsId, conn, result, e_3;
+        var topic, postsId, query, dep;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     topic = params.topic, postsId = params.postsId;
-                    return [4 /*yield*/, index_connection_1.default()];
-                case 1:
-                    conn = _a.sent();
-                    if (!(conn !== undefined)) return [3 /*break*/, 6];
-                    _a.label = 2;
-                case 2:
-                    _a.trys.push([2, 4, 5, 6]);
-                    return [4 /*yield*/, conn.execute("SELECT * FROM " + topic + " where uid = ? ", [postsId])];
-                case 3:
-                    result = (_a.sent())[0];
-                    return [2 /*return*/, result];
-                case 4:
-                    e_3 = _a.sent();
-                    console.error(e_3);
-                    return [3 /*break*/, 6];
-                case 5:
-                    conn.release();
-                    return [7 /*endfinally*/];
-                case 6: return [2 /*return*/];
+                    query = "SELECT * FROM " + topic + " where uid = ?";
+                    dep = [postsId];
+                    return [4 /*yield*/, poolConnction(query, dep)];
+                case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); },

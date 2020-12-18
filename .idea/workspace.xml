@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="" />
+    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/CreateNewTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/CreateNewTopic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,16 +85,16 @@
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/lib" />
+      <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client/public/image" />
       <recent name="$PROJECT_DIR$/client/src/modules/index" />
       <recent name="$PROJECT_DIR$/client/src/modules/Common" />
       <recent name="$PROJECT_DIR$/client/src/component/Common" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src/lib" />
-      <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -180,7 +189,8 @@
       <workItem from="1608200702626" duration="6276000" />
       <workItem from="1608248428632" duration="8701000" />
       <workItem from="1608287237854" duration="161000" />
-      <workItem from="1608293191818" duration="2400000" />
+      <workItem from="1608293191818" duration="5181000" />
+      <workItem from="1608304784893" duration="1392000" />
     </task>
     <servers />
   </component>

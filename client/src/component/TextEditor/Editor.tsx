@@ -25,7 +25,7 @@ const Editor = ({ history }: any) => {
    const ref: any = useRef(null) as MutableRefObject<any>;
    const { token } = useCommon();
    const { topic } = useTopic();
-
+   console.log(topic);
    useEffect(() => {
       ref.current.focus();
    }, []);

@@ -10,7 +10,7 @@ require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 
 
-async function poolConnction(query: string, dep?: any) {
+async function poolConnction<T>(query: string, dep?: T[]) {
    let conn = await connection();
    if (conn !== undefined)
       try {
@@ -25,21 +25,10 @@ async function poolConnction(query: string, dep?: any) {
 
 const contentModel = {
    getAllPosts: async () => {
-      const result = await poolConnction("show tables");
-      console.log(result);
-      let conn: any = await connection();
-      try {
-         let [result] = await conn.query("show tables");
-         return result;
-      } catch (error) {
-         console.error(error);
-      } finally {
-         conn.release();
-      }
+      return await poolConnction("show tables");
    },
 
    savePosts: async ({ contentName, content, topicName, kindOfPosts, detail }: ITextInitialProps) => {
-      let conn = await connection();
       const uid = uuidv4();
       const today = new Date();
       const dateString = today.toLocaleDateString("ko-KR", {
@@ -47,54 +36,42 @@ const contentModel = {
          month: "long",
          day: "numeric",
       });
-
       const writePath = path.join(__dirname + "/../../contents");
-      const query = `INSERT INTO ${topicName} (uid, content_name, created, modified, file, comments, kindOfPosts, detail, date) VALUES (?,?,?,?,?,?,?,?,?)`;
-      if (conn !== undefined)
-         try {
-            await conn.execute(query, [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()]);
-            await fs.writeFile(`${writePath}/${uid}.html`, content, "utf8");
-            return { state: true };
-         } catch (error) {
-            console.error(error);
-         } finally {
-            conn.release();
-         }
+      const query = `INSERT INTO ${topicName} 
+                     (uid, content_name, created, modified, file, comments, kindOfPosts, detail, date) 
+                     VALUES (?,?,?,?,?,?,?,?,?)`;
+      const dep = [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()];
 
+      await poolConnction<any>(query, dep);
+      await fs.writeFile(`${writePath}/${uid}.html`, content, "utf8");
+      return { state: true };
    },
 
    getDataFromParams: async (params: string) => {
       const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , created ASC`;
-      let conn = await connection();
-      if (conn !== undefined)
-         try {
-            let [result] = await conn.execute(query);
-            return result;
-         } catch (e) {
-            console.error(e);
-         } finally {
-            conn.release();
-         }
+      return await poolConnction(query);
    },
 
-   getPostFromPostId: async (params: any) => {
-      const { topic, postsId } = params;
-      let conn = await connection();
-      if (conn !== undefined)
-         try {
-            let [result] = await conn.execute(`SELECT * FROM ${topic} where uid = ? `, [postsId]);
-            return result;
-         } catch (e) {
-            console.error(e);
-         } finally {
-            conn.release();
-         }
+   getPostFromPostId: async (topic: string, postsId: string) => {
+      const query = `SELECT * FROM ${topic} where uid = ?`;
+      const dep = [postsId];
+      return await poolConnction<string>(query, dep);
    },
 
    CreateNewTopic: async (newTopic: string) => {
-      console.log(newTopic);
-      const conn = await connection();
-
+      const query = `CREATE TABLE ${newTopic}(
+                     Id int(11) not null auto_increment primary key,
+                     uid  varchar(50) not null,
+                     content_name varchar(120) not null,
+                     created varchar(20) not null,
+                     modified varchar(20),
+                     file varchar(100) not null,
+                     comments varchar(50),
+                     detail varchar(50) not null,
+                     kindofPosts varchar(20) not null,
+                     date timestamp not null
+                     )`;
+      return await poolConnction(query);
    },
 };
 
