@@ -16,11 +16,11 @@ export { default as ContentSection } from "component/Content/ContentContainer";
 
 
 //write--------------------------------------------------------
-export { default as SelectTopic } from "component/Write/SelectTopic";
-export { default as Editor } from "component/Write/Editor";
-export { default as WriteTopicName } from "component/Write/WriteTopicName";
-export { default as WriteBtnBox } from "component/Write/WriteBtnBox";
-export { default as KindOfPosts } from "component/Write/SelectKindOfPosts";
-export { default as PostsDetail } from "component/Write/PostsDetail";
-export { default as CreateNewTopic } from "component/Write/CreateNewTopic";
+export { default as SelectTopic } from "component/TextEditor/SelectTopic";
+export { default as Editor } from "component/TextEditor/Editor";
+export { default as WriteTopicName } from "component/TextEditor/WriteTopicName";
+export { default as TextEditBtnBox } from "component/TextEditor/TextEditBtnBox";
+export { default as KindOfPosts } from "component/TextEditor/SelectKindOfPosts";
+export { default as PostsDetail } from "component/TextEditor/PostsDetail";
+export { default as CreateNewTopic } from "component/TextEditor/CreateNewTopic";
 //////containers

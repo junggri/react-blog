@@ -21,7 +21,7 @@ const ContentContainer = ({ width, list, height, match }: IContentSectionProps) 
                          <PostContainer match={match} />} />
             </ContentCenterArticleBox>
          </ContentCenterComp>
-         <ContentRight></ContentRight>
+         <ContentRight />
       </>
    );
 };

@@ -2,13 +2,13 @@ import React from "react";
 import CommonEntry from "../component/Common/CommonEntry";
 
 
-const Entry = ({match}: any) => {
+const Entry = ({ match }: any) => {
 
-    return (
-        <>
-            <CommonEntry match={match}/>
-        </>
-    );
+   return (
+      <>
+         <CommonEntry match={match} />
+      </>
+   );
 };
 
 export default Entry;

@@ -19,104 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/component/Content/PostContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/interface/index.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Common/common.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/TextEditor/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/TextEditor/textEdit.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Topic/topic.interface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/useHooks/useTextEdit.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/index.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/textEdit.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/textEdit.interface.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/app.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/lib/index.connection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/lib/index.connection.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/model/index.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/model/index.model.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Common/ContentNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/ContentNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/TopCommonSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/ContentTopicsItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsBox.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/HomeMainSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/HomeMainSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/CreateNewTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/CreateNewTopic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/PostsDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Write/SelectTopic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Topic/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Topic/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TextEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/033742e5-aa27-4510-8c60-f7d5f3c7052c.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/06aba508-b69b-4e55-b308-e88c820eb400.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/06d835cc-9816-4797-a262-af28d54884e5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/07dcd7fa-2d1b-416f-9666-bfc1b7679d3a.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/contents/091ac6fa-02d3-4c52-aedd-ace955678d7b.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/138c63b8-6bc8-488f-8a96-b6f350767c20.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/contents/a10cea97-b15b-440d-8f04-51b12f10380c.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/1d79128c-77f3-4fc4-9f3a-2269a7fc96d2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/22f9de28-8273-47cc-a1bd-04e708766e09.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/232400b7-e3a0-4d00-ab45-617af6771ad1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/28f0459c-c91f-4646-9268-4b17065547bf.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/3e49e99b-8d6e-412b-be9c-06812a416756.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/47a26e94-23ad-464a-a3a5-a6ab0a0d82dc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/581d941e-c554-455d-b0a2-57fefb166590.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/5d236457-fc34-4488-80de-3ba0ff00e1d2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/5f0df94a-310b-4dea-b4c6-aea0ff4279e4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/6fec2de9-f66d-46ad-a281-8ff56b702bfb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/73615aa8-5070-4c0b-9633-2b532241bac3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/74f54bb5-eb20-46b1-9fbe-5ebb19e46707.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/82d18090-db2f-4677-bdc6-c8a370068344.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/9776d40b-5e03-4d8f-b979-9e7193cdcec6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/9ed10de5-1766-417a-8c3b-07e255efc1a5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/a6bdbbf0-6120-47e7-ade7-1a47360b3715.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/b0a84e27-f916-47f1-a742-87c056465c83.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/b9b72379-d204-42a4-a790-b2c8ad22ce2f.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/ba79811d-f716-4d23-8cdd-ab1c053949af.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/bd090722-5621-4653-a108-e3ee8f03e052.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/bfc53459-fd16-45aa-a4f8-92f535613aaa.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/c2a55b1e-0746-4552-a119-ce887cdcd164.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/c6cd07c7-4a98-48c6-beeb-cdbbc3bc9e8f.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/cb67a2ef-cd08-45bb-947c-8bc8a27eee6e.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/d0664946-0296-49a6-8883-6ee04ff53627.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/d34cbfcc-71d3-4132-8764-d5096672e93a.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/d763ef3b-6e15-4ff5-bda0-168d5eb94d5e.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/dbe462d5-e069-4079-9224-0de8c69a2b42.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/e214743d-79d0-49b9-be5c-1356203a4697.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/e6626f9a-b724-4ba2-ae6b-43c602ff8905.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/f46bc10a-a705-4868-ae18-4c423727c458.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/f4983517-f7c7-4547-8286-52251ae9339a.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/f6c5b340-35f2-4d7d-9934-6c3d5d4b74a6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/fbbb2dea-2b1b-4be1-9460-636ee44f923a.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/contents/ff043bc0-5eb1-4b17-80aa-b5e86f9d3ae7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/router/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/router/topic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
-    </list>
+    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +69,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -275,6 +178,9 @@
       <workItem from="1608173534674" duration="18980000" />
       <workItem from="1608200403116" duration="145000" />
       <workItem from="1608200702626" duration="6276000" />
+      <workItem from="1608248428632" duration="8701000" />
+      <workItem from="1608287237854" duration="161000" />
+      <workItem from="1608293191818" duration="2400000" />
     </task>
     <servers />
   </component>
@@ -317,12 +223,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="696" y="406" key="#Scopes/0.25.1792.1038@0.25.1792.1038" timestamp="1607680606901" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608176772871">
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608253514020">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607771126031" />
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553795014" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608176772871" />
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608253514020" />
     <state x="537" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607746260752">
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
@@ -384,12 +290,12 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="643" y="160" width="1125" height="903" key="SettingsEditor" timestamp="1608180575099">
+    <state x="643" y="160" width="1125" height="903" key="SettingsEditor" timestamp="1608250198869">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
-    <state x="643" y="160" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1608180575099" />
+    <state x="643" y="160" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1608250198869" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
     <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608122555958" />
@@ -409,7 +315,7 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1608216629956">
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1608295191863">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
@@ -417,22 +323,10 @@
     <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1608199295432" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608216629956" />
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608295191863" />
     <state x="2482" y="361" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1607605347936">
       <screen x="1792" y="25" width="1920" height="998" />
     </state>
     <state x="2482" y="361" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605347936" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx</url>
-          <line>7</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -20,9 +20,11 @@ export const onGetCsrfError = (e: Error) => ({ type: GET_CSRF_ERROR, e });
 
 
 export const onRequestGetCsrf = () => async (dispatch: any, getState: any) => {
+   //비동기로 실행된다.
    dispatch(onGetCsrf());
    try {
       let { data } = await util.getCSRTtoken();
+      //await keyword를 만나면, promise가 settled될ㄱ떄까지 기다린다 비동기흐름만 정지되고 전체적인 코드는 진행중.
       dispatch(onGetCsrfSuccess(data));
    } catch (e) {
       dispatch(onGetCsrfError(e));

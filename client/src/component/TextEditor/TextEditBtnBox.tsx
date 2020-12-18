@@ -1,11 +1,10 @@
 import React from "react";
 import { WriteBtnBoxComp, WriteBtnComp } from "../../styled-comp";
+import { ITextEditBtnBoxProps } from "../../interface/index.interface";
 
-interface IWriteBtnBoxProps {
-   onSubmit: any
-}
 
-const WriteBtnBox = ({ onSubmit }: IWriteBtnBoxProps) => {
+const TextEditBtnBox = ({ onSubmit }: ITextEditBtnBoxProps) => {
+
    return (
       <WriteBtnBoxComp>
          <WriteBtnComp onClick={onSubmit}>등록하기</WriteBtnComp>
@@ -13,4 +12,4 @@ const WriteBtnBox = ({ onSubmit }: IWriteBtnBoxProps) => {
       </WriteBtnBoxComp>
    );
 };
-export default React.memo(WriteBtnBox);
+export default TextEditBtnBox;

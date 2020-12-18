@@ -47,7 +47,8 @@ let contentController: Controller = {
       }
    },
 
-   makeNewTopic: async (rea, res) => {
+   makeNewTopic: async (req, res) => {
+      let result = await model.CreateNewTopic(req.body.newTopic);
 
    },
 };

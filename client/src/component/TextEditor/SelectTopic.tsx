@@ -9,6 +9,7 @@ function SelectTopic({ topic, onIsChecked }: ISelectopicProps) {
       onIsChecked(e.target.value);
    };
 
+
    if (topic === null) return null;
 
    return (

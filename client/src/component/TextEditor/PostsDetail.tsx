@@ -1,9 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { PostsDetailComp } from "../../styled-comp";
+import { IPostsDetailProps } from "../../interface/index.interface";
 
-interface IPostsDetailProps {
-   onChangeDetail: (payload: string) => void
-}
 
 function PostsDetail({ onChangeDetail }: IPostsDetailProps) {
 

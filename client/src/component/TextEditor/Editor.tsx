@@ -1,15 +1,15 @@
 import React, { MutableRefObject, useCallback, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
-import WriteTopicName from "component/Write/WriteTopicName";
+import WriteTopicName from "component/TextEditor/WriteTopicName";
 import "react-quill/dist/quill.snow.css";
 import { formats, modules } from "../../config/textEditor.config";
 import { WriteBox, WriteConditionBox } from "../../styled-comp";
-import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, WriteBtnBox } from "component/index";
+import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, TextEditBtnBox } from "component/index";
 import useCommon from "../../useHooks/useCommon";
 import useTopic from "../../useHooks/useTopic";
 import useTextEdit from "../../useHooks/useTextEdit";
-import util from "../../lib/axios";
 import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interface";
+import util from "../../lib/axios";
 
 
 const Editor = ({ history }: any) => {
@@ -33,24 +33,23 @@ const Editor = ({ history }: any) => {
 
    const onNameChange = useCallback((data: string) => {
       setContentName(data);
-   }, []);
+   }, [setContentName]);
 
    const rteChange = useCallback((content: any, delta: any, source: any, editor: any) => {
       setContent(ref.current.state.value);
-   }, []);
+   }, [setContent]);
 
    const onIsChecked = useCallback((name: string) => {
       setTopic(name);
-   }, []);
+   }, [setTopic]);
 
    const onCheckKindOfPosts = useCallback((kindOf: string) => {
       setKindOfPosts(kindOf);
-   }, []);
+   }, [setKindOfPosts]);
 
    const onChageDetail = useCallback((detail: string) => {
       setDetail(detail);
-   }, []);
-
+   }, [setDetail]);
 
    const onSubmit = async (): Promise<void> => {
       if (data.content === ""
@@ -64,7 +63,6 @@ const Editor = ({ history }: any) => {
          if (result) history.push("/");
       }
    };
-
 
    return (
       <>
@@ -82,7 +80,7 @@ const Editor = ({ history }: any) => {
             <CreateNewTopic topic={topic} token={token} />
             <KindOfPosts onCheck={onCheckKindOfPosts} />
             <PostsDetail onChangeDetail={onChageDetail} />
-            <WriteBtnBox onSubmit={onSubmit} />
+            <TextEditBtnBox onSubmit={onSubmit} />
          </WriteConditionBox>
       </>
    );

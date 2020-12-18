@@ -46,29 +46,60 @@ var path_1 = __importDefault(require("path"));
 var moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
-var contentModel = {
-    getAllPosts: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, result, error_1;
+function poolConnction(query, dep) {
+    return __awaiter(this, void 0, void 0, function () {
+        var conn, result, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, index_connection_1.default()];
                 case 1:
                     conn = _a.sent();
+                    if (!(conn !== undefined)) return [3 /*break*/, 5];
                     _a.label = 2;
                 case 2:
-                    _a.trys.push([2, 4, 5, 6]);
-                    return [4 /*yield*/, conn.query("show tables")];
+                    _a.trys.push([2, 4, , 5]);
+                    return [4 /*yield*/, conn.execute(query, dep)];
                 case 3:
                     result = (_a.sent())[0];
+                    conn.release();
                     return [2 /*return*/, result];
                 case 4:
+                    e_1 = _a.sent();
+                    console.error(e_1);
+                    conn.release();
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
+            }
+        });
+    });
+}
+var contentModel = {
+    getAllPosts: function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result, conn, result_1, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, poolConnction("show tables")];
+                case 1:
+                    result = _a.sent();
+                    console.log(result);
+                    return [4 /*yield*/, index_connection_1.default()];
+                case 2:
+                    conn = _a.sent();
+                    _a.label = 3;
+                case 3:
+                    _a.trys.push([3, 5, 6, 7]);
+                    return [4 /*yield*/, conn.query("show tables")];
+                case 4:
+                    result_1 = (_a.sent())[0];
+                    return [2 /*return*/, result_1];
+                case 5:
                     error_1 = _a.sent();
                     console.error(error_1);
-                    return [3 /*break*/, 6];
-                case 5:
+                    return [3 /*break*/, 7];
+                case 6:
                     conn.release();
                     return [7 /*endfinally*/];
-                case 6: return [2 /*return*/];
+                case 7: return [2 /*return*/];
             }
         });
     }); },
@@ -114,7 +145,7 @@ var contentModel = {
         });
     },
     getDataFromParams: function (params) { return __awaiter(void 0, void 0, void 0, function () {
-        var query, conn, result, e_1;
+        var query, conn, result, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -131,8 +162,8 @@ var contentModel = {
                     result = (_a.sent())[0];
                     return [2 /*return*/, result];
                 case 4:
-                    e_1 = _a.sent();
-                    console.error(e_1);
+                    e_2 = _a.sent();
+                    console.error(e_2);
                     return [3 /*break*/, 6];
                 case 5:
                     conn.release();
@@ -142,7 +173,7 @@ var contentModel = {
         });
     }); },
     getPostFromPostId: function (params) { return __awaiter(void 0, void 0, void 0, function () {
-        var topic, postsId, conn, result, e_2;
+        var topic, postsId, conn, result, e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -159,13 +190,26 @@ var contentModel = {
                     result = (_a.sent())[0];
                     return [2 /*return*/, result];
                 case 4:
-                    e_2 = _a.sent();
-                    console.error(e_2);
+                    e_3 = _a.sent();
+                    console.error(e_3);
                     return [3 /*break*/, 6];
                 case 5:
                     conn.release();
                     return [7 /*endfinally*/];
                 case 6: return [2 /*return*/];
+            }
+        });
+    }); },
+    CreateNewTopic: function (newTopic) { return __awaiter(void 0, void 0, void 0, function () {
+        var conn;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log(newTopic);
+                    return [4 /*yield*/, index_connection_1.default()];
+                case 1:
+                    conn = _a.sent();
+                    return [2 /*return*/];
             }
         });
     }); },

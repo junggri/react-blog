@@ -1,11 +1,11 @@
-import mysql, { PoolConnection } from "mysql2/promise";
+import mysql from "mysql2/promise";
 
-let option = {
+const option = {
    host: "localhost",
    user: "root",
    password: "wowwjd123",
    database: "contents",
-   connectionLimit: 40,
+   connectionLimit: 10,
    waitForConnections: true,
    multipleStatements: true,
 };
@@ -13,7 +13,7 @@ let option = {
 async function getConnection() {
    try {
       let pool = mysql.createPool(option);
-      let conn: PoolConnection | undefined = await pool.getConnection();
+      let conn = await pool.getConnection();
       return conn;
    } catch (error) {
       console.error(error);

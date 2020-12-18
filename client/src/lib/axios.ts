@@ -51,6 +51,7 @@ let util = {
       return instance({
          url: `/topic/topicname/${topicName}`,
          method: "post",
+         data: { newTopic: topicName },
          headers: { "X-XSRF-TOKEN": token },
       });
    },

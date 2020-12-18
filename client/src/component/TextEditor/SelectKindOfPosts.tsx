@@ -1,9 +1,7 @@
 import React, { ChangeEvent } from "react";
 import { SelectKindOfPosts, SelectKindOfPostsBoxComp } from "../../styled-comp";
+import { IKindsOfPostsProps } from "../../interface/index.interface";
 
-interface IKindsOfPostsProps {
-   onCheck: (payload: string) => void
-}
 
 function SelectKindOfPost({ onCheck }: IKindsOfPostsProps) {
 

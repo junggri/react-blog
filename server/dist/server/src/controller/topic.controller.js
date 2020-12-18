@@ -109,9 +109,15 @@ var contentController = {
             }
         });
     }); },
-    makeNewTopic: function (rea, res) { return __awaiter(void 0, void 0, void 0, function () {
+    makeNewTopic: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
         return __generator(this, function (_a) {
-            return [2 /*return*/];
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.CreateNewTopic(req.body.newTopic)];
+                case 1:
+                    result = _a.sent();
+                    return [2 /*return*/];
+            }
         });
     }); },
 };

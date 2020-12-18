@@ -274,10 +274,10 @@ export const WriteConditionBox = memo(styled.section`
 `);
 
 
-export const WriteBtnBoxComp = styled.div`
+export const WriteBtnBoxComp = (styled.div`
    padding-left:60px;
    margin-top:30px;
-`;
+`);
 
 export const WriteBtnComp = styled.button`
    border: 1px solid rgba(0, 0, 0, 0.2);

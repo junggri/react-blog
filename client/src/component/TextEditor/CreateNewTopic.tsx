@@ -3,11 +3,8 @@ import { AddTopicBtnComp, CreateNewTopicComp, CreateNewTopicListBoxComp, CreateN
 import { MdDelete } from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import util from "../../lib/axios";
+import { ICreateNewTopicProps } from "../../interface/index.interface";
 
-interface ICreateNewTopicProps {
-   topic: any[] | null
-   token: string
-}
 
 function CreateNewTopic({ topic, token }: ICreateNewTopicProps) {
 

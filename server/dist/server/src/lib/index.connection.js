@@ -45,7 +45,7 @@ var option = {
     user: "root",
     password: "wowwjd123",
     database: "contents",
-    connectionLimit: 40,
+    connectionLimit: 10,
     waitForConnections: true,
     multipleStatements: true,
 };

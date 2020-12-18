@@ -2,7 +2,7 @@ import connection from "../lib/index.connection";
 import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import path from "path";
-import { ITextEditorProps } from "../../../client/src/modules/TextEditor/textEdit.interface";
+import { ITextInitialProps } from "../../../client/src/modules/TextEditor/textEdit.interface";
 
 
 let moment = require("moment");
@@ -10,8 +10,23 @@ require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 
 
+async function poolConnction(query: string, dep?: any) {
+   let conn = await connection();
+   if (conn !== undefined)
+      try {
+         let [result] = await conn.execute(query, dep);
+         conn.release();
+         return result;
+      } catch (e) {
+         console.error(e);
+         conn.release();
+      }
+}
+
 const contentModel = {
    getAllPosts: async () => {
+      const result = await poolConnction("show tables");
+      console.log(result);
       let conn: any = await connection();
       try {
          let [result] = await conn.query("show tables");
@@ -23,7 +38,7 @@ const contentModel = {
       }
    },
 
-   savePosts: async ({ contentName, content, topicName, kindOfPosts, detail }: ITextEditorProps) => {
+   savePosts: async ({ contentName, content, topicName, kindOfPosts, detail }: ITextInitialProps) => {
       let conn = await connection();
       const uid = uuidv4();
       const today = new Date();
@@ -75,6 +90,13 @@ const contentModel = {
             conn.release();
          }
    },
+
+   CreateNewTopic: async (newTopic: string) => {
+      console.log(newTopic);
+      const conn = await connection();
+
+   },
 };
 
 export default contentModel;
+
