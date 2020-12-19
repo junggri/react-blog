@@ -31,7 +31,7 @@ const contentModel = {
    savePosts: async ({ contentName, content, topicName, kindOfPosts, detail }: ITextInitialProps) => {
       const uid = uuidv4();
       const today = new Date();
-      const dateString = today.toLocaleDateString("ko-KR", {
+      const dateString = today.toLocaleDateString("en-US", {
          year: "numeric",
          month: "long",
          day: "numeric",
@@ -72,6 +72,18 @@ const contentModel = {
                      date timestamp not null
                      )`;
       return await poolConnction(query);
+   },
+
+   getAllPostsItems: async () => {
+      const dataArr: any[] = [];
+      const tables: any = await poolConnction("show tables");
+      for (let i = 0; i < tables.length; i++) {
+         let result: any = await poolConnction(`select * from ${tables[i]["Tables_in_contents"]} order by id ASC`);
+         for (let j = 0; j < result.length; j++) {
+            dataArr.push(result[j]);
+         }
+      }
+      return dataArr;
    },
 };
 

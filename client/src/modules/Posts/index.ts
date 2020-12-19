@@ -10,6 +10,9 @@ export const GET_POST = "data/GET_POST";
 export const GET_POST_SUCCESS = "data/GET_POST_SUCCESS";
 export const GET_POST_ERROR = "data/GET_POST_ERROR";
 
+export const GET_ALL_POSTS = "data/GET_ALL_POSTS";
+export const GET_ALL_POSTS_SECCUESS = "data/GET_ALL_POSTS_SUCCESS";
+export const GET_ALL_POSTS_ERROR = "data/GET_ALL_POSTS_ERROR";
 
 //액션 생성함수를 선언!
 export const onRequest = () => ({
@@ -40,6 +43,19 @@ const onRequestPostError = (e: Error) => ({
    error: e,
 });
 
+export const onRequsetAllPosts = () => ({
+   type: GET_ALL_POSTS,
+});
+
+export const onRequsetAllPostsSuccess = (payload: any[]) => ({
+   type: GET_ALL_POSTS_SECCUESS,
+   payload: payload,
+});
+
+export const onRequestAllPostsError = (e: Error) => ({
+   type: GET_ALL_POSTS_ERROR,
+   error: e,
+});
 
 export const onRequestPosts = (params: string) => async (dispatch: any, getState: any) => {
    dispatch(onRequest());
@@ -61,14 +77,24 @@ export const onRequsetPost = (topic: string, postsId: string) => async (dispatch
    }
 };
 
+export const onRequestAllPosts = () => async (dispatch: any) => {
+   dispatch(onRequsetAllPosts());
+   try {
+      const { data } = await util.getAllPostsItems();
+      dispatch(onRequsetAllPostsSuccess(data));
+   } catch (e) {
+      dispatch(onRequestAllPostsError(e));
+   }
+};
 
 let initialState: IPostInitialState = {
    posts: initial.PostsInit(),
    post: initial.PostInit(),
+   AllPosts: initial.AllPosts(),
 };
 
 
-export default function Posts(state = initialState, action: DataAction) {
+export default function Posts(state: IPostInitialState = initialState, action: DataAction) {
    switch (action.type) {
       case GET_POSTS:
          return {
@@ -119,6 +145,33 @@ export default function Posts(state = initialState, action: DataAction) {
          return {
             ...state,
             post: {
+               data: null,
+               loading: false,
+               error: action.error,
+            },
+         };
+      case GET_ALL_POSTS:
+         return {
+            ...state,
+            AllPosts: {
+               data: null,
+               loading: true,
+               error: null,
+            },
+         };
+      case GET_ALL_POSTS_SECCUESS:
+         return {
+            ...state,
+            AllPosts: {
+               data: action.payload,
+               loading: false,
+               error: null,
+            },
+         };
+      case GET_ALL_POSTS_ERROR:
+         return {
+            ...state,
+            AllPosts: {
                data: null,
                loading: false,
                error: action.error,

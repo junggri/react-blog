@@ -55,7 +55,7 @@ const sessionConfig = {
 };
 
 
-app.set("port", process.env.PORT || 4000);
+app.set("port", process.env.PORT || 9000);
 
 app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");

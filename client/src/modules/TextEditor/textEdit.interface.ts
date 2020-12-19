@@ -15,6 +15,7 @@ export type EditorAction =
    | ReturnType<typeof onSetKindOfPosts>
    | ReturnType<typeof onSetDetail>
 
+
 export interface ITextEditModuleProps {
    data: ITextInitialProps
    setContent: (payload: string) => void

@@ -5,6 +5,7 @@ export const GET_TOPIC = "topic/GET_TOPIC";
 export const GET_TOPIC_SUCCESS = "topic/GET_TOPIC_SUCCESS";
 export const GET_TOPIC_ERROR = "topic/GET_TOPIC_ERROR";
 
+
 export const getTopic = () => ({ type: GET_TOPIC });
 export const getTopicSuccess = (payload: any[]) => ({ type: GET_TOPIC_SUCCESS, payload });
 export const getTopicError = (e: Error) => ({ type: GET_TOPIC_ERROR, e });

@@ -13,5 +13,12 @@ export const initial = {
          error: null,
       };
    },
+   AllPosts() {
+      return {
+         data: null,
+         loading: null,
+         error: null,
+      };
+   },
 };
 

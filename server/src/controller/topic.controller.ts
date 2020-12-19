@@ -13,6 +13,8 @@ interface Controller {
    getPostsFromPostsId(req: Request, res: Response): void
 
    makeNewTopic(req: Request, res: Response): void
+
+   getAllPostsItems(req: Request, Res: Response): any
 }
 
 let contentController: Controller = {
@@ -38,7 +40,6 @@ let contentController: Controller = {
       let fileName = path.join(__dirname + "c/../../contents", `${req.params.postsId}.html`);
       try {
          let content = await fs.readFile(fileName, "utf-8");
-
          let result = await model.getPostFromPostId(topic, postsId);
          res.status(200).json({
             content: content,
@@ -52,6 +53,11 @@ let contentController: Controller = {
    makeNewTopic: async (req, res) => {
       await model.CreateNewTopic(req.body.newTopic);
       res.status(200).json({ state: true });
+   },
+
+   getAllPostsItems: async (req, res) => {
+      const result = await model.getAllPostsItems();
+      res.status(200).json(result);
    },
 };
 

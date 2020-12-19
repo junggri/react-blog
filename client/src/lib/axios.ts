@@ -47,6 +47,13 @@ let util = {
       });
    },
 
+   getAllPostsItems() {
+      return instance({
+         url: "/topic/posts/items",
+         method: "get",
+      });
+   },
+
    makeNewTopic(topicName: string, token: string) {
       return instance({
          url: `/topic/topicname/${topicName}`,

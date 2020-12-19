@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { darken } from "polished";
 import React, { memo } from "react";
+import { NavLink } from "react-router-dom";
 
 
 export interface Width {
@@ -29,10 +30,114 @@ interface ListBox {
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
-const leftWidth = 200;
+const leftWidth = 320;
 const rightWidth = 180;
 
+interface IEntryContainerComp {
+   width: number
+}
 
+export const EntryContainerComp = styled.div<IEntryContainerComp>`
+  width:${props => props.width + "px"};
+  position:relative;
+  margin:0 auto;
+`;
+
+export const SideBarComp = styled.section`
+  display: inline-block;
+  height: 100vh;
+  position: fixed;
+  width:320px; 
+  & .sidebar-copyright{
+    position: absolute;
+    bottom:20%;
+    letter-spacing: 1.1px;
+    font-size:12px;
+  }
+`;
+
+export const SideBarThunmbNailComp = styled.div`
+  border:1px solid black;
+  position: relative;
+  width:35%;
+  padding-bottom: 35%;
+  border-radius: 5px;
+  margin-top:60px;
+`;
+
+export const SideBarMetaDataComp = styled.div`
+  margin-top:50px;
+  & .sidebar-names{
+    font-size:2rem;
+    letter-spacing: 1.2px;
+  }
+  & .sidebar-posi{
+    letter-spacing: 1.2px;
+    font-size:1.4rem;
+    font-weight: 300;
+    &.posi1{
+      margin-top:30px;
+    }
+    &.posi2{
+      margin-top:4px;
+    }
+  }
+`;
+
+export const SideBarPostsContainerComp = styled.ul`
+  margin-top:50px;
+  perspective: 600px;
+`;
+export const SideBarPostsItemComp = styled(NavLink)`
+  height: 20px;
+  display:block;
+  margin-bottom:15px;
+  transition: all 0.3s;
+  & div{
+    vertical-align: middle;
+    font-size:1.4rem;
+    font-weight: 300;
+  }
+  &:hover{
+    transform: perspective(600px) rotateY(45deg);
+  }
+`;
+
+export const EntryPostsContainerComp = styled.div<Width>`
+  padding-top:60px;
+  padding-left:55px;
+  padding-right:20px;
+  position: absolute;
+  right:0;
+  width:${props => props.width - leftWidth + "px"};
+  margin-bottom:60px;
+`;
+
+export const EntryPostsItemComp = styled(NavLink)`
+  display: block;
+  margin-bottom:50px;
+  & .item-created{
+    display: inline-block;
+    font-size:1.1rem;
+  }
+  & .item-contentName{
+    font-size:2.7rem;
+    margin-top:6px;
+  }
+  & .item-detail{
+    font-size:1.2rem;
+    margin-top:10px;
+  }
+  & .posts-keyword-box{
+    margin-top:20px;
+  }
+  & .posts-keywords{
+    border:1px solid red;
+    display: inline-block;
+    padding:7px 14px;
+    border-radius: 15px;
+  }
+`;
 export const TopCommonSectionComp = (styled.div<topView>`
    position: relative;
    margin: 0 auto;

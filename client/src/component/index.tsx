@@ -24,3 +24,7 @@ export { default as KindOfPosts } from "component/TextEditor/SelectKindOfPosts";
 export { default as PostsDetail } from "component/TextEditor/PostsDetail";
 export { default as CreateNewTopic } from "component/TextEditor/CreateNewTopic";
 //////containers
+
+
+export { default as EntryPostsContainer } from "component/Home/EntryPostsContainer";
+export { default as SideBarContainer } from "component/Common/SideNavBar";

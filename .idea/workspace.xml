@@ -20,14 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/component/Common/SideNavBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Home/EntryPostsContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/41b1d281-6aa5-4261-9566-df7979ba151e.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Common/CommonEntry.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/CreateNewTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/CreateNewTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/interface/index.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/index.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsUtil.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsUtil.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/TextEditor/textEdit.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/TextEditor/textEdit.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Topic/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Topic/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Topic/topic.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Topic/topic.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useTopic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,16 +113,16 @@
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src/lib" />
-      <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client/public/image" />
       <recent name="$PROJECT_DIR$/client/src/modules/index" />
       <recent name="$PROJECT_DIR$/client/src/modules/Common" />
       <recent name="$PROJECT_DIR$/client/src/component/Common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/lib" />
+      <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -191,6 +219,8 @@
       <workItem from="1608287237854" duration="161000" />
       <workItem from="1608293191818" duration="5181000" />
       <workItem from="1608304784893" duration="1392000" />
+      <workItem from="1608341606714" duration="31226000" />
+      <workItem from="1608390105403" duration="366000" />
     </task>
     <servers />
   </component>
@@ -233,12 +263,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="696" y="406" key="#Scopes/0.25.1792.1038@0.25.1792.1038" timestamp="1607680606901" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608253514020">
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608351740653">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607771126031" />
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553795014" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608253514020" />
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608351740653" />
     <state x="537" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607746260752">
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
@@ -300,15 +330,15 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="643" y="160" width="1125" height="903" key="SettingsEditor" timestamp="1608250198869">
-      <screen x="0" y="25" width="1792" height="1041" />
+    <state x="2481" y="162" width="1125" height="903" key="SettingsEditor" timestamp="1608389287369">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
-    <state x="643" y="160" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1608250198869" />
+    <state x="643" y="160" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1608372810476" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
-    <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608122555958" />
+    <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608389287369" />
     <state x="2482" y="157" width="1184" height="728" key="SettingsEditor/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607693454263" />
     <state x="2376" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608216669282">
       <screen x="1792" y="25" width="1920" height="1055" />
@@ -325,12 +355,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup" timestamp="1608295191863">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup" timestamp="1608368659350">
+      <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
-    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1608199295432" />
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1608368659350" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608295191863" />

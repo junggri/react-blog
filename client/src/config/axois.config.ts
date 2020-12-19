@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const instance = axios.create({
-   baseURL: "/",
+   baseURL: "http://localhost:9000/",
    // headers: { "Authorization": "Asd" },
    // adapter: cacheAdapterEnhancer((axios.defaults as any).adapter),
 });

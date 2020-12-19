@@ -91,7 +91,7 @@ var contentModel = {
                     case 0:
                         uid = uuid_1.v4();
                         today = new Date();
-                        dateString = today.toLocaleDateString("ko-KR", {
+                        dateString = today.toLocaleDateString("en-US", {
                             year: "numeric",
                             month: "long",
                             day: "numeric",
@@ -121,12 +121,11 @@ var contentModel = {
             }
         });
     }); },
-    getPostFromPostId: function (params) { return __awaiter(void 0, void 0, void 0, function () {
-        var topic, postsId, query, dep;
+    getPostFromPostId: function (topic, postsId) { return __awaiter(void 0, void 0, void 0, function () {
+        var query, dep;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    topic = params.topic, postsId = params.postsId;
                     query = "SELECT * FROM " + topic + " where uid = ?";
                     dep = [postsId];
                     return [4 /*yield*/, poolConnction(query, dep)];
@@ -135,15 +134,40 @@ var contentModel = {
         });
     }); },
     CreateNewTopic: function (newTopic) { return __awaiter(void 0, void 0, void 0, function () {
-        var conn;
+        var query;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(newTopic);
-                    return [4 /*yield*/, index_connection_1.default()];
+                    query = "CREATE TABLE " + newTopic + "(\n                     Id int(11) not null auto_increment primary key,\n                     uid  varchar(50) not null,\n                     content_name varchar(120) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     file varchar(100) not null,\n                     comments varchar(50),\n                     detail varchar(50) not null,\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null\n                     )";
+                    return [4 /*yield*/, poolConnction(query)];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    }); },
+    getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
+        var dataArr, tables, i, result, j;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    dataArr = [];
+                    return [4 /*yield*/, poolConnction("show tables")];
                 case 1:
-                    conn = _a.sent();
-                    return [2 /*return*/];
+                    tables = _a.sent();
+                    i = 0;
+                    _a.label = 2;
+                case 2:
+                    if (!(i < tables.length)) return [3 /*break*/, 5];
+                    return [4 /*yield*/, poolConnction("select * from " + tables[i]["Tables_in_contents"] + " order by id ASC")];
+                case 3:
+                    result = _a.sent();
+                    for (j = 0; j < result.length; j++) {
+                        dataArr.push(result[j]);
+                    }
+                    _a.label = 4;
+                case 4:
+                    i++;
+                    return [3 /*break*/, 2];
+                case 5: return [2 /*return*/, dataArr];
             }
         });
     }); },

@@ -1,17 +1,19 @@
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../modules";
-import {useEffect} from "react";
-import {onReqTopicsName} from "../modules/Topic";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../modules";
+import { useCallback, useEffect } from "react";
+import { onReqTopicsName } from "../modules/Topic";
 
 export default function useTopic() {
-    const dispatch = useDispatch();
+   const dispatch = useDispatch();
+   const { topic, loading, error } = useSelector((state: RootState) => state.topic);
 
-    const {topic, loading, error} = useSelector((state: RootState) => state.topic);
+   const makeAndReqNewTopics = useCallback(() => {
+      dispatch(onReqTopicsName());
+   }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(onReqTopicsName());
-    }, [dispatch]);
+   useEffect(() => {
+      dispatch(onReqTopicsName());
+   }, [dispatch]);
 
-    return {topic, loading, error};
-
+   return { topic, loading, error, makeAndReqNewTopics };
 }

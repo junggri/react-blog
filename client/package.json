@@ -132,7 +132,6 @@
     "@types/redux-logger": "^3.0.8",
     "prettier": "2.2.1"
   },
-  "proxy": "http://localhost:4000",
   "jest": {
     "roots": [
       "<rootDir>/src"

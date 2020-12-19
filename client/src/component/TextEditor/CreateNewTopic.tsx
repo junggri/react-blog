@@ -6,8 +6,7 @@ import util from "../../lib/axios";
 import { ICreateNewTopicProps } from "../../interface/index.interface";
 
 
-function CreateNewTopic({ topic, token }: ICreateNewTopicProps) {
-
+function CreateNewTopic({ topic, token, onMakeTopic }: ICreateNewTopicProps) {
    const [click, setClick] = useState<boolean>(false);
    const [newTopic, setNewtopic] = useState<string>("");
 
@@ -21,8 +20,9 @@ function CreateNewTopic({ topic, token }: ICreateNewTopicProps) {
 
    const MakeNewTopic = async () => {
       await util.makeNewTopic(newTopic, token);
-      //ㅕ여기서 데이터 삭제하는 거해야함
+      onMakeTopic();
       setClick(!click);
+      setNewtopic("");
    };
 
    if (topic === null) return null;
