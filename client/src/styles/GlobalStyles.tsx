@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-
+import { darken } from "polished";
 
 const GlobalStyles = createGlobalStyle`
  ${reset}
@@ -48,7 +48,7 @@ const GlobalStyles = createGlobalStyle`
     .quill img{
         height: auto;
         width:auto;
-        max-height: 500px;
+        max-height: 700px;
         position: relative;
         margin :0 auto;
     }
@@ -88,15 +88,13 @@ const GlobalStyles = createGlobalStyle`
         height:90%
     }
     .ql-syntax{
-     padding:10px 10px; 
+     padding:30px 30px; 
      border-radius: 4px;
-     overflow: scroll;
-     font-size: 13px;
-     font-weight:300 !important;
+     font-size: 1.02rem; 
      font-family: monospace;
-     color:gray;
+     background: ${darken(0.02, "#fafafa")};
      & span{
-         width:80%;
+        font-weight:300 !important;
       }
     }
     .ql-toolbar.ql-snow{
@@ -104,12 +102,10 @@ const GlobalStyles = createGlobalStyle`
         border-right:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }   
-    .hljs-keyword,.hljs-string,.hljs-params,.hljs-emphasis{
-       font-weight: 300 !important;
-    }
-    .hljs-name{
-       color:gray
-    }
+     .hljs-keyword,.hljs-string,.hljs-params,.hljs-emphasis{
+        //font-weight: 300 !important;
+     }
+
 `;
 
 export default GlobalStyles;

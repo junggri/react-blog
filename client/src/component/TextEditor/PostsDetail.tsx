@@ -15,9 +15,10 @@ function PostsDetail({ onChangeDetail }: IPostsDetailProps) {
 
    return (
       <PostsDetailComp>
-         <h1>추가설멸을 입력하세요</h1>
+         <h1>추가설명을 입력하세요</h1>
          <input type="text" onChange={onChange} value={value} />
-      </PostsDetailComp>);
+      </PostsDetailComp>
+   );
 }
 
 export default React.memo(PostsDetail);

@@ -62,12 +62,16 @@ let util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
-   test() {
+
+   deleteTopic(topicName: string, token: string) {
       return instance({
-         url: "/api/test",
+         url: `/topic/delete/:${topicName}`,
          method: "post",
+         data: { topicName: topicName },
+         headers: { "X-XSRF-TOKEN": token },
       });
    },
+
 };
 
 export default util;

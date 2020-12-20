@@ -6,13 +6,16 @@ import { ITopicinitialState } from "../../modules/Topic/topic.interface";
 import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import usePosts from "../../useHooks/usePosts";
 import { IPostsModuleProps } from "../../modules/Posts/posts.interface";
-import { EntryPostsContainer, SideBarContainer } from "component";
-
+import { EntryPostsContainer, SideBarContainer, SpecificTopicContainer } from "component";
+import { Route } from "react-router-dom";
 
 function CommonEntry({ match }: any) {
+   //TODO 최적화 진행하기!!!!!!!!!!!!!!!!!
+
+
    const { topic, loading, error }: ITopicinitialState = useTopic();
-   const { width, height, setHeight, e }: ICommonModuleProps = useCommon();
-   const { AllPosts }: IPostsModuleProps = usePosts();
+   const { width, e }: ICommonModuleProps = useCommon();
+   const { AllPosts, posts, getPosts }: IPostsModuleProps = usePosts();
 
 
    if (!topic) return null;
@@ -21,7 +24,12 @@ function CommonEntry({ match }: any) {
    return (
       <EntryContainerComp width={width}>
          <SideBarContainer topic={topic} />
-         <EntryPostsContainer width={width} posts={AllPosts} />
+         <Route path="/" exact render={() => (
+            <EntryPostsContainer width={width} posts={AllPosts} />
+         )} />
+         <Route path="/topic/:topic" exact render={() => (
+            <SpecificTopicContainer width={width} match={match} onGetPosts={getPosts} posts={posts} />
+         )} />
       </EntryContainerComp>
    );
 };

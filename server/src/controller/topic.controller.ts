@@ -5,16 +5,12 @@ import path from "path";
 
 interface Controller {
    getContentName(req: Request, res: Response): void;
-
    savePosts(req: Request, res: Response): void;
-
    getPostsFromTopicName(req: Request, res: Response): void
-
    getPostsFromPostsId(req: Request, res: Response): void
-
    makeNewTopic(req: Request, res: Response): void
-
    getAllPostsItems(req: Request, Res: Response): any
+   deleteTopic(req: Request, Res: Response): any
 }
 
 let contentController: Controller = {
@@ -58,6 +54,11 @@ let contentController: Controller = {
    getAllPostsItems: async (req, res) => {
       const result = await model.getAllPostsItems();
       res.status(200).json(result);
+   },
+
+   deleteTopic: async (req, res) => {
+      await model.deleteTopic(req.body.topicName);
+      res.status(200).json({ state: true });
    },
 };
 

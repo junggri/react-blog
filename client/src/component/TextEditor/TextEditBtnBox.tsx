@@ -4,7 +4,6 @@ import { ITextEditBtnBoxProps } from "../../interface/index.interface";
 
 
 const TextEditBtnBox = ({ onSubmit }: ITextEditBtnBoxProps) => {
-
    return (
       <WriteBtnBoxComp>
          <WriteBtnComp onClick={onSubmit}>등록하기</WriteBtnComp>

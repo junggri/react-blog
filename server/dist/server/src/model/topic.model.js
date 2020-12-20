@@ -65,9 +65,9 @@ function poolConnction(query, dep) {
                     return [2 /*return*/, result];
                 case 4:
                     e_1 = _a.sent();
-                    console.error(e_1);
+                    console.log(e_1);
                     conn.release();
-                    return [3 /*break*/, 5];
+                    return [2 /*return*/, { state: false }];
                 case 5: return [2 /*return*/];
             }
         });
@@ -85,7 +85,7 @@ var contentModel = {
     savePosts: function (_a) {
         var contentName = _a.contentName, content = _a.content, topicName = _a.topicName, kindOfPosts = _a.kindOfPosts, detail = _a.detail;
         return __awaiter(void 0, void 0, void 0, function () {
-            var uid, today, dateString, writePath, query, dep;
+            var uid, today, dateString, writePath, query, dep, result;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -97,15 +97,22 @@ var contentModel = {
                             day: "numeric",
                         });
                         writePath = path_1.default.join(__dirname + "/../../contents");
-                        query = "INSERT INTO " + topicName + " \n                     (uid, content_name, created, modified, file, comments, kindOfPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?)";
-                        dep = [uid, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()];
+                        query = "INSERT INTO " + topicName + " \n                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        dep = [uid, topicName, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()];
                         return [4 /*yield*/, poolConnction(query, dep)];
                     case 1:
-                        _b.sent();
+                        result = _b.sent();
+                        if (!result) return [3 /*break*/, 3];
                         return [4 /*yield*/, fs_1.promises.writeFile(writePath + "/" + uid + ".html", content, "utf8")];
                     case 2:
                         _b.sent();
                         return [2 /*return*/, { state: true }];
+                    case 3:
+                        if (!result.state) {
+                            return [2 /*return*/, result];
+                        }
+                        _b.label = 4;
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -138,36 +145,61 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "CREATE TABLE " + newTopic + "(\n                     Id int(11) not null auto_increment primary key,\n                     uid  varchar(50) not null,\n                     content_name varchar(120) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     file varchar(100) not null,\n                     comments varchar(50),\n                     detail varchar(50) not null,\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null\n                     )";
+                    query = "CREATE TABLE " + newTopic + "(\n                     Id int(11) not null auto_increment primary key,\n                     uid  varchar(50) not null,\n                     topic varchar(11) not null,\n                     content_name varchar(200) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     file varchar(100) not null,\n                     comments varchar(50),\n                     detail varchar(200) not null,\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null\n                     )";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var dataArr, tables, i, result, j;
+        var conn, dataArr, result, i, data, j, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, index_connection_1.default()];
+                case 1:
+                    conn = _a.sent();
+                    dataArr = [];
+                    if (!(conn !== undefined)) return [3 /*break*/, 9];
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 8, , 9]);
+                    return [4 /*yield*/, conn.execute("show tables")];
+                case 3:
+                    result = (_a.sent())[0];
+                    conn.release();
+                    i = 0;
+                    _a.label = 4;
+                case 4:
+                    if (!(i < result.length)) return [3 /*break*/, 7];
+                    return [4 /*yield*/, conn.execute("select * from " + result[i]["Tables_in_contents"] + " order by id ASC")];
+                case 5:
+                    data = (_a.sent())[0];
+                    conn.release();
+                    for (j = 0; j < data.length; j++) {
+                        dataArr.push(data[j]);
+                    }
+                    _a.label = 6;
+                case 6:
+                    i++;
+                    return [3 /*break*/, 4];
+                case 7: return [3 /*break*/, 9];
+                case 8:
+                    e_2 = _a.sent();
+                    conn.release();
+                    console.log(e_2);
+                    return [3 /*break*/, 9];
+                case 9: return [2 /*return*/, dataArr];
+            }
+        });
+    }); },
+    deleteTopic: function (topicName) { return __awaiter(void 0, void 0, void 0, function () {
+        var query;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    dataArr = [];
-                    return [4 /*yield*/, poolConnction("show tables")];
-                case 1:
-                    tables = _a.sent();
-                    i = 0;
-                    _a.label = 2;
-                case 2:
-                    if (!(i < tables.length)) return [3 /*break*/, 5];
-                    return [4 /*yield*/, poolConnction("select * from " + tables[i]["Tables_in_contents"] + " order by id ASC")];
-                case 3:
-                    result = _a.sent();
-                    for (j = 0; j < result.length; j++) {
-                        dataArr.push(result[j]);
-                    }
-                    _a.label = 4;
-                case 4:
-                    i++;
-                    return [3 /*break*/, 2];
-                case 5: return [2 /*return*/, dataArr];
+                    query = "DROP TABLE " + topicName;
+                    return [4 /*yield*/, poolConnction(query)];
+                case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); },

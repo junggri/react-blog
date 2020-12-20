@@ -133,6 +133,17 @@ var contentController = {
             }
         });
     }); },
+    deleteTopic: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.deleteTopic(req.body.topicName)];
+                case 1:
+                    _a.sent();
+                    res.status(200).json({ state: true });
+                    return [2 /*return*/];
+            }
+        });
+    }); },
 };
 exports.default = contentController;
 //# sourceMappingURL=topic.controller.js.map

@@ -15,6 +15,7 @@ export default function usePosts() {
       dispatch(onRequsetPost(topic, postsId));
    }, [dispatch]);
 
+
    useEffect(() => {
       dispatch(onRequestAllPosts());
    }, [dispatch]);

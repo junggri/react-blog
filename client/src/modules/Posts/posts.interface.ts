@@ -12,38 +12,8 @@ export interface DataAction {
       | typeof GET_ALL_POSTS_ERROR
    payload: any[]
    error: Error
+
 }
-
-export interface IPostInitialState {
-   posts: IPostsProps<IPostCommonProps>
-   post: IPostsProps<IPostCommonProps>
-   AllPosts: IPostsProps<IPostCommonProps>
-}
-
-//초기 상태
-
-export interface IPostsModuleProps {
-   posts: IPostsProps<IPostCommonProps>
-   post: IPostProps<IPostItemProps>
-   AllPosts: IPostsProps<IPostCommonProps>
-   getPosts: (params: string) => void
-   getPost: (topic: string, postId: string) => void
-}
-
-//이 인터페이스는 api요청 후 셋팅된 데이터의 인터페이스
-
-export interface IPostsProps<T> {
-   data: T[] | null
-   loading: boolean | null
-   error: Error | null
-}
-
-export interface IPostProps<U> {
-   data: U
-   loading: boolean | null
-   error: Error | null
-}
-
 
 export interface IPostCommonProps {
    comments: string | null
@@ -54,15 +24,52 @@ export interface IPostCommonProps {
    detail: string
    kindofPosts: string
    modified: string | null
+   topic: string
 }
 
-export interface IPostItemProps {
+export interface IPostInitialState {
+   posts: IPostsProps
+   post: IPostProps<IPostDataProps>
+   AllPosts: IAllPosts
+}
+
+export interface IAllPosts {
+   data: IPostCommonProps[]
+   loading: boolean
+   error: Error | null
+}
+
+export interface IPostsProps {
+   data: IPostCommonProps[]
+   loading: boolean
+   error: Error | null
+}
+
+//초기 상태
+
+export interface IPostProps<T> {
+   data: T | null
+   loading: boolean
+   error: Error | null
+}
+
+
+export interface IPostDataProps {
    content: string
    result: IPostCommonProps[]
 }
 
-export interface IAllPostsProps {
-   data: IPostCommonProps[]
-   loading: boolean
-   error: Error
+export interface IPostsModuleProps {
+   posts: IPostsProps
+   post: IPostProps<any>
+   AllPosts: IAllPosts
+   getPosts: (params: string) => void
+   getPost: (topic: string, postId: string) => void
 }
+
+//이 인터페이스는 api요청 후 셋팅된 데이터의 인터페이스
+
+
+
+
+

@@ -129,6 +129,7 @@
     "@types/react-highlight.js": "^1.0.0",
     "@types/react-redux": "^7.1.11",
     "@types/react-select": "^3.0.26",
+    "@types/react-syntax-highlighter": "^13.5.0",
     "@types/redux-logger": "^3.0.8",
     "prettier": "2.2.1"
   },
@@ -188,5 +189,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "proxy": "http://localhost:9000"
 }

@@ -1,8 +1,7 @@
-import styled from "styled-components";
-import { darken } from "polished";
+import styled, { css } from "styled-components";
+import { darken, lighten } from "polished";
 import React, { memo } from "react";
 import { NavLink } from "react-router-dom";
-
 
 export interface Width {
    width: number;
@@ -18,14 +17,13 @@ export interface contentBox {
    ref: any;
 }
 
-interface homeContentList {
-   children: any;
+interface IDeleteTopicIconComp {
+   onClick: any
 }
 
-interface ListBox {
-   width: number;
+interface ISideBarThunmbNailComp {
+   style: any
 }
-
 
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
@@ -36,6 +34,51 @@ const rightWidth = 180;
 interface IEntryContainerComp {
    width: number
 }
+
+const postsContainerMxin = css<Width>`
+  padding-top:60px;
+  padding-left:55px;
+  padding-right:20px;
+  position: absolute;
+  right:0;
+  width:${props => props.width - leftWidth + "px"};
+  margin-bottom:60px;
+`;
+
+const postsItemMixin = css`
+  display: block;
+  margin-bottom:60px;
+  & .item-created{
+    display: inline-block;
+    font-size:1.1rem;
+  }
+  & .item-contentName{
+    font-size:2.7rem;
+    margin-top:6px;
+  }
+  & .item-detail{
+    font-size:1.2rem;
+    margin-top:30px;
+  }
+  & .posts-keyword-box{
+    margin-top:15px;
+    & .posts-keywords{
+      transition: 0.3s all;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    & .posts-keywords:hover{
+      background: ${lighten(0.07, "#f58320")};
+    }
+  }
+  & .posts-keywords{
+    background: #f58320;
+    color:white;
+    display: inline-block;
+    padding:7px 14px;
+    border-radius: 15px;
+    letter-spacing: 1.2px;
+  }
+`;
 
 export const EntryContainerComp = styled.div<IEntryContainerComp>`
   width:${props => props.width + "px"};
@@ -48,16 +91,49 @@ export const SideBarComp = styled.section`
   height: 100vh;
   position: fixed;
   width:320px; 
+  & .sidebar-icons-box{
+    font-size:2rem;
+    display: flex;
+    margin-top:60px;
+    cursor: pointer;
+    & .icon-github,.icon-tohome,.icon-mail{
+      display: inline-block;
+      margin-right:18px;
+    }
+  }
   & .sidebar-copyright{
     position: absolute;
     bottom:20%;
     letter-spacing: 1.1px;
     font-size:12px;
   }
+  & .write-article-btn {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    padding: 7px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 100;
+    transition: all 0.2s;
+    margin-top:20px;
+   }
+  & .write-article-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  & .sidebar-divider{
+    width:2px;
+    position: absolute;
+    left:95%;
+    top:0;
+    height: 600px;
+    background: linear-gradient(rgb(230, 230, 230)0px, rgb(230, 230, 230)48%, rgb(255, 255, 255));
+  }
 `;
 
-export const SideBarThunmbNailComp = styled.div`
-  border:1px solid black;
+
+export const SideBarThunmbNailComp = styled.div<ISideBarThunmbNailComp>`
+  border:1px solid rgba(0,0,0,0.06);
   position: relative;
   width:35%;
   padding-bottom: 35%;
@@ -73,21 +149,22 @@ export const SideBarMetaDataComp = styled.div`
   }
   & .sidebar-posi{
     letter-spacing: 1.2px;
-    font-size:1.4rem;
+    font-size:1.2rem;
     font-weight: 300;
     &.posi1{
       margin-top:30px;
     }
     &.posi2{
-      margin-top:4px;
+      margin-top:6px;
     }
   }
 `;
 
-export const SideBarPostsContainerComp = styled.ul`
+export const SideBarPostsContainerComp = (styled.ul`
   margin-top:50px;
   perspective: 600px;
-`;
+`);
+
 export const SideBarPostsItemComp = styled(NavLink)`
   height: 20px;
   display:block;
@@ -104,40 +181,77 @@ export const SideBarPostsItemComp = styled(NavLink)`
 `;
 
 export const EntryPostsContainerComp = styled.div<Width>`
-  padding-top:60px;
-  padding-left:55px;
-  padding-right:20px;
-  position: absolute;
-  right:0;
-  width:${props => props.width - leftWidth + "px"};
-  margin-bottom:60px;
+  ${postsContainerMxin}
 `;
 
 export const EntryPostsItemComp = styled(NavLink)`
-  display: block;
-  margin-bottom:50px;
-  & .item-created{
-    display: inline-block;
-    font-size:1.1rem;
+  ${postsItemMixin}'
+`;
+
+export const SpecificTopicContainerComp = styled.ul`
+  ${postsContainerMxin};
+`;
+export const SpecificTopicItemsComp = styled(NavLink)`
+  ${postsItemMixin}'
+`;
+
+export const PostsContainerComp = styled.section<Width>`
+  position: relative;
+  margin: 0 auto;
+  width: ${(props) => props.width - 80 + "px"};
+  padding-bottom: 80px;
+  & .posts-container-iconbox{
+    padding:20px 20px;
+    font-size:1.5rem;
   }
-  & .item-contentName{
-    font-size:2.7rem;
-    margin-top:6px;
+  & img{
+    height:auto;
+    width:auto;
+    max-height: 700px;
+    position: relative;
+    margin :0 auto;
   }
-  & .item-detail{
-    font-size:1.2rem;
-    margin-top:10px;
+  & .posts-name{
+    padding-top:50px;
+    font-size:3.5rem;
+    text-align: center;
+    font-weight: bold;
   }
-  & .posts-keyword-box{
+  & .posts-detail{
+    text-align: center;
     margin-top:20px;
+    font-size:1.2rem
   }
-  & .posts-keywords{
-    border:1px solid red;
-    display: inline-block;
-    padding:7px 14px;
-    border-radius: 15px;
+  & .posts-content{
+    padding:20px 20px;
+    word-break:break-all;
+    font-size:1.125rem;
+    margin-top:50px;
+    & *{
+      white-space:pre-line;
+      word-break: break-all;
+      line-height: 2;
+    }
+  }
+  & .posts-created{
+    text-align: right;
+    font-size:1.2rem;
   }
 `;
+// & .posts-content{
+//    word-break:break-all;
+//    line-height: 1.5;
+//    padding: 10px 10px;
+//    border-radius: 5px;
+// & img{
+//       height:auto;
+//       width:auto;
+//       max-height: 500px;
+//       position: relative;
+//       margin :0 auto;
+//    }
+// }
+
 export const TopCommonSectionComp = (styled.div<topView>`
    position: relative;
    margin: 0 auto;
@@ -291,72 +405,8 @@ export const ContentRight = styled.section`
 `;
 
 
-export const ContentNavComp = styled.section`
-   position: absolute;
-   width: ${leftWidth + "px"};
-   margin-top: 70px;
-   font-size: 0;
-   &.fixed {
-      position: fixed;
-      top: 0px;
-   }
-`;
-
-export const ContentItemsComp = styled.div`
-   position: relative;
-   display: inline-block;
-   width: 100%;
-   height: 50px;
-   font-size: 15px;
-   font-weight: 100;
-   transition: all 0.2s;
-   &:hover {
-      color:black;
-      cursor: pointer;
-      font-weight: 600;
-   }
-`;
-
 //home Content
 
-export const HomeContentListBox = styled.section<ListBox>`
-   width: ${(props) => props.width - leftWidth + "px"};
-   position: absolute;
-   right: 0;
-   /* border: 1px solid black; */
-   margin-top: 70px;
-   padding: 0px 0px 0px 50px;
-`;
-
-
-export const HomeContentList = styled.div<homeContentList>`
-   border: 1px solid rgba(0, 0, 0, 0.2);
-   border-radius: 4px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
-   height: 350px;
-   margin-bottom: 50px;
-`;
-
-export const PostsBoxComp = styled.div`
-  & .posts-name{
-      padding:0 40px;
-      font-size: 50px;
-      text-align: center;
-    }
-  & .posts-content{
-      word-break:break-all;
-      line-height: 1.5;
-      padding: 10px 10px;
-      border-radius: 5px;
-      & img{
-        height:auto;
-        width:auto;
-        max-height: 500px;
-        position: relative;
-        margin :0 auto;
-      }
-  }
-`;
 
 //--------------------------------write---------------------------------------
 
@@ -461,7 +511,7 @@ export const CreateNewTopicListBoxComp = styled.div`
   width:180px;
 `;
 
-export const DeleteTopicIconComp = styled.div`
+export const DeleteTopicIconComp = styled.div<IDeleteTopicIconComp>`
   display: flex;
   font-size:20px;
   cursor: pointer;
@@ -550,12 +600,16 @@ export const PostsDetailComp = styled.div`
    padding-left:60px;
    padding-right: 60px;
    & h1{
-   font-size:1.7rem;
-   margin-bottom: 30px;
+    font-size:1.7rem;
+    margin-bottom: 30px;
    }
    & input{
-   border:1px solid black;
-   width:100%;
+    width:100%;
+    height: 50px;
+    outline-style: none;
+    border:none;
+    border-radius: 5px;
+    background-color: ${lighten(0.1, "#a5d8ff")};
    }
 `;
 

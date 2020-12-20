@@ -6,7 +6,7 @@ import util from "../../lib/axios";
 import { ICreateNewTopicProps } from "../../interface/index.interface";
 
 
-function CreateNewTopic({ topic, token, onMakeTopic }: ICreateNewTopicProps) {
+function CreateNewTopic({ topic, token, onMakeOrDelteTopic }: ICreateNewTopicProps) {
    const [click, setClick] = useState<boolean>(false);
    const [newTopic, setNewtopic] = useState<string>("");
 
@@ -18,12 +18,21 @@ function CreateNewTopic({ topic, token, onMakeTopic }: ICreateNewTopicProps) {
       setClick(!click);
    };
 
-   const MakeNewTopic = async () => {
+   const makeNewTopic = async () => {
       await util.makeNewTopic(newTopic, token);
-      onMakeTopic();
+      onMakeOrDelteTopic();
       setClick(!click);
       setNewtopic("");
    };
+
+   const deleteTopic = async (e: React.ChangeEvent<HTMLElement>) => {
+      if (window.confirm("정말로 삭제하겠습니까? 삭제하면 정보가 다사라집니다.")) {
+         await util.deleteTopic((e.currentTarget.dataset.topic) as string, token);
+         onMakeOrDelteTopic();
+      }
+   };
+
+   //TODO 엔터 입력시 만들어버리게
 
    if (topic === null) return null;
 
@@ -35,7 +44,7 @@ function CreateNewTopic({ topic, token, onMakeTopic }: ICreateNewTopicProps) {
             {topic.map((v: { Tables_in_contents: string }) => (
                <CreateNewTopicListItemComp key={v["Tables_in_contents"]}>
                   <span>{v["Tables_in_contents"]}</span>
-                  <DeleteTopicIconComp>
+                  <DeleteTopicIconComp onClick={deleteTopic} data-topic={v["Tables_in_contents"]}>
                      <MdDelete />
                   </DeleteTopicIconComp>
                </CreateNewTopicListItemComp>
@@ -45,7 +54,7 @@ function CreateNewTopic({ topic, token, onMakeTopic }: ICreateNewTopicProps) {
          {click &&
          <AddTopicBtnComp>
             <input type="text" value={newTopic} onChange={setNewTopicName} />
-            <IoIosAddCircle className="make-new-topic-btn" onClick={MakeNewTopic} />
+            <IoIosAddCircle className="make-new-topic-btn" onClick={makeNewTopic} />
          </AddTopicBtnComp>
          }
 

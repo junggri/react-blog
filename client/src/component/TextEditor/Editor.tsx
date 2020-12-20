@@ -25,7 +25,7 @@ const Editor = ({ history }: any) => {
 
    const ref: any = useRef(null) as MutableRefObject<any>;
    const { token } = useCommon();
-   const { topic, makeAndReqNewTopics }: ITopicModuleProps = useTopic();
+   const { topic, makeOrDeleteAndReqNewTopics }: ITopicModuleProps = useTopic();
 
    useEffect(() => {
       ref.current.focus();
@@ -52,9 +52,9 @@ const Editor = ({ history }: any) => {
       setDetail(detail);
    }, [setDetail]);
 
-   const onMakeTopic = useCallback(() => {
-      makeAndReqNewTopics();
-   }, [makeAndReqNewTopics]);
+   const onMakeOrDelteTopic = useCallback(() => {
+      makeOrDeleteAndReqNewTopics();
+   }, [makeOrDeleteAndReqNewTopics]);
 
    const onSubmit = async (): Promise<void> => {
       if (data.content === ""
@@ -82,7 +82,7 @@ const Editor = ({ history }: any) => {
          </WriteBox>
          <WriteConditionBox>
             <SelectTopic onIsChecked={onIsChecked} topic={topic} />
-            <CreateNewTopic topic={topic} token={token} onMakeTopic={onMakeTopic} />
+            <CreateNewTopic topic={topic} token={token} onMakeOrDelteTopic={onMakeOrDelteTopic} />
             <KindOfPosts onCheck={onCheckKindOfPosts} />
             <PostsDetail onChangeDetail={onChangeDetail} />
             <TextEditBtnBox onSubmit={onSubmit} />

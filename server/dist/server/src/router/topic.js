@@ -11,9 +11,8 @@ router.get("/contents/name", topic_controller_1.default.getContentName); //show 
 router.get("/posts/items", topic_controller_2.default.getAllPostsItems);
 router.get("/posts/:topic", topic_controller_1.default.getPostsFromTopicName);
 router.get("/:topic/posts/:postsId", topic_controller_1.default.getPostsFromPostsId);
+router.post("/delete/:topicname", topic_controller_2.default.deleteTopic);
 router.post("/topicname/:newTopicName", topic_controller_2.default.makeNewTopic);
 router.post("/posts", topic_controller_1.default.savePosts); //save content
-router.get("/test", function (req, res) {
-});
 exports.default = router;
 //# sourceMappingURL=topic.js.map

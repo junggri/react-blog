@@ -46,7 +46,7 @@ export interface IKindsOfPostsProps {//kindofPosts
 export interface ICreateNewTopicProps {//createNewtopic-write
    topic: any[] | null
    token: string
-   onMakeTopic: () => void
+   onMakeOrDelteTopic: () => void
 }
 
 export interface ITextEditBtnBoxProps {//wirte BtnBox

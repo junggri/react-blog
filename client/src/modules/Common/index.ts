@@ -1,14 +1,11 @@
 import util from "../../lib/axios";
 import { ICommonAction, ICommonState } from "./common.interface";
 
-export const SET_HEIGHT = "common/SET_HEIGHT";
 
 export const GET_CSRF = "common/GET_CSRF";
 export const GET_CSRF_SUCCESS = "common/GET_CSRF_SUCCESS";
 export const GET_CSRF_ERROR = "common/GET_CSRF_ERROR";
 
-
-export const onSetHeight = (payload: number) => ({ type: SET_HEIGHT, payload });
 
 export const onGetCsrf = () => ({ type: GET_CSRF });
 export const onGetCsrfSuccess = (payload: number) => ({ type: GET_CSRF_SUCCESS, payload });
@@ -33,7 +30,6 @@ export const onRequestGetCsrf = () => async (dispatch: any, getState: any) => {
 
 
 const initialState: ICommonState = {
-   height: null,
    width: window.screen.width * 0.61,
    token: null,
    loading: false,
@@ -43,11 +39,6 @@ const initialState: ICommonState = {
 
 export default function common(state: ICommonState = initialState, action: ICommonAction) {
    switch (action.type) {
-      case SET_HEIGHT:
-         return {
-            ...state,
-            height: action.payload,
-         };
       case GET_CSRF:
          return {
             ...state,
