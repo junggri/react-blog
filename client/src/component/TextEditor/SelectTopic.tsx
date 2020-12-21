@@ -27,6 +27,6 @@ function SelectTopic({ topic, onIsChecked }: ISelectopicProps) {
          </div>
       </SelectTopicBoxComp>
    );
-};
+}
 
 export default React.memo(SelectTopic);

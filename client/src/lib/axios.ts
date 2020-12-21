@@ -3,7 +3,7 @@ import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
 import { IGetPostFromPostId } from "../interface/index.interface";
 
 
-let util = {
+const util = {
    getCSRTtoken() {
       return instance({
          url: "/api/csrf",

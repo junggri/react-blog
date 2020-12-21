@@ -9,7 +9,6 @@ export default function useCommon() {
 
 
    useEffect(() => {
-      console.log("effect common");
       dispatch(onRequestGetCsrf());
    }, [dispatch]);
 

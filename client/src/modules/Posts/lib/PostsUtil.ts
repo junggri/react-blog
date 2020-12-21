@@ -1,7 +1,7 @@
 export const initial = {
    PostsInit() {
       return {
-         data: [],
+         data: null,
          loading: false,
          error: null,
       };
@@ -15,7 +15,7 @@ export const initial = {
    },
    AllPosts() {
       return {
-         data: [],
+         data: null,
          loading: false,
          error: null,
       };

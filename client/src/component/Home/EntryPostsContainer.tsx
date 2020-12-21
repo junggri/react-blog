@@ -1,15 +1,15 @@
 import React from "react";
 import { EntryPostsContainerComp, EntryPostsItemComp } from "../../styled-comp";
-import { IPostsProps } from "../../modules/Posts/posts.interface";
+import { IAllPosts } from "../../modules/Posts/posts.interface";
 
 interface IEntryPostsContainer {
    width: number,
-   posts: IPostsProps
+   posts: IAllPosts
 }
 
-function EntryPostsContainer({ width, posts }: IEntryPostsContainer) {
+const EntryPostsContainer = ({ width, posts }: IEntryPostsContainer) => {
 
-   if (!posts) return null;
+   if (!posts.data) return null;
    return (
       <EntryPostsContainerComp width={width}>
          <div>
@@ -30,6 +30,6 @@ function EntryPostsContainer({ width, posts }: IEntryPostsContainer) {
          </div>
       </EntryPostsContainerComp>
    );
-}
+};
 
 export default EntryPostsContainer;

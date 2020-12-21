@@ -87,14 +87,14 @@ export const onRequestAllPosts = () => async (dispatch: any) => {
    }
 };
 
-let initialState: IPostInitialState = {
+const initialState: IPostInitialState = {
    posts: initial.PostsInit(),
    post: initial.PostInit(),
    AllPosts: initial.AllPosts(),
 };
 
 
-export default function Posts(state: IPostInitialState = initialState, action: DataAction) {
+export default function Posts(state: IPostInitialState = initialState, action: DataAction): IPostInitialState {
    switch (action.type) {
       case GET_POSTS:
          return {
@@ -138,7 +138,7 @@ export default function Posts(state: IPostInitialState = initialState, action: D
             post: {
                data: action.payload,
                loading: false,
-               erorr: null,
+               error: null,
             },
          };
       case GET_POST_ERROR:

@@ -134,6 +134,7 @@ export const SideBarComp = styled.section`
 
 export const SideBarThunmbNailComp = styled.div<ISideBarThunmbNailComp>`
   border:1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   position: relative;
   width:35%;
   padding-bottom: 35%;

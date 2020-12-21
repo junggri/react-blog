@@ -64,7 +64,7 @@ const Editor = ({ history }: any) => {
          || data.topicName === "") {
          alert("정보를 입력하세요");
       } else {
-         let result = await util.savePost(data, token);
+         const result = await util.savePost(data, token);
          if (result) history.push("/");
       }
    };

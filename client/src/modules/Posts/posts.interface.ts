@@ -10,7 +10,7 @@ export interface DataAction {
       | typeof GET_ALL_POSTS
       | typeof GET_ALL_POSTS_SECCUESS
       | typeof GET_ALL_POSTS_ERROR
-   payload: any[]
+   payload: any
    error: Error
 
 }
@@ -34,13 +34,13 @@ export interface IPostInitialState {
 }
 
 export interface IAllPosts {
-   data: IPostCommonProps[]
+   data: IPostCommonProps[] | null
    loading: boolean
    error: Error | null
 }
 
 export interface IPostsProps {
-   data: IPostCommonProps[]
+   data: IPostCommonProps[] | null
    loading: boolean
    error: Error | null
 }
@@ -61,7 +61,7 @@ export interface IPostDataProps {
 
 export interface IPostsModuleProps {
    posts: IPostsProps
-   post: IPostProps<any>
+   post: IPostProps<IPostDataProps>
    AllPosts: IAllPosts
    getPosts: (params: string) => void
    getPost: (topic: string, postId: string) => void
