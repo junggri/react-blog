@@ -19,7 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+    </list>
+>>>>>>> 735cbdf56ecb8e6c27f0a1bd3d6604aa52460e0c
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +200,11 @@
       <workItem from="1608538305353" duration="959000" />
       <workItem from="1608539388155" duration="71000" />
       <workItem from="1608539472243" duration="210000" />
+<<<<<<< HEAD
       <workItem from="1608543789038" duration="634000" />
+=======
+      <workItem from="1608543789038" duration="303000" />
+>>>>>>> 735cbdf56ecb8e6c27f0a1bd3d6604aa52460e0c
     </task>
     <servers />
   </component>
