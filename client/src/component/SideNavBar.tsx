@@ -1,11 +1,12 @@
 import React from "react";
-import { SideBarComp, SideBarMetaDataComp, SideBarPostsContainerComp, SideBarPostsItemComp, SideBarThunmbNailComp } from "../../styled-comp";
+import { SideBarComp, SideBarMetaDataComp, SideBarThunmbNailComp } from "../styled-comp";
 import { Link } from "react-router-dom";
 import { GoMarkGithub } from "react-icons/go";
 import { CgHome } from "react-icons/cg";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiLogIn } from "react-icons/bi";
-import logo from "../../image/Logo.svg";
+import logo from "../image/Logo.svg";
+import { SideNavBarTopic } from "./index";
 
 interface ISideBarNavContainer {
    topic: any[]
@@ -19,7 +20,6 @@ const backGround = {
 };
 
 function SideBarNavContainer({ topic }: ISideBarNavContainer) {
-
    return (
       <SideBarComp>
          <SideBarThunmbNailComp style={backGround} />
@@ -28,15 +28,7 @@ function SideBarNavContainer({ topic }: ISideBarNavContainer) {
             <div className="sidebar-posi posi1">backend engineer</div>
             <div className="sidebar-posi posi2">frontend engineer</div>
          </SideBarMetaDataComp>
-         <SideBarPostsContainerComp>
-            {topic.map(e => (
-               <SideBarPostsItemComp to={`/topic/${e.Tables_in_contents}`} key={e.Tables_in_contents}>
-                  <div>
-                     {e.Tables_in_contents}
-                  </div>
-               </SideBarPostsItemComp>
-            ))}
-         </SideBarPostsContainerComp>
+         <SideNavBarTopic topic={topic} />
          <div className="sidebar-icons-box">
             <GoMarkGithub className="icon-github" onClick={() => {
                window.open("https://github.com/junggri", "_blank");

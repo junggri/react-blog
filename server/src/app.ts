@@ -13,6 +13,7 @@ import createError from "http-errors";
 import csrf from "csurf";
 import indexApi from "./router";
 import topicApi from "./router/topic";
+import adminApi from "./router/admin";
 
 require("dotenv").config();
 
@@ -90,7 +91,7 @@ app.use(function(req, res, next) {
 
 app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터
-
+app.use("/admin", adminApi);
 
 app.use((req, res, next) => {
    res.status(404).send("Sorry cant find that!");

@@ -7,7 +7,9 @@ import usePosts from "../../useHooks/usePosts";
 import Highlight from "react-highlight.js";
 import { Link } from "react-router-dom";
 import { CgHome } from "react-icons/cg";
+import createDOMPurify from "dompurify";
 
+const DOMPurify = createDOMPurify(window);
 
 function PostsContainer({ match }: any) {
    const { width }: ICommonModuleProps = useCommon();
@@ -19,7 +21,8 @@ function PostsContainer({ match }: any) {
       getPost(match.params.topic, match.params.postsId);
    }, [match.params.topic, match.params.postsId]);
 
-   const MakeHtml = () => ({ __html: (data as IPostDataProps).content });
+
+   const MakeHtml = () => ({ __html: DOMPurify.sanitize((data as IPostDataProps).content) });
 
 
    if (loading) return <PostsContainerComp width={width}>..로딩중</PostsContainerComp>;

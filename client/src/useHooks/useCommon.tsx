@@ -5,7 +5,7 @@ import { onRequestGetCsrf } from "../modules/Common";
 
 export default function useCommon() {
    const dispatch = useDispatch();
-   const { width, height, token, loading, e } = useSelector((state: RootState) => state.common);
+   const { width, token, loading, e } = useSelector((state: RootState) => state.common);
 
 
    useEffect(() => {
@@ -14,7 +14,6 @@ export default function useCommon() {
 
    return {
       width,
-      height,
       token,
       loading,
       e,

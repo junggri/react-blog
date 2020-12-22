@@ -87,16 +87,20 @@ const GlobalStyles = createGlobalStyle`
     .ql-container.ql-snow{
         height:90%
     }
+    
     .ql-syntax{
+     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
      padding:30px 30px; 
      border-radius: 4px;
      font-size: 1.02rem; 
-     font-family: monospace;
      background: ${darken(0.02, "#fafafa")};
      & span{
         font-weight:300 !important;
       }
     }
+    .pre {
+      white-space: pre-wrap !important;
+     }
     .ql-toolbar.ql-snow{
         border-left:none;
         border-right:none;

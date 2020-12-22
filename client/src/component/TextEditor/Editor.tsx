@@ -10,7 +10,8 @@ import useTopic from "../../useHooks/useTopic";
 import useTextEdit from "../../useHooks/useTextEdit";
 import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interface";
 import util from "../../lib/axios";
-import { ITopicModuleProps } from "../../modules/Topic/topic.interface"; /**/
+import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
+import { ICommonModuleProps } from "../../modules/Common/common.interface"; /**/
 
 
 const Editor = ({ history }: any) => {
@@ -24,8 +25,9 @@ const Editor = ({ history }: any) => {
    }: ITextEditModuleProps = useTextEdit();
 
    const ref: any = useRef(null) as MutableRefObject<any>;
-   const { token } = useCommon();
+   const { token }: ICommonModuleProps = useCommon();
    const { topic, makeOrDeleteAndReqNewTopics }: ITopicModuleProps = useTopic();
+
 
    useEffect(() => {
       ref.current.focus();
@@ -68,6 +70,7 @@ const Editor = ({ history }: any) => {
          if (result) history.push("/");
       }
    };
+
 
    return (
       <>

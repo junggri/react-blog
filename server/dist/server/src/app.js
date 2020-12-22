@@ -18,6 +18,7 @@ var http_errors_1 = __importDefault(require("http-errors"));
 var csurf_1 = __importDefault(require("csurf"));
 var router_1 = __importDefault(require("./router"));
 var topic_1 = __importDefault(require("./router/topic"));
+var admin_1 = __importDefault(require("./router/admin"));
 require("dotenv").config();
 var app = express_1.default();
 app.disable("x-powered-by");
@@ -76,6 +77,7 @@ app.use(function (req, res, next) {
 // });
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
+app.use("/admin", admin_1.default);
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");
     next(http_errors_1.default(404));

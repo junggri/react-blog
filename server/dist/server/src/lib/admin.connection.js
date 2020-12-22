@@ -44,8 +44,7 @@ var option = {
     host: "localhost",
     user: "root",
     password: "wowwjd123",
-    database: "contents",
-    connectionLimit: 10,
+    database: "admin",
     waitForConnections: true,
 };
 function getConnection() {
@@ -70,4 +69,4 @@ function getConnection() {
     });
 }
 exports.default = getConnection;
-//# sourceMappingURL=index.connection.js.map
+//# sourceMappingURL=admin.connection.js.map

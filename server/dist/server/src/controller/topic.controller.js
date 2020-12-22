@@ -82,21 +82,21 @@ var contentController = {
         });
     }); },
     getPostsFromPostsId: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var _a, topic, postsId, fileName, content, result, e_1;
+        var _a, topic, postsId, fileName, result, content, e_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     _a = req.params, topic = _a.topic, postsId = _a.postsId;
-                    fileName = path_1.default.join(__dirname + "c/../../contents", req.params.postsId + ".html");
+                    fileName = path_1.default.join(__dirname + "/../../contents", req.params.postsId + ".html");
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fs_1.promises.readFile(fileName, "utf-8")];
-                case 2:
-                    content = _b.sent();
                     return [4 /*yield*/, topic_model_1.default.getPostFromPostId(topic, postsId)];
-                case 3:
+                case 2:
                     result = _b.sent();
+                    return [4 /*yield*/, fs_1.promises.readFile(fileName, "utf-8")];
+                case 3:
+                    content = _b.sent();
                     res.status(200).json({
                         content: content,
                         result: result,

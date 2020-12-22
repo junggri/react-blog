@@ -150,7 +150,7 @@ export const SideBarMetaDataComp = styled.div`
   }
   & .sidebar-posi{
     letter-spacing: 1.2px;
-    font-size:1.2rem;
+    font-size:1.125rem;
     font-weight: 300;
     &.posi1{
       margin-top:30px;
@@ -166,19 +166,28 @@ export const SideBarPostsContainerComp = (styled.ul`
   perspective: 600px;
 `);
 
-export const SideBarPostsItemComp = styled(NavLink)`
+export const SideBarPostsItemComp = styled(NavLink)<any>`
   height: 20px;
   display:block;
-  margin-bottom:15px;
-  transition: all 0.3s;
-  & div{
+  margin-bottom:10px;
+  transition: all 0.6s;
+  & span{
     vertical-align: middle;
-    font-size:1.4rem;
+    font-size:1.25rem;
     font-weight: 300;
+    opacity: 0.7;
+    &:hover{
+      text-decoration: underline;
+    }
   }
-  &:hover{
-    transform: perspective(600px) rotateY(45deg);
+  &[aria-current] {
+    color: black;
+    & span{
+      opacity: 1;
+      font-weight: 300;
+    }
   }
+
 `;
 
 export const EntryPostsContainerComp = styled.div<Width>`
@@ -224,12 +233,11 @@ export const PostsContainerComp = styled.section<Width>`
     font-size:1.2rem
   }
   & .posts-content{
-    padding:20px 20px;
     word-break:break-all;
     font-size:1.125rem;
     margin-top:50px;
     & *{
-      white-space:pre-line;
+      white-space: pre-wrap !important;
       word-break: break-all;
       line-height: 2;
     }
@@ -287,128 +295,33 @@ export const TopCommonSectionComp = (styled.div<topView>`
    }
 `);
 
-export const TopNavBarComp = styled.nav`
-   height: 56px;
-   width:100%;
-   display: flex;
-   justify-content: space-between;
-   & > * {
-      display: inline-block;
-      margin: auto 0;
-   }
-   & .tnb-rightBox span {
-      display: inline-block;
-      margin-left: 20px;
-      font-size: 16px;
-      font-weight: 100;
-      transition: 0.3s all;
-   }
-   & .tnb-rightBox span:hover {
-      font-weight: 600;
-   }
-  
-   & > *:hover {
-      cursor: pointer;
-   }
-`;
-
-//MAIN_VIEW---------------COMPONENTS
-
-export const MainSectionComp = styled.div<Width>`
-   margin: 0 auto;
-   position: relative;
-   width: ${(props) => props.width + "px"};
-   max-width: ${(props) => props.width + "px"};
-   display: flex;
-   justify-content: space-between;
-   height: 100%;
-`;
-
-//MAIN_VIEW---------------TOP
-
-export const ContentCenterComp = styled.section<Width>`
-   position: relative;
-   left: ${leftWidth + "px"};
-   width: ${(props) => props.width - (leftWidth + rightWidth) + "px"};
-   word-break: break-all;
-   
-`;
-
-export const ContentCenterArticleBox = styled.section<Width>`
-   margin-top: 70px; 
-   word-break: break-all;
-   //border:1px solid black;
-   padding:0 40px;
-`;
-
-export const ContentTopicListComp = styled.div`
-     position: relative;
-     height:90px;
-     display: flex;
-     flex-direction: column;
-     cursor:pointer;
-     margin-bottom: 25px;
-     transition: 0.2s all ease-in;
-     //box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;
-     padding-left: 10px;
-     padding-top:8px;
-    
-   .content-meta-data{
-   }
-   .posts-contentName-box{
-    display: flex;
-    align-items: center;
-      h1{
-       display: inline-block;
-       font-size:23px;
-       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
-       color:black;
-      }  
-      .posts-notice-icon{
-        display: inline-block;
-        margin-right:10px;
-        margin-top:2.5px;
-        font-size:18px;
-        opacity: 0.65;
-     }
-   }
-   .content-meta-data > .content-detail-meta-data{
-     font-size:15px;
-     display: flex;
-     align-items: center;
-     margin-top: 4px;
-     color:rgba(0,0,0,0.8)
-   } 
-   .content-meta-data > .content-detail-meta-data span{
-     font-size:1.125rem; 
-   } 
-   .content-create{
-     position:absolute;
-     font-weight: 100;
-     font-size: 13px;
-     bottom:10%
-    }
-   &:hover{
-     transform: translateY(-2px);
-     box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 20px 0px;
-   }
-`;
 
 //
-export const ContentRight = styled.section`
-   position: absolute;
-   right: 0;
-   width: ${rightWidth + "px"};
-   padding: 0px 35px;
-   & > p {
-      margin-top: 78px;
-   }
+export const AdminLoginBoxComp = styled.div`
+  position: absolute;
+  width:30%;
+  left:50%;
+  top:40%;
+  transform: translate(-50%,-50%);
+  & .login-inputbox{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    & input{
+      padding:15px 10px;
+      outline-style: none;
+      border:1px solid rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+  }
+  & button{
+    border:1px solid rgb(0,0,0,0.2);
+    width:100%;
+    height: 60px;
+    outline-style: none;
+    cursor: pointer;
+  }
 `;
-
-
-//home Content
-
-
 //--------------------------------write---------------------------------------
 
 export const WriteBox = (styled.div`

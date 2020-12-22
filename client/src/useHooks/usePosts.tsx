@@ -16,7 +16,6 @@ export default function usePosts() {
    }, [dispatch]);
 
    useEffect(() => {
-      if (AllPosts.data) return;
       dispatch(onRequestAllPosts());
    }, [dispatch]);
 

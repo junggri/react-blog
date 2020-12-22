@@ -4,8 +4,7 @@ const option = {
    host: "localhost",
    user: "root",
    password: "wowwjd123",
-   database: "contents",
-   connectionLimit: 10,
+   database: "admin",
    waitForConnections: true,
 };
 

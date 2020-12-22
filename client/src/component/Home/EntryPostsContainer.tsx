@@ -9,6 +9,7 @@ interface IEntryPostsContainer {
 
 const EntryPostsContainer = ({ width, posts }: IEntryPostsContainer) => {
 
+
    if (!posts.data) return null;
    return (
       <EntryPostsContainerComp width={width}>

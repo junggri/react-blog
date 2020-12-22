@@ -39,35 +39,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var promise_1 = __importDefault(require("mysql2/promise"));
-var option = {
-    host: "localhost",
-    user: "root",
-    password: "wowwjd123",
-    database: "contents",
-    connectionLimit: 10,
-    waitForConnections: true,
-};
-function getConnection() {
-    return __awaiter(this, void 0, void 0, function () {
-        var pool, conn, error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    pool = promise_1.default.createPool(option);
-                    return [4 /*yield*/, pool.getConnection()];
-                case 1:
-                    conn = _a.sent();
-                    return [2 /*return*/, conn];
-                case 2:
-                    error_1 = _a.sent();
-                    console.error(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
+var admin_model_1 = __importDefault(require("../model/admin.model"));
+var AdminController = {
+    login: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                admin_model_1.default.login(req.body.data);
+                return [2 /*return*/];
+            });
         });
-    });
-}
-exports.default = getConnection;
-//# sourceMappingURL=index.connection.js.map
+    },
+};
+exports.default = AdminController;
+//# sourceMappingURL=admin.controller.js.map

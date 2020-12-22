@@ -1,5 +1,5 @@
 import React from "react";
-import CommonEntry from "../component/Common/CommonEntry";
+import CommonEntry from "../component/CommonEntry";
 
 
 const Entry = ({ match }: any) => {

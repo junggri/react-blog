@@ -1,16 +1,16 @@
 import React from "react";
-import { EntryContainerComp } from "../../styled-comp";
-import useCommon from "../../useHooks/useCommon";
-import useTopic from "../../useHooks/useTopic";
-import { ITopicinitialState } from "../../modules/Topic/topic.interface";
-import { ICommonModuleProps } from "../../modules/Common/common.interface";
-import usePosts from "../../useHooks/usePosts";
-import { IPostsModuleProps } from "../../modules/Posts/posts.interface";
-import { EntryPostsContainer, SideBarContainer, SpecificTopicContainer } from "component";
+import { EntryContainerComp } from "../styled-comp";
+import useCommon from "../useHooks/useCommon";
+import useTopic from "../useHooks/useTopic";
+import { ITopicinitialState } from "../modules/Topic/topic.interface";
+import { ICommonModuleProps } from "../modules/Common/common.interface";
+import usePosts from "../useHooks/usePosts";
+import { IPostsModuleProps } from "../modules/Posts/posts.interface";
+import { EntryPostsContainer, SideBarContainer, SpecificTopicContainer } from "component/index";
 import { Route } from "react-router-dom";
 
-
 function CommonEntry({ match }: any) {
+
    //TODO 최적화 진행하기!!!!!!!!!!!!!!!!!
    //TODO 데이터를 다받아오고 한번만 실행해볼까?? 즉 state가 변경되지 않으면 기존 데이터로 해볼까?
    const { topic, loading, error }: ITopicinitialState = useTopic();

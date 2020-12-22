@@ -72,6 +72,15 @@ const util = {
       });
    },
 
+   adminLogin(data: any, token: string) {
+      return instance({
+         url: "/admin/login",
+         method: "post",
+         data: { data },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
 };
 
 export default util;

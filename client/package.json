@@ -31,6 +31,7 @@
     "case-sensitive-paths-webpack-plugin": "2.3.0",
     "cross-env": "^7.0.2",
     "css-loader": "4.3.0",
+    "dompurify": "^2.2.6",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
     "eslint-config-react-app": "^6.0.0",
@@ -121,6 +122,7 @@
     ]
   },
   "devDependencies": {
+    "@types/dompurify": "^2.0.4",
     "@types/highlight.js": "^10.1.0",
     "@types/react-highlight.js": "^1.0.0",
     "@types/react-redux": "^7.1.11",
