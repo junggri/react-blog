@@ -1,14 +1,37 @@
+import connection from "../config/admin.connection";
 import crypto from "crypto";
+import util from "util";
+
+const pbkdf2Promise = util.promisify(crypto.pbkdf2);
+
+interface IResult {
+   id: string,
+   password: string
+   phone: string
+   email: string
+   salt: string
+}
+
+function cd(state: any) {
+   return state;
+}
 
 const adminModel = {
-   login(data: { id: string, pwd: string }) {
-
-      crypto.randomBytes(64, (err, buf) => {
-         const salt = buf.toString("base64");
-         crypto.pbkdf2(data.pwd, salt, 100385, 64, "sha512", (err, key) => {
-            console.log(key.toString("base64"));
-         });
-      });
+   async login(data: { id: string, pwd: string }) {
+      const conn = await connection();
+      if (conn !== undefined)
+         try {
+            let [result]: any = await conn.execute("select * from user where id=?", [data.id]);
+            conn.release();
+            if (!result.length) return false;
+            else {
+               let key = await pbkdf2Promise(data.pwd, result[0].salt, 100385, 64, "sha512");
+               return result[0].password === key.toString("base64");
+            }
+         } catch (e) {
+            console.error(e);
+            conn.release();
+         }
    },
 };
 

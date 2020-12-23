@@ -7,8 +7,8 @@ interface IAdminController {
 
 const AdminController: IAdminController = {
    async login(req: Request, res: Response) {
-
-      model.login(req.body.data);
+      const a = await model.login(req.body.data);
+      console.log(a);
    },
 };
 export default AdminController;

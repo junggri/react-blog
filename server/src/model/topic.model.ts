@@ -1,4 +1,4 @@
-import connection from "../lib/index.connection";
+import connection from "../config/index.connection";
 import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import path from "path";
