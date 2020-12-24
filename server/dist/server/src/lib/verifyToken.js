@@ -39,47 +39,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var admin_connection_1 = __importDefault(require("../config/admin.connection"));
-var crypto_1 = __importDefault(require("crypto"));
-var util_1 = __importDefault(require("util"));
-var pbkdf2Promise = util_1.default.promisify(crypto_1.default.pbkdf2);
-function cd(state) {
-    return state;
-}
-var adminModel = {
-    login: function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var conn, result, key, e_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, admin_connection_1.default()];
-                    case 1:
-                        conn = _a.sent();
-                        if (!(conn !== undefined)) return [3 /*break*/, 8];
-                        _a.label = 2;
-                    case 2:
-                        _a.trys.push([2, 7, , 8]);
-                        return [4 /*yield*/, conn.execute("select * from user where id=?", [data.id])];
-                    case 3:
-                        result = (_a.sent())[0];
-                        conn.release();
-                        if (!!result.length) return [3 /*break*/, 4];
-                        return [2 /*return*/, false];
-                    case 4: return [4 /*yield*/, pbkdf2Promise(data.pwd, result[0].salt, 100385, 64, "sha512")];
-                    case 5:
-                        key = _a.sent();
-                        return [2 /*return*/, result[0].password === key.toString("base64")];
-                    case 6: return [3 /*break*/, 8];
-                    case 7:
-                        e_1 = _a.sent();
-                        console.error(e_1);
-                        conn.release();
-                        return [3 /*break*/, 8];
-                    case 8: return [2 /*return*/];
-                }
-            });
+var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+function verify(jwttoken) {
+    return __awaiter(this, void 0, void 0, function () {
+        var decoded;
+        return __generator(this, function (_a) {
+            try {
+                decoded = jsonwebtoken_1.default.verify(jwttoken, process.env.JWT_SECRET);
+                return [2 /*return*/, decoded];
+            }
+            catch (e) {
+                console.error(e);
+            }
+            return [2 /*return*/];
         });
-    },
-};
-exports.default = adminModel;
-//# sourceMappingURL=admin.model.js.map
+    });
+}
+exports.default = verify;
+//# sourceMappingURL=verifyToken.js.map

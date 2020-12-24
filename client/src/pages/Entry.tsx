@@ -3,7 +3,6 @@ import CommonEntry from "../component/CommonEntry";
 
 
 const Entry = ({ match }: any) => {
-
    return (
       <>
          <CommonEntry match={match} />

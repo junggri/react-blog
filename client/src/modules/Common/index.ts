@@ -32,6 +32,7 @@ export const onRequestGetCsrf = () => async (dispatch: any, getState: any) => {
 const initialState: ICommonState = {
    width: window.screen.width * 0.61,
    token: "",
+   login: false,
    loading: false,
    e: null,
 };

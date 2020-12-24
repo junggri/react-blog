@@ -25,7 +25,6 @@ function PostsContainer({ match }: any) {
    const MakeHtml = () => ({ __html: DOMPurify.sanitize((data as IPostDataProps).content) });
 
 
-   if (loading) return <PostsContainerComp width={width}>..로딩중</PostsContainerComp>;
    if (!post.data) return null;
 
    return (

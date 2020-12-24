@@ -314,12 +314,32 @@ export const AdminLoginBoxComp = styled.div`
       margin-bottom: 20px;
     }
   }
-  & button{
+  & .login-btn{
     border:1px solid rgb(0,0,0,0.2);
     width:100%;
-    height: 60px;
+    height: 57px;
     outline-style: none;
     cursor: pointer;
+  }
+  & .certification-numberBox{ 
+    display: flex;
+    button{
+      border:1px solid rgba(0,0,0,0.2);
+      outline-style: none;
+      height: 40px;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      cursor: pointer ;
+    }
+    input{
+      height: 40px;  
+      outline-style: none;
+      border:1px solid rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      margin-right: 15px;
+      font-size: 1rem;
+      padding-left: 10px;
+    }
   }
 `;
 //--------------------------------write---------------------------------------

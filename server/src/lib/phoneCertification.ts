@@ -3,7 +3,7 @@ import crypto from "crypto-js";
 
 
 let resultCode: any;
-let _content: string = "Ad";
+
 
 export default function certifiCation() {
    let randomArray = [];
@@ -11,7 +11,6 @@ export default function certifiCation() {
       let randomNum = Math.floor(Math.random() * 10);
       randomArray.push(randomNum);
    }
-   // let user_phone_number = phone_num;
    let user_auth_number = randomArray.join("");
 
    const date = Date.now().toString();
@@ -23,7 +22,6 @@ export default function certifiCation() {
    const newLine = "\n";
    const url = `https://sens.apigw.ntruss.com/sms/v2/services/${uri}/messages`;
    const url2 = `/sms/v2/services/${uri}/messages`;
-
    const hmac = crypto.algo.HMAC.create(crypto.algo.SHA256, secretKey);
 
    hmac.update(method);
@@ -53,7 +51,7 @@ export default function certifiCation() {
             type: "SMS",
             countryCode: "82",
             from: "01077652103",
-            content: _content,
+            content: user_auth_number,
             messages: [
                {
                   to: "01077652103",
@@ -69,5 +67,6 @@ export default function certifiCation() {
          }
       },
    );
-
+   return user_auth_number;
 }
+//TODO ,env

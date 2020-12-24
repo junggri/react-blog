@@ -3,6 +3,7 @@ import { GET_CSRF, GET_CSRF_ERROR, GET_CSRF_SUCCESS } from "./index";
 export interface ICommonState {
    width: number;
    token: string
+   login: boolean
    loading: boolean
    e: Error | null
 }

@@ -81,6 +81,24 @@ const util = {
       });
    },
 
+   setToken(token: string) {
+      return instance({
+         url: "/admin/token",
+         method: "post",
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
+   checkJWTToken(token: string) {
+      return instance({
+         url: `/admin/token/csrf`,
+         method: "post",
+         headers: {
+            "X-XSRF-TOKEN": token,
+
+         },
+      });
+   },
 };
 
 export default util;

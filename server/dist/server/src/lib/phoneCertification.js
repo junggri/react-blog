@@ -6,14 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var request_1 = __importDefault(require("request"));
 var crypto_js_1 = __importDefault(require("crypto-js"));
 var resultCode;
-var _content = "Ad";
 function certifiCation() {
     var randomArray = [];
     for (var i = 0; i < 6; i++) {
         var randomNum = Math.floor(Math.random() * 10);
         randomArray.push(randomNum);
     }
-    // let user_phone_number = phone_num;
     var user_auth_number = randomArray.join("");
     var date = Date.now().toString();
     var uri = "ncp:sms:kr:258388484624:authoriztion";
@@ -48,7 +46,7 @@ function certifiCation() {
             type: "SMS",
             countryCode: "82",
             from: "01077652103",
-            content: _content,
+            content: user_auth_number,
             messages: [
                 {
                     to: "01077652103",
@@ -63,6 +61,8 @@ function certifiCation() {
             console.log(1, html);
         }
     });
+    return user_auth_number;
 }
 exports.default = certifiCation;
+//TODO ,env
 //# sourceMappingURL=phoneCertification.js.map

@@ -40,17 +40,46 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var admin_model_1 = __importDefault(require("../model/admin.model"));
+var accessToken_1 = __importDefault(require("../lib/accessToken"));
+var verifyToken_1 = __importDefault(require("../lib/verifyToken"));
 var AdminController = {
     login: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var a;
+            var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, admin_model_1.default.login(req.body.data)];
                     case 1:
-                        a = _a.sent();
-                        console.log(a);
+                        result = _a.sent();
+                        // let certification_number = phoneCertification();
+                        res.status(200).json({ state: result, number: 1 });
                         return [2 /*return*/];
+                }
+            });
+        });
+    },
+    setToken: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var token;
+            return __generator(this, function (_a) {
+                token = accessToken_1.default();
+                res.cookie("jwt", token, { httpOnly: true, path: "/" });
+                res.status(200).json({ state: true });
+                return [2 /*return*/];
+            });
+        });
+    },
+    checkJWTToken: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var jwttoken, decoded;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        jwttoken = req.headers.authoriztion.split(" ")[1];
+                        return [4 /*yield*/, verifyToken_1.default(jwttoken)];
+                    case 1:
+                        decoded = _a.sent();
+                        return [2 /*return*/, decoded];
                 }
             });
         });
