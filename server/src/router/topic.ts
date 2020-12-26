@@ -12,11 +12,14 @@ router.get("/posts/:topic", contentController.getPostsFromTopicName);
 
 router.get("/:topic/posts/:postsId", contentController.getPostsFromPostsId);
 
-router.post("/delete/:topicname", contentController.deleteTopic);
+
+router.post("/posts", contentController.savePosts); //save content
 
 router.post("/topicname/:newTopicName", contentController.makeNewTopic);
 
-router.post("/posts", contentController.savePosts); //save content
+router.post("/posts/item", contentController.deletePost);
+
+router.post("/:topicname", contentController.deleteTopic);
 
 
 export default router;

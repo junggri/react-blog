@@ -144,6 +144,18 @@ var contentController = {
             }
         });
     }); },
+    deletePost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var reuslt;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.deletePost(req.body)];
+                case 1:
+                    reuslt = _a.sent();
+                    res.status(200).json({ state: true });
+                    return [2 /*return*/];
+            }
+        });
+    }); },
 };
 exports.default = contentController;
 //# sourceMappingURL=topic.controller.js.map

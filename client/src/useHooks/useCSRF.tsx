@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import util from "../lib/axios";
 
 function CSRF() {
-   const [csrf, setCsrf] = useState(null);
+   const [csrf, setCsrf] = useState("");
 
    useEffect(() => {
       (async () => {

@@ -105,6 +105,19 @@ const contentModel = {
       return await poolConnction(query);
    },
 
+   deletePost: async ({ uid, topic }: { uid: string, topic: string }) => {
+      console.log(uid, topic);
+      const conn = await connection();
+      const query = `DELETE FROM ${topic} where uid = ? `;
+      if (conn !== undefined)
+         try {
+            await conn.execute(query, [uid]);
+            return true;
+         } catch (e) {
+            console.log(e);
+            return false;
+         }
+   },
 };
 
 export default contentModel;

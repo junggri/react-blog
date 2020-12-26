@@ -12,13 +12,13 @@ var connect_redis_1 = __importDefault(require("connect-redis"));
 var redis_1 = __importDefault(require("redis"));
 var morgan_1 = __importDefault(require("morgan"));
 var express_session_1 = __importDefault(require("express-session"));
-var cors_1 = __importDefault(require("cors"));
 var compression_1 = __importDefault(require("compression"));
 var http_errors_1 = __importDefault(require("http-errors"));
 var csurf_1 = __importDefault(require("csurf"));
 var router_1 = __importDefault(require("./router"));
 var topic_1 = __importDefault(require("./router/topic"));
 var admin_1 = __importDefault(require("./router/admin"));
+var cors_1 = __importDefault(require("cors"));
 require("dotenv").config();
 var app = express_1.default();
 app.disable("x-powered-by");
@@ -49,11 +49,11 @@ var sessionConfig = {
         secure: false,
     },
 };
-app.set("port", process.env.PORT || 9000);
+app.set("port", process.env.PORT || 4000);
 app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
-app.use(cors_1.default({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors_1.default({ origin: true, credentials: true }));
 app
     .use(morgan_1.default("dev"))
     .use(express_1.default.static(path_1.default.join(__dirname, "../../client/build")))

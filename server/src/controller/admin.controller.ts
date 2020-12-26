@@ -25,10 +25,13 @@ const AdminController: IAdminController = {
    },
 
    async checkJWTToken(req: Request, res: Response) {
-      const jwttoken = (req.headers.authoriztion as string).split(" ")[1];
+      const jwttoken = req.cookies.jwt;
       const decoded = await verifyToken(jwttoken);
-      return decoded;
+      decoded
+         ? res.status(200).json({ decoded: decoded })
+         : res.status(200).json({ decoded: null });
    },
+
 
 };
 export default AdminController;

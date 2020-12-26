@@ -3,16 +3,14 @@ import axios from "axios";
 
 
 const instance = axios.create({
-   baseURL: "/",
-   // headers: { "Authorization": "Asd" },
+   baseURL: "http://localhost:4000",
+   withCredentials: true,
    // adapter: cacheAdapterEnhancer((axios.defaults as any).adapter),
 });
-instance.defaults.headers.common["Authorization"] = "Asd";
 instance.defaults.headers.common["Content-Type"] = "application/json";
 
 instance.interceptors.request.use(
    (config) => {
-
       return config;
    },
    (err) => {

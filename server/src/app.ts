@@ -7,19 +7,20 @@ import connectRedis from "connect-redis";
 import redis from "redis";
 import logger from "morgan";
 import session from "express-session";
-import cors from "cors";
 import compression from "compression";
 import createError from "http-errors";
 import csrf from "csurf";
 import indexApi from "./router";
 import topicApi from "./router/topic";
 import adminApi from "./router/admin";
+import cors from "cors";
 
 require("dotenv").config();
 
 const app = express();
 
 app.disable("x-powered-by");
+
 
 const RedisStore = connectRedis(session);
 const _client = redis.createClient();
@@ -51,18 +52,18 @@ const sessionConfig = {
    }),
    cookie: {
       httpOnly: true,
-      secure: false, //true
+      secure: false, //true,
    },
 };
 
 
-app.set("port", process.env.PORT || 9000);
+app.set("port", process.env.PORT || 4000);
 
 app.set("views", __dirname + "/../../client/build");
 app.set("view engine", "ejs");
 app.engine("html", require("ejs").renderFile);
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 
 app
    .use(logger("dev"))
@@ -77,6 +78,7 @@ app
    .use(helmet.frameguard({ action: "deny" }))
    .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
+
 
 app.use(function(req, res, next) {
    res.header("Cache-control", "no-cache, must-revalidate");

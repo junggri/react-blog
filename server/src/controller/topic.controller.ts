@@ -4,6 +4,7 @@ import { promises as fs } from "fs";
 import path from "path";
 
 interface Controller {
+   deletePost: (req: Request, Res: Response) => void
    getContentName(req: Request, res: Response): void;
    savePosts(req: Request, res: Response): void;
    getPostsFromTopicName(req: Request, res: Response): void
@@ -60,6 +61,12 @@ let contentController: Controller = {
       await model.deleteTopic(req.body.topicName);
       res.status(200).json({ state: true });
    },
+
+   deletePost: async (req, res) => {
+      let reuslt = await model.deletePost(req.body);
+      res.status(200).json({ state: true });
+   },
+
 };
 
 export default contentController;

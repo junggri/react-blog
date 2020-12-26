@@ -10,8 +10,9 @@ router.get("/contents/name", topic_controller_1.default.getContentName); //show 
 router.get("/posts/items", topic_controller_1.default.getAllPostsItems);
 router.get("/posts/:topic", topic_controller_1.default.getPostsFromTopicName);
 router.get("/:topic/posts/:postsId", topic_controller_1.default.getPostsFromPostsId);
-router.post("/delete/:topicname", topic_controller_1.default.deleteTopic);
-router.post("/topicname/:newTopicName", topic_controller_1.default.makeNewTopic);
 router.post("/posts", topic_controller_1.default.savePosts); //save content
+router.post("/topicname/:newTopicName", topic_controller_1.default.makeNewTopic);
+router.post("/posts/item", topic_controller_1.default.deletePost);
+router.post("/:topicname", topic_controller_1.default.deleteTopic);
 exports.default = router;
 //# sourceMappingURL=topic.js.map

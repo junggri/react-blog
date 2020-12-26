@@ -203,6 +203,35 @@ var contentModel = {
             }
         });
     }); },
+    deletePost: function (_a) {
+        var uid = _a.uid, topic = _a.topic;
+        return __awaiter(void 0, void 0, void 0, function () {
+            var conn, query, e_3;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        console.log(uid, topic);
+                        return [4 /*yield*/, index_connection_1.default()];
+                    case 1:
+                        conn = _b.sent();
+                        query = "DELETE FROM " + topic + " where uid = ? ";
+                        if (!(conn !== undefined)) return [3 /*break*/, 5];
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 4, , 5]);
+                        return [4 /*yield*/, conn.execute(query, [uid])];
+                    case 3:
+                        _b.sent();
+                        return [2 /*return*/, true];
+                    case 4:
+                        e_3 = _b.sent();
+                        console.log(e_3);
+                        return [2 /*return*/, false];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    },
 };
 exports.default = contentModel;
 //# sourceMappingURL=topic.model.js.map

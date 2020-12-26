@@ -6,16 +6,21 @@ export const GET_CSRF = "common/GET_CSRF";
 export const GET_CSRF_SUCCESS = "common/GET_CSRF_SUCCESS";
 export const GET_CSRF_ERROR = "common/GET_CSRF_ERROR";
 
+export const SET_IS_LOGIN = "common/SET_IS_LOGIN";
+
 
 export const onGetCsrf = () => ({ type: GET_CSRF });
 export const onGetCsrfSuccess = (payload: string) => ({ type: GET_CSRF_SUCCESS, payload });
 export const onGetCsrfError = (e: Error) => ({ type: GET_CSRF_ERROR, e });
+
+export const onSetIsLogin = (payload: boolean) => ({ type: SET_IS_LOGIN, payload });
 
 
 // typescript는 const를 이해하므로(typeof CHECK_GUESTBOOK은 string이 아니라 'CHECK_GUESTBOOK'입니다)
 // 액션 이름을 그대로 쓰셔도 됩니다.
 
 //thunk 생성함
+
 
 export const onRequestGetCsrf = () => async (dispatch: any, getState: any) => {
    dispatch(onGetCsrf());
@@ -48,13 +53,19 @@ export default function common(state: ICommonState = initialState, action: IComm
       case GET_CSRF_SUCCESS:
          return {
             ...state,
-            token: action.payload,
+            token: action.payload as string,
          };
       case GET_CSRF_ERROR:
          return {
             ...state,
             e: action.e,
          };
+      case SET_IS_LOGIN:
+         return {
+            ...state,
+            login: action.payload as boolean,
+         };
+
       default:
          return state;
    }

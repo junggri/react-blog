@@ -1,18 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Admin, Entry, Posts, TextEditor } from "pages";
-import useCSRF from "../useHooks/useCSRF";
 
 function App() {
-   const csrf = useCSRF();
-
-   // useEffect(() => {
-   //    if (!csrf) {
-   //
-   //    }
-   // }, [csrf]);
-
-
    return (
       <BrowserRouter>
          <div id="App">

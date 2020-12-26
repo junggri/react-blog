@@ -47,6 +47,7 @@ const postsContainerMxin = css<Width>`
 
 const postsItemMixin = css`
   display: block;
+  position:relative;
   margin-bottom:60px;
   & .item-created{
     display: inline-block;
@@ -77,6 +78,23 @@ const postsItemMixin = css`
     padding:7px 14px;
     border-radius: 15px;
     letter-spacing: 1.2px;
+  }
+  & .posts-admin-box{
+    position: absolute;
+    right:0;
+    bottom:0;
+    z-index: 9;
+    span{
+      vertical-align: middle;
+      font-size:1.6rem;
+      opacity: 0.6;
+      margin-left:12px;
+      transition: 0.3s all;
+    }
+    span:hover{
+      opacity: 1;
+      cursor: pointer;
+    }   
   }
 `;
 
@@ -194,7 +212,7 @@ export const EntryPostsContainerComp = styled.div<Width>`
   ${postsContainerMxin}
 `;
 
-export const EntryPostsItemComp = styled(NavLink)`
+export const EntryPostsItemComp = styled.div`
   ${postsItemMixin}'
 `;
 

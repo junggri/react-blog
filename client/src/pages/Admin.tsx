@@ -1,17 +1,13 @@
 import React, { useRef, useState } from "react";
 import { AdminLoginBoxComp } from "../styled-comp";
-import { ICommonModuleProps } from "../modules/Common/common.interface";
-import useCommon from "../useHooks/useCommon";
 import util from "../lib/axios";
-
+import useCSRF from "../useHooks/useCSRF";
 
 function Admin({ match, history }: any) {
-   const { token }: ICommonModuleProps = useCommon();
-
    const [user, setUser] = useState({
-      id: "",
-      pwd: "",
-      number: "",
+      id: "jjuu6933",
+      pwd: "wowwjd12!@",
+      number: "1",
    });
 
    const [visivle, setVisible] = useState<boolean>(false);
@@ -26,10 +22,10 @@ function Admin({ match, history }: any) {
          [e.target.name]: e.target.value,
       }));
    };
-
+   const csrf = useCSRF();
    const onSubmit = async () => {
       // console.log(count.current);TODO 3번이상일때 디비에 잠금걸자.
-      const { data } = await util.adminLogin(user, token);
+      const { data } = await util.adminLogin(user, csrf);
       if (!data.state) count.current++;
       else {
          setCertification(true);
@@ -40,7 +36,7 @@ function Admin({ match, history }: any) {
 
    const onCertificationPhone = async () => {
       if (parseInt(user.number) === number && certification) {
-         await util.setToken(token);
+         await util.setToken(csrf);
          history.push("/");
       } else {
          count.current++;

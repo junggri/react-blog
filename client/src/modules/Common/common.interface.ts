@@ -1,4 +1,4 @@
-import { GET_CSRF, GET_CSRF_ERROR, GET_CSRF_SUCCESS } from "./index";
+import { GET_CSRF, GET_CSRF_ERROR, GET_CSRF_SUCCESS, SET_IS_LOGIN } from "./index";
 
 export interface ICommonState {
    width: number;
@@ -13,13 +13,16 @@ export interface ICommonAction {
       | typeof GET_CSRF
       | typeof GET_CSRF_SUCCESS
       | typeof GET_CSRF_ERROR
-   payload: string
+      | typeof SET_IS_LOGIN
+   payload: string | boolean
    e: Error
 }
 
 export interface ICommonModuleProps {
    width: number,
    token: string
+   login: boolean
    loading: boolean
+   onSetLogin: (state: boolean) => void
    e: Error | null
 }

@@ -191,6 +191,5 @@
     "presets": [
       "react-app"
     ]
-  },
-  "proxy": "http://localhost:9000"
+  }
 }

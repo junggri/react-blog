@@ -75,11 +75,14 @@ var AdminController = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        jwttoken = req.headers.authoriztion.split(" ")[1];
+                        jwttoken = req.cookies.jwt;
                         return [4 /*yield*/, verifyToken_1.default(jwttoken)];
                     case 1:
                         decoded = _a.sent();
-                        return [2 /*return*/, decoded];
+                        decoded
+                            ? res.status(200).json({ decoded: decoded })
+                            : res.status(200).json({ decoded: null });
+                        return [2 /*return*/];
                 }
             });
         });

@@ -10,6 +10,7 @@ import { SideNavBarTopic } from "./index";
 
 interface ISideBarNavContainer {
    topic: any[]
+   login: boolean
 }
 
 const backGround = {
@@ -19,7 +20,9 @@ const backGround = {
    backgroundRepeat: "no-repeat",
 };
 
-function SideBarNavContainer({ topic }: ISideBarNavContainer) {
+function SideBarNavContainer({ topic, login }: ISideBarNavContainer) {
+
+
    return (
       <SideBarComp>
          <SideBarThunmbNailComp style={backGround} />
@@ -43,9 +46,11 @@ function SideBarNavContainer({ topic }: ISideBarNavContainer) {
                <BiLogIn />
             </Link>
          </div>
+         {login &&
          <Link to="/write">
             <span className="write-article-btn">새 글 쓰기</span>
          </Link>
+         }
          <div className="sidebar-copyright">Copyright 2020. junggri All rights reserved.</div>
          <div className="sidebar-divider" />
       </SideBarComp>

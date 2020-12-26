@@ -15,6 +15,7 @@ const util = {
       return instance({
          url: "/api/check/csrf",
          method: "post",
+         withCredentials: true,
       });
    },
 
@@ -34,6 +35,13 @@ const util = {
       });
    },
 
+   getAllPostsItems() {
+      return instance({
+         url: "/topic/posts/items",
+         method: "get",
+      });
+   },
+
    getPostFromParams(parmas: string) {
       return instance({
          url: `/topic/posts/${parmas}`,
@@ -47,10 +55,22 @@ const util = {
       });
    },
 
-   getAllPostsItems() {
+
+   deleteTopic(topicName: string, token: string) {
       return instance({
-         url: "/topic/posts/items",
-         method: "get",
+         url: `/topic/:${topicName}`,
+         method: "post",
+         data: { topicName: topicName },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
+   deletePost(uid: string, topic: string, token: string) {
+      return instance({
+         url: `/topic/posts/item`,
+         method: "post",
+         data: { uid: uid, topic: topic },
+         headers: { "X-XSRF-TOKEN": token },
       });
    },
 
@@ -59,15 +79,6 @@ const util = {
          url: `/topic/topicname/${topicName}`,
          method: "post",
          data: { newTopic: topicName },
-         headers: { "X-XSRF-TOKEN": token },
-      });
-   },
-
-   deleteTopic(topicName: string, token: string) {
-      return instance({
-         url: `/topic/delete/:${topicName}`,
-         method: "post",
-         data: { topicName: topicName },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
@@ -95,10 +106,11 @@ const util = {
          method: "post",
          headers: {
             "X-XSRF-TOKEN": token,
-
          },
       });
    },
+
+
 };
 
 export default util;

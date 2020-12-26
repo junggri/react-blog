@@ -5,13 +5,12 @@ import "react-quill/dist/quill.snow.css";
 import { formats, modules } from "../../config/textEditor.config";
 import { WriteBox, WriteConditionBox } from "../../styled-comp";
 import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, TextEditBtnBox } from "component/index";
-import useCommon from "../../useHooks/useCommon";
 import useTopic from "../../useHooks/useTopic";
 import useTextEdit from "../../useHooks/useTextEdit";
 import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interface";
 import util from "../../lib/axios";
 import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
-import { ICommonModuleProps } from "../../modules/Common/common.interface"; /**/
+import useCSRF from "../../useHooks/useCSRF"; /**/
 
 
 const Editor = ({ history }: any) => {
@@ -25,7 +24,7 @@ const Editor = ({ history }: any) => {
    }: ITextEditModuleProps = useTextEdit();
 
    const ref: any = useRef(null) as MutableRefObject<any>;
-   const { token }: ICommonModuleProps = useCommon();
+   const csrf = useCSRF();
    const { topic, makeOrDeleteAndReqNewTopics }: ITopicModuleProps = useTopic();
 
 
@@ -66,7 +65,7 @@ const Editor = ({ history }: any) => {
          || data.topicName === "") {
          alert("정보를 입력하세요");
       } else {
-         const result = await util.savePost(data, token);
+         const result = await util.savePost(data, csrf);
          if (result) history.push("/");
       }
    };
@@ -85,7 +84,7 @@ const Editor = ({ history }: any) => {
          </WriteBox>
          <WriteConditionBox>
             <SelectTopic onIsChecked={onIsChecked} topic={topic} />
-            <CreateNewTopic topic={topic} token={token} onMakeOrDelteTopic={onMakeOrDelteTopic} />
+            <CreateNewTopic topic={topic} token={csrf} onMakeOrDelteTopic={onMakeOrDelteTopic} />
             <KindOfPosts onCheck={onCheckKindOfPosts} />
             <PostsDetail onChangeDetail={onChangeDetail} />
             <TextEditBtnBox onSubmit={onSubmit} />
