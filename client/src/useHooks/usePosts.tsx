@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
 import { onRequestAllPosts, onRequestPosts, onRequsetPost } from "../modules/Posts";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { onDeletePost } from "../modules/Posts/lib/PostsAction";
+import { IPostCommonProps } from "../modules/Posts/posts.interface";
 
 export default function usePosts() {
    const dispatch = useDispatch();
@@ -16,14 +17,14 @@ export default function usePosts() {
       dispatch(onRequsetPost(topic, postsId));
    }, [dispatch]);
 
-   const deletePost = useCallback(() => {
-      dispatch(onDeletePost());
+   const deletePost = useCallback((posts: IPostCommonProps[]) => {
+      dispatch(onDeletePost(posts));
+   }, [dispatch]);
+
+   const getAllPosts = useCallback(() => {
       dispatch(onRequestAllPosts());
    }, [dispatch]);
 
-   useEffect(() => {
-      dispatch(onRequestAllPosts());
-   }, [dispatch]);
 
    return {
       AllPosts,
@@ -32,5 +33,6 @@ export default function usePosts() {
       getPosts,
       getPost,
       deletePost,
+      getAllPosts,
    };
 }

@@ -1,4 +1,4 @@
-import React, { MutableRefObject, useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
 import WriteTopicName from "component/TextEditor/WriteTopicName";
 import "react-quill/dist/quill.snow.css";
@@ -10,10 +10,17 @@ import useTextEdit from "../../useHooks/useTextEdit";
 import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interface";
 import util from "../../lib/axios";
 import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
-import useCSRF from "../../useHooks/useCSRF"; /**/
+import useCSRF from "../../useHooks/useCSRF";
+import { ICommonModuleProps } from "../../modules/Common/common.interface";
+import useCommon from "../../useHooks/useCommon";
 
 
 const Editor = ({ history }: any) => {
+   const { login }: ICommonModuleProps = useCommon();
+   if (!login) history.push("/");
+
+   const csrf = useCSRF(login);
+
    const {
       data,
       setContent,
@@ -23,9 +30,8 @@ const Editor = ({ history }: any) => {
       setDetail,
    }: ITextEditModuleProps = useTextEdit();
 
-   const ref: any = useRef(null) as MutableRefObject<any>;
-   const csrf = useCSRF();
    const { topic, makeOrDeleteAndReqNewTopics }: ITopicModuleProps = useTopic();
+   const ref = useRef<any>(null);
 
 
    useEffect(() => {

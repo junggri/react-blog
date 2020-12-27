@@ -1,20 +1,22 @@
 import React, { useCallback } from "react";
 import { EntryPostsContainerComp, EntryPostsItemComp } from "../../styled-comp";
 import { IAllPosts } from "../../modules/Posts/posts.interface";
-import { MdDelete } from "react-icons/md";
-import { IoColorWand } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import util from "../../lib/axios";
-import useCSRF from "useHooks/useCSRF";
+import { IoColorWand } from "react-icons/io5";
+import { MdDelete } from "react-icons/md";
+import useCSRF from "../../useHooks/useCSRF";
 
 interface IEntryPostsContainer {
    width: number,
    posts: IAllPosts
-   deletePost: () => void
+   deletePost: (posts: any) => void
+   login: boolean
+
 }
 
-const EntryPostsContainer = ({ width, posts, deletePost }: IEntryPostsContainer) => {
-   const csrf = useCSRF();
+const EntryPostsContainer = ({ width, posts, deletePost, login }: IEntryPostsContainer) => {
+   const csrf = useCSRF(login);
 
 
    const onModified = useCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -26,17 +28,15 @@ const EntryPostsContainer = ({ width, posts, deletePost }: IEntryPostsContainer)
       const topic = (e.currentTarget.parentNode as HTMLElement).dataset.topic as string;
       (async () => {
          await util.deletePost(uid, topic, csrf);
-         deletePost();
-         //posts 모듈에서 해야한다
+         const newPostsState = posts.data?.filter(item => (item.uid !== uid));
+         deletePost(newPostsState);
       })();
    }, [csrf, deletePost]);
 
-
-   if (!posts.data) return null;
    return (
       <EntryPostsContainerComp width={width}>
          <div>
-            {posts.data.map((e) => (
+            {posts.data?.map((e) => (
                <EntryPostsItemComp key={e.uid}>
                   <span className="item-created">{e.created}</span>
                   <Link to={`/topic/${e.topic}/${e.uid}`}>
@@ -50,14 +50,12 @@ const EntryPostsContainer = ({ width, posts, deletePost }: IEntryPostsContainer)
                         </span>
                      </span>
                   </section>
+                  {login &&
                   <div className="posts-admin-box" data-id={e.uid} data-topic={e.topic}>
-                     <span className='posts-admin-modify' onClick={onModified}>
-                        <IoColorWand />
-                     </span>
-                     <span className='posts-admin-delete' onClick={onDelete}>
-                        <MdDelete />
-                     </span>
+                     <span className='posts-admin-modify' onClick={onModified}><IoColorWand /></span>
+                     <span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>
                   </div>
+                  }
                </EntryPostsItemComp>
             ))}
          </div>

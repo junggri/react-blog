@@ -9,7 +9,8 @@ export { default as CreateNewTopic } from "component/TextEditor/CreateNewTopic";
 //////containers
 export { default as PostsContainer } from "component/Content/PostsContainer";
 
-export { default as EntryPostsContainer } from "component/Home/EntryPostsContainer";
-export { default as SideBarContainer } from "component/SideNavBar";
-export { default as SideNavBarTopic } from "component/SideNavBarTopic";
+export { default as EntryPostsContainer } from "component/Content/EntryPostsContainer";
+export { default as SideBarContainer } from "component/Home/SideNavBar";
+export { default as SideNavBarTopic } from "component/Home/SideNavBarTopic";
+
 export { default as SpecificTopicContainer } from "component/Content/SpecificTopicContainer";

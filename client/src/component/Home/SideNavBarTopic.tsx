@@ -1,5 +1,5 @@
 import React from "react";
-import { SideBarPostsContainerComp, SideBarPostsItemComp } from "../styled-comp";
+import { SideBarPostsContainerComp, SideBarPostsItemComp } from "../../styled-comp";
 
 interface ISideBarNavContainer {
    topic: any[]

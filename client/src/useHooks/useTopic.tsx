@@ -11,8 +11,8 @@ export default function useTopic() {
       dispatch(onReqTopicsName());
    }, [dispatch]);
 
+
    useEffect(() => {
-      if (topic) return;
       dispatch(onReqTopicsName());
    }, [dispatch]);
 

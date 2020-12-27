@@ -145,7 +145,7 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "CREATE TABLE " + newTopic + "(\n                     Id int(11) not null auto_increment primary key,\n                     uid  varchar(50) not null,\n                     topic varchar(11) not null,\n                     content_name varchar(200) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     file varchar(100) not null,\n                     comments varchar(50),\n                     detail varchar(200) not null,\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null\n                     )";
+                    query = "CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     uid  varchar(50) not null,\n                     topic varchar(11) not null,\n                     content_name varchar(200) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     file varchar(100) not null,\n                     comments varchar(50),\n                     detail varchar(200) not null,\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null\n                     )";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }

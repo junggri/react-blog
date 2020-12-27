@@ -151,7 +151,14 @@ export default function Posts(state: IPostInitialState = initialState, action: D
             },
          };
       case DELETE_POST:
-         return state;
+         return {
+            ...state,
+            AllPosts: {
+               data: action.payload,
+               loading: false,
+               error: null,
+            },
+         };
       default :
          return state;
    }

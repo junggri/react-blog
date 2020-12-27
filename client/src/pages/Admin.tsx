@@ -3,7 +3,7 @@ import { AdminLoginBoxComp } from "../styled-comp";
 import util from "../lib/axios";
 import useCSRF from "../useHooks/useCSRF";
 
-function Admin({ match, history }: any) {
+function Admin({ history }: any) {
    const [user, setUser] = useState({
       id: "jjuu6933",
       pwd: "wowwjd12!@",
@@ -16,13 +16,16 @@ function Admin({ match, history }: any) {
    const count = useRef(0);
 
 
+   const csrf = useCSRF(true);
+
    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setUser(state => ({
          ...state,
          [e.target.name]: e.target.value,
       }));
    };
-   const csrf = useCSRF();
+
+
    const onSubmit = async () => {
       // console.log(count.current);TODO 3번이상일때 디비에 잠금걸자.
       const { data } = await util.adminLogin(user, csrf);

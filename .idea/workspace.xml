@@ -20,55 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsAction.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/useHooks/useLoginFlag.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/08be134e-5fbb-4bc8-9940-5c9b31d32acb.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/775a1b51-892b-4e02-8cb5-67dc1e3803a7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/a7e863c5-4fbc-4601-91a5-0f79022831e8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/aa36f3ff-f4e3-4e2e-a8bb-5c5c3aadbcaa.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/c6488277-7937-402a-9c67-e934c8a158ab.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/contents/c6f2946c-2110-4550-83d6-136096cf3d9c.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/19418b63-20d2-412e-a043-1fbb103eec14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/38be76a7-dbb9-4b26-8604-30ba3480c371.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/4c5fe024-a361-4f7a-bf75-74a2295d5243.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/93b3c2e7-a54f-4b14-a111-d7f579cd43a9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/ae945184-59e5-4887-a137-e8ed042e71ec.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/d5cc63c9-da1c-4e4d-9d09-f83c81ed11d6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/d959ea35-ccf1-435d-ada5-7edf041de8b4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/ec52c7dc-0268-40c4-96f9-d7191c01bae0.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/contents/f49da90a-8e24-4f19-b885-e3fd4f6a67bb.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/CommonEntry.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/EntryPostsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/SideNavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/SideNavBarTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/CreateNewTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/CreateNewTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/SelectTopic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/common.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/common.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsAction.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Entry.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/useHooks/useCSRF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useCSRF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useLoginFlag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useLoginFlag.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/admin.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/admin.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/admin.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/admin.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controller/admin.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/admin.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/model/admin.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/admin.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/router/admin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/admin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,23 +107,23 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/src" />
-      <recent name="$PROJECT_DIR$/client/public/image" />
-      <recent name="$PROJECT_DIR$/client/src/modules/index" />
-      <recent name="$PROJECT_DIR$/client/src/modules/Common" />
-      <recent name="$PROJECT_DIR$/client/src/component/Common" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/src/lib" />
       <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/component/Content" />
+      <recent name="$PROJECT_DIR$/client/src/component/Home" />
+      <recent name="$PROJECT_DIR$/client/src" />
+      <recent name="$PROJECT_DIR$/client/public/image" />
+      <recent name="$PROJECT_DIR$/client/src/modules/index" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -243,6 +230,8 @@
       <workItem from="1608543789038" duration="634000" />
       <workItem from="1608953073445" duration="637000" />
       <workItem from="1608956986169" duration="2065000" />
+      <workItem from="1608993832151" duration="2942000" />
+      <workItem from="1609071821202" duration="9328000" />
     </task>
     <servers />
   </component>
@@ -285,12 +274,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="696" y="406" key="#Scopes/0.25.1792.1038@0.25.1792.1038" timestamp="1607680606901" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608351740653">
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608994724959">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607771126031" />
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553795014" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608351740653" />
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608994724959" />
     <state x="537" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607746260752">
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
@@ -309,11 +298,12 @@
     </state>
     <state x="584" y="283" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1606993607862" />
     <state x="2418" y="273" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607520607115" />
-    <state x="651" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608455693687">
-      <screen x="0" y="25" width="1792" height="1041" />
+    <state x="2490" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609073477536">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="651" y="285" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607767332105" />
     <state x="651" y="286" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1608455693687" />
+    <state x="2490" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609073477536" />
     <state x="2490" y="275" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607695739857" />
     <state x="3021" y="363" key="#com.intellij.tools.ToolEditorDialog" timestamp="1606545968902">
       <screen x="1792" y="25" width="1920" height="1055" />

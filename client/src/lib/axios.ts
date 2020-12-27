@@ -11,13 +11,6 @@ const util = {
       });
    },
 
-   checkCSRFtoken(_csrfToken: string) {
-      return instance({
-         url: "/api/check/csrf",
-         method: "post",
-         withCredentials: true,
-      });
-   },
 
    getTopicName() {
       return instance({
@@ -100,13 +93,10 @@ const util = {
       });
    },
 
-   checkJWTToken(token: string) {
+   checkJWTToken() {
       return instance({
          url: `/admin/token/csrf`,
-         method: "post",
-         headers: {
-            "X-XSRF-TOKEN": token,
-         },
+         method: "get",
       });
    },
 

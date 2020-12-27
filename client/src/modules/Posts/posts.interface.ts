@@ -17,6 +17,7 @@ export interface DataAction {
 }
 
 export interface IPostCommonProps {
+   id: number
    comments: string | null
    uid: string
    content_name: string
@@ -66,7 +67,8 @@ export interface IPostsModuleProps {
    AllPosts: IAllPosts
    getPosts: (params: string) => void
    getPost: (topic: string, postId: string) => void
-   deletePost: () => void
+   deletePost: (psots: IPostCommonProps[]) => void
+   getAllPosts: () => void
 }
 
 //이 인터페이스는 api요청 후 셋팅된 데이터의 인터페이스
