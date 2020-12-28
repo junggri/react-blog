@@ -10,19 +10,19 @@ export default function usePosts() {
    const { posts, post, AllPosts } = useSelector((state: RootState) => state.posts);
 
    const getPosts = useCallback((params: string) => {
-      dispatch(onRequestPosts(params));
+      dispatch(onRequestPosts({ params }));
    }, [dispatch]);
 
    const getPost = useCallback((topic: string, postsId: string) => {
-      dispatch(onRequsetPost(topic, postsId));
+      dispatch(onRequsetPost({ topic, postsId }));
+   }, [dispatch]);
+
+   const getAllPosts = useCallback(() => {
+      dispatch(onRequestAllPosts({}));
    }, [dispatch]);
 
    const deletePost = useCallback((posts: IPostCommonProps[]) => {
       dispatch(onDeletePost(posts));
-   }, [dispatch]);
-
-   const getAllPosts = useCallback(() => {
-      dispatch(onRequestAllPosts());
    }, [dispatch]);
 
 

@@ -1,17 +1,6 @@
 import util from "../../lib/axios";
-import { initial } from "./lib/PostsUtil";
+import { createThunk, handleAction, reducerUtil } from "./lib/PostsUtil";
 import { DataAction, IPostInitialState } from "./posts.interface";
-import {
-   onRequest,
-   onRequestAllPostsError,
-   onRequestError,
-   onRequestPost,
-   onRequestPostError,
-   onRequestPostSuccess,
-   onRequestSuccuess,
-   onRequsetAllPosts,
-   onRequsetAllPostsSuccess,
-} from "./lib/PostsAction";
 
 export const GET_POSTS = "data/GET_POSTS";
 export const GET_POSTS_SUCCESS = "data/GET_POSTS_SUCCESS";
@@ -29,127 +18,34 @@ export const DELETE_POST = "data/DELETE_POST";
 
 //액션 생성함수를 선언!
 
+export const onRequestPosts = createThunk(GET_POSTS, util.getPostFromParams);
 
-export const onRequestPosts = (params: string) => async (dispatch: any, getState: any) => {
-   dispatch(onRequest());
-   try {
-      const { data } = await util.getPostFromParams(params);
-      dispatch(onRequestSuccuess(data));
-   } catch (e) {
-      dispatch(onRequestError(e));
-   }
-};
+export const onRequsetPost = createThunk(GET_POST, util.getPostFromPostId);
 
-export const onRequsetPost = (topic: string, postsId: string) => async (dispatch: any) => {
-   dispatch(onRequestPost());
-   try {
-      const { data } = await util.getPostFromPostId({ topic, postsId });
-      dispatch(onRequestPostSuccess(data));
-   } catch (e) {
-      dispatch(onRequestPostError(e));
-   }
-};
+export const onRequestAllPosts = createThunk(GET_ALL_POSTS, util.getAllPostsItems);
 
-export const onRequestAllPosts = () => async (dispatch: any) => {
-   dispatch(onRequsetAllPosts());
-   try {
-      const { data } = await util.getAllPostsItems();
-      dispatch(onRequsetAllPostsSuccess(data));
-   } catch (e) {
-      dispatch(onRequestAllPostsError(e));
-   }
-};
 
 const initialState: IPostInitialState = {
-   posts: initial.PostsInit(),
-   post: initial.PostInit(),
-   AllPosts: initial.AllPosts(),
+   posts: reducerUtil.initial(),
+   post: reducerUtil.initial(),
+   AllPosts: reducerUtil.initial(),
 };
 
 
 export default function Posts(state: IPostInitialState = initialState, action: DataAction): IPostInitialState {
    switch (action.type) {
       case GET_POSTS:
-         return {
-            ...state,
-            posts: {
-               data: null,
-               loading: true,
-               error: action.error,
-            },
-         };
       case GET_POSTS_SUCCESS:
-         return {
-            ...state,
-            posts: {
-               data: action.payload,
-               loading: false,
-               error: null,
-            },
-         };
       case GET_POSTS_ERROR:
-         return {
-            ...state,
-            posts: {
-               data: null,
-               loading: false,
-               error: null,
-            },
-         };
+         return handleAction(GET_POSTS, "posts", true)(state, action);
       case GET_POST:
-         return {
-            ...state,
-            post: {
-               data: null,
-               loading: true,
-               error: null,
-            },
-         };
       case GET_POST_SUCCESS:
-         return {
-            ...state,
-            post: {
-               data: action.payload,
-               loading: false,
-               error: null,
-            },
-         };
       case GET_POST_ERROR:
-         return {
-            ...state,
-            post: {
-               data: null,
-               loading: false,
-               error: action.error,
-            },
-         };
+         return handleAction(GET_POST, "post", true)(state, action);
       case GET_ALL_POSTS:
-         return {
-            ...state,
-            AllPosts: {
-               data: null,
-               loading: true,
-               error: null,
-            },
-         };
       case GET_ALL_POSTS_SECCUESS:
-         return {
-            ...state,
-            AllPosts: {
-               data: action.payload,
-               loading: false,
-               error: null,
-            },
-         };
       case GET_ALL_POSTS_ERROR:
-         return {
-            ...state,
-            AllPosts: {
-               data: null,
-               loading: false,
-               error: action.error,
-            },
-         };
+         return handleAction(GET_ALL_POSTS, "AllPosts", true)(state, action);
       case DELETE_POST:
          return {
             ...state,

@@ -17,11 +17,10 @@ function PostsContainer({ match }: any) {
 
    const { data, loading, error } = post;
 
+   console.log(data);
    useEffect(() => {
       getPost(match.params.topic, match.params.postsId);
    }, [match.params.topic, match.params.postsId]);
-
-
    const MakeHtml = () => ({ __html: DOMPurify.sanitize((data as IPostDataProps).content) });
 
 
@@ -51,4 +50,3 @@ function PostsContainer({ match }: any) {
 }
 
 export default PostsContainer;
-

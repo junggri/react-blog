@@ -4,7 +4,6 @@ import util from "../lib/axios";
 
 function LoginFlag() {
    const { onSetLogin } = useCommon();
-   //로그인안했는데 굳이 이거 체크할 리듀서에 체크할필요가 없지않나?
 
    useEffect(() => {
       (async () => {

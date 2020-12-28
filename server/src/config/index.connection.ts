@@ -5,7 +5,7 @@ const option = {
    user: "root",
    password: "wowwjd123",
    database: "contents",
-   connectionLimit: 10,
+   connectionLimit: 40,
    waitForConnections: true,
 };
 

@@ -152,12 +152,13 @@ var contentModel = {
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, dataArr, result, i, data, j, e_2;
+        var conn, test, dataArr, result, i, data, j, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, index_connection_1.default()];
                 case 1:
                     conn = _a.sent();
+                    test = {};
                     dataArr = [];
                     if (!(conn !== undefined)) return [3 /*break*/, 9];
                     _a.label = 2;

@@ -70,6 +70,7 @@ app
 app.use(function (req, res, next) {
     res.header("Cache-control", "no-cache, must-revalidate");
     res.header("Pragma", "no-cache");
+    res.header("Access-Control-Allow-Methods", "GET POST DELELTE");
     next();
 });
 // app.get("/", (req, res) => {

@@ -19,4 +19,5 @@ export interface ITopicModuleProps {
    loading: boolean,
    error: Error | null
    makeOrDeleteAndReqNewTopics: () => void
+   requestTopic: () => void
 }

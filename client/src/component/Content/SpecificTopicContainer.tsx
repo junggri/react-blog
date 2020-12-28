@@ -7,6 +7,7 @@ interface ISpecificTopicContainer {
    match: any
    onGetPosts: (params: string) => void
    posts: IPostsProps
+
 }
 
 function SpecificTopicContainer({ width, match, onGetPosts, posts }: ISpecificTopicContainer) {
@@ -15,7 +16,7 @@ function SpecificTopicContainer({ width, match, onGetPosts, posts }: ISpecificTo
 
    useEffect(() => {
       onGetPosts(params);
-   }, [params]);
+   }, [params, onGetPosts]);
 
    if (!posts.data) return null;
 

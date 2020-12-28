@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import util from "../lib/axios";
 
 
-function CSRF(login: boolean) {
+function CSRF() {
    const [csrf, setCsrf] = useState("");
 
 
    useEffect(() => {
-      console.log(login);
-      if (login)
-         (async () => {
-            const { data } = await util.getCSRTtoken();
-            setCsrf(data);
-         })();
-   }, [login]);
+      (async () => {
+         const { data } = await util.getCSRTtoken();
+         setCsrf(data);
+      })();
+      return function cleanUp() {
+         setCsrf("");
+      };
+   }, []);
 
    return csrf;
 }

@@ -5,18 +5,16 @@ import { Link } from "react-router-dom";
 import util from "../../lib/axios";
 import { IoColorWand } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
-import useCSRF from "../../useHooks/useCSRF";
 
 interface IEntryPostsContainer {
    width: number,
    posts: IAllPosts
    deletePost: (posts: any) => void
    login: boolean
-
+   csrf: string
 }
 
-const EntryPostsContainer = ({ width, posts, deletePost, login }: IEntryPostsContainer) => {
-   const csrf = useCSRF(login);
+const EntryPostsContainer = ({ width, posts, deletePost, login, csrf }: IEntryPostsContainer) => {
 
 
    const onModified = useCallback((e: React.MouseEvent<HTMLElement>) => {
@@ -31,7 +29,7 @@ const EntryPostsContainer = ({ width, posts, deletePost, login }: IEntryPostsCon
          const newPostsState = posts.data?.filter(item => (item.uid !== uid));
          deletePost(newPostsState);
       })();
-   }, [csrf, deletePost]);
+   }, [csrf, deletePost, posts.data]);
 
    return (
       <EntryPostsContainerComp width={width}>
@@ -45,9 +43,9 @@ const EntryPostsContainer = ({ width, posts, deletePost, login }: IEntryPostsCon
                   <div className="item-detail">{e.detail}</div>
                   <section className="posts-keyword-box">
                      <span className="posts-keywords">
-                        <span>
+                           <Link to={`/topic/${e.topic}`}>
                            {e.topic}
-                        </span>
+                           </Link>
                      </span>
                   </section>
                   {login &&

@@ -16,7 +16,8 @@ function Admin({ history }: any) {
    const count = useRef(0);
 
 
-   const csrf = useCSRF(true);
+   const csrf = useCSRF();
+
 
    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setUser(state => ({

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { onReqTopicsName } from "../modules/Topic";
 
 export default function useTopic() {
@@ -11,11 +11,10 @@ export default function useTopic() {
       dispatch(onReqTopicsName());
    }, [dispatch]);
 
-
-   useEffect(() => {
+   const requestTopic = useCallback(() => {
       dispatch(onReqTopicsName());
    }, [dispatch]);
 
 
-   return { topic, loading, error, makeOrDeleteAndReqNewTopics };
+   return { topic, loading, error, makeOrDeleteAndReqNewTopics, requestTopic };
 }

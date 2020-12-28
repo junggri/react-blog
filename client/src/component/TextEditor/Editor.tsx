@@ -16,10 +16,10 @@ import useCommon from "../../useHooks/useCommon";
 
 
 const Editor = ({ history }: any) => {
-   const { login }: ICommonModuleProps = useCommon();
+   const { login, setNewRequset }: ICommonModuleProps = useCommon();
    if (!login) history.push("/");
 
-   const csrf = useCSRF(login);
+   const csrf = useCSRF();
 
    const {
       data,
@@ -72,6 +72,7 @@ const Editor = ({ history }: any) => {
          alert("정보를 입력하세요");
       } else {
          const result = await util.savePost(data, csrf);
+         setNewRequset(true);
          if (result) history.push("/");
       }
    };

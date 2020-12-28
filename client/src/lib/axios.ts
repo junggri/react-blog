@@ -1,6 +1,5 @@
 import instance from "../config/axois.config";
 import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
-import { IGetPostFromPostId } from "../interface/index.interface";
 
 
 const util = {
@@ -42,7 +41,7 @@ const util = {
       });
    },
 
-   getPostFromPostId({ topic, postsId }: IGetPostFromPostId) {
+   getPostFromPostId(topic: string, postsId: string) {
       return instance({
          url: `/topic/${topic}/posts/${postsId}`,
       });
@@ -95,7 +94,7 @@ const util = {
 
    checkJWTToken() {
       return instance({
-         url: `/admin/token/csrf`,
+         url: `/admin/token/jwt`,
          method: "get",
       });
    },

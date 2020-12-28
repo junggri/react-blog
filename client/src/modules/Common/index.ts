@@ -8,6 +8,7 @@ export const GET_CSRF_ERROR = "common/GET_CSRF_ERROR";
 
 export const SET_IS_LOGIN = "common/SET_IS_LOGIN";
 
+export const NEW_REQUEST = "common/NEW_REQUEST";
 
 export const onGetCsrf = () => ({ type: GET_CSRF });
 export const onGetCsrfSuccess = (payload: string) => ({ type: GET_CSRF_SUCCESS, payload });
@@ -15,6 +16,7 @@ export const onGetCsrfError = (e: Error) => ({ type: GET_CSRF_ERROR, e });
 
 export const onSetIsLogin = (payload: boolean) => ({ type: SET_IS_LOGIN, payload });
 
+export const onNewRequset = (payload: boolean) => ({ type: NEW_REQUEST, payload: payload });
 
 // typescript는 const를 이해하므로(typeof CHECK_GUESTBOOK은 string이 아니라 'CHECK_GUESTBOOK'입니다)
 // 액션 이름을 그대로 쓰셔도 됩니다.
@@ -39,6 +41,7 @@ const initialState: ICommonState = {
    token: "",
    login: false,
    loading: false,
+   newRequest: true,
    e: null,
 };
 
@@ -65,7 +68,11 @@ export default function common(state: ICommonState = initialState, action: IComm
             ...state,
             login: action.payload as boolean,
          };
-
+      case NEW_REQUEST:
+         return {
+            ...state,
+            newRequest: action.payload as boolean,
+         };
       default:
          return state;
    }

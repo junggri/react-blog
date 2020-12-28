@@ -75,7 +75,7 @@ const postsItemMixin = css`
     background: #f58320;
     color:white;
     display: inline-block;
-    padding:7px 14px;
+    padding:4px 12px;
     border-radius: 15px;
     letter-spacing: 1.2px;
   }
@@ -110,7 +110,7 @@ export const SideBarComp = styled.section`
   position: fixed;
   width:320px; 
   & .sidebar-icons-box{
-    font-size:2rem;
+    font-size:1.7rem;
     display: flex;
     margin-top:60px;
     cursor: pointer;
@@ -168,7 +168,7 @@ export const SideBarMetaDataComp = styled.div`
   }
   & .sidebar-posi{
     letter-spacing: 1.2px;
-    font-size:1.125rem;
+    font-size:1rem;
     font-weight: 300;
     &.posi1{
       margin-top:30px;
@@ -185,15 +185,15 @@ export const SideBarPostsContainerComp = (styled.ul`
 `);
 
 export const SideBarPostsItemComp = styled(NavLink)<any>`
-  height: 20px;
+  height: 16px;
   display:block;
   margin-bottom:10px;
   transition: all 0.6s;
   & span{
     vertical-align: middle;
-    font-size:1.25rem;
+    font-size:1.1rem;
     font-weight: 300;
-    opacity: 0.7;
+    opacity:1;
     &:hover{
       text-decoration: underline;
     }
