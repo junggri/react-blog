@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+<pre class="ql-syntax" spellcheck="false">import React, { useEffect } from "react";
 import { PostsContainerComp } from "../../styled-comp";
 import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import useCommon from "../../useHooks/useCommon";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { CgHome } from "react-icons/cg";
 import Highlight from "react-highlight.js";
 import createDOMPurify from "dompurify";
-
+import "highlight.js/styles/dracula.css";
 
 const DOMPurify = createDOMPurify(window);
 
@@ -17,37 +17,38 @@ function PostsContainer({ match }: any) {
    const { getPost, post, onClearPost }: IPostsModuleProps = usePosts();
    const { data } = post;
 
-   useEffect(() => {
+   useEffect(() =&gt; {
       getPost(match.params.topic, match.params.postsId);
-      return () => onClearPost();
+      return () =&gt; onClearPost();
    }, [match.params.topic, match.params.postsId, onClearPost, getPost]);
 
-   const MakeHtml = () => ({ __html: DOMPurify.sanitize((data as IPostDataProps).content) });
+   const MakeHtml = () =&gt; ({ __html: DOMPurify.sanitize((data as IPostDataProps).content) });
 
 
    if (!post.data) return null;
 
    return (
-      <PostsContainerComp width={width}>
-         <div className="posts-container-iconbox">
-            <Link to="/">
-               <CgHome className="icon-tohome" />
-            </Link>
-         </div>
-         <div className="posts-name">
+      &lt;PostsContainerComp width={width}&gt;
+         &lt;div className="posts-container-iconbox"&gt;
+            &lt;Link to="/"&gt;
+               &lt;CgHome className="icon-tohome" /&gt;
+            &lt;/Link&gt;
+         &lt;/div&gt;
+         &lt;div className="posts-name"&gt;
             {(data as IPostDataProps).result[0].content_name}
-         </div>
-         <div className="posts-detail">
+         &lt;/div&gt;
+         &lt;div className="posts-detail"&gt;
             {(data as IPostDataProps).result[0].detail}
-         </div>
-         <Highlight language='react'>
-            <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" />
-         </Highlight>
-         <div className="posts-created">
+         &lt;/div&gt;
+         &lt;Highlight language='react'&gt;
+            &lt;div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" /&gt;
+         &lt;/Highlight&gt;
+         &lt;div className="posts-created"&gt;
             {(data as IPostDataProps).result[0].created}
-         </div>
-      </PostsContainerComp>
+         &lt;/div&gt;
+      &lt;/PostsContainerComp&gt;
    );
 }
 
 export default PostsContainer;
+</pre>

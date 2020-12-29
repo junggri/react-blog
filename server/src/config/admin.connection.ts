@@ -1,10 +1,13 @@
 import mysql from "mysql2/promise";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const option = {
-   host: "localhost",
-   user: "root",
-   password: "wowwjd123",
-   database: "admin",
+   host: process.env.DB_HOST,
+   user: process.env.DB_USER,
+   password: process.env.DB_PWD,
+   database: process.env.DB_DATABASE,
    waitForConnections: true,
 };
 

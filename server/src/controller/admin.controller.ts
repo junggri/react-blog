@@ -2,8 +2,7 @@ import { Request, Response } from "express";
 import model from "../model/admin.model";
 import accessToken from "../lib/accessToken";
 import verifyToken from "../lib/verifyToken";
-
-// import phoneCertification from "../lib/phoneCertification";
+import phoneCertification from "../lib/phoneCertification";
 
 interface IAdminController {
    login: (req: Request, res: Response) => void
@@ -14,7 +13,7 @@ interface IAdminController {
 const AdminController: IAdminController = {
    async login(req: Request, res: Response) {
       const result = await model.login(req.body.data);
-      // let certification_number = phoneCertification();
+      let certification_number = phoneCertification();
       res.status(200).json({ state: result, number: 1 });
    },
 
@@ -25,6 +24,7 @@ const AdminController: IAdminController = {
    },
 
    async checkJWTToken(req: Request, res: Response) {
+      console.log(2);
       const jwttoken = req.cookies.jwt;
       const decoded = await verifyToken(jwttoken);
       decoded

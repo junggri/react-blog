@@ -7,7 +7,7 @@ var express_1 = __importDefault(require("express"));
 var topic_controller_1 = __importDefault(require("../controller/topic.controller"));
 var router = express_1.default.Router();
 router.get("/contents/name", topic_controller_1.default.getContentName); //show all list in main view
-router.get("/posts/items", topic_controller_1.default.getAllPostsItems);
+router.get("/posts/item/list", topic_controller_1.default.getAllPostsItems);
 router.get("/posts/:topic", topic_controller_1.default.getPostsFromTopicName);
 router.get("/:topic/posts/:postsId", topic_controller_1.default.getPostsFromPostsId);
 router.post("/posts", topic_controller_1.default.savePosts); //save content

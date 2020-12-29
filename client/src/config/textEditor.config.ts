@@ -1,8 +1,8 @@
-import "highlight.js/styles/darcula.css";
+import "highlight.js/styles/a11y-light.css";
 import hljs from "highlight.js";
 
 hljs.configure({
-   languages: ["javascript", "react"],
+   languages: ["javascript", "react", "typescript", "css", "html", "Node REPL"],
 });
 
 export const modules = {

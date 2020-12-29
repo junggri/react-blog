@@ -18,8 +18,8 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react",
-    "@typescript-eslint"
+    "react"
+    //    "@typescript-eslint"
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "error",

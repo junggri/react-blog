@@ -25,8 +25,7 @@ const adminModel = {
             conn.release();
             if (!result.length) return false;
             else {
-               //TODO .env
-               let key = await pbkdf2Promise(data.pwd, result[0].salt, 100385, 64, "sha512");
+               let key = await pbkdf2Promise(data.pwd, result[0].salt, Number(process.env.CRYPTO_ITER), Number(process.env.CRYPTO_NUM), String(process.env.CRYPTO_ALGO));
                return result[0].password === key.toString("base64");
             }
          } catch (e) {

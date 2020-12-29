@@ -6,7 +6,7 @@ import { onNewRequset, onSetIsLogin } from "../modules/Common";
 export default function useCommon() {
    const dispatch = useDispatch();
 
-   const { width, token, login, loading, newRequest, e } = useSelector((state: RootState) => state.common);
+   const { width, login, loading, newRequest, e } = useSelector((state: RootState) => state.common);
 
    const onSetLogin = useCallback((state: boolean) => {
       dispatch(onSetIsLogin(state));
@@ -20,7 +20,6 @@ export default function useCommon() {
 
    return {
       width,
-      token,
       login,
       loading,
       e,

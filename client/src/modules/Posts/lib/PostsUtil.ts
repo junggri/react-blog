@@ -55,7 +55,7 @@ export const createThunk = (type: string, cb: any) => {
 };
 
 
-export function handleAction(type: string, key: string, keepData = true) {
+export function handleAction(type: string, key: string, keepData?: boolean) {
    const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
    return (state: any, action: DataAction) => {
       switch (action.type) {

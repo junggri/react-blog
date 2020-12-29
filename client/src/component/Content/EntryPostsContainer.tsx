@@ -8,14 +8,13 @@ import { MdDelete } from "react-icons/md";
 
 interface IEntryPostsContainer {
    width: number,
-   posts: IAllPosts
-   deletePost: (posts: any) => void
-   login: boolean
+   posts: IAllPosts,
+   deletePost: (posts: any) => void,
+   login: boolean,
    csrf: string
 }
 
 const EntryPostsContainer = ({ width, posts, deletePost, login, csrf }: IEntryPostsContainer) => {
-
 
    const onModified = useCallback((e: React.MouseEvent<HTMLElement>) => {
       console.log(2);
@@ -38,7 +37,9 @@ const EntryPostsContainer = ({ width, posts, deletePost, login, csrf }: IEntryPo
                <EntryPostsItemComp key={e.uid}>
                   <span className="item-created">{e.created}</span>
                   <Link to={`/topic/${e.topic}/${e.uid}`}>
-                     <div className="item-contentName">{e.content_name}</div>
+                     <div className="item-contentName">
+                        {e.content_name}
+                     </div>
                   </Link>
                   <div className="item-detail">{e.detail}</div>
                   <section className="posts-keyword-box">
@@ -61,4 +62,4 @@ const EntryPostsContainer = ({ width, posts, deletePost, login, csrf }: IEntryPo
    );
 };
 
-export default EntryPostsContainer;
+export default (EntryPostsContainer);

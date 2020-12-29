@@ -52,17 +52,24 @@ const postsItemMixin = css`
   & .item-created{
     display: inline-block;
     font-size:1.1rem;
+    font-weight: 600;
+    opacity: 0.8;
   }
   & .item-contentName{
     font-size:2.7rem;
     margin-top:6px;
+    letter-spacing: 2px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding:6px 0;
   }
   & .item-detail{
     font-size:1.2rem;
-    margin-top:30px;
+    margin-top:40px;
   }
   & .posts-keyword-box{
-    margin-top:15px;
+    margin-top:20px;
     & .posts-keywords{
       transition: 0.3s all;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -139,14 +146,14 @@ export const SideBarComp = styled.section`
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
-  & .sidebar-divider{
-    width:2px;
-    position: absolute;
-    left:95%;
-    top:0;
-    height: 600px;
-    background: linear-gradient(rgb(230, 230, 230)0px, rgb(230, 230, 230)48%, rgb(255, 255, 255));
-  }
+  //& .sidebar-divider{
+  //  width:2px;
+  //  position: absolute;
+  //  left:95%;
+  //  top:0;
+  //  height: 600px;
+  //  background: linear-gradient(rgb(230, 230, 230)0px, rgb(230, 230, 230)48%, rgb(255, 255, 255));
+  //}
 `;
 
 
@@ -253,7 +260,7 @@ export const PostsContainerComp = styled.section<Width>`
   & .posts-content{
     word-break:break-all;
     font-size:1.125rem;
-    margin-top:50px;
+    margin-top:50px;    
     & *{
       white-space: pre-wrap !important;
       word-break: break-all;
@@ -261,8 +268,10 @@ export const PostsContainerComp = styled.section<Width>`
     }
   }
   & .posts-created{
+    margin-top: 60px;
     text-align: right;
-    font-size:1.2rem;
+    font-size:1rem;
+    font-weight:100;
   }
 `;
 // & .posts-content{

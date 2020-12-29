@@ -29,7 +29,7 @@ const util = {
 
    getAllPostsItems() {
       return instance({
-         url: "/topic/posts/items",
+         url: "/topic/posts/item/list",
          method: "get",
       });
    },

@@ -14,9 +14,9 @@ export default function certifiCation() {
    let user_auth_number = randomArray.join("");
 
    const date = Date.now().toString();
-   const uri = "ncp:sms:kr:258388484624:authoriztion";
-   const secretKey = "iAC8fi4tH0dWVmckGrtMm92drplta6RxUhGnIKzd";
-   const accessKey = "cEk7AGKu4h9f72FEzLLC";
+   const uri = process.env.API_URI;
+   const secretKey = process.env.API_SECRETKEY as string;
+   const accessKey = process.env.API_ACCESSKEY as string;
    const method = "POST";
    const space = " ";
    const newLine = "\n";
@@ -50,11 +50,11 @@ export default function certifiCation() {
          body: {
             type: "SMS",
             countryCode: "82",
-            from: "01077652103",
+            from: process.env.API_PHONE,
             content: user_auth_number,
             messages: [
                {
-                  to: "01077652103",
+                  to: process.env.API_PHONE,
                },
             ],
          },
@@ -69,4 +69,3 @@ export default function certifiCation() {
    );
    return user_auth_number;
 }
-//TODO ,env

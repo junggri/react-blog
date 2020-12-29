@@ -20,7 +20,6 @@ const backGround = {
 };
 
 function SideBarNavContainer({ topic, login }: ISideBarNavContainer) {
-
    return (
       <SideBarComp>
          <SideBarThunmbNailComp style={backGround} />

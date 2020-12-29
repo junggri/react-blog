@@ -122,6 +122,7 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log(params);
                     query = "select * from " + params + " order by field(kindofPosts,'notice','posts') , created ASC";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
@@ -210,9 +211,7 @@ var contentModel = {
             var conn, query, e_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0:
-                        console.log(uid, topic);
-                        return [4 /*yield*/, index_connection_1.default()];
+                    case 0: return [4 /*yield*/, index_connection_1.default()];
                     case 1:
                         conn = _b.sent();
                         query = "DELETE FROM " + topic + " where uid = ? ";

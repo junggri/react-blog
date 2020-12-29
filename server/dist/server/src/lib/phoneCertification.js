@@ -14,9 +14,9 @@ function certifiCation() {
     }
     var user_auth_number = randomArray.join("");
     var date = Date.now().toString();
-    var uri = "ncp:sms:kr:258388484624:authoriztion";
-    var secretKey = "iAC8fi4tH0dWVmckGrtMm92drplta6RxUhGnIKzd";
-    var accessKey = "cEk7AGKu4h9f72FEzLLC";
+    var uri = process.env.API_URI;
+    var secretKey = process.env.API_SECRETKEY;
+    var accessKey = process.env.API_ACCESSKEY;
     var method = "POST";
     var space = " ";
     var newLine = "\n";
@@ -45,11 +45,11 @@ function certifiCation() {
         body: {
             type: "SMS",
             countryCode: "82",
-            from: "01077652103",
+            from: process.env.API_PHONE,
             content: user_auth_number,
             messages: [
                 {
-                    to: "01077652103",
+                    to: process.env.API_PHONE,
                 },
             ],
         },
@@ -64,5 +64,4 @@ function certifiCation() {
     return user_auth_number;
 }
 exports.default = certifiCation;
-//TODO ,env
 //# sourceMappingURL=phoneCertification.js.map

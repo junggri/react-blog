@@ -7,8 +7,8 @@ function accessToken() {
       process.env.JWT_SECRET as string,
       {
          expiresIn: "300m",
-         issuer: "localhost",
-         subject: "userinfo",
+         issuer: "junggri",
+         subject: "login",
       },
    );
    return token;

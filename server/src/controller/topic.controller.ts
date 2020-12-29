@@ -3,8 +3,9 @@ import model from "../model/topic.model";
 import { promises as fs } from "fs";
 import path from "path";
 
+
 interface Controller {
-   deletePost: (req: Request, Res: Response) => void
+   deletePost: (req: Request, res: Response) => void
    getContentName(req: Request, res: Response): void;
    savePosts(req: Request, res: Response): void;
    getPostsFromTopicName(req: Request, res: Response): void

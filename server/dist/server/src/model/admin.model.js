@@ -65,7 +65,7 @@ var adminModel = {
                         conn.release();
                         if (!!result.length) return [3 /*break*/, 4];
                         return [2 /*return*/, false];
-                    case 4: return [4 /*yield*/, pbkdf2Promise(data.pwd, result[0].salt, 100385, 64, "sha512")];
+                    case 4: return [4 /*yield*/, pbkdf2Promise(data.pwd, result[0].salt, Number(process.env.CRYPTO_ITER), Number(process.env.CRYPTO_NUM), String(process.env.CRYPTO_ALGO))];
                     case 5:
                         key = _a.sent();
                         return [2 /*return*/, result[0].password === key.toString("base64")];

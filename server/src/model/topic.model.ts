@@ -52,6 +52,7 @@ const contentModel = {
    },
 
    getDataFromParams: async (params: string) => {
+      console.log(params);
       const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , created ASC`;
       return await poolConnction(query);
    },
@@ -107,7 +108,6 @@ const contentModel = {
    },
 
    deletePost: async ({ uid, topic }: { uid: string, topic: string }) => {
-      console.log(uid, topic);
       const conn = await connection();
       const query = `DELETE FROM ${topic} where uid = ? `;
       if (conn !== undefined)

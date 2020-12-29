@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -19,28 +38,29 @@ var router_1 = __importDefault(require("./router"));
 var topic_1 = __importDefault(require("./router/topic"));
 var admin_1 = __importDefault(require("./router/admin"));
 var cors_1 = __importDefault(require("cors"));
-require("dotenv").config();
+var dotenv = __importStar(require("dotenv"));
+dotenv.config();
 var app = express_1.default();
 app.disable("x-powered-by");
 var RedisStore = connect_redis_1.default(express_session_1.default);
 var _client = redis_1.default.createClient();
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
-console.log(app.get("env")); //개발 단계확인\
-// app.set("env", "production");
+process.env.NODE_ENV = process.env.NODE_ENV || "production";
 var csrfProtection = csurf_1.default({
     cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
     },
 });
+console.log(process.env.NODE_ENV);
 var sessionConfig = {
-    secret: "asdunvajnsr",
-    name: "sessionID",
+    secret: process.env.SESSEION_KEY,
+    name: "sid",
     resave: false,
     saveUninitialized: true,
     store: new RedisStore({
-        host: "localhost",
-        port: 6379,
+        host: process.env.NODE_ENV === "development"
+            ? process.env.SESSION_HOST
+            : process.env.SESSION_HOST_PROD,
+        port: parseInt(process.env.SESSION_PORT, 10),
         client: _client,
         ttl: 60 * 60 * 24,
     }),
@@ -60,12 +80,12 @@ app
     .use("/contents", express_1.default.static(path_1.default.join(__dirname, "/../contents")))
     .use(compression_1.default())
     .use(helmet_1.default.noSniff())
-    .use(body_parser_1.default.json())
+    .use(body_parser_1.default.json({ limit: "50mb" }))
     .use(helmet_1.default.xssFilter())
     .use(express_session_1.default(sessionConfig))
-    .use(cookie_parser_1.default("asdunvajnsr"))
+    .use(cookie_parser_1.default(process.env.SESSEION_KEY))
     .use(helmet_1.default.frameguard({ action: "deny" }))
-    .use(body_parser_1.default.urlencoded({ extended: false }))
+    .use(body_parser_1.default.urlencoded({ extended: true, limit: "50mb" }))
     .use(csrfProtection);
 app.use(function (req, res, next) {
     res.header("Cache-control", "no-cache, must-revalidate");
@@ -74,7 +94,7 @@ app.use(function (req, res, next) {
     next();
 });
 // app.get("/", (req, res) => {
-//   res.render("index.html");
+//    res.render("index.html");
 // });
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터

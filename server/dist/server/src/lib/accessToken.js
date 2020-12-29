@@ -7,8 +7,8 @@ var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 function accessToken() {
     var token = jsonwebtoken_1.default.sign({ login: true }, process.env.JWT_SECRET, {
         expiresIn: "300m",
-        issuer: "localhost",
-        subject: "userinfo",
+        issuer: "junggri",
+        subject: "login",
     });
     return token;
 }

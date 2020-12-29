@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/contents/name", contentController.getContentName); //show all list in main view
 
-router.get("/posts/items", contentController.getAllPostsItems);
+router.get("/posts/item/list", contentController.getAllPostsItems);
 
 router.get("/posts/:topic", contentController.getPostsFromTopicName);
 

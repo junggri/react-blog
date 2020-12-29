@@ -42,16 +42,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var admin_model_1 = __importDefault(require("../model/admin.model"));
 var accessToken_1 = __importDefault(require("../lib/accessToken"));
 var verifyToken_1 = __importDefault(require("../lib/verifyToken"));
+var phoneCertification_1 = __importDefault(require("../lib/phoneCertification"));
 var AdminController = {
     login: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var result;
+            var result, certification_number;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, admin_model_1.default.login(req.body.data)];
                     case 1:
                         result = _a.sent();
-                        // let certification_number = phoneCertification();
+                        certification_number = phoneCertification_1.default();
                         res.status(200).json({ state: result, number: 1 });
                         return [2 /*return*/];
                 }
@@ -75,6 +76,7 @@ var AdminController = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        console.log(2);
                         jwttoken = req.cookies.jwt;
                         return [4 /*yield*/, verifyToken_1.default(jwttoken)];
                     case 1:

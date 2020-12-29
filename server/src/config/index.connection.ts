@@ -1,13 +1,18 @@
 import mysql from "mysql2/promise";
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 
 const option = {
-   host: "localhost",
-   user: "root",
-   password: "wowwjd123",
-   database: "contents",
+   host: process.env.DB_HOST,
+   user: process.env.DB_USER,
+   password: process.env.DB_PWD,
+   database: process.env.DB_DATABASE2,
    connectionLimit: 40,
    waitForConnections: true,
 };
+
 
 async function getConnection() {
    try {

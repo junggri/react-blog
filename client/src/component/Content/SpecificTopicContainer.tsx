@@ -13,7 +13,6 @@ interface ISpecificTopicContainer {
 function SpecificTopicContainer({ width, match, onGetPosts, posts }: ISpecificTopicContainer) {
    const params = match.params.topic;
 
-
    useEffect(() => {
       onGetPosts(params);
    }, [params, onGetPosts]);

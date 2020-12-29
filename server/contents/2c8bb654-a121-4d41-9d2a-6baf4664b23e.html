@@ -1,0 +1,66 @@
+<pre class="ql-syntax" spellcheck="false">asdimport React, { useCallback } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> { EntryPostsContainerComp, EntryPostsItemComp } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../styled-comp"</span>;
+<span class="hljs-keyword">import</span> { IAllPosts } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../modules/Posts/posts.interface"</span>;
+<span class="hljs-keyword">import</span> { Link } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-router-dom"</span>;
+<span class="hljs-keyword">import</span> util <span class="hljs-keyword">from</span> <span class="hljs-string">"../../lib/axios"</span>;
+<span class="hljs-keyword">import</span> { IoColorWand } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-icons/io5"</span>;
+<span class="hljs-keyword">import</span> { MdDelete } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-icons/md"</span>;
+
+interface IEntryPostsContainer {
+   <span class="hljs-attr">width</span>: number,
+   <span class="hljs-attr">posts</span>: IAllPosts
+   <span class="hljs-attr">deletePost</span>: <span class="hljs-function">(<span class="hljs-params">posts: any</span>) =&gt;</span> <span class="hljs-keyword">void</span>
+   <span class="hljs-attr">login</span>: boolean
+   <span class="hljs-attr">csrf</span>: string
+}
+
+<span class="hljs-keyword">const</span> EntryPostsContainer = <span class="hljs-function">(<span class="hljs-params">{ width, posts, deletePost, login, csrf }: IEntryPostsContainer</span>) =&gt;</span> {
+
+   <span class="hljs-keyword">const</span> onModified = useCallback(<span class="hljs-function">(<span class="hljs-params">e: React.MouseEvent&lt;HTMLElement&gt;</span>) =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);
+   }, [csrf]);
+
+   <span class="hljs-keyword">const</span> onDelete = useCallback(<span class="hljs-function">(<span class="hljs-params">e: React.MouseEvent&lt;HTMLElement&gt;</span>) =&gt;</span> {
+      <span class="hljs-keyword">const</span> uid = (e.currentTarget.parentNode <span class="hljs-keyword">as</span> HTMLElement).dataset.id <span class="hljs-keyword">as</span> string;
+      <span class="hljs-keyword">const</span> topic = (e.currentTarget.parentNode <span class="hljs-keyword">as</span> HTMLElement).dataset.topic <span class="hljs-keyword">as</span> string;
+      (<span class="hljs-keyword">async</span> () =&gt; {
+         <span class="hljs-keyword">await</span> util.deletePost(uid, topic, csrf);
+         <span class="hljs-keyword">const</span> newPostsState = posts.data?.filter(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> (item.uid !== uid));
+         deletePost(newPostsState);
+      })();
+   }, [csrf, deletePost, posts.data]);
+
+   <span class="hljs-keyword">return</span> (
+      <span class="hljs-tag">&lt;<span class="hljs-name">EntryPostsContainerComp</span> <span class="hljs-attr">width</span>=<span class="hljs-string">{width}</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+            {posts.data?.map((e) =&gt; (
+               <span class="hljs-tag">&lt;<span class="hljs-name">EntryPostsItemComp</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{e.uid}</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"item-created"</span>&gt;</span>{e.created}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>`/<span class="hljs-attr">topic</span>/${<span class="hljs-attr">e.topic</span>}/${<span class="hljs-attr">e.uid</span>}`}&gt;</span>
+                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"item-contentName"</span>&gt;</span>
+                        {e.content_name}
+                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"item-detail"</span>&gt;</span>{e.detail}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"posts-keyword-box"</span>&gt;</span>
+                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"posts-keywords"</span>&gt;</span>
+                           <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">{</span>`/<span class="hljs-attr">topic</span>/${<span class="hljs-attr">e.topic</span>}`}&gt;</span>
+                           {e.topic}
+                           <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+                     <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+                  {login &amp;&amp;
+                  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"posts-admin-box"</span> <span class="hljs-attr">data-id</span>=<span class="hljs-string">{e.uid}</span> <span class="hljs-attr">data-topic</span>=<span class="hljs-string">{e.topic}</span>&gt;</span>
+                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">'posts-admin-modify'</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onModified}</span>&gt;&lt;<span class="hljs-name">IoColorWand</span> /&gt;&lt;/<span class="hljs-name">span</span>&gt;</span>
+                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">'posts-admin-delete'</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onDelete}</span>&gt;&lt;<span class="hljs-name">MdDelete</span> /&gt;&lt;/<span class="hljs-name">span</span>&gt;</span>
+                  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                  }
+               <span class="hljs-tag">&lt;/<span class="hljs-name">EntryPostsItemComp</span>&gt;</span>
+            ))}
+         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">EntryPostsContainerComp</span>&gt;</span>
+   );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (EntryPostsContainer);
+</pre><p><br></p><p>testestet</p>
