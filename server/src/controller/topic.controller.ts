@@ -34,8 +34,11 @@ let contentController: Controller = {
    },
 
    getPostsFromPostsId: async (req, res) => {
+      let fileName: string;
       const { topic, postsId } = req.params;
-      let fileName = path.join(__dirname + "/../../contents", `${req.params.postsId}.html`);
+      process.env.NODE_ENV === "development"
+         ? fileName = path.join(__dirname + "/../../contents", `${req.params.postsId}.html`)
+         : fileName = path.join(__dirname + "/../../../../contents", `${req.params.postsId}.html`);
       try {
          let result = await model.getPostFromPostId(topic, postsId);
          let content = await fs.readFile(fileName, "utf-8");

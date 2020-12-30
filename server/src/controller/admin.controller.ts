@@ -24,7 +24,6 @@ const AdminController: IAdminController = {
    },
 
    async checkJWTToken(req: Request, res: Response) {
-      console.log(2);
       const jwttoken = req.cookies.jwt;
       const decoded = await verifyToken(jwttoken);
       decoded

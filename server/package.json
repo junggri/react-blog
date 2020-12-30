@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon dist/server/src/app.js",
-    "dev": "nodemon --watch 'src/**/*' -e ts --exec ts-node src/app.ts",
-    "build": "tsc -w"
+    "build": "tsc -w",
+    "start": "cross-env NODE_ENV=production pm2 start dist/server/src/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch 'src/**/*' -e ts --exec ts-node src/app.ts",
+    "start:build": "cross-env NODE_ENV=production pm2-runtime dist/server/src/app.js"
   },
   "author": "",
   "license": "ISC",

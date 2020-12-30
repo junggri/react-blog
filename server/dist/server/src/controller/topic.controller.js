@@ -82,12 +82,14 @@ var contentController = {
         });
     }); },
     getPostsFromPostsId: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var _a, topic, postsId, fileName, result, content, e_1;
+        var fileName, _a, topic, postsId, result, content, e_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     _a = req.params, topic = _a.topic, postsId = _a.postsId;
-                    fileName = path_1.default.join(__dirname + "/../../contents", req.params.postsId + ".html");
+                    process.env.NODE_ENV === "development"
+                        ? fileName = path_1.default.join(__dirname + "/../../contents", req.params.postsId + ".html")
+                        : fileName = path_1.default.join(__dirname + "/../../../../contents", req.params.postsId + ".html");
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 4, , 5]);

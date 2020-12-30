@@ -5,9 +5,9 @@ import useCSRF from "../useHooks/useCSRF";
 
 function Admin({ history }: any) {
    const [user, setUser] = useState({
-      id: "jjuu6933",
-      pwd: "wowwjd12!@",
-      number: "1",
+      id: "",
+      pwd: "",
+      number: "",
    });
 
    const [visivle, setVisible] = useState<boolean>(false);

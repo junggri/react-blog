@@ -7,7 +7,7 @@ router.get("/csrf", (req, res) => {
 });
 
 router.post("/check/csrf", (req, res) => {
-   res.status(200).json({state: true});
+   res.status(200).json({ state: true });
 });
 
 export default router;

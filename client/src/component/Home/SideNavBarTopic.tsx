@@ -20,4 +20,4 @@ function SideNavBarTopic({ topic }: ISideBarNavContainer) {
    );
 }
 
-export default SideNavBarTopic;
+export default React.memo(SideNavBarTopic);

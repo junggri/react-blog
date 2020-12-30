@@ -7,7 +7,7 @@ import usePosts from "../../useHooks/usePosts";
 import { IPostsModuleProps } from "../../modules/Posts/posts.interface";
 import { EntryPostsContainer, SideBarContainer, SpecificTopicContainer } from "component/index";
 import { Route } from "react-router-dom";
-// import useLoginFlag from "../../useHooks/useLoginFlag";
+import useLoginFlag from "../../useHooks/useLoginFlag";
 import useCSRF from "../../useHooks/useCSRF";
 import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
 
@@ -26,11 +26,10 @@ function CommonEntry({ match }: any) {
       }
    }, [getAllPosts, newRequest, setNewRequset, requestTopic]);
 
-   // useLoginFlag();
+   useLoginFlag();
 
 
    //TODO 최적화 진행하기!!!!!!!!!!!!!!!!!
-
 
    if (!topic) return null;
 

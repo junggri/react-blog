@@ -1,11 +1,11 @@
 import axios from "axios";
 // import { cacheAdapterEnhancer } from "axios-extensions";
+import * as dotenv from "dotenv";
 
+dotenv.config();
 
 const instance = axios.create({
-   baseURL: "/",
    withCredentials: true,
-   // adapter: cacheAdapterEnhancer((axios.defaults as any).adapter),
 });
 instance.defaults.headers.common["Content-Type"] = "application/json";
 

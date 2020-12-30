@@ -76,7 +76,6 @@ var AdminController = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log(2);
                         jwttoken = req.cookies.jwt;
                         return [4 /*yield*/, verifyToken_1.default(jwttoken)];
                     case 1:
