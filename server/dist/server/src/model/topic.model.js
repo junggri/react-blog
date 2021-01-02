@@ -152,13 +152,12 @@ var contentModel = {
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, dataArr, dataObj, time, result, i, data, j, time2, e_2;
+        var conn, dataObj, time, result, i, data, time2, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, index_connection_1.default()];
                 case 1:
                     conn = _a.sent();
-                    dataArr = [];
                     dataObj = {};
                     if (!(conn !== undefined)) return [3 /*break*/, 9];
                     _a.label = 2;
@@ -177,23 +176,22 @@ var contentModel = {
                 case 5:
                     data = (_a.sent())[0];
                     conn.release();
-                    // dataObj[result[i]["Tables_in_contents"]] = data;
-                    for (j = 0; j < data.length; j++) {
-                        dataArr.push(data[j]);
-                    }
+                    if (data.length !== 0)
+                        dataObj[result[i]["Tables_in_contents"]] = data;
                     _a.label = 6;
                 case 6:
                     i++;
                     return [3 /*break*/, 4];
                 case 7:
                     time2 = new Date();
+                    console.log(time2.getTime() - time.getTime());
                     return [3 /*break*/, 9];
                 case 8:
                     e_2 = _a.sent();
                     conn.release();
                     console.log(e_2);
                     return [3 /*break*/, 9];
-                case 9: return [2 /*return*/, dataArr];
+                case 9: return [2 /*return*/, dataObj];
             }
         });
     }); },

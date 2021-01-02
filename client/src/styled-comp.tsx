@@ -1,29 +1,29 @@
-import styled, { css } from "styled-components";
-import { darken, lighten } from "polished";
-import React, { memo } from "react";
-import { NavLink } from "react-router-dom";
-import { media } from "./styles/Media";
+import styled, {css} from "styled-components";
+import {darken, lighten} from "polished";
+import React, {memo} from "react";
+import {NavLink} from "react-router-dom";
+import {media} from "./styles/Media";
 
 export interface Width {
-   width: number;
+    width: number;
 }
 
 export interface topView {
-   width: number;
-   logo: any
-   ref: any
+    width: number;
+    logo: any
+    ref: any
 }
 
 export interface contentBox {
-   ref: any;
+    ref: any;
 }
 
 interface IDeleteTopicIconComp {
-   onClick: any
+    onClick: any
 }
 
 interface ISideBarThunmbNailComp {
-   style: any
+    style: any
 }
 
 //INTERFACE
@@ -32,7 +32,7 @@ interface ISideBarThunmbNailComp {
 const leftWidth = 200;
 
 interface IEntryContainerComp {
-   width: number
+    width: number
 }
 
 export const EntryContainerComp = styled.div<IEntryContainerComp>`
@@ -217,7 +217,7 @@ export const SideBarMetaDataComp = styled.div`
   & .sidebar-names{
     font-size:2.2rem;
     font-weight: 400;
-    letter-spacing:6.7px;
+    letter-spacing:5px;
   }
   & .sidebar-posi{
     letter-spacing: 1.2px;
@@ -250,18 +250,25 @@ export const SideBarPostsItemComp = styled(NavLink)<any>`
   display:block;
   margin-bottom:6px;
   transition: all 0.6s;
-  & span{
+  vertical-align: middle;
+  & div{
     vertical-align: middle;
     font-size:1.1rem;
     font-weight: 300;
     opacity:1;
-    &:hover{
+    display: flex;
+    & .topic_list_items:hover{
       text-decoration: underline;
     }
   }
+  & .topic_length{
+    display: inline-block;
+    font-size:1rem;
+    margin-left:5px;
+  }
   &[aria-current] {
     color: black;
-    & span{
+    & .topic_list_items{
       opacity: 1;
       font-weight: 500;
       color:#3a7dff
@@ -635,3 +642,10 @@ export const PostsDetailComp = styled.div`
 `;
 
 //--------------------------------write---------------------------------------
+
+
+export const AboutContainerComp = styled.div<Width>`
+  position: relative;
+  width:${props => props.width + "px"};
+  margin-top:100px;
+`

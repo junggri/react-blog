@@ -16,3 +16,5 @@ export {default as SideBarContainer} from "component/Home/SideNavBar";
 export {default as SideNavBarTopic} from "component/Home/SideNavBarTopic";
 
 export {default as SpecificTopicContainer} from "component/Content/SpecificTopicContainer";
+
+export {default as AboutContainer} from 'component/About/AboutContainer'
