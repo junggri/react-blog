@@ -145,25 +145,26 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     uid  varchar(50) not null,\n                     topic varchar(11) not null,\n                     content_name varchar(200) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     file varchar(100) not null,\n                     comments varchar(50),\n                     detail varchar(200) not null,\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null\n                     )";
+                    query = "\n                CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     topic varchar(11) not null,\n                     uid varchar(50) not null,\n                     content_name varchar(200) not null,\n                     detail varchar(200) not null,\n                     file varchar(100) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     comments varchar(50),\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null,\n                     INDEX index_uid (uid)\n                     )";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, test, dataArr, result, i, data, j, e_2;
+        var conn, dataArr, dataObj, time, result, i, data, j, time2, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, index_connection_1.default()];
                 case 1:
                     conn = _a.sent();
-                    test = {};
                     dataArr = [];
+                    dataObj = {};
                     if (!(conn !== undefined)) return [3 /*break*/, 9];
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 8, , 9]);
+                    time = new Date();
                     return [4 /*yield*/, conn.execute("show tables")];
                 case 3:
                     result = (_a.sent())[0];
@@ -176,6 +177,7 @@ var contentModel = {
                 case 5:
                     data = (_a.sent())[0];
                     conn.release();
+                    // dataObj[result[i]["Tables_in_contents"]] = data;
                     for (j = 0; j < data.length; j++) {
                         dataArr.push(data[j]);
                     }
@@ -183,7 +185,9 @@ var contentModel = {
                 case 6:
                     i++;
                     return [3 /*break*/, 4];
-                case 7: return [3 /*break*/, 9];
+                case 7:
+                    time2 = new Date();
+                    return [3 /*break*/, 9];
                 case 8:
                     e_2 = _a.sent();
                     conn.release();

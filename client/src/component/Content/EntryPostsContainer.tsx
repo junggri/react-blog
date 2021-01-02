@@ -16,6 +16,7 @@ interface IEntryPostsContainer {
 
 const EntryPostsContainer = ({ width, posts, deletePost, login, csrf }: IEntryPostsContainer) => {
 
+
    const onModified = useCallback((e: React.MouseEvent<HTMLElement>) => {
       console.log(2);
    }, [csrf]);
@@ -32,32 +33,31 @@ const EntryPostsContainer = ({ width, posts, deletePost, login, csrf }: IEntryPo
 
    return (
       <EntryPostsContainerComp width={width}>
-         <div>
-            {posts.data?.map((e) => (
-               <EntryPostsItemComp key={e.uid}>
-                  <span className="item-created">{e.created}</span>
-                  <Link to={`/topic/${e.topic}/${e.uid}`}>
-                     <div className="item-contentName">
-                        {e.content_name}
-                     </div>
-                  </Link>
-                  <div className="item-detail">{e.detail}</div>
-                  <section className="posts-keyword-box">
-                     <span className="posts-keywords">
-                           <Link to={`/topic/${e.topic}`}>
-                           {e.topic}
-                           </Link>
-                     </span>
-                  </section>
-                  {login &&
-                  <div className="posts-admin-box" data-id={e.uid} data-topic={e.topic}>
-                     <span className='posts-admin-modify' onClick={onModified}><IoColorWand /></span>
-                     <span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>
+         {posts.data?.map((e) => (
+            <EntryPostsItemComp key={e.uid}>
+               <span className="item-created">🗓 {e.created}</span>
+               <Link to={`/topic/${e.topic}/${e.uid}`}>
+                  <div className="item-contentName">
+                     {e.content_name}
                   </div>
-                  }
-               </EntryPostsItemComp>
-            ))}
-         </div>
+               </Link>
+               <div className="item-detail">🔮 {e.detail}</div>
+               <section className="posts-keyword-box">
+                   <span className="posts-keywords">
+                        <Link to={`/topic/${e.topic}`}>
+                            {e.topic}
+                        </Link>
+                     </span>
+               </section>
+               {login &&
+               <div className="posts-admin-box" data-id={e.uid} data-topic={e.topic}>
+                  <span className='posts-admin-modify' onClick={onModified}><IoColorWand /></span>
+                  <span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>
+               </div>
+               }
+            </EntryPostsItemComp>
+         ))}
+         <div className="sidebar-copyright">Copyright 2021. junggri All rights reserved.</div>
       </EntryPostsContainerComp>
    );
 };

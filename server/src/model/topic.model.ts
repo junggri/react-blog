@@ -63,37 +63,44 @@ const contentModel = {
    },
 
    CreateNewTopic: async (newTopic: string) => {
-      const query = `CREATE TABLE ${newTopic}(
+
+      const query = `
+                CREATE TABLE ${newTopic}(
                      id int(11) not null auto_increment primary key,
-                     uid  varchar(50) not null,
                      topic varchar(11) not null,
+                     uid varchar(50) not null,
                      content_name varchar(200) not null,
+                     detail varchar(200) not null,
+                     file varchar(100) not null,
                      created varchar(20) not null,
                      modified varchar(20),
-                     file varchar(100) not null,
                      comments varchar(50),
-                     detail varchar(200) not null,
                      kindofPosts varchar(20) not null,
-                     date timestamp not null
+                     date timestamp not null,
+                     INDEX index_uid (uid)
                      )`;
       return await poolConnction(query);
    },
 
    getAllPostsItems: async () => {
       let conn = await connection();
-      let test: any = {};
       const dataArr: any[] = [];
+      const dataObj: any = {};
       if (conn !== undefined)
          try {
+            let time = new Date();
             let [result]: any = await conn.execute("show tables");
             conn.release();
             for (let i = 0; i < result.length; i++) {
                let [data]: any = await conn.execute(`select * from ${result[i]["Tables_in_contents"]} order by id ASC`);
                conn.release();
+               // dataObj[result[i]["Tables_in_contents"]] = data;
                for (let j = 0; j < data.length; j++) {
                   dataArr.push(data[j]);
                }
             }
+            let time2 = new Date();
+            // console.log(time2.getTime() - time.getTime(), dataObj);
          } catch (e) {
             conn.release();
             console.log(e);

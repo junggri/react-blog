@@ -100,7 +100,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=src node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "cross-env node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -124,6 +124,7 @@
   "devDependencies": {
     "@types/dompurify": "^2.0.4",
     "@types/highlight.js": "^10.1.0",
+    "@types/react-helmet": "^6.1.0",
     "@types/react-highlight.js": "^1.0.0",
     "@types/react-redux": "^7.1.11",
     "@types/react-select": "^3.0.26",

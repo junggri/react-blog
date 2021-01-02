@@ -17,11 +17,16 @@ var SET_CONTENT_NAME = "textEdit/SET_CONTENT_NAME";
 var SET_TOPIC = "textEdit/SET_TOPIC";
 var SET_KIND_OF_POSTS = "textEdit/SET_KIND_OF_POSTS";
 var SET_DETAIL = "textEdit/SET_DETAIL";
-exports.onSetContent = function (content) { return ({ type: SET_CONTENT, payload: content }); };
-exports.onSetContentName = function (contentName) { return ({ type: SET_CONTENT_NAME, payload: contentName }); };
-exports.onSetTopic = function (topic) { return ({ type: SET_TOPIC, payload: topic }); };
-exports.onSetKindOfPosts = function (kindOfPosts) { return ({ type: SET_KIND_OF_POSTS, payload: kindOfPosts }); };
-exports.onSetDetail = function (detail) { return ({ type: SET_DETAIL, payload: detail }); };
+var onSetContent = function (content) { return ({ type: SET_CONTENT, payload: content }); };
+exports.onSetContent = onSetContent;
+var onSetContentName = function (contentName) { return ({ type: SET_CONTENT_NAME, payload: contentName }); };
+exports.onSetContentName = onSetContentName;
+var onSetTopic = function (topic) { return ({ type: SET_TOPIC, payload: topic }); };
+exports.onSetTopic = onSetTopic;
+var onSetKindOfPosts = function (kindOfPosts) { return ({ type: SET_KIND_OF_POSTS, payload: kindOfPosts }); };
+exports.onSetKindOfPosts = onSetKindOfPosts;
+var onSetDetail = function (detail) { return ({ type: SET_DETAIL, payload: detail }); };
+exports.onSetDetail = onSetDetail;
 var initialState = {
     contentName: "",
     content: "",

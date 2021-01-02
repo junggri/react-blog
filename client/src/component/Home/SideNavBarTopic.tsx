@@ -9,6 +9,7 @@ interface ISideBarNavContainer {
 function SideNavBarTopic({ topic }: ISideBarNavContainer) {
    return (
       <SideBarPostsContainerComp>
+         <div className="sidebar-list">전체 목록()</div>
          {topic.map(e => (
             <SideBarPostsItemComp to={`/topic/${e.Tables_in_contents}`} key={e.Tables_in_contents}>
                <span>

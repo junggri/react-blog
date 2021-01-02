@@ -84,7 +84,7 @@ const util = {
       });
    },
 
-   setToken(token: string) {
+   setJwtToken(token: string) {
       return instance({
          url: "/admin/token",
          method: "post",

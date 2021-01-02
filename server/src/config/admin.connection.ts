@@ -3,22 +3,30 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
+console.log(process.env.NODE_ENV, process.env.DB_HOST_DEV, process.env.DB_USER_DEV)
+
 const option = {
-   host: process.env.DB_HOST,
-   user: process.env.DB_USER,
-   password: process.env.DB_PWD,
-   database: process.env.DB_DATABASE,
-   waitForConnections: true,
+    host: process.env.NODE_ENV === "development"
+        ? process.env.DB_HOST_DEV
+        : process.env.DB_HOST_PROD,
+
+    user: process.env.NODE_ENV === "development"
+        ? process.env.DB_USER_DEV
+        : process.env.DB_USER_PROD,
+
+    password: process.env.DB_PWD,
+    database: process.env.DB_DATABASE,
+    waitForConnections: true,
 };
 
 async function getConnection() {
-   try {
-      let pool = mysql.createPool(option);
-      let conn = await pool.getConnection();
-      return conn;
-   } catch (error) {
-      console.error(error);
-   }
+    try {
+        let pool = mysql.createPool(option);
+        let conn = await pool.getConnection();
+        return conn;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 export default getConnection;

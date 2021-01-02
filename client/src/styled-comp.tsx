@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { darken, lighten } from "polished";
 import React, { memo } from "react";
 import { NavLink } from "react-router-dom";
+import { media } from "./styles/Media";
 
 export interface Width {
    width: number;
@@ -28,45 +29,70 @@ interface ISideBarThunmbNailComp {
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
-const leftWidth = 320;
-const rightWidth = 180;
+const leftWidth = 200;
 
 interface IEntryContainerComp {
    width: number
 }
 
-const postsContainerMxin = css<Width>`
-  padding-top:60px;
-  padding-left:55px;
-  padding-right:20px;
-  position: absolute;
-  right:0;
-  width:${props => props.width - leftWidth + "px"};
-  margin-bottom:60px;
+export const EntryContainerComp = styled.div<IEntryContainerComp>`
+  width:${props => props.width + "px"};
+  position:relative;
+  margin:0 auto;
+  display: flex;
+  ${media.desktop`width:95%`}
 `;
 
-const postsItemMixin = css`
-  display: block;
+
+const postsContainerMixin = css<Width>`
+  ${media.mobile`
+   position:relative;
+   padding-left:10px;
+   padding-rigth:10px;
+  `};
+  margin-top:100px;
+  padding-left:85px; 
+  flex-grow: 1;
+  & .sidebar-copyright{
+   text-align: right;
+   letter-spacing: 1.1px;
+   font-size:12px;
+   margin-top:80px;
+   margin-bottom: 20px;
+  }
+`;
+
+const postsItemMixin = css`  
   position:relative;
   margin-bottom:60px;
+  word-break:break-all;
   & .item-created{
     display: inline-block;
     font-size:1.1rem;
     font-weight: 600;
-    opacity: 0.8;
+    opacity: 0.9;
+    ${media.tablet`font-size:0.8rem`};
   }
   & .item-contentName{
+    overflow-wrap: break-word;
     font-size:2.7rem;
     margin-top:6px;
     letter-spacing: 2px;
-    white-space:nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 450 ;
+    ${media.tablet`
+      font-size:2rem;
+      margin-top:-4px
+    `};
+    //white-space:nowrap;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    //위에는 ...표시하는 방법
     padding:6px 0;
   }
   & .item-detail{
     font-size:1.2rem;
     margin-top:40px;
+    ${media.tablet`font-size:0.8rem`}
   }
   & .posts-keyword-box{
     margin-top:20px;
@@ -105,33 +131,59 @@ const postsItemMixin = css`
   }
 `;
 
-export const EntryContainerComp = styled.div<IEntryContainerComp>`
+export const TopMetaBarComp = styled.section<Width>`
+  ${media.mobile`
+   width:100%;
+   background-color: white;
+  `};
+  position: fixed;
   width:${props => props.width + "px"};
-  position:relative;
-  margin:0 auto;
+  z-index: 9;
+  padding-bottom: 5px;
+  background-color: white;
+  & .topmetabar-list{
+    display: flex;
+    margin-top:20px;
+    & .metaItem{  
+      padding:5px 2px;
+      margin-right: 40px;
+      font-size:1.5rem;
+      opacity: 0.6;
+      font-weight: 500;
+      letter-spacing: 1.4px;
+      ${media.tablet`font-size:1.2rem`}
+     &:hover{
+      opacity: 1;       
+     }
+    }
+    & .metaActive{
+      opacity: 1;
+      border-bottom:2.5px solid black;      
+    }
+ 
+  }
+  //& .topmetabar-icons-box{
+  // position: relative;
+  // font-size:1.65rem;
+  // display: flex;
+  // align-items: center;
+  // & .icon-github,.icon-tohome,.icon-mail{
+  //   cursor: pointer;
+  //   opacity: 0.8;
+  //   display: inline-block;
+  //   margin-left:24px;
+  //   transition:0.3s all;
+  //  }
+  //}
+  //& .icon-github:hover,.icon-tohome:hover,.icon-mail:hover{
+  //  opacity: 1;
+  //}
 `;
+
 
 export const SideBarComp = styled.section`
   display: inline-block;
-  height: 100vh;
-  position: fixed;
-  width:320px; 
-  & .sidebar-icons-box{
-    font-size:1.7rem;
-    display: flex;
-    margin-top:60px;
-    cursor: pointer;
-    & .icon-github,.icon-tohome,.icon-mail{
-      display: inline-block;
-      margin-right:18px;
-    }
-  }
-  & .sidebar-copyright{
-    position: absolute;
-    bottom:20%;
-    letter-spacing: 1.1px;
-    font-size:12px;
-  }
+  ${media.mobile`display:none`}
   & .write-article-btn {
     border: 1px solid rgba(0, 0, 0, 0.2);
     display: inline-block;
@@ -146,14 +198,7 @@ export const SideBarComp = styled.section`
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
-  //& .sidebar-divider{
-  //  width:2px;
-  //  position: absolute;
-  //  left:95%;
-  //  top:0;
-  //  height: 600px;
-  //  background: linear-gradient(rgb(230, 230, 230)0px, rgb(230, 230, 230)48%, rgb(255, 255, 255));
-  //}
+  
 `;
 
 
@@ -161,24 +206,25 @@ export const SideBarThunmbNailComp = styled.div<ISideBarThunmbNailComp>`
   border:1px solid rgba(0,0,0,0.06);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   position: relative;
-  width:35%;
-  padding-bottom: 35%;
+  width:120px;
+  padding-bottom: 120px;
   border-radius: 5px;
-  margin-top:60px;
+  margin-top:100px;
 `;
 
 export const SideBarMetaDataComp = styled.div`
-  margin-top:50px;
+  margin-top:46px;
   & .sidebar-names{
-    font-size:2rem;
-    letter-spacing: 1.2px;
+    font-size:2.2rem;
+    font-weight: 400;
+    letter-spacing:6.7px;
   }
   & .sidebar-posi{
     letter-spacing: 1.2px;
     font-size:1rem;
     font-weight: 300;
     &.posi1{
-      margin-top:30px;
+      margin-top:15px;
     }
     &.posi2{
       margin-top:6px;
@@ -187,14 +233,22 @@ export const SideBarMetaDataComp = styled.div`
 `;
 
 export const SideBarPostsContainerComp = (styled.ul`
-  margin-top:50px;
+  margin-top:70px;
   perspective: 600px;
+  & .sidebar-list{
+    font-size:1.1rem;
+    margin-bottom:15px;
+    padding-bottom:15px;
+    border-bottom: 1px solid black;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+  }
 `);
 
 export const SideBarPostsItemComp = styled(NavLink)<any>`
   height: 16px;
   display:block;
-  margin-bottom:10px;
+  margin-bottom:6px;
   transition: all 0.6s;
   & span{
     vertical-align: middle;
@@ -209,14 +263,15 @@ export const SideBarPostsItemComp = styled(NavLink)<any>`
     color: black;
     & span{
       opacity: 1;
-      font-weight: 300;
+      font-weight: 500;
+      color:#3a7dff
     }
   }
 
 `;
 
 export const EntryPostsContainerComp = styled.div<Width>`
-  ${postsContainerMxin}
+  ${postsContainerMixin}
 `;
 
 export const EntryPostsItemComp = styled.div`
@@ -224,13 +279,16 @@ export const EntryPostsItemComp = styled.div`
 `;
 
 export const SpecificTopicContainerComp = styled.ul`
-  ${postsContainerMxin};
+  ${postsContainerMixin};
 `;
-export const SpecificTopicItemsComp = styled(NavLink)`
+export const SpecificTopicItemsComp = styled.div`
   ${postsItemMixin}'
 `;
 
 export const PostsContainerComp = styled.section<Width>`
+  ${media.postBox`
+    width:100%;
+  `};
   position: relative;
   margin: 0 auto;
   width: ${(props) => props.width - 80 + "px"};
@@ -245,8 +303,10 @@ export const PostsContainerComp = styled.section<Width>`
     max-height: 700px;
     position: relative;
     margin :0 auto;
+    ${media.mobile`max-width:100%`};
   }
   & .posts-name{
+    ${media.mobile`font-size:2rem`};
     padding-top:50px;
     font-size:3.5rem;
     text-align: center;

@@ -8,6 +8,7 @@ function App() {
          <div id="App">
             <Switch>
                <Route path="/" exact component={Entry} />
+               <Route path="/about" exact component={Entry} />
                <Route path="/topic/:topic" exact component={Entry} />
                <Route path="/topic/:topic/:postsId" exact component={Posts} />
                <Route path="/write" component={TextEditor} />

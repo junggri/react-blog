@@ -10,6 +10,7 @@ import { Route } from "react-router-dom";
 import useLoginFlag from "../../useHooks/useLoginFlag";
 import useCSRF from "../../useHooks/useCSRF";
 import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
+import TopMetaBar from "./TopMetaBar";
 
 function CommonEntry({ match }: any) {
    const csrf = useCSRF();
@@ -35,7 +36,8 @@ function CommonEntry({ match }: any) {
 
    return (
       <EntryContainerComp width={width}>
-         <SideBarContainer topic={topic} login={login} />
+         <TopMetaBar width={width} match={match} />
+         {match.path !== "/about" ? <SideBarContainer topic={topic} login={login} /> : null}
          <Route path="/" exact render={() => (
             <EntryPostsContainer
                width={width}
@@ -53,6 +55,7 @@ function CommonEntry({ match }: any) {
                posts={posts}
             />
          )} />
+
       </EntryContainerComp>
    );
 }

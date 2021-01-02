@@ -20,81 +20,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/asset-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/service-worker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/service-worker.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/css/2.cd2fca47.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/css/2.cd2fca47.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/css/main.01142c41.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/css/main.01142c41.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/2.e8f9101b.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/2.e8f9101b.chunk.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/2.e8f9101b.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/3.06db24f9.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/3.06db24f9.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.70cdd63f.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.70cdd63f.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/runtime-main.e214c211.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/runtime-main.e214c211.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/media/Logo.7ba0ce66.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/ecosystem.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/config/session.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/css/2.cd2fca47.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/css/2.cd2fca47.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/css/main.01142c41.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/css/main.01142c41.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/2.e8f9101b.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/2.e8f9101b.chunk.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/2.e8f9101b.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/3.06db24f9.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/3.06db24f9.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/main.70cdd63f.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/main.70cdd63f.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/runtime-main.e214c211.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/js/runtime-main.e214c211.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/static/media/Logo.7ba0ce66.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.582133b1.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.582133b1.chunk.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/.env.development" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/.env.production" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/Media.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/Media.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/client/src/modules/TextEditor/index.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/config/admin.connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/config/admin.connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/config/admin.connection.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/config/admin.connection.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/config/index.connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/config/index.connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/config/index.connection.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/config/index.connection.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/admin.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/phoneCertification.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/phoneCertification.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/phoneCertification.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/phoneCertification.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/admin.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/admin.model.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/admin.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/admin.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/server/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/admin.connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/admin.connection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/index.connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/index.connection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/session.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/session.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/controller/admin.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/admin.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/model/index.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/index.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/phoneCertification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/phoneCertification.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/model/admin.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/admin.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/admin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/admin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,18 +136,18 @@
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/client/src/lib" />
-      <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/server/src" />
       <recent name="$PROJECT_DIR$/server/dist" />
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client/src/lib" />
+      <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
     </key>
   </component>
   <component name="RunManager">
@@ -313,6 +293,12 @@
       <workItem from="1609328982957" duration="675000" />
       <workItem from="1609331112837" duration="7613000" />
       <workItem from="1609340810633" duration="693000" />
+      <workItem from="1609368966657" duration="3993000" />
+      <workItem from="1609373850387" duration="146000" />
+      <workItem from="1609374054704" duration="8386000" />
+      <workItem from="1609403170090" duration="9619000" />
+      <workItem from="1609491476504" duration="13650000" />
+      <workItem from="1609541884266" duration="20393000" />
     </task>
     <servers />
   </component>
@@ -359,12 +345,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="696" y="406" key="#Scopes/0.25.1792.1038@0.25.1792.1038" timestamp="1607680606901" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609286071941">
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609369003759">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607771126031" />
     <state x="721" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1040@0.25.1792.1040" timestamp="1606553795014" />
-    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1609286071941" />
+    <state x="721" y="205" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1041@0.25.1792.1041" timestamp="1609369003759" />
     <state x="2367" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609337289627">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
@@ -429,12 +415,12 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="2481" y="162" width="1233" height="728" key="SettingsEditor" timestamp="1609335642167">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="332" y="160" width="1233" height="728" key="SettingsEditor" timestamp="1609514413062">
+      <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
-    <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1609323436980" />
+    <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1609514413062" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
     <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609335642167" />
@@ -454,16 +440,16 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup" timestamp="1609302093389">
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup" timestamp="1609499753821">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
-    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1609302093389" />
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1609499753821" />
     <state x="2393" y="248" width="719" height="652" key="search.everywhere.popup/1792.25.1920.1001/0.25.1792.1095@1792.25.1920.1001" timestamp="1608474232755" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
-    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608295191863" />
+    <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609405335764" />
     <state x="2482" y="361" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1607605347936">
       <screen x="1792" y="25" width="1920" height="998" />
     </state>

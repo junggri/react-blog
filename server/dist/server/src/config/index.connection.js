@@ -62,8 +62,12 @@ var promise_1 = __importDefault(require("mysql2/promise"));
 var dotenv = __importStar(require("dotenv"));
 dotenv.config();
 var option = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
+    host: process.env.NODE_ENV === "development"
+        ? process.env.DB_HOST_DEV
+        : process.env.DB_HOST_PROD,
+    user: process.env.NODE_ENV === "development"
+        ? process.env.DB_USER_DEV
+        : process.env.DB_USER_PROD,
     password: process.env.DB_PWD,
     database: process.env.DB_DATABASE2,
     connectionLimit: 40,

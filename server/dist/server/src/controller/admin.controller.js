@@ -46,14 +46,18 @@ var phoneCertification_1 = __importDefault(require("../lib/phoneCertification"))
 var AdminController = {
     login: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, certification_number;
+            var result, certification_num;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, admin_model_1.default.login(req.body.data)];
                     case 1:
                         result = _a.sent();
-                        certification_number = phoneCertification_1.default();
-                        res.status(200).json({ state: result, number: 1 });
+                        process.env.NODE_ENV === "development"
+                            ? certification_num = 1
+                            : certification_num = phoneCertification_1.default();
+                        result
+                            ? res.status(200).json({ state: result, number: certification_num })
+                            : res.status(401).json({ state: true });
                         return [2 /*return*/];
                 }
             });

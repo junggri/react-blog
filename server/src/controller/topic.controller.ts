@@ -6,12 +6,19 @@ import path from "path";
 
 interface Controller {
    deletePost: (req: Request, res: Response) => void
+
    getContentName(req: Request, res: Response): void;
+
    savePosts(req: Request, res: Response): void;
+
    getPostsFromTopicName(req: Request, res: Response): void
+
    getPostsFromPostsId(req: Request, res: Response): void
+
    makeNewTopic(req: Request, res: Response): void
+
    getAllPostsItems(req: Request, Res: Response): any
+
    deleteTopic(req: Request, Res: Response): any
 }
 

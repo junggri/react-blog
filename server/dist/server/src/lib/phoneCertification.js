@@ -12,7 +12,7 @@ function certifiCation() {
         var randomNum = Math.floor(Math.random() * 10);
         randomArray.push(randomNum);
     }
-    var user_auth_number = randomArray.join("");
+    var user_auth_number = parseInt(randomArray.join(""), 10);
     var date = Date.now().toString();
     var uri = process.env.API_URI;
     var secretKey = process.env.API_SECRETKEY;
