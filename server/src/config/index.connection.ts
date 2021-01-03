@@ -3,7 +3,6 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-
 const option = {
     host: process.env.NODE_ENV === "development"
         ? process.env.DB_HOST_DEV

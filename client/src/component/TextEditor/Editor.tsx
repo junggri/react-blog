@@ -16,10 +16,10 @@ import useCommon from "../../useHooks/useCommon";
 
 
 const Editor = ({history}: any) => {
-    const {login, setNewRequset}: ICommonModuleProps = useCommon();
 
+
+    const {setNewRequset}: ICommonModuleProps = useCommon();
     const csrf = useCSRF();
-
     const {
         data,
         setContent,
@@ -32,10 +32,17 @@ const Editor = ({history}: any) => {
     const {topic, makeOrDeleteAndReqNewTopics}: ITopicModuleProps = useTopic();
     const ref = useRef<any>(null);
 
-
     useEffect(() => {
-        ref.current.focus();
-    }, []);
+        (async () => {
+            const {data} = await util.checkJWTToken();
+            if (!data.decoded) {
+                history.push("/")
+            } else {
+                makeOrDeleteAndReqNewTopics()
+                ref.current.focus();
+            }
+        })()
+    }, [history, makeOrDeleteAndReqNewTopics])
 
 
     const onNameChange = useCallback((data: string) => {

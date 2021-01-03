@@ -4,10 +4,9 @@ import redis from "redis";
 
 
 const RedisStore = connectRedis(session);
+
 const _client = redis.createClient({
-    host: process.env.NODE_ENV === "development"
-        ? process.env.REDIS_DEV as string
-        : process.env.REDIS_PROD as string,
+    host: process.env.REDIS as string,
     port: 6379,
 });
 

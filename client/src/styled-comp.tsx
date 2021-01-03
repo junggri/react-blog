@@ -151,14 +151,20 @@ export const TopMetaBarComp = styled.section<Width>`
       opacity: 0.6;
       font-weight: 500;
       letter-spacing: 1.4px;
-      ${media.tablet`font-size:1.2rem`}
+      ${media.tablet`font-size:1.2rem`};
+      ${media.small`
+        font-size:0.8rem;
+      `}
      &:hover{
       opacity: 1;       
      }
     }
     & .metaActive{
       opacity: 1;
-      border-bottom:2.5px solid black;      
+      border-bottom:2.5px solid black;  
+      ${media.small`
+        border-bottom:1.5px solid black;
+      `}    
     }
  
   }

@@ -46,6 +46,9 @@ var path_1 = __importDefault(require("path"));
 var moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
+var content_path = process.env.NODE_ENV === "development"
+    ? "/../../../contents"
+    : "/../../../../../contents";
 function poolConnction(query, dep) {
     return __awaiter(this, void 0, void 0, function () {
         var conn, result, e_1;
@@ -85,7 +88,7 @@ var contentModel = {
     savePosts: function (_a) {
         var contentName = _a.contentName, content = _a.content, topicName = _a.topicName, kindOfPosts = _a.kindOfPosts, detail = _a.detail;
         return __awaiter(void 0, void 0, void 0, function () {
-            var uid, today, dateString, writePath, query, dep, result;
+            var writePath, uid, today, dateString, query, dep, result;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -96,7 +99,9 @@ var contentModel = {
                             month: "long",
                             day: "numeric",
                         });
-                        writePath = path_1.default.join(__dirname + "/../../contents");
+                        process.env.NODE_ENV === "development"
+                            ? writePath = path_1.default.join(__dirname + content_path)
+                            : writePath = path_1.default.join(__dirname + content_path);
                         query = "INSERT INTO " + topicName + " \n                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?,?)";
                         dep = [uid, topicName, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()];
                         return [4 /*yield*/, poolConnction(query, dep)];
@@ -145,7 +150,7 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "\n                CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     topic varchar(11) not null,\n                     uid varchar(50) not null,\n                     content_name varchar(200) not null,\n                     detail varchar(200) not null,\n                     file varchar(100) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     comments varchar(50),\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null,\n                     INDEX index_uid (uid)\n                     )";
+                    query = "\n                CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     topic varchar(11) not null,\n                     uid varchar(50) not null,\n                     content_name varchar(200) not null,\n                     detail varchar(200) not null,\n                     file varchar(100) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     comments varchar(50),\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null,\n                     view int(11), \n                     INDEX index_uid (uid)\n                     )";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }

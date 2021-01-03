@@ -37,6 +37,7 @@ function CommonEntry({match}: any) {
                     width={width}
                     posts={AllPosts}
                     deletePost={deletePost}
+                    getAllPosts={getAllPosts}
                     login={login}
                     csrf={csrf}
                 />

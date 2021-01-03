@@ -49,7 +49,7 @@ function verify(jwttoken) {
                 return [2 /*return*/, decoded];
             }
             catch (e) {
-                console.error(e);
+                // console.error(e);
             }
             return [2 /*return*/];
         });

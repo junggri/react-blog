@@ -1,26 +1,26 @@
-import React from 'react'
-import {Helmet} from "react-helmet";
-
+import React from "react";
+import { Helmet } from "react-helmet";
+import Logo from "../image/Logo.svg";
 
 interface IReactHelmet {
-    keywords: string
-    description: string
-    title: string
-    favicon: string
+   keywords: string
+   description: string
+   title: string
+   favicon?: string
 }
 
-function ReactHelmet({keywords, description, title, favicon}: IReactHelmet) {
-    return (
-        <Helmet>
-            <meta name="description" content={description}/>
-            <meta name="keywords" content={keywords}/>
-            <title>{title}</title>
-            <meta property="og:title" content={title}/>
-            <meta property="og:image" content={favicon}/>
-            <meta property="og:site_name" content="junggri.com"/>
-            <meta property="og:description" content={description}/>
-        </Helmet>
-    )
+function ReactHelmet({ keywords, description, title, favicon }: IReactHelmet) {
+   return (
+      <Helmet>
+         <meta name="description" content={description} />
+         <meta name="keywords" content={keywords} />
+         <title>{title}</title>
+         <meta property="og:title" content={title} />
+         <meta property="og:image" content={"build" + `${Logo}`} />
+         <meta property="og:site_name" content="junggri.com" />
+         <meta property="og:description" content={description} />
+      </Helmet>
+   );
 }
 
-export default ReactHelmet
+export default ReactHelmet;

@@ -4,6 +4,11 @@ import { promises as fs } from "fs";
 import path from "path";
 
 
+let content_path = process.env.NODE_ENV === "development"
+   ? "/../../../contents"
+   : "/../../../../../contents";
+
+
 interface Controller {
    deletePost: (req: Request, res: Response) => void
 
@@ -44,8 +49,8 @@ let contentController: Controller = {
       let fileName: string;
       const { topic, postsId } = req.params;
       process.env.NODE_ENV === "development"
-         ? fileName = path.join(__dirname + "/../../contents", `${req.params.postsId}.html`)
-         : fileName = path.join(__dirname + "/../../../../contents", `${req.params.postsId}.html`);
+         ? fileName = path.join(__dirname, content_path, `${req.params.postsId}.html`)
+         : fileName = path.join(__dirname, content_path, `${req.params.postsId}.html`);
       try {
          let result = await model.getPostFromPostId(topic, postsId);
          let content = await fs.readFile(fileName, "utf-8");
@@ -74,8 +79,17 @@ let contentController: Controller = {
    },
 
    deletePost: async (req, res) => {
-      let reuslt = await model.deletePost(req.body);
-      res.status(200).json({ state: true });
+      let deletePath;
+      process.env.NODE_ENV === "development"
+         ? deletePath = path.join(__dirname, content_path)
+         : deletePath = path.join(__dirname, content_path);
+      try {
+         await model.deletePost(req.body);
+         await fs.unlink(`${deletePath}/${req.body.uid}.html`);
+         res.status(200).json({ state: true });
+      } catch (e) {
+         console.error(e);
+      }
    },
 
 };

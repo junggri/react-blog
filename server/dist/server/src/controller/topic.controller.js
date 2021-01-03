@@ -42,6 +42,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var topic_model_1 = __importDefault(require("../model/topic.model"));
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
+var content_path = process.env.NODE_ENV === "development"
+    ? "/../../../contents"
+    : "/../../../../../contents";
 var contentController = {
     getContentName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
@@ -88,8 +91,8 @@ var contentController = {
                 case 0:
                     _a = req.params, topic = _a.topic, postsId = _a.postsId;
                     process.env.NODE_ENV === "development"
-                        ? fileName = path_1.default.join(__dirname + "/../../contents", req.params.postsId + ".html")
-                        : fileName = path_1.default.join(__dirname + "/../../../../contents", req.params.postsId + ".html");
+                        ? fileName = path_1.default.join(__dirname, content_path, req.params.postsId + ".html")
+                        : fileName = path_1.default.join(__dirname, content_path, req.params.postsId + ".html");
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 4, , 5]);
@@ -147,14 +150,29 @@ var contentController = {
         });
     }); },
     deletePost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var reuslt;
+        var deletePath, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, topic_model_1.default.deletePost(req.body)];
+                case 0:
+                    process.env.NODE_ENV === "development"
+                        ? deletePath = path_1.default.join(__dirname, content_path)
+                        : deletePath = path_1.default.join(__dirname, content_path);
+                    _a.label = 1;
                 case 1:
-                    reuslt = _a.sent();
+                    _a.trys.push([1, 4, , 5]);
+                    return [4 /*yield*/, topic_model_1.default.deletePost(req.body)];
+                case 2:
+                    _a.sent();
+                    return [4 /*yield*/, fs_1.promises.unlink(deletePath + "/" + req.body.uid + ".html")];
+                case 3:
+                    _a.sent();
                     res.status(200).json({ state: true });
-                    return [2 /*return*/];
+                    return [3 /*break*/, 5];
+                case 4:
+                    e_2 = _a.sent();
+                    console.error(e_2);
+                    return [3 /*break*/, 5];
+                case 5: return [2 /*return*/];
             }
         });
     }); },

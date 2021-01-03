@@ -7,7 +7,6 @@ var express_1 = __importDefault(require("express"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var helmet_1 = __importDefault(require("helmet"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
-var path_1 = __importDefault(require("path"));
 var morgan_1 = __importDefault(require("morgan"));
 var express_session_1 = __importDefault(require("express-session"));
 var compression_1 = __importDefault(require("compression"));
@@ -18,6 +17,7 @@ var topic_1 = __importDefault(require("./router/topic"));
 var admin_1 = __importDefault(require("./router/admin"));
 var cors_1 = __importDefault(require("cors"));
 var session_config_1 = require("./config/session.config");
+var path_1 = __importDefault(require("path"));
 var app = express_1.default();
 app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
@@ -25,6 +25,9 @@ var csrfProtection = csurf_1.default({
         httpOnly: true,
     },
 });
+var content_path = process.env.NODE_ENV === "development"
+    ? "/../../contents"
+    : "/../../../../contents";
 app.use(function (req, res, next) {
     res.header("Cache-control", "no-cache, must-revalidate");
     res.header("Pragma", "no-cache");
@@ -43,7 +46,7 @@ app
     .use(cors_1.default({ origin: true, credentials: true }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(express_1.default.static(path_1.default.join(__dirname, "/../../../build")))
-    .use("/contents", express_1.default.static(path_1.default.join(__dirname, "/../../../contents")))
+    .use("/contents", express_1.default.static(path_1.default.join(__dirname, content_path)))
     .use(csrfProtection);
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터

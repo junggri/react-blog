@@ -4,18 +4,20 @@ services:
     build: .
     ports:
       - "4000:4000"
-    image: jjuu6933/node_server1
+    image: jjuu6933/server1
+
   server2:
     build: .
     ports:
       - "4001:4000"
-    image: jjuu6933/node_server2
+    image: jjuu6933/server2
+
   server3:
     build: .
     ports:
       - "4002:4000"
-    image: jjuu6933/node_server3
+    image: jjuu6933/server3
 
   redis:
-    image: redis:latest
+    image: redis:alpine
     command: [ "redis-server", "--bind", "redis", "--port", "6379" ]

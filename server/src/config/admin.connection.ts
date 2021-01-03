@@ -3,7 +3,6 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
-console.log(process.env.NODE_ENV, process.env.DB_HOST_DEV, process.env.DB_USER_DEV)
 
 const option = {
     host: process.env.NODE_ENV === "development"

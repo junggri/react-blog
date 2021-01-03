@@ -10,12 +10,12 @@ interface IEntryPostsContainer {
     width: number,
     posts: IAllPost
     deletePost: (posts: any) => void,
+    getAllPosts: () => void
     login: boolean,
     csrf: string
 }
 
-const EntryPostsContainer = ({width, posts, deletePost, login, csrf}: IEntryPostsContainer) => {
-
+const EntryPostsContainer = ({width, posts, deletePost, login, csrf, getAllPosts}: IEntryPostsContainer) => {
 
     const onModified = useCallback((e: React.MouseEvent<HTMLElement>) => {
         console.log(2);
@@ -26,16 +26,14 @@ const EntryPostsContainer = ({width, posts, deletePost, login, csrf}: IEntryPost
         const topic = (e.currentTarget.parentNode as HTMLElement).dataset.topic as string;
         (async () => {
             await util.deletePost(uid, topic, csrf);
-            const newPostsState = (Object.values(posts.data as any).flat()).filter((item: any) => (item.uid !== uid));
-            deletePost(newPostsState);
+            getAllPosts();
         })();
+
     }, [csrf, deletePost]);
 
 
     if (!posts.data) return null
-
     const data = Object.values(posts.data).flat();
-
     return (
         <EntryPostsContainerComp width={width}>
             {data.map((e: IPostCommonProps) => (
