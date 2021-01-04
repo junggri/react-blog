@@ -1,29 +1,29 @@
-import styled, {css} from "styled-components";
-import {darken, lighten} from "polished";
-import React, {memo} from "react";
-import {NavLink} from "react-router-dom";
-import {media} from "./styles/Media";
+import styled, { css } from "styled-components";
+import { darken, lighten } from "polished";
+import React, { memo } from "react";
+import { NavLink } from "react-router-dom";
+import { media } from "./styles/Media";
 
 export interface Width {
-    width: number;
+   width: number;
 }
 
 export interface topView {
-    width: number;
-    logo: any
-    ref: any
+   width: number;
+   logo: any
+   ref: any
 }
 
 export interface contentBox {
-    ref: any;
+   ref: any;
 }
 
 interface IDeleteTopicIconComp {
-    onClick: any
+   onClick: any
 }
 
 interface ISideBarThunmbNailComp {
-    style: any
+   style: any
 }
 
 //INTERFACE
@@ -32,7 +32,7 @@ interface ISideBarThunmbNailComp {
 const leftWidth = 200;
 
 interface IEntryContainerComp {
-    width: number
+   width: number
 }
 
 export const EntryContainerComp = styled.div<IEntryContainerComp>`
@@ -134,13 +134,12 @@ const postsItemMixin = css`
 export const TopMetaBarComp = styled.section<Width>`
   ${media.mobile`
    width:100%;
-   background-color: white;
   `};
   position: fixed;
   width:${props => props.width + "px"};
-  z-index: 9;
+  z-index: 999;
   padding-bottom: 5px;
-  background-color: white;
+  background:white;
   & .topmetabar-list{
     display: flex;
     margin-top:20px;
@@ -151,7 +150,9 @@ export const TopMetaBarComp = styled.section<Width>`
       opacity: 0.6;
       font-weight: 500;
       letter-spacing: 1.4px;
-      ${media.tablet`font-size:1.2rem`};
+      ${media.tablet`
+        font-size:1.2rem;
+      `};
       ${media.small`
         font-size:0.8rem;
       `}
@@ -654,4 +655,4 @@ export const AboutContainerComp = styled.div<Width>`
   position: relative;
   width:${props => props.width + "px"};
   margin-top:100px;
-`
+`;
