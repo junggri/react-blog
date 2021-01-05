@@ -4,7 +4,13 @@ import Thunk from "redux-thunk";
 import TokenMiddleWare from "../middleWare/TokenMiddleWare";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
 
+
 const middleWares = [Thunk, TokenMiddleWare];
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleWares)));
+const devTools =
+   process.env.NODE_ENV === "production"
+      ? applyMiddleware(...middleWares)
+      : composeWithDevTools(applyMiddleware(...middleWares));
+
+export const store = createStore(rootReducer, devTools);
 

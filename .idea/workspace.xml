@@ -20,18 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/contents/9e663680-6495-4546-98a5-a6fb3a03c2a5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contents/bca287a6-6f91-4a3b-80ba-e904b67a0113.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contents/fdb5af7f-95ab-4629-b36d-0e37376c7039.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/lib/winston.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/lib/winston.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/og.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/og.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/2.b1f417e0.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.157fa647.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.157fa647.chunk.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/useHooks/useHelmet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useHelmet.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.17d9e57e.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.17d9e57e.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.b1f417e0.chunk.js.LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.17d9e57e.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.b1f417e0.chunk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.005e88f2.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.005e88f2.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +98,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -94,11 +106,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/public/image" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/server/src" />
       <recent name="$PROJECT_DIR$/server/dist" />
       <recent name="$PROJECT_DIR$/client/src" />
-      <recent name="$PROJECT_DIR$/client" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server" />
@@ -262,7 +274,11 @@
       <workItem from="1609662575861" duration="6409000" />
       <workItem from="1609675950309" duration="3457000" />
       <workItem from="1609682248288" duration="2680000" />
-      <workItem from="1609764119990" duration="2460000" />
+      <workItem from="1609764119990" duration="4052000" />
+      <workItem from="1609771211086" duration="1918000" />
+      <workItem from="1609805261075" duration="1152000" />
+      <workItem from="1609808189693" duration="7323000" />
+      <workItem from="1609834993508" duration="14395000" />
     </task>
     <servers />
   </component>
@@ -404,12 +420,12 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup" timestamp="1609499753821">
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup" timestamp="1609812563974">
       <screen x="0" y="25" width="1792" height="1041" />
     </state>
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
-    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1609499753821" />
+    <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1609812563974" />
     <state x="2393" y="248" width="719" height="652" key="search.everywhere.popup/1792.25.1920.1001/0.25.1792.1095@1792.25.1920.1001" timestamp="1608474232755" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />

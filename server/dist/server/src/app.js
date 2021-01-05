@@ -45,6 +45,7 @@ app
     .use(helmet_1.default.frameguard({ action: "deny" }))
     .use(cors_1.default({ origin: true, credentials: true }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
+    .use(express_1.default.static(path_1.default.join(__dirname, "/../../../public")))
     .use(express_1.default.static(path_1.default.join(__dirname, "/../../../build")))
     .use("/contents", express_1.default.static(path_1.default.join(__dirname, content_path)))
     .use(csrfProtection);

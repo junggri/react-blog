@@ -21,7 +21,6 @@ const csrfProtection = csrf({
    cookie: {
       httpOnly: true,
       // secure: process.env.NODE_ENV === "production",
-      // maxAge: 3600, // 1-houra
    },
 });
 let content_path: string = process.env.NODE_ENV === "development"
@@ -47,6 +46,7 @@ app
    .use(helmet.frameguard({ action: "deny" }))
    .use(cors({ origin: true, credentials: true }))
    .use(bodyParser.urlencoded({ extended: false }))
+   .use(express.static(path.join(__dirname, "/../../../public")))
    .use(express.static(path.join(__dirname, "/../../../build")))
    .use("/contents", express.static(path.join(__dirname, content_path)))
    .use(csrfProtection);

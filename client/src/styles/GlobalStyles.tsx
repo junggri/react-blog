@@ -93,7 +93,6 @@ const GlobalStyles = createGlobalStyle`
      background: rgb(248 249 250);
      font-weight: 300 !important;
      & span{
-     //color:rgb(36, 41, 46);
         font-weight:300 !important;
       }
     }
@@ -118,7 +117,7 @@ const GlobalStyles = createGlobalStyle`
      //     color:rgb(36, 41, 46);
      //  }
      //}
-     .hljs-params,.hljs-attr,{
+     .hljs-params,.hljs-attr,.hljs-string{
       color:rgb(36, 41, 46) 
      }
      .react{

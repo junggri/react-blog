@@ -335,6 +335,7 @@ export const PostsContainerComp = styled.section<Width>`
     word-break:break-all;
     font-size:1.125rem;
     margin-top:50px;    
+    color:rgb(36, 41, 46);
     & *{
       white-space: pre-wrap !important;
       word-break: break-all;
