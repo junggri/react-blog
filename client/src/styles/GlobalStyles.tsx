@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
     body,html{
         font-size:14px;
         font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif !important;
-        //background-color:#F9F9FB;
         color:rgb(36, 41, 46);
         position:relative;
         height:100%;
@@ -71,6 +70,9 @@ const GlobalStyles = createGlobalStyle`
         border: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
+    .react,.hljs,.stata{
+       background: white !important;
+    }
     .content-title::placeholder{
         font-size:3rem;
         font-style:italic
@@ -84,20 +86,26 @@ const GlobalStyles = createGlobalStyle`
     .ql-container.ql-snow{
         height:90%
     }
-    
+    .ql-editor .ql-syntax{
+        background: rgb(248 249 250) !important;
+    }
     .ql-syntax{
      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
      padding:30px 30px; 
      border-radius: 4px;
-     font-size: 0.875rem;
+     font-size: 0.9rem;
      background: rgb(248 249 250);
      font-weight: 300 !important;
+     white-space: pre-wrap !important;
      & span{
         font-weight:300 !important;
       }
+      .hljs-string{
+        color:#50a14f
+      }
     }
-     pre.ql-syntax {
-      white-space: pre-wrap !important;
+    .ql-snow .ql-editor pre.ql-syntax{
+      color:black !important;
      }
     .ql-toolbar.ql-snow{
         border-left:none;
@@ -105,25 +113,13 @@ const GlobalStyles = createGlobalStyle`
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }   
     .hljs-function{
-      .hljs-keyword{
-         color:rgb(36, 41, 46);
-      }
       .hljs-params{
-         color:rgb(36, 41, 46);
+         //color:rgb(36, 41, 46);
       }
     }
-     //.xml{
-     //  .hljs-name,.hljs-tag{
-     //     color:rgb(36, 41, 46);
-     //  }
-     //}
-     .hljs-params,.hljs-attr,.hljs-string{
-      color:rgb(36, 41, 46) 
+     .hljs-params,.hljs-attr{
+      color:rgb(36, 41, 46) !important;
      }
-     .react{
-      background: white;
-     }
-
 `;
 
 export default GlobalStyles;

@@ -4,19 +4,19 @@ services:
     build: .
     ports:
       - "4000:4000"
-    image: jjuu6933/server1
+    image: jjuu6933/server
 
   server2:
     build: .
     ports:
       - "4001:4000"
-    image: jjuu6933/server2
+    image: jjuu6933/server
 
   server3:
     build: .
     ports:
       - "4002:4000"
-    image: jjuu6933/server3
+    image: jjuu6933/server
 
   redis:
     image: redis:alpine

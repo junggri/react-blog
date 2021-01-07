@@ -45,7 +45,7 @@ function PostsContainer({ match }: any) {
          <div className="posts-detail">
             {(data as IPostDataProps).result[0].detail}
          </div>
-         <Highlight language='react'>
+         <Highlight language="react">
             <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" />
          </Highlight>
          <div className="posts-created">

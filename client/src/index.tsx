@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import { store } from "./lib/store";
 import "../src/styles/highlight/atom-one-light.css";
 
-
 ReactDOM.render(
    <>
       <Provider store={store}>

@@ -6,8 +6,9 @@
    <link href="%PUBLIC_URL%/favicon.ico" rel="icon" />
    <meta content="width=device-width, initial-scale=1" name="viewport" />
    <meta content="http://www.junggri.com/image/og.jpg" data-react-helmet="true" property="og:image" />
-   <meta content="563986907951-4sdjccc4gggf7odhp3pqafgi8v56dp8d.apps.googleusercontent.com" name="google-signin-client_id">
+   <meta content="563986907951-2ju677cmt4dlkqc6lb163puk6hqjb3f6.apps.googleusercontent.com" name="google-signin-client_id">
    <meta content="https://www.googleapis.com/auth/analytics.readonly" name="google-signin-scope">
+
    <!--    <link href="%PUBLIC_URL%/logo192.png" rel="apple-touch-icon"/>-->
    <!-- manifest.json provides metadata used when your web app is installed on a
    user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -26,11 +27,9 @@
      work correctly both with client-side routing and a non-root public URL.
      Learn how to configure a non-root public URL by running `npm run build`.
    -->
-   <!-- Global site tag (gtag.js) - Google Analytics -->
-   <p class="g-signin2" data-onsuccess="queryReports"></p>
-   <textarea cols="80" id="query-output" rows="20"></textarea>
-   <!-- The API response will be printed here. -->
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-DDSC9TX9J6"></script>
+   <p class="g-signin2" data-onsuccess="queryReports" style="display: none"></p>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186554267-1"></script>
+   <script src="https://apis.google.com/js/client:platform.js"></script>
    <script>
       window.dataLayer = window.dataLayer || [];
 
@@ -39,45 +38,8 @@
       }
 
       gtag("js", new Date());
-      gtag("config", "G-DDSC9TX9J6");
+      gtag("config", "UA-186554267-1");
    </script>
-
-   <script>
-      const VIEW_ID = "235239777";
-
-      // Query the API and print the results to the page.
-      function queryReports() {
-         gapi.client.request({
-            path: "/v4/reports:batchGet",
-            root: "https://analyticsreporting.googleapis.com/",
-            method: "POST",
-            body: {
-               reportRequests: [
-                  {
-                     viewId: VIEW_ID,
-                     dateRanges: [
-                        {
-                           startDate: "2021-01-05",
-                           endDate: "today",
-                        },
-                     ],
-                     metrics: [
-                        {
-                           expression: "ga:users",
-                        },
-                     ],
-                  },
-               ],
-            },
-         }).then(displayResults, console.error.bind(console));
-      }
-
-      function displayResults(response) {
-         var formattedJson = JSON.stringify(response.result, null, 2);
-         document.getElementById("query-output").value = formattedJson;
-      }
-   </script>
-   <script src="https://apis.google.com/js/client:platform.js"></script>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>

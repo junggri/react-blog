@@ -11,11 +11,11 @@ import useCSRF from "../../useHooks/useCSRF";
 import TopMetaBar from "./TopMetaBar";
 import ReactHelmet from "../../useHooks/useHelmet";
 
+
 function CommonEntry({ match }: any) {
    const csrf = useCSRF();
    const { width, login, newRequest, setNewRequset }: ICommonModuleProps = useCommon();
    const { AllPosts, posts, getPosts, deletePost, getAllPosts }: IPostsModuleProps = usePosts();
-
 
    useEffect(() => {
       if (newRequest) {
@@ -23,8 +23,6 @@ function CommonEntry({ match }: any) {
          setNewRequset(false);
       }
    }, [getAllPosts, newRequest, setNewRequset]);
-
-
    useLoginFlag();
 
    if (!AllPosts.data) return null;

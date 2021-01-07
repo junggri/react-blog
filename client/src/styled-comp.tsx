@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { darken, lighten } from "polished";
 import React, { memo } from "react";
 import { NavLink } from "react-router-dom";
@@ -130,7 +130,11 @@ const postsItemMixin = css`
     }   
   }
 `;
-
+const rotate = keyframes`
+  100%{
+    transform: rotate(360deg);
+  }
+`;
 export const TopMetaBarComp = styled.section<Width>`
   ${media.mobile`
    width:100%;
@@ -167,7 +171,28 @@ export const TopMetaBarComp = styled.section<Width>`
         border-bottom:1.5px solid black;
       `}    
     }
- 
+  }
+  & .topmetabar-count{
+    position: absolute;
+    right:0;
+    top:0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    & div {
+      margin-left:12px;
+      font-weight: 100;
+      font-size:12px;
+      display: flex;
+      align-items: center;
+       & .topmetabar-countAll,.topmetabar-today{
+         margin-left:6px;
+         display: flex;
+       }
+       & .count-loading-icon{
+         animation: ${rotate} infinite linear 5s;
+      }
+    }
   }
   //& .topmetabar-icons-box{
   // position: relative;
@@ -307,6 +332,7 @@ export const PostsContainerComp = styled.section<Width>`
   margin: 0 auto;
   width: ${(props) => props.width - 80 + "px"};
   padding-bottom: 80px;
+  background: white;
   & .posts-container-iconbox{
     padding:20px 20px;
     font-size:1.5rem;
@@ -333,13 +359,20 @@ export const PostsContainerComp = styled.section<Width>`
   }
   & .posts-content{
     word-break:break-all;
-    font-size:1.125rem;
+    font-size:1.2rem;
     margin-top:50px;    
-    color:rgb(36, 41, 46);
     & *{
       white-space: pre-wrap !important;
       word-break: break-all;
-      line-height: 2;
+      line-height: 2.11;
+    }
+    blockquote{
+      padding:10px 20px;
+      border-left:5px solid #f58320;
+      background: rgb(248 249 250);
+    }
+    p,ol,blockquote span{
+      color:black
     }
   }
   & .posts-created{

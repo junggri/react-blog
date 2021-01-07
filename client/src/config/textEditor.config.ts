@@ -1,4 +1,3 @@
-import "highlight.js/styles/a11y-light.css";
 import hljs from "highlight.js";
 import { Quill } from "react-quill";
 
@@ -11,7 +10,7 @@ export const modules = {
       highlight: (text: any) => hljs.highlightAuto(text).value,
    },
    toolbar: [
-      // [{ header: "1" }, { header: "2" }],
+      [{ header: "1" }, { header: "2" }],
       [{ font: [] }],
       [{ size: ["small", false, "large", "huge"] }], // custom dropdown
       ["bold", "italic", "underline", "strike"],
