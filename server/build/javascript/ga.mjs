@@ -8,7 +8,7 @@ function queryReports() {
       body: {
          reportRequests: [
             {
-               viewId: VIEW_ID,
+               viewId: "235239777",
                dateRanges: [
                   {
                      startDate: "2021-01-03",
@@ -20,6 +20,11 @@ function queryReports() {
                      expression: "ga:users",
                   },
                ],
+               dimensions: [
+                  {
+                     name: "ga:date",
+                  },
+               ],
             },
          ],
       },
@@ -27,8 +32,4 @@ function queryReports() {
 }
 
 function displayResults(response) {
-   const formattedJson = JSON.stringify(response.result, null, 2);
-   // console.log(formattedJson);
-   // document.getElementById("query-output").value = formattedJson;
 }
-

@@ -139,6 +139,9 @@ export const TopMetaBarComp = styled.section<Width>`
   ${media.mobile`
    width:100%;
   `};
+   ${media.desktop`
+   width:100%;
+  `};
   position: fixed;
   width:${props => props.width + "px"};
   z-index: 999;
@@ -173,6 +176,12 @@ export const TopMetaBarComp = styled.section<Width>`
     }
   }
   & .topmetabar-count{
+    ${media.desktop`
+     right:5%;
+    `};
+    ${media.mobile`
+      display:none;
+    `};
     position: absolute;
     right:0;
     top:0;
@@ -371,7 +380,7 @@ export const PostsContainerComp = styled.section<Width>`
       border-left:5px solid #f58320;
       background: rgb(248 249 250);
     }
-    p,ol,blockquote span{
+    p,ol,blockquote,span{
       color:black
     }
   }

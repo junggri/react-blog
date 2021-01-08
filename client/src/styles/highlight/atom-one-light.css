@@ -18,7 +18,7 @@ hue-6-2: #c18401
 
 */
 
-.hljs {
+.ql-syntax .hljs {
     display: block;
     overflow-x: auto;
     padding: 0.5em;
@@ -26,75 +26,72 @@ hue-6-2: #c18401
     background: #fafafa;
 }
 
-.hljs-comment,
-.hljs-quote {
-    color: #a0a1a7;
+.ql-syntax .hljs-comment,
+.ql-syntax .hljs-quote {
+    color: #a0a1a7 !important;
     font-style: italic;
 }
 
-.hljs-doctag,
-.hljs-keyword,
-.hljs-formula {
-    color: #a626a4;
+.ql-syntax .hljs-doctag,
+.ql-syntax .hljs-keyword,
+.ql-syntax .hljs-formula {
+    color: #a626a4 !important;
 }
 
-.hljs-section,
-.hljs-name,
-.hljs-selector-tag,
-.hljs-deletion,
-.hljs-subst {
+.ql-syntax .hljs-section,
+.ql-syntax .hljs-name,
+.ql-syntax .hljs-selector-tag,
+.ql-syntax .hljs-deletion,
+.ql-syntax .hljs-subst {
     color: black
 }
 
-.hljs-literal {
-    color: #4078f2;
+.ql-syntax .hljs-literal {
+    color: #4078f2 !important;
 }
 
-.hljs-string,
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute,
-.hljs-meta-string {
-    color: black
+.ql-syntax .hljs-string,
+.ql-syntax .hljs-regexp,
+.ql-syntax .hljs-addition,
+.ql-syntax .hljs-attribute,
+.ql-syntax .hljs-meta-string {
+    color: black !important;
 }
 
-.hljs-built_in,
-.hljs-class .hljs-title {
-    color: #c18401;
+.ql-syntax .hljs-built_in,
+.ql-syntax .hljs-class .hljs-title {
+    color: #c18401 !important;
 }
 
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-type,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-number {
-    color: #986801;
+.ql-syntax .hljs-attr,
+.ql-syntax .hljs-variable,
+.ql-syntax .hljs-template-variable,
+.ql-syntax .hljs-type,
+.ql-syntax .hljs-selector-class,
+.ql-syntax .hljs-selector-attr,
+.ql-syntax .hljs-selector-pseudo,
+.ql-syntax .hljs-number {
+    color: #986801 !important;
 }
 
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link,
-.hljs-meta,
-.hljs-selector-id,
-.hljs-title {
-    color: #4078f2;
+.ql-syntax .hljs-symbol,
+.ql-syntax .hljs-bullet,
+.ql-syntax .hljs-link,
+.ql-syntax .hljs-meta,
+.ql-syntax .hljs-selector-id,
+.ql-syntax .hljs-title {
+    color: #4078f2 !important;
 }
 
-.hljs-emphasis {
-    font-style: italic;
+.ql-syntax .hljs-emphasis {
+    font-style: italic !important;
 }
 
-.hljs-strong {
-    font-weight: bold;
+.ql-syntax .hljs-strong {
+    font-weight: bold !important;
 }
 
-.hljs-link {
+.ql-syntax .hljs-link {
     text-decoration: underline;
 }
 
-.hljs-tag {
-    color: #4078f2
-}

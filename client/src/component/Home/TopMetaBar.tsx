@@ -5,6 +5,7 @@ import { BiLoaderCircle } from "react-icons/bi";
 import useReport from "../../useHooks/useReport";
 
 function TopMetaBar({ width, match }: { width: number, match: any }) {
+
    const ga: any = useReport();
    return (
       <TopMetaBarComp width={width}>

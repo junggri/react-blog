@@ -1,15 +1,18 @@
+import React, { useEffect, useState } from "react";
+import useAuth from "./useAuth";
+
 declare global {
    interface Window {
       gapi: any
    }
 }
-import React, { useEffect, useState } from "react";
 
 const Report = () => {
    const [data, setData] = useState(null);
-
+   const [load, setLoad] = useState(true);
+   const isSignedIn = useAuth();
    useEffect(() => {
-      const req = setTimeout(() => {
+      if (isSignedIn) {
          const queryReport = () => {
             window.gapi.client
                .request({
@@ -19,7 +22,7 @@ const Report = () => {
                   body: {
                      reportRequests: [
                         {
-                           viewId: "235239777",
+                           viewId: "235239777", //enter your view ID here
                            dateRanges: [
                               {
                                  startDate: "10daysAgo",
@@ -39,19 +42,19 @@ const Report = () => {
                         },
                      ],
                   },
-               })
-               .then(displayResults, console.error.bind(console));
+               }).then(displayResults);
          };
          const displayResults = (response: any) => {
             const queryResult = response.result.reports[0].data;
-            if (response.status === 200) setData(queryResult);
+            if (load) setData(queryResult);
          };
          queryReport();
-      }, 800);
+      }
+
       return () => {
-         clearTimeout(req);
+         setLoad(false);
       };
-   }, []);
+   }, [isSignedIn, load]);
    return data;
 };
 

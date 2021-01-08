@@ -100,9 +100,6 @@ const GlobalStyles = createGlobalStyle`
      & span{
         font-weight:300 !important;
       }
-      .hljs-string{
-        color:#50a14f
-      }
     }
     .ql-snow .ql-editor pre.ql-syntax{
       color:black !important;
@@ -117,9 +114,18 @@ const GlobalStyles = createGlobalStyle`
          //color:rgb(36, 41, 46);
       }
     }
-     .hljs-params,.hljs-attr{
+    .hljs-params,.hljs-attr{
       color:rgb(36, 41, 46) !important;
-     }
+    }
+    .ql-syntax .hljs-tag{
+      color:black;
+      & .hljs-name{
+        color:#a626a4 !important;
+      }
+      & .hljs-attr{
+        color: #4078f2 !important;
+      } 
+    }
 `;
 
 export default GlobalStyles;
