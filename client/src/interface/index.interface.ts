@@ -51,6 +51,7 @@ export interface ICreateNewTopicProps {//createNewtopic-write
 
 export interface ITextEditBtnBoxProps {//wirte BtnBox
    onSubmit: any
+   onTemporaryPost: () => void
 }
 
 export interface IPostsDetailProps {//postssDetia

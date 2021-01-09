@@ -21,5 +21,5 @@ router.post("/posts/item", contentController.deletePost);
 
 router.post("/:topicname", contentController.deleteTopic);
 
-
+router.post("/temp/posts", contentController.temporaryPost);
 export default router;

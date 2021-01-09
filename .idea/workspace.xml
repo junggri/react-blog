@@ -20,38 +20,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/useHooks/useAuth.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/css/main.7dd03907.chunk.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/css/main.7dd03907.chunk.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/2.5d5438c2.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.e6f8072e.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.e6f8072e.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/runtime-main.8ef6fe48.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/css/main.ead7ccbb.chunk.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/css/main.ead7ccbb.chunk.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.bc39e0dd.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.bc39e0dd.chunk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dist/server/src/config/temp.connetion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dist/server/src/config/temp.connetion.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dist/server/src/config/topic.connection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dist/server/src/config/topic.connection.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/config/temp.connetion.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Entry.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/TextEditBtnBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/TextEditBtnBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/interface/index.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/index.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles/highlight/atom-one-light.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/highlight/atom-one-light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useReport.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useReport.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/javascript/ga.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/javascript/ga.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/css/main.01142c41.chunk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/css/main.01142c41.chunk.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.54e83a2c.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.54e83a2c.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.5d5438c2.chunk.js.LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.54e83a2c.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.5d5438c2.chunk.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/3.06db24f9.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/3.a1bdba51.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/3.06db24f9.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/3.a1bdba51.chunk.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.83345710.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.83345710.chunk.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/runtime-main.e214c211.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/runtime-main.e214c211.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/runtime-main.8ef6fe48.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/css/main.7dd03907.chunk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/css/main.7dd03907.chunk.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.e6f8072e.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.e6f8072e.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/topic.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/model/topic.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/topic.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/index.connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/topic.connection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/topic.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/model/topic.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/router/topic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/topic.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,19 +119,19 @@
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server/public/image" />
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$/server/src" />
-      <recent name="$PROJECT_DIR$/server/dist" />
-      <recent name="$PROJECT_DIR$/client/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/client/public" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/client/src/lib" />
       <recent name="$PROJECT_DIR$/client/@types/quill-image-resize-module-react" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/public/image" />
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/server/src" />
+      <recent name="$PROJECT_DIR$/server/dist" />
+      <recent name="$PROJECT_DIR$/client/src" />
     </key>
   </component>
   <component name="RunManager">
@@ -292,7 +297,10 @@
       <workItem from="1609978573194" duration="4705000" />
       <workItem from="1609987466868" duration="2668000" />
       <workItem from="1610008378349" duration="15010000" />
-      <workItem from="1610108857184" duration="5801000" />
+      <workItem from="1610108857184" duration="6863000" />
+      <workItem from="1610118001570" duration="745000" />
+      <workItem from="1610151054863" duration="2531000" />
+      <workItem from="1610186839011" duration="3309000" />
     </task>
     <servers />
   </component>

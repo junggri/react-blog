@@ -11,20 +11,14 @@ let content_path = process.env.NODE_ENV === "development"
 
 interface Controller {
    deletePost: (req: Request, res: Response) => void
-
    getContentName(req: Request, res: Response): void;
-
    savePosts(req: Request, res: Response): void;
-
    getPostsFromTopicName(req: Request, res: Response): void
-
    getPostsFromPostsId(req: Request, res: Response): void
-
    makeNewTopic(req: Request, res: Response): void
-
    getAllPostsItems(req: Request, Res: Response): any
-
    deleteTopic(req: Request, Res: Response): any
+   temporaryPost(req: Request, res: Response): any
 }
 
 let contentController: Controller = {
@@ -38,6 +32,10 @@ let contentController: Controller = {
       result.state
          ? res.status(200).json({ state: true })
          : res.status(500).json({ state: false });
+   },
+
+   temporaryPost: async (req: Request, res: Response) => {
+      let result = await model.temporaryPosts(req.body);
    },
 
    getPostsFromTopicName: async (req, res) => {
@@ -91,6 +89,7 @@ let contentController: Controller = {
          console.error(e);
       }
    },
+
 
 };
 

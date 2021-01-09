@@ -114,6 +114,11 @@ const GlobalStyles = createGlobalStyle`
          //color:rgb(36, 41, 46);
       }
     }
+    .ql-editor blockquote{
+      padding:10px 20px;
+      border-left:5px solid #f58320 !important;
+      background: rgb(248 249 250);
+    }
     .hljs-params,.hljs-attr{
       color:rgb(36, 41, 46) !important;
     }
@@ -125,6 +130,15 @@ const GlobalStyles = createGlobalStyle`
       & .hljs-attr{
         color: #4078f2 !important;
       } 
+    }
+    .ql-size-large{
+      font-size: 2.7rem !important;
+    }
+    .ql-size-huge{
+      font-size:4rem !important;
+    }
+    .ql-size-small{
+      font-size:1rem !important
     }
 `;
 

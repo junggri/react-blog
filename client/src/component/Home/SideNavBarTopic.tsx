@@ -7,7 +7,6 @@ interface ISideBarNavContainer {
 
 
 function SideNavBarTopic({ topic }: ISideBarNavContainer) {
-
    return (
       <SideBarPostsContainerComp>
          <div className="sidebar-list">

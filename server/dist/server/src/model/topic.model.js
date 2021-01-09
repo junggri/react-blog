@@ -39,7 +39,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var index_connection_1 = __importDefault(require("../config/index.connection"));
+var topic_connection_1 = __importDefault(require("../config/topic.connection"));
+var temp_connetion_1 = __importDefault(require("../config/temp.connetion"));
 var uuid_1 = require("uuid");
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
@@ -49,12 +50,28 @@ moment.tz.setDefault("Asia/Seoul");
 var content_path = process.env.NODE_ENV === "development"
     ? "/../../../contents"
     : "/../../../../../contents";
+var temp_path = process.env.NODE_ENV === "development"
+    ? "/../../../temporary-storage"
+    : "/../../../../../temporary-storage";
+function savePost(folderName) {
+    var uid = uuid_1.v4();
+    var today = new Date();
+    var dateString = today.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+    var path = process.env.NODE_ENV === "development"
+        ? "/../../../" + folderName
+        : "/../../../../../" + folderName;
+    return { uid: uid, today: today, dateString: dateString };
+}
 function poolConnction(query, dep) {
     return __awaiter(this, void 0, void 0, function () {
         var conn, result, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, index_connection_1.default()];
+                case 0: return [4 /*yield*/, topic_connection_1.default()];
                 case 1:
                     conn = _a.sent();
                     if (!(conn !== undefined)) return [3 /*break*/, 5];
@@ -122,6 +139,46 @@ var contentModel = {
             });
         });
     },
+    temporaryPosts: function (data) { return __awaiter(void 0, void 0, void 0, function () {
+        var tempPath, conn, uid, today, dateString, query, dep, result, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, temp_connetion_1.default()];
+                case 1:
+                    conn = _a.sent();
+                    uid = uuid_1.v4();
+                    today = new Date();
+                    dateString = today.toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    });
+                    process.env.NODE_ENV === "development"
+                        ? tempPath = path_1.default.join(__dirname + temp_path)
+                        : tempPath = path_1.default.join(__dirname + temp_path);
+                    if (!(conn !== undefined)) return [3 /*break*/, 7];
+                    _a.label = 2;
+                case 2:
+                    _a.trys.push([2, 6, , 7]);
+                    query = "INSERT INTO temp\n                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?,?)";
+                    dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindOfPosts, data.detail, new Date()];
+                    return [4 /*yield*/, conn.execute(query, dep)];
+                case 3:
+                    result = (_a.sent())[0];
+                    if (!result) return [3 /*break*/, 5];
+                    return [4 /*yield*/, fs_1.promises.writeFile(tempPath + "/" + uid + ".html", data.content, "utf8")];
+                case 4:
+                    _a.sent();
+                    return [2 /*return*/, { state: true }];
+                case 5: return [3 /*break*/, 7];
+                case 6:
+                    e_2 = _a.sent();
+                    console.error(e_2);
+                    return [2 /*return*/, { state: false }];
+                case 7: return [2 /*return*/];
+            }
+        });
+    }); },
     getDataFromParams: function (params) { return __awaiter(void 0, void 0, void 0, function () {
         var query;
         return __generator(this, function (_a) {
@@ -157,10 +214,10 @@ var contentModel = {
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, dataObj, time, result, i, data, time2, e_2;
+        var conn, dataObj, time, result, i, data, time2, e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, index_connection_1.default()];
+                case 0: return [4 /*yield*/, topic_connection_1.default()];
                 case 1:
                     conn = _a.sent();
                     dataObj = {};
@@ -192,9 +249,9 @@ var contentModel = {
                     console.log(time2.getTime() - time.getTime());
                     return [3 /*break*/, 9];
                 case 8:
-                    e_2 = _a.sent();
+                    e_3 = _a.sent();
                     conn.release();
-                    console.log(e_2);
+                    console.log(e_3);
                     return [3 /*break*/, 9];
                 case 9: return [2 /*return*/, dataObj];
             }
@@ -214,10 +271,10 @@ var contentModel = {
     deletePost: function (_a) {
         var uid = _a.uid, topic = _a.topic;
         return __awaiter(void 0, void 0, void 0, function () {
-            var conn, query, e_3;
+            var conn, query, e_4;
             return __generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0: return [4 /*yield*/, index_connection_1.default()];
+                    case 0: return [4 /*yield*/, topic_connection_1.default()];
                     case 1:
                         conn = _b.sent();
                         query = "DELETE FROM " + topic + " where uid = ? ";
@@ -230,8 +287,8 @@ var contentModel = {
                         _b.sent();
                         return [2 /*return*/, true];
                     case 4:
-                        e_3 = _b.sent();
-                        console.log(e_3);
+                        e_4 = _b.sent();
+                        console.log(e_4);
                         return [2 /*return*/, false];
                     case 5: return [2 /*return*/];
                 }

@@ -72,6 +72,17 @@ var contentController = {
             }
         });
     }); },
+    temporaryPost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.temporaryPosts(req.body)];
+                case 1:
+                    result = _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    }); },
     getPostsFromTopicName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {

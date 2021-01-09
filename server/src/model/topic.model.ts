@@ -1,4 +1,5 @@
-import connection from "../config/index.connection";
+import connection from "../config/topic.connection";
+import tempConn from "../config/temp.connetion";
 import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import path from "path";
@@ -13,6 +14,24 @@ let content_path = process.env.NODE_ENV === "development"
    ? "/../../../contents"
    : "/../../../../../contents";
 
+let temp_path = process.env.NODE_ENV === "development"
+   ? "/../../../temporary-storage"
+   : "/../../../../../temporary-storage";
+
+function savePost(folderName: string) {
+   const uid = uuidv4();
+   const today = new Date();
+   const dateString = today.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+   });
+   let path = process.env.NODE_ENV === "development"
+      ? `/../../../${folderName}`
+      : `/../../../../../${folderName}`;
+
+   return { uid, today, dateString };
+}
 
 async function poolConnction<T>(query: string, dep?: T[]) {
    let conn = await connection();
@@ -58,6 +77,36 @@ const contentModel = {
       } else if (!result.state) {
          return result;
       }
+   },
+
+   temporaryPosts: async (data: ITextInitialProps) => {
+      let tempPath: string;
+      let conn = await tempConn();
+      const uid = uuidv4();
+      const today = new Date();
+      const dateString = today.toLocaleDateString("en-US", {
+         year: "numeric",
+         month: "long",
+         day: "numeric",
+      });
+      process.env.NODE_ENV === "development"
+         ? tempPath = path.join(__dirname + temp_path)
+         : tempPath = path.join(__dirname + temp_path);
+      if (conn !== undefined)
+         try {
+            const query = `INSERT INTO temp
+                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) 
+                     VALUES (?,?,?,?,?,?,?,?,?,?)`;
+            const dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindOfPosts, data.detail, new Date()];
+            let [result] = await conn.execute(query, dep);
+            if (result) {
+               await fs.writeFile(`${tempPath}/${uid}.html`, data.content, "utf8");
+               return { state: true };
+            }
+         } catch (e) {
+            console.error(e);
+            return { state: false };
+         }
    },
 
    getDataFromParams: async (params: string) => {

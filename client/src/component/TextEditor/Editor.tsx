@@ -81,6 +81,10 @@ const Editor = ({ history }: any) => {
       }
    };
 
+   const onTemporaryPost = async (): Promise<void> => {
+      const result = await util.temporaryPost(data, csrf);
+      // if (result) history.push("/");
+   };
 
    return (
       <>
@@ -98,7 +102,7 @@ const Editor = ({ history }: any) => {
             <CreateNewTopic topic={topic} token={csrf} onMakeOrDelteTopic={onMakeOrDelteTopic} />
             <KindOfPosts onCheck={onCheckKindOfPosts} />
             <PostsDetail onChangeDetail={onChangeDetail} />
-            <TextEditBtnBox onSubmit={onSubmit} />
+            <TextEditBtnBox onSubmit={onSubmit} onTemporaryPost={onTemporaryPost} />
          </WriteConditionBox>
       </>
    );
