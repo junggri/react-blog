@@ -13,6 +13,7 @@ interface Controller {
    deletePost: (req: Request, res: Response) => void
    getContentName(req: Request, res: Response): void;
    savePosts(req: Request, res: Response): void;
+   getTempPost(req: Request, res: Response): void;
    getPostsFromTopicName(req: Request, res: Response): void
    getPostsFromPostsId(req: Request, res: Response): void
    makeNewTopic(req: Request, res: Response): void
@@ -36,6 +37,14 @@ let contentController: Controller = {
 
    temporaryPost: async (req: Request, res: Response) => {
       let result = await model.temporaryPosts(req.body);
+      result
+         ? res.status(200).json({ state: true })
+         : res.status(404).json({ state: false });
+   },
+
+   getTempPost: async (req: Request, res: Response) => {
+      let result = await model.getTemporaryPost();
+      res.status(200).json(result);
    },
 
    getPostsFromTopicName: async (req, res) => {

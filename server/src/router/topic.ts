@@ -12,6 +12,7 @@ router.get("/posts/:topic", contentController.getPostsFromTopicName);
 
 router.get("/:topic/posts/:postsId", contentController.getPostsFromPostsId);
 
+router.get("/temp/items", contentController.getTempPost);
 
 router.post("/posts", contentController.savePosts); //save content
 

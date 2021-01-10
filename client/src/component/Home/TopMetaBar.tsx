@@ -3,9 +3,9 @@ import { TopMetaBarComp } from "../../styled-comp";
 import { NavLink } from "react-router-dom";
 import { BiLoaderCircle } from "react-icons/bi";
 import useReport from "../../useHooks/useReport";
+import { isBrowser } from "react-device-detect";
 
 function TopMetaBar({ width, match }: { width: number, match: any }) {
-
    const ga: any = useReport();
    return (
       <TopMetaBarComp width={width}>
@@ -14,15 +14,17 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                      className="metaItem"
                      exact={match.path === "/about"}
                      activeClassName="metaActive">
-               🖥 blog
+               <span className='tmb-icon'>🖥 ️</span>
+               blog
             </NavLink>
             <NavLink to="/about"
                      className="metaItem"
                      exact={match.path === "/about"}
                      activeClassName="metaActive">
-               🙋‍♂️
+               <span className='tmb-icon'>🙋‍♂️ </span>
                about me</NavLink>
          </section>
+         {isBrowser &&
          <section className="topmetabar-count">
             <div>
                <span>전체</span>
@@ -42,6 +44,7 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                </span>
             </div>
          </section>
+         }
          {/*<div className="topmetabar-icons-box">*/}
          {/*   <GoMarkGithub className="icon-github" onClick={() => {*/}
          {/*      window.open("https://github.com/junggri", "_blank");*/}

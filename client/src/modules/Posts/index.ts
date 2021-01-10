@@ -14,6 +14,10 @@ export const GET_ALL_POSTS = "data/GET_ALL_POSTS";
 export const GET_ALL_POSTS_SECCUESS = "data/GET_ALL_POSTS_SUCCESS";
 export const GET_ALL_POSTS_ERROR = "data/GET_ALL_POSTS_ERROR";
 
+export const GET_TEMP_POST = "data/GET_TEMP_POST"
+export const GET_TEMP_POST_SUCCESS = "data/GET_TEMP_POST_SUCCESS"
+export const GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR"
+
 export const DELETE_POST = "data/DELETE_POST";
 export const CLEAR_POST = "data/CLEAR_POST";
 //액션 생성함수를 선언!
@@ -24,6 +28,7 @@ export const onRequsetPost = createThunk(GET_POST, util.getPostFromPostId);
 
 export const onRequestAllPosts = createThunk(GET_ALL_POSTS, util.getAllPostsItems);
 
+export const onRequestTemoPost = createThunk(GET_TEMP_POST, util.getTempPost)
 
 const initialState: IPostInitialState = {
     posts: reducerUtil.initial(null),

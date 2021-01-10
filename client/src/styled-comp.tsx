@@ -1,29 +1,29 @@
-import styled, { css, keyframes } from "styled-components";
-import { darken, lighten } from "polished";
-import React, { memo } from "react";
-import { NavLink } from "react-router-dom";
-import { media } from "./styles/Media";
+import styled, {css, keyframes} from "styled-components";
+import {darken, lighten} from "polished";
+import React, {memo} from "react";
+import {NavLink} from "react-router-dom";
+import {media} from "./styles/Media";
 
 export interface Width {
-   width: number;
+    width: number;
 }
 
 export interface topView {
-   width: number;
-   logo: any
-   ref: any
+    width: number;
+    logo: any
+    ref: any
 }
 
 export interface contentBox {
-   ref: any;
+    ref: any;
 }
 
 interface IDeleteTopicIconComp {
-   onClick: any
+    onClick: any
 }
 
 interface ISideBarThunmbNailComp {
-   style: any
+    style: any
 }
 
 //INTERFACE
@@ -32,7 +32,7 @@ interface ISideBarThunmbNailComp {
 const leftWidth = 200;
 
 interface IEntryContainerComp {
-   width: number
+    width: number
 }
 
 export const EntryContainerComp = styled.div<IEntryContainerComp>`
@@ -51,7 +51,7 @@ const postsContainerMixin = css<Width>`
    padding-rigth:10px;
   `};
   margin-top:100px;
-  padding-left:85px; 
+  padding-left:100px; 
   flex-grow: 1;
   & .sidebar-copyright{
    text-align: right;
@@ -163,6 +163,14 @@ export const TopMetaBarComp = styled.section<Width>`
       ${media.small`
         font-size:0.8rem;
       `}
+      & .tmb-icon{
+        ${media.mobile`
+         display:none;
+        `};
+        ${media.small`
+         display:none;
+        `}
+      }
      &:hover{
       opacity: 1;       
      }
@@ -224,6 +232,7 @@ export const TopMetaBarComp = styled.section<Width>`
 
 export const SideBarComp = styled.section`
   display: inline-block;
+  flex-grow: 0.02;
   ${media.mobile`display:none`}
   & .write-article-btn {
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -262,7 +271,7 @@ export const SideBarMetaDataComp = styled.div`
   }
   & .sidebar-posi{
     letter-spacing: 1.2px;
-    font-size:1rem;
+    font-size:0.95rem;
     font-weight: 300;
     &.posi1{
       margin-top:15px;
@@ -275,7 +284,6 @@ export const SideBarMetaDataComp = styled.div`
 
 export const SideBarPostsContainerComp = (styled.ul`
   margin-top:70px;
-  perspective: 600px;
   & .sidebar-list{
     font-size:1.1rem;
     margin-bottom:15px;
@@ -686,11 +694,31 @@ export const PostsDetailComp = styled.div`
     height: 50px;
     outline-style: none;
     border:none;
+    padding-left: 10px;
     border-radius: 5px;
     background-color: ${lighten(0.1, "#a5d8ff")};
    }
 `;
 
+export const TemporaryStorageComp = styled.div`
+  padding-left:60px;
+  margin-top:50px;
+  margin-bottom:40px;
+  & .tsc-slo{
+    font-size:1.7rem;
+  }
+`;
+
+export const TemporaryPostComp = styled.div`
+  margin-top:20px;
+  & .temp-name{
+    font-size:1.4rem;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+`;
 //--------------------------------write---------------------------------------
 
 

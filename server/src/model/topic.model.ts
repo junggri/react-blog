@@ -2,23 +2,18 @@ import connection from "../config/topic.connection";
 import tempConn from "../config/temp.connetion";
 import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
-import path from "path";
 import { ITextInitialProps } from "../../../client/src/modules/TextEditor/textEdit.interface";
+import path from "path";
 
 
 let moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 
-let content_path = process.env.NODE_ENV === "development"
-   ? "/../../../contents"
-   : "/../../../../../contents";
 
-let temp_path = process.env.NODE_ENV === "development"
-   ? "/../../../temporary-storage"
-   : "/../../../../../temporary-storage";
-
-function savePost(folderName: string) {
+function savePost(folderName: string, data: ITextInitialProps) {
+   let writePath: string;
+   let query, dep;
    const uid = uuidv4();
    const today = new Date();
    const dateString = today.toLocaleDateString("en-US", {
@@ -26,11 +21,27 @@ function savePost(folderName: string) {
       month: "long",
       day: "numeric",
    });
-   let path = process.env.NODE_ENV === "development"
+   if (folderName === "contents") {
+      query = `INSERT INTO ${data.topicName} 
+                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) 
+                     VALUES (?,?,?,?,?,?,?,?,?,?)`;
+      dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindOfPosts, data.detail, new Date()];
+   } else {
+      query = `INSERT INTO post 
+                     (uid, topic, content_name, created, file, detail) 
+                     VALUES (?,?,?,?,?,?)`;
+      dep = [uid, data.topicName, data.contentName, dateString, uid + ".html", data.detail];
+   }
+
+   let _path = process.env.NODE_ENV === "development"
       ? `/../../../${folderName}`
       : `/../../../../../${folderName}`;
 
-   return { uid, today, dateString };
+   process.env.NODE_ENV === "development"
+      ? writePath = path.join(__dirname + _path)
+      : writePath = path.join(__dirname + _path);
+
+   return { uid, today, dateString, writePath, query, dep };
 }
 
 async function poolConnction<T>(query: string, dep?: T[]) {
@@ -52,27 +63,11 @@ const contentModel = {
       return await poolConnction("show tables");
    },
 
-   savePosts: async ({ contentName, content, topicName, kindOfPosts, detail }: ITextInitialProps) => {
-      let writePath: string;
-      const uid = uuidv4();
-      const today = new Date();
-      const dateString = today.toLocaleDateString("en-US", {
-         year: "numeric",
-         month: "long",
-         day: "numeric",
-      });
-
-      process.env.NODE_ENV === "development"
-         ? writePath = path.join(__dirname + content_path)
-         : writePath = path.join(__dirname + content_path);
-
-      const query = `INSERT INTO ${topicName} 
-                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) 
-                     VALUES (?,?,?,?,?,?,?,?,?,?)`;
-      const dep = [uid, topicName, contentName, dateString, null, uid + ".html", null, kindOfPosts, detail, new Date()];
-      const result: any = await poolConnction<any>(query, dep);
+   savePosts: async (data: ITextInitialProps) => {
+      const saveData = savePost("contents", data);
+      const result: any = await poolConnction<any>(saveData.query, saveData.dep);
       if (result) {
-         await fs.writeFile(`${writePath}/${uid}.html`, content, "utf8");
+         await fs.writeFile(`${saveData.writePath}/${saveData.uid}.html`, data.content, "utf8");
          return { state: true };
       } else if (!result.state) {
          return result;
@@ -80,32 +75,33 @@ const contentModel = {
    },
 
    temporaryPosts: async (data: ITextInitialProps) => {
-      let tempPath: string;
       let conn = await tempConn();
-      const uid = uuidv4();
-      const today = new Date();
-      const dateString = today.toLocaleDateString("en-US", {
-         year: "numeric",
-         month: "long",
-         day: "numeric",
-      });
-      process.env.NODE_ENV === "development"
-         ? tempPath = path.join(__dirname + temp_path)
-         : tempPath = path.join(__dirname + temp_path);
+      const saveData = savePost("temporary-storage", data);
       if (conn !== undefined)
          try {
-            const query = `INSERT INTO temp
-                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) 
-                     VALUES (?,?,?,?,?,?,?,?,?,?)`;
-            const dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindOfPosts, data.detail, new Date()];
-            let [result] = await conn.execute(query, dep);
+            let [result] = await conn.execute(saveData.query, saveData.dep);
+
+            conn.release();
             if (result) {
-               await fs.writeFile(`${tempPath}/${uid}.html`, data.content, "utf8");
+               await fs.writeFile(`${saveData.writePath}/${saveData.uid}.html`, data.content, "utf8");
                return { state: true };
             }
          } catch (e) {
+            conn.release();
             console.error(e);
             return { state: false };
+         }
+   },
+
+   getTemporaryPost: async () => {
+      let conn = await tempConn();
+      if (conn !== undefined)
+         try {
+            const [result] = await conn.execute("select * from post");
+            conn.release();
+            return result;
+         } catch (e) {
+            console.log(e);
          }
    },
 
@@ -125,8 +121,8 @@ const contentModel = {
       const query = `
                 CREATE TABLE ${newTopic}(
                      id int(11) not null auto_increment primary key,
-                     topic varchar(11) not null,
                      uid varchar(50) not null,
+                     topic varchar(11) not null,
                      content_name varchar(200) not null,
                      detail varchar(200) not null,
                      file varchar(100) not null,
@@ -135,7 +131,7 @@ const contentModel = {
                      comments varchar(50),
                      kindofPosts varchar(20) not null,
                      date timestamp not null,
-                     view int(11), 
+                     view int(11) DEFAULT 0, 
                      INDEX index_uid (uid)
                      )`;
       return await poolConnction(query);

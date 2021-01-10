@@ -10,6 +10,7 @@ router.get("/contents/name", topic_controller_1.default.getContentName); //show 
 router.get("/posts/items", topic_controller_1.default.getAllPostsItems);
 router.get("/posts/:topic", topic_controller_1.default.getPostsFromTopicName);
 router.get("/:topic/posts/:postsId", topic_controller_1.default.getPostsFromPostsId);
+router.get("/temp/items", topic_controller_1.default.getTempPost);
 router.post("/posts", topic_controller_1.default.savePosts); //save content
 router.post("/topicname/:newTopicName", topic_controller_1.default.makeNewTopic);
 router.post("/posts/item", topic_controller_1.default.deletePost);
