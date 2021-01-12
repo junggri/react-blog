@@ -4,10 +4,13 @@ import { promises as fs } from "fs";
 import path from "path";
 
 
-let content_path = process.env.NODE_ENV === "development"
-   ? "/../../../contents"
-   : "/../../../../../contents";
-
+function makePath(folderName: string, fileName: string) {
+   let _path = process.env.NODE_ENV === "development"
+      ? `/../../../${folderName}`
+      : `/../../../../../${folderName}`;
+   const filePath = path.join(__dirname, _path, `${fileName}.html`);
+   return { filePath: filePath, _path: _path };
+}
 
 interface Controller {
    deletePost: (req: Request, res: Response) => void
@@ -20,6 +23,7 @@ interface Controller {
    getAllPostsItems(req: Request, Res: Response): any
    deleteTopic(req: Request, Res: Response): any
    temporaryPost(req: Request, res: Response): any
+   getTempPostFromId(req: Request, res: Response): void
 }
 
 let contentController: Controller = {
@@ -47,20 +51,31 @@ let contentController: Controller = {
       res.status(200).json(result);
    },
 
+   async getTempPostFromId(req: Request, res: Response) {
+      const _path = makePath("temporary-storage", req.params.tempId);
+      // let fileName: string;
+      // process.env.NODE_ENV === "development"
+      //    ? fileName = path.join(__dirname, temp_path, `${req.params.tempId}.html`)
+      //    : fileName = path.join(__dirname, temp_path, `${req.params.tempId}.html`);
+      const data = await fs.readFile(_path.filePath, "utf-8");
+      res.status(200).json(data);
+   },
+
    getPostsFromTopicName: async (req, res) => {
       let result = await model.getDataFromParams(req.params.topic);
       res.status(200).json(result);
    },
 
    getPostsFromPostsId: async (req, res) => {
-      let fileName: string;
+      const _path = makePath("contents", req.params.postsId);
       const { topic, postsId } = req.params;
-      process.env.NODE_ENV === "development"
-         ? fileName = path.join(__dirname, content_path, `${req.params.postsId}.html`)
-         : fileName = path.join(__dirname, content_path, `${req.params.postsId}.html`);
+      // let fileName: string;
+      // process.env.NODE_ENV === "development"
+      //    ? fileName = path.join(__dirname, content_path, `${req.params.postsId}.html`)
+      //    : fileName = path.join(__dirname, content_path, `${req.params.postsId}.html`);
       try {
          let result = await model.getPostFromPostId(topic, postsId);
-         let content = await fs.readFile(fileName, "utf-8");
+         let content = await fs.readFile(_path.filePath, "utf-8");
          res.status(200).json({
             content: content,
             result: result,
@@ -86,10 +101,11 @@ let contentController: Controller = {
    },
 
    deletePost: async (req, res) => {
-      let deletePath;
-      process.env.NODE_ENV === "development"
-         ? deletePath = path.join(__dirname, content_path)
-         : deletePath = path.join(__dirname, content_path);
+      let content_path = process.env.NODE_ENV === "development"
+         ? "/../../../contents"
+         : "/../../../../../contents";
+
+      let deletePath: string = path.join(__dirname, content_path);
       try {
          await model.deletePost(req.body);
          await fs.unlink(`${deletePath}/${req.body.uid}.html`);

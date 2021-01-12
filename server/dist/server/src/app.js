@@ -52,9 +52,10 @@ app
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use("/admin", admin_1.default);
-app.get("*", function (req, res) {
-    res.sendFile(path_1.default.join(__dirname, "/../../../build/index.html"));
-});
+if (process.env.NODE_ENV === "production")
+    app.get("*", function (req, res) {
+        res.sendFile(path_1.default.join(__dirname, "/../../../build/index.html"));
+    });
 app.set("port", process.env.PORT || 4000);
 app.use(function (req, res, next) {
     res.status(404).send("Sorry cant find that!");

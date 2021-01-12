@@ -48,7 +48,6 @@ var moment = require("moment");
 require("moment-timezone");
 moment.tz.setDefault("Asia/Seoul");
 function savePost(folderName, data) {
-    var writePath;
     var query, dep;
     var uid = uuid_1.v4();
     var today = new Date();
@@ -68,10 +67,8 @@ function savePost(folderName, data) {
     var _path = process.env.NODE_ENV === "development"
         ? "/../../../" + folderName
         : "/../../../../../" + folderName;
-    process.env.NODE_ENV === "development"
-        ? writePath = path_1.default.join(__dirname + _path)
-        : writePath = path_1.default.join(__dirname + _path);
-    return { uid: uid, today: today, dateString: dateString, writePath: writePath, query: query, dep: dep };
+    var filePath = path_1.default.join(__dirname, _path, uid + ".html");
+    return { uid: uid, today: today, dateString: dateString, filePath: filePath, query: query, dep: dep };
 }
 function poolConnction(query, dep) {
     return __awaiter(this, void 0, void 0, function () {
@@ -119,7 +116,7 @@ var contentModel = {
                 case 1:
                     result = _a.sent();
                     if (!result) return [3 /*break*/, 3];
-                    return [4 /*yield*/, fs_1.promises.writeFile(saveData.writePath + "/" + saveData.uid + ".html", data.content, "utf8")];
+                    return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
                 case 2:
                     _a.sent();
                     return [2 /*return*/, { state: true }];
@@ -149,7 +146,7 @@ var contentModel = {
                     result = (_a.sent())[0];
                     conn.release();
                     if (!result) return [3 /*break*/, 5];
-                    return [4 /*yield*/, fs_1.promises.writeFile(saveData.writePath + "/" + saveData.uid + ".html", data.content, "utf8")];
+                    return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
                 case 4:
                     _a.sent();
                     return [2 /*return*/, { state: true }];

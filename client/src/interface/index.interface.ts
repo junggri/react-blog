@@ -57,3 +57,13 @@ export interface ITextEditBtnBoxProps {//wirte BtnBox
 export interface IPostsDetailProps {//postssDetia
    onChangeDetail: (payload: string) => void
 }
+
+export interface ITempPost {
+   uid: string,
+   topic: string,
+   content_name: string,
+   created: string,
+   detail: string,
+   file: string
+}
+

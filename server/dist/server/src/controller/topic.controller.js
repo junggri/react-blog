@@ -42,9 +42,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var topic_model_1 = __importDefault(require("../model/topic.model"));
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
-var content_path = process.env.NODE_ENV === "development"
-    ? "/../../../contents"
-    : "/../../../../../contents";
+function makePath(folderName, fileName) {
+    var _path = process.env.NODE_ENV === "development"
+        ? "/../../../" + folderName
+        : "/../../../../../" + folderName;
+    var filePath = path_1.default.join(__dirname, _path, fileName + ".html");
+    return { filePath: filePath, _path: _path };
+}
 var contentController = {
     getContentName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
@@ -98,6 +102,22 @@ var contentController = {
             }
         });
     }); },
+    getTempPostFromId: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _path, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _path = makePath("temporary-storage", req.params.tempId);
+                        return [4 /*yield*/, fs_1.promises.readFile(_path.filePath, "utf-8")];
+                    case 1:
+                        data = _a.sent();
+                        res.status(200).json(data);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    },
     getPostsFromTopicName: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
@@ -111,21 +131,19 @@ var contentController = {
         });
     }); },
     getPostsFromPostsId: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var fileName, _a, topic, postsId, result, content, e_1;
+        var _path, _a, topic, postsId, result, content, e_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
+                    _path = makePath("contents", req.params.postsId);
                     _a = req.params, topic = _a.topic, postsId = _a.postsId;
-                    process.env.NODE_ENV === "development"
-                        ? fileName = path_1.default.join(__dirname, content_path, req.params.postsId + ".html")
-                        : fileName = path_1.default.join(__dirname, content_path, req.params.postsId + ".html");
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, topic_model_1.default.getPostFromPostId(topic, postsId)];
                 case 2:
                     result = _b.sent();
-                    return [4 /*yield*/, fs_1.promises.readFile(fileName, "utf-8")];
+                    return [4 /*yield*/, fs_1.promises.readFile(_path.filePath, "utf-8")];
                 case 3:
                     content = _b.sent();
                     res.status(200).json({
@@ -176,13 +194,14 @@ var contentController = {
         });
     }); },
     deletePost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var deletePath, e_2;
+        var content_path, deletePath, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    process.env.NODE_ENV === "development"
-                        ? deletePath = path_1.default.join(__dirname, content_path)
-                        : deletePath = path_1.default.join(__dirname, content_path);
+                    content_path = process.env.NODE_ENV === "development"
+                        ? "/../../../contents"
+                        : "/../../../../../contents";
+                    deletePath = path_1.default.join(__dirname, content_path);
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);

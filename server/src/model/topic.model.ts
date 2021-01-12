@@ -12,7 +12,6 @@ moment.tz.setDefault("Asia/Seoul");
 
 
 function savePost(folderName: string, data: ITextInitialProps) {
-   let writePath: string;
    let query, dep;
    const uid = uuidv4();
    const today = new Date();
@@ -37,11 +36,9 @@ function savePost(folderName: string, data: ITextInitialProps) {
       ? `/../../../${folderName}`
       : `/../../../../../${folderName}`;
 
-   process.env.NODE_ENV === "development"
-      ? writePath = path.join(__dirname + _path)
-      : writePath = path.join(__dirname + _path);
+   const filePath = path.join(__dirname, _path, `${uid}.html`);
 
-   return { uid, today, dateString, writePath, query, dep };
+   return { uid, today, dateString, filePath, query, dep };
 }
 
 async function poolConnction<T>(query: string, dep?: T[]) {
@@ -67,7 +64,7 @@ const contentModel = {
       const saveData = savePost("contents", data);
       const result: any = await poolConnction<any>(saveData.query, saveData.dep);
       if (result) {
-         await fs.writeFile(`${saveData.writePath}/${saveData.uid}.html`, data.content, "utf8");
+         await fs.writeFile(saveData.filePath, data.content, "utf8");
          return { state: true };
       } else if (!result.state) {
          return result;
@@ -80,10 +77,9 @@ const contentModel = {
       if (conn !== undefined)
          try {
             let [result] = await conn.execute(saveData.query, saveData.dep);
-
             conn.release();
             if (result) {
-               await fs.writeFile(`${saveData.writePath}/${saveData.uid}.html`, data.content, "utf8");
+               await fs.writeFile(saveData.filePath, data.content, "utf8");
                return { state: true };
             }
          } catch (e) {
@@ -179,4 +175,3 @@ const contentModel = {
 };
 
 export default contentModel;
-

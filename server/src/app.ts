@@ -56,10 +56,10 @@ app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터
 app.use("/admin", adminApi);
 
-
-app.get("*", (req: Request, res: Response) => {
-   res.sendFile(path.join(__dirname, "/../../../build/index.html"));
-});
+if (process.env.NODE_ENV === "production")
+   app.get("*", (req: Request, res: Response) => {
+      res.sendFile(path.join(__dirname, "/../../../build/index.html"));
+   });
 
 app.set("port", process.env.PORT || 4000);
 

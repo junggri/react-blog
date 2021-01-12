@@ -1,29 +1,29 @@
-import styled, {css, keyframes} from "styled-components";
-import {darken, lighten} from "polished";
-import React, {memo} from "react";
-import {NavLink} from "react-router-dom";
-import {media} from "./styles/Media";
+import styled, { css, keyframes } from "styled-components";
+import { darken, lighten } from "polished";
+import React, { memo } from "react";
+import { NavLink } from "react-router-dom";
+import { media } from "./styles/Media";
 
 export interface Width {
-    width: number;
+   width: number;
 }
 
 export interface topView {
-    width: number;
-    logo: any
-    ref: any
+   width: number;
+   logo: any
+   ref: any
 }
 
 export interface contentBox {
-    ref: any;
+   ref: any;
 }
 
 interface IDeleteTopicIconComp {
-    onClick: any
+   onClick: any
 }
 
 interface ISideBarThunmbNailComp {
-    style: any
+   style: any
 }
 
 //INTERFACE
@@ -32,7 +32,7 @@ interface ISideBarThunmbNailComp {
 const leftWidth = 200;
 
 interface IEntryContainerComp {
-    width: number
+   width: number
 }
 
 export const EntryContainerComp = styled.div<IEntryContainerComp>`
@@ -709,14 +709,12 @@ export const TemporaryStorageComp = styled.div`
   }
 `;
 
-export const TemporaryPostComp = styled.div`
+export const TemporaryPostComp = styled.div<any>`
   margin-top:20px;
-  & .temp-name{
-    font-size:1.4rem;
-    cursor: pointer;
-    &:hover{
-      text-decoration: underline;
-    }
+  cursor:pointer;
+  font-size:1.4rem;
+  &:hover{
+    text-decoration: underline;
   }
 `;
 //--------------------------------write---------------------------------------
