@@ -13,9 +13,11 @@ interface ITempPost {
 const Srotage = ({ temp, onChangeMode }: any) => {
    if (temp === null) return null;
    if (temp.length === 0) return null;
+
    const onClick = (e: any) => {
       onChangeMode(e.target.dataset.id);
    };
+
    return (
       <TemporaryStorageComp>
          <div className="tsc-slo">임시저장</div>

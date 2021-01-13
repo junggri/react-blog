@@ -4,6 +4,7 @@ import "../../node_modules/react-quill/dist/quill.snow.css";
 
 
 function TextEditor({ history, match }: any) {
+
    return <Editor history={history} match={match} />;
 }
 

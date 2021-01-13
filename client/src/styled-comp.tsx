@@ -29,7 +29,7 @@ interface ISideBarThunmbNailComp {
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
-const leftWidth = 200;
+const leftWidth = 165;
 
 interface IEntryContainerComp {
    width: number
@@ -39,7 +39,6 @@ export const EntryContainerComp = styled.div<IEntryContainerComp>`
   width:${props => props.width + "px"};
   position:relative;
   margin:0 auto;
-  display: flex;
   ${media.desktop`width:95%`}
 `;
 
@@ -51,8 +50,10 @@ const postsContainerMixin = css<Width>`
    padding-rigth:10px;
   `};
   margin-top:100px;
-  padding-left:100px; 
-  flex-grow: 1;
+  padding-left:253px; 
+  width:100%;
+  position: absolute;
+  top:0;
   & .sidebar-copyright{
    text-align: right;
    letter-spacing: 1.1px;
@@ -136,17 +137,18 @@ const rotate = keyframes`
   }
 `;
 export const TopMetaBarComp = styled.section<Width>`
-  ${media.mobile`
-   width:100%;
-  `};
-   ${media.desktop`
-   width:100%;
-  `};
   position: fixed;
+  top:0;
   width:${props => props.width + "px"};
   z-index: 999;
   padding-bottom: 5px;
   background:white;
+  ${media.tablet`
+   width:95%;
+  `};
+  ${media.desktop`
+   width:95%;
+  `};
   & .topmetabar-list{
     display: flex;
     margin-top:20px;
@@ -232,8 +234,10 @@ export const TopMetaBarComp = styled.section<Width>`
 
 export const SideBarComp = styled.section`
   display: inline-block;
-  flex-grow: 0.02;
-  ${media.mobile`display:none`}
+  width: ${leftWidth + "px"};
+  ${media.mobile`display:none`};
+  position : fixed;
+  z-index: 9;
   & .write-article-btn {
     border: 1px solid rgba(0, 0, 0, 0.2);
     display: inline-block;
@@ -330,24 +334,31 @@ export const EntryPostsContainerComp = styled.div<Width>`
   ${postsContainerMixin}
 `;
 
+export const SpecificTopicContainerComp = styled.div<Width>`
+  ${postsContainerMixin};
+`;
+
 export const EntryPostsItemComp = styled.div`
   ${postsItemMixin}'
 `;
 
-export const SpecificTopicContainerComp = styled.ul`
-  ${postsContainerMixin};
-`;
 export const SpecificTopicItemsComp = styled.div`
   ${postsItemMixin}'
 `;
 
 export const PostsContainerComp = styled.section<Width>`
-  ${media.postBox`
-    width:100%;
+  width:${props => props.width + "px"};
+  ${media.desktop`
+    width:90%;
+  `};
+  ${media.tablet`
+    width:85%;
+  `};
+  ${media.mobile`
+    width:80%;
   `};
   position: relative;
   margin: 0 auto;
-  width: ${(props) => props.width - 80 + "px"};
   padding-bottom: 80px;
   background: white;
   & .posts-container-iconbox{
@@ -723,5 +734,5 @@ export const TemporaryPostComp = styled.div<any>`
 export const AboutContainerComp = styled.div<Width>`
   position: relative;
   width:${props => props.width + "px"};
-  margin-top:100px;
+  padding-top:100px;
 `;

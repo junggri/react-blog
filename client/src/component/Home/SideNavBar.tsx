@@ -8,6 +8,7 @@ import { IAllPost } from "../../modules/Posts/posts.interface";
 interface ISideBarNavContainer {
    topic: IAllPost
    login: boolean
+
 }
 
 

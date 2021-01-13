@@ -96,11 +96,10 @@ const Editor = ({ history, match }: any) => {
       if (result.request.status === 200) history.push("/");
    };
 
-   const onChangeMode = (target: string) => {
+   const onChangeMode = useCallback((target: string) => {
       const post: any = temp.filter((e: ITempPost) => e.uid === target.split(".")[0]);
       (async () => {
          const { data } = await util.getTempPostFromId(target.split(".")[0]);
-         console.log(data);
          setTempData({
             contentName: post[0].content_name,
             content: data,
@@ -108,8 +107,9 @@ const Editor = ({ history, match }: any) => {
             kindOfPosts: "",
             detail: post[0].detail,
          });
+         ref.current.textContent = data;
       })();
-   };
+   }, [setTempData, temp]);
 
 
    return (
