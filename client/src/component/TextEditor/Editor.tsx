@@ -16,7 +16,7 @@ import useCommon from "../../useHooks/useCommon";
 import { ITempPost } from "../../interface/index.interface";
 
 
-const Editor = ({ history, match }: any) => {
+const Editor = ({ history, location }: any) => {
    const csrf = useCSRF();
    const ref = useRef<any>(null);
    const [temp, setTemp] = useState([]);
@@ -38,7 +38,14 @@ const Editor = ({ history, match }: any) => {
          const { data } = await util.getTempPost();
          setTemp(data);
       })();
-   }, []);
+      return () => setTempData({
+         contentName: "",
+         content: "",
+         topicName: "",
+         kindOfPosts: "",
+         detail: "",
+      });
+   }, [setTempData]);
 
    useEffect(() => {
       (async () => {
@@ -96,26 +103,24 @@ const Editor = ({ history, match }: any) => {
       if (result.request.status === 200) history.push("/");
    };
 
-   const onChangeMode = useCallback((target: string) => {
-      const post: any = temp.filter((e: ITempPost) => e.uid === target.split(".")[0]);
+   const onGetTempPost = useCallback(() => {
+      const post: ITempPost[] = temp.filter((e: ITempPost) => e.uid === location.search.split("?")[1]);
       (async () => {
-         const { data } = await util.getTempPostFromId(target.split(".")[0]);
+         const { data } = await util.getTempPostFromId(location.search.split("?")[1]);
+         ref.current.editor.scrollingContainer.innerHTML = data;
          setTempData({
             contentName: post[0].content_name,
-            content: data,
             topicName: post[0].topic,
             kindOfPosts: "",
             detail: post[0].detail,
          });
-         ref.current.textContent = data;
       })();
-   }, [setTempData, temp]);
-
+   }, [setTempData, temp, location]);
 
    return (
       <>
          <WriteBox>
-            <WriteTopicName onNameChange={onNameChange} />
+            <WriteTopicName onNameChange={onNameChange} value={data.contentName} />
             <ReactQuill theme="snow"
                         onChange={rteChange}
                         modules={modules}
@@ -127,9 +132,9 @@ const Editor = ({ history, match }: any) => {
             <SelectTopic onIsChecked={onIsChecked} topic={topic} />
             <CreateNewTopic topic={topic} token={csrf} onMakeOrDelteTopic={onMakeOrDelteTopic} />
             <KindOfPosts onCheck={onCheckKindOfPosts} />
-            <PostsDetail onChangeDetail={onChangeDetail} />
+            <PostsDetail onChangeDetail={onChangeDetail} detailValue={data.detail} />
             <TextEditBtnBox onSubmit={onSubmit} onTemporaryPost={onTemporaryPost} />
-            <StoragePost temp={temp} onChangeMode={onChangeMode} />
+            <StoragePost temp={temp} onGetTempPost={onGetTempPost} />
          </WriteConditionBox>
       </>
    );

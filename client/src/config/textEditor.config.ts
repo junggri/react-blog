@@ -10,7 +10,6 @@ export const modules = {
       highlight: (text: any) => hljs.highlightAuto(text).value,
    },
    toolbar: [
-      [{ header: "1" }, { header: "2" }],
       [{ font: [] }],
       [{ size: ["small", false, "large", "huge"] }], // custom dropdown
       ["bold", "italic", "underline", "strike"],

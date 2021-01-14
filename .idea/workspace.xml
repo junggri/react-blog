@@ -20,24 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.ed994acc.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.ed994acc.chunk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/temporary-storage/5e473085-5d6f-4267-8189-afd1e63bb960.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/PostsDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/PostsDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/SelectTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/SelectTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/StoragePost.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/StoragePost.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/WriteTopicName.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/WriteTopicName.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/interface/index.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/interface/index.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TextEditor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.b005ccb5.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.77d9be45.chunk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.b005ccb5.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.77d9be45.chunk.js.LICENSE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.b005ccb5.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.77d9be45.chunk.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.90d1fc17.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.90d1fc17.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useReport.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useReport.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +88,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -291,7 +285,9 @@
       <workItem from="1610440630942" duration="16054000" />
       <workItem from="1610502764749" duration="749000" />
       <workItem from="1610511966684" duration="176000" />
-      <workItem from="1610540379672" duration="6832000" />
+      <workItem from="1610540379672" duration="7018000" />
+      <workItem from="1610584309432" duration="646000" />
+      <workItem from="1610626058104" duration="8410000" />
     </task>
     <servers />
   </component>

@@ -25,7 +25,7 @@ const Report = () => {
                            viewId: "235239777", //enter your view ID here
                            dateRanges: [
                               {
-                                 startDate: "10daysAgo",
+                                 startDate: "2021-01-03",
                                  endDate: "today",
                               },
                            ],

@@ -56,6 +56,7 @@ export interface ITextEditBtnBoxProps {//wirte BtnBox
 
 export interface IPostsDetailProps {//postssDetia
    onChangeDetail: (payload: string) => void
+   detailValue: string
 }
 
 export interface ITempPost {
