@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { media } from "./Media";
 
 const GlobalStyles = createGlobalStyle`
  ${reset}
@@ -40,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
         font-style : italic;
     }
     .quill{
-        height: ${window.innerHeight - 100 + "px"};
+        height: ${window.innerHeight - 120 + "px"};
     }
     .quill img{
         height: auto;
@@ -49,9 +50,10 @@ const GlobalStyles = createGlobalStyle`
         position: relative;
         margin :0 auto;
     }
-    .ql-container.ql-snow{
-        border:none; 
-    } 
+   .ql-container.ql-snow{
+        height:90%;
+        border:none !important;
+    }
     .ql-size-huge{
         font-size:4rem !important;
     }
@@ -83,22 +85,29 @@ const GlobalStyles = createGlobalStyle`
         word-break:break-all;
         margin-bottom:100px;
     }
-    .ql-container.ql-snow{
-        height:90%
-    }
     .ql-editor .ql-syntax{
         background: rgb(248 249 250) !important;
     }
     .ql-syntax{
-     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-     padding:30px 30px; 
-     border-radius: 4px;
-     font-size: 0.9rem;
-     background: rgb(248 249 250);
-     font-weight: 300 !important;
-     white-space: pre-wrap !important;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      padding:30px 30px; 
+      border-radius: 4px;
+      font-size: 0.9rem;
+      background: rgb(248 249 250);
+      font-weight: 300 !important;
+      white-space: pre-wrap;
+      tab-size: 1 !important;
+      ${media.tablet`font-size:0.6rem !important`};
+      ${media.mobile`
+         font-size:0.2rem !important;
+         white-space: pre !important;
+         overflow:scroll;
+       `};
      & span{
         font-weight:300 !important;
+        ${media.mobile`
+         white-space: pre !important;
+       `};
       }
     }
     .ql-snow .ql-editor pre.ql-syntax{
@@ -131,11 +140,12 @@ const GlobalStyles = createGlobalStyle`
         color: #4078f2 !important;
       } 
     }
-    .ql-size-large{
-      font-size: 2.7rem !important;
-    }
     .ql-size-huge{
-      font-size:4rem !important;
+      font-size:3.5rem !important;
+    }
+    .ql-size-large{
+      font-size: 2.3rem !important;
+      ${media.mobile`font-size:1.5rem !important`};
     }
     .ql-size-small{
       font-size:1rem !important

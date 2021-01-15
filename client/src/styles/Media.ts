@@ -11,7 +11,7 @@ interface ISizes {
 const sizes: ISizes = {
    desktop: 1250,
    postBox: 1120,
-   tablet: 900,
+   tablet: 930,
    mobile: 500,
    small: 262,
    smallest: 219,

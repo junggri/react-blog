@@ -11,20 +11,17 @@ interface ITempPost {
    file: string
 }
 
-const Srotage = ({ temp, onGetTempPost }: any) => {
+const Srotage = ({ temp }: any) => {
    if (temp === null) return null;
    if (temp.length === 0) return null;
 
-   const onClick = () => {
-      onGetTempPost();
-   };
 
    return (
       <TemporaryStorageComp>
          <div className="tsc-slo">임시저장</div>
          <div>
             {temp.map((e: ITempPost) => (
-               <TemporaryPostComp key={e.uid} onClick={onClick}>
+               <TemporaryPostComp key={e.uid}>
                   <Link to={`/write?${e.uid}`} data-id={e.uid}>{e.content_name}</Link>
                </TemporaryPostComp>
             ))}

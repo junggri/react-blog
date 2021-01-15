@@ -76,6 +76,25 @@ var contentController = {
             }
         });
     }); },
+    saveTempPost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var _path, result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _path = makePath("temporary-storage", req.body.uid);
+                    return [4 /*yield*/, topic_model_1.default.saveTempPost(req.body)];
+                case 1:
+                    result = _a.sent();
+                    return [4 /*yield*/, fs_1.promises.unlink(_path.filePath)];
+                case 2:
+                    _a.sent();
+                    result !== undefined && result.state
+                        ? res.status(200).json({ state: true })
+                        : res.status(500).json({ state: false });
+                    return [2 /*return*/];
+            }
+        });
+    }); },
     temporaryPost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
@@ -146,10 +165,7 @@ var contentController = {
                     return [4 /*yield*/, fs_1.promises.readFile(_path.filePath, "utf-8")];
                 case 3:
                     content = _b.sent();
-                    res.status(200).json({
-                        content: content,
-                        result: result,
-                    });
+                    res.status(200).json({ content: content, result: result });
                     return [3 /*break*/, 5];
                 case 4:
                     e_1 = _b.sent();
@@ -194,21 +210,18 @@ var contentController = {
         });
     }); },
     deletePost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var content_path, deletePath, e_2;
+        var _path, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    content_path = process.env.NODE_ENV === "development"
-                        ? "/../../../contents"
-                        : "/../../../../../contents";
-                    deletePath = path_1.default.join(__dirname, content_path);
+                    _path = makePath("contents", req.body.uid);
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, topic_model_1.default.deletePost(req.body)];
                 case 2:
                     _a.sent();
-                    return [4 /*yield*/, fs_1.promises.unlink(deletePath + "/" + req.body.uid + ".html")];
+                    return [4 /*yield*/, fs_1.promises.unlink(_path.filePath)];
                 case 3:
                     _a.sent();
                     res.status(200).json({ state: true });

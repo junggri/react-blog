@@ -129,8 +129,43 @@ var contentModel = {
             }
         });
     }); },
+    saveTempPost: function (_a) {
+        var data = _a.data, uid = _a.uid;
+        return __awaiter(this, void 0, void 0, function () {
+            var conn, saveData, e_2;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, temp_connetion_1.default()];
+                    case 1:
+                        conn = _b.sent();
+                        saveData = savePost("contents", data);
+                        if (!(conn !== undefined)) return [3 /*break*/, 7];
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 6, , 7]);
+                        return [4 /*yield*/, poolConnction(saveData.query, saveData.dep)];
+                    case 3:
+                        _b.sent();
+                        return [4 /*yield*/, conn.execute("DELETE FROM post where uid = ? ", [uid])];
+                    case 4:
+                        _b.sent();
+                        return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
+                    case 5:
+                        _b.sent();
+                        conn.release();
+                        return [2 /*return*/, { state: true }];
+                    case 6:
+                        e_2 = _b.sent();
+                        conn.release();
+                        console.error(e_2);
+                        return [2 /*return*/, { state: false }];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        });
+    },
     temporaryPosts: function (data) { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, saveData, result, e_2;
+        var conn, saveData, result, e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, temp_connetion_1.default()];
@@ -152,16 +187,16 @@ var contentModel = {
                     return [2 /*return*/, { state: true }];
                 case 5: return [3 /*break*/, 7];
                 case 6:
-                    e_2 = _a.sent();
+                    e_3 = _a.sent();
                     conn.release();
-                    console.error(e_2);
+                    console.error(e_3);
                     return [2 /*return*/, { state: false }];
                 case 7: return [2 /*return*/];
             }
         });
     }); },
     getTemporaryPost: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, result, e_3;
+        var conn, result, e_4;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, temp_connetion_1.default()];
@@ -177,8 +212,8 @@ var contentModel = {
                     conn.release();
                     return [2 /*return*/, result];
                 case 4:
-                    e_3 = _a.sent();
-                    console.log(e_3);
+                    e_4 = _a.sent();
+                    console.log(e_4);
                     return [3 /*break*/, 5];
                 case 5: return [2 /*return*/];
             }
@@ -219,7 +254,7 @@ var contentModel = {
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, dataObj, time, result, i, data, time2, e_4;
+        var conn, dataObj, result, i, data, e_5;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, topic_connection_1.default()];
@@ -230,7 +265,6 @@ var contentModel = {
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 8, , 9]);
-                    time = new Date();
                     return [4 /*yield*/, conn.execute("show tables")];
                 case 3:
                     result = (_a.sent())[0];
@@ -249,14 +283,11 @@ var contentModel = {
                 case 6:
                     i++;
                     return [3 /*break*/, 4];
-                case 7:
-                    time2 = new Date();
-                    console.log(time2.getTime() - time.getTime());
-                    return [3 /*break*/, 9];
+                case 7: return [3 /*break*/, 9];
                 case 8:
-                    e_4 = _a.sent();
+                    e_5 = _a.sent();
                     conn.release();
-                    console.log(e_4);
+                    console.log(e_5);
                     return [3 /*break*/, 9];
                 case 9: return [2 /*return*/, dataObj];
             }
@@ -276,7 +307,7 @@ var contentModel = {
     deletePost: function (_a) {
         var uid = _a.uid, topic = _a.topic;
         return __awaiter(void 0, void 0, void 0, function () {
-            var conn, query, e_5;
+            var conn, query, e_6;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0: return [4 /*yield*/, topic_connection_1.default()];
@@ -292,8 +323,8 @@ var contentModel = {
                         _b.sent();
                         return [2 /*return*/, true];
                     case 4:
-                        e_5 = _b.sent();
-                        console.log(e_5);
+                        e_6 = _b.sent();
+                        console.log(e_6);
                         return [2 /*return*/, false];
                     case 5: return [2 /*return*/];
                 }

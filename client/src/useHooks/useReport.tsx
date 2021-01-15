@@ -11,6 +11,7 @@ const Report = () => {
    const [data, setData] = useState(null);
    const [load, setLoad] = useState(true);
    const isSignedIn = useAuth();
+
    useEffect(() => {
       if (isSignedIn) {
          const queryReport = () => {
@@ -38,6 +39,7 @@ const Report = () => {
                               {
                                  name: "ga:date",
                               },
+
                            ],
                         },
                      ],

@@ -27,6 +27,15 @@ const util = {
       });
    },
 
+   saveTempPost(data: ITextInitialProps, uid: string, token: string) {
+      return instance({
+         url: "/topic/temp",
+         method: "post",
+         data: { data: data, uid: uid },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
    temporaryPost(data: ITextInitialProps, token: string) {
       return instance({
          url: "/topic/temp/posts",

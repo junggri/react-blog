@@ -55,7 +55,7 @@ hue-6-2: #c18401
 .ql-syntax .hljs-addition,
 .ql-syntax .hljs-attribute,
 .ql-syntax .hljs-meta-string {
-    color: black !important;
+    color: #98c379 !important;
 }
 
 .ql-syntax .hljs-built_in,

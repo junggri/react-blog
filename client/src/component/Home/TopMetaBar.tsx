@@ -3,11 +3,11 @@ import { TopMetaBarComp } from "../../styled-comp";
 import { NavLink } from "react-router-dom";
 import { BiLoaderCircle } from "react-icons/bi";
 import useReport from "../../useHooks/useReport";
-import { isMobile } from "react-device-detect";
+
+// import { isMobile } from "react-device-detect";
 
 function TopMetaBar({ width, match }: { width: number, match: any }) {
    const ga: any = useReport();
-
    return (
       <TopMetaBarComp width={width}>
          <section className="topmetabar-list">
@@ -26,7 +26,6 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                <span>about me</span>
             </NavLink>
          </section>
-         {!isMobile &&
          <section className="topmetabar-count">
             <div>
                <span>전체</span>
@@ -46,7 +45,7 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                </span>
             </div>
          </section>
-         }
+
          {/*<div className="topmetabar-icons-box">*/}
          {/*   <GoMarkGithub className="icon-github" onClick={() => {*/}
          {/*      window.open("https://github.com/junggri", "_blank");*/}
@@ -62,4 +61,4 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
    );
 }
 
-export default TopMetaBar;
+export default React.memo(TopMetaBar);

@@ -18,6 +18,8 @@ router.get("/temp/:tempId", contentController.getTempPostFromId);
 
 router.post("/posts", contentController.savePosts); //save content
 
+router.post("/temp", contentController.saveTempPost);
+
 router.post("/topicname/:newTopicName", contentController.makeNewTopic);
 
 router.post("/posts/item", contentController.deletePost);

@@ -2,23 +2,24 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import WriteTopicName from "component/TextEditor/WriteTopicName";
 import "react-quill/dist/quill.snow.css";
+import util from "../../lib/axios";
 import { formats, modules } from "../../config/textEditor.config";
 import { WriteBox, WriteConditionBox } from "../../styled-comp";
-import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox } from "component/index";
 import useTopic from "../../useHooks/useTopic";
 import useTextEdit from "../../useHooks/useTextEdit";
-import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interface";
-import util from "../../lib/axios";
-import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
 import useCSRF from "../../useHooks/useCSRF";
-import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import useCommon from "../../useHooks/useCommon";
+import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interface";
+import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
+import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import { ITempPost } from "../../interface/index.interface";
+import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox } from "component/index";
 
 
 const Editor = ({ history, location }: any) => {
    const csrf = useCSRF();
    const ref = useRef<any>(null);
+   const [mode, setMode] = useState<string>("write");
    const [temp, setTemp] = useState([]);
    const { setNewRequset }: ICommonModuleProps = useCommon();
    const { topic, makeOrDeleteAndReqNewTopics }: ITopicModuleProps = useTopic();
@@ -59,6 +60,23 @@ const Editor = ({ history, location }: any) => {
       })();
    }, [history, makeOrDeleteAndReqNewTopics]);
 
+   useEffect(() => {
+      if (location.search !== "" && temp.length !== 0) {
+         setMode("modify");
+         const post: ITempPost[] = temp.filter((e: ITempPost) => e.uid === location.search.split("?")[1]);
+         (async () => {
+            const { data } = await util.getTempPostFromId(location.search.split("?")[1]);
+            ref.current.editor.scrollingContainer.innerHTML = data;
+            setTempData({
+               contentName: post[0].content_name,
+               topicName: post[0].topic,
+               kindOfPosts: "",
+               detail: post[0].detail,
+            });
+         })();
+      }
+   }, [location, setTempData, temp]);
+
 
    const onNameChange = useCallback((data: string) => {
       setContentName(data);
@@ -85,16 +103,15 @@ const Editor = ({ history, location }: any) => {
    }, [makeOrDeleteAndReqNewTopics]);
 
    const onSubmit = async (): Promise<void> => {
-      if (data.content === ""
-         || data.contentName === ""
-         || data.detail === ""
-         || data.kindOfPosts === ""
-         || data.topicName === "") {
+      console.log(mode);
+      if (data.content === "" || data.contentName === "" || data.detail === "" || data.kindOfPosts === "" || data.topicName === "") {
          alert("정보를 입력하세요");
       } else {
-         const result = await util.savePost(data, csrf);
-         setNewRequset(true);
+         const result = mode === "write"
+            ? await util.savePost(data, csrf)
+            : await util.saveTempPost(data, location.search.split("?")[1], csrf);
          if (result.request.status === 200) history.push("/");
+         setNewRequset(true);
       }
    };
 
@@ -103,19 +120,6 @@ const Editor = ({ history, location }: any) => {
       if (result.request.status === 200) history.push("/");
    };
 
-   const onGetTempPost = useCallback(() => {
-      const post: ITempPost[] = temp.filter((e: ITempPost) => e.uid === location.search.split("?")[1]);
-      (async () => {
-         const { data } = await util.getTempPostFromId(location.search.split("?")[1]);
-         ref.current.editor.scrollingContainer.innerHTML = data;
-         setTempData({
-            contentName: post[0].content_name,
-            topicName: post[0].topic,
-            kindOfPosts: "",
-            detail: post[0].detail,
-         });
-      })();
-   }, [setTempData, temp, location]);
 
    return (
       <>
@@ -134,7 +138,7 @@ const Editor = ({ history, location }: any) => {
             <KindOfPosts onCheck={onCheckKindOfPosts} />
             <PostsDetail onChangeDetail={onChangeDetail} detailValue={data.detail} />
             <TextEditBtnBox onSubmit={onSubmit} onTemporaryPost={onTemporaryPost} />
-            <StoragePost temp={temp} onGetTempPost={onGetTempPost} />
+            <StoragePost temp={temp} />
          </WriteConditionBox>
       </>
    );

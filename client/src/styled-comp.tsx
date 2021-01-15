@@ -347,7 +347,8 @@ export const SpecificTopicItemsComp = styled.div`
 `;
 
 export const PostsContainerComp = styled.section<Width>`
-  width:${props => props.width + "px"};
+  width:70%;
+  border:${props => props.width + "px"}
   ${media.desktop`
     width:90%;
   `};
@@ -356,7 +357,7 @@ export const PostsContainerComp = styled.section<Width>`
   `};
   ${media.mobile`
     width:80%;
-  `};
+  `}; 
   position: relative;
   margin: 0 auto;
   padding-bottom: 80px;
@@ -371,6 +372,8 @@ export const PostsContainerComp = styled.section<Width>`
     max-height: 700px;
     position: relative;
     margin :0 auto;
+    ${media.desktop`max-width:100%`};
+    ${media.tablet`max-width:100%`};
     ${media.mobile`max-width:100%`};
   }
   & .posts-name{
@@ -388,16 +391,20 @@ export const PostsContainerComp = styled.section<Width>`
   & .posts-content{
     word-break:break-all;
     font-size:1.2rem;
-    margin-top:50px;    
+    margin-top:50px;   
+    ${media.tablet`font-size:1rem`};
+    ${media.mobile`font-size:0.7rem`};
     & *{
-      white-space: pre-wrap !important;
+      white-space: pre-wrap;
       word-break: break-all;
       line-height: 2.11;
-    }
+    } 
     blockquote{
       padding:10px 20px;
       border-left:5px solid #f58320;
       background: rgb(248 249 250);
+      ${media.tablet`font-size:1rem`};
+      ${media.mobile`font-size:0.7rem`};
     }
     p,ol,blockquote,span{
       color:black
@@ -529,6 +536,7 @@ export const WriteConditionBox = memo(styled.section`
 export const WriteBtnBoxComp = (styled.div`
    padding-left:60px;
    margin-top:30px;
+   margin-bottom: 20px;
 `);
 
 export const WriteBtnComp = styled.button`

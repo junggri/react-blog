@@ -37,7 +37,6 @@ function savePost(folderName: string, data: ITextInitialProps) {
       : `/../../../../../${folderName}`;
 
    const filePath = path.join(__dirname, _path, `${uid}.html`);
-
    return { uid, today, dateString, filePath, query, dep };
 }
 
@@ -69,6 +68,23 @@ const contentModel = {
       } else if (!result.state) {
          return result;
       }
+   },
+
+   async saveTempPost({ data, uid }: { data: ITextInitialProps, uid: string }) {
+      let conn = await tempConn();
+      const saveData = savePost("contents", data);
+      if (conn !== undefined)
+         try {
+            await poolConnction<any>(saveData.query, saveData.dep);
+            await conn.execute("DELETE FROM post where uid = ? ", [uid]);
+            await fs.writeFile(saveData.filePath, data.content, "utf8");
+            conn.release();
+            return { state: true };
+         } catch (e) {
+            conn.release();
+            console.error(e);
+            return { state: false };
+         }
    },
 
    temporaryPosts: async (data: ITextInitialProps) => {
@@ -138,7 +154,6 @@ const contentModel = {
       const dataObj: any = {};
       if (conn !== undefined)
          try {
-            let time = new Date();
             let [result]: any = await conn.execute("show tables");
             conn.release();
             for (let i = 0; i < result.length; i++) {
@@ -146,8 +161,6 @@ const contentModel = {
                conn.release();
                if (data.length !== 0) dataObj[result[i]["Tables_in_contents"]] = data;
             }
-            let time2 = new Date();
-            console.log(time2.getTime() - time.getTime());
          } catch (e) {
             conn.release();
             console.log(e);
