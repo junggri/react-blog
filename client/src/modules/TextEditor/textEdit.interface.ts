@@ -4,7 +4,7 @@ export interface ITextInitialProps {
    contentName: string
    content: string
    topicName: string
-   kindOfPosts: string
+   kindofPosts: string
    detail: string
 }
 

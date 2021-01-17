@@ -37,10 +37,12 @@ export interface IGetPostFromPostId {//axios getPostFromPostId
 export interface ISelectopicProps {//SelectTopic
    onIsChecked: any
    topic: any[] | null
+   checked: string
 }
 
 export interface IKindsOfPostsProps {//kindofPosts
    onCheck: (payload: string) => void
+   checked: string
 }
 
 export interface ICreateNewTopicProps {//createNewtopic-write
@@ -51,7 +53,7 @@ export interface ICreateNewTopicProps {//createNewtopic-write
 
 export interface ITextEditBtnBoxProps {//wirte BtnBox
    onSubmit: any
-   onTemporaryPost: () => void
+   onSaveTemporaryPost: () => void
 }
 
 export interface IPostsDetailProps {//postssDetia

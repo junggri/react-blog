@@ -20,6 +20,8 @@ router.post("/posts", contentController.savePosts); //save content
 
 router.post("/temp", contentController.saveTempPost);
 
+router.post("/modify/post", contentController.modifyPost);
+
 router.post("/topicname/:newTopicName", contentController.makeNewTopic);
 
 router.post("/posts/item", contentController.deletePost);
@@ -27,4 +29,6 @@ router.post("/posts/item", contentController.deletePost);
 router.post("/:topicname", contentController.deleteTopic);
 
 router.post("/temp/posts", contentController.temporaryPost);
+
+router.post("/temp/items", contentController.deleteTempPost);
 export default router;

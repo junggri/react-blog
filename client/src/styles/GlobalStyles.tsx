@@ -99,9 +99,9 @@ const GlobalStyles = createGlobalStyle`
       tab-size: 1 !important;
       ${media.tablet`font-size:0.6rem !important`};
       ${media.mobile`
-         font-size:0.2rem !important;
+         font-size:0.7rem !important;
          white-space: pre !important;
-         overflow:scroll;
+         overflow:scroll !important;
        `};
      & span{
         font-weight:300 !important;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { EntryContainerComp } from "../../styled-comp";
 import useCommon from "../../useHooks/useCommon";
 import { ICommonModuleProps } from "../../modules/Common/common.interface";
@@ -10,12 +10,14 @@ import useLoginFlag from "../../useHooks/useLoginFlag";
 import useCSRF from "../../useHooks/useCSRF";
 import TopMetaBar from "./TopMetaBar";
 import ReactHelmet from "../../useHooks/useHelmet";
+import util from "../../lib/axios";
 
 
 function CommonEntry({ match }: any) {
+   useLoginFlag();
    const csrf = useCSRF();
    const { width, login, newRequest, setNewRequset }: ICommonModuleProps = useCommon();
-   const { AllPosts, posts, getPosts, deletePost, getAllPosts }: IPostsModuleProps = usePosts();
+   const { AllPosts, posts, getPosts, getAllPosts }: IPostsModuleProps = usePosts();
 
    useEffect(() => {
       if (newRequest) {
@@ -23,7 +25,17 @@ function CommonEntry({ match }: any) {
          setNewRequset(false);
       }
    }, [getAllPosts, newRequest, setNewRequset]);
-   useLoginFlag();
+
+
+   const onDelete = useCallback((e: React.MouseEvent<HTMLElement>) => {
+      const uid = (e.currentTarget.parentNode as HTMLElement).dataset.id as string;
+      const topic = (e.currentTarget.parentNode as HTMLElement).dataset.topic as string;
+      (async () => {
+         await util.deletePost(uid, topic, csrf);
+         getAllPosts();
+      })();
+
+   }, [csrf, getAllPosts]);
 
    if (!AllPosts.data) return null;
 
@@ -33,14 +45,13 @@ function CommonEntry({ match }: any) {
             keywords={"nodejs 그리고 자바스크립트의 이야기들"}
             description={"자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기"}
             title={"junggri 블로그"} />
-         <TopMetaBar width={width} match={match} />
+         <TopMetaBar width={width} match={match} login={login} />
          {match.path !== "/about" ? <SideBarContainer topic={AllPosts} login={login} /> : null}
          <Route path="/" exact render={() => (
             <EntryPostsContainer
                width={width}
                posts={AllPosts}
-               deletePost={deletePost}
-               getAllPosts={getAllPosts}
+               onDelete={onDelete}
                login={login}
                csrf={csrf}
             />
@@ -50,6 +61,7 @@ function CommonEntry({ match }: any) {
                width={width}
                match={match}
                onGetPosts={getPosts}
+               login={login}
                posts={posts}
             />
          )} />

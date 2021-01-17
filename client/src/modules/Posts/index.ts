@@ -18,7 +18,7 @@ export const GET_TEMP_POST = "data/GET_TEMP_POST";
 export const GET_TEMP_POST_SUCCESS = "data/GET_TEMP_POST_SUCCESS";
 export const GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR";
 
-export const DELETE_POST = "data/DELETE_POST";
+
 export const CLEAR_POST = "data/CLEAR_POST";
 //액션 생성함수를 선언!
 
@@ -52,15 +52,6 @@ export default function Posts(state: IPostInitialState = initialState, action: D
       case GET_ALL_POSTS_SECCUESS:
       case GET_ALL_POSTS_ERROR:
          return handleAction(GET_ALL_POSTS, "AllPosts", true)(state, action);
-      case DELETE_POST:
-         return {
-            ...state,
-            AllPosts: {
-               data: action.payload,
-               loading: false,
-               error: null,
-            },
-         };
       case CLEAR_POST:
          return {
             ...state,

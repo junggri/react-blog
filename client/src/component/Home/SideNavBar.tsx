@@ -25,8 +25,7 @@ function SideBarNavContainer({ topic, login }: ISideBarNavContainer) {
          <SideBarThunmbNailComp style={backGround} />
          <SideBarMetaDataComp>
             <div className="sidebar-names">junggri</div>
-            <div className="sidebar-posi posi1">backend engineer</div>
-            <div className="sidebar-posi posi2">frontend engineer</div>
+            <div className="sidebar-posi posi1">도전으로 발전하기</div>
          </SideBarMetaDataComp>
          <SideNavBarTopic topic={topic} />
          {login &&

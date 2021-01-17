@@ -57,8 +57,8 @@ function savePost(folderName, data) {
         day: "numeric",
     });
     if (folderName === "contents") {
-        query = "INSERT INTO " + data.topicName + " \n                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?,?)";
-        dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindOfPosts, data.detail, new Date()];
+        query = "INSERT INTO " + data.topicName + " \n                     (uid, topic, content_name, created, modified, file, comments, kindofPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?,?)";
+        dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindofPosts, data.detail, new Date()];
     }
     else {
         query = "INSERT INTO post \n                     (uid, topic, content_name, created, file, detail) \n                     VALUES (?,?,?,?,?,?)";
@@ -86,7 +86,7 @@ function poolConnction(query, dep) {
                 case 3:
                     result = (_a.sent())[0];
                     conn.release();
-                    return [2 /*return*/, result];
+                    return [2 /*return*/, { state: true, data: result }];
                 case 4:
                     e_1 = _a.sent();
                     console.log(e_1);
@@ -98,11 +98,12 @@ function poolConnction(query, dep) {
     });
 }
 var contentModel = {
-    getAllPosts: function () { return __awaiter(void 0, void 0, void 0, function () {
+    getAllTopic: function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, poolConnction("show tables")];
-                case 1: return [2 /*return*/, _a.sent()];
+                case 1: //토픽목록 가져오기
+                return [2 /*return*/, _a.sent()];
             }
         });
     }); },
@@ -115,17 +116,10 @@ var contentModel = {
                     return [4 /*yield*/, poolConnction(saveData.query, saveData.dep)];
                 case 1:
                     result = _a.sent();
-                    if (!result) return [3 /*break*/, 3];
                     return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
                 case 2:
                     _a.sent();
-                    return [2 /*return*/, { state: true }];
-                case 3:
-                    if (!result.state) {
-                        return [2 /*return*/, result];
-                    }
-                    _a.label = 4;
-                case 4: return [2 /*return*/];
+                    return [2 /*return*/, result];
             }
         });
     }); },
@@ -164,34 +158,53 @@ var contentModel = {
             });
         });
     },
+    modify: function (_a) {
+        var data = _a.data, uid = _a.uid;
+        return __awaiter(this, void 0, void 0, function () {
+            var today, dateString, query, dep;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        today = new Date();
+                        dateString = today.toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        });
+                        query = "UPDATE " + data.topicName + " SET content_name = ?, topic = ?, kindofPosts = ?, detail = ?, modified = ? WHERE uid = ?";
+                        dep = [data.contentName, data.topicName, data.kindofPosts, data.detail, dateString, uid];
+                        return [4 /*yield*/, poolConnction(query, dep)];
+                    case 1: return [2 /*return*/, _b.sent()];
+                }
+            });
+        });
+    },
     temporaryPosts: function (data) { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, saveData, result, e_3;
+        var conn, saveData, e_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, temp_connetion_1.default()];
                 case 1:
                     conn = _a.sent();
                     saveData = savePost("temporary-storage", data);
-                    if (!(conn !== undefined)) return [3 /*break*/, 7];
+                    if (!(conn !== undefined)) return [3 /*break*/, 6];
                     _a.label = 2;
                 case 2:
-                    _a.trys.push([2, 6, , 7]);
+                    _a.trys.push([2, 5, , 6]);
                     return [4 /*yield*/, conn.execute(saveData.query, saveData.dep)];
                 case 3:
-                    result = (_a.sent())[0];
-                    conn.release();
-                    if (!result) return [3 /*break*/, 5];
+                    _a.sent();
                     return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
                 case 4:
                     _a.sent();
+                    conn.release();
                     return [2 /*return*/, { state: true }];
-                case 5: return [3 /*break*/, 7];
-                case 6:
+                case 5:
                     e_3 = _a.sent();
                     conn.release();
                     console.error(e_3);
                     return [2 /*return*/, { state: false }];
-                case 7: return [2 /*return*/];
+                case 6: return [2 /*return*/];
             }
         });
     }); },
@@ -210,11 +223,11 @@ var contentModel = {
                 case 3:
                     result = (_a.sent())[0];
                     conn.release();
-                    return [2 /*return*/, result];
+                    return [2 /*return*/, { state: true, data: result }];
                 case 4:
                     e_4 = _a.sent();
                     console.log(e_4);
-                    return [3 /*break*/, 5];
+                    return [2 /*return*/, false];
                 case 5: return [2 /*return*/];
             }
         });
@@ -273,7 +286,7 @@ var contentModel = {
                     _a.label = 4;
                 case 4:
                     if (!(i < result.length)) return [3 /*break*/, 7];
-                    return [4 /*yield*/, conn.execute("select * from " + result[i]["Tables_in_contents"] + " order by id ASC")];
+                    return [4 /*yield*/, conn.execute("select * from " + result[i]["Tables_in_contents"] + " order by id DESC")];
                 case 5:
                     data = (_a.sent())[0];
                     conn.release();
@@ -307,25 +320,41 @@ var contentModel = {
     deletePost: function (_a) {
         var uid = _a.uid, topic = _a.topic;
         return __awaiter(void 0, void 0, void 0, function () {
-            var conn, query, e_6;
+            var query;
             return __generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0: return [4 /*yield*/, topic_connection_1.default()];
+                    case 0:
+                        query = "DELETE FROM " + topic + " where uid = ? ";
+                        return [4 /*yield*/, poolConnction(query, [uid])];
+                    case 1: return [2 /*return*/, _b.sent()];
+                }
+            });
+        });
+    },
+    deleteTempPost: function (_a) {
+        var uid = _a.uid;
+        return __awaiter(this, void 0, void 0, function () {
+            var conn, query, dep, e_6;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, temp_connetion_1.default()];
                     case 1:
                         conn = _b.sent();
-                        query = "DELETE FROM " + topic + " where uid = ? ";
+                        query = "DELETE FROM post where uid = ?";
+                        dep = [uid];
                         if (!(conn !== undefined)) return [3 /*break*/, 5];
                         _b.label = 2;
                     case 2:
                         _b.trys.push([2, 4, , 5]);
-                        return [4 /*yield*/, conn.execute(query, [uid])];
+                        return [4 /*yield*/, conn.execute(query, dep)];
                     case 3:
                         _b.sent();
-                        return [2 /*return*/, true];
+                        conn.release();
+                        return [2 /*return*/, { state: true }];
                     case 4:
                         e_6 = _b.sent();
                         console.log(e_6);
-                        return [2 /*return*/, false];
+                        return [2 /*return*/, { statet: false }];
                     case 5: return [2 /*return*/];
                 }
             });

@@ -6,7 +6,7 @@ import useReport from "../../useHooks/useReport";
 
 // import { isMobile } from "react-device-detect";
 
-function TopMetaBar({ width, match }: { width: number, match: any }) {
+function TopMetaBar({ width, match, login }: { width: number, match: any, login: boolean }) {
    const ga: any = useReport();
    return (
       <TopMetaBarComp width={width}>
@@ -26,6 +26,7 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                <span>about me</span>
             </NavLink>
          </section>
+         {login &&
          <section className="topmetabar-count">
             <div>
                <span>전체</span>
@@ -45,7 +46,7 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                </span>
             </div>
          </section>
-
+         }
          {/*<div className="topmetabar-icons-box">*/}
          {/*   <GoMarkGithub className="icon-github" onClick={() => {*/}
          {/*      window.open("https://github.com/junggri", "_blank");*/}

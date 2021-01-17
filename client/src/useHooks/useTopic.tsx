@@ -7,14 +7,10 @@ export default function useTopic() {
    const dispatch = useDispatch();
    const { topic, loading, error } = useSelector((state: RootState) => state.topic);
 
-   const makeOrDeleteAndReqNewTopics = useCallback(() => {
-      dispatch(onReqTopicsName());
-   }, [dispatch]);
-
    const requestTopic = useCallback(() => {
       dispatch(onReqTopicsName());
    }, [dispatch]);
 
 
-   return { topic, loading, error, makeOrDeleteAndReqNewTopics, requestTopic };
+   return { topic, loading, error, requestTopic };
 }

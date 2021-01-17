@@ -8,10 +8,10 @@ interface ISpecificTopicContainer {
    match: any
    onGetPosts: (params: string) => void
    posts: IPostsProps
-
+   login: boolean
 }
 
-function SpecificTopicContainer({ width, match, onGetPosts, posts }: ISpecificTopicContainer) {
+function SpecificTopicContainer({ width, match, onGetPosts, posts, login }: ISpecificTopicContainer) {
    const params = match.params.topic;
 
    useEffect(() => {
@@ -19,6 +19,7 @@ function SpecificTopicContainer({ width, match, onGetPosts, posts }: ISpecificTo
    }, [params, onGetPosts]);
 
    if (!posts.data) return null;
+
 
    return (
       <SpecificTopicContainerComp width={width}>
@@ -31,6 +32,12 @@ function SpecificTopicContainer({ width, match, onGetPosts, posts }: ISpecificTo
                   </div>
                </Link>
                <div className="item-detail">🌐 {e.detail}</div>
+               {login &&
+               <div className="posts-admin-box" data-id={e.uid} data-topic={e.topic}>
+                  {/*<span className='posts-admin-modify' onClick={onModified}><IoColorWand /></span>*/}
+                  {/*<span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>*/}
+               </div>
+               }
             </SpecificTopicItemsComp>
             // <SpecificTopicItemsComp key={e.uid} to={`/topic/${e.topic}/${e.uid}`}>
             //    <span className="item-created">{e.created}</span>

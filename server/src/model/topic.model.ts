@@ -22,9 +22,9 @@ function savePost(folderName: string, data: ITextInitialProps) {
    });
    if (folderName === "contents") {
       query = `INSERT INTO ${data.topicName} 
-                     (uid, topic, content_name, created, modified, file, comments, kindOfPosts, detail, date) 
+                     (uid, topic, content_name, created, modified, file, comments, kindofPosts, detail, date) 
                      VALUES (?,?,?,?,?,?,?,?,?,?)`;
-      dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindOfPosts, data.detail, new Date()];
+      dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindofPosts, data.detail, new Date()];
    } else {
       query = `INSERT INTO post 
                      (uid, topic, content_name, created, file, detail) 
@@ -46,7 +46,7 @@ async function poolConnction<T>(query: string, dep?: T[]) {
       try {
          let [result] = await conn.execute(query, dep);
          conn.release();
-         return result;
+         return { state: true, data: result };
       } catch (e) {
          console.log(e);
          conn.release();
@@ -55,19 +55,15 @@ async function poolConnction<T>(query: string, dep?: T[]) {
 }
 
 const contentModel = {
-   getAllPosts: async () => {
+   getAllTopic: async () => {//토픽목록 가져오기
       return await poolConnction("show tables");
    },
 
    savePosts: async (data: ITextInitialProps) => {
       const saveData = savePost("contents", data);
       const result: any = await poolConnction<any>(saveData.query, saveData.dep);
-      if (result) {
-         await fs.writeFile(saveData.filePath, data.content, "utf8");
-         return { state: true };
-      } else if (!result.state) {
-         return result;
-      }
+      await fs.writeFile(saveData.filePath, data.content, "utf8");
+      return result;
    },
 
    async saveTempPost({ data, uid }: { data: ITextInitialProps, uid: string }) {
@@ -87,17 +83,27 @@ const contentModel = {
          }
    },
 
+   async modify({ data, uid }: { data: ITextInitialProps, uid: string }) {
+      const today = new Date();
+      const dateString = today.toLocaleDateString("en-US", {
+         year: "numeric",
+         month: "long",
+         day: "numeric",
+      });
+      const query = `UPDATE ${data.topicName} SET content_name = ?, topic = ?, kindofPosts = ?, detail = ?, modified = ? WHERE uid = ?`;
+      const dep = [data.contentName, data.topicName, data.kindofPosts, data.detail, dateString, uid];
+      return await poolConnction<string>(query, dep);
+   },
+
    temporaryPosts: async (data: ITextInitialProps) => {
       let conn = await tempConn();
       const saveData = savePost("temporary-storage", data);
       if (conn !== undefined)
          try {
-            let [result] = await conn.execute(saveData.query, saveData.dep);
+            await conn.execute(saveData.query, saveData.dep);
+            await fs.writeFile(saveData.filePath, data.content, "utf8");
             conn.release();
-            if (result) {
-               await fs.writeFile(saveData.filePath, data.content, "utf8");
-               return { state: true };
-            }
+            return { state: true };
          } catch (e) {
             conn.release();
             console.error(e);
@@ -111,9 +117,10 @@ const contentModel = {
          try {
             const [result] = await conn.execute("select * from post");
             conn.release();
-            return result;
+            return { state: true, data: result };
          } catch (e) {
             console.log(e);
+            return false;
          }
    },
 
@@ -129,7 +136,6 @@ const contentModel = {
    },
 
    CreateNewTopic: async (newTopic: string) => {
-
       const query = `
                 CREATE TABLE ${newTopic}(
                      id int(11) not null auto_increment primary key,
@@ -157,7 +163,7 @@ const contentModel = {
             let [result]: any = await conn.execute("show tables");
             conn.release();
             for (let i = 0; i < result.length; i++) {
-               let [data]: any = await conn.execute(`select * from ${result[i]["Tables_in_contents"]} order by id ASC`);
+               let [data]: any = await conn.execute(`select * from ${result[i]["Tables_in_contents"]} order by id DESC`);
                conn.release();
                if (data.length !== 0) dataObj[result[i]["Tables_in_contents"]] = data;
             }
@@ -174,15 +180,22 @@ const contentModel = {
    },
 
    deletePost: async ({ uid, topic }: { uid: string, topic: string }) => {
-      const conn = await connection();
       const query = `DELETE FROM ${topic} where uid = ? `;
+      return await poolConnction(query, [uid]);
+   },
+
+   async deleteTempPost({ uid }: { uid: string }) {
+      const conn = await tempConn();
+      const query = `DELETE FROM post where uid = ?`;
+      const dep = [uid];
       if (conn !== undefined)
          try {
-            await conn.execute(query, [uid]);
-            return true;
+            await conn.execute(query, dep);
+            conn.release();
+            return { state: true };
          } catch (e) {
             console.log(e);
-            return false;
+            return { statet: false };
          }
    },
 };

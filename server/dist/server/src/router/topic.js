@@ -14,9 +14,11 @@ router.get("/temp/items", topic_controller_1.default.getTempPost);
 router.get("/temp/:tempId", topic_controller_1.default.getTempPostFromId);
 router.post("/posts", topic_controller_1.default.savePosts); //save content
 router.post("/temp", topic_controller_1.default.saveTempPost);
+router.post("/modify/post", topic_controller_1.default.modifyPost);
 router.post("/topicname/:newTopicName", topic_controller_1.default.makeNewTopic);
 router.post("/posts/item", topic_controller_1.default.deletePost);
 router.post("/:topicname", topic_controller_1.default.deleteTopic);
 router.post("/temp/posts", topic_controller_1.default.temporaryPost);
+router.post("/temp/items", topic_controller_1.default.deleteTempPost);
 exports.default = router;
 //# sourceMappingURL=topic.js.map

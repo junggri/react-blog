@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
+import { sessionConfig } from "./config/session.config";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
@@ -11,8 +12,9 @@ import indexApi from "./router";
 import topicApi from "./router/topic";
 import adminApi from "./router/admin";
 import cors from "cors";
-import { sessionConfig } from "./config/session.config";
 import path from "path";
+import ga from "./lib/ga";
+
 
 const app = express();
 app.disable("x-powered-by");
@@ -50,7 +52,7 @@ app
    .use(express.static(path.join(__dirname, "/../../../build")))
    .use("/contents", express.static(path.join(__dirname, content_path)))
    .use(csrfProtection);
-
+ga();
 
 app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터
@@ -60,6 +62,7 @@ if (process.env.NODE_ENV === "production")
    app.get("*", (req: Request, res: Response) => {
       res.sendFile(path.join(__dirname, "/../../../build/index.html"));
    });
+
 
 app.set("port", process.env.PORT || 4000);
 

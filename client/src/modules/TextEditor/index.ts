@@ -21,7 +21,7 @@ const initialState: ITextInitialProps = {
    contentName: "",
    content: "",
    topicName: "",
-   kindOfPosts: "",
+   kindofPosts: "",
    detail: "",
 };
 
@@ -46,7 +46,7 @@ function TextEditor(state: ITextInitialProps = initialState, action: EditorActio
       case SET_KIND_OF_POSTS:
          return {
             ...state,
-            kindOfPosts: action.payload,
+            kindofPosts: action.payload,
          };
       case SET_DETAIL:
          return {
@@ -59,7 +59,7 @@ function TextEditor(state: ITextInitialProps = initialState, action: EditorActio
             contentName: action.payload.contentName,
             content: action.payload.content,
             topicName: action.payload.topicName,
-            kindOfPosts: action.payload.kindOfPosts,
+            kindofPosts: action.payload.kindofPosts,
             detail: action.payload.detail,
          };
       default:

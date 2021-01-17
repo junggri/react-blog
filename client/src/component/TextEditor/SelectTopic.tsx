@@ -3,7 +3,7 @@ import { SelectTopicBoxComp, SelectTopicItemComp } from "../../styled-comp";
 import { ISelectopicProps } from "../../interface/index.interface";
 
 
-function SelectTopic({ topic, onIsChecked }: ISelectopicProps) {
+function SelectTopic({ topic, onIsChecked, checked }: ISelectopicProps) {
 
    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
       onIsChecked(e.target.value);
@@ -18,7 +18,7 @@ function SelectTopic({ topic, onIsChecked }: ISelectopicProps) {
             {topic.map((v: { Tables_in_contents: string }) => (
                <SelectTopicItemComp key={v["Tables_in_contents"]}>
                   <input className="select-input" type="radio" id={v["Tables_in_contents"]} onChange={onChange}
-                         value={v["Tables_in_contents"]} name='post' />
+                         value={v["Tables_in_contents"]} name='post' checked={v["Tables_in_contents"] === checked} />
                   <label className="select-label"
                          htmlFor={v["Tables_in_contents"]}>{v["Tables_in_contents"]}</label>
                </SelectTopicItemComp>

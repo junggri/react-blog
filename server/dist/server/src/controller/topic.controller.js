@@ -54,10 +54,15 @@ var contentController = {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, topic_model_1.default.getAllPosts()];
+                case 0: return [4 /*yield*/, topic_model_1.default.getAllTopic()];
                 case 1:
                     result = _a.sent();
-                    res.status(200).json(result);
+                    if (result.state) {
+                        res.status(200).json(result.data);
+                    }
+                    else {
+                        res.status(404).json({ state: false });
+                    }
                     return [2 /*return*/];
             }
         });
@@ -76,6 +81,30 @@ var contentController = {
             }
         });
     }); },
+    modifyPost: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _path, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _path = makePath("contents", req.body.uid);
+                        return [4 /*yield*/, topic_model_1.default.modify(req.body)];
+                    case 1:
+                        result = _a.sent();
+                        if (!result.state) return [3 /*break*/, 3];
+                        return [4 /*yield*/, fs_1.promises.writeFile(_path.filePath, req.body.data.content, "utf8")];
+                    case 2:
+                        _a.sent();
+                        res.status(200).json({ state: true });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        res.status(500).json({ state: false });
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    },
     saveTempPost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var _path, result;
         return __generator(this, function (_a) {
@@ -88,7 +117,7 @@ var contentController = {
                     return [4 /*yield*/, fs_1.promises.unlink(_path.filePath)];
                 case 2:
                     _a.sent();
-                    result !== undefined && result.state
+                    result.state
                         ? res.status(200).json({ state: true })
                         : res.status(500).json({ state: false });
                     return [2 /*return*/];
@@ -102,7 +131,7 @@ var contentController = {
                 case 0: return [4 /*yield*/, topic_model_1.default.temporaryPosts(req.body)];
                 case 1:
                     result = _a.sent();
-                    result
+                    result.state
                         ? res.status(200).json({ state: true })
                         : res.status(404).json({ state: false });
                     return [2 /*return*/];
@@ -116,7 +145,9 @@ var contentController = {
                 case 0: return [4 /*yield*/, topic_model_1.default.getTemporaryPost()];
                 case 1:
                     result = _a.sent();
-                    res.status(200).json(result);
+                    result.state
+                        ? res.status(200).json(result.data)
+                        : res.status(404).json({ state: false });
                     return [2 /*return*/];
             }
         });
@@ -144,44 +175,46 @@ var contentController = {
                 case 0: return [4 /*yield*/, topic_model_1.default.getDataFromParams(req.params.topic)];
                 case 1:
                     result = _a.sent();
-                    res.status(200).json(result);
+                    result.state
+                        ? res.status(200).json(result.data)
+                        : res.status(404).json({ state: false });
                     return [2 /*return*/];
             }
         });
     }); },
     getPostsFromPostsId: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var _path, _a, topic, postsId, result, content, e_1;
+        var _path, _a, topic, postsId, result, content;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     _path = makePath("contents", req.params.postsId);
                     _a = req.params, topic = _a.topic, postsId = _a.postsId;
-                    _b.label = 1;
-                case 1:
-                    _b.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, topic_model_1.default.getPostFromPostId(topic, postsId)];
-                case 2:
+                case 1:
                     result = _b.sent();
+                    if (!result.state) return [3 /*break*/, 3];
                     return [4 /*yield*/, fs_1.promises.readFile(_path.filePath, "utf-8")];
-                case 3:
+                case 2:
                     content = _b.sent();
-                    res.status(200).json({ content: content, result: result });
-                    return [3 /*break*/, 5];
-                case 4:
-                    e_1 = _b.sent();
-                    console.error(e_1);
-                    return [3 /*break*/, 5];
-                case 5: return [2 /*return*/];
+                    res.status(200).json({ content: content, result: result.data });
+                    return [3 /*break*/, 4];
+                case 3:
+                    res.status(404).json({ state: false });
+                    _b.label = 4;
+                case 4: return [2 /*return*/];
             }
         });
     }); },
     makeNewTopic: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, topic_model_1.default.CreateNewTopic(req.body.newTopic)];
                 case 1:
-                    _a.sent();
-                    res.status(200).json({ state: true });
+                    result = _a.sent();
+                    result.state
+                        ? res.status(200).json({ state: true })
+                        : res.status(404).json({ state: false });
                     return [2 /*return*/];
             }
         });
@@ -199,41 +232,65 @@ var contentController = {
         });
     }); },
     deleteTopic: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, topic_model_1.default.deleteTopic(req.body.topicName)];
                 case 1:
-                    _a.sent();
-                    res.status(200).json({ state: true });
+                    result = _a.sent();
+                    result.state
+                        ? res.status(200).json({ state: true })
+                        : res.status(404).json({ state: false });
                     return [2 /*return*/];
             }
         });
     }); },
     deletePost: function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-        var _path, e_2;
+        var _path, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _path = makePath("contents", req.body.uid);
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, topic_model_1.default.deletePost(req.body)];
+                case 1:
+                    result = _a.sent();
+                    if (!result.state) return [3 /*break*/, 3];
+                    return [4 /*yield*/, fs_1.promises.unlink(_path.filePath)];
                 case 2:
                     _a.sent();
-                    return [4 /*yield*/, fs_1.promises.unlink(_path.filePath)];
-                case 3:
-                    _a.sent();
                     res.status(200).json({ state: true });
-                    return [3 /*break*/, 5];
-                case 4:
-                    e_2 = _a.sent();
-                    console.error(e_2);
-                    return [3 /*break*/, 5];
-                case 5: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 3:
+                    res.status(404).json({ state: false });
+                    _a.label = 4;
+                case 4: return [2 /*return*/];
             }
         });
     }); },
+    deleteTempPost: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _path, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _path = makePath("temporary-storage", req.body.uid);
+                        return [4 /*yield*/, topic_model_1.default.deleteTempPost(req.body)];
+                    case 1:
+                        result = _a.sent();
+                        if (!result.state) return [3 /*break*/, 3];
+                        return [4 /*yield*/, fs_1.promises.unlink(_path.filePath)];
+                    case 2:
+                        _a.sent();
+                        res.status(200).json({ state: true });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        res.status(404).json({ state: false });
+                        _a.label = 4;
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    },
 };
 exports.default = contentController;
 //# sourceMappingURL=topic.controller.js.map

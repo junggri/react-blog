@@ -13,7 +13,7 @@ const Report = () => {
    const isSignedIn = useAuth();
 
    useEffect(() => {
-      if (isSignedIn) {
+      if (isSignedIn && load) {
          const queryReport = () => {
             window.gapi.client
                .request({
@@ -52,7 +52,6 @@ const Report = () => {
          };
          queryReport();
       }
-
       return () => {
          setLoad(false);
       };

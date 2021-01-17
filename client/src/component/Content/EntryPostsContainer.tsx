@@ -1,7 +1,6 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { EntryPostsContainerComp, EntryPostsItemComp } from "../../styled-comp";
 import { Link } from "react-router-dom";
-import util from "../../lib/axios";
 import { IoColorWand } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
@@ -9,31 +8,16 @@ import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface"
 interface IEntryPostsContainer {
    width: number,
    posts: IAllPost
-   deletePost: (posts: any) => void,
-   getAllPosts: () => void
+   onDelete: (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void,
    login: boolean,
    csrf: string
 }
 
-const EntryPostsContainer = ({ width, posts, deletePost, login, csrf, getAllPosts }: IEntryPostsContainer) => {
-
-   const onModified = useCallback((e: React.MouseEvent<HTMLElement>) => {
-      console.log(2);
-   }, [csrf]);
-
-   const onDelete = useCallback((e: React.MouseEvent<HTMLElement>) => {
-      const uid = (e.currentTarget.parentNode as HTMLElement).dataset.id as string;
-      const topic = (e.currentTarget.parentNode as HTMLElement).dataset.topic as string;
-      (async () => {
-         await util.deletePost(uid, topic, csrf);
-         getAllPosts();
-      })();
-
-   }, [csrf, deletePost]);
-
+const EntryPostsContainer = ({ width, posts, onDelete, login, csrf }: IEntryPostsContainer) => {
 
    if (!posts.data) return null;
    const data = Object.values(posts.data).flat();
+
    return (
       <EntryPostsContainerComp width={width}>
          {data.map((e: IPostCommonProps) => (
@@ -54,7 +38,9 @@ const EntryPostsContainer = ({ width, posts, deletePost, login, csrf, getAllPost
                </section>
                {login &&
                <div className="posts-admin-box" data-id={e.uid} data-topic={e.topic}>
-                  <span className='posts-admin-modify' onClick={onModified}><IoColorWand /></span>
+                  <span className='posts-admin-modify'>
+                     <Link to={`/write?modify=${e.uid}&topic=${e.topic}`}><IoColorWand /></Link>
+                  </span>
                   <span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>
                </div>
                }

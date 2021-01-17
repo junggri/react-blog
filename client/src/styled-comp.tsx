@@ -274,14 +274,11 @@ export const SideBarMetaDataComp = styled.div`
     letter-spacing:5px;
   }
   & .sidebar-posi{
-    letter-spacing: 1.2px;
-    font-size:0.95rem;
-    font-weight: 300;
+    letter-spacing: 2.8px;
+    font-size:1rem;
+    font-weight: 500;
     &.posi1{
-      margin-top:15px;
-    }
-    &.posi2{
-      margin-top:6px;
+      margin-top:20px;
     }
   }
 `;
@@ -347,7 +344,7 @@ export const SpecificTopicItemsComp = styled.div`
 `;
 
 export const PostsContainerComp = styled.section<Width>`
-  width:70%;
+  width:48%;
   border:${props => props.width + "px"}
   ${media.desktop`
     width:90%;
@@ -362,6 +359,7 @@ export const PostsContainerComp = styled.section<Width>`
   margin: 0 auto;
   padding-bottom: 80px;
   background: white;
+  tab-size: 1;
   & .posts-container-iconbox{
     padding:20px 20px;
     font-size:1.5rem;
@@ -392,19 +390,24 @@ export const PostsContainerComp = styled.section<Width>`
     word-break:break-all;
     font-size:1.2rem;
     margin-top:50px;   
-    ${media.tablet`font-size:1rem`};
-    ${media.mobile`font-size:0.7rem`};
+    ${media.tablet`font-size:1rem !important`};
+    ${media.mobile`font-size:0.7rem !important`};
     & *{
       white-space: pre-wrap;
       word-break: break-all;
       line-height: 2.11;
     } 
+    & p br{
+      display: block;
+      content: "";
+      padding:10px 0px;
+    }
     blockquote{
       padding:10px 20px;
       border-left:5px solid #f58320;
       background: rgb(248 249 250);
-      ${media.tablet`font-size:1rem`};
-      ${media.mobile`font-size:0.7rem`};
+      ${media.tablet`font-size:1rem !important`};
+      ${media.mobile`font-size:0.8rem !important`};
     }
     p,ol,blockquote,span{
       color:black
@@ -557,7 +560,6 @@ export const WriteBtnComp = styled.button`
    }
    
 `;
-
 
 export const SelectTopicBoxComp = styled.div`
    padding-top:50px;
@@ -726,10 +728,24 @@ export const TemporaryStorageComp = styled.div`
   & .tsc-slo{
     font-size:1.7rem;
   }
+  & .temp_item{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 60px;
+    align-items: center;
+    margin-top:20px;
+    & .posts-admin-delete{
+      font-size:1.4rem;
+      display: inline-block;
+      padding-top:5px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const TemporaryPostComp = styled.div<any>`
-  margin-top:20px;
   cursor:pointer;
   font-size:1.4rem;
   &:hover{

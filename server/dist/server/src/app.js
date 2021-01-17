@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var session_config_1 = require("./config/session.config");
 var body_parser_1 = __importDefault(require("body-parser"));
 var helmet_1 = __importDefault(require("helmet"));
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
@@ -16,8 +17,8 @@ var router_1 = __importDefault(require("./router"));
 var topic_1 = __importDefault(require("./router/topic"));
 var admin_1 = __importDefault(require("./router/admin"));
 var cors_1 = __importDefault(require("cors"));
-var session_config_1 = require("./config/session.config");
 var path_1 = __importDefault(require("path"));
+var ga_1 = __importDefault(require("./lib/ga"));
 var app = express_1.default();
 app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
@@ -49,6 +50,7 @@ app
     .use(express_1.default.static(path_1.default.join(__dirname, "/../../../build")))
     .use("/contents", express_1.default.static(path_1.default.join(__dirname, content_path)))
     .use(csrfProtection);
+ga_1.default();
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use("/admin", admin_1.default);

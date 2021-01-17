@@ -14,6 +14,7 @@ import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
 import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import { ITempPost } from "../../interface/index.interface";
 import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox } from "component/index";
+import qs from "query-string";
 
 
 const Editor = ({ history, location }: any) => {
@@ -22,7 +23,7 @@ const Editor = ({ history, location }: any) => {
    const [mode, setMode] = useState<string>("write");
    const [temp, setTemp] = useState([]);
    const { setNewRequset }: ICommonModuleProps = useCommon();
-   const { topic, makeOrDeleteAndReqNewTopics }: ITopicModuleProps = useTopic();
+   const { topic, requestTopic }: ITopicModuleProps = useTopic();
    const {
       data,
       setContent,
@@ -43,7 +44,7 @@ const Editor = ({ history, location }: any) => {
          contentName: "",
          content: "",
          topicName: "",
-         kindOfPosts: "",
+         kindofPosts: "",
          detail: "",
       });
    }, [setTempData]);
@@ -54,28 +55,37 @@ const Editor = ({ history, location }: any) => {
          if (!data.decoded) {
             history.push("/");
          } else {
-            makeOrDeleteAndReqNewTopics();
+            requestTopic();
             ref.current.focus();
          }
       })();
-   }, [history, makeOrDeleteAndReqNewTopics]);
+   }, [history, requestTopic]);
+
+
+   const howToSave = useCallback((mode: string, cb: any, _data?: ITempPost) => {
+      setMode(mode);
+      (async () => {
+         const { data } = await cb;
+         ref.current.editor.scrollingContainer.innerHTML = mode === "temp" ? data : data.content;
+         setTempData({
+            contentName: mode === "temp" ? _data?.content_name : data.result[0].content_name,
+            content: mode === "temp" ? "" : data.content,
+            topicName: mode === "temp" ? _data?.topic : data.result[0].topic,
+            kindofPosts: mode === "temp" ? "" : data.result[0].kindofPosts,
+            detail: mode === "temp" ? _data?.detail : data.result[0].detail,
+         });
+      })();
+   }, [setTempData]);
 
    useEffect(() => {
-      if (location.search !== "" && temp.length !== 0) {
-         setMode("modify");
-         const post: ITempPost[] = temp.filter((e: ITempPost) => e.uid === location.search.split("?")[1]);
-         (async () => {
-            const { data } = await util.getTempPostFromId(location.search.split("?")[1]);
-            ref.current.editor.scrollingContainer.innerHTML = data;
-            setTempData({
-               contentName: post[0].content_name,
-               topicName: post[0].topic,
-               kindOfPosts: "",
-               detail: post[0].detail,
-            });
-         })();
+      const _qs = qs.parse(location.search);
+      if (Object.keys(_qs)[0] === "temp" && temp.length !== 0) {
+         const post: ITempPost[] = temp.filter((e: ITempPost) => e.uid === Object.values(_qs)[0]);
+         howToSave("temp", util.getTempPostFromId(Object.values(_qs)[0] as string), post[0]);
+      } else if (Object.keys(_qs)[0] === "modify") {
+         howToSave("modify", util.getPostFromPostId(Object.values(_qs)[1] as string, Object.values(_qs)[0] as string));
       }
-   }, [location, setTempData, temp]);
+   }, [setTempData, temp, location, howToSave]);
 
 
    const onNameChange = useCallback((data: string) => {
@@ -99,27 +109,35 @@ const Editor = ({ history, location }: any) => {
    }, [setDetail]);
 
    const onMakeOrDelteTopic = useCallback(() => {
-      makeOrDeleteAndReqNewTopics();
-   }, [makeOrDeleteAndReqNewTopics]);
+      requestTopic();
+   }, [requestTopic]);
 
    const onSubmit = async (): Promise<void> => {
-      console.log(mode);
-      if (data.content === "" || data.contentName === "" || data.detail === "" || data.kindOfPosts === "" || data.topicName === "") {
+      if (data.content === "" || data.contentName === "" || data.detail === "" || data.kindofPosts === "" || data.topicName === "") {
          alert("정보를 입력하세요");
       } else {
          const result = mode === "write"
             ? await util.savePost(data, csrf)
-            : await util.saveTempPost(data, location.search.split("?")[1], csrf);
+            : mode === "temp"
+               ? await util.saveTempPost(data, Object.values(qs.parse(location.search))[0] as string, csrf)
+               : await util.modifyPost(data, Object.values(qs.parse(location.search))[0] as string, csrf);
          if (result.request.status === 200) history.push("/");
          setNewRequset(true);
       }
    };
 
-   const onTemporaryPost = async (): Promise<void> => {
+   const onSaveTemporaryPost = async (): Promise<void> => {
       const result = await util.temporaryPost(data, csrf);
       if (result.request.status === 200) history.push("/");
    };
 
+   const onDelete = useCallback((target: string) => {
+      (async () => {
+         await util.deleteTempPost(target, csrf);
+      })();
+      const new_temp = temp.filter((e: ITempPost) => e.uid !== target);
+      setTemp(new_temp);
+   }, [temp, csrf]);
 
    return (
       <>
@@ -133,12 +151,12 @@ const Editor = ({ history, location }: any) => {
                         ref={ref} />
          </WriteBox>
          <WriteConditionBox>
-            <SelectTopic onIsChecked={onIsChecked} topic={topic} />
+            <SelectTopic onIsChecked={onIsChecked} topic={topic} checked={data.topicName} />
             <CreateNewTopic topic={topic} token={csrf} onMakeOrDelteTopic={onMakeOrDelteTopic} />
-            <KindOfPosts onCheck={onCheckKindOfPosts} />
+            <KindOfPosts onCheck={onCheckKindOfPosts} checked={data.kindofPosts} />
             <PostsDetail onChangeDetail={onChangeDetail} detailValue={data.detail} />
-            <TextEditBtnBox onSubmit={onSubmit} onTemporaryPost={onTemporaryPost} />
-            <StoragePost temp={temp} />
+            <TextEditBtnBox onSubmit={onSubmit} onSaveTemporaryPost={onSaveTemporaryPost} />
+            <StoragePost temp={temp} onDelete={onDelete} />
          </WriteConditionBox>
       </>
    );

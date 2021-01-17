@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.12.3",
     "@capaj/quill-image-resize-module-react": "^3.0.2",
+    "@google-analytics/data": "^2.1.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
     "@svgr/webpack": "5.4.0",
     "@testing-library/jest-dom": "^5.11.8",
@@ -60,6 +61,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "5.0.2",
+    "qs": "^6.9.6",
     "query-string": "^6.13.8",
     "quill-image-resize-module": "^3.0.0",
     "quill-image-resize-module-react": "^3.0.0",
@@ -126,6 +128,7 @@
   "devDependencies": {
     "@types/dompurify": "^2.2.0",
     "@types/highlight.js": "^10.1.0",
+    "@types/qs": "^6.9.5",
     "@types/react-helmet": "^6.1.0",
     "@types/react-highlight.js": "^1.0.0",
     "@types/react-redux": "^7.1.15",

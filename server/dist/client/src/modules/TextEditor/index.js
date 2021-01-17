@@ -34,7 +34,7 @@ var initialState = {
     contentName: "",
     content: "",
     topicName: "",
-    kindOfPosts: "",
+    kindofPosts: "",
     detail: "",
 };
 function TextEditor(state, action) {
@@ -47,11 +47,11 @@ function TextEditor(state, action) {
         case SET_TOPIC:
             return __assign(__assign({}, state), { topicName: action.payload });
         case SET_KIND_OF_POSTS:
-            return __assign(__assign({}, state), { kindOfPosts: action.payload });
+            return __assign(__assign({}, state), { kindofPosts: action.payload });
         case SET_DETAIL:
             return __assign(__assign({}, state), { detail: action.payload });
         case SET_TEMP_DATA:
-            return __assign(__assign({}, state), { contentName: action.payload.contentName, content: action.payload.content, topicName: action.payload.topicName, kindOfPosts: action.payload.kindOfPosts, detail: action.payload.detail });
+            return __assign(__assign({}, state), { contentName: action.payload.contentName, content: action.payload.content, topicName: action.payload.topicName, kindofPosts: action.payload.kindofPosts, detail: action.payload.detail });
         default:
             return state;
     }

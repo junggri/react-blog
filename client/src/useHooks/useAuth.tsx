@@ -3,18 +3,15 @@ import React, { useEffect, useState } from "react";
 function Auth() {
    const [isSignedIn, setIsSignedIn] = useState(false);
    const initAuth = () => {
-      return window.gapi.auth2.init({
-         client_id: "563986907951-2ju677cmt4dlkqc6lb163puk6hqjb3f6.apps.googleusercontent.com", //paste your client ID here
-         scope: "https://www.googleapis.com/auth/analytics.readonly",
-      });
+      return window.gapi.auth2.init();
    };
 
    const checkSignedIn = () => {
       return new Promise((resolve, reject) => {
-         initAuth() //calls the previous function
+         initAuth()
             .then(() => {
-               const auth = window.gapi.auth2.getAuthInstance(); //returns the GoogleAuth object
-               resolve(auth.isSignedIn.get()); //returns whether the current user is currently signed in
+               const auth = window.gapi.auth2.getAuthInstance();
+               resolve(auth.isSignedIn.get());
             })
             .catch((error: Error) => {
                reject(error);

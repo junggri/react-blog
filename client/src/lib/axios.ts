@@ -27,6 +27,15 @@ const util = {
       });
    },
 
+   modifyPost(data: ITextInitialProps, uid: string, token: string) {
+      return instance({
+         url: "/topic/modify/post",
+         method: "post",
+         data: { data: data, uid: uid },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
    saveTempPost(data: ITextInitialProps, uid: string, token: string) {
       return instance({
          url: "/topic/temp",
@@ -95,6 +104,15 @@ const util = {
          url: `/topic/posts/item`,
          method: "post",
          data: { uid: uid, topic: topic },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
+   deleteTempPost(uid: string, token: string) {
+      return instance({
+         url: "/topic/temp/items",
+         method: "post",
+         data: { uid: uid },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
