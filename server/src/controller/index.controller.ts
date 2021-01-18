@@ -1,10 +1,19 @@
-import { Request, Response, NextFunction } from "express";
-import model from "../model/index.model";
+import { Request, Response } from "express";
+import googleReport from "../lib/googleReport";
 
-interface Controller {}
+interface Controller {
+   getCsrf: (req: Request, res: Response) => void
+   googleCount: (req: Request, res: Response) => void
+}
 
 let indexController: Controller = {
-  //main 화면나올 때 사용하는 로직
+   async getCsrf(req, res) {
+      res.status(200).json({ token: req.csrfToken() });
+   },
+
+   googleCount(req, res) {
+      googleReport(res);
+   },
 };
 
 export default indexController;

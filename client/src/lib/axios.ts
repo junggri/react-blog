@@ -10,6 +10,12 @@ const util = {
       });
    },
 
+   getGACount() {
+      return instance({
+         url: "/api/google/count",
+         method: "get",
+      });
+   },
 
    getTopicName() {
       return instance({

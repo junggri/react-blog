@@ -390,12 +390,13 @@ export const PostsContainerComp = styled.section<Width>`
     word-break:break-all;
     font-size:1.2rem;
     margin-top:50px;   
+    border:1px solid rgba(0,0,0,0.05);
     ${media.tablet`font-size:1rem !important`};
     ${media.mobile`font-size:0.7rem !important`};
     & *{
       white-space: pre-wrap;
       word-break: break-all;
-      line-height: 2.11;
+      line-height: 2.1;
     } 
     & p br{
       display: block;

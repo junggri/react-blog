@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TopMetaBarComp } from "../../styled-comp";
 import { NavLink } from "react-router-dom";
 import { BiLoaderCircle } from "react-icons/bi";
-import useReport from "../../useHooks/useReport";
+import util from "../../lib/axios";
 
 // import { isMobile } from "react-device-detect";
 
-function TopMetaBar({ width, match, login }: { width: number, match: any, login: boolean }) {
-   const ga: any = useReport();
+function TopMetaBar({ width, match }: { width: number, match: any }) {
+   const [count, setCount] = useState<any>(null);
+
+   useEffect(() => {
+      (async () => {
+         const { data } = await util.getGACount();
+         console.log(data);
+      })();
+   }, []);
+
    return (
       <TopMetaBarComp width={width}>
          <section className="topmetabar-list">
@@ -26,27 +34,28 @@ function TopMetaBar({ width, match, login }: { width: number, match: any, login:
                <span>about me</span>
             </NavLink>
          </section>
-         {login &&
          <section className="topmetabar-count">
             <div>
                <span>전체</span>
                <span className="topmetabar-countAll">
-                  {ga
-                     ? <span>{ga.totals[0].values}</span>
-                     : <BiLoaderCircle className="count-loading-icon" />}
+                  : <BiLoaderCircle className="count-loading-icon" />
+                  {/*{ture*/}
+                  {/*   ? <span></span>*/}
+                  {/*   : <BiLoaderCircle className="count-loading-icon" />}*/}
                </span>
             </div>
             <div>|</div>
             <div>
                <span>오늘의 방문자</span>
                <span className="topmetabar-today">
-                  {ga
-                     ? <span>{ga.rows[ga.rows.length - 1].metrics[0].values}</span>
-                     : <BiLoaderCircle className="count-loading-icon" />}
+                  : <BiLoaderCircle className="count-loading-icon" />
+                  {/*{*/}
+                  {/*   ? <span></span>*/}
+                  {/*   : <BiLoaderCircle className="count-loading-icon" />}*/}
                </span>
             </div>
          </section>
-         }
+
          {/*<div className="topmetabar-icons-box">*/}
          {/*   <GoMarkGithub className="icon-github" onClick={() => {*/}
          {/*      window.open("https://github.com/junggri", "_blank");*/}

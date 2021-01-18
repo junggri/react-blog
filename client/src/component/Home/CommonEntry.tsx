@@ -45,7 +45,7 @@ function CommonEntry({ match }: any) {
             keywords={"nodejs 그리고 자바스크립트의 이야기들"}
             description={"자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기"}
             title={"junggri 블로그"} />
-         <TopMetaBar width={width} match={match} login={login} />
+         <TopMetaBar width={width} match={match} />
          {match.path !== "/about" ? <SideBarContainer topic={AllPosts} login={login} /> : null}
          <Route path="/" exact render={() => (
             <EntryPostsContainer

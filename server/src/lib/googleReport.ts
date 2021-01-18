@@ -1,8 +1,10 @@
-let { google } = require("googleapis");
-let ApiKeyFile = require("blog-300812-9987abcdeebb.json");
-let viewID = "ga:235239777";
+import { Response } from "express";
 
-export default function ga() {
+let { google } = require("googleapis");
+let ApiKeyFile = require("blog-300812-46961c51a03e.json");
+let viewID = process.env.VIEW_ID;
+
+export default function googleReport(res: Response) {
    let jwtClient = new google.auth.JWT(ApiKeyFile.client_email, null, ApiKeyFile.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
 
    jwtClient.authorize(function(err: any, tokens: any) {
@@ -14,20 +16,23 @@ export default function ga() {
       queryData(analytics);
    });
 
+
    function queryData(analytics: any) {
       analytics.data.ga.get({
          "auth": jwtClient,
          "ids": viewID,
-         "metrics": "ga:users,ga:sessions",
-         "dimensions:": "ga:date",
          "start-date": "2021-01-03",
          "end-date": "today",
+         "dimensions": "ga:date",
+         "metrics": "ga:users,ga:sessions",
       }, function(err: any, response: any) {
          if (err) {
             console.log(err);
             return;
          }
-         console.log(JSON.stringify(response, null, 4));
+         res.status(200).json({ data: JSON.stringify(response, null, 4) });
+
       });
    }
+
 }

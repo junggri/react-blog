@@ -7,7 +7,7 @@ function CSRF() {
    useEffect(() => {
       (async () => {
          const { data } = await util.getCSRTtoken();
-         setCsrf(data);
+         setCsrf(data.token);
       })();
       return function cleanUp() {
          setCsrf("");

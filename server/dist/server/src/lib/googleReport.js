@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var google = require("googleapis").google;
 var ApiKeyFile = require("blog-300812-46961c51a03e.json");
-var viewID = "ga:235239777";
-function ga() {
+var viewID = process.env.VIEW_ID;
+function googleReport(res) {
     var jwtClient = new google.auth.JWT(ApiKeyFile.client_email, null, ApiKeyFile.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
     jwtClient.authorize(function (err, tokens) {
         if (err) {
@@ -26,9 +26,9 @@ function ga() {
                 console.log(err);
                 return;
             }
-            console.log(JSON.stringify(response, null, 4));
+            res.status(200).json({ data: JSON.stringify(response, null, 4) });
         });
     }
 }
-exports.default = ga;
-//# sourceMappingURL=ga.js.map
+exports.default = googleReport;
+//# sourceMappingURL=googleReport.js.map

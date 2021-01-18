@@ -13,7 +13,6 @@ import topicApi from "./router/topic";
 import adminApi from "./router/admin";
 import cors from "cors";
 import path from "path";
-import ga from "./lib/ga";
 
 
 const app = express();
@@ -52,7 +51,7 @@ app
    .use(express.static(path.join(__dirname, "/../../../build")))
    .use("/contents", express.static(path.join(__dirname, content_path)))
    .use(csrfProtection);
-ga();
+
 
 app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터

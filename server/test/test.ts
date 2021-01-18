@@ -1,19 +1,15 @@
-function ForEach(items, cb) {
-   for (let i = 0; i < items.length; i++) {
-      cb(items[i]);
-   }
-}
+import { ForEach } from "./rot";
 
 const mockCallback = jest.fn(x => 42 + x);
 
 ForEach([0, 1], mockCallback);
 
 
-describe("asd", () => {
-   test("1-1", () => {
-      enum Color {Red, GRree, Blue}
+describe("prac", () => {
+   test("test1", () => {
+      function callback(data) {
+         expect(data).toBe("peanut butter");
+      }
 
-      let a: Color = Color.Blue;
-      expect(a).toBe(2);
    });
 });
