@@ -11,8 +11,9 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
 
    useEffect(() => {
       (async () => {
+         if (count) return;
          const { data } = await util.getGACount();
-         console.log(data);
+         setCount(data);
       })();
    }, []);
 
@@ -38,20 +39,18 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
             <div>
                <span>전체</span>
                <span className="topmetabar-countAll">
-                  : <BiLoaderCircle className="count-loading-icon" />
-                  {/*{ture*/}
-                  {/*   ? <span></span>*/}
-                  {/*   : <BiLoaderCircle className="count-loading-icon" />}*/}
+                  {count !== null
+                     ? <span>{count.data.totalsForAllResults["ga:users"]}</span>
+                     : <BiLoaderCircle className="count-loading-icon" />}
                </span>
             </div>
             <div>|</div>
             <div>
                <span>오늘의 방문자</span>
                <span className="topmetabar-today">
-                  : <BiLoaderCircle className="count-loading-icon" />
-                  {/*{*/}
-                  {/*   ? <span></span>*/}
-                  {/*   : <BiLoaderCircle className="count-loading-icon" />}*/}
+                  {count !== null
+                     ? <span>{count.data.rows[count.data.rows.length - 1][1]}</span>
+                     : <BiLoaderCircle className="count-loading-icon" />}
                </span>
             </div>
          </section>

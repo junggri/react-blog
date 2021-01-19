@@ -7,7 +7,7 @@ var express_1 = __importDefault(require("express"));
 var index_controller_1 = __importDefault(require("../controller/index.controller"));
 var router = express_1.default.Router();
 router.get("/csrf", index_controller_1.default.getCsrf);
-router.get("/google/count", index_controller_1.default.googleCount);
+router.get("/google/count", index_controller_1.default.getGaCount);
 router.post("/check/csrf", function (req, res) {
     res.status(200).json({ state: true });
 });

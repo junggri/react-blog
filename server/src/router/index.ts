@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/csrf", indexController.getCsrf);
 
-router.get("/google/count", indexController.googleCount);
+router.get("/google/count", indexController.getGaCount);
 
 router.post("/check/csrf", (req, res) => {
    res.status(200).json({ state: true });

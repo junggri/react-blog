@@ -20,32 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/test/rot.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/javascript/ga.mjs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useCSRF.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useCSRF.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/ga.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/ga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/ga.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/ga.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/index.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/lib/ga.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/googleReport.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/lib/googleReport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/googleReport.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/test/rot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/rot.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -310,7 +301,10 @@
       <workItem from="1610810087871" duration="288000" />
       <workItem from="1610839190697" duration="5141000" />
       <workItem from="1610877322355" duration="8075000" />
-      <workItem from="1610947304042" duration="8713000" />
+      <workItem from="1610947304042" duration="10031000" />
+      <workItem from="1610979674925" duration="346000" />
+      <workItem from="1611032864086" duration="2160000" />
+      <workItem from="1611042599020" duration="4417000" />
     </task>
     <servers />
   </component>

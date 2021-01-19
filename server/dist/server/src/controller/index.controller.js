@@ -49,8 +49,27 @@ var indexController = {
             });
         });
     },
-    googleCount: function (req, res) {
-        googleReport_1.default(res);
+    getGaCount: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var data, err_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, googleReport_1.default()];
+                    case 1:
+                        data = _a.sent();
+                        res.status(200).json({ data: JSON.parse(data) });
+                        return [3 /*break*/, 3];
+                    case 2:
+                        err_1 = _a.sent();
+                        console.log(err_1);
+                        res.status(404).json({ state: false });
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
     },
 };
 exports.default = indexController;
