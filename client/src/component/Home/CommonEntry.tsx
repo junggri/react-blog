@@ -60,9 +60,9 @@ function CommonEntry({ match }: any) {
             <SpecificTopicContainer
                width={width}
                match={match}
+               posts={AllPosts}
                onGetPosts={getPosts}
                login={login}
-               posts={posts}
             />
          )} />
          <Route path="/about" exact render={() => (

@@ -78,6 +78,10 @@ app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
    console.log(err);
 });
 
-app.listen(app.get("port"), () => {
-   console.log("Express server listening on port " + app.get("port"));
-});
+if (process.env.NODE_ENV !== "test") {
+   app.listen(app.get("port"), () => {
+      console.log("Express server listening on port " + app.get("port"));
+   });
+}
+
+module.exports = app;

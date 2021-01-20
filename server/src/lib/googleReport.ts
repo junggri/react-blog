@@ -1,11 +1,10 @@
 let { google } = require("googleapis");
-let ApiKeyFile = require("blog-300812-46961c51a03e.json");
 let viewID = process.env.VIEW_ID;
 
 export default function googleReport() {
    return new Promise((resolve, reject) => {
 
-      let jwtClient = new google.auth.JWT(ApiKeyFile.client_email, null, ApiKeyFile.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
+      let jwtClient = new google.auth.JWT(process.env.CLIENT_EMAIL, null, process.env.PRIVATE_KEY, ["https://www.googleapis.com/auth/analytics.readonly"], null);
       jwtClient.authorize(function(err: any, tokens: any) {
          if (err) {
             console.log(err);

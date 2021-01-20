@@ -20,23 +20,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/lib/isNewPost.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/2.2f7e9501.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.ce58419b.chunk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/build/static/js/main.ce58419b.chunk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/lib/blog-300812-46961c51a03e.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/javascript/ga.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/controller/index.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/javascript/ga.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.f8656967.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.f8656967.chunk.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.2f7e9501.chunk.js.LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/2.f8656967.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/2.2f7e9501.chunk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/3.57f99c3d.chunk.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/3.74e65d0f.chunk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/3.57f99c3d.chunk.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/3.74e65d0f.chunk.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.1b5b8c11.chunk.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/main.1b5b8c11.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/runtime-main.ec2d0826.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/runtime-main.f4f38eb4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/static/js/runtime-main.ec2d0826.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/static/js/runtime-main.f4f38eb4.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dist/server/src/config/topic.connection.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/config/topic.connection.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/lib/googleReport.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/dist/server/src/router/index.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/server/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/index.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/config/topic.connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/topic.connection.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/lib/googleReport.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/lib/googleReport.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/rot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/rot.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/test/test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +96,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/node_modules/react-quill/dist/quill.snow.css" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/node_modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -93,26 +113,26 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/server/src/config" />
+      <recent name="$PROJECT_DIR$/server/node_modules" />
+      <recent name="$PROJECT_DIR$/server/src/lib" />
+      <recent name="$PROJECT_DIR$/client/public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/lib" />
       <recent name="$PROJECT_DIR$/server/public/image" />
       <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/server/src" />
       <recent name="$PROJECT_DIR$/server/dist" />
-      <recent name="$PROJECT_DIR$/client/src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server/node_modules" />
-      <recent name="$PROJECT_DIR$/server/src/lib" />
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$/client/public" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -305,6 +325,9 @@
       <workItem from="1610979674925" duration="346000" />
       <workItem from="1611032864086" duration="2160000" />
       <workItem from="1611042599020" duration="4417000" />
+      <workItem from="1611057146391" duration="10142000" />
+      <workItem from="1611119443122" duration="2281000" />
+      <workItem from="1611137166822" duration="1407000" />
     </task>
     <servers />
   </component>
@@ -461,8 +484,8 @@
       <screen x="0" y="25" width="1792" height="1038" />
     </state>
     <state x="953" y="483" width="574" height="276" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607745355406" />
-    <state x="561" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1610947882834">
-      <screen x="0" y="25" width="1792" height="1039" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup" timestamp="1611061414282">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1610768474673" />
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
@@ -472,7 +495,7 @@
     <state x="2393" y="248" width="719" height="652" key="search.everywhere.popup/1792.25.1920.1001/0.25.1792.1095@1792.25.1920.1001" timestamp="1608474232755" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@0.25.1792.1039" timestamp="1610879652051" />
-    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1610887521679" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1611061414282" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609405335764" />
     <state x="2393" y="248" width="719" height="651" key="search.everywhere.popup/1792.25.1920.999/0.25.1792.1095@1792.25.1920.999" timestamp="1610025141680" />

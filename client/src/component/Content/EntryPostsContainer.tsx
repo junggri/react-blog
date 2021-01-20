@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { IoColorWand } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
+import isNew from "lib/isNewPost";
 
 interface IEntryPostsContainer {
    width: number,
@@ -23,6 +24,7 @@ const EntryPostsContainer = ({ width, posts, onDelete, login, csrf }: IEntryPost
          {data.map((e: IPostCommonProps) => (
             <EntryPostsItemComp key={e.uid}>
                <span className="item-created">🗓 {e.created}</span>
+               {isNew(e.date) && <span className="post_is_new">new</span>}
                <Link to={`/topic/${e.topic}/${e.uid}`}>
                   <div className="item-contentName">
                      {e.content_name}

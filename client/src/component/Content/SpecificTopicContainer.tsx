@@ -1,31 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SpecificTopicContainerComp, SpecificTopicItemsComp } from "../../styled-comp";
-import { IPostCommonProps, IPostsProps } from "../../modules/Posts/posts.interface";
+import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
 import { Link } from "react-router-dom";
+import isNew from "../../lib/isNewPost";
 
 interface ISpecificTopicContainer {
    width: number;
    match: any
    onGetPosts: (params: string) => void
-   posts: IPostsProps
    login: boolean
+   posts: IAllPost
 }
 
-function SpecificTopicContainer({ width, match, onGetPosts, posts, login }: ISpecificTopicContainer) {
+function SpecificTopicContainer({ width, match, login, posts }: ISpecificTopicContainer) {
    const params = match.params.topic;
+   const [post, setPost] = useState([]);
 
    useEffect(() => {
-      onGetPosts(params);
-   }, [params, onGetPosts]);
-
-   if (!posts.data) return null;
+      setPost((posts as any).data[params]);
+   }, [params, posts]);
 
 
    return (
       <SpecificTopicContainerComp width={width}>
-         {posts.data.map((e: IPostCommonProps) => (
+         {post.map((e: IPostCommonProps) => (
             <SpecificTopicItemsComp key={e.uid}>
                <span className="item-created">🗓 {e.created}</span>
+               {isNew(e.date) && <span className="post_is_new">new</span>}
                <Link to={`/topic/${e.topic}/${e.uid}`}>
                   <div className="item-contentName">
                      {e.content_name}

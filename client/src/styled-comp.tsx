@@ -67,6 +67,14 @@ const postsItemMixin = css`
   position:relative;
   margin-bottom:60px;
   word-break:break-all;
+  & .post_is_new{
+    display: inline-block;
+    position: absolute;
+    margin-left:10px; 
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: #ff6666;
+  }
   & .item-created{
     display: inline-block;
     font-size:1.1rem;
@@ -130,6 +138,7 @@ const postsItemMixin = css`
       cursor: pointer;
     }   
   }
+ 
 `;
 const rotate = keyframes`
   100%{
@@ -288,7 +297,7 @@ export const SideBarPostsContainerComp = (styled.ul`
   & .sidebar-list{
     font-size:1.1rem;
     margin-bottom:15px;
-    padding-bottom:15px;
+    padding-bottom:10px;
     border-bottom: 1px solid black;
     letter-spacing: 1.2px;
     font-weight: 500;
@@ -315,6 +324,17 @@ export const SideBarPostsItemComp = styled(NavLink)<any>`
     display: inline-block;
     font-size:1rem;
     margin-left:5px;
+  }
+  & .topic_is_new{
+    color: #ff6666;
+    font-size:11px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top:1px;
+    z-index: 9;
+    &:hover{
+      font-weight: 600;
+    }
   }
   &[aria-current] {
     color: black;
@@ -390,7 +410,6 @@ export const PostsContainerComp = styled.section<Width>`
     word-break:break-all;
     font-size:1.2rem;
     margin-top:50px;   
-    border:1px solid rgba(0,0,0,0.05);
     ${media.tablet`font-size:1rem !important`};
     ${media.mobile`font-size:0.7rem !important`};
     & *{

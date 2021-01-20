@@ -67,7 +67,10 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     console.log(err);
 });
-app.listen(app.get("port"), function () {
-    console.log("Express server listening on port " + app.get("port"));
-});
+if (process.env.NODE_ENV !== "test") {
+    app.listen(app.get("port"), function () {
+        console.log("Express server listening on port " + app.get("port"));
+    });
+}
+module.exports = app;
 //# sourceMappingURL=app.js.map
