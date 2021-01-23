@@ -3,6 +3,7 @@ import { RootState } from "../modules";
 import { onRequestAllPosts, onRequestPosts, onRequsetPost } from "../modules/Posts";
 import { useCallback } from "react";
 import { clearPost } from "../modules/Posts/lib/PostsAction";
+import { usePreloader } from "../lib/PreloadContext";
 
 export default function usePosts() {
    const dispatch = useDispatch();
@@ -20,10 +21,12 @@ export default function usePosts() {
       dispatch(onRequestAllPosts({}));
    }, [dispatch]);
 
-
    const onClearPost = useCallback(() => {
       dispatch(clearPost());
    }, [dispatch]);
+
+
+   usePreloader([() => dispatch(onRequestAllPosts({}))]);
 
    return {
       AllPosts,

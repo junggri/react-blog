@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { PostsContainerComp } from "../../styled-comp";
-import { ICommonModuleProps } from "../../modules/Common/common.interface";
-import useCommon from "../../useHooks/useCommon";
 import { IPostDataProps, IPostsModuleProps } from "../../modules/Posts/posts.interface";
 import usePosts from "../../useHooks/usePosts";
 import { Link } from "react-router-dom";
@@ -10,10 +8,9 @@ import Highlight from "react-highlight.js";
 import createDOMPurify from "dompurify";
 import ReactHelmet from "../../useHooks/useHelmet";
 
-const DOMPurify = createDOMPurify(window);
+const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
 function PostsContainer({ match }: any) {
-   const { width }: ICommonModuleProps = useCommon();
    const { getPost, post, onClearPost }: IPostsModuleProps = usePosts();
    const { data } = post;
 
@@ -22,13 +19,15 @@ function PostsContainer({ match }: any) {
       return () => onClearPost();
    }, [match.params.topic, match.params.postsId, onClearPost, getPost]);
 
-   const MakeHtml = () => ({ __html: DOMPurify.sanitize((data as IPostDataProps).content) });
+   const MakeHtml = () => ({
+      __html: typeof window === "object" ? (DOMPurify as any).sanitize((data as IPostDataProps).content) : null,
+   });
 
 
    if (!post.data) return null;
 
    return (
-      <PostsContainerComp width={width}>
+      <PostsContainerComp width={1}>
          <ReactHelmet
             keywords={(data as IPostDataProps).result[0].content_name}
             description={(data as IPostDataProps).result[0].detail}

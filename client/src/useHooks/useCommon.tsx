@@ -1,30 +1,38 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
-import { onNewRequset, onSetIsLogin } from "../modules/Common";
+import { getCount, onNewRequset, onSetIsLogin } from "../modules/Common";
+import { usePreloader } from "../lib/PreloadContext";
 
 export default function useCommon() {
    const dispatch = useDispatch();
-
-   const { width, login, loading, newRequest, e } = useSelector((state: RootState) => state.common);
+   const { count, login, loading, newRequest, e } = useSelector((state: RootState) => state.common);
 
    const onSetLogin = useCallback((state: boolean) => {
       dispatch(onSetIsLogin(state));
    }, [dispatch]);
 
    const setNewRequset = useCallback((state: boolean) => {
+      //state true mean state need new Request, false is opposite/**/
       dispatch(onNewRequset(state));
    }, [dispatch]);
-   //state true mean state need new Request, false is opposite
 
+   const onGetGaCount = useCallback(() => {
+      dispatch(getCount());
+   }, [dispatch]);
+
+
+   usePreloader([() => dispatch(getCount())]);
+   // usePreloader([() => dispatch(getCount()), () => dispatch(getCount())]);
 
    return {
-      width,
+      count,
       login,
       loading,
-      e,
       onSetLogin,
       newRequest,
       setNewRequset,
+      onGetGaCount,
+      e,
    };
 }

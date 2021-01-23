@@ -1,6 +1,7 @@
 import connectRedis from "connect-redis";
 import session from "express-session";
 import redis from "redis";
+
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -11,6 +12,7 @@ const _client = redis.createClient({
    host: process.env.REDIS as string,
    port: 6379,
 });
+console.log(process.env);
 
 export const sessionConfig = {
    secret: process.env.SESSEION_KEY as string,

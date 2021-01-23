@@ -12,6 +12,7 @@ let indexController: Controller = {
    },
 
    async getGaCount(req, res) {
+      console.log(2);
       try {
          let data: any = await googleReport();
          res.status(200).json({ data: JSON.parse(data) });

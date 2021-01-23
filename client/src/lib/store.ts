@@ -12,5 +12,7 @@ const devTools =
       ? applyMiddleware(...middleWares)
       : composeWithDevTools(applyMiddleware(...middleWares));
 
-export const store = createStore(rootReducer, devTools);
 
+export const store = typeof window === "object"
+   ? createStore(rootReducer, (window as any).__PRELOADED_STATE__, devTools)
+   : createStore(rootReducer, devTools);

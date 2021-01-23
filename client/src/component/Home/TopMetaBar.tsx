@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { TopMetaBarComp } from "../../styled-comp";
 import { NavLink } from "react-router-dom";
-import { BiLoaderCircle } from "react-icons/bi";
-import util from "../../lib/axios";
 
 // import { isMobile } from "react-device-detect";
 
-function TopMetaBar({ width, match }: { width: number, match: any }) {
-   const [count, setCount] = useState<any>(null);
-
-   useEffect(() => {
-      (async () => {
-         if (count) return;
-         const { data } = await util.getGACount();
-         setCount(data);
-      })();
-   }, []);
-
+function TopMetaBar({ match, count }: { match: any, count: any }) {
+   console.log(count);
    return (
-      <TopMetaBarComp width={width}>
+      <TopMetaBarComp>
          <section className="topmetabar-list">
             <NavLink to="/"
                      className="metaItem"
-                     exact={match.path === "/about"}
+                     exact={match.path === "/"}
                      activeClassName="metaActive">
                <span className='tmb-icon'>🖥 </span>
                <span>blog</span>
@@ -41,7 +30,7 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                <span className="topmetabar-countAll">
                   {count !== null
                      ? <span>{count.data.totalsForAllResults["ga:users"]}</span>
-                     : <BiLoaderCircle className="count-loading-icon" />}
+                     : <span>로딩</span>}
                </span>
             </div>
             <div>|</div>
@@ -50,7 +39,7 @@ function TopMetaBar({ width, match }: { width: number, match: any }) {
                <span className="topmetabar-today">
                   {count !== null
                      ? <span>{count.data.rows[count.data.rows.length - 1][1]}</span>
-                     : <BiLoaderCircle className="count-loading-icon" />}
+                     : <span>로딩</span>}
                </span>
             </div>
          </section>

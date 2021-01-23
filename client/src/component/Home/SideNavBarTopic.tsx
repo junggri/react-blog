@@ -7,14 +7,11 @@ interface ISideBarNavContainer {
 
 
 function SideNavBarTopic({ topic }: ISideBarNavContainer) {
-   // const date1 = new Date(topic.data.dd[0].date);
-   // const now = new Date();
-   // console.log(date1.getDate(), now.getDate());
-
    const onMakeIsNewPost = (date: string) => {
       const date_diff = ((new Date() as any) - (new Date(date) as any)) / (24 * 3600 * 1000);
       return Math.floor(date_diff) <= 2;
    };
+   if (!topic.data) return null;
 
    return (
       <SideBarPostsContainerComp>

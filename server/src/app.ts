@@ -47,8 +47,8 @@ app
    .use(helmet.frameguard({ action: "deny" }))
    .use(cors({ origin: true, credentials: true }))
    .use(bodyParser.urlencoded({ extended: false }))
-   .use(express.static(path.join(__dirname, "/../../../public")))
-   .use(express.static(path.join(__dirname, "/../../../build")))
+   .use(express.static(path.resolve("./public")))
+   .use(express.static(path.resolve("./build")))
    .use("/contents", express.static(path.join(__dirname, content_path)))
    .use(csrfProtection);
 

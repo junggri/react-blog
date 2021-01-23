@@ -5,18 +5,22 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./styles/GlobalStyles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import App from "./shared/App";
-import { Provider } from "react-redux";
-import { store } from "./lib/store";
+import "react-quill/dist/quill.snow.css";
 import "../src/styles/highlight/atom-one-light.css";
+import App from "./shared/App";
+// import { Provider } from "react-redux";
+// import { store } from "./lib/store";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "./lib/store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
-   <>
-      <Provider store={store}>
+   <Provider store={store}>
+      <BrowserRouter>
          <GlobalStyles />
          <App />
-      </Provider>
-   </>,
+      </BrowserRouter>
+   </Provider>,
    document.getElementById("root"),
 );
 

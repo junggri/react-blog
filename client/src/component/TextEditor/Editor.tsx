@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import ReactQuill from "react-quill";
 import WriteTopicName from "component/TextEditor/WriteTopicName";
-import "react-quill/dist/quill.snow.css";
 import util from "../../lib/axios";
 import { formats, modules } from "../../config/textEditor.config";
 import { WriteBox, WriteConditionBox } from "../../styled-comp";
@@ -18,6 +16,7 @@ import qs from "query-string";
 
 
 const Editor = ({ history, location }: any) => {
+   const ReactQuill = typeof window === "object" ? require("react-quill") : () => false;
    const csrf = useCSRF();
    const ref = useRef<any>(null);
    const [mode, setMode] = useState<string>("write");

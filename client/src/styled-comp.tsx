@@ -30,13 +30,14 @@ interface ISideBarThunmbNailComp {
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
 const leftWidth = 165;
+const _width = 58;
 
 interface IEntryContainerComp {
    width: number
 }
 
-export const EntryContainerComp = styled.div<IEntryContainerComp>`
-  width:${props => props.width + "px"};
+export const EntryContainerComp = styled.div`
+  width:${_width + "%"};
   position:relative;
   margin:0 auto;
   ${media.desktop`width:95%`}
@@ -145,13 +146,16 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `;
-export const TopMetaBarComp = styled.section<Width>`
+export const TopMetaBarComp = styled.section`
   position: fixed;
   top:0;
-  width:${props => props.width + "px"};
+  width:${_width + "%"};
   z-index: 999;
-  padding-bottom: 5px;
+  height: 62px;
   background:white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   ${media.tablet`
    width:95%;
   `};
@@ -160,14 +164,13 @@ export const TopMetaBarComp = styled.section<Width>`
   `};
   & .topmetabar-list{
     display: flex;
-    margin-top:20px;
     & .metaItem{  
       padding:5px 2px;
       margin-right: 40px;
       font-size:1.5rem;
       opacity: 0.6;
       font-weight: 500;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.4px;      
       ${media.tablet`
         font-size:1.2rem;
       `};
@@ -175,6 +178,7 @@ export const TopMetaBarComp = styled.section<Width>`
         font-size:0.8rem;
       `}
       & .tmb-icon{
+        font-size: 1.3rem;
         ${media.mobile`
          display:none;
         `};
@@ -201,9 +205,6 @@ export const TopMetaBarComp = styled.section<Width>`
     ${media.mobile`
       display:none;
     `};
-    position: absolute;
-    right:0;
-    top:0;
     height: 100%;
     display: flex;
     align-items: center;

@@ -1,19 +1,18 @@
 import React from "react";
 import { SideBarComp, SideBarMetaDataComp, SideBarThunmbNailComp } from "../../styled-comp";
 import { Link } from "react-router-dom";
-import logo from "../../image/Logo.svg";
+// import logo from "../../image/Logo.svg";
 import { SideNavBarTopic } from "../index";
 import { IAllPost } from "../../modules/Posts/posts.interface";
 
 interface ISideBarNavContainer {
    topic: IAllPost
    login: boolean
-
 }
 
 
 const backGround = {
-   backgroundImage: `url(${logo})`,
+   // backgroundImage: `url(${logo})`,
    backgroundSize: "contain",
    backgroundPosition: "50% 50%",
    backgroundRepeat: "no-repeat",
