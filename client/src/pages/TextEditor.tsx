@@ -1,6 +1,5 @@
 import React from "react";
-import { Editor } from "component";
-import "../../node_modules/react-quill/dist/quill.snow.css";
+import { Editor } from "../component";
 
 
 function TextEditor({ history, location }: any) {

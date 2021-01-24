@@ -24,9 +24,6 @@ var usePreloader = function (resolve) {
         return null;
     if (preloadContext.done)
         return null;
-    resolve.forEach(function (func) {
-        console.log(func());
-        preloadContext.promises.push(Promise.resolve(func()));
-    });
+    preloadContext.promises.push(Promise.resolve(resolve()));
 };
 exports.usePreloader = usePreloader;

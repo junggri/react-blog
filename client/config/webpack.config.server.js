@@ -120,7 +120,7 @@ module.exports = {
                },
                // url-loader 를 위한 설정
                {
-                  test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
+                  test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
                   loader: require.resolve("url-loader"),
                   options: {
                      emitFile: false, // 파일을 따로 저장하지 않는 옵션

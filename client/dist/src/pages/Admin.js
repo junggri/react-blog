@@ -77,9 +77,9 @@ function Admin(_a) {
     var _this = this;
     var history = _a.history;
     var _b = react_1.useState({
-        id: process.env.NODE_ENV === "development" ? "jjuu6933" : "",
-        pwd: process.env.NODE_ENV === "development" ? "wowwjd12!@" : "",
-        number: process.env.NODE_ENV === "development" ? "1" : "",
+        id: "",
+        pwd: "",
+        number: "",
     }), user = _b[0], setUser = _b[1];
     var _c = react_1.useState(false), visivle = _c[0], setVisible = _c[1];
     var _d = react_1.useState(0), number = _d[0], setNumber = _d[1];
@@ -97,11 +97,11 @@ function Admin(_a) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    // console.log(count.current);TODO 3번이상일때 디비에 잠금걸자.
                     setVisible(true);
                     return [4 /*yield*/, axios_1.default.adminLogin(user, csrf)];
                 case 1:
                     data = (_a.sent()).data;
+                    console.log(user, data);
                     if (!data.state)
                         count.current++;
                     else {

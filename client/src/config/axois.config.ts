@@ -6,7 +6,9 @@ dotenv.config();
 
 const instance = axios.create({
    withCredentials: true,
+   baseURL: process.env.NODE_ENV === "development" ? "http://localhost:4000/" : "/",
 });
+
 instance.defaults.headers.common["Content-Type"] = "application/json";
 
 instance.interceptors.request.use(

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var request_1 = __importDefault(require("request"));
 var crypto_js_1 = __importDefault(require("crypto-js"));
+var server_env_json_1 = __importDefault(require("../../../../server.env.json"));
 var resultCode;
 function certifiCation() {
     var randomArray = [];
@@ -14,9 +15,9 @@ function certifiCation() {
     }
     var user_auth_number = parseInt(randomArray.join(""), 10);
     var date = Date.now().toString();
-    var uri = process.env.API_URI;
-    var secretKey = process.env.API_SECRETKEY;
-    var accessKey = process.env.API_ACCESSKEY;
+    var uri = server_env_json_1.default.API_URI;
+    var secretKey = server_env_json_1.default.API_SECRETKEY;
+    var accessKey = server_env_json_1.default.API_ACCESSKEY;
     var method = "POST";
     var space = " ";
     var newLine = "\n";
@@ -45,11 +46,11 @@ function certifiCation() {
         body: {
             type: "SMS",
             countryCode: "82",
-            from: process.env.API_PHONE,
+            from: server_env_json_1.default.API_PHONE,
             content: user_auth_number,
             messages: [
                 {
-                    to: process.env.API_PHONE,
+                    to: server_env_json_1.default.API_PHONE,
                 },
             ],
         },

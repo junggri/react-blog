@@ -5,10 +5,8 @@ import path from "path";
 
 
 function makePath(folderName: string, fileName: string) {
-   let _path = process.env.NODE_ENV === "development"
-      ? `/../../../${folderName}`
-      : `/../../../../../${folderName}`;
-   const filePath = path.join(__dirname, _path, `${fileName}.html`);
+   let _path = path.resolve(`../${folderName}`);
+   const filePath = _path + `/${fileName}.html`;
    return { filePath: filePath, _path: _path };
 }
 

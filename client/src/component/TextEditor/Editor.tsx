@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import WriteTopicName from "component/TextEditor/WriteTopicName";
+
 import util from "../../lib/axios";
 import { formats, modules } from "../../config/textEditor.config";
 import { WriteBox, WriteConditionBox } from "../../styled-comp";
@@ -11,7 +11,7 @@ import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interfac
 import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
 import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import { ITempPost } from "../../interface/index.interface";
-import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox } from "component/index";
+import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox, WriteTopicName } from "../index";
 import qs from "query-string";
 
 

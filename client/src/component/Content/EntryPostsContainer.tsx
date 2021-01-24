@@ -4,40 +4,36 @@ import { Link } from "react-router-dom";
 import { IoColorWand } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
-import isNew from "lib/isNewPost";
+import isNew from "../../lib/isNewPost";
 
 interface IEntryPostsContainer {
-   width: number,
    posts: IAllPost
    onDelete: (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void,
    login: boolean,
    csrf: string
 }
 
-const EntryPostsContainer = ({ width, posts, onDelete, login, csrf }: IEntryPostsContainer) => {
-
+const EntryPostsContainer = ({ posts, onDelete, login, csrf }: IEntryPostsContainer) => {
    if (!posts.data) return null;
    const data = Object.values(posts.data).flat();
 
    return (
-      <EntryPostsContainerComp width={width}>
+      <EntryPostsContainerComp>
          {data.map((e: IPostCommonProps) => (
             <EntryPostsItemComp key={e.uid}>
-               <span className="item-created">🗓 {e.created}</span>
-               {isNew(e.date) && <span className="post_is_new">new</span>}
+               <span className="item-created">🗓
+                  {e.created}
+                  <Link to={`/topic/${e.topic}`}>
+                     <span className="topic_link">{(e.topic).toUpperCase()}</span>
+                  </Link>
+                  {isNew(e.date) && <span className="post_is_new">NEW</span>}
+               </span>
                <Link to={`/topic/${e.topic}/${e.uid}`}>
                   <div className="item-contentName">
-                     {e.content_name}
+                     <span>{e.content_name}</span>
                   </div>
                </Link>
-               <div className="item-detail">🌐 {e.detail}</div>
-               <section className="posts-keyword-box">
-                   <span className="posts-keywords">
-                        <Link to={`/topic/${e.topic}`}>
-                            {e.topic}
-                        </Link>
-                     </span>
-               </section>
+               <div className="item-detail">{e.detail}</div>
                {login &&
                <div className="posts-admin-box" data-id={e.uid} data-topic={e.topic}>
                   <span className='posts-admin-modify'>

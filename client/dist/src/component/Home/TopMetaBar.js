@@ -9,7 +9,6 @@ var react_router_dom_1 = require("react-router-dom");
 // import { isMobile } from "react-device-detect";
 function TopMetaBar(_a) {
     var match = _a.match, count = _a.count;
-    console.log(count);
     return (react_1.default.createElement(styled_comp_1.TopMetaBarComp, null,
         react_1.default.createElement("section", { className: "topmetabar-list" },
             react_1.default.createElement(react_router_dom_1.NavLink, { to: "/", className: "metaItem", exact: match.path === "/", activeClassName: "metaActive" },

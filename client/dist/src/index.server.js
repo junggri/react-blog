@@ -44,9 +44,6 @@ var express_1 = __importDefault(require("express"));
 var path_1 = __importDefault(require("path"));
 var csurf_1 = __importDefault(require("csurf"));
 var server_env_json_1 = __importDefault(require("../server.env.json"));
-var router_1 = __importDefault(require("./server/src/router"));
-var topic_1 = __importDefault(require("./server/src/router/topic"));
-var admin_1 = __importDefault(require("./server/src/router/admin"));
 var PreloadContext_1 = __importDefault(require("./lib/PreloadContext"));
 var react_redux_1 = require("react-redux");
 var store_1 = require("./lib/store");
@@ -62,6 +59,11 @@ var express_session_1 = __importDefault(require("express-session"));
 var session_config_1 = require("./server/src/config/session.config");
 var cookie_parser_1 = __importDefault(require("cookie-parser"));
 var cors_1 = __importDefault(require("cors"));
+var router_1 = __importDefault(require("./server/src/router"));
+var topic_1 = __importDefault(require("./server/src/router/topic"));
+var admin_1 = __importDefault(require("./server/src/router/admin"));
+var styled_components_1 = require("styled-components");
+var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
 // @ts-ignore
 var app = express_1.default();
 app.disable("x-powered-by");
@@ -87,23 +89,22 @@ app
     .use(helmet_1.default.frameguard({ action: "deny" }))
     .use(cors_1.default({ origin: true, credentials: true }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
-    // .use(express.static(path.resolve("./public")))
-    // .use(express.static(path.resolve("./build")))
     .use(csrfProtection);
-var serve = express_1.default.static(path_1.default.resolve("./build"), { index: false });
+app.use("/api", router_1.default); //공통라우터
+app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
+app.use("/admin", admin_1.default);
 var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var context, preloadContext, jsx, e_1, root, stateString, stateScript;
+    var sheet, context, preloadContext, jsx, e_1, root, styles, stateString, stateScript;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                sheet = new styled_components_1.ServerStyleSheet();
                 context = {};
-                preloadContext = {
-                    done: false,
-                    promises: [],
-                };
+                preloadContext = { done: false, promises: [] };
                 jsx = (react_1.default.createElement(PreloadContext_1.default.Provider, { value: preloadContext },
                     react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
                         react_1.default.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
+                            react_1.default.createElement(GlobalStyles_1.default, null),
                             react_1.default.createElement(App_1.default, null)))));
                 server_1.default.renderToStaticMarkup(jsx);
                 _a.label = 1;
@@ -118,19 +119,18 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
                 return [2 /*return*/, res.status(500)];
             case 4:
                 preloadContext.done = true;
-                root = server_1.default.renderToString(jsx);
+                root = server_1.default.renderToString(sheet.collectStyles(jsx));
+                styles = sheet.getStyleTags();
                 stateString = JSON.stringify(store_1.store.getState()).replace(/</g, "\\u003c");
                 stateScript = "<script>__PRELOADED_STATE__=" + stateString + "</script>";
-                res.send(createPage_1.default(root, stateScript));
+                res.send(createPage_1.default(root, stateScript, styles));
                 return [2 /*return*/];
         }
     });
 }); };
-app.use("/api", router_1.default); //공통라우터
-app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
-app.use("/admin", admin_1.default);
+var serve = express_1.default.static(path_1.default.resolve("./build"), { index: false });
 app.use(serve);
-app.use(serverRender);
+app.get("*", serverRender);
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};

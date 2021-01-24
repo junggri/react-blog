@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var admin_connection_1 = __importDefault(require("../config/admin.connection"));
 var crypto_1 = __importDefault(require("crypto"));
 var util_1 = __importDefault(require("util"));
+var server_env_json_1 = __importDefault(require("../../../../server.env.json"));
 var pbkdf2Promise = util_1.default.promisify(crypto_1.default.pbkdf2);
 function cd(state) {
     return state;
@@ -65,7 +66,7 @@ var adminModel = {
                         conn.release();
                         if (!!result.length) return [3 /*break*/, 4];
                         return [2 /*return*/, false];
-                    case 4: return [4 /*yield*/, pbkdf2Promise(data.pwd, result[0].salt, Number(process.env.CRYPTO_ITER), Number(process.env.CRYPTO_NUM), String(process.env.CRYPTO_ALGO))];
+                    case 4: return [4 /*yield*/, pbkdf2Promise(data.pwd, result[0].salt, Number(server_env_json_1.default.CRYPTO_ITER), Number(server_env_json_1.default.CRYPTO_NUM), String(server_env_json_1.default.CRYPTO_ALGO))];
                     case 5:
                         key = _a.sent();
                         return [2 /*return*/, result[0].password === key.toString("base64")];

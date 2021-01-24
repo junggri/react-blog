@@ -61,10 +61,9 @@ function savePost(folderName, data) {
         query = "INSERT INTO post \n                     (uid, topic, content_name, created, file, detail) \n                     VALUES (?,?,?,?,?,?)";
         dep = [uid, data.topicName, data.contentName, dateString, uid + ".html", data.detail];
     }
-    var _path = process.env.NODE_ENV === "development"
-        ? "/../../../" + folderName
-        : "/../../../../../" + folderName;
-    var filePath = path_1.default.join(__dirname, _path, uid + ".html");
+    console.log(path_1.default.resolve("../" + folderName));
+    var _path = path_1.default.resolve("../" + folderName);
+    var filePath = _path + ("/" + uid + ".html");
     return { uid: uid, today: today, dateString: dateString, filePath: filePath, query: query, dep: dep };
 }
 function poolConnction(query, dep) {

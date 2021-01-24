@@ -102,8 +102,8 @@ function CommonEntry(_a) {
     return (react_1.default.createElement(styled_comp_1.EntryContainerComp, null,
         react_1.default.createElement(useHelmet_1.default, { keywords: "nodejs 그리고 자바스크립트의 이야기들", description: "자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기", title: "junggri 블로그" }),
         react_1.default.createElement(TopMetaBar_1.default, { match: match, count: "Asd" }),
-        match.path !== "/about" ? react_1.default.createElement(index_1.SideBarContainer, { topic: AllPosts, login: login }) : null,
-        react_1.default.createElement(react_router_dom_1.Route, { path: "/", exact: true, render: function () { return (react_1.default.createElement(index_1.EntryPostsContainer, { width: 1, posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),
+        react_1.default.createElement(index_1.SideBarContainer, { topic: AllPosts, login: login, location: location }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: "/", exact: true, render: function () { return (react_1.default.createElement(index_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),
         react_1.default.createElement(react_router_dom_1.Route, { path: "/topic/:topic", exact: true, render: function () { return (react_1.default.createElement(index_1.SpecificTopicContainer, { width: 1, match: match, posts: AllPosts, onGetPosts: getPosts, login: login })); } }),
         react_1.default.createElement(react_router_dom_1.Route, { path: "/about", exact: true, render: function () { return (react_1.default.createElement(index_1.AboutContainer, { width: 100 })); } })));
 }

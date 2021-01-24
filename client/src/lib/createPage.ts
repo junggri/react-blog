@@ -11,11 +11,7 @@ const chunks = Object.keys(manifest.files)
    .join("");
 
 
-export default function createPage(root: any, script: any) {
-   let main_css: string = "";
-   manifest.files["main.css"] !== undefined
-      ? main_css = `<link href="${manifest.files["main.css"]}" rel="stylesheet" />`
-      : "";
+export default function createPage(root: any, script: any, styles: any) {
    return `
       <!DOCTYPE html>
       <html lang="en">
@@ -25,7 +21,8 @@ export default function createPage(root: any, script: any) {
          <link href="favicon.ico" rel="icon" />
          <meta content="width=device-width, initial-scale=1" name="viewport" />
          <meta content="http://www.junggri.com/image/og.jpg" data-react-helmet="true" property="og:image" />
-         ${main_css}
+         ${styles}
+         <link href="${manifest.files["main.css"]}" rel="stylesheet" />
          <!--    <link href="%PUBLIC_URL%/logo192.png" rel="apple-touch-icon"/>-->
          <!-- manifest.json provides metadata used when your web app is installed on a
          user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -46,11 +43,9 @@ export default function createPage(root: any, script: any) {
          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186554267-1"></script>
          <script>
                window.dataLayer = window.dataLayer || [];
-         
                function gtag() {
                   dataLayer.push(arguments);
                }
-         
                gtag("js", new Date());
                gtag("config", "UA-186554267-1");
             </script>
@@ -59,8 +54,8 @@ export default function createPage(root: any, script: any) {
          <noscript>You need to enable JavaScript to run this app.</noscript>
          <div id="root">
             ${root}   
-         </div>
-           ${script}
+         </div>    
+          ${script}
            <script src="${manifest.files["runtime-main.js"]}"></script>
            ${chunks}
            <script src="${manifest.files["main.js"]}"></script>  

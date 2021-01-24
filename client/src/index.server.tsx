@@ -3,9 +3,6 @@ import express, { NextFunction, Request, Response } from "express";
 import path from "path";
 import csrf from "csurf";
 import env from "../server.env.json";
-import indexApi from "./server/src/router";
-import topicApi from "./server/src/router/topic";
-import adminApi from "./server/src/router/admin";
 import PreloadContext from "./lib/PreloadContext";
 import { Provider } from "react-redux";
 import { store } from "./lib/store";
@@ -21,8 +18,11 @@ import session from "express-session";
 import { sessionConfig } from "./server/src/config/session.config";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-
-
+import indexApi from "./server/src/router";
+import topicApi from "./server/src/router/topic";
+import adminApi from "./server/src/router/admin";
+import { ServerStyleSheet } from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
 // @ts-ignore
 
 const app = express();
@@ -55,22 +55,22 @@ app
    .use(helmet.frameguard({ action: "deny" }))
    .use(cors({ origin: true, credentials: true }))
    .use(bodyParser.urlencoded({ extended: false }))
-   // .use(express.static(path.resolve("./public")))
-   // .use(express.static(path.resolve("./build")))
    .use(csrfProtection);
 
-const serve = express.static(path.resolve("./build"), { index: false });
+app.use("/api", indexApi); //공통라우터
+app.use("/topic", topicApi); //콘텐츠 관련 라우터
+app.use("/admin", adminApi);
+
 
 const serverRender = async (req: Request, res: Response, next: NextFunction) => {
+   const sheet = new ServerStyleSheet();
    const context = {};
-   const preloadContext: any = {
-      done: false,
-      promises: [],
-   };
+   const preloadContext: any = { done: false, promises: [] };
    const jsx = (
       <PreloadContext.Provider value={preloadContext}>
          <Provider store={store}>
             <StaticRouter location={req.url} context={context}>
+               <GlobalStyles />
                <App />
             </StaticRouter>
          </Provider>
@@ -83,19 +83,16 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
       return res.status(500);
    }
    preloadContext.done = true;
-   const root = ReactDOMServer.renderToString(jsx);
+   const root = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
+   const styles = sheet.getStyleTags();
    const stateString = JSON.stringify(store.getState()).replace(/</g, "\\u003c");
-
    const stateScript = `<script>__PRELOADED_STATE__=${stateString}</script>`;
-
-   res.send(createPage(root, stateScript));
+   res.send(createPage(root, stateScript, styles));
 };
-app.use("/api", indexApi); //공통라우터
-app.use("/topic", topicApi); //콘텐츠 관련 라우터
-app.use("/admin", adminApi);
 
+const serve = express.static(path.resolve("./build"), { index: false });
 app.use(serve);
-app.use(serverRender);
+app.get("*", serverRender);
 
 
 app.use(function(err: any, req: Request, res: Response, next: NextFunction) {

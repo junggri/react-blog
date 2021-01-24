@@ -32,8 +32,6 @@ var serviceWorkerRegistration = __importStar(require("./serviceWorkerRegistratio
 require("react-quill/dist/quill.snow.css");
 require("../src/styles/highlight/atom-one-light.css");
 var App_1 = __importDefault(require("./shared/App"));
-// import { Provider } from "react-redux";
-// import { store } from "./lib/store";
 var react_router_dom_1 = require("react-router-dom");
 var store_1 = require("./lib/store");
 var react_redux_1 = require("react-redux");

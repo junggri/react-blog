@@ -18,10 +18,5 @@ export const usePreloader = (resolve: any) => {
    const preloadContext: any = useContext(PreloadContext);
    if (!preloadContext) return null;
    if (preloadContext.done) return null;
-
-   resolve.forEach((func: any) => {
-      console.log(func());
-      preloadContext.promises.push(Promise.resolve(func()));
-   });
-
+   preloadContext.promises.push(Promise.resolve(resolve()));
 };

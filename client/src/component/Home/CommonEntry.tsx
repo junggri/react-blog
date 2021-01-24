@@ -46,10 +46,9 @@ function CommonEntry({ match }: any) {
             description={"자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기"}
             title={"junggri 블로그"} />
          <TopMetaBar match={match} count={"Asd"} />
-         {match.path !== "/about" ? <SideBarContainer topic={AllPosts} login={login} /> : null}
+         <SideBarContainer topic={AllPosts} login={login} location={location} />
          <Route path="/" exact render={() => (
             <EntryPostsContainer
-               width={1}
                posts={AllPosts}
                onDelete={onDelete}
                login={login}

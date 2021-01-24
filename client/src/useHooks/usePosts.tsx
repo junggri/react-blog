@@ -26,7 +26,7 @@ export default function usePosts() {
    }, [dispatch]);
 
 
-   usePreloader([() => dispatch(onRequestAllPosts({}))]);
+   usePreloader(() => dispatch(onRequestAllPosts({})));
 
    return {
       AllPosts,

@@ -59,7 +59,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var WriteTopicName_1 = __importDefault(require("component/TextEditor/WriteTopicName"));
 var axios_1 = __importDefault(require("../../lib/axios"));
 var textEditor_config_1 = require("../../config/textEditor.config");
 var styled_comp_1 = require("../../styled-comp");
@@ -67,7 +66,7 @@ var useTopic_1 = __importDefault(require("../../useHooks/useTopic"));
 var useTextEdit_1 = __importDefault(require("../../useHooks/useTextEdit"));
 var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
 var useCommon_1 = __importDefault(require("../../useHooks/useCommon"));
-var index_1 = require("component/index");
+var index_1 = require("../index");
 var query_string_1 = __importDefault(require("query-string"));
 var Editor = function (_a) {
     var history = _a.history, location = _a.location;
@@ -236,7 +235,7 @@ var Editor = function (_a) {
     }, [temp, csrf]);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(styled_comp_1.WriteBox, null,
-            react_1.default.createElement(WriteTopicName_1.default, { onNameChange: onNameChange, value: data.contentName }),
+            react_1.default.createElement(index_1.WriteTopicName, { onNameChange: onNameChange, value: data.contentName }),
             react_1.default.createElement(ReactQuill, { theme: "snow", onChange: rteChange, modules: textEditor_config_1.modules, formats: textEditor_config_1.formats, placeholder: "\uC785\uB825\uD558\uC138\uC694.", ref: ref })),
         react_1.default.createElement(styled_comp_1.WriteConditionBox, null,
             react_1.default.createElement(index_1.SelectTopic, { onIsChecked: onIsChecked, topic: topic, checked: data.topicName }),

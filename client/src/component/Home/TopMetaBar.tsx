@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 // import { isMobile } from "react-device-detect";
 
 function TopMetaBar({ match, count }: { match: any, count: any }) {
-   console.log(count);
    return (
       <TopMetaBarComp>
          <section className="topmetabar-list">

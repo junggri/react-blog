@@ -20,143 +20,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/declaration.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/About/AboutContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Content/SpecificTopicContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Home/CommonEntry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBarTopic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Home/TopMetaBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/CreateNewTopic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/Editor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/PostsDetail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/SelectKindOfPosts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/SelectTopic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/StoragePost.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/TextEditBtnBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/WriteTopicName.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/config/axois.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/config/textEditor.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/index.server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/interface/index.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/lib/PreloadContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/lib/axios.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/lib/isNewPost.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/lib/store.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/middleWare/TokenMiddleWare.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Common/common.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Common/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Posts/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Posts/lib/PostsAction.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Posts/lib/PostsUtil.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Posts/posts.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/TextEditor/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/TextEditor/textEdit.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Topic/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/Topic/topic.interface.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/modules/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/pages/Admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/pages/Entry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/pages/Posts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/pages/TextEditor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/reportWebVitals.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/admin.connection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/session.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/temp.connetion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/topic.connection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/admin.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/index.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/accessToken.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/googleReport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/phoneCertification.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/verifyToken.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/admin.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/index.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/router/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/router/topic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/service-worker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/serviceWorkerRegistration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/shared/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/styled-comp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/styles/GlobalStyles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/styles/Media.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useAuth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useCSRF.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useCommon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useHelmet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useLoginFlag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/usePosts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useReport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useTextEdit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useTopic.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/output/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/public/Logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/scripts/build.server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/server.env.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/index.server.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/lib/PreloadContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/lib/createPage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/config/admin.connection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/config/session.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/config/temp.connetion.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/config/topic.connection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/controller/admin.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/lib/accessToken.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/lib/blog-300812-46961c51a03e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/lib/googleReport.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/lib/phoneCertification.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/lib/verifyToken.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/model/admin.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/model/index.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/router/admin.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/router/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/router/topic.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/images/og.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/config/paths.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/config/paths.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/config/webpack.config.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/config/webpack.config.server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/declaration.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/@types/declaration.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Home/CommonEntry.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Home/CommonEntry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Home/TopMetaBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Home/TopMetaBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/TextEditor/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/Editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/config/axois.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/config/axois.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/index.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/index.server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/lib/PreloadContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/PreloadContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/Admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/TextEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/TextEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/lib/phoneCertification.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/phoneCertification.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/admin.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/admin.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/shared/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/shared/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/styled-comp.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/styled-comp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/styles/GlobalStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/styles/GlobalStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/useHooks/useCommon.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useCommon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/useHooks/usePosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/useHooks/usePosts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/output/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/output/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/Logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/images/Logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/server.env.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/server.env.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/CommonEntry.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBarTopic.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/TopMetaBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/textEditor.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/config/axois.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/config/axois.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.server.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/lib/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/common.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/common.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Common/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsUtil.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsUtil.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Topic/topic.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Topic/topic.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/PreloadContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/PreloadContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/createPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/createPage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/TextEditor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/TextEditor.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/admin.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/admin.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/lib/accessToken.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/lib/accessToken.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/lib/phoneCertification.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/lib/phoneCertification.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/model/admin.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/admin.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useCommon.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/config/session.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/config/session.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controller/index.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +119,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/client/node_modules/react-quill/dist/quill.snow.css" />
     <property name="js.last.introduce.type" value="CONST" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/public/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.stylelint" value="true" />
@@ -212,7 +136,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -220,18 +144,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public/images" />
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client/@types" />
       <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$/client/env" />
-      <recent name="$PROJECT_DIR$/client/src/server" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public/images" />
+      <recent name="$PROJECT_DIR$/client/@types" />
       <recent name="$PROJECT_DIR$/client/public" />
       <recent name="$PROJECT_DIR$/client/src/server" />
       <recent name="$PROJECT_DIR$/client" />
-      <recent name="$PROJECT_DIR$/backup" />
-      <recent name="$PROJECT_DIR$/client/src/shared" />
     </key>
   </component>
   <component name="RunManager">
@@ -445,7 +369,8 @@
       <workItem from="1611356543587" duration="7044000" />
       <workItem from="1611363799625" duration="2673000" />
       <workItem from="1611370231837" duration="12638000" />
-      <workItem from="1611393989420" duration="10165000" />
+      <workItem from="1611393989420" duration="13100000" />
+      <workItem from="1611444124553" duration="25345000" />
     </task>
     <servers />
   </component>
@@ -602,9 +527,10 @@
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1040@0.25.1792.1040" timestamp="1606646874427" />
     <state x="545" y="159" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1041@0.25.1792.1041" timestamp="1608175457156" />
     <state x="2376" y="161" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1608216669282" />
-    <state x="2522" y="469" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610801124608">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="681" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611447629354">
+      <screen x="0" y="25" width="1792" height="1039" />
     </state>
+    <state x="681" y="462" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1792.1039@0.25.1792.1039" timestamp="1611447629354" />
     <state x="681" y="463" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1792.1041@0.25.1792.1041" timestamp="1608200784625" />
     <state x="2522" y="469" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1610801124608" />
     <state x="2522" y="445" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1792.25.1920.999/0.25.1792.1095@1792.25.1920.999" timestamp="1610030587504" />

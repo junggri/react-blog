@@ -27,11 +27,10 @@ function savePost(folderName: string, data: ITextInitialProps) {
       dep = [uid, data.topicName, data.contentName, dateString, uid + ".html", data.detail];
    }
 
-   let _path = process.env.NODE_ENV === "development"
-      ? `/../../../${folderName}`
-      : `/../../../../../${folderName}`;
+   console.log(path.resolve(`../${folderName}`));
+   let _path = path.resolve(`../${folderName}`);
 
-   const filePath = path.join(__dirname, _path, `${uid}.html`);
+   const filePath = _path + `/${uid}.html`;
    return { uid, today, dateString, filePath, query, dep };
 }
 

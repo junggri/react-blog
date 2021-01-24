@@ -43,10 +43,8 @@ var topic_model_1 = __importDefault(require("../model/topic.model"));
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
 function makePath(folderName, fileName) {
-    var _path = process.env.NODE_ENV === "development"
-        ? "/../../../" + folderName
-        : "/../../../../../" + folderName;
-    var filePath = path_1.default.join(__dirname, _path, fileName + ".html");
+    var _path = path_1.default.resolve("../" + folderName);
+    var filePath = _path + ("/" + fileName + ".html");
     return { filePath: filePath, _path: _path };
 }
 var contentController = {

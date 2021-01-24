@@ -28,6 +28,7 @@ var dotenv = __importStar(require("dotenv"));
 dotenv.config();
 var instance = axios_1.default.create({
     withCredentials: true,
+    baseURL: process.env.NODE_ENV === "development" ? "http://localhost:4000/" : "/",
 });
 instance.defaults.headers.common["Content-Type"] = "application/json";
 instance.interceptors.request.use(function (config) {

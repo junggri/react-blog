@@ -22,36 +22,33 @@ interface IDeleteTopicIconComp {
    onClick: any
 }
 
-interface ISideBarThunmbNailComp {
-   style: any
-}
 
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
-const leftWidth = 165;
-const _width = 58;
+const leftWidth = 330;
+const _width = typeof window === "object" ? window.screen.width * 0.57 : 1000;
 
 interface IEntryContainerComp {
    width: number
 }
 
 export const EntryContainerComp = styled.div`
-  width:${_width + "%"};
+  width:${_width + "px"};
   position:relative;
   margin:0 auto;
   ${media.desktop`width:95%`}
 `;
 
 
-const postsContainerMixin = css<Width>`
+const postsContainerMixin = css`
   ${media.mobile`
    position:relative;
    padding-left:10px;
    padding-rigth:10px;
   `};
-  margin-top:100px;
-  padding-left:253px; 
+  margin-top:50px;
+  padding-left:${leftWidth + "px"}; 
   width:100%;
   position: absolute;
   top:0;
@@ -68,31 +65,41 @@ const postsItemMixin = css`
   position:relative;
   margin-bottom:60px;
   word-break:break-all;
-  & .post_is_new{
+  & .item-created{  
     display: inline-block;
-    position: absolute;
-    margin-left:10px; 
+    font-size:1rem;
     font-weight: 600;
-    letter-spacing: 1.2px;
-    color: #ff6666;
-  }
-  & .item-created{
-    display: inline-block;
-    font-size:1.1rem;
-    font-weight: 600;
-    opacity: 0.9;
+    opacity: 0.8;
     ${media.tablet`font-size:0.8rem`};
+    & .topic_link{
+      margin-left:6px;
+       color:#f58320;
+    }
+    & .post_is_new{
+      display: inline-block; 
+      font-weight: 600;
+      margin-left:6px;
+      color: #ff6666;
+    }
   }
   & .item-contentName{
     overflow-wrap: break-word;
-    font-size:2.7rem;
+    font-size:2rem;
+    line-height: 2.5rem;
     margin-top:6px;
     letter-spacing: 2px;
-    font-weight: 450 ;
+    font-weight: 450;
     ${media.tablet`
       font-size:2rem;
       margin-top:-4px
     `};
+    & span{
+      &:hover{
+        text-decoration:none; 
+        border-bottom:1px solid black;
+         padding-bottom:1.4px
+      }
+    }
     //white-space:nowrap;
     //overflow: hidden;
     //text-overflow: ellipsis;
@@ -101,26 +108,12 @@ const postsItemMixin = css`
   }
   & .item-detail{
     font-size:1.2rem;
-    margin-top:40px;
+    margin-top:14px;
+    font-weight: 400;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     ${media.tablet`font-size:0.8rem`}
-  }
-  & .posts-keyword-box{
-    margin-top:20px;
-    & .posts-keywords{
-      transition: 0.3s all;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    & .posts-keywords:hover{
-      background: ${lighten(0.07, "#f58320")};
-    }
-  }
-  & .posts-keywords{
-    background: #f58320;
-    color:white;
-    display: inline-block;
-    padding:4px 12px;
-    border-radius: 15px;
-    letter-spacing: 1.2px;
   }
   & .posts-admin-box{
     position: absolute;
@@ -149,7 +142,7 @@ const rotate = keyframes`
 export const TopMetaBarComp = styled.section`
   position: fixed;
   top:0;
-  width:${_width + "%"};
+  width:${_width + "px"};
   z-index: 999;
   height: 62px;
   background:white;
@@ -248,6 +241,26 @@ export const SideBarComp = styled.section`
   ${media.mobile`display:none`};
   position : fixed;
   z-index: 9;
+  margin-top:50px;
+  //border:1px solid black;
+  & .sidebar-item-list{
+    font-weight: 300;
+    margin-top: 40px;
+    & li{
+      margin-bottom:25px;
+      font-size:1.125rem;
+      padding-bottom: 3.4px;
+      &:hover{
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+    & .active{
+      text-decoration: underline;
+      text-underline-position: under;
+      color:red;
+    }
+  }
   & .write-article-btn {
     border: 1px solid rgba(0, 0, 0, 0.2);
     display: inline-block;
@@ -265,31 +278,27 @@ export const SideBarComp = styled.section`
   
 `;
 
-
-export const SideBarThunmbNailComp = styled.div<ISideBarThunmbNailComp>`
+export const SideBarThunmbNailComp = styled.img`
   border:1px solid rgba(0,0,0,0.06);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   position: relative;
-  width:120px;
-  padding-bottom: 120px;
+  width:96px;
+  height: 96px;
   border-radius: 5px;
-  margin-top:100px;
 `;
 
 export const SideBarMetaDataComp = styled.div`
-  margin-top:46px;
+  margin-top:34px;
   & .sidebar-names{
-    font-size:2.2rem;
-    font-weight: 400;
-    letter-spacing:5px;
+    font-size:1.4em;
+    letter-spacing: 0.8px;
+    font-weight: 500;
   }
   & .sidebar-posi{
-    letter-spacing: 2.8px;
-    font-size:1rem;
-    font-weight: 500;
-    &.posi1{
-      margin-top:20px;
-    }
+    font-size:1.1rem;
+    font-weight: 300;
+    margin-top:24px;
+    opacity: 0.7;
   }
 `;
 
@@ -348,7 +357,7 @@ export const SideBarPostsItemComp = styled(NavLink)<any>`
 
 `;
 
-export const EntryPostsContainerComp = styled.div<Width>`
+export const EntryPostsContainerComp = styled.div`
   ${postsContainerMixin}
 `;
 
@@ -454,40 +463,6 @@ export const PostsContainerComp = styled.section<Width>`
 //       margin :0 auto;
 //    }
 // }
-
-export const TopCommonSectionComp = (styled.div<topView>`
-   position: relative;
-   margin: 0 auto;
-   width: ${(props) => props.width + "px"};
-   height: 280px;
-   max-width: ${(props) => props.width + "px"};
-   background-image: url(${props => props.logo});
-   background-repeat:no-repeat ;
-   background-size: contain;
-   background-position: 50% 40%;
-   & .write-article-btn {
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      display: inline-block;
-      padding: 7px 20px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 100;
-      position: absolute;
-      bottom: 30px;
-      right: 30px;
-      transition: all 0.2s;
-   }
-   & .write-article-btn:hover {
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-   }
-   @media (max-width: 1024px) {
-      width:768px;
-   }
-   @media(max-width:768px){
-      width:100%;
-   }
-`);
 
 
 //
@@ -709,7 +684,6 @@ export const SelectKindOfPosts = styled.div`
   display: flex;
   align-items: center;
   & .select-input{
-    width:100px;
     display: inline-block; 
     width:20px;
     height: 20px;
