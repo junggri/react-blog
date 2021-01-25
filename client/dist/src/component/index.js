@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AboutContainer = exports.SpecificTopicContainer = exports.SideNavBarTopic = exports.SideBarContainer = exports.TopMetaBar = exports.EntryPostsContainer = exports.PostsContainer = exports.StoragePost = exports.CreateNewTopic = exports.PostsDetail = exports.KindOfPosts = exports.TextEditBtnBox = exports.WriteTopicName = exports.Editor = exports.SelectTopic = void 0;
+exports.AboutContainer = exports.SpecificTopicContainer = exports.TagsContainer = exports.SideNavBarTopic = exports.SideBarContainer = exports.TopMetaBar = exports.EntryPostsContainer = exports.PostsContainer = exports.StoragePost = exports.CreateNewTopic = exports.PostsDetail = exports.KindOfPosts = exports.TextEditBtnBox = exports.WriteTopicName = exports.Editor = exports.SelectTopic = void 0;
 //write--------------------------------------------------------
 var SelectTopic_1 = require("./TextEditor/SelectTopic");
 Object.defineProperty(exports, "SelectTopic", { enumerable: true, get: function () { return __importDefault(SelectTopic_1).default; } });
@@ -32,6 +32,8 @@ var SideNavBar_1 = require("./Home/SideNavBar");
 Object.defineProperty(exports, "SideBarContainer", { enumerable: true, get: function () { return __importDefault(SideNavBar_1).default; } });
 var SideNavBarTopic_1 = require("./Home/SideNavBarTopic");
 Object.defineProperty(exports, "SideNavBarTopic", { enumerable: true, get: function () { return __importDefault(SideNavBarTopic_1).default; } });
+var TagsContainer_1 = require("./Content/TagsContainer");
+Object.defineProperty(exports, "TagsContainer", { enumerable: true, get: function () { return __importDefault(TagsContainer_1).default; } });
 var SpecificTopicContainer_1 = require("./Content/SpecificTopicContainer");
 Object.defineProperty(exports, "SpecificTopicContainer", { enumerable: true, get: function () { return __importDefault(SpecificTopicContainer_1).default; } });
 var AboutContainer_1 = require("./About/AboutContainer");

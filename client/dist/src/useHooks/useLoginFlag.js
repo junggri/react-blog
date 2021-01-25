@@ -45,6 +45,18 @@ var axios_1 = __importDefault(require("../lib/axios"));
 function LoginFlag() {
     var _this = this;
     var onSetLogin = useCommon_1.default().onSetLogin;
+    var isLogin = function () { return __awaiter(_this, void 0, void 0, function () {
+        var data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, axios_1.default.checkJWTToken()];
+                case 1:
+                    data = (_a.sent()).data;
+                    data.decoded ? onSetLogin(true) : onSetLogin(false);
+                    return [2 /*return*/];
+            }
+        });
+    }); };
     react_1.useEffect(function () {
         (function () { return __awaiter(_this, void 0, void 0, function () {
             var data;

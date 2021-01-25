@@ -19,7 +19,7 @@ var EntryPostsContainer = function (_a) {
             react_1.default.createElement("span", { className: "item-created" },
                 "\uD83D\uDDD3",
                 e.created,
-                react_1.default.createElement(react_router_dom_1.Link, { to: "/topic/" + e.topic },
+                react_1.default.createElement(react_router_dom_1.Link, { to: "/tag/" + e.topic },
                     react_1.default.createElement("span", { className: "topic_link" }, (e.topic).toUpperCase())),
                 isNewPost_1.default(e.date) && react_1.default.createElement("span", { className: "post_is_new" }, "NEW")),
             react_1.default.createElement(react_router_dom_1.Link, { to: "/topic/" + e.topic + "/" + e.uid },

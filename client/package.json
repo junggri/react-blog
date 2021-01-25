@@ -138,8 +138,9 @@
     "build": "cross-env node scripts/build.js",
     "tsc": "tsc -w",
     "server:build": "node scripts/build.server.js",
-    "server": "cross-env NODE_PATH=src NODE_ENV=production NODE_PATH=src REDIS=localhost nodemon output/server.js",
-    "dev": "cross-env NODE_PATH=src NODE_ENV=development REDIS=localhost nodemon --watch src -e ts,tsx --exec ts-node src/index.server.tsx",
+    "server": "cross-env REDIS=redis NODE_ENV=development nodemon output/server.js",
+    "start:build": "cross-env NODE_ENV=production REDIS=redis pm2-runtime output/server.js",
+    "dev": "cross-env NODE_ENV=development REDIS=localhost nodemon --watch src -e ts,tsx --exec ts-node src/index.server.tsx",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

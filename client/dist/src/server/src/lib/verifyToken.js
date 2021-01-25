@@ -40,12 +40,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+var server_env_json_1 = __importDefault(require("../../../../server.env.json"));
 function verify(jwttoken) {
     return __awaiter(this, void 0, void 0, function () {
         var decoded;
         return __generator(this, function (_a) {
             try {
-                decoded = jsonwebtoken_1.default.verify(jwttoken, process.env.JWT_SECRET);
+                decoded = jsonwebtoken_1.default.verify(jwttoken, server_env_json_1.default.JWT_SECRET);
                 return [2 /*return*/, decoded];
             }
             catch (e) {

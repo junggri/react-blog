@@ -7,7 +7,6 @@ function useCommon() {
     var dispatch = react_redux_1.useDispatch();
     var _a = react_redux_1.useSelector(function (state) { return state.common; }), count = _a.count, login = _a.login, loading = _a.loading, newRequest = _a.newRequest, e = _a.e;
     var onSetLogin = react_1.useCallback(function (state) {
-        console.log(state);
         dispatch(Common_1.onSetIsLogin(state));
     }, [dispatch]);
     var setNewRequset = react_1.useCallback(function (state) {

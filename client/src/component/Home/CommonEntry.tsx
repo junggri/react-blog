@@ -17,7 +17,7 @@ function CommonEntry({ match }: any) {
    useLoginFlag();
    const csrf = useCSRF();
    const { login, newRequest, setNewRequset }: ICommonModuleProps = useCommon();
-   const { AllPosts, posts, getPosts, getAllPosts }: IPostsModuleProps = usePosts();
+   const { AllPosts, posts, getPosts, getAllPosts, onClearPost }: IPostsModuleProps = usePosts();
 
    useEffect(() => {
       if (newRequest) {
@@ -57,11 +57,12 @@ function CommonEntry({ match }: any) {
          )} />
          <Route path="/topic/:topic" exact render={() => (
             <SpecificTopicContainer
-               width={1}
                match={match}
                posts={AllPosts}
-               onGetPosts={getPosts}
                login={login}
+               onClearPost={onClearPost}
+               getAllPosts={getAllPosts}
+               newRequest={newRequest}
             />
          )} />
          <Route path="/about" exact render={() => (

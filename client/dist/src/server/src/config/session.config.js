@@ -31,7 +31,7 @@ var dotenv = __importStar(require("dotenv"));
 dotenv.config();
 var RedisStore = connect_redis_1.default(express_session_1.default);
 var _client = redis_1.default.createClient({
-    host: process.env.REDIS,
+    host: process.env.NODE_ENV === "development" ? process.env.REDIS : process.env.REACT_APP_REDIS,
     port: server_env_json_1.default.SESSION_PORT,
 });
 exports.sessionConfig = {

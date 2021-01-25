@@ -42,7 +42,7 @@ export default function Posts(state: IPostInitialState = initialState, action: D
       case GET_POSTS:
       case GET_POSTS_SUCCESS:
       case GET_POSTS_ERROR:
-         return handleAction(GET_POSTS, "posts", true)(state, action);
+         return handleAction(GET_POSTS, "posts", false)(state, action);
       case GET_POST:
       case GET_POST_SUCCESS:
       case GET_POST_ERROR:
@@ -56,6 +56,7 @@ export default function Posts(state: IPostInitialState = initialState, action: D
          return {
             ...state,
             post: reducerUtil.initial(null),
+            posts: reducerUtil.initial(null),
          };
       default :
          return state;

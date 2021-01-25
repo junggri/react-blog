@@ -12,7 +12,6 @@ interface ISideBarNavContainer {
 
 
 function SideBarNavContainer({ topic, login, location }: ISideBarNavContainer) {
-   console.log(login);
    return (
       <SideBarComp>
          <SideBarThunmbNailComp src="/images/og.jpg" />

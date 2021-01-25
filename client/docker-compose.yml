@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  server:
+    #    build: .
+    ports:
+      - "4000:4000"
+    image: jjuu6933/server
+
+  #  server2:
+  #    build: .
+  #    ports:
+  #      - "4001:4000"
+  #    image: jjuu6933/server
+
+  #  server3:
+  #    build: .
+  #    ports:
+  #      - "4002:4000"
+  #    image: jjuu6933/server
+
+  redis:
+    image: redis:alpine
+    command: [ "redis-server", "--bind", "redis", "--port", "6379" ]

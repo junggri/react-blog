@@ -258,7 +258,7 @@ export const SideBarComp = styled.section`
     & .active{
       text-decoration: underline;
       text-underline-position: under;
-      color:red;
+      color:#ff6b6b;
     }
   }
   & .write-article-btn {
@@ -361,7 +361,7 @@ export const EntryPostsContainerComp = styled.div`
   ${postsContainerMixin}
 `;
 
-export const SpecificTopicContainerComp = styled.div<Width>`
+export const SpecificTopicContainerComp = styled.div`
   ${postsContainerMixin};
 `;
 
@@ -510,6 +510,40 @@ export const AdminLoginBoxComp = styled.div`
       padding-left: 10px;
     }
   }
+`;
+
+export const TagsContainerComp = styled.div`
+   ${media.mobile`
+      position:relative;
+      padding-left:10px;
+      padding-rigth:10px;
+    `};
+   margin-top:50px;
+   padding-left:${leftWidth + "px"}; 
+   width:100%;
+   position: absolute;
+   top:0;
+   & .tag-slo{
+    font-size:2.3675rem;
+    margin-bottom: 70px;
+   }
+   & .tags-box{
+    display: flex;
+    flex-direction: column;
+   }
+   & .tag-hash{
+    margin-bottom: 7px;
+    font-weight: 300;
+    color:#3a7dff;
+    font-size:1.135rem;
+    display: inline-flex;
+    align-items: center;
+    padding:2px;
+    &:hover{
+      cursor:pointer;
+      color:#ff6b6b;
+    }
+   }
 `;
 //--------------------------------write---------------------------------------
 

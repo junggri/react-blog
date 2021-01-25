@@ -75,7 +75,7 @@ function CommonEntry(_a) {
     useLoginFlag_1.default();
     var csrf = useCSRF_1.default();
     var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset;
-    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, posts = _c.posts, getPosts = _c.getPosts, getAllPosts = _c.getAllPosts;
+    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, posts = _c.posts, getPosts = _c.getPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost;
     react_1.useEffect(function () {
         if (newRequest) {
             getAllPosts();
@@ -104,7 +104,7 @@ function CommonEntry(_a) {
         react_1.default.createElement(TopMetaBar_1.default, { match: match, count: "Asd" }),
         react_1.default.createElement(index_1.SideBarContainer, { topic: AllPosts, login: login, location: location }),
         react_1.default.createElement(react_router_dom_1.Route, { path: "/", exact: true, render: function () { return (react_1.default.createElement(index_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),
-        react_1.default.createElement(react_router_dom_1.Route, { path: "/topic/:topic", exact: true, render: function () { return (react_1.default.createElement(index_1.SpecificTopicContainer, { width: 1, match: match, posts: AllPosts, onGetPosts: getPosts, login: login })); } }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: "/topic/:topic", exact: true, render: function () { return (react_1.default.createElement(index_1.SpecificTopicContainer, { match: match, posts: AllPosts, login: login, onClearPost: onClearPost, getAllPosts: getAllPosts, newRequest: newRequest })); } }),
         react_1.default.createElement(react_router_dom_1.Route, { path: "/about", exact: true, render: function () { return (react_1.default.createElement(index_1.AboutContainer, { width: 100 })); } })));
 }
 exports.default = CommonEntry;

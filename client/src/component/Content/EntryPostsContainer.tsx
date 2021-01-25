@@ -23,7 +23,7 @@ const EntryPostsContainer = ({ posts, onDelete, login, csrf }: IEntryPostsContai
             <EntryPostsItemComp key={e.uid}>
                <span className="item-created">🗓
                   {e.created}
-                  <Link to={`/topic/${e.topic}`}>
+                  <Link to={`/tag/${e.topic}`}>
                      <span className="topic_link">{(e.topic).toUpperCase()}</span>
                   </Link>
                   {isNew(e.date) && <span className="post_is_new">NEW</span>}

@@ -101,7 +101,6 @@ function Admin(_a) {
                     return [4 /*yield*/, axios_1.default.adminLogin(user, csrf)];
                 case 1:
                     data = (_a.sent()).data;
-                    console.log(user, data);
                     if (!data.state)
                         count.current++;
                     else {

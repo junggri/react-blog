@@ -4,7 +4,7 @@ import ReactHelmet from "../useHooks/useHelmet";
 import { ICommonModuleProps } from "../modules/Common/common.interface";
 import useCommon from "../useHooks/useCommon";
 import usePosts from "../useHooks/usePosts";
-import { EntryPostsContainer, SideBarContainer } from "../component";
+import { EntryPostsContainer, SideBarContainer, SpecificTopicContainer, TagsContainer } from "../component";
 import { IPostsModuleProps } from "../modules/Posts/posts.interface";
 import { Route } from "react-router-dom";
 import util from "../lib/axios";
@@ -13,9 +13,11 @@ import useLoginFlag from "../useHooks/useLoginFlag";
 
 function SSREntry({ match, location }: any) {
    useLoginFlag();
+
    const csrf = useCSRF();
    const { login, count, newRequest, setNewRequset }: ICommonModuleProps = useCommon();
-   const { AllPosts, getAllPosts }: IPostsModuleProps = usePosts();
+   const { AllPosts, getAllPosts, onClearPost }: IPostsModuleProps = usePosts();
+
 
    useEffect(() => {
       if (newRequest) {
@@ -31,8 +33,8 @@ function SSREntry({ match, location }: any) {
          await util.deletePost(uid, topic, csrf);
          getAllPosts();
       })();
-
    }, [csrf, getAllPosts]);
+
    return (
       <>
          <EntryContainerComp>
@@ -50,13 +52,18 @@ function SSREntry({ match, location }: any) {
                   csrf={csrf}
                />
             )} />
-            <Route path="/tags" exact render={() => (
-               <EntryPostsContainer
+            <Route path="/tag/:topic" exact render={() => (
+               <SpecificTopicContainer
+                  match={match}
                   posts={AllPosts}
-                  onDelete={onDelete}
                   login={login}
-                  csrf={csrf}
+                  onClearPost={onClearPost}
+                  getAllPosts={getAllPosts}
+                  newRequest={newRequest}
                />
+            )} />
+            <Route path="/tag" exact render={() => (
+               <TagsContainer Allposts={AllPosts} />
             )} />
          </EntryContainerComp>
       </>

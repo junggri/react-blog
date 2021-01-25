@@ -8,8 +8,9 @@ dotenv.config();
 
 const RedisStore = connectRedis(session);
 
+
 const _client = redis.createClient({
-   host: process.env.REDIS as string,
+   host: process.env.NODE_ENV === "development" ? process.env.REDIS : process.env.REACT_APP_REDIS,
    port: env.SESSION_PORT,
 });
 

@@ -16,6 +16,8 @@ export { default as TopMetaBar } from "./Home/TopMetaBar";
 export { default as SideBarContainer } from "./Home/SideNavBar";
 export { default as SideNavBarTopic } from "./Home/SideNavBarTopic";
 
+export { default as TagsContainer } from "./Content/TagsContainer";
+
 export { default as SpecificTopicContainer } from "./Content/SpecificTopicContainer";
 
 export { default as AboutContainer } from "./About/AboutContainer";

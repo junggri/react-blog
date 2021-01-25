@@ -46,7 +46,7 @@ function Posts(state, action) {
         case exports.GET_POSTS:
         case exports.GET_POSTS_SUCCESS:
         case exports.GET_POSTS_ERROR:
-            return PostsUtil_1.handleAction(exports.GET_POSTS, "posts", true)(state, action);
+            return PostsUtil_1.handleAction(exports.GET_POSTS, "posts", false)(state, action);
         case exports.GET_POST:
         case exports.GET_POST_SUCCESS:
         case exports.GET_POST_ERROR:
@@ -57,7 +57,7 @@ function Posts(state, action) {
         case exports.GET_ALL_POSTS_ERROR:
             return PostsUtil_1.handleAction(exports.GET_ALL_POSTS, "AllPosts", true)(state, action);
         case exports.CLEAR_POST:
-            return __assign(__assign({}, state), { post: PostsUtil_1.reducerUtil.initial(null) });
+            return __assign(__assign({}, state), { post: PostsUtil_1.reducerUtil.initial(null), posts: PostsUtil_1.reducerUtil.initial(null) });
         default:
             return state;
     }
