@@ -24,12 +24,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("core-js/stable");
 require("regenerator-runtime/runtime");
+require("react-app-polyfill/ie9");
+require("react-app-polyfill/ie11");
+require("react-app-polyfill/stable");
 var react_1 = __importDefault(require("react"));
 var react_dom_1 = __importDefault(require("react-dom"));
 var reportWebVitals_1 = __importDefault(require("./reportWebVitals"));
 var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
 var serviceWorkerRegistration = __importStar(require("./serviceWorkerRegistration"));
-require("react-quill/dist/quill.snow.css");
 require("../src/styles/highlight/atom-one-light.css");
 var App_1 = __importDefault(require("./shared/App"));
 var react_router_dom_1 = require("react-router-dom");

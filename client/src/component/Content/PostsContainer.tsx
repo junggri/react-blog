@@ -27,7 +27,7 @@ function PostsContainer({ match }: any) {
    if (!post.data) return null;
 
    return (
-      <PostsContainerComp width={1}>
+      <PostsContainerComp>
          <ReactHelmet
             keywords={(data as IPostDataProps).result[0].content_name}
             description={(data as IPostDataProps).result[0].detail}

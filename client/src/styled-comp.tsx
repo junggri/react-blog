@@ -38,6 +38,7 @@ export const EntryContainerComp = styled.div`
   position:relative;
   margin:0 auto;
   ${media.desktop`width:95%`}
+
 `;
 
 
@@ -73,7 +74,7 @@ const postsItemMixin = css`
     ${media.tablet`font-size:0.8rem`};
     & .topic_link{
       margin-left:6px;
-       color:#f58320;
+      color:#7DC5AF;
     }
     & .post_is_new{
       display: inline-block; 
@@ -256,9 +257,9 @@ export const SideBarComp = styled.section`
       }
     }
     & .active{
-      text-decoration: underline;
-      text-underline-position: under;
-      color:#ff6b6b;
+      //text-decoration: underline;
+      //text-underline-position: under;
+      color:#7DC5AF;
     }
   }
   & .write-article-btn {
@@ -275,7 +276,32 @@ export const SideBarComp = styled.section`
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
-  
+  & .ga-count{
+    display: flex;
+    flex-direction: column;
+    margin-top:62px;
+    padding:4px;
+    font-size:0.9rem; 
+    span{
+      margin-right:10px;
+    }
+    div{
+      font-weight: 300;
+      display: flex;
+      margin-right:6px;
+      align-items: center;    
+      margin-bottom:7px;  
+      & .count-num{
+        font-weight:100;
+        //color:#7DC5AF;
+      }
+    }
+    & .loading-icon{
+      animation: ${rotate} infinite linear 3s;
+      font-size:0.8rem;
+      margin-right:10px;
+    }
+  }
 `;
 
 export const SideBarThunmbNailComp = styled.img`
@@ -373,17 +399,16 @@ export const SpecificTopicItemsComp = styled.div`
   ${postsItemMixin}'
 `;
 
-export const PostsContainerComp = styled.section<Width>`
-  width:48%;
-  border:${props => props.width + "px"}
+export const PostsContainerComp = styled.section`
+  width: ${_width + "px"};
   ${media.desktop`
     width:90%;
   `};
   ${media.tablet`
-    width:85%;
+    width:90%;
   `};
   ${media.mobile`
-    width:80%;
+    width:85%;
   `}; 
   position: relative;
   margin: 0 auto;
@@ -533,8 +558,8 @@ export const TagsContainerComp = styled.div`
    }
    & .tag-hash{
     margin-bottom: 7px;
-    font-weight: 300;
-    color:#3a7dff;
+    font-weight: 400;
+    color:#7DC5AF;;
     font-size:1.135rem;
     display: inline-flex;
     align-items: center;

@@ -27,7 +27,6 @@ function savePost(folderName: string, data: ITextInitialProps) {
       dep = [uid, data.topicName, data.contentName, dateString, uid + ".html", data.detail];
    }
 
-   console.log(path.resolve(`../${folderName}`));
    let _path = path.resolve(`../${folderName}`);
 
    const filePath = _path + `/${uid}.html`;
@@ -119,7 +118,7 @@ const contentModel = {
    },
 
    getDataFromParams: async (params: string) => {
-      const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , created ASC`;
+      const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , date ASC`;
       return await poolConnction(query);
    },
 

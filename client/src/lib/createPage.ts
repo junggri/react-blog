@@ -18,7 +18,6 @@ export default function createPage(root: any, script: any, styles: any) {
       <head>
          <title>정그리의 블로그</title>
          <meta charset="utf-8" />
-         <link href="favicon.ico" rel="icon" />
          <meta content="width=device-width, initial-scale=1" name="viewport" />
          <meta content="http://www.junggri.com/image/og.jpg" data-react-helmet="true" property="og:image" />
          ${styles}

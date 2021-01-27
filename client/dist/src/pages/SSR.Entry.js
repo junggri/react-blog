@@ -73,8 +73,8 @@ function SSREntry(_a) {
     var match = _a.match, location = _a.location;
     useLoginFlag_1.default();
     var csrf = useCSRF_1.default();
-    var _b = useCommon_1.default(), login = _b.login, count = _b.count, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset;
-    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost;
+    var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset, onGetGaCount = _b.onGetGaCount, count = _b.count;
+    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
     react_1.useEffect(function () {
         if (newRequest) {
             getAllPosts();
@@ -96,12 +96,15 @@ function SSREntry(_a) {
             });
         }); })();
     }, [csrf, getAllPosts]);
+    react_1.useEffect(function () {
+        onGetGaCount();
+    }, []);
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(styled_comp_1.EntryContainerComp, null,
             react_1.default.createElement(useHelmet_1.default, { keywords: "nodejs 그리고 자바스크립트의 이야기들", description: "자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기", title: "junggri 블로그" }),
-            react_1.default.createElement(component_1.SideBarContainer, { topic: AllPosts, login: login, location: location }),
+            react_1.default.createElement(component_1.SideBarContainer, { topic: AllPosts, login: login, location: location, count: count }),
             react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post"], exact: true, render: function () { return (react_1.default.createElement(component_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag/:topic", exact: true, render: function () { return (react_1.default.createElement(component_1.SpecificTopicContainer, { match: match, posts: AllPosts, login: login, onClearPost: onClearPost, getAllPosts: getAllPosts, newRequest: newRequest })); } }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag/:topic", exact: true, render: function () { return (react_1.default.createElement(component_1.SpecificTopicContainer, { match: match, posts: posts, login: login, onClearPost: onClearPost, getPosts: getPosts })); } }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/tag", exact: true, render: function () { return (react_1.default.createElement(component_1.TagsContainer, { Allposts: AllPosts })); } }))));
 }
 exports.default = SSREntry;

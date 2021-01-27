@@ -1,9 +1,3 @@
 node_modules
 .git
 test
-scripts
-public
-output
-dist
-config
-@types

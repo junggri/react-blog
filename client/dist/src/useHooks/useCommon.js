@@ -16,11 +16,6 @@ function useCommon() {
     var onGetGaCount = react_1.useCallback(function () {
         dispatch(Common_1.getCount());
     }, [dispatch]);
-    react_1.useEffect(function () {
-        if (count)
-            return;
-        onGetGaCount();
-    }, [onGetGaCount, count]);
     // usePreloader(() => dispatch(getCount()));
     // usePreloader([() => dispatch(getCount()), () => dispatch(getCount())]);
     return {

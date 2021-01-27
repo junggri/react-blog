@@ -3,6 +3,7 @@ const paths = require("./paths");
 const webpack = require("webpack");
 const getClientEnvironment = require("./env");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -151,5 +152,5 @@ module.exports = {
          allowlist: [/@babel/],
       }),
    ],
-   plugins: [new webpack.DefinePlugin(env.stringified)],
+   plugins: [new webpack.DefinePlugin(env.stringified), new MiniCssExtractPlugin({ filename: "_asset.style.css" })],
 };

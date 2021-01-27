@@ -41,7 +41,8 @@ const GlobalStyles = createGlobalStyle`
         font-style : italic;
     }
     .quill{
-        height: ${typeof window === "object" ? "89%" : "0px"};
+        height: 89%;
+       
     }
     .quill img{
         height: auto;

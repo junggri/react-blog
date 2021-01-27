@@ -1,38 +1,38 @@
 import React, { useEffect } from "react";
 import { SpecificTopicContainerComp, SpecificTopicItemsComp } from "../../styled-comp";
-import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
+import { IPostCommonProps, IPostsProps } from "../../modules/Posts/posts.interface";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import isNew from "../../lib/isNewPost";
 import { usePreloader } from "../../lib/PreloadContext";
-import { onRequestAllPosts } from "../../modules/Posts";
-import { useDispatch } from "react-redux";
+import { onRequestPosts } from "../../modules/Posts";
 
 interface ISpecificTopicContainer {
    match: any
    login: boolean
-   posts: IAllPost
+   posts: IPostsProps
    onClearPost: any
-   getAllPosts: any
-   newRequest: boolean
+   getPosts: any
 }
 
-function SpecificTopicContainer({ match, login, posts, onClearPost, getAllPosts, newRequest }: ISpecificTopicContainer) {
+function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: ISpecificTopicContainer) {
    const params = match.params.topic;
    const dispatch = useDispatch();
 
 
    useEffect(() => {
-      if (newRequest) {
-         getAllPosts();
-      }
-   }, [getAllPosts, newRequest]);
+      if (posts.data) return;
+      getPosts(params);
+      return () => onClearPost();
+   }, [params]);
 
-   usePreloader(() => dispatch(onRequestAllPosts({})));
-   if (!posts.data) return null;
+   usePreloader(() => dispatch(onRequestPosts({ params: decodeURI(params) })));
+
+
    return (
       <SpecificTopicContainerComp>
          {posts.data !== null &&
-         (posts.data[params]).map((e: IPostCommonProps) => (
+         (posts.data).map((e: IPostCommonProps) => (
             <SpecificTopicItemsComp key={e.uid}>
                 <span className="item-created">🗓
                    {e.created}

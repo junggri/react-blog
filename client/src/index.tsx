@@ -1,11 +1,13 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import "react-app-polyfill/ie9";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyles from "./styles/GlobalStyles";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import "react-quill/dist/quill.snow.css";
 import "../src/styles/highlight/atom-one-light.css";
 import App from "./shared/App";
 import { BrowserRouter } from "react-router-dom";

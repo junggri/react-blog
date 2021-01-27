@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   server:
-    #    build: .
+    build: .
     ports:
       - "4000:4000"
     image: jjuu6933/server
@@ -11,7 +11,7 @@ services:
   #    ports:
   #      - "4001:4000"
   #    image: jjuu6933/server
-
+  #
   #  server3:
   #    build: .
   #    ports:

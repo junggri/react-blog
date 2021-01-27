@@ -28,7 +28,7 @@ var dotenv = __importStar(require("dotenv"));
 dotenv.config();
 var instance = axios_1.default.create({
     withCredentials: true,
-    baseURL: "http://localhost:4000",
+    baseURL: process.env.REACT_APP_URL,
 });
 instance.defaults.headers.common["Content-Type"] = "application/json";
 instance.interceptors.request.use(function (config) {

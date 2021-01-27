@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-
 import util from "../../lib/axios";
 import { formats, modules } from "../../config/textEditor.config";
 import { WriteBox, WriteConditionBox } from "../../styled-comp";

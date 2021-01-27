@@ -24,25 +24,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var styled_comp_1 = require("../../styled-comp");
+var react_redux_1 = require("react-redux");
 var react_router_dom_1 = require("react-router-dom");
 var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
 var PreloadContext_1 = require("../../lib/PreloadContext");
 var Posts_1 = require("../../modules/Posts");
-var react_redux_1 = require("react-redux");
 function SpecificTopicContainer(_a) {
-    var match = _a.match, login = _a.login, posts = _a.posts, onClearPost = _a.onClearPost, getAllPosts = _a.getAllPosts, newRequest = _a.newRequest;
+    var match = _a.match, login = _a.login, posts = _a.posts, onClearPost = _a.onClearPost, getPosts = _a.getPosts;
     var params = match.params.topic;
     var dispatch = react_redux_1.useDispatch();
     react_1.useEffect(function () {
-        if (newRequest) {
-            getAllPosts();
-        }
-    }, [getAllPosts, newRequest]);
-    PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequestAllPosts({})); });
-    if (!posts.data)
-        return null;
+        if (posts.data)
+            return;
+        getPosts(params);
+        return function () { return onClearPost(); };
+    }, [params]);
+    PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequestPosts({ params: decodeURI(params) })); });
     return (react_1.default.createElement(styled_comp_1.SpecificTopicContainerComp, null, posts.data !== null &&
-        (posts.data[params]).map(function (e) { return (react_1.default.createElement(styled_comp_1.SpecificTopicItemsComp, { key: e.uid },
+        (posts.data).map(function (e) { return (react_1.default.createElement(styled_comp_1.SpecificTopicItemsComp, { key: e.uid },
             react_1.default.createElement("span", { className: "item-created" },
                 "\uD83D\uDDD3",
                 e.created,

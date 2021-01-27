@@ -23,6 +23,8 @@ import topicApi from "./server/src/router/topic";
 import adminApi from "./server/src/router/admin";
 import { ServerStyleSheet } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
+
+
 // @ts-ignore
 
 const app = express();
@@ -91,8 +93,9 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
 };
 
 const serve = express.static(path.resolve("./build"), { index: false });
+
 app.use(serve);
-app.get("*", serverRender);
+app.use(serverRender);
 
 
 app.use(function(err: any, req: Request, res: Response, next: NextFunction) {

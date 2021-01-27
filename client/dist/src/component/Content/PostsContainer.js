@@ -44,7 +44,7 @@ function PostsContainer(_a) {
     }); };
     if (!post.data)
         return null;
-    return (react_1.default.createElement(styled_comp_1.PostsContainerComp, { width: 1 },
+    return (react_1.default.createElement(styled_comp_1.PostsContainerComp, null,
         react_1.default.createElement(useHelmet_1.default, { keywords: data.result[0].content_name, description: data.result[0].detail, title: data.result[0].content_name }),
         react_1.default.createElement("div", { className: "posts-container-iconbox" },
             react_1.default.createElement(react_router_dom_1.Link, { to: "/" },

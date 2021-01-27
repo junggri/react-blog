@@ -61,7 +61,6 @@ function savePost(folderName, data) {
         query = "INSERT INTO post \n                     (uid, topic, content_name, created, file, detail) \n                     VALUES (?,?,?,?,?,?)";
         dep = [uid, data.topicName, data.contentName, dateString, uid + ".html", data.detail];
     }
-    console.log(path_1.default.resolve("../" + folderName));
     var _path = path_1.default.resolve("../" + folderName);
     var filePath = _path + ("/" + uid + ".html");
     return { uid: uid, today: today, dateString: dateString, filePath: filePath, query: query, dep: dep };
@@ -233,7 +232,7 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "select * from " + params + " order by field(kindofPosts,'notice','posts') , created ASC";
+                    query = "select * from " + params + " order by field(kindofPosts,'notice','posts') , date ASC";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }

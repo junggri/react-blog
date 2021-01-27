@@ -15,8 +15,8 @@ function SSREntry({ match, location }: any) {
    useLoginFlag();
 
    const csrf = useCSRF();
-   const { login, count, newRequest, setNewRequset }: ICommonModuleProps = useCommon();
-   const { AllPosts, getAllPosts, onClearPost }: IPostsModuleProps = usePosts();
+   const { login, newRequest, setNewRequset, onGetGaCount, count }: ICommonModuleProps = useCommon();
+   const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
 
 
    useEffect(() => {
@@ -35,6 +35,10 @@ function SSREntry({ match, location }: any) {
       })();
    }, [csrf, getAllPosts]);
 
+   useEffect(() => {
+      onGetGaCount();
+   }, []);
+
    return (
       <>
          <EntryContainerComp>
@@ -43,7 +47,7 @@ function SSREntry({ match, location }: any) {
                description={"자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기"}
                title={"junggri 블로그"} />
             {/*<TopMetaBar match={match} count={count} />*/}
-            <SideBarContainer topic={AllPosts} login={login} location={location} />
+            <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
             <Route path={["/", "/post"]} exact render={() => (
                <EntryPostsContainer
                   posts={AllPosts}
@@ -55,11 +59,10 @@ function SSREntry({ match, location }: any) {
             <Route path="/tag/:topic" exact render={() => (
                <SpecificTopicContainer
                   match={match}
-                  posts={AllPosts}
+                  posts={posts}
                   login={login}
                   onClearPost={onClearPost}
-                  getAllPosts={getAllPosts}
-                  newRequest={newRequest}
+                  getPosts={getPosts}
                />
             )} />
             <Route path="/tag" exact render={() => (

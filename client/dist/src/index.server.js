@@ -130,7 +130,7 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
 }); };
 var serve = express_1.default.static(path_1.default.resolve("./build"), { index: false });
 app.use(serve);
-app.get("*", serverRender);
+app.use(serverRender);
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
