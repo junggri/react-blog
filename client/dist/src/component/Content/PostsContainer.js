@@ -33,7 +33,7 @@ var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
-    var _b = usePosts_1.default(), getPost = _b.getPost, post = _b.post, onClearPost = _b.onClearPost;
+    var _b = usePosts_1.default(match), getPost = _b.getPost, post = _b.post, onClearPost = _b.onClearPost;
     var data = post.data;
     react_1.useEffect(function () {
         getPost(match.params.topic, match.params.postsId);

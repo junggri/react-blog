@@ -118,7 +118,7 @@ const contentModel = {
    },
 
    getDataFromParams: async (params: string) => {
-      const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , date ASC`;
+      const query = `select * from ${params} order by field(kindofPosts,'notice','posts') , date DESC`;
       return await poolConnction(query);
    },
 

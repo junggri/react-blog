@@ -4,8 +4,6 @@ import { IPostCommonProps, IPostsProps } from "../../modules/Posts/posts.interfa
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import isNew from "../../lib/isNewPost";
-import { usePreloader } from "../../lib/PreloadContext";
-import { onRequestPosts } from "../../modules/Posts";
 
 interface ISpecificTopicContainer {
    match: any
@@ -20,13 +18,13 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
    const dispatch = useDispatch();
 
 
+   console.log(posts);
+
    useEffect(() => {
-      if (posts.data) return;
+      if (posts.data !== null) return;
       getPosts(params);
       return () => onClearPost();
    }, [params]);
-
-   usePreloader(() => dispatch(onRequestPosts({ params: decodeURI(params) })));
 
 
    return (

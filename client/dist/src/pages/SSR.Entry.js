@@ -74,7 +74,7 @@ function SSREntry(_a) {
     useLoginFlag_1.default();
     var csrf = useCSRF_1.default();
     var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset, onGetGaCount = _b.onGetGaCount, count = _b.count;
-    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
+    var _c = usePosts_1.default(match), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
     react_1.useEffect(function () {
         if (newRequest) {
             getAllPosts();

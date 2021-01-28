@@ -11,7 +11,7 @@ import ReactHelmet from "../../useHooks/useHelmet";
 const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
 function PostsContainer({ match }: any) {
-   const { getPost, post, onClearPost }: IPostsModuleProps = usePosts();
+   const { getPost, post, onClearPost }: IPostsModuleProps = usePosts(match);
    const { data } = post;
 
    useEffect(() => {

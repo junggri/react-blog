@@ -8,7 +8,7 @@ router.get("/contents/name", contentController.getContentName); //show all list 
 
 router.get("/posts/items", contentController.getAllPostsItems);
 
-router.get("/posts/:topic", contentController.getPostsFromTopicName);
+router.get(`/posts/:topic`, contentController.getPostsFromTopicName);
 
 router.get("/:topic/posts/:postsId", contentController.getPostsFromPostsId);
 

@@ -170,7 +170,7 @@ var contentController = {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, topic_model_1.default.getDataFromParams(req.params.topic)];
+                case 0: return [4 /*yield*/, topic_model_1.default.getDataFromParams((req.params.topic))];
                 case 1:
                     result = _a.sent();
                     result.state

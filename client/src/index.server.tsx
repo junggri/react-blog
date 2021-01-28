@@ -23,7 +23,7 @@ import topicApi from "./server/src/router/topic";
 import adminApi from "./server/src/router/admin";
 import { ServerStyleSheet } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
-
+import ReactHelmet from "react-helmet";
 
 // @ts-ignore
 
@@ -87,6 +87,7 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
    preloadContext.done = true;
    const root = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
    const styles = sheet.getStyleTags();
+   const RHelmet = ReactHelmet.renderStatic();
    const stateString = JSON.stringify(store.getState()).replace(/</g, "\\u003c");
    const stateScript = `<script>__PRELOADED_STATE__=${stateString}</script>`;
    res.send(createPage(root, stateScript, styles));

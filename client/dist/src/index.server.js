@@ -64,6 +64,7 @@ var topic_1 = __importDefault(require("./server/src/router/topic"));
 var admin_1 = __importDefault(require("./server/src/router/admin"));
 var styled_components_1 = require("styled-components");
 var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
+var react_helmet_1 = __importDefault(require("react-helmet"));
 // @ts-ignore
 var app = express_1.default();
 app.disable("x-powered-by");
@@ -94,7 +95,7 @@ app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use("/admin", admin_1.default);
 var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var sheet, context, preloadContext, jsx, e_1, root, styles, stateString, stateScript;
+    var sheet, context, preloadContext, jsx, e_1, root, styles, RHelmet, stateString, stateScript;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -121,6 +122,7 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
                 preloadContext.done = true;
                 root = server_1.default.renderToString(sheet.collectStyles(jsx));
                 styles = sheet.getStyleTags();
+                RHelmet = react_helmet_1.default.renderStatic();
                 stateString = JSON.stringify(store_1.store.getState()).replace(/</g, "\\u003c");
                 stateScript = "<script>__PRELOADED_STATE__=" + stateString + "</script>";
                 res.send(createPage_1.default(root, stateScript, styles));

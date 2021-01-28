@@ -16,7 +16,7 @@ function SSREntry({ match, location }: any) {
 
    const csrf = useCSRF();
    const { login, newRequest, setNewRequset, onGetGaCount, count }: ICommonModuleProps = useCommon();
-   const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
+   const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts(match);
 
 
    useEffect(() => {

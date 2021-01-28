@@ -232,7 +232,7 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "select * from " + params + " order by field(kindofPosts,'notice','posts') , date ASC";
+                    query = "select * from " + params + " order by field(kindofPosts,'notice','posts') , date DESC";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }

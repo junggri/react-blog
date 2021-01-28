@@ -75,7 +75,7 @@ var util = {
     },
     getPostFromParams: function (parmas) {
         return axois_config_1.default({
-            url: "/topic/posts/" + parmas,
+            url: encodeURI("/topic/posts/" + parmas),
             method: "get",
         });
     },

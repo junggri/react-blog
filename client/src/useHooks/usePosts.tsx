@@ -5,12 +5,12 @@ import { useCallback } from "react";
 import { clearPost } from "../modules/Posts/lib/PostsAction";
 import { usePreloader } from "../lib/PreloadContext";
 
-export default function usePosts() {
+export default function usePosts(match: any) {
    const dispatch = useDispatch();
    const { posts, post, AllPosts } = useSelector((state: RootState) => state.posts);
 
    const getPosts = useCallback((params: string) => {
-      dispatch(onRequestPosts({ params }));
+      dispatch(onRequestPosts({ params: decodeURIComponent(params) }));
    }, [dispatch]);
 
    const getPost = useCallback((topic: string, postsId: string) => {
@@ -25,9 +25,8 @@ export default function usePosts() {
       dispatch(clearPost());
    }, [dispatch]);
 
-
    usePreloader(() => dispatch(onRequestAllPosts({})));
-
+   usePreloader(() => dispatch(onRequestPosts({ params: match.params.topic })));
    return {
       AllPosts,
       posts,

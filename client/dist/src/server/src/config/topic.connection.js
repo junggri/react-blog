@@ -63,12 +63,8 @@ var dotenv = __importStar(require("dotenv"));
 var server_env_json_1 = __importDefault(require("../../../../server.env.json"));
 dotenv.config();
 var option = {
-    host: process.env.NODE_ENV === "development"
-        ? server_env_json_1.default.DB_HOST_DEV
-        : server_env_json_1.default.DB_HOST_PROD,
-    user: process.env.NODE_ENV === "development"
-        ? server_env_json_1.default.DB_USER_DEV
-        : server_env_json_1.default.DB_USER_PROD,
+    host: process.env.REACT_APP_DB_HOST,
+    user: process.env.REACT_APP_DB_USER,
     password: server_env_json_1.default.DB_PWD,
     database: server_env_json_1.default.DB_DATABASE2,
     connectionLimit: 40,
