@@ -13,12 +13,15 @@ import App from "./shared/App";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./lib/store";
 import { Provider } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.render(
    <Provider store={store}>
       <BrowserRouter>
-         <GlobalStyles />
-         <App />
+         <HelmetProvider>
+            <GlobalStyles />
+            <App />
+         </HelmetProvider>
       </BrowserRouter>
    </Provider>,
    document.getElementById("root"),

@@ -84,7 +84,7 @@ const util = {
 
    getPostFromParams(parmas: string) {
       return instance({
-         url: encodeURI(`/topic/posts/${parmas}`),
+         url: `/topic/posts/${encodeURIComponent(parmas)}`,
          method: "get",
       });
    },

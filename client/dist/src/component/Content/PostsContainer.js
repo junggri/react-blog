@@ -33,7 +33,7 @@ var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
-    var _b = usePosts_1.default(match), getPost = _b.getPost, post = _b.post, onClearPost = _b.onClearPost;
+    var _b = usePosts_1.default(), getPost = _b.getPost, post = _b.post, onClearPost = _b.onClearPost;
     var data = post.data;
     react_1.useEffect(function () {
         getPost(match.params.topic, match.params.postsId);
@@ -45,7 +45,7 @@ function PostsContainer(_a) {
     if (!post.data)
         return null;
     return (react_1.default.createElement(styled_comp_1.PostsContainerComp, null,
-        react_1.default.createElement(useHelmet_1.default, { keywords: data.result[0].content_name, description: data.result[0].detail, title: data.result[0].content_name }),
+        react_1.default.createElement(useHelmet_1.default, { title: data.result[0].content_name, keywords: data.result[0].content_name, description: data.result[0].detail }),
         react_1.default.createElement("div", { className: "posts-container-iconbox" },
             react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
                 react_1.default.createElement(cg_1.CgHome, { className: "icon-tohome" }))),

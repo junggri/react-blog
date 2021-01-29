@@ -11,7 +11,7 @@ import ReactHelmet from "../../useHooks/useHelmet";
 const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
 function PostsContainer({ match }: any) {
-   const { getPost, post, onClearPost }: IPostsModuleProps = usePosts(match);
+   const { getPost, post, onClearPost }: IPostsModuleProps = usePosts();
    const { data } = post;
 
    useEffect(() => {
@@ -29,9 +29,9 @@ function PostsContainer({ match }: any) {
    return (
       <PostsContainerComp>
          <ReactHelmet
+            title={(data as IPostDataProps).result[0].content_name}
             keywords={(data as IPostDataProps).result[0].content_name}
             description={(data as IPostDataProps).result[0].detail}
-            title={(data as IPostDataProps).result[0].content_name}
          />
          <div className="posts-container-iconbox">
             <Link to="/">

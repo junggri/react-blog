@@ -87,7 +87,7 @@ let contentController: Controller = {
    },
 
    getPostsFromTopicName: async (req, res) => {
-      let result: any = await model.getDataFromParams((req.params.topic));
+      let result: any = await model.getDataFromParams(decodeURIComponent(req.params.topic));
       result.state
          ? res.status(200).json(result.data)
          : res.status(404).json({ state: false });

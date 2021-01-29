@@ -121,6 +121,7 @@ var createThunk = function (type, cb) {
                     case 7: return [3 /*break*/, 9];
                     case 8:
                         e_1 = _a.sent();
+                        console.error(e_1);
                         dispatch({ type: ERROR, error: e_1 });
                         return [3 /*break*/, 9];
                     case 9: return [2 /*return*/];

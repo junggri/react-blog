@@ -27,30 +27,33 @@ var styled_comp_1 = require("../../styled-comp");
 var react_redux_1 = require("react-redux");
 var react_router_dom_1 = require("react-router-dom");
 var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
+var PreloadContext_1 = require("../../lib/PreloadContext");
+var Posts_1 = require("../../modules/Posts");
+var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 function SpecificTopicContainer(_a) {
     var match = _a.match, login = _a.login, posts = _a.posts, onClearPost = _a.onClearPost, getPosts = _a.getPosts;
     var params = match.params.topic;
     var dispatch = react_redux_1.useDispatch();
-    console.log(posts);
     react_1.useEffect(function () {
-        if (posts.data !== null)
-            return;
         getPosts(params);
         return function () { return onClearPost(); };
     }, [params]);
-    return (react_1.default.createElement(styled_comp_1.SpecificTopicContainerComp, null, posts.data !== null &&
-        (posts.data).map(function (e) { return (react_1.default.createElement(styled_comp_1.SpecificTopicItemsComp, { key: e.uid },
-            react_1.default.createElement("span", { className: "item-created" },
-                "\uD83D\uDDD3",
-                e.created,
-                react_1.default.createElement(react_router_dom_1.Link, { to: "/tag/" + e.topic },
-                    react_1.default.createElement("span", { className: "topic_link" }, (e.topic).toUpperCase())),
-                isNewPost_1.default(e.date) && react_1.default.createElement("span", { className: "post_is_new" }, "NEW")),
-            react_1.default.createElement(react_router_dom_1.Link, { to: "/topic/" + e.topic + "/" + e.uid },
-                react_1.default.createElement("div", { className: "item-contentName" },
-                    react_1.default.createElement("span", null, e.content_name))),
-            react_1.default.createElement("div", { className: "item-detail" }, e.detail),
-            login &&
-                react_1.default.createElement("div", { className: "posts-admin-box", "data-id": e.uid, "data-topic": e.topic }))); })));
+    PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequestPosts({ params: params })); });
+    return (react_1.default.createElement(styled_comp_1.SpecificTopicContainerComp, null,
+        react_1.default.createElement(useHelmet_1.default, { title: params + "\uAC8C\uC2DC\uBB3C\uB4E4\uC785\uB2C8\uB2E4. \uD55C\uBC88\uC77D\uC5B4\uBCF4\uC138\uC694", keywords: "자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드", description: "자바스크립트부터 nodejs 그리고 알고리즘과 함께 성장해나가기를 기원하는 블로그입니다. 점점 더 발전해나가는 기술들을 함께 익히고 정그리 블로그를 찾아주는 사람들에게 감사드립니다." }),
+        posts.data !== null &&
+            (posts.data).map(function (e) { return (react_1.default.createElement(styled_comp_1.SpecificTopicItemsComp, { key: e.uid },
+                react_1.default.createElement("span", { className: "item-created" },
+                    "\uD83D\uDDD3",
+                    e.created,
+                    react_1.default.createElement(react_router_dom_1.Link, { to: "/tag/" + e.topic },
+                        react_1.default.createElement("span", { className: "topic_link" }, (e.topic).toUpperCase())),
+                    isNewPost_1.default(e.date) && react_1.default.createElement("span", { className: "post_is_new" }, "NEW")),
+                react_1.default.createElement(react_router_dom_1.Link, { to: "/topic/" + e.topic + "/" + e.uid },
+                    react_1.default.createElement("div", { className: "item-contentName" },
+                        react_1.default.createElement("span", null, e.content_name))),
+                react_1.default.createElement("div", { className: "item-detail" }, e.detail),
+                login &&
+                    react_1.default.createElement("div", { className: "posts-admin-box", "data-id": e.uid, "data-topic": e.topic }))); })));
 }
 exports.default = SpecificTopicContainer;

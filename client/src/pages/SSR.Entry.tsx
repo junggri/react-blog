@@ -16,7 +16,7 @@ function SSREntry({ match, location }: any) {
 
    const csrf = useCSRF();
    const { login, newRequest, setNewRequset, onGetGaCount, count }: ICommonModuleProps = useCommon();
-   const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts(match);
+   const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
 
 
    useEffect(() => {
@@ -43,9 +43,10 @@ function SSREntry({ match, location }: any) {
       <>
          <EntryContainerComp>
             <ReactHelmet
-               keywords={"nodejs 그리고 자바스크립트의 이야기들"}
-               description={"자바스크립트부터 웹까지의 전반적인 이야기와 나의 성장이야기"}
-               title={"junggri 블로그"} />
+               title={"정그리-junggri의 블로그입니다."}
+               keywords={"자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드"}
+               description={"자바스크립트부터 nodejs 그리고 알고리즘과 함께 성장해나가기를 기원하는 블로그입니다. 점점 더 발전해나가는 기술들을 함께 익히고 정그리 블로그를 찾아주는 사람들에게 감사드립니다."}
+            />
             {/*<TopMetaBar match={match} count={count} />*/}
             <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
             <Route path={["/", "/post"]} exact render={() => (

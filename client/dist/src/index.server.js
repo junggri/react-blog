@@ -64,7 +64,7 @@ var topic_1 = __importDefault(require("./server/src/router/topic"));
 var admin_1 = __importDefault(require("./server/src/router/admin"));
 var styled_components_1 = require("styled-components");
 var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
-var react_helmet_1 = __importDefault(require("react-helmet"));
+var react_helmet_async_1 = require("react-helmet-async");
 // @ts-ignore
 var app = express_1.default();
 app.disable("x-powered-by");
@@ -95,18 +95,20 @@ app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use("/admin", admin_1.default);
 var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var sheet, context, preloadContext, jsx, e_1, root, styles, RHelmet, stateString, stateScript;
+    var sheet, context, helmetContext, preloadContext, jsx, e_1, root, styles, RHelmet, stateString, stateScript;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 sheet = new styled_components_1.ServerStyleSheet();
                 context = {};
+                helmetContext = {};
                 preloadContext = { done: false, promises: [] };
                 jsx = (react_1.default.createElement(PreloadContext_1.default.Provider, { value: preloadContext },
                     react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
                         react_1.default.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
-                            react_1.default.createElement(GlobalStyles_1.default, null),
-                            react_1.default.createElement(App_1.default, null)))));
+                            react_1.default.createElement(react_helmet_async_1.HelmetProvider, { context: helmetContext },
+                                react_1.default.createElement(GlobalStyles_1.default, null),
+                                react_1.default.createElement(App_1.default, null))))));
                 server_1.default.renderToStaticMarkup(jsx);
                 _a.label = 1;
             case 1:
@@ -117,15 +119,16 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _a.sent();
+                console.error(e_1);
                 return [2 /*return*/, res.status(500)];
             case 4:
                 preloadContext.done = true;
                 root = server_1.default.renderToString(sheet.collectStyles(jsx));
                 styles = sheet.getStyleTags();
-                RHelmet = react_helmet_1.default.renderStatic();
+                RHelmet = helmetContext.helmet;
                 stateString = JSON.stringify(store_1.store.getState()).replace(/</g, "\\u003c");
                 stateScript = "<script>__PRELOADED_STATE__=" + stateString + "</script>";
-                res.send(createPage_1.default(root, stateScript, styles));
+                res.send(createPage_1.default(root, stateScript, styles, RHelmet));
                 return [2 /*return*/];
         }
     });

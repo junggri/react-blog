@@ -49,6 +49,7 @@ export const createThunk = (type: string, cb: any) => {
             dispatch({ type: SUCCESS, payload: data });
          }
       } catch (e) {
+         console.error(e);
          dispatch({ type: ERROR, error: e });
       }
    };
