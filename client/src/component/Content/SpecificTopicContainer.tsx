@@ -27,6 +27,7 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
    }, [params]);
 
    usePreloader(() => dispatch(onRequestPosts({ params })));
+
    return (
       <SpecificTopicContainerComp>
          <ReactHelmet

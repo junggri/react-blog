@@ -145,7 +145,7 @@ module.exports = {
       ],
    },
    resolve: {
-      modules: ["node_modules"],
+      modules: ["node_modules", "react-helmet"],
    },
    externals: [
       nodeExternals({

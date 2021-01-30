@@ -16,7 +16,7 @@ var EntryPostsContainer = function (_a) {
         return null;
     var data = Object.values(posts.data).flat();
     return (react_1.default.createElement(styled_comp_1.EntryPostsContainerComp, null,
-        react_1.default.createElement(useHelmet_1.default, { title: "정그리 블로그의 모든 게시글들", keywords: "자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드", description: "자바스크립트부터 nodejs 그리고 알고리즘과 함께 성장해나가기를 기원하는 블로그입니다. 점점 더 발전해나가는 기술들을 함께 익히고 정그리 블로그를 찾아주는 사람들에게 감사드립니다." }),
+        react_1.default.createElement(useHelmet_1.default, { title: "정그리의 블로그입니다.", keywords: "자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드", description: "자바스크립트부터 nodejs 그리고 알고리즘과 함께 성장해나가기를 기원하는 블로그입니다. 점점 더 발전해나가는 기술들을 함께 익히고 정그리 블로그를 찾아주는 사람들에게 감사드립니다." }),
         data.map(function (e) { return (react_1.default.createElement(styled_comp_1.EntryPostsItemComp, { key: e.uid },
             react_1.default.createElement("span", { className: "item-created" },
                 "\uD83D\uDDD3",

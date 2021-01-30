@@ -91,7 +91,7 @@ const util = {
 
    getPostFromPostId(topic: string, postsId: string) {
       return instance({
-         url: `/topic/${topic}/posts/${postsId}`,
+         url: `/topic/${encodeURIComponent(topic)}/posts/${postsId}`,
       });
    },
 

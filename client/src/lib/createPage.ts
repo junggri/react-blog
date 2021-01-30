@@ -25,23 +25,7 @@ export default function createPage(root: any, script: any, styles: any, helmet: 
          <meta content="http://www.junggri.com/image/og.jpg" data-react-helmet="true" property="og:image" />
          ${styles}
          <link href="${manifest.files["main.css"]}" rel="stylesheet" />
-         <!--    <link href="%PUBLIC_URL%/logo192.png" rel="apple-touch-icon"/>-->
-         <!-- manifest.json provides metadata used when your web app is installed on a
-         user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-       -->
-         <!--    <link href="%PUBLIC_URL%/manifest.json" rel="manifest"/>-->
       
-      
-         <!---->
-      
-         <!--
-           Notice the use of %PUBLIC_URL% in the tags above.
-           It will be replaced with the URL of the \`public\` folder during the build.
-           Only files inside the \`public\` folder can be referenced from the HTML.
-           Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-           work correctly both with client-side routing and a non-root public URL.
-           Learn how to configure a non-root public URL by running \`npm run build\`.
-         -->
          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186554267-1"></script>
          <script>
                window.dataLayer = window.dataLayer || [];

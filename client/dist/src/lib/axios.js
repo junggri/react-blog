@@ -81,7 +81,7 @@ var util = {
     },
     getPostFromPostId: function (topic, postsId) {
         return axois_config_1.default({
-            url: "/topic/" + topic + "/posts/" + postsId,
+            url: "/topic/" + encodeURIComponent(topic) + "/posts/" + postsId,
         });
     },
     deleteTopic: function (topicName, token) {

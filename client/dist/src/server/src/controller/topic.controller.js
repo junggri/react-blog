@@ -187,7 +187,7 @@ var contentController = {
                 case 0:
                     _path = makePath("contents", req.params.postsId);
                     _a = req.params, topic = _a.topic, postsId = _a.postsId;
-                    return [4 /*yield*/, topic_model_1.default.getPostFromPostId(topic, postsId)];
+                    return [4 /*yield*/, topic_model_1.default.getPostFromPostId(decodeURIComponent(topic), postsId)];
                 case 1:
                     result = _b.sent();
                     if (!result.state) return [3 /*break*/, 3];

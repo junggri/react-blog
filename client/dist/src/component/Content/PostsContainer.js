@@ -30,11 +30,15 @@ var cg_1 = require("react-icons/cg");
 var react_highlight_js_1 = __importDefault(require("react-highlight.js"));
 var dompurify_1 = __importDefault(require("dompurify"));
 var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
+var PreloadContext_1 = require("../../lib/PreloadContext");
+var Posts_1 = require("../../modules/Posts");
+var react_redux_1 = require("react-redux");
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
     var _b = usePosts_1.default(), getPost = _b.getPost, post = _b.post, onClearPost = _b.onClearPost;
     var data = post.data;
+    var dispatch = react_redux_1.useDispatch();
     react_1.useEffect(function () {
         getPost(match.params.topic, match.params.postsId);
         return function () { return onClearPost(); };
@@ -42,6 +46,7 @@ function PostsContainer(_a) {
     var MakeHtml = function () { return ({
         __html: typeof window === "object" ? DOMPurify.sanitize(data.content) : null,
     }); };
+    PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })); });
     if (!post.data)
         return null;
     return (react_1.default.createElement(styled_comp_1.PostsContainerComp, null,

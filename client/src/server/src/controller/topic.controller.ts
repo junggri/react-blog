@@ -96,7 +96,7 @@ let contentController: Controller = {
    getPostsFromPostsId: async (req, res) => {
       const _path = makePath("contents", req.params.postsId);
       const { topic, postsId } = req.params;
-      let result: any = await model.getPostFromPostId(topic, postsId);
+      let result: any = await model.getPostFromPostId(decodeURIComponent(topic), postsId);
       if (result.state) {
          let content = await fs.readFile(_path.filePath, "utf-8");
          res.status(200).json({ content: content, result: result.data });
