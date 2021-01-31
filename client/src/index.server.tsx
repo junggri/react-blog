@@ -88,12 +88,13 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
       return res.status(500);
    }
    preloadContext.done = true;
-   const root = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
+   const html = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
    const styles = sheet.getStyleTags();
    const RHelmet = (helmetContext as any).helmet;
    const stateString = JSON.stringify(store.getState()).replace(/</g, "\\u003c");
    const stateScript = `<script>__PRELOADED_STATE__=${stateString}</script>`;
-   res.send(createPage(root, stateScript, styles, RHelmet));
+   console.log(html);
+   res.send(createPage(html, stateScript, styles, RHelmet));
 };
 
 const serve = express.static(path.resolve("./build"), { index: false });
