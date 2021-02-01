@@ -41,7 +41,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var admin_model_1 = __importDefault(require("../model/admin.model"));
 var accessToken_1 = __importDefault(require("../lib/accessToken"));
-var verifyToken_1 = __importDefault(require("../lib/verifyToken"));
 var phoneCertification_1 = __importDefault(require("../lib/phoneCertification"));
 var AdminController = {
     login: function (req, res) {
@@ -68,27 +67,8 @@ var AdminController = {
             var token;
             return __generator(this, function (_a) {
                 token = accessToken_1.default();
-                res.cookie("jwt", token, { httpOnly: true, path: "/" });
-                res.status(200).json({ state: true });
+                res.status(200).json({ token: token });
                 return [2 /*return*/];
-            });
-        });
-    },
-    checkJWTToken: function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            var jwttoken, decoded;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        jwttoken = req.cookies.jwt;
-                        return [4 /*yield*/, verifyToken_1.default(jwttoken)];
-                    case 1:
-                        decoded = _a.sent();
-                        decoded
-                            ? res.status(200).json({ decoded: decoded })
-                            : res.status(200).json({ decoded: null });
-                        return [2 /*return*/];
-                }
             });
         });
     },

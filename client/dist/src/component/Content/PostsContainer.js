@@ -36,17 +36,17 @@ var react_redux_1 = require("react-redux");
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
-    var _b = usePosts_1.default(), getPost = _b.getPost, post = _b.post, onClearPost = _b.onClearPost;
+    var _b = usePosts_1.default(), getPost = _b.getPost, post = _b.post, onCleatPostData = _b.onCleatPostData;
     var data = post.data;
     var dispatch = react_redux_1.useDispatch();
+    PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })); });
     react_1.useEffect(function () {
         getPost(match.params.topic, match.params.postsId);
-        return function () { return onClearPost(); };
-    }, [match.params.topic, match.params.postsId, onClearPost, getPost]);
+        return function () { return onCleatPostData(); };
+    }, [match.params.topic, match.params.postsId, onCleatPostData, getPost]);
     var MakeHtml = function () { return ({
         __html: typeof window === "object" ? DOMPurify.sanitize(data.content) : null,
     }); };
-    PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })); });
     if (!post.data)
         return null;
     return (react_1.default.createElement(styled_comp_1.PostsContainerComp, null,

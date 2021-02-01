@@ -20,6 +20,7 @@ export const GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR";
 
 
 export const CLEAR_POST = "data/CLEAR_POST";
+export const CLEAR_POST_DATA = "data/CLEAR_POST_DATA";
 //액션 생성함수를 선언!
 
 export const onRequestPosts = createThunk(GET_POSTS, util.getPostFromParams);
@@ -55,8 +56,12 @@ export default function Posts(state: IPostInitialState = initialState, action: D
       case CLEAR_POST:
          return {
             ...state,
-            post: reducerUtil.initial(null),
             posts: reducerUtil.initial(null),
+         };
+      case CLEAR_POST_DATA:
+         return {
+            ...state,
+            post: reducerUtil.initial(null),
          };
       default :
          return state;

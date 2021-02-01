@@ -20,6 +20,9 @@ function usePosts() {
     var onClearPost = react_1.useCallback(function () {
         dispatch(PostsAction_1.clearPost());
     }, [dispatch]);
+    var onCleatPostData = react_1.useCallback(function () {
+        dispatch(PostsAction_1.clearPostData());
+    }, [dispatch]);
     PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequestAllPosts({})); });
     return {
         AllPosts: AllPosts,
@@ -29,6 +32,7 @@ function usePosts() {
         getPost: getPost,
         getAllPosts: getAllPosts,
         onClearPost: onClearPost,
+        onCleatPostData: onCleatPostData,
     };
 }
 exports.default = usePosts;

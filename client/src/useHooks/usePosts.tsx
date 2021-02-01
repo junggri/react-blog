@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
 import { onRequestAllPosts, onRequestPosts, onRequsetPost } from "../modules/Posts";
 import { useCallback } from "react";
-import { clearPost } from "../modules/Posts/lib/PostsAction";
+import { clearPost, clearPostData } from "../modules/Posts/lib/PostsAction";
 import { usePreloader } from "../lib/PreloadContext";
 
 export default function usePosts() {
@@ -25,6 +25,10 @@ export default function usePosts() {
       dispatch(clearPost());
    }, [dispatch]);
 
+   const onCleatPostData = useCallback(() => {
+      dispatch(clearPostData());
+   }, [dispatch]);
+
    usePreloader(() => dispatch(onRequestAllPosts({})));
 
    return {
@@ -35,5 +39,6 @@ export default function usePosts() {
       getPost,
       getAllPosts,
       onClearPost,
+      onCleatPostData,
    };
 }

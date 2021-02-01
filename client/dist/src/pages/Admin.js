@@ -84,7 +84,7 @@ function Admin(_a) {
     var _c = react_1.useState(false), visivle = _c[0], setVisible = _c[1];
     var _d = react_1.useState(0), number = _d[0], setNumber = _d[1];
     var _e = react_1.useState(false), certification = _e[0], setCertification = _e[1];
-    var count = react_1.useRef(0);
+    var _certifi_num = react_1.useRef(null);
     var csrf = useCSRF_1.default();
     var onChange = function (e) {
         setUser(function (state) {
@@ -101,30 +101,28 @@ function Admin(_a) {
                     return [4 /*yield*/, axios_1.default.adminLogin(user, csrf)];
                 case 1:
                     data = (_a.sent()).data;
-                    if (!data.state)
-                        count.current++;
-                    else {
-                        setCertification(true);
-                    }
+                    setCertification(true);
                     setNumber(data.number);
+                    if (_certifi_num.current !== null) {
+                        _certifi_num.current.focus();
+                    }
                     return [2 /*return*/];
             }
         });
     }); };
     var onCertificationPhone = function () { return __awaiter(_this, void 0, void 0, function () {
+        var data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (!(parseInt(user.number, 10) === number && certification)) return [3 /*break*/, 2];
                     return [4 /*yield*/, axios_1.default.setJwtToken(csrf)];
                 case 1:
-                    _a.sent();
+                    data = (_a.sent()).data;
+                    localStorage.setItem("_jt", data.token);
                     history.push("/");
-                    return [3 /*break*/, 3];
-                case 2:
-                    count.current++;
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
+                    _a.label = 2;
+                case 2: return [2 /*return*/];
             }
         });
     }); };
@@ -134,7 +132,7 @@ function Admin(_a) {
             react_1.default.createElement("input", { type: "password", name: "pwd", value: user.pwd, placeholder: "\uBE44\uBC00\uBC88\uD638", onChange: onChange })),
         visivle &&
             react_1.default.createElement("div", { className: "certification-numberBox" },
-                react_1.default.createElement("input", { type: "text", value: user.number, name: "number", onChange: onChange }),
+                react_1.default.createElement("input", { type: "text", value: user.number, name: "number", onChange: onChange, ref: _certifi_num }),
                 react_1.default.createElement("button", { onClick: onCertificationPhone }, "\uD655\uC778\uD558\uAE30")),
         react_1.default.createElement("button", { className: "login-btn", onClick: onSubmit }, "\uC778\uC99D\uC2DC\uC791\uD558\uAE30")));
 }

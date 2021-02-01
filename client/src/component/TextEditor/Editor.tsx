@@ -12,6 +12,7 @@ import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import { ITempPost } from "../../interface/index.interface";
 import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox, WriteTopicName } from "../index";
 import qs from "query-string";
+import checkUserState from "../../lib/checkUserState";
 
 
 const Editor = ({ history, location }: any) => {
@@ -20,7 +21,7 @@ const Editor = ({ history, location }: any) => {
    const ref = useRef<any>(null);
    const [mode, setMode] = useState<string>("write");
    const [temp, setTemp] = useState([]);
-   const { setNewRequset }: ICommonModuleProps = useCommon();
+   const { setNewRequset, login }: ICommonModuleProps = useCommon();
    const { topic, requestTopic }: ITopicModuleProps = useTopic();
    const {
       data,
@@ -48,16 +49,15 @@ const Editor = ({ history, location }: any) => {
    }, [setTempData]);
 
    useEffect(() => {
-      (async () => {
-         const { data } = await util.checkJWTToken();
-         if (!data.decoded) {
-            history.push("/");
-         } else {
-            requestTopic();
-            ref.current.focus();
-         }
-      })();
-   }, [history, requestTopic]);
+      const token = localStorage.getItem("_jt");
+      const status = checkUserState(token);
+      if (status) {
+         requestTopic();
+         ref.current.focus();
+      } else {
+         history.push("/");
+      }
+   }, [history, requestTopic, login]);
 
 
    const howToSave = useCallback((mode: string, cb: any, _data?: ITempPost) => {

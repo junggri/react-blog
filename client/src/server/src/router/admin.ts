@@ -8,7 +8,5 @@ router.post("/login", AdminController.login);
 
 router.post("/token", AdminController.setToken);
 
-router.get("/token/jwt", AdminController.checkJWTToken);
-
 
 export default router;

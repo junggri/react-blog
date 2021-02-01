@@ -37,12 +37,14 @@ var App_1 = __importDefault(require("./shared/App"));
 var react_router_dom_1 = require("react-router-dom");
 var store_1 = require("./lib/store");
 var react_redux_1 = require("react-redux");
-var react_helmet_async_1 = require("react-helmet-async");
-react_dom_1.default.render(react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
+var mountElement = document.getElementById("root");
+var reactMountFn = (mountElement.childElementCount === 0)
+    ? react_dom_1.default.render
+    : react_dom_1.default.hydrate;
+reactMountFn(react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
     react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
-        react_1.default.createElement(react_helmet_async_1.HelmetProvider, null,
-            react_1.default.createElement(GlobalStyles_1.default, null),
-            react_1.default.createElement(App_1.default, null)))), document.getElementById("root"));
+        react_1.default.createElement(GlobalStyles_1.default, null),
+        react_1.default.createElement(App_1.default, null))), mountElement);
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA

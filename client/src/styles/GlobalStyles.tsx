@@ -90,7 +90,7 @@ const GlobalStyles = createGlobalStyle`
         background: rgb(248 249 250) !important;
     }
     .ql-syntax{
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      font-family: "Fira Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
       padding:30px 30px; 
       border-radius: 4px;
       font-size: 0.9rem;

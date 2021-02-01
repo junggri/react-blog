@@ -1,9 +1,24 @@
-import { CLEAR_POST, GET_ALL_POSTS, GET_ALL_POSTS_ERROR, GET_ALL_POSTS_SECCUESS, GET_POST, GET_POST_ERROR, GET_POST_SUCCESS, GET_POSTS, GET_POSTS_ERROR, GET_POSTS_SUCCESS } from "../index";
+import {
+   CLEAR_POST,
+   CLEAR_POST_DATA,
+   GET_ALL_POSTS,
+   GET_ALL_POSTS_ERROR,
+   GET_ALL_POSTS_SECCUESS,
+   GET_POST,
+   GET_POST_ERROR,
+   GET_POST_SUCCESS,
+   GET_POSTS,
+   GET_POSTS_ERROR,
+   GET_POSTS_SUCCESS,
+} from "../index";
 
 export const clearPost = () => ({
    type: CLEAR_POST,
 });
 
+export const clearPostData = () => ({
+   type: CLEAR_POST_DATA,
+});
 export const onRequest = () => ({
    type: GET_POSTS,
 });

@@ -23,7 +23,7 @@ import topicApi from "./server/src/router/topic";
 import adminApi from "./server/src/router/admin";
 import { ServerStyleSheet } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
-import { HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 // @ts-ignore
 
 const app = express();
@@ -66,20 +66,18 @@ app.use("/admin", adminApi);
 const serverRender = async (req: Request, res: Response, next: NextFunction) => {
    const sheet = new ServerStyleSheet();
    const context = {};
-   const helmetContext = {};
    const preloadContext: any = { done: false, promises: [] };
    const jsx = (
       <PreloadContext.Provider value={preloadContext}>
          <Provider store={store}>
             <StaticRouter location={req.url} context={context}>
-               <HelmetProvider context={helmetContext}>
-                  <GlobalStyles />
-                  <App />
-               </HelmetProvider>
+               <GlobalStyles />
+               <App />
             </StaticRouter>
          </Provider>
       </PreloadContext.Provider>
    );
+
    ReactDOMServer.renderToStaticMarkup(jsx);
    try {
       await Promise.all(preloadContext.promises);
@@ -90,10 +88,9 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
    preloadContext.done = true;
    const html = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
    const styles = sheet.getStyleTags();
-   const RHelmet = (helmetContext as any).helmet;
+   const RHelmet = Helmet.renderStatic();
    const stateString = JSON.stringify(store.getState()).replace(/</g, "\\u003c");
    const stateScript = `<script>__PRELOADED_STATE__=${stateString}</script>`;
-   console.log(html);
    res.send(createPage(html, stateScript, styles, RHelmet));
 };
 

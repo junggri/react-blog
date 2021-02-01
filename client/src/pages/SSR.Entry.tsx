@@ -17,7 +17,6 @@ function SSREntry({ match, location }: any) {
    const { login, newRequest, setNewRequset, onGetGaCount, count }: ICommonModuleProps = useCommon();
    const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
 
-
    useEffect(() => {
       if (newRequest) {
          getAllPosts();
@@ -26,12 +25,14 @@ function SSREntry({ match, location }: any) {
    }, [getAllPosts, newRequest, setNewRequset]);
 
    const onDelete = useCallback((e: React.MouseEvent<HTMLElement>) => {
-      const uid = (e.currentTarget.parentNode as HTMLElement).dataset.id as string;
-      const topic = (e.currentTarget.parentNode as HTMLElement).dataset.topic as string;
-      (async () => {
-         await util.deletePost(uid, topic, csrf);
-         getAllPosts();
-      })();
+      if (confirm("삭제할거야???")) {
+         const uid = (e.currentTarget.parentNode as HTMLElement).dataset.id as string;
+         const topic = (e.currentTarget.parentNode as HTMLElement).dataset.topic as string;
+         (async () => {
+            await util.deletePost(uid, topic, csrf);
+            getAllPosts();
+         })();
+      }
    }, [csrf, getAllPosts]);
 
    useEffect(() => {
@@ -41,9 +42,8 @@ function SSREntry({ match, location }: any) {
    return (
       <>
          <EntryContainerComp>
-            {/*<TopMetaBar match={match} count={count} />*/}
             <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
-            <Route path={["/", "/post"]} exact render={() => (
+            <Route path={["/", "/post"]} exact={true} render={() => (
                <EntryPostsContainer
                   posts={AllPosts}
                   onDelete={onDelete}
@@ -51,7 +51,7 @@ function SSREntry({ match, location }: any) {
                   csrf={csrf}
                />
             )} />
-            <Route path="/tag/:topic" exact render={() => (
+            <Route path="/tag/:topic" exact={true} render={() => (
                <SpecificTopicContainer
                   match={match}
                   posts={posts}
@@ -60,9 +60,10 @@ function SSREntry({ match, location }: any) {
                   getPosts={getPosts}
                />
             )} />
-            <Route path="/tag" exact render={() => (
+            <Route path="/tag" exact={true} render={() => (
                <TagsContainer Allposts={AllPosts} />
             )} />
+
          </EntryContainerComp>
       </>
    );

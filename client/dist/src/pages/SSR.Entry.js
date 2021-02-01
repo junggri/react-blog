@@ -81,19 +81,21 @@ function SSREntry(_a) {
         }
     }, [getAllPosts, newRequest, setNewRequset]);
     var onDelete = react_1.useCallback(function (e) {
-        var uid = e.currentTarget.parentNode.dataset.id;
-        var topic = e.currentTarget.parentNode.dataset.topic;
-        (function () { return __awaiter(_this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1.default.deletePost(uid, topic, csrf)];
-                    case 1:
-                        _a.sent();
-                        getAllPosts();
-                        return [2 /*return*/];
-                }
-            });
-        }); })();
+        if (confirm("삭제할거야???")) {
+            var uid_1 = e.currentTarget.parentNode.dataset.id;
+            var topic_1 = e.currentTarget.parentNode.dataset.topic;
+            (function () { return __awaiter(_this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios_1.default.deletePost(uid_1, topic_1, csrf)];
+                        case 1:
+                            _a.sent();
+                            getAllPosts();
+                            return [2 /*return*/];
+                    }
+                });
+            }); })();
+        }
     }, [csrf, getAllPosts]);
     react_1.useEffect(function () {
         onGetGaCount();

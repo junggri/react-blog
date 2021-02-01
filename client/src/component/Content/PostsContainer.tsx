@@ -14,22 +14,24 @@ import { useDispatch } from "react-redux";
 const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
 function PostsContainer({ match }: any) {
-   const { getPost, post, onClearPost }: IPostsModuleProps = usePosts();
+   const { getPost, post, onCleatPostData }: IPostsModuleProps = usePosts();
    const { data } = post;
    const dispatch = useDispatch();
 
+   usePreloader(() => dispatch(onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })));
+
    useEffect(() => {
       getPost(match.params.topic, match.params.postsId);
-      return () => onClearPost();
-   }, [match.params.topic, match.params.postsId, onClearPost, getPost]);
+      return () => onCleatPostData();
+   }, [match.params.topic, match.params.postsId, onCleatPostData, getPost]);
 
 
    const MakeHtml = () => ({
       __html: typeof window === "object" ? (DOMPurify as any).sanitize((data as IPostDataProps).content) : null,
    });
 
-   usePreloader(() => dispatch(onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })));
    if (!post.data) return null;
+
    return (
       <PostsContainerComp>
          <ReactHelmet

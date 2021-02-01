@@ -1,11 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onRequestAllPostsError = exports.onRequsetAllPostsSuccess = exports.onRequsetAllPosts = exports.onRequestPostError = exports.onRequestPostSuccess = exports.onRequestPost = exports.onRequestError = exports.onRequestSuccuess = exports.onRequest = exports.clearPost = void 0;
+exports.onRequestAllPostsError = exports.onRequsetAllPostsSuccess = exports.onRequsetAllPosts = exports.onRequestPostError = exports.onRequestPostSuccess = exports.onRequestPost = exports.onRequestError = exports.onRequestSuccuess = exports.onRequest = exports.clearPostData = exports.clearPost = void 0;
 var index_1 = require("../index");
 var clearPost = function () { return ({
     type: index_1.CLEAR_POST,
 }); };
 exports.clearPost = clearPost;
+var clearPostData = function () { return ({
+    type: index_1.CLEAR_POST_DATA,
+}); };
+exports.clearPostData = clearPostData;
 var onRequest = function () { return ({
     type: index_1.GET_POSTS,
 }); };

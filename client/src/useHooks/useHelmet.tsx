@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 interface IReactHelmet {
    keywords: string
@@ -8,19 +8,19 @@ interface IReactHelmet {
    img?: string
 }
 
-function ReactHelmet({ title, keywords, description, img = "http://junggri.com/image/og.jpg" }: IReactHelmet) {
+function ReactHelmet({ title, keywords, description }: IReactHelmet) {
    return (
       <Helmet>
          <title>{title}</title>
          <meta name="description" content={description} data-react-helmet="true" />
          <meta name="keywords" content={keywords} data-react-helmet="true" />
-         <meta property="og:image" content={img} data-react-helmet="true" />
-         <meta property="og:url" content={img} data-react-helmet="true" />
+         <meta property="og:title" content={title} data-react-helmet="true" />
+         <meta property="og:description" content={description} data-react-helmet="true" />
+         <meta property="og:image" content="http://junggri.com/images/og.jpg" data-react-helmet="true" />
+         <meta property="og:url" content="http://junggri.com" data-react-helmet="true" />
          <meta property="og:locale" content="ko_KR" data-react-helmet="true" />
          <meta property="og:type" content="website" data-react-helmet="true" />
          <meta property="og:site_name" content="JUNGGRI BLOG" data-react-helmet="true" />
-         <meta property="og:title" content={title} data-react-helmet="true" />
-         <meta property="og:description" content={description} data-react-helmet="true" />
          <meta property="og:image:width" content="1080" data-react-helmet="true" />
          <meta property="og:image:height" content="600" data-react-helmet="true" />
       </Helmet>

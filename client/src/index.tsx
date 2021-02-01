@@ -13,19 +13,21 @@ import App from "./shared/App";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./lib/store";
 import { Provider } from "react-redux";
-import { HelmetProvider } from "react-helmet-async";
 
-ReactDOM.render(
+const mountElement = document.getElementById("root") as HTMLElement;
+const reactMountFn = (mountElement.childElementCount === 0)
+   ? ReactDOM.render
+   : ReactDOM.hydrate;
+
+
+reactMountFn(
    <Provider store={store}>
       <BrowserRouter>
-         <HelmetProvider>
-            <GlobalStyles />
-            <App />
-         </HelmetProvider>
+         <GlobalStyles />
+         <App />
       </BrowserRouter>
-   </Provider>,
-   document.getElementById("root"),
-);
+   </Provider>, mountElement);
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

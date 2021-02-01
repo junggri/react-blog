@@ -68,6 +68,7 @@ var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
 var useCommon_1 = __importDefault(require("../../useHooks/useCommon"));
 var index_1 = require("../index");
 var query_string_1 = __importDefault(require("query-string"));
+var checkUserState_1 = __importDefault(require("../../lib/checkUserState"));
 var Editor = function (_a) {
     var history = _a.history, location = _a.location;
     var ReactQuill = typeof window === "object" ? require("react-quill") : function () { return false; };
@@ -75,9 +76,9 @@ var Editor = function (_a) {
     var ref = react_1.useRef(null);
     var _b = react_1.useState("write"), mode = _b[0], setMode = _b[1];
     var _c = react_1.useState([]), temp = _c[0], setTemp = _c[1];
-    var setNewRequset = useCommon_1.default().setNewRequset;
-    var _d = useTopic_1.default(), topic = _d.topic, requestTopic = _d.requestTopic;
-    var _e = useTextEdit_1.default(), data = _e.data, setContent = _e.setContent, setContentName = _e.setContentName, setTopic = _e.setTopic, setKindOfPosts = _e.setKindOfPosts, setDetail = _e.setDetail, setTempData = _e.setTempData;
+    var _d = useCommon_1.default(), setNewRequset = _d.setNewRequset, login = _d.login;
+    var _e = useTopic_1.default(), topic = _e.topic, requestTopic = _e.requestTopic;
+    var _f = useTextEdit_1.default(), data = _f.data, setContent = _f.setContent, setContentName = _f.setContentName, setTopic = _f.setTopic, setKindOfPosts = _f.setKindOfPosts, setDetail = _f.setDetail, setTempData = _f.setTempData;
     react_1.useEffect(function () {
         (function () { return __awaiter(void 0, void 0, void 0, function () {
             var data;
@@ -100,25 +101,16 @@ var Editor = function (_a) {
         }); };
     }, [setTempData]);
     react_1.useEffect(function () {
-        (function () { return __awaiter(void 0, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1.default.checkJWTToken()];
-                    case 1:
-                        data = (_a.sent()).data;
-                        if (!data.decoded) {
-                            history.push("/");
-                        }
-                        else {
-                            requestTopic();
-                            ref.current.focus();
-                        }
-                        return [2 /*return*/];
-                }
-            });
-        }); })();
-    }, [history, requestTopic]);
+        var token = localStorage.getItem("_jt");
+        var status = checkUserState_1.default(token);
+        if (status) {
+            requestTopic();
+            ref.current.focus();
+        }
+        else {
+            history.push("/");
+        }
+    }, [history, requestTopic, login]);
     var howToSave = react_1.useCallback(function (mode, cb, _data) {
         setMode(mode);
         (function () { return __awaiter(void 0, void 0, void 0, function () {

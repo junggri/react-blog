@@ -8,5 +8,4 @@ var admin_controller_1 = __importDefault(require("../controller/admin.controller
 var router = express_1.default.Router();
 router.post("/login", admin_controller_1.default.login);
 router.post("/token", admin_controller_1.default.setToken);
-router.get("/token/jwt", admin_controller_1.default.checkJWTToken);
 exports.default = router;

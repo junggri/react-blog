@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onRequestTemoPost = exports.onRequestAllPosts = exports.onRequsetPost = exports.onRequestPosts = exports.CLEAR_POST = exports.GET_TEMP_POST_ERROR = exports.GET_TEMP_POST_SUCCESS = exports.GET_TEMP_POST = exports.GET_ALL_POSTS_ERROR = exports.GET_ALL_POSTS_SECCUESS = exports.GET_ALL_POSTS = exports.GET_POST_ERROR = exports.GET_POST_SUCCESS = exports.GET_POST = exports.GET_POSTS_ERROR = exports.GET_POSTS_SUCCESS = exports.GET_POSTS = void 0;
+exports.onRequestTemoPost = exports.onRequestAllPosts = exports.onRequsetPost = exports.onRequestPosts = exports.CLEAR_POST_DATA = exports.CLEAR_POST = exports.GET_TEMP_POST_ERROR = exports.GET_TEMP_POST_SUCCESS = exports.GET_TEMP_POST = exports.GET_ALL_POSTS_ERROR = exports.GET_ALL_POSTS_SECCUESS = exports.GET_ALL_POSTS = exports.GET_POST_ERROR = exports.GET_POST_SUCCESS = exports.GET_POST = exports.GET_POSTS_ERROR = exports.GET_POSTS_SUCCESS = exports.GET_POSTS = void 0;
 var axios_1 = __importDefault(require("../../lib/axios"));
 var PostsUtil_1 = require("./lib/PostsUtil");
 exports.GET_POSTS = "data/GET_POSTS";
@@ -30,6 +30,7 @@ exports.GET_TEMP_POST = "data/GET_TEMP_POST";
 exports.GET_TEMP_POST_SUCCESS = "data/GET_TEMP_POST_SUCCESS";
 exports.GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR";
 exports.CLEAR_POST = "data/CLEAR_POST";
+exports.CLEAR_POST_DATA = "data/CLEAR_POST_DATA";
 //액션 생성함수를 선언!
 exports.onRequestPosts = PostsUtil_1.createThunk(exports.GET_POSTS, axios_1.default.getPostFromParams);
 exports.onRequsetPost = PostsUtil_1.createThunk(exports.GET_POST, axios_1.default.getPostFromPostId);
@@ -57,7 +58,9 @@ function Posts(state, action) {
         case exports.GET_ALL_POSTS_ERROR:
             return PostsUtil_1.handleAction(exports.GET_ALL_POSTS, "AllPosts", true)(state, action);
         case exports.CLEAR_POST:
-            return __assign(__assign({}, state), { post: PostsUtil_1.reducerUtil.initial(null), posts: PostsUtil_1.reducerUtil.initial(null) });
+            return __assign(__assign({}, state), { posts: PostsUtil_1.reducerUtil.initial(null) });
+        case exports.CLEAR_POST_DATA:
+            return __assign(__assign({}, state), { post: PostsUtil_1.reducerUtil.initial(null) });
         default:
             return state;
     }
