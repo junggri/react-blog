@@ -20,52 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/lib/checkUserState.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/SpecificTopicContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/SpecificTopicContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/checkUserState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/TextEditor/Editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/TextEditor/Editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/index.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/index.server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/lib/checkUserState.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/checkUserState.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/lib/isNewPost.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/isNewPost.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/modules/Posts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/modules/Posts/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/modules/Posts/lib/PostsAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/modules/Posts/lib/PostsAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/Admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/Admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/Entry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/controller/admin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/admin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/router/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/router/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/shared/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/shared/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/styles/GlobalStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/styles/GlobalStyles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/useHooks/useHelmet.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useHelmet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/useHooks/useLoginFlag.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useLoginFlag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/useHooks/usePosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/useHooks/usePosts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/output/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/output/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/TextEditor/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.server.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/checkUserState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/checkUserState.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/lib/createPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/createPage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/lib/isNewPost.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/isNewPost.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/lib/PostsAction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Admin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Admin.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Posts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/admin.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/admin.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/lib/verifyToken.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/router/admin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/router/admin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/GlobalStyles.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useHelmet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useHelmet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useLoginFlag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useLoginFlag.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/usePosts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,8 +95,8 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/local/lib/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/server/node_modules/typescript/lib" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
@@ -384,7 +350,9 @@
       <workItem from="1612146864888" duration="8118000" />
       <workItem from="1612156330815" duration="3013000" />
       <workItem from="1612160684603" duration="5574000" />
-      <workItem from="1612181834846" duration="4839000" />
+      <workItem from="1612181834846" duration="5510000" />
+      <workItem from="1612224895162" duration="112000" />
+      <workItem from="1612254651283" duration="4438000" />
     </task>
     <servers />
   </component>
@@ -512,11 +480,11 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="2148" y="162" width="1233" height="728" key="SettingsEditor" timestamp="1611317499902">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="332" y="160" width="1233" height="728" key="SettingsEditor" timestamp="1612225000423">
+      <screen x="0" y="25" width="1792" height="1039" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
-    <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1039@0.25.1792.1039" timestamp="1611313593553" />
+    <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1039@0.25.1792.1039" timestamp="1612225000423" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
     <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1609514413062" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />

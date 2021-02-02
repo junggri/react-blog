@@ -92,9 +92,10 @@ const GlobalStyles = createGlobalStyle`
     .ql-syntax{
       font-family: "Fira Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
       padding:30px 30px; 
+      letter-spacing: 0.2px;
       border-radius: 4px;
       font-size: 0.9rem;
-      background: rgb(248 249 250);
+      background: #FBFCFD;
       font-weight: 300 !important;
       white-space: pre-wrap;
       tab-size: 1 !important;

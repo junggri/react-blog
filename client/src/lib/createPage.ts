@@ -16,6 +16,7 @@ export default function createPage(root: any, script: any, styles: any, helmet: 
       <!DOCTYPE html>
       <html lang="ko" ${helmet.htmlAttributes.toString()}>
       <head>
+      <title>정그리의 블로그입니다.</title>
           ${helmet.title.toString()}
           ${helmet.meta.toString()}
           ${helmet.link.toString()}
