@@ -11,4 +11,5 @@ router.get("/google/count", index_controller_1.default.getGaCount);
 router.post("/check/csrf", function (req, res) {
     res.status(200).json({ state: true });
 });
+router.post("/comment", index_controller_1.default.saveComment);
 exports.default = router;

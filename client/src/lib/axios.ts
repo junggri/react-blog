@@ -156,6 +156,14 @@ const util = {
       });
    },
 
+   saveComment(content: string, token: string) {
+      return instance({
+         url: "/api/comment",
+         method: "post",
+         data: { content },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
 
 };
 

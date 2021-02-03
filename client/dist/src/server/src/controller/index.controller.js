@@ -40,6 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var googleReport_1 = __importDefault(require("../lib/googleReport"));
+var index_model_1 = __importDefault(require("../model/index.model"));
 var indexController = {
     getCsrf: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
@@ -65,6 +66,26 @@ var indexController = {
                         err_1 = _a.sent();
                         console.log(err_1);
                         res.status(404).json({ state: false });
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    },
+    saveComment: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, index_model_1.default.saveComment(req.body.content)];
+                    case 1:
+                        _a.sent();
+                        return [3 /*break*/, 3];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.error(e_1);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
                 }

@@ -400,16 +400,13 @@ export const SpecificTopicItemsComp = styled.div`
 `;
 
 export const PostsContainerComp = styled.section`
-  width: ${_width + "px"};
-  ${media.desktop`
-    width:90%;
-  `};
+  width: ${_width * 0.8 + "px"};
   ${media.tablet`
     width:90%;
   `};
   ${media.mobile`
-    width:85%;
-  `}; 
+    width:90%;
+  `};  
   position: relative;
   margin: 0 auto;
   padding-bottom: 80px;
@@ -430,11 +427,14 @@ export const PostsContainerComp = styled.section`
     ${media.mobile`max-width:100%`};
   }
   & .posts-name{
-    ${media.mobile`font-size:2rem`};
+    ${media.tablet`font-size:2.4rem`};
+    ${media.mobile`font-size:2.2rem`};
     padding-top:50px;
     font-size:3.5rem;
     text-align: center;
     font-weight: bold;
+    white-space: pre-wrap;
+    word-break: break-all;
   }
   & .posts-detail{
     text-align: center;
@@ -489,8 +489,118 @@ export const PostsContainerComp = styled.section`
 //    }
 // }
 
+export const CommentContainerComp = styled.div`
+  width: ${_width * 0.8 + "px"};
+  position: relative;
+  margin:40px auto;
+  ${media.tablet`
+    width:90%;
+  `};
+  ${media.mobile`
+    width:90%;
+  `};  
+`;
+export const CommentInputItem = styled.div`
+  //border:1px solid black;
+  margin-bottom:75px;
+  textarea{
+    resize: none;
+    width:100%;
+    height: 100px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    outline-style: none;
+    border-radius: 4px;
+    border:1px solid rgba(0,0,0,0.1);
+    padding:15px 15px;
+    font-size:1.125rem;
+  }
+  textarea::placeholder{
+    font-weight: 100;
+    font-size:1.125rem;
+  }
+  & .cmt-login{
+    margin-top:20px;
+    position: relative;
+    input {
+      border:1px solid rgba(0,0,0,0.2);
+      outline-style: none;
+      border-radius: 2px;
+      margin-right:15px;
+      padding:12.5px 7px;
+    }
+    & .cmt-submit-btn{
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      position: absolute;
+      background:#39B787;
+      color:white;
+      cursor:pointer;
+      top:0;
+      right:0;
+      height: 100%;
+      width:100px;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+`;
 
-//
+export const CommentItmesComp = styled.div`
+  margin-bottom: 60px;
+  & .cmt-whoami{
+    //border:1px solid black;
+    display: flex;
+    & img{
+      width:60px;
+      height: 60px;
+      border-radius: 100px;
+      border:1px solid rgba(0,0,0,0.2);
+      display: inline-block;
+      margin-right: 40px;
+    }
+    & .cmt-whoami-sub{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+       & .cmt-writer{
+         display: inline-block;
+         font-size:1.125rem;
+         font-weight: bold;
+         margin-bottom: 6px;
+         letter-spacing: 1.2px;
+       }
+       & .cmt-created{
+         display: inline-block;
+         font-size:0.95rem;
+         opacity: 0.7
+       }
+    }
+  }
+  & .cmt-content{
+    //border:1px solid black;
+    margin-top:30px;
+    font-size:1.175rem;
+  }
+  & .cmt-replyBox{
+    margin-top:40px;
+    margin-bottom: 20px;
+    & .cmt-btn-reply{
+      font-size:1.125rem;
+      cursor:pointer;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
+  & .reply-box{
+    display: none;
+  }
+  & .visible{
+    display: block;
+  }
+`;
+////////////////////////////////////////
 export const AdminLoginBoxComp = styled.div`
   position: absolute;
   width:30%;
@@ -559,7 +669,7 @@ export const TagsContainerComp = styled.div`
    & .tag-hash{
     margin-bottom: 7px;
     font-weight: 400;
-    color:#7DC5AF;;
+    color:#7DC5AF;
     font-size:1.135rem;
     display: inline-flex;
     align-items: center;

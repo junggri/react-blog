@@ -10,6 +10,7 @@ import ReactHelmet from "../../useHooks/useHelmet";
 import { usePreloader } from "../../lib/PreloadContext";
 import { onRequsetPost } from "../../modules/Posts";
 import { useDispatch } from "react-redux";
+import CommentContainer from "./Comment";
 
 const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
@@ -33,30 +34,33 @@ function PostsContainer({ match }: any) {
    if (!post.data) return null;
 
    return (
-      <PostsContainerComp>
-         <ReactHelmet
-            title={(data as IPostDataProps).result[0].content_name}
-            keywords={(data as IPostDataProps).result[0].content_name}
-            description={(data as IPostDataProps).result[0].detail}
-         />
-         <div className="posts-container-iconbox">
-            <Link to="/">
-               <CgHome className="icon-tohome" />
-            </Link>
-         </div>
-         <div className="posts-name">
-            {(data as IPostDataProps).result[0].content_name}
-         </div>
-         <div className="posts-detail">
-            {(data as IPostDataProps).result[0].detail}
-         </div>
-         <Highlight language="react">
-            <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" />
-         </Highlight>
-         <div className="posts-created">
-            {(data as IPostDataProps).result[0].created}
-         </div>
-      </PostsContainerComp>
+      <>
+         <PostsContainerComp>
+            <ReactHelmet
+               title={(data as IPostDataProps).result[0].content_name}
+               keywords={(data as IPostDataProps).result[0].content_name}
+               description={(data as IPostDataProps).result[0].detail}
+            />
+            <div className="posts-container-iconbox">
+               <Link to="/">
+                  <CgHome className="icon-tohome" />
+               </Link>
+            </div>
+            <div className="posts-name">
+               {(data as IPostDataProps).result[0].content_name}
+            </div>
+            <div className="posts-detail">
+               {(data as IPostDataProps).result[0].detail}
+            </div>
+            <Highlight language="react">
+               <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" />
+            </Highlight>
+            <div className="posts-created">
+               {(data as IPostDataProps).result[0].created}
+            </div>
+         </PostsContainerComp>
+         <CommentContainer />
+      </>
    );
 }
 

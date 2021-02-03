@@ -137,5 +137,13 @@ var util = {
             method: "get",
         });
     },
+    saveComment: function (content, token) {
+        return axois_config_1.default({
+            url: "/api/comment",
+            method: "post",
+            data: { content: content },
+            headers: { "X-XSRF-TOKEN": token },
+        });
+    },
 };
 exports.default = util;

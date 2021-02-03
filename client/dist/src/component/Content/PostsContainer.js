@@ -33,6 +33,7 @@ var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 var PreloadContext_1 = require("../../lib/PreloadContext");
 var Posts_1 = require("../../modules/Posts");
 var react_redux_1 = require("react-redux");
+var Comment_1 = __importDefault(require("./Comment"));
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
@@ -49,15 +50,17 @@ function PostsContainer(_a) {
     }); };
     if (!post.data)
         return null;
-    return (react_1.default.createElement(styled_comp_1.PostsContainerComp, null,
-        react_1.default.createElement(useHelmet_1.default, { title: data.result[0].content_name, keywords: data.result[0].content_name, description: data.result[0].detail }),
-        react_1.default.createElement("div", { className: "posts-container-iconbox" },
-            react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
-                react_1.default.createElement(cg_1.CgHome, { className: "icon-tohome" }))),
-        react_1.default.createElement("div", { className: "posts-name" }, data.result[0].content_name),
-        react_1.default.createElement("div", { className: "posts-detail" }, data.result[0].detail),
-        react_1.default.createElement(react_highlight_js_1.default, { language: "react" },
-            react_1.default.createElement("div", { dangerouslySetInnerHTML: MakeHtml(), className: "posts-content" })),
-        react_1.default.createElement("div", { className: "posts-created" }, data.result[0].created)));
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(styled_comp_1.PostsContainerComp, null,
+            react_1.default.createElement(useHelmet_1.default, { title: data.result[0].content_name, keywords: data.result[0].content_name, description: data.result[0].detail }),
+            react_1.default.createElement("div", { className: "posts-container-iconbox" },
+                react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
+                    react_1.default.createElement(cg_1.CgHome, { className: "icon-tohome" }))),
+            react_1.default.createElement("div", { className: "posts-name" }, data.result[0].content_name),
+            react_1.default.createElement("div", { className: "posts-detail" }, data.result[0].detail),
+            react_1.default.createElement(react_highlight_js_1.default, { language: "react" },
+                react_1.default.createElement("div", { dangerouslySetInnerHTML: MakeHtml(), className: "posts-content" })),
+            react_1.default.createElement("div", { className: "posts-created" }, data.result[0].created)),
+        react_1.default.createElement(Comment_1.default, null)));
 }
 exports.default = PostsContainer;

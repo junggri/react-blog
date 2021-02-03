@@ -54,8 +54,8 @@ function savePost(folderName, data) {
         day: "numeric",
     });
     if (folderName === "contents") {
-        query = "INSERT INTO " + data.topicName + " \n                     (uid, topic, content_name, created, modified, file, comments, kindofPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?,?)";
-        dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", null, data.kindofPosts, data.detail, new Date()];
+        query = "INSERT INTO " + data.topicName + " \n                     (uid, topic, content_name, created, modified, file, kindofPosts, detail, date) \n                     VALUES (?,?,?,?,?,?,?,?,?)";
+        dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", data.kindofPosts, data.detail, new Date()];
     }
     else {
         query = "INSERT INTO post \n                     (uid, topic, content_name, created, file, detail) \n                     VALUES (?,?,?,?,?,?)";
@@ -255,7 +255,7 @@ var contentModel = {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    query = "\n                CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     uid varchar(50) not null,\n                     topic varchar(11) not null,\n                     content_name varchar(200) not null,\n                     detail varchar(200) not null,\n                     file varchar(100) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     comments varchar(50),\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null,\n                     view int(11) DEFAULT 0, \n                     INDEX index_uid (uid)\n                     )";
+                    query = "\n                CREATE TABLE " + newTopic + "(\n                     id int(11) not null auto_increment primary key,\n                     uid varchar(50) not null,\n                     topic varchar(11) not null,\n                     content_name varchar(200) not null,\n                     detail varchar(200) not null,\n                     file varchar(100) not null,\n                     created varchar(20) not null,\n                     modified varchar(20),\n                     kindofPosts varchar(20) not null,\n                     date timestamp not null,\n                     view int(11) DEFAULT 0, \n                     INDEX index_uid (uid)\n                     )";
                     return [4 /*yield*/, poolConnction(query)];
                 case 1: return [2 /*return*/, _a.sent()];
             }

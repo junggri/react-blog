@@ -12,5 +12,7 @@ router.post("/check/csrf", (req, res) => {
    res.status(200).json({ state: true });
 });
 
+router.post("/comment", indexController.saveComment);
+
 
 export default router;

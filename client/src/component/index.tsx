@@ -9,6 +9,7 @@ export { default as CreateNewTopic } from "./TextEditor/CreateNewTopic";
 export { default as StoragePost } from "./TextEditor/StoragePost";
 //////containers
 export { default as PostsContainer } from "./Content/PostsContainer";
+export { default as CommnectContainer } from "./Content/Comment";
 
 export { default as EntryPostsContainer } from "./Content/EntryPostsContainer";
 export { default as TopMetaBar } from "./Home/TopMetaBar";

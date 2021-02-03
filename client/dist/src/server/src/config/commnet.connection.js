@@ -1,4 +1,23 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,25 +58,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var commnet_connection_1 = __importDefault(require("../config/commnet.connection"));
-var indexModel = {
-    saveComment: function (cmt) {
-        return __awaiter(this, void 0, void 0, function () {
-            var conn, query_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, commnet_connection_1.default()];
-                    case 1:
-                        conn = _a.sent();
-                        try {
-                            query_1 = "INSERT INTO BOARD VALUES ()";
-                        }
-                        catch (e) {
-                        }
-                        return [2 /*return*/];
-                }
-            });
-        });
-    },
+var promise_1 = __importDefault(require("mysql2/promise"));
+var dotenv = __importStar(require("dotenv"));
+dotenv.config();
+var option = {
+    host: process.env.REACT_APP_DB_HOST,
+    user: process.env.REACT_APP_DB_USER,
+    password: process.env.REACT_APP_DB_PWD,
+    database: process.env.REACT_APP_DB_DATABASE4,
+    waitForConnections: true,
 };
-exports.default = indexModel;
+function getConnection() {
+    return __awaiter(this, void 0, void 0, function () {
+        var pool, conn, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    pool = promise_1.default.createPool(option);
+                    return [4 /*yield*/, pool.getConnection()];
+                case 1:
+                    conn = _a.sent();
+                    return [2 /*return*/, conn];
+                case 2:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.default = getConnection;
