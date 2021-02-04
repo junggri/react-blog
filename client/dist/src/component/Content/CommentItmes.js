@@ -60,61 +60,77 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var styled_comp_1 = require("../../styled-comp");
-var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
 var axios_1 = __importDefault(require("../../lib/axios"));
-var index_1 = require("../index");
-function CommentContainer() {
+function CmtItem(_a) {
     var _this = this;
-    var csrf = useCSRF_1.default();
-    var _a = react_1.useState(""), cmt = _a[0], setCmt = _a[1];
-    var _b = react_1.useState([]), list = _b[0], setList = _b[1];
-    react_1.useEffect(function () {
-        (function () { return __awaiter(_this, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1.default.getComment()];
-                    case 1:
-                        data = (_a.sent()).data;
-                        setList(data.result);
-                        return [2 /*return*/];
-                }
-            });
-        }); })();
-    }, []);
-    var cmtDepthZero = list.filter(function (e, i) {
-        if (e.sorts === 0)
-            return list[i];
-    });
-    var onChangeCmt = function (e) {
-        setCmt(e.target.value);
+    var e = _a.e, csrf = _a.csrf, list = _a.list, setList = _a.setList;
+    var _b = react_1.useState(""), reply = _b[0], setReply = _b[1];
+    var _c = react_1.useState([]), depthReply = _c[0], setDepthReply = _c[1];
+    var isExistReply = function (bgroup) {
+        var group = list.filter(function (e) {
+            return e.bgroup === bgroup;
+        });
+        return group.length;
     };
-    var onSubmit = function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var grp, data;
+    var onClickReply = function (e) {
+        e.currentTarget.nextSibling.classList.toggle("visible");
+    };
+    var showReply = function (e) {
+        console.log(e.currentTarget);
+        e.currentTarget.nextSibling.classList.toggle("visible");
+        var grp = parseInt(e.currentTarget.dataset.grp);
+        var dp = parseInt(e.currentTarget.dataset.dp);
+        var board = parseInt(e.currentTarget.dataset.board);
+        var _list = list.filter(function (e, i) {
+            return e.bgroup === grp && e.depth === dp + 1 && e.parent === board;
+        });
+        console.log(_list);
+        setDepthReply(_list);
+    };
+    var onChangeReply = function (e) {
+        setReply(e.target.value);
+    };
+    var onSubmitReply = function (e) { return __awaiter(_this, void 0, void 0, function () {
+        var depth, sort, grp, bn, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    grp = e.currentTarget.parentNode.parentNode.dataset.grp;
-                    return [4 /*yield*/, axios_1.default.saveComment(cmt, grp, csrf)];
+                    // const replyBox = e.currentTarget.parentNode.parentNode.parentNode;
+                    console.log(e.currentTarget.dataset);
+                    depth = e.currentTarget.dataset.dp;
+                    sort = e.currentTarget.dataset.sorts;
+                    grp = e.currentTarget.dataset.grp;
+                    bn = e.currentTarget.dataset.boardnum;
+                    return [4 /*yield*/, axios_1.default.saveReply(reply, Number(bn), Number(grp), Number(sort), Number(depth), csrf)];
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, axios_1.default.getComment()];
                 case 2:
                     data = (_a.sent()).data;
-                    setCmt("");
+                    setReply("");
+                    // replyBox.classList.remove("visible");
                     setList(data.result);
                     return [2 /*return*/];
             }
         });
     }); };
-    return (react_1.default.createElement(styled_comp_1.CommentContainerComp, null,
-        react_1.default.createElement(styled_comp_1.CommentInputItem, { "data-grp": !list.length ? 1 : list[list.length - 1].bgroup + 1 },
-            react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: cmt, onChange: onChangeCmt }),
-            react_1.default.createElement("div", { className: "cmt-login" },
-                react_1.default.createElement("input", { type: "text", name: "cmt-user", placeholder: "\uC774\uB984" }),
-                react_1.default.createElement("input", { type: "password", name: "cmt-pwd", placeholder: "\uBE44\uBC00\uBC88\uD638" }),
-                react_1.default.createElement("div", { className: "cmt-submit-btn", onClick: onSubmit },
-                    react_1.default.createElement("span", null, "\uB4F1\uB85D\uD558\uAE30")))),
-        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(index_1.CommentItmes, { key: i, e: e, csrf: csrf, list: list, setList: setList })); })));
+    return (react_1.default.createElement(styled_comp_1.CommentItmesComp, { depth: e.depth },
+        react_1.default.createElement("div", { className: "cmt-whoami" },
+            react_1.default.createElement("img", { src: "/images/og.jpg", alt: "" }),
+            react_1.default.createElement("div", { className: "cmt-whoami-sub" },
+                react_1.default.createElement("span", { className: "cmt-writer" }, "\uC775\uBA85"),
+                react_1.default.createElement("span", { className: "cmt-created" }, "123123"))),
+        react_1.default.createElement("div", { className: "cmt-content" }, e.cmt),
+        react_1.default.createElement("div", { className: "cmt-replyBox" },
+            react_1.default.createElement("span", { className: "cmt-btn-reply", "data-grp": e.bgroup, "data-dp": e.depth, "data-board": e.board, onClick: isExistReply(e.bgroup) === 1 ? onClickReply : showReply }, "\uB313\uAE00\uB2EC\uAE30"),
+            depthReply.map(function (e, i) { return (react_1.default.createElement(CmtItem, { key: i, e: e, csrf: csrf, list: list, setList: setList })); }),
+            react_1.default.createElement("div", { className: "reply-box" },
+                react_1.default.createElement(styled_comp_1.CommentInputItem, null,
+                    react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: reply, onChange: onChangeReply }),
+                    react_1.default.createElement("div", { className: "cmt-login" },
+                        react_1.default.createElement("input", { type: "text", name: "cmt-user", placeholder: "\uC774\uB984" }),
+                        react_1.default.createElement("input", { type: "password", name: "cmt-pwd", placeholder: "\uBE44\uBC00\uBC88\uD638" }),
+                        react_1.default.createElement("div", { className: "cmt-submit-btn", "data-grp": e.bgroup, "data-sorts": e.sorts, "data-dp": e.depth, onClick: onSubmitReply },
+                            react_1.default.createElement("span", null, "\uB2F5\uAE00\uB2EC\uAE30"))))))));
 }
-exports.default = react_1.default.memo(CommentContainer);
+exports.default = react_1.default.memo(CmtItem);

@@ -72,22 +72,60 @@ var indexController = {
             });
         });
     },
+    getCommnet: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, index_model_1.default.getComment()];
+                    case 1:
+                        result = _a.sent();
+                        if (result.state) {
+                            res.status(200).json({ result: result.data });
+                        }
+                        else {
+                            res.status(404).json({ state: false });
+                        }
+                        return [2 /*return*/];
+                }
+            });
+        });
+    },
     saveComment: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var e_1;
+            var result, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, index_model_1.default.saveComment(req.body.content)];
+                        return [4 /*yield*/, index_model_1.default.saveComment(req.body.content, req.body.grp)];
                     case 1:
-                        _a.sent();
+                        result = _a.sent();
+                        result.state
+                            ? res.status(200).json({ state: true })
+                            : res.status(404).json({ state: false });
                         return [3 /*break*/, 3];
                     case 2:
                         e_1 = _a.sent();
                         console.error(e_1);
                         return [3 /*break*/, 3];
                     case 3: return [2 /*return*/];
+                }
+            });
+        });
+    },
+    saveReply: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, index_model_1.default.saveReply(req.body.content, req.body.bn, req.body.grp, req.body.sorts, req.body.depth)];
+                    case 1:
+                        result = _a.sent();
+                        result.state
+                            ? res.status(200).json({ state: true })
+                            : res.status(404).json({ state: false });
+                        return [2 /*return*/];
                 }
             });
         });

@@ -58,63 +58,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importStar(require("react"));
-var styled_comp_1 = require("../../styled-comp");
-var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
-var axios_1 = __importDefault(require("../../lib/axios"));
-var index_1 = require("../index");
-function CommentContainer() {
-    var _this = this;
-    var csrf = useCSRF_1.default();
-    var _a = react_1.useState(""), cmt = _a[0], setCmt = _a[1];
-    var _b = react_1.useState([]), list = _b[0], setList = _b[1];
-    react_1.useEffect(function () {
-        (function () { return __awaiter(_this, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1.default.getComment()];
-                    case 1:
-                        data = (_a.sent()).data;
-                        setList(data.result);
-                        return [2 /*return*/];
-                }
-            });
-        }); })();
-    }, []);
-    var cmtDepthZero = list.filter(function (e, i) {
-        if (e.sorts === 0)
-            return list[i];
-    });
-    var onChangeCmt = function (e) {
-        setCmt(e.target.value);
-    };
-    var onSubmit = function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var grp, data;
+var promise_1 = __importDefault(require("mysql2/promise"));
+var dotenv = __importStar(require("dotenv"));
+dotenv.config();
+var option = {
+    host: process.env.REACT_APP_DB_HOST,
+    user: process.env.REACT_APP_DB_USER,
+    password: process.env.REACT_APP_DB_PWD,
+    database: process.env.REACT_APP_DB_DATABASE4,
+    waitForConnections: true,
+};
+function getConnection() {
+    return __awaiter(this, void 0, void 0, function () {
+        var pool, conn, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    grp = e.currentTarget.parentNode.parentNode.dataset.grp;
-                    return [4 /*yield*/, axios_1.default.saveComment(cmt, grp, csrf)];
+                    _a.trys.push([0, 2, , 3]);
+                    pool = promise_1.default.createPool(option);
+                    return [4 /*yield*/, pool.getConnection()];
                 case 1:
-                    _a.sent();
-                    return [4 /*yield*/, axios_1.default.getComment()];
+                    conn = _a.sent();
+                    return [2 /*return*/, conn];
                 case 2:
-                    data = (_a.sent()).data;
-                    setCmt("");
-                    setList(data.result);
-                    return [2 /*return*/];
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
-    }); };
-    return (react_1.default.createElement(styled_comp_1.CommentContainerComp, null,
-        react_1.default.createElement(styled_comp_1.CommentInputItem, { "data-grp": !list.length ? 1 : list[list.length - 1].bgroup + 1 },
-            react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: cmt, onChange: onChangeCmt }),
-            react_1.default.createElement("div", { className: "cmt-login" },
-                react_1.default.createElement("input", { type: "text", name: "cmt-user", placeholder: "\uC774\uB984" }),
-                react_1.default.createElement("input", { type: "password", name: "cmt-pwd", placeholder: "\uBE44\uBC00\uBC88\uD638" }),
-                react_1.default.createElement("div", { className: "cmt-submit-btn", onClick: onSubmit },
-                    react_1.default.createElement("span", null, "\uB4F1\uB85D\uD558\uAE30")))),
-        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(index_1.CommentItmes, { key: i, e: e, csrf: csrf, list: list, setList: setList })); })));
+    });
 }
-exports.default = react_1.default.memo(CommentContainer);
+exports.default = getConnection;

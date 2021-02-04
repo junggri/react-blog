@@ -39,22 +39,121 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var commnet_connection_1 = __importDefault(require("../config/commnet.connection"));
+var comment_connection_1 = __importDefault(require("../config/comment.connection"));
+var uuid_1 = require("uuid");
 var indexModel = {
-    saveComment: function (cmt) {
+    getComment: function () {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, query_1;
+            var conn, query, result, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, commnet_connection_1.default()];
+                    case 0: return [4 /*yield*/, comment_connection_1.default()];
                     case 1:
                         conn = _a.sent();
-                        try {
-                            query_1 = "INSERT INTO BOARD VALUES ()";
-                        }
-                        catch (e) {
-                        }
-                        return [2 /*return*/];
+                        if (!(conn !== undefined)) return [3 /*break*/, 5];
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 4, , 5]);
+                        query = "SELECT * FROM board order by bgroup asc, sorts asc";
+                        return [4 /*yield*/, conn.execute(query)];
+                    case 3:
+                        result = (_a.sent())[0];
+                        conn.release();
+                        return [2 /*return*/, { state: true, data: result }];
+                    case 4:
+                        e_1 = _a.sent();
+                        console.error(e_1);
+                        conn.release();
+                        return [2 /*return*/, { state: false }];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    },
+    saveComment: function (cmt, grp) {
+        return __awaiter(this, void 0, void 0, function () {
+            var conn, uid, query, dep, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, comment_connection_1.default()];
+                    case 1:
+                        conn = _a.sent();
+                        if (!(conn !== undefined)) return [3 /*break*/, 5];
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 4, , 5]);
+                        uid = uuid_1.v4();
+                        query = "INSERT INTO BOARD (bgroup,sorts,depth,cmt) VALUES (?,?,?,?)";
+                        dep = [grp, 0, 0, cmt];
+                        return [4 /*yield*/, conn.execute(query, dep)];
+                    case 3:
+                        _a.sent();
+                        conn.release();
+                        return [2 /*return*/, { state: true }];
+                    case 4:
+                        e_2 = _a.sent();
+                        conn.release();
+                        console.error(e_2);
+                        return [2 /*return*/, { state: false }];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    },
+    saveReply: function (reply, bn, grp, sorts, depth) {
+        return __awaiter(this, void 0, void 0, function () {
+            var conn, sort_query, result, sort, zeroQuery, result_1, save_sort, save_query, dep, update_query, save_query, dep, e_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(bn);
+                        return [4 /*yield*/, comment_connection_1.default()];
+                    case 1:
+                        conn = _a.sent();
+                        if (!(conn !== undefined)) return [3 /*break*/, 11];
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([2, 10, , 11]);
+                        console.log("sorts", sorts, "depth", depth);
+                        sort_query = "SELECT COALESCE (MIN(SORTS),0) FROM BOARD\n                                WHERE BGROUP=" + grp + "\n                                AND SORTS>" + sorts + "\n                                AND DEPTH <= " + depth + "\n                                ";
+                        return [4 /*yield*/, conn.execute(sort_query)];
+                    case 3:
+                        result = (_a.sent())[0];
+                        conn.release();
+                        sort = result[0]["COALESCE (MIN(SORTS),0)"];
+                        if (!(sort === 0)) return [3 /*break*/, 6];
+                        zeroQuery = "SELECT COALESCE(MAX(SORTS),0) + 1 FROM BOARD\n                                  WHERE BGROUP=" + grp + "\n                                  ";
+                        return [4 /*yield*/, conn.execute(zeroQuery)];
+                    case 4:
+                        result_1 = (_a.sent())[0];
+                        conn.release();
+                        save_sort = result_1[0]["COALESCE(MAX(SORTS),0) + 1"];
+                        save_query = "INSERT INTO BOARD (parent,bgroup,sorts,depth,cmt) VALUES (?,?,?,?,?)";
+                        dep = [bn, grp, save_sort, depth + 1, reply];
+                        return [4 /*yield*/, conn.execute(save_query, dep)];
+                    case 5:
+                        _a.sent();
+                        conn.release();
+                        return [3 /*break*/, 9];
+                    case 6:
+                        update_query = "UPDATE BOARD SET SORTS=SORTS+1\n                                     WHERE BGROUP=" + grp + " AND SORTS >= " + sort + "\n                                    ";
+                        return [4 /*yield*/, conn.execute(update_query)];
+                    case 7:
+                        _a.sent();
+                        conn.release();
+                        save_query = "INSERT INTO BOARD (parent,bgroup,sorts,depth,cmt) VALUES (?,?,?,?,?)";
+                        dep = [bn, grp, sort, depth + 1, reply];
+                        return [4 /*yield*/, conn.execute(save_query, dep)];
+                    case 8:
+                        _a.sent();
+                        conn.release();
+                        _a.label = 9;
+                    case 9: return [2 /*return*/, { state: true }];
+                    case 10:
+                        e_3 = _a.sent();
+                        console.error(e_3);
+                        return [2 /*return*/, { state: false }];
+                    case 11: return [2 /*return*/];
                 }
             });
         });

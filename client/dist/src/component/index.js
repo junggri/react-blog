@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AboutContainer = exports.SpecificTopicContainer = exports.TagsContainer = exports.SideNavBarTopic = exports.SideBarContainer = exports.TopMetaBar = exports.EntryPostsContainer = exports.CommnectContainer = exports.PostsContainer = exports.StoragePost = exports.CreateNewTopic = exports.PostsDetail = exports.KindOfPosts = exports.TextEditBtnBox = exports.WriteTopicName = exports.Editor = exports.SelectTopic = void 0;
+exports.AboutContainer = exports.SpecificTopicContainer = exports.TagsContainer = exports.SideNavBarTopic = exports.SideBarContainer = exports.TopMetaBar = exports.EntryPostsContainer = exports.CommentItmes = exports.CommnectContainer = exports.PostsContainer = exports.StoragePost = exports.CreateNewTopic = exports.PostsDetail = exports.KindOfPosts = exports.TextEditBtnBox = exports.WriteTopicName = exports.Editor = exports.SelectTopic = void 0;
 //write--------------------------------------------------------
 var SelectTopic_1 = require("./TextEditor/SelectTopic");
 Object.defineProperty(exports, "SelectTopic", { enumerable: true, get: function () { return __importDefault(SelectTopic_1).default; } });
@@ -26,6 +26,8 @@ var PostsContainer_1 = require("./Content/PostsContainer");
 Object.defineProperty(exports, "PostsContainer", { enumerable: true, get: function () { return __importDefault(PostsContainer_1).default; } });
 var Comment_1 = require("./Content/Comment");
 Object.defineProperty(exports, "CommnectContainer", { enumerable: true, get: function () { return __importDefault(Comment_1).default; } });
+var CommentItmes_1 = require("./Content/CommentItmes");
+Object.defineProperty(exports, "CommentItmes", { enumerable: true, get: function () { return __importDefault(CommentItmes_1).default; } });
 var EntryPostsContainer_1 = require("./Content/EntryPostsContainer");
 Object.defineProperty(exports, "EntryPostsContainer", { enumerable: true, get: function () { return __importDefault(EntryPostsContainer_1).default; } });
 var TopMetaBar_1 = require("./Home/TopMetaBar");

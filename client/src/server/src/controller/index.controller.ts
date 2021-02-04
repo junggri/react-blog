@@ -7,6 +7,8 @@ interface Controller {
    getCsrf: (req: Request, res: Response) => void
    getGaCount: (req: Request, res: Response) => void
    saveComment: (req: Request, res: Response) => void
+   getCommnet: (req: Request, res: Response) => void
+   saveReply: (req: Request, res: Response) => void
 }
 
 let indexController: Controller = {
@@ -24,13 +26,32 @@ let indexController: Controller = {
       }
    },
 
+   async getCommnet(req, res) {
+      const result: any = await model.getComment();
+      if (result.state) {
+         res.status(200).json({ result: result.data });
+      } else {
+         res.status(404).json({ state: false });
+      }
+   },
+
 
    async saveComment(req, res) {
       try {
-         await model.saveComment(req.body.content);
+         const result: any = await model.saveComment(req.body.content, req.body.grp);
+         result.state
+            ? res.status(200).json({ state: true })
+            : res.status(404).json({ state: false });
       } catch (e) {
          console.error(e);
       }
+   },
+
+   async saveReply(req, res) {
+      const result: any = await model.saveReply(req.body.content, req.body.bn, req.body.grp, req.body.sorts, req.body.depth);
+      result.state
+         ? res.status(200).json({ state: true })
+         : res.status(404).json({ state: false });
    },
 };
 

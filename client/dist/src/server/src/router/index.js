@@ -7,9 +7,8 @@ var express_1 = __importDefault(require("express"));
 var index_controller_1 = __importDefault(require("../controller/index.controller"));
 var router = express_1.default.Router();
 router.get("/csrf", index_controller_1.default.getCsrf);
+router.get("/comment/item", index_controller_1.default.getCommnet);
 router.get("/google/count", index_controller_1.default.getGaCount);
-router.post("/check/csrf", function (req, res) {
-    res.status(200).json({ state: true });
-});
 router.post("/comment", index_controller_1.default.saveComment);
+router.post("/reply", index_controller_1.default.saveReply);
 exports.default = router;

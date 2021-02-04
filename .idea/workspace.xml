@@ -20,31 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Content/Comment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/commnet.connection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/comment.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/comment.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/component/Content/Comment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/image/dump.rdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/config/commnet.connection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/controller/comment.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/server/src/model/comment.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/component/Content/CommentItmes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/comment.connection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/component/Content/CommentItmes.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/Comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/component/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/lib/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/controller/index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/index.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/index.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/index.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/styled-comp.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/styled-comp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/Comment.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/image/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/image/dump.rdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/config/commnet.connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/config/comment.connection.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/model/index.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/index.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/router/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
     </list>
@@ -369,7 +362,8 @@
       <workItem from="1612224895162" duration="112000" />
       <workItem from="1612254651283" duration="8692000" />
       <workItem from="1612309949044" duration="990000" />
-      <workItem from="1612318796703" duration="9613000" />
+      <workItem from="1612318796703" duration="14287000" />
+      <workItem from="1612408137535" duration="26508000" />
     </task>
     <servers />
   </component>
@@ -542,18 +536,18 @@
     <state x="561" y="251" key="run.anything.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1611223739281" />
     <state x="561" y="251" key="run.anything.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1611201230528" />
     <state x="2393" y="254" key="run.anything.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1611838884496" />
-    <state x="561" y="257" width="672" height="679" key="search.everywhere.popup" timestamp="1612323897730">
-      <screen x="0" y="25" width="1792" height="1039" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup" timestamp="1612447435730">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1612323897730" />
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
-    <state x="561" y="257" width="672" height="678" key="search.everywhere.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1611975462792" />
+    <state x="561" y="257" width="672" height="678" key="search.everywhere.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1612431847661" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
     <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1609812563974" />
     <state x="2393" y="248" width="719" height="652" key="search.everywhere.popup/1792.25.1920.1001/0.25.1792.1095@1792.25.1920.1001" timestamp="1608474232755" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@0.25.1792.1039" timestamp="1610879652051" />
-    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1612278531539" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1612447435730" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609405335764" />
     <state x="2393" y="248" width="719" height="651" key="search.everywhere.popup/1792.25.1920.999/0.25.1792.1095@1792.25.1920.999" timestamp="1611241036658" />
@@ -568,7 +562,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/src/styles/Media.ts</url>
           <line>4</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

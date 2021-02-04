@@ -156,15 +156,29 @@ const util = {
       });
    },
 
-   saveComment(content: string, token: string) {
+   getComment() {
+      return instance({
+         url: "/api/comment/item",
+      });
+   },
+
+   saveComment(content: string, grp: number, token: string) {
       return instance({
          url: "/api/comment",
          method: "post",
-         data: { content },
+         data: { content, grp },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
 
+   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, token: string) {
+      return instance({
+         url: "/api/reply",
+         method: "post",
+         data: { content, bn, grp, sorts, depth },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
 };
 
 export default util;

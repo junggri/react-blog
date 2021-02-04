@@ -22,6 +22,9 @@ interface IDeleteTopicIconComp {
    onClick: any
 }
 
+interface ICommentItems {
+   depth: number
+}
 
 //INTERFACE
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
@@ -547,7 +550,7 @@ export const CommentInputItem = styled.div`
   }
 `;
 
-export const CommentItmesComp = styled.div`
+export const CommentItmesComp = styled.div<ICommentItems>`
   margin-bottom: 60px;
   & .cmt-whoami{
     //border:1px solid black;
@@ -599,6 +602,8 @@ export const CommentItmesComp = styled.div`
   & .visible{
     display: block;
   }
+  //padding-left: ${props => props.depth * 10 + "px"}
+  
 `;
 ////////////////////////////////////////
 export const AdminLoginBoxComp = styled.div`
