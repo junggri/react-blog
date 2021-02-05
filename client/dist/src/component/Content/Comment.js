@@ -62,7 +62,7 @@ var react_1 = __importStar(require("react"));
 var styled_comp_1 = require("../../styled-comp");
 var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
 var axios_1 = __importDefault(require("../../lib/axios"));
-var index_1 = require("../index");
+var CommentItems_1 = __importDefault(require("./CommentItems"));
 function CommentContainer() {
     var _this = this;
     var csrf = useCSRF_1.default();
@@ -115,6 +115,8 @@ function CommentContainer() {
                 react_1.default.createElement("input", { type: "password", name: "cmt-pwd", placeholder: "\uBE44\uBC00\uBC88\uD638" }),
                 react_1.default.createElement("div", { className: "cmt-submit-btn", onClick: onSubmit },
                     react_1.default.createElement("span", null, "\uB4F1\uB85D\uD558\uAE30")))),
-        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(index_1.CommentItmes, { key: i, e: e, csrf: csrf, list: list, setList: setList })); })));
+        react_1.default.createElement("div", { className: "blank_space" }),
+        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, setList: setList })); }),
+        react_1.default.createElement("div", { style: { height: "120px" } })));
 }
 exports.default = react_1.default.memo(CommentContainer);

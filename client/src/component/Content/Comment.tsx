@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CommentContainerComp, CommentInputItem } from "../../styled-comp";
 import useCSRF from "../../useHooks/useCSRF";
 import util from "../../lib/axios";
-import { CommentItmes } from "../index";
+import CommentItems from "./CommentItems";
 
 interface ICommnet {
    board: number
@@ -41,8 +41,6 @@ function CommentContainer() {
       setCmt("");
       setList(data.result);
    };
-
-
    return (
       <CommentContainerComp>
          <CommentInputItem data-grp={!list.length ? 1 : list[list.length - 1].bgroup + 1}>
@@ -55,49 +53,16 @@ function CommentContainer() {
                </div>
             </div>
          </CommentInputItem>
-         {/*{list.map((e, i) => (*/}
-         {/*   <CommentItmes key={i} e={e} csrf={csrf} list={list} setList={setList} />*/}
-         {/*))}*/}
+         <div className="blank_space" />
          {cmtDepthZero.map((e, i) => (
-            <CommentItmes
+            <CommentItems
                key={i}
                e={e}
                csrf={csrf}
                list={list}
                setList={setList}
             />))}
-         {/*   <CommentItmesComp key={i} depth={e.depth}>*/}
-         {/*      <div className="cmt-whoami">*/}
-         {/*         <img src="/images/og.jpg" alt="" />*/}
-         {/*         <div className="cmt-whoami-sub">*/}
-         {/*            <span className="cmt-writer">익명</span>*/}
-         {/*            <span className="cmt-created">123123</span>*/}
-         {/*         </div>*/}
-         {/*      </div>*/}
-         {/*      <div className="cmt-content">{e.cmt}</div>*/}
-         {/*      <div className="cmt-replyBox">*/}
-         {/*         <span className="cmt-btn-reply" data-grp={e.bgroup} data-dp={e.depth} onClick={isExistReply(e.bgroup) === 1 ? onClickReply : showReply}>*/}
-         {/*            {isExistReply(e.bgroup) === 1 ? "댓글달기" : isExistReply(e.bgroup) + `개의 댓글`}*/}
-         {/*         </span>*/}
-         {/*         <div className="reply-box">*/}
-         {/*            <CommentInputItem>*/}
-         {/*               <textarea placeholder="댓글을 입력해주세요." value={reply} onChange={onChangeReply} />*/}
-         {/*               <div className="cmt-login">*/}
-         {/*                  <input type="text" name="cmt-user" placeholder="이름" />*/}
-         {/*                  <input type="password" name="cmt-pwd" placeholder="비밀번호" />*/}
-         {/*                  <div className="cmt-submit-btn"*/}
-         {/*                       data-grp={e.bgroup}*/}
-         {/*                       data-sorts={e.sorts}*/}
-         {/*                       data-dp={e.depth}*/}
-         {/*                       onClick={onSubmitReply}>*/}
-         {/*                     <span>답글달기</span>*/}
-         {/*                  </div>*/}
-         {/*               </div>*/}
-         {/*            </CommentInputItem>*/}
-         {/*         </div>*/}
-         {/*      </div>*/}
-         {/*   </CommentItmesComp>*/}
-         {/*))}*/}
+         <div style={{ height: "120px" }}></div>
       </CommentContainerComp>
    );
 }

@@ -10,7 +10,7 @@ export { default as StoragePost } from "./TextEditor/StoragePost";
 //////containers
 export { default as PostsContainer } from "./Content/PostsContainer";
 export { default as CommnectContainer } from "./Content/Comment";
-export { default as CommentItmes } from "./Content/CommentItmes";
+export { default as CommentItmes } from "./Content/CommentItems";
 
 
 export { default as EntryPostsContainer } from "./Content/EntryPostsContainer";

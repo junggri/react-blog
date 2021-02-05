@@ -136,7 +136,7 @@ function CmtItem(_a) {
             react_1.default.createElement("div", { className: "reply-depth " + ("depth" + e.depth) }, depthReply.map(function (e, i) { return (react_1.default.createElement(CmtItem, { key: i, e: e, csrf: csrf, list: list, setList: setList })); })),
             react_1.default.createElement("div", { className: "depth-reply-container" },
                 react_1.default.createElement("div", { className: "depth-reply-btn", onClick: onClickDepthReplyBtn }, "\uB313\uAE00\uB2EC\uAE30"),
-                react_1.default.createElement("div", { className: "depth-reply" },
+                react_1.default.createElement("div", { className: "depth-reply-box" },
                     react_1.default.createElement(styled_comp_1.CommentInputItem, null,
                         react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: reply, onChange: onChangeReply }),
                         react_1.default.createElement("div", { className: "cmt-login" },
