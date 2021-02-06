@@ -508,8 +508,6 @@ export const CommentContainerComp = styled.div`
   }  
 `;
 export const CommentInputItem = styled.div`
-  //border:1px solid black;
-  //margin-bottom:7px;
   textarea{
     resize: none;
     width:100%;
@@ -558,16 +556,13 @@ export const CommentInputItem = styled.div`
 `;
 
 export const CommentItmesComp = styled.div<ICommentItems>`
-  //margin-top: 30px;
-  border:1px solid black;
-  box-sizing: border-box;
   & .cmt-whoami{
     display: flex;
     & img{
       width:60px;
       height: 60px;
       border-radius: 100px;
-      border:1px solid rgba(0,0,0,0.2);
+      border:1px solid rgba(0,0,0,0.08);
       display: inline-block;
       margin-right: 40px;
     }
@@ -590,18 +585,19 @@ export const CommentItmesComp = styled.div<ICommentItems>`
     }
   }
   & .cmt-content{
-    margin-top:30px;
+    margin-top:34px;
     font-size:1.175rem;
   }
   & .cmt-reply-box{
-    margin-top:30px;
+    margin-top:40px;
     & .depth-reply-btn{
       border:1px solid rgba(0,0,0,0.2);
       text-align: center;
       padding:17px;
       border-radius: 5px;
       cursor: pointer;
-      margin-bottom: 20px;
+      display: none;
+      margin-top:15px;
     }
     & .cmt-btn-reply{
       font-size:1.125rem;
@@ -611,28 +607,25 @@ export const CommentItmesComp = styled.div<ICommentItems>`
     & .reply-depth{
       display:none;
       margin-top:20px;
-      border:1px solid red;
-      
+      border-radius: 5px;
       &.depth0{
-        //background: #00e0e0;
+        background: rgba(0,0,0,0.015);
       }
       &.depth1{
-        //background: red;
+        background: rgba(0,0,0,0.02);       
       }
     }
     & .visible{
       display: block;
     }
   }
-  & .depth-reply-container{
-    display: none;
-  }
   & .depth-reply-box{
     display: none;
+    margin-top: 14px;
+    background: white;
+    border-radius: 4px;
   }
-  padding-top:17px;
-  padding-bottom:17px;
-  padding-left: ${props => props.depth * 12 + "px"};
+  padding:20px ${props => props.depth * 13 + "px"};  
 `;
 ////////////////////////////////////////
 export const AdminLoginBoxComp = styled.div`

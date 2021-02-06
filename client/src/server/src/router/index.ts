@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/csrf", indexController.getCsrf);
 
-router.get("/comment/item", indexController.getCommnet);
+router.get("/comment/item/:postid", indexController.getCommnet);
 
 router.get("/google/count", indexController.getGaCount);
 

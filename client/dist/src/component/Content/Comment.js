@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -63,17 +74,22 @@ var styled_comp_1 = require("../../styled-comp");
 var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
 var axios_1 = __importDefault(require("../../lib/axios"));
 var CommentItems_1 = __importDefault(require("./CommentItems"));
-function CommentContainer() {
+function CommentContainer(_a) {
     var _this = this;
+    var postid = _a.postid;
     var csrf = useCSRF_1.default();
-    var _a = react_1.useState(""), cmt = _a[0], setCmt = _a[1];
-    var _b = react_1.useState([]), list = _b[0], setList = _b[1];
+    var _b = react_1.useState(""), cmt = _b[0], setCmt = _b[1];
+    var _c = react_1.useState([]), list = _c[0], setList = _c[1];
+    var _d = react_1.useState({
+        cmt_user: "",
+        cmt_pwd: "",
+    }), auth = _d[0], setAuth = _d[1];
     react_1.useEffect(function () {
         (function () { return __awaiter(_this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1.default.getComment()];
+                    case 0: return [4 /*yield*/, axios_1.default.getComment(postid)];
                     case 1:
                         data = (_a.sent()).data;
                         setList(data.result);
@@ -89,16 +105,24 @@ function CommentContainer() {
     var onChangeCmt = function (e) {
         setCmt(e.target.value);
     };
+    var onChangeAuth = function (e) {
+        var _a;
+        setAuth(__assign(__assign({}, auth), (_a = {}, _a[e.currentTarget.name] = e.currentTarget.value, _a)));
+    };
     var onSubmit = function (e) { return __awaiter(_this, void 0, void 0, function () {
         var grp, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    if (cmt === "")
+                        return [2 /*return*/, alert("글을 입력해주세요")];
+                    if (!auth.cmt_pwd || !auth.cmt_pwd)
+                        return [2 /*return*/, alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요")];
                     grp = e.currentTarget.parentNode.parentNode.dataset.grp;
-                    return [4 /*yield*/, axios_1.default.saveComment(cmt, grp, csrf)];
+                    return [4 /*yield*/, axios_1.default.saveComment(cmt, grp, postid, auth.cmt_user, auth.cmt_pwd, csrf)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, axios_1.default.getComment()];
+                    return [4 /*yield*/, axios_1.default.getComment(postid)];
                 case 2:
                     data = (_a.sent()).data;
                     setCmt("");
@@ -111,12 +135,12 @@ function CommentContainer() {
         react_1.default.createElement(styled_comp_1.CommentInputItem, { "data-grp": !list.length ? 1 : list[list.length - 1].bgroup + 1 },
             react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: cmt, onChange: onChangeCmt }),
             react_1.default.createElement("div", { className: "cmt-login" },
-                react_1.default.createElement("input", { type: "text", name: "cmt-user", placeholder: "\uC774\uB984" }),
-                react_1.default.createElement("input", { type: "password", name: "cmt-pwd", placeholder: "\uBE44\uBC00\uBC88\uD638" }),
+                react_1.default.createElement("input", { type: "text", name: "cmt_user", placeholder: "\uC774\uB984", onChange: onChangeAuth }),
+                react_1.default.createElement("input", { type: "password", name: "cmt_pwd", placeholder: "\uBE44\uBC00\uBC88\uD638", onChange: onChangeAuth }),
                 react_1.default.createElement("div", { className: "cmt-submit-btn", onClick: onSubmit },
                     react_1.default.createElement("span", null, "\uB4F1\uB85D\uD558\uAE30")))),
         react_1.default.createElement("div", { className: "blank_space" }),
-        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, setList: setList })); }),
+        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, setList: setList, postid: postid })); }),
         react_1.default.createElement("div", { style: { height: "120px" } })));
 }
 exports.default = react_1.default.memo(CommentContainer);

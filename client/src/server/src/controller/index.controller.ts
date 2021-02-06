@@ -27,7 +27,7 @@ let indexController: Controller = {
    },
 
    async getCommnet(req, res) {
-      const result: any = await model.getComment();
+      const result: any = await model.getComment(req.params.postid);
       if (result.state) {
          res.status(200).json({ result: result.data });
       } else {
@@ -37,8 +37,9 @@ let indexController: Controller = {
 
 
    async saveComment(req, res) {
+      const { content, grp, postid, user, pwd } = req.body;
       try {
-         const result: any = await model.saveComment(req.body.content, req.body.grp);
+         const result: any = await model.saveComment(content, grp, postid, user, pwd);
          result.state
             ? res.status(200).json({ state: true })
             : res.status(404).json({ state: false });
@@ -48,7 +49,13 @@ let indexController: Controller = {
    },
 
    async saveReply(req, res) {
-      const result: any = await model.saveReply(req.body.content, req.body.bn, req.body.grp, req.body.sorts, req.body.depth);
+      const result: any = await model.saveReply(
+         req.body.content,
+         req.body.bn,
+         req.body.grp,
+         req.body.sorts,
+         req.body.depth,
+         req.body.postid);
       result.state
          ? res.status(200).json({ state: true })
          : res.status(404).json({ state: false });

@@ -137,24 +137,24 @@ var util = {
             method: "get",
         });
     },
-    getComment: function () {
+    getComment: function (postid) {
         return axois_config_1.default({
-            url: "/api/comment/item",
+            url: "/api/comment/item/" + postid,
         });
     },
-    saveComment: function (content, grp, token) {
+    saveComment: function (content, grp, postid, user, pwd, token) {
         return axois_config_1.default({
             url: "/api/comment",
             method: "post",
-            data: { content: content, grp: grp },
+            data: { content: content, grp: grp, postid: postid, user: user, pwd: pwd },
             headers: { "X-XSRF-TOKEN": token },
         });
     },
-    saveReply: function (content, bn, grp, sorts, depth, token) {
+    saveReply: function (content, bn, grp, sorts, depth, postid, token) {
         return axois_config_1.default({
             url: "/api/reply",
             method: "post",
-            data: { content: content, bn: bn, grp: grp, sorts: sorts, depth: depth },
+            data: { content: content, bn: bn, grp: grp, sorts: sorts, depth: depth, postid: postid },
             headers: { "X-XSRF-TOKEN": token },
         });
     },

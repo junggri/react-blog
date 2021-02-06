@@ -1,5 +1,6 @@
 import connection from "../config/topic.connection";
 import tempConn from "../config/temp.connetion";
+import indexModel from "./index.model";
 import { v4 as uuidv4 } from "uuid";
 import { promises as fs } from "fs";
 import path from "path";
@@ -56,6 +57,7 @@ const contentModel = {
       const saveData = savePost("contents", data);
       const result: any = await poolConnction<any>(saveData.query, saveData.dep);
       await fs.writeFile(saveData.filePath, data.content, "utf8");
+      await indexModel.createNewCommetTable(saveData.uid);
       return result;
    },
 

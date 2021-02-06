@@ -61,6 +61,6 @@ function PostsContainer(_a) {
             react_1.default.createElement(react_highlight_js_1.default, { language: "react" },
                 react_1.default.createElement("div", { dangerouslySetInnerHTML: MakeHtml(), className: "posts-content" })),
             react_1.default.createElement("div", { className: "posts-created" }, data.result[0].created)),
-        react_1.default.createElement(Comment_1.default, null)));
+        react_1.default.createElement(Comment_1.default, { postid: match.params.postsId })));
 }
 exports.default = PostsContainer;

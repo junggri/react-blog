@@ -41,6 +41,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var topic_connection_1 = __importDefault(require("../config/topic.connection"));
 var temp_connetion_1 = __importDefault(require("../config/temp.connetion"));
+var index_model_1 = __importDefault(require("./index.model"));
 var uuid_1 = require("uuid");
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
@@ -113,6 +114,9 @@ var contentModel = {
                     result = _a.sent();
                     return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
                 case 2:
+                    _a.sent();
+                    return [4 /*yield*/, index_model_1.default.createNewCommetTable(saveData.uid)];
+                case 3:
                     _a.sent();
                     return [2 /*return*/, result];
             }

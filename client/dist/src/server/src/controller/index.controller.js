@@ -77,7 +77,7 @@ var indexController = {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, index_model_1.default.getComment()];
+                    case 0: return [4 /*yield*/, index_model_1.default.getComment(req.params.postid)];
                     case 1:
                         result = _a.sent();
                         if (result.state) {
@@ -93,23 +93,26 @@ var indexController = {
     },
     saveComment: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var result, e_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _a, content, grp, postid, user, pwd, result, e_1;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, index_model_1.default.saveComment(req.body.content, req.body.grp)];
+                        _a = req.body, content = _a.content, grp = _a.grp, postid = _a.postid, user = _a.user, pwd = _a.pwd;
+                        _b.label = 1;
                     case 1:
-                        result = _a.sent();
+                        _b.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, index_model_1.default.saveComment(content, grp, postid, user, pwd)];
+                    case 2:
+                        result = _b.sent();
                         result.state
                             ? res.status(200).json({ state: true })
                             : res.status(404).json({ state: false });
-                        return [3 /*break*/, 3];
-                    case 2:
-                        e_1 = _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_1 = _b.sent();
                         console.error(e_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -119,7 +122,7 @@ var indexController = {
             var result;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, index_model_1.default.saveReply(req.body.content, req.body.bn, req.body.grp, req.body.sorts, req.body.depth)];
+                    case 0: return [4 /*yield*/, index_model_1.default.saveReply(req.body.content, req.body.bn, req.body.grp, req.body.sorts, req.body.depth, req.body.postid)];
                     case 1:
                         result = _a.sent();
                         result.state

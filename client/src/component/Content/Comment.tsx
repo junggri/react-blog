@@ -13,14 +13,19 @@ interface ICommnet {
    cmt: string
 }
 
-function CommentContainer() {
+function CommentContainer({ postid }: { postid: string }) {
    const csrf = useCSRF();
    const [cmt, setCmt] = useState("");
    const [list, setList] = useState<ICommnet[]>([]);
+   const [auth, setAuth] = useState({
+      cmt_user: "",
+      cmt_pwd: "",
+   });
+
 
    useEffect(() => {
       (async () => {
-         const { data } = await util.getComment();
+         const { data } = await util.getComment(postid);
          setList(data.result);
       })();
    }, []);
@@ -33,11 +38,20 @@ function CommentContainer() {
       setCmt(e.target.value);
    };
 
+   const onChangeAuth = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setAuth({
+         ...auth,
+         [e.currentTarget.name]: e.currentTarget.value,
+      });
+   };
+
 
    const onSubmit = async (e: any) => {
+      if (cmt === "") return alert("글을 입력해주세요");
+      if (!auth.cmt_pwd || !auth.cmt_pwd) return alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요");
       const grp = e.currentTarget.parentNode.parentNode.dataset.grp;
-      await util.saveComment(cmt, grp, csrf);
-      const { data } = await util.getComment();
+      await util.saveComment(cmt, grp, postid, auth.cmt_user, auth.cmt_pwd, csrf);
+      const { data } = await util.getComment(postid);
       setCmt("");
       setList(data.result);
    };
@@ -46,8 +60,8 @@ function CommentContainer() {
          <CommentInputItem data-grp={!list.length ? 1 : list[list.length - 1].bgroup + 1}>
             <textarea placeholder="댓글을 입력해주세요." value={cmt} onChange={onChangeCmt} />
             <div className="cmt-login">
-               <input type="text" name="cmt-user" placeholder="이름" />
-               <input type="password" name="cmt-pwd" placeholder="비밀번호" />
+               <input type="text" name="cmt_user" placeholder="이름" onChange={onChangeAuth} />
+               <input type="password" name="cmt_pwd" placeholder="비밀번호" onChange={onChangeAuth} />
                <div className="cmt-submit-btn" onClick={onSubmit}>
                   <span>등록하기</span>
                </div>
@@ -61,6 +75,7 @@ function CommentContainer() {
                csrf={csrf}
                list={list}
                setList={setList}
+               postid={postid}
             />))}
          <div style={{ height: "120px" }}></div>
       </CommentContainerComp>

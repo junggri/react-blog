@@ -156,26 +156,26 @@ const util = {
       });
    },
 
-   getComment() {
+   getComment(postid: string) {
       return instance({
-         url: "/api/comment/item",
+         url: `/api/comment/item/${postid}`,
       });
    },
 
-   saveComment(content: string, grp: number, token: string) {
+   saveComment(content: string, grp: number, postid: string, user: string, pwd: string, token: string) {
       return instance({
          url: "/api/comment",
          method: "post",
-         data: { content, grp },
+         data: { content, grp, postid, user, pwd },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
 
-   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, token: string) {
+   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, postid: string, token: string) {
       return instance({
          url: "/api/reply",
          method: "post",
-         data: { content, bn, grp, sorts, depth },
+         data: { content, bn, grp, sorts, depth, postid },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
