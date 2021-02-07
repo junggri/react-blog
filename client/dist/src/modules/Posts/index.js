@@ -31,7 +31,6 @@ exports.GET_TEMP_POST_SUCCESS = "data/GET_TEMP_POST_SUCCESS";
 exports.GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR";
 exports.CLEAR_POST = "data/CLEAR_POST";
 exports.CLEAR_POST_DATA = "data/CLEAR_POST_DATA";
-//액션 생성함수를 선언!
 exports.onRequestPosts = PostsUtil_1.createThunk(exports.GET_POSTS, axios_1.default.getPostFromParams);
 exports.onRequsetPost = PostsUtil_1.createThunk(exports.GET_POST, axios_1.default.getPostFromPostId);
 exports.onRequestAllPosts = PostsUtil_1.createThunk(exports.GET_ALL_POSTS, axios_1.default.getAllPostsItems);

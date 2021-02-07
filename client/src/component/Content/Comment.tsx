@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { CommentContainerComp, CommentInputItem } from "../../styled-comp";
 import useCSRF from "../../useHooks/useCSRF";
-import util from "../../lib/axios";
+import useComment from "../../useHooks/useComment";
 import CommentItems from "./CommentItems";
+import { useDispatch } from "react-redux";
+import { usePreloader } from "../../lib/PreloadContext";
+import { onGetComment } from "../../modules/Comment";
+import util from "../../lib/axios";
+import { FaRegCommentDots } from "react-icons/fa";
 
 interface ICommnet {
    board: number
@@ -15,24 +20,22 @@ interface ICommnet {
 
 function CommentContainer({ postid }: { postid: string }) {
    const csrf = useCSRF();
+   const dispatch = useDispatch();
+   const { list, getComment } = useComment();
+
    const [cmt, setCmt] = useState("");
-   const [list, setList] = useState<ICommnet[]>([]);
    const [auth, setAuth] = useState({
       cmt_user: "",
       cmt_pwd: "",
    });
 
+   usePreloader(() => dispatch(onGetComment(postid)));
 
    useEffect(() => {
-      (async () => {
-         const { data } = await util.getComment(postid);
-         setList(data.result);
-      })();
-   }, []);
+      if (list) return;
+      getComment(postid);
+   }, [postid]);
 
-   const cmtDepthZero = list.filter((e, i) => {
-      if (e.sorts === 0) return list[i];
-   });
 
    const onChangeCmt = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setCmt(e.target.value);
@@ -49,20 +52,23 @@ function CommentContainer({ postid }: { postid: string }) {
    const onSubmit = async (e: any) => {
       if (cmt === "") return alert("글을 입력해주세요");
       if (!auth.cmt_pwd || !auth.cmt_pwd) return alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요");
-      const grp = e.currentTarget.parentNode.parentNode.dataset.grp;
+      const grp = e.currentTarget.parentNode.parentNode.parentNode.dataset.grp;
       await util.saveComment(cmt, grp, postid, auth.cmt_user, auth.cmt_pwd, csrf);
-      const { data } = await util.getComment(postid);
+      getComment(postid);
       setCmt("");
-      setList(data.result);
       setAuth({
          cmt_user: "",
          cmt_pwd: "",
       });
    };
 
-
+   if (list === null) return null;
    return (
       <CommentContainerComp data-grp={!list.length ? 1 : list[list.length - 1].bgroup + 1}>
+         <div className="cmt-slo-box">
+            <FaRegCommentDots className="cmt-icons" />
+            <span className="cmt-slo">comment</span>
+         </div>
          <CommentInputItem>
             <textarea placeholder="댓글을 입력해주세요." value={cmt} onChange={onChangeCmt} />
             <div className="cmt-login">
@@ -74,16 +80,19 @@ function CommentContainer({ postid }: { postid: string }) {
             </div>
          </CommentInputItem>
          <div className="blank_space" />
-         {list.length !== 0 && cmtDepthZero.map((e, i) => (
-            <CommentItems
-               key={i}
-               e={e}
-               csrf={csrf}
-               list={list}
-               setList={setList}
-               postid={postid}
-            />))}
-         <div style={{ height: "120px" }}></div>
+         {!list.length ? null :
+            list.filter((e, i) => {
+               if (e.sorts === 0) return list[i];
+            }).map((e, i) => (
+               <CommentItems
+                  key={i}
+                  e={e}
+                  csrf={csrf}
+                  list={list}
+                  getComment={getComment}
+                  postid={postid}
+               />))}
+         <div style={{ height: "120px" }} />
       </CommentContainerComp>
    );
 }

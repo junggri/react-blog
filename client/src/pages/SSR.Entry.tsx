@@ -24,7 +24,6 @@ function SSREntry({ match, location }: any) {
       }
    }, [getAllPosts, newRequest, setNewRequset]);
 
-
    const onDelete = useCallback((e: React.MouseEvent<HTMLElement>) => {
       if (confirm("삭제할거야???")) {
          const uid = (e.currentTarget.parentNode as HTMLElement).dataset.id as string;
@@ -64,7 +63,6 @@ function SSREntry({ match, location }: any) {
             <Route path="/tag" exact={true} render={() => (
                <TagsContainer Allposts={AllPosts} />
             )} />
-
          </EntryContainerComp>
       </>
    );

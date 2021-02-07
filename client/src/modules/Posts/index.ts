@@ -21,7 +21,7 @@ export const GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR";
 
 export const CLEAR_POST = "data/CLEAR_POST";
 export const CLEAR_POST_DATA = "data/CLEAR_POST_DATA";
-//액션 생성함수를 선언!
+
 
 export const onRequestPosts = createThunk(GET_POSTS, util.getPostFromParams);
 
@@ -30,6 +30,7 @@ export const onRequsetPost = createThunk(GET_POST, util.getPostFromPostId);
 export const onRequestAllPosts = createThunk(GET_ALL_POSTS, util.getAllPostsItems);
 
 export const onRequestTemoPost = createThunk(GET_TEMP_POST, util.getTempPost);
+
 
 const initialState: IPostInitialState = {
    posts: reducerUtil.initial(null),

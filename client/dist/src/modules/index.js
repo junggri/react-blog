@@ -8,5 +8,6 @@ var Posts_1 = __importDefault(require("./Posts"));
 var Common_1 = __importDefault(require("./Common"));
 var Topic_1 = __importDefault(require("./Topic"));
 var TextEditor_1 = __importDefault(require("./TextEditor"));
-var rootReducer = redux_1.combineReducers({ posts: Posts_1.default, common: Common_1.default, topic: Topic_1.default, textEdit: TextEditor_1.default });
+var Comment_1 = __importDefault(require("./Comment"));
+var rootReducer = redux_1.combineReducers({ posts: Posts_1.default, common: Common_1.default, topic: Topic_1.default, textEdit: TextEditor_1.default, comment: Comment_1.default });
 exports.default = rootReducer;

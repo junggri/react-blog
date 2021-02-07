@@ -93,7 +93,7 @@ const GlobalStyles = createGlobalStyle`
     }
     .ql-syntax{
       font-family: "Fira Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-      padding:30px 30px; 
+      padding:25px 25px; 
       letter-spacing: 0.2px;
       border-radius: 4px;
       font-size: 0.9rem;
@@ -101,8 +101,12 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 300 !important;
       white-space: pre-wrap;
       tab-size: 1 !important;
-      ${media.tablet`font-size:0.6rem !important`};
+      ${media.tablet`
+         font-size:0.6rem !important;
+         padding:20px 20px;
+      `};
       ${media.mobile`
+         padding:10px 10px;
          font-size:0.7rem !important;
          white-space: pre !important;
          overflow:scroll !important;

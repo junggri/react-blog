@@ -47,11 +47,11 @@ var util = {
             headers: { "X-XSRF-TOKEN": token },
         });
     },
-    temporaryPost: function (data, token) {
+    temporaryPost: function (data, token, id) {
         return axois_config_1.default({
             url: "/topic/temp/posts",
             method: "post",
-            data: data,
+            data: { data: data, id: id },
             headers: { "X-XSRF-TOKEN": token },
         });
     },

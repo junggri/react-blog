@@ -17,11 +17,11 @@ interface ICmtItem {
    e: ICommnet,
    csrf: string,
    list: ICommnet[]
-   setList: any
+   getComment: any
    postid: string
 }
 
-function CommentItem({ e, csrf, list, setList, postid }: ICmtItem) {
+function CommentItem({ e, csrf, list, getComment, postid }: ICmtItem) {
    const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
    const [reply, setReply] = useState("");
    const [depthReply, setDepthReply] = useState([]);
@@ -78,15 +78,14 @@ function CommentItem({ e, csrf, list, setList, postid }: ICmtItem) {
       if (reply === "") return alert("댓글을 입력해주세요.");
       if (!auth.cmt_pwd || !auth.cmt_pwd) return alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요");
       const replyBox = e.currentTarget.parentNode.parentNode.parentNode;
+      replyBox.classList.remove("visible");
       const depth = e.currentTarget.dataset.dp;
       const sort = e.currentTarget.dataset.sorts;
       const grp = e.currentTarget.dataset.grp;
       const bn = e.currentTarget.dataset.board;
       await util.saveReply(reply, Number(bn), Number(grp), Number(sort), Number(depth), postid, auth.cmt_user, auth.cmt_pwd, csrf);
-      const { data }: any = await util.getComment(postid);
-      const _list: any = data.result.filter((e: ICommnet) => e.bgroup === Number(grp) && e.sorts >= Number(sort) && Number(bn) === e.parent);
-      replyBox.classList.remove("visible");
-      setList(data.result);
+      getComment(postid);
+      const _list: any = list.filter((e: ICommnet) => e.bgroup === Number(grp) && e.sorts >= Number(sort) && Number(bn) === e.parent);
       setDepthReply(_list);
       setReply("");
       setAuth({
@@ -124,7 +123,7 @@ function CommentItem({ e, csrf, list, setList, postid }: ICmtItem) {
                      e={e}
                      csrf={csrf}
                      list={list}
-                     setList={setList}
+                     getComment={getComment}
                      postid={postid}
                   />
                ))}

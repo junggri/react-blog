@@ -178,35 +178,48 @@ var contentModel = {
             });
         });
     },
-    temporaryPosts: function (data) { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, saveData, e_3;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, temp_connetion_1.default()];
-                case 1:
-                    conn = _a.sent();
-                    saveData = savePost("temporary-storage", data);
-                    if (!(conn !== undefined)) return [3 /*break*/, 6];
-                    _a.label = 2;
-                case 2:
-                    _a.trys.push([2, 5, , 6]);
-                    return [4 /*yield*/, conn.execute(saveData.query, saveData.dep)];
-                case 3:
-                    _a.sent();
-                    return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
-                case 4:
-                    _a.sent();
-                    conn.release();
-                    return [2 /*return*/, { state: true }];
-                case 5:
-                    e_3 = _a.sent();
-                    conn.release();
-                    console.error(e_3);
-                    return [2 /*return*/, { state: false }];
-                case 6: return [2 /*return*/];
-            }
+    temporaryPosts: function (_a) {
+        var data = _a.data, id = _a.id;
+        return __awaiter(void 0, void 0, void 0, function () {
+            var conn, saveData, e_3;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, temp_connetion_1.default()];
+                    case 1:
+                        conn = _b.sent();
+                        saveData = savePost("temporary-storage", data);
+                        if (!(conn !== undefined)) return [3 /*break*/, 6];
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, 5, , 6]);
+                        return [4 /*yield*/, conn.execute(saveData.query, saveData.dep)];
+                    case 3:
+                        _b.sent();
+                        return [4 /*yield*/, fs_1.promises.writeFile(saveData.filePath, data.content, "utf8")];
+                    case 4:
+                        _b.sent();
+                        conn.release();
+                        // if (id === undefined) {
+                        // } else {
+                        //    const [result]: any = await conn.execute(`select * from post where uid = ?`, [id]);
+                        //    if (!result.length) {
+                        //       const query =
+                        //
+                        //    } else {
+                        //
+                        //    }
+                        // }
+                        return [2 /*return*/, { state: true }];
+                    case 5:
+                        e_3 = _b.sent();
+                        conn.release();
+                        console.error(e_3);
+                        return [2 /*return*/, { state: false }];
+                    case 6: return [2 /*return*/];
+                }
+            });
         });
-    }); },
+    },
     getTemporaryPost: function () { return __awaiter(void 0, void 0, void 0, function () {
         var conn, result, e_4;
         return __generator(this, function (_a) {
