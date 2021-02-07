@@ -127,20 +127,24 @@ function CommentContainer(_a) {
                     data = (_a.sent()).data;
                     setCmt("");
                     setList(data.result);
+                    setAuth({
+                        cmt_user: "",
+                        cmt_pwd: "",
+                    });
                     return [2 /*return*/];
             }
         });
     }); };
-    return (react_1.default.createElement(styled_comp_1.CommentContainerComp, null,
-        react_1.default.createElement(styled_comp_1.CommentInputItem, { "data-grp": !list.length ? 1 : list[list.length - 1].bgroup + 1 },
+    return (react_1.default.createElement(styled_comp_1.CommentContainerComp, { "data-grp": !list.length ? 1 : list[list.length - 1].bgroup + 1 },
+        react_1.default.createElement(styled_comp_1.CommentInputItem, null,
             react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: cmt, onChange: onChangeCmt }),
             react_1.default.createElement("div", { className: "cmt-login" },
-                react_1.default.createElement("input", { type: "text", name: "cmt_user", placeholder: "\uC774\uB984", onChange: onChangeAuth }),
-                react_1.default.createElement("input", { type: "password", name: "cmt_pwd", placeholder: "\uBE44\uBC00\uBC88\uD638", onChange: onChangeAuth }),
+                react_1.default.createElement("input", { type: "text", name: "cmt_user", value: auth.cmt_user, placeholder: "\uC774\uB984", onChange: onChangeAuth }),
+                react_1.default.createElement("input", { type: "password", name: "cmt_pwd", value: auth.cmt_pwd, placeholder: "\uBE44\uBC00\uBC88\uD638", onChange: onChangeAuth }),
                 react_1.default.createElement("div", { className: "cmt-submit-btn", onClick: onSubmit },
                     react_1.default.createElement("span", null, "\uB4F1\uB85D\uD558\uAE30")))),
         react_1.default.createElement("div", { className: "blank_space" }),
-        cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, setList: setList, postid: postid })); }),
+        list.length !== 0 && cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, setList: setList, postid: postid })); }),
         react_1.default.createElement("div", { style: { height: "120px" } })));
 }
 exports.default = react_1.default.memo(CommentContainer);

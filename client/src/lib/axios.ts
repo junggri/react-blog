@@ -158,7 +158,7 @@ const util = {
 
    getComment(postid: string) {
       return instance({
-         url: `/api/comment/item/${postid}`,
+         url: `/api/item/${postid}/comment`,
       });
    },
 
@@ -171,11 +171,11 @@ const util = {
       });
    },
 
-   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, postid: string, token: string) {
+   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, postid: string, user: string, pwd: string, token: string) {
       return instance({
          url: "/api/reply",
          method: "post",
-         data: { content, bn, grp, sorts, depth, postid },
+         data: { content, bn, grp, sorts, depth, postid, user, pwd },
          headers: { "X-XSRF-TOKEN": token },
       });
    },

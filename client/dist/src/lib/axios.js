@@ -139,7 +139,7 @@ var util = {
     },
     getComment: function (postid) {
         return axois_config_1.default({
-            url: "/api/comment/item/" + postid,
+            url: "/api/item/" + postid + "/comment",
         });
     },
     saveComment: function (content, grp, postid, user, pwd, token) {
@@ -150,11 +150,11 @@ var util = {
             headers: { "X-XSRF-TOKEN": token },
         });
     },
-    saveReply: function (content, bn, grp, sorts, depth, postid, token) {
+    saveReply: function (content, bn, grp, sorts, depth, postid, user, pwd, token) {
         return axois_config_1.default({
             url: "/api/reply",
             method: "post",
-            data: { content: content, bn: bn, grp: grp, sorts: sorts, depth: depth, postid: postid },
+            data: { content: content, bn: bn, grp: grp, sorts: sorts, depth: depth, postid: postid, user: user, pwd: pwd },
             headers: { "X-XSRF-TOKEN": token },
         });
     },

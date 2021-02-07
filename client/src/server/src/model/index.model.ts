@@ -1,5 +1,6 @@
 import connection from "../config/comment.connection";
 import sanitize from "sanitize-html";
+import { cryptoPwd } from "../lib/cryptoPwd";
 
 const indexModel = {
    async createNewCommetTable(ref: string) {
@@ -16,7 +17,8 @@ const indexModel = {
                depth int NOT NULL,
                cmt varchar(2000) NOT NULL,
                writer varchar(45),
-               pwd varchar(200) NOT NULL
+               pwd varchar(200) NOT NULL,
+               salt varchar(150) NOT NULL
             )
             `;
             await conn.execute(query);
@@ -29,9 +31,11 @@ const indexModel = {
 
    async getComment(postid: string) {
       const conn = await connection();
+      console.log(postid.replace(/-/g, "_"));
       if (conn !== undefined)
          try {
             const query = `SELECT * FROM ${postid.replace(/-/g, "_")} order by bgroup asc, sorts asc`;
+            // const query = `show tables`;
             const [result] = await conn.execute(query);
             conn.release();
             return { state: true, data: result };
@@ -46,11 +50,11 @@ const indexModel = {
       const conn = await connection();
       const sanitize_writer = sanitize(writer);
       const sanitize_pwd = sanitize(pwd);
-
+      const _cyrpto = await cryptoPwd(sanitize_pwd);
       if (conn !== undefined)
          try {
-            const query = `INSERT INTO ${postid.replace(/-/g, "_")} (bgroup,sorts,depth,cmt) VALUES (?,?,?,?)`;
-            const dep = [grp, 0, 0, cmt];
+            const query = `INSERT INTO ${postid.replace(/-/g, "_")} (bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?)`;
+            const dep = [grp, 0, 0, cmt, sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
             await conn.execute(query, dep);
             conn.release();
             return { state: true };
@@ -61,8 +65,11 @@ const indexModel = {
          }
    },
 
-   async saveReply(reply: string, bn: number, grp: number, sorts: number, depth: number, postid: string) {
+   async saveReply(reply: string, bn: number, grp: number, sorts: number, depth: number, postid: string, writer: string, pwd: string) {
       const conn = await connection();
+      const sanitize_writer = sanitize(writer);
+      const sanitize_pwd = sanitize(pwd);
+      const _cyrpto = await cryptoPwd(sanitize_pwd);
       const cmtPostid = postid.replace(/-/g, "_");
       if (conn !== undefined)
          try {
@@ -81,8 +88,8 @@ const indexModel = {
                const [result]: any = await conn.execute(zeroQuery);
                conn.release();
                const save_sort = result[0]["COALESCE(MAX(SORTS),0) + 1"];//save_sort => 답글에 대한 sort를 구
-               const save_query = `INSERT INTO ${cmtPostid} (parent,bgroup,sorts,depth,cmt) VALUES (?,?,?,?,?)`;
-               const dep = [bn, grp, save_sort, depth + 1, reply];
+               const save_query = `INSERT INTO ${cmtPostid} (parent,bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?,?)`;
+               const dep = [bn, grp, save_sort, depth + 1, reply, sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
                await conn.execute(save_query, dep);
                conn.release();
             } else {
@@ -91,8 +98,8 @@ const indexModel = {
                                     `;
                await conn.execute(update_query);
                conn.release();
-               const save_query = `INSERT INTO ${cmtPostid} (parent,bgroup,sorts,depth,cmt) VALUES (?,?,?,?,?)`;
-               const dep = [bn, grp, sort, depth + 1, reply];
+               const save_query = `INSERT INTO ${cmtPostid} (parent,bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?,?)`;
+               const dep = [bn, grp, sort, depth + 1, reply, sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
                await conn.execute(save_query, dep);
                conn.release();
             }

@@ -54,21 +54,27 @@ function CommentContainer({ postid }: { postid: string }) {
       const { data } = await util.getComment(postid);
       setCmt("");
       setList(data.result);
+      setAuth({
+         cmt_user: "",
+         cmt_pwd: "",
+      });
    };
+
+
    return (
-      <CommentContainerComp>
-         <CommentInputItem data-grp={!list.length ? 1 : list[list.length - 1].bgroup + 1}>
+      <CommentContainerComp data-grp={!list.length ? 1 : list[list.length - 1].bgroup + 1}>
+         <CommentInputItem>
             <textarea placeholder="댓글을 입력해주세요." value={cmt} onChange={onChangeCmt} />
             <div className="cmt-login">
-               <input type="text" name="cmt_user" placeholder="이름" onChange={onChangeAuth} />
-               <input type="password" name="cmt_pwd" placeholder="비밀번호" onChange={onChangeAuth} />
+               <input type="text" name="cmt_user" value={auth.cmt_user} placeholder="이름" onChange={onChangeAuth} />
+               <input type="password" name="cmt_pwd" value={auth.cmt_pwd} placeholder="비밀번호" onChange={onChangeAuth} />
                <div className="cmt-submit-btn" onClick={onSubmit}>
                   <span>등록하기</span>
                </div>
             </div>
          </CommentInputItem>
          <div className="blank_space" />
-         {cmtDepthZero.map((e, i) => (
+         {list.length !== 0 && cmtDepthZero.map((e, i) => (
             <CommentItems
                key={i}
                e={e}

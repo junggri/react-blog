@@ -119,12 +119,14 @@ var indexController = {
     },
     saveReply: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var result;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, index_model_1.default.saveReply(req.body.content, req.body.bn, req.body.grp, req.body.sorts, req.body.depth, req.body.postid)];
+            var _a, content, bn, grp, sorts, depth, postid, user, pwd, result;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = req.body, content = _a.content, bn = _a.bn, grp = _a.grp, sorts = _a.sorts, depth = _a.depth, postid = _a.postid, user = _a.user, pwd = _a.pwd;
+                        return [4 /*yield*/, index_model_1.default.saveReply(content, bn, grp, sorts, depth, postid, user, pwd)];
                     case 1:
-                        result = _a.sent();
+                        result = _b.sent();
                         result.state
                             ? res.status(200).json({ state: true })
                             : res.status(404).json({ state: false });

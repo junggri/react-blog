@@ -533,11 +533,12 @@ export const CommentInputItem = styled.div`
       border-radius: 2px;
       margin-right:15px;
       padding:12.5px 7px;
+      background: white;
     }
     & .cmt-submit-btn{
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       position: absolute;
-      background:#39B787;
+      background:#2EC4B6;
       color:white;
       cursor:pointer;
       top:0;
@@ -548,6 +549,7 @@ export const CommentInputItem = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size:1.125rem
     }
   }
   & .visible{
@@ -556,6 +558,25 @@ export const CommentInputItem = styled.div`
 `;
 
 export const CommentItmesComp = styled.div<ICommentItems>`
+  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  position: relative;
+  padding:30px 15px;
+  &.depth2{
+    background: rgba(0,0,0,0.02); 
+    border: 1.5px solid rgba(0,0,0,0.02);
+    border-radius: 5px;
+  }
+  &.depth3{
+    background: rgba(0,0,0,0.024);
+    border: 1.5px solid rgba(0,0,0,0.024);
+    border-radius: 5px;          
+  }
+  &.depth4{
+    background:rgba(0,0,0,0.03);
+    border: 1.5px solid rgba(0,0,0,0.03);
+    border-radius: 5px;
+  }
   & .cmt-whoami{
     display: flex;
     & img{
@@ -579,41 +600,49 @@ export const CommentItmesComp = styled.div<ICommentItems>`
        }
        & .cmt-created{
          display: inline-block;
-         font-size:0.95rem;
+         font-size:1rem;
          opacity: 0.7
        }
     }
   }
   & .cmt-content{
-    margin-top:34px;
+    margin-top:40px;
     font-size:1.175rem;
   }
   & .cmt-reply-box{
     margin-top:40px;
     & .depth-reply-btn{
-      border:1px solid rgba(0,0,0,0.2);
+      background: #2EC4B6;
+      border:1px solid #2EC4B6;
       text-align: center;
       padding:17px;
       border-radius: 5px;
       cursor: pointer;
       display: none;
-      margin-top:15px;
+      margin-top:23px;
+      font-size:1.125rem;
+      color:white;
+      &:hover{
+        background: white;
+        border:1px solid #2EC4B6;
+        color:#2EC4B6;
+      }
     }
     & .cmt-btn-reply{
-      font-size:1.125rem;
+      font-size:1rem;
       cursor:pointer;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 4px;
+      & .reply-icons{
+        margin-right:6px;
+        font-size:1.125rem;
+        color:#2EC4B6;
+      }
     }
     & .reply-depth{
       display:none;
       margin-top:20px;
-      border-radius: 5px;
-      &.depth0{
-        background: rgba(0,0,0,0.015);
-      }
-      &.depth1{
-        background: rgba(0,0,0,0.02);       
-      }
     }
     & .visible{
       display: block;
@@ -621,11 +650,11 @@ export const CommentItmesComp = styled.div<ICommentItems>`
   }
   & .depth-reply-box{
     display: none;
-    margin-top: 14px;
-    background: white;
+    margin-top: 20px;
+    background: transparent;
     border-radius: 4px;
   }
-  padding:20px ${props => props.depth * 13 + "px"};  
+    
 `;
 ////////////////////////////////////////
 export const AdminLoginBoxComp = styled.div`
