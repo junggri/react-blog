@@ -90,7 +90,7 @@ const contentModel = {
       return await poolConnction<string>(query, dep);
    },
 
-   temporaryPosts: async (data: ITextInitialProps) => {
+   temporaryPosts: async ({ data, id }: { data: ITextInitialProps, id: string }) => {
       let conn = await tempConn();
       const saveData = savePost("temporary-storage", data);
       if (conn !== undefined)
@@ -98,6 +98,16 @@ const contentModel = {
             await conn.execute(saveData.query, saveData.dep);
             await fs.writeFile(saveData.filePath, data.content, "utf8");
             conn.release();
+            // if (id === undefined) {
+            // } else {
+            //    const [result]: any = await conn.execute(`select * from post where uid = ?`, [id]);
+            //    if (!result.length) {
+            //       const query =
+            //
+            //    } else {
+            //
+            //    }
+            // }
             return { state: true };
          } catch (e) {
             conn.release();

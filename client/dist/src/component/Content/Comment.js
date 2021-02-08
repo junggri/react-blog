@@ -72,36 +72,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
 var styled_comp_1 = require("../../styled-comp");
 var useCSRF_1 = __importDefault(require("../../useHooks/useCSRF"));
-var axios_1 = __importDefault(require("../../lib/axios"));
+var useComment_1 = __importDefault(require("../../useHooks/useComment"));
 var CommentItems_1 = __importDefault(require("./CommentItems"));
+var react_redux_1 = require("react-redux");
+var PreloadContext_1 = require("../../lib/PreloadContext");
+var Comment_1 = require("../../modules/Comment");
+var axios_1 = __importDefault(require("../../lib/axios"));
+var fa_1 = require("react-icons/fa");
 function CommentContainer(_a) {
     var _this = this;
     var postid = _a.postid;
     var csrf = useCSRF_1.default();
-    var _b = react_1.useState(""), cmt = _b[0], setCmt = _b[1];
-    var _c = react_1.useState([]), list = _c[0], setList = _c[1];
+    var dispatch = react_redux_1.useDispatch();
+    var _b = useComment_1.default(), list = _b.list, getComment = _b.getComment;
+    var _c = react_1.useState(""), cmt = _c[0], setCmt = _c[1];
     var _d = react_1.useState({
         cmt_user: "",
         cmt_pwd: "",
     }), auth = _d[0], setAuth = _d[1];
+    PreloadContext_1.usePreloader(function () { return dispatch(Comment_1.onGetComment(postid)); });
     react_1.useEffect(function () {
-        (function () { return __awaiter(_this, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios_1.default.getComment(postid)];
-                    case 1:
-                        data = (_a.sent()).data;
-                        setList(data.result);
-                        return [2 /*return*/];
-                }
-            });
-        }); })();
-    }, []);
-    var cmtDepthZero = list.filter(function (e, i) {
-        if (e.sorts === 0)
-            return list[i];
-    });
+        if (list)
+            return;
+        getComment(postid);
+    }, [postid]);
     var onChangeCmt = function (e) {
         setCmt(e.target.value);
     };
@@ -110,7 +104,7 @@ function CommentContainer(_a) {
         setAuth(__assign(__assign({}, auth), (_a = {}, _a[e.currentTarget.name] = e.currentTarget.value, _a)));
     };
     var onSubmit = function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var grp, data;
+        var grp;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -118,15 +112,12 @@ function CommentContainer(_a) {
                         return [2 /*return*/, alert("글을 입력해주세요")];
                     if (!auth.cmt_pwd || !auth.cmt_pwd)
                         return [2 /*return*/, alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요")];
-                    grp = e.currentTarget.parentNode.parentNode.dataset.grp;
+                    grp = e.currentTarget.parentNode.parentNode.parentNode.dataset.grp;
                     return [4 /*yield*/, axios_1.default.saveComment(cmt, grp, postid, auth.cmt_user, auth.cmt_pwd, csrf)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, axios_1.default.getComment(postid)];
-                case 2:
-                    data = (_a.sent()).data;
+                    getComment(postid);
                     setCmt("");
-                    setList(data.result);
                     setAuth({
                         cmt_user: "",
                         cmt_pwd: "",
@@ -135,7 +126,12 @@ function CommentContainer(_a) {
             }
         });
     }); };
+    if (list === null)
+        return null;
     return (react_1.default.createElement(styled_comp_1.CommentContainerComp, { "data-grp": !list.length ? 1 : list[list.length - 1].bgroup + 1 },
+        react_1.default.createElement("div", { className: "cmt-slo-box" },
+            react_1.default.createElement(fa_1.FaRegCommentDots, { className: "cmt-icons" }),
+            react_1.default.createElement("span", { className: "cmt-slo" }, "comment")),
         react_1.default.createElement(styled_comp_1.CommentInputItem, null,
             react_1.default.createElement("textarea", { placeholder: "\uB313\uAE00\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", value: cmt, onChange: onChangeCmt }),
             react_1.default.createElement("div", { className: "cmt-login" },
@@ -144,7 +140,11 @@ function CommentContainer(_a) {
                 react_1.default.createElement("div", { className: "cmt-submit-btn", onClick: onSubmit },
                     react_1.default.createElement("span", null, "\uB4F1\uB85D\uD558\uAE30")))),
         react_1.default.createElement("div", { className: "blank_space" }),
-        list.length !== 0 && cmtDepthZero.map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, setList: setList, postid: postid })); }),
+        !list.length ? null :
+            list.filter(function (e, i) {
+                if (e.sorts === 0)
+                    return list[i];
+            }).map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, postid: postid })); }),
         react_1.default.createElement("div", { style: { height: "120px" } })));
 }
 exports.default = react_1.default.memo(CommentContainer);

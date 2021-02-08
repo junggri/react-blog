@@ -125,8 +125,11 @@ const Editor = ({ history, location }: any) => {
    };
 
    const onSaveTemporaryPost = async (): Promise<void> => {
-      const result = await util.temporaryPost(data, csrf);
+
+      const temp_postId = Object.values(qs.parse(location.search))[0] as string;
+      const result = await util.temporaryPost(data, csrf, temp_postId);
       if (result.request.status === 200) history.push("/");
+
    };
 
    const onDelete = useCallback((target: string) => {

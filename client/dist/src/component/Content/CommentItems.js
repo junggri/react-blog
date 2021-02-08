@@ -76,7 +76,7 @@ var dompurify_1 = __importDefault(require("dompurify"));
 var hi_1 = require("react-icons/hi");
 function CommentItem(_a) {
     var _this = this;
-    var e = _a.e, csrf = _a.csrf, list = _a.list, setList = _a.setList, postid = _a.postid;
+    var e = _a.e, csrf = _a.csrf, list = _a.list, getComment = _a.getComment, postid = _a.postid;
     var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
     var _b = react_1.useState(""), reply = _b[0], setReply = _b[1];
     var _c = react_1.useState([]), depthReply = _c[0], setDepthReply = _c[1];
@@ -123,7 +123,7 @@ function CommentItem(_a) {
         setReply(e.target.value);
     };
     var onSubmitReply = function (e) { return __awaiter(_this, void 0, void 0, function () {
-        var replyBox, depth, sort, grp, bn, data, _list;
+        var replyBox, depth, sort, grp, bn, _list;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -132,6 +132,7 @@ function CommentItem(_a) {
                     if (!auth.cmt_pwd || !auth.cmt_pwd)
                         return [2 /*return*/, alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요")];
                     replyBox = e.currentTarget.parentNode.parentNode.parentNode;
+                    replyBox.classList.remove("visible");
                     depth = e.currentTarget.dataset.dp;
                     sort = e.currentTarget.dataset.sorts;
                     grp = e.currentTarget.dataset.grp;
@@ -139,12 +140,8 @@ function CommentItem(_a) {
                     return [4 /*yield*/, axios_1.default.saveReply(reply, Number(bn), Number(grp), Number(sort), Number(depth), postid, auth.cmt_user, auth.cmt_pwd, csrf)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, axios_1.default.getComment(postid)];
-                case 2:
-                    data = (_a.sent()).data;
-                    _list = data.result.filter(function (e) { return e.bgroup === Number(grp) && e.sorts >= Number(sort) && Number(bn) === e.parent; });
-                    replyBox.classList.remove("visible");
-                    setList(data.result);
+                    getComment(postid);
+                    _list = list.filter(function (e) { return e.bgroup === Number(grp) && e.sorts >= Number(sort) && Number(bn) === e.parent; });
                     setDepthReply(_list);
                     setReply("");
                     setAuth({
@@ -170,7 +167,7 @@ function CommentItem(_a) {
             react_1.default.createElement("div", { className: "cmt-btn-reply", "data-grp": e.bgroup, "data-dp": e.depth, "data-board": e.board, onClick: onClickReply },
                 react_1.default.createElement(hi_1.HiCode, { className: "reply-icons" }),
                 !isExistReply(e).length ? react_1.default.createElement("span", null, "\uB313\uAE00\uB2EC\uAE30") : react_1.default.createElement("span", null, isExistReply(e).length + "개의 댓글")),
-            react_1.default.createElement("div", { className: "reply-depth" }, depthReply.map(function (e, i) { return (react_1.default.createElement(CommentItem, { key: i, e: e, csrf: csrf, list: list, setList: setList, postid: postid })); })),
+            react_1.default.createElement("div", { className: "reply-depth" }, depthReply.map(function (e, i) { return (react_1.default.createElement(CommentItem, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, postid: postid })); })),
             react_1.default.createElement("div", { className: "depth-reply-btn", onClick: onClickDepthReplyBtn }, "\uB313\uAE00 \uB2EC\uAE30"),
             react_1.default.createElement("div", { className: "depth-reply-box" },
                 react_1.default.createElement(styled_comp_1.CommentInputItem, null,

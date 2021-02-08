@@ -199,10 +199,12 @@ var Editor = function (_a) {
         });
     }); };
     var onSaveTemporaryPost = function () { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
+        var temp_postId, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, axios_1.default.temporaryPost(data, csrf)];
+                case 0:
+                    temp_postId = Object.values(query_string_1.default.parse(location.search))[0];
+                    return [4 /*yield*/, axios_1.default.temporaryPost(data, csrf, temp_postId)];
                 case 1:
                     result = _a.sent();
                     if (result.request.status === 200)

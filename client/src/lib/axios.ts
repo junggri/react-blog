@@ -51,11 +51,11 @@ const util = {
       });
    },
 
-   temporaryPost(data: ITextInitialProps, token: string) {
+   temporaryPost(data: ITextInitialProps, token: string, id: string) {
       return instance({
          url: "/topic/temp/posts",
          method: "post",
-         data: data,
+         data: { data: data, id: id },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
@@ -179,6 +179,7 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
+
 };
 
 export default util;

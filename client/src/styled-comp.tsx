@@ -30,26 +30,24 @@ interface ICommentItems {
 //위의 인터페이스는 컴포넌트가 가지는 PROPS의 인터ㅔ이스
 
 const leftWidth = 330;
+const tabletLeftWidth = 200;
 const _width = typeof window === "object" ? window.screen.width * 0.57 : 1000;
 
 interface IEntryContainerComp {
    width: number
 }
 
-export const EntryContainerComp = styled.div`
-  width:${_width + "px"};
-  position:relative;
-  margin:0 auto;
-  ${media.desktop`width:95%`}
-
-`;
-
-
 const postsContainerMixin = css`
   ${media.mobile`
    position:relative;
    padding-left:10px;
    padding-rigth:10px;
+  `};
+  ${media.tablet`
+    padding-left:200px};
+  `};
+  ${media.mobile`
+    padding-left:0px};
   `};
   margin-top:50px;
   padding-left:${leftWidth + "px"}; 
@@ -63,6 +61,15 @@ const postsContainerMixin = css`
    margin-top:80px;
    margin-bottom: 20px;
   }
+`;
+
+
+export const EntryContainerComp = styled.div`
+  width:${_width + "px"};
+  position:relative;
+  margin:0 auto;
+  ${media.desktop`width:95%`}
+
 `;
 
 const postsItemMixin = css`  
@@ -242,15 +249,21 @@ export const TopMetaBarComp = styled.section`
 export const SideBarComp = styled.section`
   display: inline-block;
   width: ${leftWidth + "px"};
-  ${media.mobile`display:none`};
+  ${media.tablet`width:200px`};
+  ${media.mobile`
+   position:relative;
+   width:100%;
+  `};
   position : fixed;
   z-index: 9;
   margin-top:50px;
-  //border:1px solid black;
   & .sidebar-item-list{
     font-weight: 300;
     margin-top: 40px;
     & li{
+      ${media.mobile`
+        margin-bottom:14px;
+     `};
       margin-bottom:25px;
       font-size:1.125rem;
       padding-bottom: 3.4px;
@@ -280,6 +293,9 @@ export const SideBarComp = styled.section`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   }
   & .ga-count{
+    ${media.mobile`
+      margin-top:30px;
+    `};
     display: flex;
     flex-direction: column;
     margin-top:62px;
@@ -296,7 +312,6 @@ export const SideBarComp = styled.section`
       margin-bottom:7px;  
       & .count-num{
         font-weight:100;
-        //color:#7DC5AF;
       }
     }
     & .loading-icon{
@@ -314,10 +329,16 @@ export const SideBarThunmbNailComp = styled.img`
   width:96px;
   height: 96px;
   border-radius: 5px;
+  ${media.mobile`
+   display:none;
+  `};
 `;
 
 export const SideBarMetaDataComp = styled.div`
   margin-top:34px;
+  ${media.mobile`
+   margin-top:0px;
+  `};
   & .sidebar-names{
     font-size:1.4em;
     letter-spacing: 0.8px;
@@ -412,7 +433,7 @@ export const PostsContainerComp = styled.section`
   `};  
   position: relative;
   margin: 0 auto;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
   background: white;
   tab-size: 1;
   & .posts-container-iconbox{
@@ -464,8 +485,16 @@ export const PostsContainerComp = styled.section`
       padding:10px 20px;
       border-left:5px solid #f58320;
       background: rgb(248 249 250);
-      ${media.tablet`font-size:1rem !important`};
-      ${media.mobile`font-size:0.8rem !important`};
+      ${media.tablet`
+         font-size:1rem !important;
+         padding:10px 10px;
+         border-left:3px solid #f58320;
+      `};
+      ${media.mobile`
+         font-size:0.8rem !important;
+         padding:10px 10px;
+         border-left:2px solid #f58320;
+      `};
     }
     p,ol,blockquote,span{
       color:black
@@ -476,6 +505,10 @@ export const PostsContainerComp = styled.section`
     text-align: right;
     font-size:1rem;
     font-weight:100;
+  }
+  a {
+     color:#06c;
+     text-decoration: underline;
   }
 `;
 // & .posts-content{
@@ -495,7 +528,7 @@ export const PostsContainerComp = styled.section`
 export const CommentContainerComp = styled.div`
   width: ${_width * 0.8 + "px"};
   position: relative;
-  margin:40px auto;
+  margin:60px auto;
   ${media.tablet`
     width:90%;
   `};
@@ -504,8 +537,20 @@ export const CommentContainerComp = styled.div`
   `};
   & .blank_space{
     height:100px;
-    //border:1px solid black;
   }  
+  & .cmt-slo-box{
+   display: flex;
+   align-items: flex-end;
+   margin-bottom:30px;
+   position: relative;
+   & .cmt-icons{
+    font-size:1.7rem;
+    margin-right:12px;    
+   }
+   & .cmt-slo{
+    font-size:2rem;
+   }
+  }
 `;
 export const CommentInputItem = styled.div`
   textarea{
@@ -527,6 +572,10 @@ export const CommentInputItem = styled.div`
   & .cmt-login{
     margin-top:20px;
     position: relative;
+    ${media.mobile`
+      display:flex;
+      flex-direction:column;
+   `};
     input {
       border:1px solid rgba(0,0,0,0.2);
       outline-style: none;
@@ -534,8 +583,17 @@ export const CommentInputItem = styled.div`
       margin-right:15px;
       padding:12.5px 7px;
       background: white;
+      ${media.mobile`
+         margin:0;
+         margin-bottom:6px;
+      `}
     }
     & .cmt-submit-btn{
+      ${media.mobile`
+         position:relative;
+         width:100%;
+         padding:12.5px 0px;
+      `};
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       position: absolute;
       background:#2EC4B6;

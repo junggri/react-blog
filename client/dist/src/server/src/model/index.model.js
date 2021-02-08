@@ -56,11 +56,10 @@ var indexModel = {
                         _a.label = 2;
                     case 2:
                         _a.trys.push([2, 4, , 5]);
-                        query = "\n            CREATE TABLE " + table_name + "(\n               board int NOT NULL AUTO_INCREMENT PRIMARY KEY,\n               parent int,\n               bgroup int NOT NULL,\n               sorts int NOT NULL,\n               depth int NOT NULL,\n               cmt varchar(2000) NOT NULL,\n               writer varchar(45),\n               pwd varchar(200) NOT NULL,\n               salt varchar(150) NOT NULL\n            )\n            ";
+                        query = "\n            CREATE TABLE `" + table_name + "`(\n               board int NOT NULL AUTO_INCREMENT PRIMARY KEY,\n               parent int,\n               bgroup int NOT NULL,\n               sorts int NOT NULL,\n               depth int NOT NULL,\n               cmt varchar(2000) NOT NULL,\n               writer varchar(45),\n               pwd varchar(200) NOT NULL,\n               salt varchar(150) NOT NULL\n            )\n            ";
                         return [4 /*yield*/, conn.execute(query)];
                     case 3:
                         _a.sent();
-                        conn.release();
                         return [3 /*break*/, 5];
                     case 4:
                         e_1 = _a.sent();
@@ -80,12 +79,11 @@ var indexModel = {
                     case 0: return [4 /*yield*/, comment_connection_1.default()];
                     case 1:
                         conn = _a.sent();
-                        console.log(postid.replace(/-/g, "_"));
                         if (!(conn !== undefined)) return [3 /*break*/, 5];
                         _a.label = 2;
                     case 2:
                         _a.trys.push([2, 4, , 5]);
-                        query = "SELECT * FROM " + postid.replace(/-/g, "_") + " order by bgroup asc, sorts asc";
+                        query = "\n                           SELECT board,parent,bgroup,sorts,depth,cmt,writer FROM \n                           `" + postid.replace(/-/g, "_") + "` \n                           order by bgroup asc, sorts asc\n                           ";
                         return [4 /*yield*/, conn.execute(query)];
                     case 3:
                         result = (_a.sent())[0];
@@ -118,7 +116,7 @@ var indexModel = {
                         _a.label = 3;
                     case 3:
                         _a.trys.push([3, 5, , 6]);
-                        query = "INSERT INTO " + postid.replace(/-/g, "_") + " (bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?)";
+                        query = "INSERT INTO `" + postid.replace(/-/g, "_") + "` (bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?)";
                         dep = [grp, 0, 0, cmt, sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
                         return [4 /*yield*/, conn.execute(query, dep)];
                     case 4:
@@ -153,20 +151,20 @@ var indexModel = {
                         _a.label = 3;
                     case 3:
                         _a.trys.push([3, 11, , 12]);
-                        sort_query = "SELECT COALESCE (MIN(SORTS),0) FROM " + cmtPostid + "\n                                WHERE BGROUP=" + grp + "\n                                AND SORTS>" + sorts + "\n                                AND DEPTH <= " + depth + "\n                                ";
+                        sort_query = "SELECT COALESCE (MIN(SORTS),0) FROM `" + cmtPostid + "`\n                                WHERE BGROUP=" + grp + "\n                                AND SORTS>" + sorts + "\n                                AND DEPTH <= " + depth + "\n                                ";
                         return [4 /*yield*/, conn.execute(sort_query)];
                     case 4:
                         result = (_a.sent())[0];
                         conn.release();
                         sort = result[0]["COALESCE (MIN(SORTS),0)"];
                         if (!(sort === 0)) return [3 /*break*/, 7];
-                        zeroQuery = "SELECT COALESCE(MAX(SORTS),0) + 1 FROM " + cmtPostid + "\n                                  WHERE BGROUP=" + grp + "\n                                  ";
+                        zeroQuery = "SELECT COALESCE(MAX(SORTS),0) + 1 FROM `" + cmtPostid + "`\n                                  WHERE BGROUP=" + grp + "\n                                  ";
                         return [4 /*yield*/, conn.execute(zeroQuery)];
                     case 5:
                         result_1 = (_a.sent())[0];
                         conn.release();
                         save_sort = result_1[0]["COALESCE(MAX(SORTS),0) + 1"];
-                        save_query = "INSERT INTO " + cmtPostid + " (parent,bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?,?)";
+                        save_query = "INSERT INTO `" + cmtPostid + "` (parent,bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?,?)";
                         dep = [bn, grp, save_sort, depth + 1, reply, sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
                         return [4 /*yield*/, conn.execute(save_query, dep)];
                     case 6:
@@ -174,12 +172,12 @@ var indexModel = {
                         conn.release();
                         return [3 /*break*/, 10];
                     case 7:
-                        update_query = "UPDATE " + cmtPostid + " SET SORTS=SORTS+1\n                                     WHERE BGROUP=" + grp + " AND SORTS >= " + sort + "\n                                    ";
+                        update_query = "UPDATE `" + cmtPostid + "` SET SORTS=SORTS+1\n                                     WHERE BGROUP=" + grp + " AND SORTS >= " + sort + "\n                                    ";
                         return [4 /*yield*/, conn.execute(update_query)];
                     case 8:
                         _a.sent();
                         conn.release();
-                        save_query = "INSERT INTO " + cmtPostid + " (parent,bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?,?)";
+                        save_query = "INSERT INTO `" + cmtPostid + "` (parent,bgroup,sorts,depth,cmt,writer,pwd,salt) VALUES (?,?,?,?,?,?,?,?)";
                         dep = [bn, grp, sort, depth + 1, reply, sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
                         return [4 /*yield*/, conn.execute(save_query, dep)];
                     case 9:
