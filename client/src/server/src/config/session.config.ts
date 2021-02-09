@@ -25,6 +25,6 @@ export const sessionConfig = {
    }),
    cookie: {
       httpOnly: true,
-      secure: false, //true,
+      secure: true, //true,
    },
 };

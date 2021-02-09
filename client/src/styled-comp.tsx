@@ -44,8 +44,11 @@ const postsContainerMixin = css`
    padding-rigth:10px;
   `};
   ${media.tablet`
-    padding-left:200px};
-  `};
+   padding-left:180px;
+  `}
+  ${media.bigMoblie`
+    padding-left:180px
+  `}
   ${media.mobile`
     padding-left:0px};
   `};
@@ -68,8 +71,8 @@ export const EntryContainerComp = styled.div`
   width:${_width + "px"};
   position:relative;
   margin:0 auto;
-  ${media.desktop`width:95%`}
-
+  ${media.postBox`width:95%`};
+  border:1px solid black;
 `;
 
 const postsItemMixin = css`  
@@ -84,7 +87,7 @@ const postsItemMixin = css`
     ${media.tablet`font-size:0.8rem`};
     & .topic_link{
       margin-left:6px;
-      color:#7DC5AF;
+      color:#3ab09e;
     }
     & .post_is_new{
       display: inline-block; 
@@ -227,33 +230,11 @@ export const TopMetaBarComp = styled.section`
       }
     }
   }
-  //& .topmetabar-icons-box{
-  // position: relative;
-  // font-size:1.65rem;
-  // display: flex;
-  // align-items: center;
-  // & .icon-github,.icon-tohome,.icon-mail{
-  //   cursor: pointer;
-  //   opacity: 0.8;
-  //   display: inline-block;
-  //   margin-left:24px;
-  //   transition:0.3s all;
-  //  }
-  //}
-  //& .icon-github:hover,.icon-tohome:hover,.icon-mail:hover{
-  //  opacity: 1;
-  //}
 `;
-
 
 export const SideBarComp = styled.section`
   display: inline-block;
   width: ${leftWidth + "px"};
-  ${media.tablet`width:200px`};
-  ${media.mobile`
-   position:relative;
-   width:100%;
-  `};
   position : fixed;
   z-index: 9;
   margin-top:50px;
@@ -261,21 +242,20 @@ export const SideBarComp = styled.section`
     font-weight: 300;
     margin-top: 40px;
     & li{
-      ${media.mobile`
-        margin-bottom:14px;
-     `};
-      margin-bottom:25px;
       font-size:1.125rem;
-      padding-bottom: 3.4px;
+      padding:13px 0px;
+      display: flex;
+      align-items: center;
       &:hover{
         text-decoration: underline;
         text-underline-position: under;
       }
+      ${media.mobile`
+        margin-bottom:14px;
+     `};
     }
     & .active{
-      //text-decoration: underline;
-      //text-underline-position: under;
-      color:#7DC5AF;
+      color:#3ab09e;
     }
   }
   & .write-article-btn {
@@ -320,6 +300,16 @@ export const SideBarComp = styled.section`
       margin-right:10px;
     }
   }
+  ${media.tablet`
+   width:180px;
+  `}
+  ${media.bigMoblie`
+   width:180px;
+  `};
+  ${media.mobile`
+   position:relative;
+   width:100%;
+  `};
 `;
 
 export const SideBarThunmbNailComp = styled.img`
@@ -336,9 +326,6 @@ export const SideBarThunmbNailComp = styled.img`
 
 export const SideBarMetaDataComp = styled.div`
   margin-top:34px;
-  ${media.mobile`
-   margin-top:0px;
-  `};
   & .sidebar-names{
     font-size:1.4em;
     letter-spacing: 0.8px;
@@ -350,6 +337,9 @@ export const SideBarMetaDataComp = styled.div`
     margin-top:24px;
     opacity: 0.7;
   }
+  ${media.mobile`
+   margin-top:0px;
+  `};
 `;
 
 export const SideBarPostsContainerComp = (styled.ul`
@@ -468,9 +458,14 @@ export const PostsContainerComp = styled.section`
   & .posts-content{
     word-break:break-all;
     font-size:1.2rem;
-    margin-top:50px;   
-    ${media.tablet`font-size:1rem !important`};
-    ${media.mobile`font-size:0.7rem !important`};
+    margin-top:50px;  
+    a {
+      color:#06c !important;
+      text-decoration: underline;
+      span{
+        color:#06c !important;
+      } 
+    }
     & *{
       white-space: pre-wrap;
       word-break: break-all;
@@ -482,18 +477,19 @@ export const PostsContainerComp = styled.section`
       padding:10px 0px;
     }
     blockquote{
-      padding:10px 20px;
-      border-left:5px solid #f58320;
-      background: rgb(248 249 250);
+      padding:4px 13px;
+      line-height:1 ; 
+      border-left:5px solid #3ab09e;;
+      background: #FBFCFD;
       ${media.tablet`
          font-size:1rem !important;
          padding:10px 10px;
-         border-left:3px solid #f58320;
+         border-left:3px solid #3ab09e;
       `};
       ${media.mobile`
          font-size:0.8rem !important;
          padding:10px 10px;
-         border-left:2px solid #f58320;
+         border-left:2px solid #3ab09e;
       `};
     }
     p,ol,blockquote,span{
@@ -503,27 +499,23 @@ export const PostsContainerComp = styled.section`
   & .posts-created{
     margin-top: 60px;
     text-align: right;
-    font-size:1rem;
+    font-size:0.3rem;
     font-weight:100;
   }
-  a {
-     color:#06c;
-     text-decoration: underline;
-  }
+  & .ql-syntax{
+   ${media.tablet`
+      font-size:0.6rem;
+      padding:20px 20px;
+   `};
+   ${media.mobile`
+      padding:10px 10px;
+      font-size:0.7rem;
+      white-space: pre;
+      overflow:scroll;
+   `};
+   } 
 `;
-// & .posts-content{
-//    word-break:break-all;
-//    line-height: 1.5;
-//    padding: 10px 10px;
-//    border-radius: 5px;
-// & img{
-//       height:auto;
-//       width:auto;
-//       max-height: 500px;
-//       position: relative;
-//       margin :0 auto;
-//    }
-// }
+
 
 export const CommentContainerComp = styled.div`
   width: ${_width * 0.8 + "px"};
@@ -596,7 +588,7 @@ export const CommentInputItem = styled.div`
       `};
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       position: absolute;
-      background:#2EC4B6;
+      background:#3ab09e;
       color:white;
       cursor:pointer;
       top:0;
@@ -670,8 +662,8 @@ export const CommentItmesComp = styled.div<ICommentItems>`
   & .cmt-reply-box{
     margin-top:40px;
     & .depth-reply-btn{
-      background: #2EC4B6;
-      border:1px solid #2EC4B6;
+      background: #3ab09e;
+      border:1px solid #3ab09e;
       text-align: center;
       padding:17px;
       border-radius: 5px;
@@ -682,8 +674,8 @@ export const CommentItmesComp = styled.div<ICommentItems>`
       color:white;
       &:hover{
         background: white;
-        border:1px solid #2EC4B6;
-        color:#2EC4B6;
+        border:1px solid #3ab09e;
+        color:#3ab09e;
       }
     }
     & .cmt-btn-reply{
@@ -695,7 +687,7 @@ export const CommentItmesComp = styled.div<ICommentItems>`
       & .reply-icons{
         margin-right:6px;
         font-size:1.125rem;
-        color:#2EC4B6;
+        color:#3ab09e;
       }
     }
     & .reply-depth{
@@ -1033,8 +1025,22 @@ export const TemporaryPostComp = styled.div<any>`
 //--------------------------------write---------------------------------------
 
 
-export const AboutContainerComp = styled.div<Width>`
-  position: relative;
-  width:${props => props.width + "px"};
-  padding-top:100px;
+export const AboutContainerComp = styled.div`
+  ${postsContainerMixin};
+  & .about-me{
+    font-size:2.1rem;
+    font-weight: 600;
+  }
+  & .about-me-nickname{
+    margin-top:10px;
+    font-size: 1.2rem;
+    letter-spacing: 1.2px;
+  }
+  & .about-detail{
+    border:1px solid black;
+    margin-top:30px;
+  }
+  & .about-tech{
+    border:1px solid black;
+  }
 `;

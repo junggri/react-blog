@@ -92,8 +92,6 @@ function CommentContainer(_a) {
     }), auth = _d[0], setAuth = _d[1];
     PreloadContext_1.usePreloader(function () { return dispatch(Comment_1.onGetComment(postid)); });
     react_1.useEffect(function () {
-        if (list)
-            return;
         getComment(postid);
     }, [postid]);
     var onChangeCmt = function (e) {

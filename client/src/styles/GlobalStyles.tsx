@@ -101,16 +101,6 @@ const GlobalStyles = createGlobalStyle`
       font-weight: 300 !important;
       white-space: pre-wrap;
       tab-size: 1 !important;
-      ${media.tablet`
-         font-size:0.6rem !important;
-         padding:20px 20px;
-      `};
-      ${media.mobile`
-         padding:10px 10px;
-         font-size:0.7rem !important;
-         white-space: pre !important;
-         overflow:scroll !important;
-       `};
      & span{
         font-weight:300 !important;
         ${media.mobile`

@@ -3,7 +3,7 @@ import { EntryContainerComp } from "../styled-comp";
 import { ICommonModuleProps } from "../modules/Common/common.interface";
 import useCommon from "../useHooks/useCommon";
 import usePosts from "../useHooks/usePosts";
-import { EntryPostsContainer, SideBarContainer, SpecificTopicContainer, TagsContainer } from "../component";
+import { AboutContainer, EntryPostsContainer, SideBarContainer, SpecificTopicContainer, TagsContainer } from "../component";
 import { IPostsModuleProps } from "../modules/Posts/posts.interface";
 import { Route } from "react-router-dom";
 import util from "../lib/axios";
@@ -62,6 +62,9 @@ function SSREntry({ match, location }: any) {
             )} />
             <Route path="/tag" exact={true} render={() => (
                <TagsContainer Allposts={AllPosts} />
+            )} />
+            <Route path="/about" exact={true} render={() => (
+               <AboutContainer />
             )} />
          </EntryContainerComp>
       </>

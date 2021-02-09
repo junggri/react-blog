@@ -32,7 +32,6 @@ function CommentContainer({ postid }: { postid: string }) {
    usePreloader(() => dispatch(onGetComment(postid)));
 
    useEffect(() => {
-      if (list) return;
       getComment(postid);
    }, [postid]);
 

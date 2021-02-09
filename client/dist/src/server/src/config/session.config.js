@@ -45,6 +45,6 @@ exports.sessionConfig = {
     }),
     cookie: {
         httpOnly: true,
-        secure: false,
+        secure: true,
     },
 };

@@ -181,17 +181,18 @@ var contentModel = {
     temporaryPosts: function (_a) {
         var data = _a.data, id = _a.id;
         return __awaiter(void 0, void 0, void 0, function () {
-            var conn, saveData, e_3;
+            var conn, saveData, result, query, dep, e_3;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0: return [4 /*yield*/, temp_connetion_1.default()];
                     case 1:
                         conn = _b.sent();
                         saveData = savePost("temporary-storage", data);
-                        if (!(conn !== undefined)) return [3 /*break*/, 6];
+                        if (!(conn !== undefined)) return [3 /*break*/, 12];
                         _b.label = 2;
                     case 2:
-                        _b.trys.push([2, 5, , 6]);
+                        _b.trys.push([2, 11, , 12]);
+                        if (!(id === undefined)) return [3 /*break*/, 5];
                         return [4 /*yield*/, conn.execute(saveData.query, saveData.dep)];
                     case 3:
                         _b.sent();
@@ -199,23 +200,31 @@ var contentModel = {
                     case 4:
                         _b.sent();
                         conn.release();
-                        // if (id === undefined) {
-                        // } else {
-                        //    const [result]: any = await conn.execute(`select * from post where uid = ?`, [id]);
-                        //    if (!result.length) {
-                        //       const query =
-                        //
-                        //    } else {
-                        //
-                        //    }
-                        // }
-                        return [2 /*return*/, { state: true }];
-                    case 5:
+                        return [3 /*break*/, 10];
+                    case 5: return [4 /*yield*/, conn.execute("select * from post where uid = ?", [id])];
+                    case 6:
+                        result = (_b.sent())[0];
+                        if (!result.length) return [3 /*break*/, 9];
+                        query = "UPDATE post SET content_name = ? , detail = ? WHERE uid = ?";
+                        dep = [data.contentName, data.detail, id];
+                        return [4 /*yield*/, conn.execute(query, dep)];
+                    case 7:
+                        _b.sent();
+                        return [4 /*yield*/, fs_1.promises.writeFile(path_1.default.resolve("../temporary-storage") + ("/" + id + ".html"), data.content, "utf8")];
+                    case 8:
+                        _b.sent();
+                        conn.release();
+                        return [3 /*break*/, 10];
+                    case 9: 
+                    //doesnt exist data. in this case return false
+                    return [2 /*return*/, { state: false }];
+                    case 10: return [2 /*return*/, { state: true }];
+                    case 11:
                         e_3 = _b.sent();
                         conn.release();
                         console.error(e_3);
                         return [2 /*return*/, { state: false }];
-                    case 6: return [2 /*return*/];
+                    case 12: return [2 /*return*/];
                 }
             });
         });

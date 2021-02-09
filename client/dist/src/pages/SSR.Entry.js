@@ -105,6 +105,7 @@ function SSREntry(_a) {
             react_1.default.createElement(component_1.SideBarContainer, { topic: AllPosts, login: login, location: location, count: count }),
             react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post"], exact: true, render: function () { return (react_1.default.createElement(component_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/tag/:topic", exact: true, render: function () { return (react_1.default.createElement(component_1.SpecificTopicContainer, { match: match, posts: posts, login: login, onClearPost: onClearPost, getPosts: getPosts })); } }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag", exact: true, render: function () { return (react_1.default.createElement(component_1.TagsContainer, { Allposts: AllPosts })); } }))));
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag", exact: true, render: function () { return (react_1.default.createElement(component_1.TagsContainer, { Allposts: AllPosts })); } }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/about", exact: true, render: function () { return (react_1.default.createElement(component_1.AboutContainer, null)); } }))));
 }
 exports.default = SSREntry;

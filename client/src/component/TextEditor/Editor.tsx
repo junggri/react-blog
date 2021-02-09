@@ -61,6 +61,8 @@ const Editor = ({ history, location }: any) => {
 
 
    const howToSave = useCallback((mode: string, cb: any, _data?: ITempPost) => {
+      console.log(_data);
+      if (!_data) return history.push("/write");
       setMode(mode);
       (async () => {
          const { data } = await cb;
@@ -125,7 +127,6 @@ const Editor = ({ history, location }: any) => {
    };
 
    const onSaveTemporaryPost = async (): Promise<void> => {
-
       const temp_postId = Object.values(qs.parse(location.search))[0] as string;
       const result = await util.temporaryPost(data, csrf, temp_postId);
       if (result.request.status === 200) history.push("/");

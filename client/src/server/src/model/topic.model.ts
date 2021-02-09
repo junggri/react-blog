@@ -95,19 +95,24 @@ const contentModel = {
       const saveData = savePost("temporary-storage", data);
       if (conn !== undefined)
          try {
-            await conn.execute(saveData.query, saveData.dep);
-            await fs.writeFile(saveData.filePath, data.content, "utf8");
-            conn.release();
-            // if (id === undefined) {
-            // } else {
-            //    const [result]: any = await conn.execute(`select * from post where uid = ?`, [id]);
-            //    if (!result.length) {
-            //       const query =
-            //
-            //    } else {
-            //
-            //    }
-            // }
+            if (id === undefined) {
+               await conn.execute(saveData.query, saveData.dep);
+               await fs.writeFile(saveData.filePath, data.content, "utf8");
+               conn.release();
+            } else {
+               const [result]: any = await conn.execute(`select * from post where uid = ?`, [id]);
+               if (result.length) {
+                  //exist temp post data so update post
+                  const query = `UPDATE post SET content_name = ? , detail = ? WHERE uid = ?`;
+                  const dep = [data.contentName, data.detail, id];
+                  await conn.execute(query, dep);
+                  await fs.writeFile(path.resolve(`../temporary-storage`) + `/${id}.html`, data.content, "utf8");
+                  conn.release();
+               } else {
+                  //doesnt exist data. in this case return false
+                  return { state: false };
+               }
+            }
             return { state: true };
          } catch (e) {
             conn.release();

@@ -71,6 +71,7 @@ app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
     cookie: {
         httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
     },
 });
 app.use(function (req, res, next) {

@@ -23,8 +23,8 @@ function SideBarNavContainer({ topic, login, location, count }: ISideBarNavConta
          <ul className="sidebar-item-list">
             <li><NavLink to="/post" className={location.pathname === "/" ? "active" : "post"}>post</NavLink></li>
             <li><NavLink to="/tag">tags</NavLink></li>
-            {/*<li><NavLink to="/about">about</NavLink></li>*/}
-            {/*<li><NavLink to="/contact">contact</NavLink></li>*/}
+            <li><NavLink to="/about">about</NavLink></li>
+            <li><NavLink to="/portfolio">포트폴리오</NavLink></li>
          </ul>
          <div className="ga-count">
             <div>
