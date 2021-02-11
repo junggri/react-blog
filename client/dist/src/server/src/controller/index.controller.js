@@ -93,15 +93,15 @@ var indexController = {
     },
     saveComment: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, content, grp, postid, user, pwd, result, e_1;
+            var _a, content, grp, topic, postid, user, pwd, result, e_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.body, content = _a.content, grp = _a.grp, postid = _a.postid, user = _a.user, pwd = _a.pwd;
+                        _a = req.body, content = _a.content, grp = _a.grp, topic = _a.topic, postid = _a.postid, user = _a.user, pwd = _a.pwd;
                         _b.label = 1;
                     case 1:
                         _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, index_model_1.default.saveComment(content, grp, postid, user, pwd)];
+                        return [4 /*yield*/, index_model_1.default.saveComment(content, grp, topic, postid, user, pwd)];
                     case 2:
                         result = _b.sent();
                         result.state
@@ -119,17 +119,32 @@ var indexController = {
     },
     saveReply: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, content, bn, grp, sorts, depth, postid, user, pwd, result;
+            var _a, content, bn, grp, sorts, depth, topic, postid, user, pwd, result;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.body, content = _a.content, bn = _a.bn, grp = _a.grp, sorts = _a.sorts, depth = _a.depth, postid = _a.postid, user = _a.user, pwd = _a.pwd;
-                        return [4 /*yield*/, index_model_1.default.saveReply(content, bn, grp, sorts, depth, postid, user, pwd)];
+                        _a = req.body, content = _a.content, bn = _a.bn, grp = _a.grp, sorts = _a.sorts, depth = _a.depth, topic = _a.topic, postid = _a.postid, user = _a.user, pwd = _a.pwd;
+                        return [4 /*yield*/, index_model_1.default.saveReply(content, bn, grp, sorts, depth, topic, postid, user, pwd)];
                     case 1:
                         result = _b.sent();
                         result.state
-                            ? res.status(200).json({ state: true })
+                            ? res.status(200).json({ state: true, comment: result.data })
                             : res.status(404).json({ state: false });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    },
+    deleteComment: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, topic, postId, deleteArr;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = req.body, topic = _a.topic, postId = _a.postId, deleteArr = _a.deleteArr;
+                        return [4 /*yield*/, index_model_1.default.deleteComment(topic, postId, deleteArr)];
+                    case 1:
+                        _b.sent();
                         return [2 /*return*/];
                 }
             });

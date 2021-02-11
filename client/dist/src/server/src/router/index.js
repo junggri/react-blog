@@ -35,4 +35,5 @@ router.get("/item/:postid/comment", index_controller_1.default.getCommnet);
 router.get("/google/count", index_controller_1.default.getGaCount);
 router.post("/comment", index_controller_1.default.saveComment);
 router.post("/reply", index_controller_1.default.saveReply);
+router.post("/comment/items", index_controller_1.default.deleteComment);
 exports.default = router;

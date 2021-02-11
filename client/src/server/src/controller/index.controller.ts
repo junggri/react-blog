@@ -10,6 +10,7 @@ interface Controller {
    saveComment: (req: Request, res: Response) => void
    getCommnet: (req: Request, res: Response) => void
    saveReply: (req: Request, res: Response) => void
+   deleteComment: (req: Request, res: Response) => void
 }
 
 let indexController: Controller = {
@@ -38,9 +39,9 @@ let indexController: Controller = {
 
 
    async saveComment(req, res) {
-      const { content, grp, postid, user, pwd } = req.body;
+      const { content, grp, topic, postid, user, pwd } = req.body;
       try {
-         const result: any = await model.saveComment(content, grp, postid, user, pwd);
+         const result: any = await model.saveComment(content, grp, topic, postid, user, pwd);
          result.state
             ? res.status(200).json({ state: true })
             : res.status(404).json({ state: false });
@@ -50,8 +51,16 @@ let indexController: Controller = {
    },
 
    async saveReply(req, res) {
-      const { content, bn, grp, sorts, depth, postid, user, pwd } = req.body;
-      const result: any = await model.saveReply(content, bn, grp, sorts, depth, postid, user, pwd);
+      const { content, bn, grp, sorts, depth, topic, postid, user, pwd } = req.body;
+      const result: any = await model.saveReply(content, bn, grp, sorts, depth, topic, postid, user, pwd);
+      result.state
+         ? res.status(200).json({ state: true, comment: result.data })
+         : res.status(404).json({ state: false });
+   },
+
+   async deleteComment(req, res) {
+      const { writer, pwd, number, topic, postId, deleteArr } = req.body;
+      const result: any = await model.deleteComment(writer, pwd, number, topic, postId, deleteArr);
       result.state
          ? res.status(200).json({ state: true })
          : res.status(404).json({ state: false });

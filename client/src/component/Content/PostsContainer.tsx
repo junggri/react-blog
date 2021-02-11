@@ -59,7 +59,7 @@ function PostsContainer({ match }: any) {
                {(data as IPostDataProps).result[0].created}
             </div>
          </PostsContainerComp>
-         <CommentContainer postid={match.params.postsId} />
+         <CommentContainer postid={match.params.postsId} topic={match.params.topic} />
       </>
    );
 }

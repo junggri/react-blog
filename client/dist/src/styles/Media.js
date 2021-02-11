@@ -7,8 +7,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.media = void 0;
 var styled_components_1 = require("styled-components");
 var sizes = {
+    inherit: 1800,
     desktop: 1250,
-    postBox: 1080,
+    postBox: 992,
     tablet: 930,
     bigMoblie: 600,
     mobile: 500,

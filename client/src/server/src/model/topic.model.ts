@@ -18,13 +18,13 @@ function savePost(folderName: string, data: ITextInitialProps) {
    });
    if (folderName === "contents") {
       query = `INSERT INTO ${data.topicName} 
-                     (uid, topic, content_name, created, modified, file, kindofPosts, detail, date) 
-                     VALUES (?,?,?,?,?,?,?,?,?)`;
+               (uid, topic, content_name, created, modified, file, kindofPosts, detail, date) 
+                VALUES (?,?,?,?,?,?,?,?,?)`;
       dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", data.kindofPosts, data.detail, new Date()];
    } else {
       query = `INSERT INTO post 
-                     (uid, topic, content_name, created, file, detail) 
-                     VALUES (?,?,?,?,?,?)`;
+               (uid, topic, content_name, created, file, detail) 
+               VALUES (?,?,?,?,?,?)`;
       dep = [uid, data.topicName, data.contentName, dateString, uid + ".html", data.detail];
    }
 
@@ -49,6 +49,34 @@ async function poolConnction<T>(query: string, dep?: T[]) {
 }
 
 const contentModel = {
+   async increaseCmtCount<T, U>(topic: T, postid: U) {
+      const conn = await connection();
+      if (conn !== undefined)
+         try {
+            const query = `UPDATE ${topic} set comment = comment+1 where uid = ?`;
+            const dep = [postid];
+            await conn.execute(query, dep);
+            conn.release();
+         } catch (e) {
+            console.error(e);
+            conn.release();
+         }
+   },
+
+   async decreaseCmtCount<T, U>(topic: T, postid: U, length: number) {
+      const conn = await connection();
+      if (conn !== undefined)
+         try {
+            const query = `UPDATE ${topic} set comment = comment-${length} where uid = ?`;
+            const dep = [postid];
+            await conn.execute(query, dep);
+            conn.release();
+         } catch (e) {
+            console.error(e);
+            conn.release();
+         }
+   },
+
    getAllTopic: async () => {//토픽목록 가져오기
       return await poolConnction("show tables");
    },
@@ -149,8 +177,8 @@ const contentModel = {
       const query = `
                 CREATE TABLE ${newTopic}(
                      id int(11) not null auto_increment primary key,
-                     uid varchar(50) not null,
                      topic varchar(11) not null,
+                     uid varchar(50) not null,
                      content_name varchar(200) not null,
                      detail varchar(200) not null,
                      file varchar(100) not null,
@@ -158,21 +186,21 @@ const contentModel = {
                      modified varchar(20),
                      kindofPosts varchar(20) not null,
                      date timestamp not null,
-                     view int(11) DEFAULT 0, 
+                     comment int(11) DEFAULT 0, 
                      INDEX index_uid (uid)
                      )`;
       return await poolConnction(query);
    },
 
    getAllPostsItems: async () => {
-      let conn = await connection();
+      const conn = await connection();
       const dataObj: any = {};
       if (conn !== undefined)
          try {
-            let [result]: any = await conn.execute("show tables");
+            const [result]: any = await conn.execute("show tables");
             conn.release();
             for (let i = 0; i < result.length; i++) {
-               let [data]: any = await conn.execute(`select * from ${result[i]["Tables_in_contents"]} order by id DESC`);
+               const [data]: any = await conn.execute(`select * from ${result[i]["Tables_in_contents"]} order by id DESC`);
                conn.release();
                if (data.length !== 0) dataObj[result[i]["Tables_in_contents"]] = data;
             }
@@ -190,6 +218,7 @@ const contentModel = {
 
    deletePost: async ({ uid, topic }: { uid: string, topic: string }) => {
       const query = `DELETE FROM ${topic} where uid = ? `;
+      await indexModel.deleteCmtTable(uid);
       return await poolConnction(query, [uid]);
    },
 

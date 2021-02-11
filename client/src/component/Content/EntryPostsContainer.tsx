@@ -3,6 +3,7 @@ import { EntryPostsContainerComp, EntryPostsItemComp } from "../../styled-comp";
 import { Link } from "react-router-dom";
 import { IoColorWand } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
+import { FaRegComment } from "react-icons/fa";
 import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
 import isNew from "../../lib/isNewPost";
 
@@ -42,6 +43,10 @@ const EntryPostsContainer = ({ posts, onDelete, login, csrf }: IEntryPostsContai
                   <span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>
                </div>
                }
+               <div className="content-cmt-box">
+                  <FaRegComment className="content-cmt-icons" />
+                  <span>{e.comment}</span>
+               </div>
             </EntryPostsItemComp>
          ))}
          <div className="sidebar-copyright">Copyright 2021. junggri All rights reserved.</div>

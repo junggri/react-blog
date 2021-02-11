@@ -3,6 +3,7 @@ import { CommentInputItem, CommentItmesComp } from "../../styled-comp";
 import util from "../../lib/axios";
 import createDOMPurify from "dompurify";
 import { HiCode } from "react-icons/hi";
+import { FiDelete } from "react-icons/fi";
 
 interface ICommnet {
    board: number
@@ -11,6 +12,8 @@ interface ICommnet {
    sorts: number
    depth: number
    cmt: string
+   writer: string
+   created: string
 }
 
 interface ICmtItem {
@@ -18,18 +21,16 @@ interface ICmtItem {
    csrf: string,
    list: ICommnet[]
    getComment: any
+   topic: string
    postid: string
 }
 
-function CommentItem({ e, csrf, list, getComment, postid }: ICmtItem) {
+function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
    const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
    const [reply, setReply] = useState("");
    const [depthReply, setDepthReply] = useState([]);
-   const [auth, setAuth] = useState({
-      cmt_user: "",
-      cmt_pwd: "",
-   });
-
+   const [cmtData, setCmtData] = useState({ delete_cmt_user: "", delete_cmt_pwd: "" });
+   const [auth, setAuth] = useState({ cmt_user: "", cmt_pwd: "" });
 
    const makeComment = (e: ICommnet) => ({
       __html: typeof window === "object" ? (DOMPurify as any).sanitize(e.cmt) : null,
@@ -83,15 +84,18 @@ function CommentItem({ e, csrf, list, getComment, postid }: ICmtItem) {
       const sort = e.currentTarget.dataset.sorts;
       const grp = e.currentTarget.dataset.grp;
       const bn = e.currentTarget.dataset.board;
-      await util.saveReply(reply, Number(bn), Number(grp), Number(sort), Number(depth), postid, auth.cmt_user, auth.cmt_pwd, csrf);
-      getComment(postid);
-      const _list: any = list.filter((e: ICommnet) => e.bgroup === Number(grp) && e.sorts >= Number(sort) && Number(bn) === e.parent);
+      const { data } = await util.saveReply(reply, Number(bn), Number(grp), Number(sort), Number(depth), topic, postid, auth.cmt_user, auth.cmt_pwd, csrf);
+      const _list: any = data.comment.filter(
+         (e: ICommnet) =>
+            e.bgroup === Number(grp)
+            && e.sorts >= Number(sort)
+            && e.parent === Number(bn)
+            && e.depth === Number(depth) + 1,
+      );
       setDepthReply(_list);
       setReply("");
-      setAuth({
-         cmt_user: "",
-         cmt_pwd: "",
-      });
+      getComment(postid);
+      setAuth({ cmt_user: "", cmt_pwd: "" });
    };
 
    const onChangeAuth = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,13 +105,59 @@ function CommentItem({ e, csrf, list, getComment, postid }: ICmtItem) {
       });
    };
 
+
+   const deleteComment = async (e: any) => {
+      const deleteArr: number[] = [];
+      const board = e.currentTarget.dataset.board;
+      const parent = e.currentTarget.dataset.pr;
+      deleteArr.push(Number(board));
+      if (e.currentTarget.dataset.dp > 0) {
+         e.currentTarget.parentNode.parentNode.parentNode.nextSibling.classList.toggle("visible");
+      }
+      e.currentTarget.parentNode.parentNode.parentNode.classList.toggle("visible");
+
+      function findDepth(board: number, parent: number) {
+         const _list = list.filter(e => e.parent === Number(board));
+         _list.forEach(e => {
+            deleteArr.push(e.board);
+            findDepth(Number(e.board), Number(e.parent));
+         });
+      }
+
+      findDepth(Number(board), Number(parent));
+      await util.deleteComment(cmtData.delete_cmt_user, cmtData.delete_cmt_pwd, board, topic, postid, deleteArr, csrf);
+      getComment(postid);
+   };
+
+   const showDeleteBox = (e: any) => {
+      e.currentTarget.nextSibling.classList.toggle("visible");
+   };
+
+   const onChangeDelete = (e: React.ChangeEvent<HTMLInputElement>) => {
+      console.log(e.currentTarget.name, e.currentTarget.value);
+      setCmtData({
+         ...cmtData,
+         [e.currentTarget.name]: e.currentTarget.value,
+      });
+   };
+
    return (
       <CommentItmesComp depth={Number(e.depth) + 1} className={`depth` + (Number(e.depth) + 1)}>
          <div className="cmt-whoami">
             <img src="/images/og.jpg" alt="" />
             <div className="cmt-whoami-sub">
-               <span className="cmt-writer">익명</span>
-               <span className="cmt-created">123123</span>
+               <span className="cmt-writer">{e.writer}</span>
+               <span className="cmt-created">{e.created}</span>
+            </div>
+            <div className="cmt-delete-icons" onClick={showDeleteBox}>
+               <FiDelete />
+            </div>
+            <div className="cmt-delete-box">
+               <div className="cmt-delete-inputbox">
+                  <input type="text" name="delete_cmt_user" value={cmtData.delete_cmt_user} placeholder="작성자" onChange={onChangeDelete} />
+                  <input type="password" name="delete_cmt_pwd" value={cmtData.delete_cmt_pwd} placeholder="비밀번호" onChange={onChangeDelete} />
+                  <div className="delete-btn" onClick={deleteComment} data-pr={e.parent} data-grp={e.bgroup} data-dp={e.depth} data-board={e.board}>삭제하기</div>
+               </div>
             </div>
          </div>
          <div className="cmt-content" dangerouslySetInnerHTML={makeComment(e)} />
@@ -124,6 +174,7 @@ function CommentItem({ e, csrf, list, getComment, postid }: ICmtItem) {
                      csrf={csrf}
                      list={list}
                      getComment={getComment}
+                     topic={topic}
                      postid={postid}
                   />
                ))}
@@ -133,8 +184,10 @@ function CommentItem({ e, csrf, list, getComment, postid }: ICmtItem) {
                <CommentInputItem>
                   <textarea placeholder="댓글을 입력해주세요." value={reply} onChange={onChangeReply} />
                   <div className="cmt-login">
-                     <input type="text" name="cmt_user" value={auth.cmt_user} placeholder="이름" onChange={onChangeAuth} />
-                     <input type="password" name="cmt_pwd" value={auth.cmt_pwd} placeholder="비밀번호" onChange={onChangeAuth} />
+                     <input type="text" name="cmt_user" value={auth.cmt_user} placeholder="이름"
+                            onChange={onChangeAuth} />
+                     <input type="password" name="cmt_pwd" value={auth.cmt_pwd} placeholder="비밀번호"
+                            onChange={onChangeAuth} />
                      <div className="cmt-submit-btn"
                           data-grp={e.bgroup}
                           data-sorts={e.sorts}

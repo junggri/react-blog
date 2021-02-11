@@ -22,11 +22,11 @@ const adminModel = {
       const conn = await connection();
       if (conn !== undefined)
          try {
-            let [result]: any = await conn.execute("select * from user where id=?", [data.id]);
+            const [result]: any = await conn.execute("select * from user where id=?", [data.id]);
             conn.release();
             if (!result.length) return false;
             else {
-               let key = await pbkdf2Promise(data.pwd, result[0].salt, Number(env.CRYPTO_ITER), Number(env.CRYPTO_NUM), String(env.CRYPTO_ALGO));
+               const key = await pbkdf2Promise(data.pwd, result[0].salt, Number(env.CRYPTO_ITER), Number(env.CRYPTO_NUM), String(env.CRYPTO_ALGO));
                return result[0].password === key.toString("base64");
             }
          } catch (e) {

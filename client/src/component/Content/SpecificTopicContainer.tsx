@@ -7,6 +7,7 @@ import isNew from "../../lib/isNewPost";
 import { usePreloader } from "../../lib/PreloadContext";
 import { onRequestPosts } from "../../modules/Posts";
 import ReactHelmet from "../../useHooks/useHelmet";
+import { FaRegComment } from "react-icons/fa";
 
 interface ISpecificTopicContainer {
    match: any
@@ -38,12 +39,13 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
          {posts.data !== null &&
          (posts.data).map((e: IPostCommonProps) => (
             <SpecificTopicItemsComp key={e.uid}>
-                <span className="item-created">🗓
-                   {e.created}
-                   <Link to={`/tag/${e.topic}`}>
+
+               <span className="item-created">🗓
+                  {e.created}
+                  <Link to={`/tag/${e.topic}`}>
                      <span className="topic_link">{(e.topic).toUpperCase()}</span>
                   </Link>
-                   {isNew(e.date) && <span className="post_is_new">NEW</span>}
+                  {isNew(e.date) && <span className="post_is_new">NEW</span>}
                </span>
                <Link to={`/topic/${e.topic}/${e.uid}`}>
                   <div className="item-contentName">
@@ -56,7 +58,10 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
                   {/*<span className='posts-admin-modify' onClick={onModified}><IoColorWand /></span>*/}
                   {/*<span className='posts-admin-delete' onClick={onDelete}><MdDelete /></span>*/}
                </div>}
-
+               <div className="content-cmt-box">
+                  <FaRegComment className="content-cmt-icons" />
+                  <span>{e.comment}</span>
+               </div>
             </SpecificTopicItemsComp>
          ))}
       </SpecificTopicContainerComp>

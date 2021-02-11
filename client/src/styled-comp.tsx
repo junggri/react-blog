@@ -37,6 +37,13 @@ interface IEntryContainerComp {
    width: number
 }
 
+const rotate = keyframes`
+  100%{
+    transform: rotate(360deg);
+  }
+`;
+
+
 const postsContainerMixin = css`
   ${media.mobile`
    position:relative;
@@ -47,16 +54,26 @@ const postsContainerMixin = css`
    padding-left:180px;
   `}
   ${media.bigMoblie`
-    padding-left:180px
+    padding-left:180px;
   `}
   ${media.mobile`
-    padding-left:0px};
+    padding-left:0px;
   `};
   margin-top:50px;
   padding-left:${leftWidth + "px"}; 
   width:100%;
   position: absolute;
   top:0;
+  & .content-cmt-box{
+ 
+    display: flex;
+    opacity: 0.6;
+    margin-top:20px;
+    font-size:1.12rem;  
+    & .content-cmt-icons{
+      margin-right: 4px;
+    }
+  }
   & .sidebar-copyright{
    text-align: right;
    letter-spacing: 1.1px;
@@ -66,13 +83,18 @@ const postsContainerMixin = css`
   }
 `;
 
-
 export const EntryContainerComp = styled.div`
-  width:${_width + "px"};
   position:relative;
   margin:0 auto;
-  ${media.postBox`width:95%`};
-  border:1px solid black;
+  @media(min-width:${_width + "px"}){
+    max-width:${_width + "px"};
+  };
+  ${media.desktop`
+    width:80%;
+  `}  
+  ${media.mobile`
+    width:90%;
+  `};
 `;
 
 const postsItemMixin = css`  
@@ -148,11 +170,8 @@ const postsItemMixin = css`
   }
  
 `;
-const rotate = keyframes`
-  100%{
-    transform: rotate(360deg);
-  }
-`;
+
+
 export const TopMetaBarComp = styled.section`
   position: fixed;
   top:0;
@@ -415,12 +434,12 @@ export const SpecificTopicItemsComp = styled.div`
 
 export const PostsContainerComp = styled.section`
   width: ${_width * 0.8 + "px"};
-  ${media.tablet`
-    width:90%;
-  `};
+  ${media.desktop`
+    width:80%;
+  `}  
   ${media.mobile`
     width:90%;
-  `};  
+  `};
   position: relative;
   margin: 0 auto;
   padding-bottom: 30px;
@@ -437,8 +456,6 @@ export const PostsContainerComp = styled.section`
     position: relative;
     margin :0 auto;
     ${media.desktop`max-width:100%`};
-    ${media.tablet`max-width:100%`};
-    ${media.mobile`max-width:100%`};
   }
   & .posts-name{
     ${media.tablet`font-size:2.4rem`};
@@ -478,19 +495,17 @@ export const PostsContainerComp = styled.section`
     }
     blockquote{
       padding:4px 13px;
-      line-height:1 ; 
-      border-left:5px solid #3ab09e;;
+      border-left:4px solid #3ab09e;;
       background: #FBFCFD;
       ${media.tablet`
-         font-size:1rem !important;
-         padding:10px 10px;
-         border-left:3px solid #3ab09e;
+       font-size:1rem;
+       padding:2px 10px;
+       border-left:3px solid #3ab09e;
       `};
       ${media.mobile`
-         font-size:0.8rem !important;
-         padding:10px 10px;
-         border-left:2px solid #3ab09e;
-      `};
+       border-left:2px solid #3ab09e;
+       padding:2px 10px;
+      `}
     }
     p,ol,blockquote,span{
       color:black
@@ -499,17 +514,18 @@ export const PostsContainerComp = styled.section`
   & .posts-created{
     margin-top: 60px;
     text-align: right;
-    font-size:0.3rem;
+    font-size:1rem;
     font-weight:100;
   }
   & .ql-syntax{
-   ${media.tablet`
-      font-size:0.6rem;
-      padding:20px 20px;
+    padding:20px;
+    ${media.tablet`
+      font-size:0.9rem;
+      padding:15px 15px;
    `};
    ${media.mobile`
       padding:10px 10px;
-      font-size:0.7rem;
+      font-size:0.8rem;
       white-space: pre;
       overflow:scroll;
    `};
@@ -518,12 +534,12 @@ export const PostsContainerComp = styled.section`
 
 
 export const CommentContainerComp = styled.div`
-  width: ${_width * 0.8 + "px"};
   position: relative;
   margin:60px auto;
-  ${media.tablet`
-    width:90%;
-  `};
+  width: ${_width * 0.8 + "px"};
+  ${media.desktop`
+    width:80%;
+  `}  
   ${media.mobile`
     width:90%;
   `};
@@ -558,7 +574,6 @@ export const CommentInputItem = styled.div`
     font-size:1.125rem;
   }
   textarea::placeholder{
-    font-weight: 100;
     font-size:1.125rem;
   }
   & .cmt-login{
@@ -629,6 +644,45 @@ export const CommentItmesComp = styled.div<ICommentItems>`
   }
   & .cmt-whoami{
     display: flex;
+    & .cmt-delete-icons{ 
+      position: absolute;
+      right:10px; 
+      font-size:1.6rem;
+      opacity: 0.6;
+    }
+    & .cmt-delete-box{
+      display: none;
+    }
+    & .visible{
+      display: block;
+    }
+    & .cmt-delete-inputbox{
+      display:flex;
+      position: absolute;
+      right:10px;
+      top:70px;
+      flex-direction: column;
+      input{
+        outline-style: none;
+        border:1px solid rgba(0,0,0,0.2);
+        padding:5px;
+        margin-bottom: 10px;
+      }  
+      & .delete-btn{
+        text-align: center;
+        padding:6.5px;
+        background: #3ab09e;
+        border:1px solid #3ab09e;
+        color:white;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+    }
+    & .cmt-delete-icons:hover{
+      opacity: 1;
+      cursor: pointer;
+    }
     & img{
       width:60px;
       height: 60px;
@@ -646,7 +700,6 @@ export const CommentItmesComp = styled.div<ICommentItems>`
          font-size:1.125rem;
          font-weight: bold;
          margin-bottom: 6px;
-         letter-spacing: 1.2px;
        }
        & .cmt-created{
          display: inline-block;
@@ -1027,6 +1080,29 @@ export const TemporaryPostComp = styled.div<any>`
 
 export const AboutContainerComp = styled.div`
   ${postsContainerMixin};
+  & .about-icon-box{
+    a {
+     display: flex;
+     align-items: center;
+    }
+    display: flex;
+    font-size:3rem;
+    margin-top:7px;
+    & .aib-mail{
+      cursor:pointer; 
+      font-size:1.2rem;
+      margin-left:15px;
+      opacity: 0.6;
+    }
+    & .aib-github{
+      opacity: 0.6;
+      cursor:pointer;
+    }
+    & .aib-mail:hover,
+    & .aib-github:hover{
+      opacity: 1; 
+    }    
+  }
   & .about-me{
     font-size:2.1rem;
     font-weight: 600;
@@ -1037,10 +1113,44 @@ export const AboutContainerComp = styled.div`
     letter-spacing: 1.2px;
   }
   & .about-detail{
-    border:1px solid black;
     margin-top:30px;
+    & .about-detail-slo{
+      display: flex;
+      align-items: center;
+      font-size:1.4rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
   }
   & .about-tech{
-    border:1px solid black;
+    & .about-tech-slo{
+      display: flex;
+      align-items: center;
+      font-size:1.4rem;
+      font-weight: 600;
+      margin-bottom:15px;
+    }
+    margin-top:30px;
   }
+  & .about-book{
+    & .about-book-slo{
+      display: flex;
+      align-items: center;
+      font-size:1.4rem;
+      font-weight: 600;
+      margin-bottom:15px;
+    }
+    margin-top:30px;
+  }
+  li{
+    line-height: 1.2;
+    margin-bottom:7px;
+    display: flex;
+    align-items: center;
+  }
+  & .slo-icons{
+    color: #3ab09e;
+    margin-right:12px;
+  }
+  padding-bottom: 40px;
 `;

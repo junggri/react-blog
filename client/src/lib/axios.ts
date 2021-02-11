@@ -162,24 +162,32 @@ const util = {
       });
    },
 
-   saveComment(content: string, grp: number, postid: string, user: string, pwd: string, token: string) {
+   saveComment(content: string, grp: number, topic: string, postid: string, user: string, pwd: string, token: string) {
       return instance({
          url: "/api/comment",
          method: "post",
-         data: { content, grp, postid, user, pwd },
+         data: { content, grp, topic, postid, user, pwd },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
 
-   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, postid: string, user: string, pwd: string, token: string) {
+   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, topic: string, postid: string, user: string, pwd: string, token: string) {
       return instance({
          url: "/api/reply",
          method: "post",
-         data: { content, bn, grp, sorts, depth, postid, user, pwd },
+         data: { content, bn, grp, sorts, depth, topic, postid, user, pwd },
          headers: { "X-XSRF-TOKEN": token },
       });
    },
 
+   deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[], token: string) {
+      return instance({
+         url: "/api/comment/items",
+         method: "post",
+         data: { writer, pwd, number, topic, postId, deleteArr },
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
 };
 
 export default util;

@@ -8,6 +8,10 @@ export interface ICommnet {
    sorts: number
    depth: number
    cmt: string
+   writer: string
+   created: string
+   pwd: string
+   salt: string
 }
 
 export interface IInitialState {

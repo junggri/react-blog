@@ -142,19 +142,27 @@ var util = {
             url: "/api/item/" + postid + "/comment",
         });
     },
-    saveComment: function (content, grp, postid, user, pwd, token) {
+    saveComment: function (content, grp, topic, postid, user, pwd, token) {
         return axois_config_1.default({
             url: "/api/comment",
             method: "post",
-            data: { content: content, grp: grp, postid: postid, user: user, pwd: pwd },
+            data: { content: content, grp: grp, topic: topic, postid: postid, user: user, pwd: pwd },
             headers: { "X-XSRF-TOKEN": token },
         });
     },
-    saveReply: function (content, bn, grp, sorts, depth, postid, user, pwd, token) {
+    saveReply: function (content, bn, grp, sorts, depth, topic, postid, user, pwd, token) {
         return axois_config_1.default({
             url: "/api/reply",
             method: "post",
-            data: { content: content, bn: bn, grp: grp, sorts: sorts, depth: depth, postid: postid, user: user, pwd: pwd },
+            data: { content: content, bn: bn, grp: grp, sorts: sorts, depth: depth, topic: topic, postid: postid, user: user, pwd: pwd },
+            headers: { "X-XSRF-TOKEN": token },
+        });
+    },
+    deleteComment: function (topic, postId, deleteArr, token) {
+        return axois_config_1.default({
+            url: "/api/comment/items",
+            method: "post",
+            data: { topic: topic, postId: postId, deleteArr: deleteArr },
             headers: { "X-XSRF-TOKEN": token },
         });
     },

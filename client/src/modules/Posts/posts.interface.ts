@@ -31,7 +31,7 @@ export interface DataAction {
 
 export interface IPostCommonProps {
    id: number
-   comments: string | null
+   comment: number | null
    uid: string
    content_name: string
    date: string

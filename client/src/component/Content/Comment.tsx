@@ -16,13 +16,14 @@ interface ICommnet {
    sorts: number
    depth: number
    cmt: string
+   writer: string
+   created: string
 }
 
-function CommentContainer({ postid }: { postid: string }) {
+function CommentContainer({ postid, topic }: { postid: string, topic: string }) {
    const csrf = useCSRF();
    const dispatch = useDispatch();
    const { list, getComment } = useComment();
-
    const [cmt, setCmt] = useState("");
    const [auth, setAuth] = useState({
       cmt_user: "",
@@ -30,6 +31,7 @@ function CommentContainer({ postid }: { postid: string }) {
    });
 
    usePreloader(() => dispatch(onGetComment(postid)));
+
 
    useEffect(() => {
       getComment(postid);
@@ -47,12 +49,11 @@ function CommentContainer({ postid }: { postid: string }) {
       });
    };
 
-
    const onSubmit = async (e: any) => {
       if (cmt === "") return alert("글을 입력해주세요");
       if (!auth.cmt_pwd || !auth.cmt_pwd) return alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요");
       const grp = e.currentTarget.parentNode.parentNode.parentNode.dataset.grp;
-      await util.saveComment(cmt, grp, postid, auth.cmt_user, auth.cmt_pwd, csrf);
+      await util.saveComment(cmt, grp, topic, postid, auth.cmt_user, auth.cmt_pwd, csrf);
       getComment(postid);
       setCmt("");
       setAuth({
@@ -72,7 +73,8 @@ function CommentContainer({ postid }: { postid: string }) {
             <textarea placeholder="댓글을 입력해주세요." value={cmt} onChange={onChangeCmt} />
             <div className="cmt-login">
                <input type="text" name="cmt_user" value={auth.cmt_user} placeholder="이름" onChange={onChangeAuth} />
-               <input type="password" name="cmt_pwd" value={auth.cmt_pwd} placeholder="비밀번호" onChange={onChangeAuth} />
+               <input type="password" name="cmt_pwd" value={auth.cmt_pwd} placeholder="비밀번호"
+                      onChange={onChangeAuth} />
                <div className="cmt-submit-btn" onClick={onSubmit}>
                   <span>등록하기</span>
                </div>
@@ -89,6 +91,7 @@ function CommentContainer({ postid }: { postid: string }) {
                   csrf={csrf}
                   list={list}
                   getComment={getComment}
+                  topic={topic}
                   postid={postid}
                />))}
          <div style={{ height: "120px" }} />
