@@ -125,29 +125,35 @@ var contentModel = {
     },
     decreaseCmtCount: function (topic, postid, length) {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, query, dep, e_3;
+            var conn, result, query, dep, e_3;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, topic_connection_1.default()];
                     case 1:
                         conn = _a.sent();
-                        if (!(conn !== undefined)) return [3 /*break*/, 5];
+                        if (!(conn !== undefined)) return [3 /*break*/, 7];
                         _a.label = 2;
                     case 2:
-                        _a.trys.push([2, 4, , 5]);
+                        _a.trys.push([2, 6, , 7]);
+                        return [4 /*yield*/, conn.execute("select comment from " + topic + " where uid = ?", [postid])];
+                    case 3:
+                        result = (_a.sent())[0];
+                        if (!(result > 1)) return [3 /*break*/, 5];
                         query = "UPDATE " + topic + " set comment = comment-" + length + " where uid = ?";
                         dep = [postid];
                         return [4 /*yield*/, conn.execute(query, dep)];
-                    case 3:
-                        _a.sent();
-                        conn.release();
-                        return [3 /*break*/, 5];
                     case 4:
+                        _a.sent();
+                        _a.label = 5;
+                    case 5:
+                        conn.release();
+                        return [3 /*break*/, 7];
+                    case 6:
                         e_3 = _a.sent();
                         console.error(e_3);
                         conn.release();
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
                 }
             });
         });

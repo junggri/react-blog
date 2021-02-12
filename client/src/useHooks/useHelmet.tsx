@@ -11,13 +11,14 @@ interface IReactHelmet {
 function ReactHelmet({ title, keywords, description }: IReactHelmet) {
    return (
       <Helmet>
+         <title>정그리의 블로그입니다.</title>
          <title>{title}</title>
          <meta name="description" content={description} data-react-helmet="true" />
          <meta name="keywords" content={keywords} data-react-helmet="true" />
          <meta property="og:title" content={title} data-react-helmet="true" />
          <meta property="og:description" content={description} data-react-helmet="true" />
-         <meta property="og:image" content="http://junggri.com/images/og.jpg" data-react-helmet="true" />
-         <meta property="og:url" content="http://junggri.com" data-react-helmet="true" />
+         <meta property="og:image" content="https://junggri.com/images/og.jpg" data-react-helmet="true" />
+         <meta property="og:url" content="https://junggri.com" data-react-helmet="true" />
          <meta property="og:locale" content="ko_KR" data-react-helmet="true" />
          <meta property="og:type" content="website" data-react-helmet="true" />
          <meta property="og:site_name" content="JUNGGRI BLOG" data-react-helmet="true" />

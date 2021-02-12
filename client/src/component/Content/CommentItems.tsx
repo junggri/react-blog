@@ -23,9 +23,10 @@ interface ICmtItem {
    getComment: any
    topic: string
    postid: string
+   setNewRequset: any
 }
 
-function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
+function CommentItem({ e, csrf, list, getComment, topic, postid, setNewRequset }: ICmtItem) {
    const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
    const [reply, setReply] = useState("");
    const [depthReply, setDepthReply] = useState([]);
@@ -95,6 +96,7 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
       setDepthReply(_list);
       setReply("");
       getComment(postid);
+      setNewRequset(true);
       setAuth({ cmt_user: "", cmt_pwd: "" });
    };
 
@@ -125,8 +127,9 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
       }
 
       findDepth(Number(board), Number(parent));
-      await util.deleteComment(cmtData.delete_cmt_user, cmtData.delete_cmt_pwd, board, topic, postid, deleteArr, csrf);
-      getComment(postid);
+      const { data } = await util.deleteComment(cmtData.delete_cmt_user, cmtData.delete_cmt_pwd, board, topic, postid, deleteArr, csrf);
+      setNewRequset(true);
+      data.state ? getComment(postid) : alert("잘못된 정보입니다.");
    };
 
    const showDeleteBox = (e: any) => {
@@ -134,7 +137,6 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
    };
 
    const onChangeDelete = (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e.currentTarget.name, e.currentTarget.value);
       setCmtData({
          ...cmtData,
          [e.currentTarget.name]: e.currentTarget.value,
@@ -174,6 +176,7 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
                      csrf={csrf}
                      list={list}
                      getComment={getComment}
+                     setNewRequset={setNewRequset}
                      topic={topic}
                      postid={postid}
                   />

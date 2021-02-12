@@ -30,6 +30,7 @@ var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
 var PreloadContext_1 = require("../../lib/PreloadContext");
 var Posts_1 = require("../../modules/Posts");
 var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
+var fa_1 = require("react-icons/fa");
 function SpecificTopicContainer(_a) {
     var match = _a.match, login = _a.login, posts = _a.posts, onClearPost = _a.onClearPost, getPosts = _a.getPosts;
     var params = match.params.topic;
@@ -54,6 +55,9 @@ function SpecificTopicContainer(_a) {
                         react_1.default.createElement("span", null, e.content_name))),
                 react_1.default.createElement("div", { className: "item-detail" }, e.detail),
                 login &&
-                    react_1.default.createElement("div", { className: "posts-admin-box", "data-id": e.uid, "data-topic": e.topic }))); })));
+                    react_1.default.createElement("div", { className: "posts-admin-box", "data-id": e.uid, "data-topic": e.topic }),
+                react_1.default.createElement("div", { className: "content-cmt-box" },
+                    react_1.default.createElement(fa_1.FaRegComment, { className: "content-cmt-icons" }),
+                    react_1.default.createElement("span", null, e.comment)))); })));
 }
 exports.default = SpecificTopicContainer;

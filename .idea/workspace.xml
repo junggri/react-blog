@@ -20,42 +20,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/naver6d3057d21db1c50e22ae5c56e9074594.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/public/sitemap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/config/webpack.config.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/config/webpack.config.server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/component/About/AboutContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/About/AboutContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/Comment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/CommentItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/CommentItems.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/SpecificTopicContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/SpecificTopicContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/lib/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/createPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/SSR.Entry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/controller/index.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/index.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/lib/cryptoPwd.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/cryptoPwd.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/index.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/index.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/shared/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/shared/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/styled-comp.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/styled-comp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/styles/Media.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/styles/Media.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/useHooks/useHelmet.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/useHooks/useHelmet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/output/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/output/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/About/AboutContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/About/AboutContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/robots.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Content/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/Comment.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/component/Content/CommentItems.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/CommentItems.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/image/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/image/dump.rdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Comment/cmtInterface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Comment/cmtInterface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Comment/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Comment/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/createPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/createPage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/SSR.Entry.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/lib/cryptoPwd.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/lib/cryptoPwd.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/model/admin.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/admin.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/model/index.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/index.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/shared/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/shared/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/styled-comp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styled-comp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles/Media.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/styles/Media.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/temporary-storage/e8b6f86d-642b-45f2-bc6b-bfe62985c0f1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/useHooks/useHelmet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/useHooks/useHelmet.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +70,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/client/src/component/Content/SpecificTopicContainer.tsx" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" root0="SKIP_INSPECTION" />
   </component>
   <component name="JsBowerSettings">
     <node-interpreter value="project" />
@@ -135,11 +132,11 @@
       <recent name="$PROJECT_DIR$/client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/public" />
       <recent name="$PROJECT_DIR$/client/public/images" />
       <recent name="$PROJECT_DIR$/client/src" />
       <recent name="$PROJECT_DIR$/client/@types" />
       <recent name="$PROJECT_DIR$/client" />
-      <recent name="$PROJECT_DIR$/client/env" />
     </key>
   </component>
   <component name="RunManager">
@@ -395,7 +392,10 @@
       <workItem from="1612831816940" duration="22844000" />
       <workItem from="1612948215566" duration="6918000" />
       <workItem from="1612955312263" duration="6084000" />
-      <workItem from="1613003902477" duration="33804000" />
+      <workItem from="1613003902477" duration="35588000" />
+      <workItem from="1613054230904" duration="590000" />
+      <workItem from="1613098730861" duration="1552000" />
+      <workItem from="1613118254894" duration="13440000" />
     </task>
     <servers />
   </component>
@@ -518,15 +518,15 @@
     </state>
     <state x="497" y="271" key="IDE.errors.dialog/0.25.1792.1038@0.25.1792.1038" timestamp="1607657990471" />
     <state x="2324" y="262" key="IDE.errors.dialog/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607605434064" />
-    <state x="332" y="160" width="1233" height="728" key="SettingsEditor" timestamp="1613040096590">
-      <screen x="0" y="25" width="1792" height="1039" />
+    <state x="2148" y="162" width="1233" height="728" key="SettingsEditor" timestamp="1613054144079">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="643" y="160" width="1125" height="903" key="SettingsEditor/0.25.1792.1038@0.25.1792.1038" timestamp="1607745574776" />
     <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1039@0.25.1792.1039" timestamp="1613040096590" />
     <state x="644" y="163" width="1106" height="728" key="SettingsEditor/0.25.1792.1040@0.25.1792.1040" timestamp="1606882129257" />
     <state x="332" y="160" width="1233" height="728" key="SettingsEditor/0.25.1792.1041@0.25.1792.1041" timestamp="1609514413062" />
     <state x="2391" y="215" width="1184" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607650518703" />
-    <state x="2148" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1611317499902" />
+    <state x="2148" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1613054144079" />
     <state x="2802" y="165" width="900" height="728" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606546561063" />
     <state x="2481" y="162" key="SettingsEditor/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609335642167" />
     <state x="2482" y="157" width="1184" height="728" key="SettingsEditor/1792.25.1920.998/0.25.1792.1095@1792.25.1920.998" timestamp="1607693454263" />
@@ -572,7 +572,7 @@
     <state x="561" y="251" key="run.anything.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1611223739281" />
     <state x="561" y="251" key="run.anything.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1611201230528" />
     <state x="2393" y="254" key="run.anything.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1611838884496" />
-    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup" timestamp="1613047729902">
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup" timestamp="1613052022237">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1612323897730" />
@@ -583,7 +583,7 @@
     <state x="2393" y="248" width="719" height="652" key="search.everywhere.popup/1792.25.1920.1001/0.25.1792.1095@1792.25.1920.1001" timestamp="1608474232755" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@0.25.1792.1039" timestamp="1610879652051" />
-    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1613047729902" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1613052022237" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609405335764" />
     <state x="2393" y="248" width="719" height="651" key="search.everywhere.popup/1792.25.1920.999/0.25.1792.1095@1792.25.1920.999" timestamp="1611241036658" />

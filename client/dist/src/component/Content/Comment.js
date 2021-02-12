@@ -79,17 +79,19 @@ var PreloadContext_1 = require("../../lib/PreloadContext");
 var Comment_1 = require("../../modules/Comment");
 var axios_1 = __importDefault(require("../../lib/axios"));
 var fa_1 = require("react-icons/fa");
+var useCommon_1 = __importDefault(require("../../useHooks/useCommon"));
 function CommentContainer(_a) {
     var _this = this;
     var postid = _a.postid, topic = _a.topic;
     var csrf = useCSRF_1.default();
     var dispatch = react_redux_1.useDispatch();
-    var _b = useComment_1.default(), list = _b.list, getComment = _b.getComment;
-    var _c = react_1.useState(""), cmt = _c[0], setCmt = _c[1];
-    var _d = react_1.useState({
+    var _b = useCommon_1.default(), newRequest = _b.newRequest, setNewRequset = _b.setNewRequset;
+    var _c = useComment_1.default(), list = _c.list, getComment = _c.getComment;
+    var _d = react_1.useState(""), cmt = _d[0], setCmt = _d[1];
+    var _e = react_1.useState({
         cmt_user: "",
         cmt_pwd: "",
-    }), auth = _d[0], setAuth = _d[1];
+    }), auth = _e[0], setAuth = _e[1];
     PreloadContext_1.usePreloader(function () { return dispatch(Comment_1.onGetComment(postid)); });
     react_1.useEffect(function () {
         getComment(postid);
@@ -115,6 +117,7 @@ function CommentContainer(_a) {
                 case 1:
                     _a.sent();
                     getComment(postid);
+                    setNewRequset(true);
                     setCmt("");
                     setAuth({
                         cmt_user: "",
@@ -142,7 +145,7 @@ function CommentContainer(_a) {
             list.filter(function (e, i) {
                 if (e.sorts === 0)
                     return list[i];
-            }).map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, topic: topic, postid: postid })); }),
+            }).map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, setNewRequset: setNewRequset, topic: topic, postid: postid })); }),
         react_1.default.createElement("div", { style: { height: "120px" } })));
 }
 exports.default = react_1.default.memo(CommentContainer);
