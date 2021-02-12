@@ -137,17 +137,14 @@ var indexController = {
     },
     deleteComment: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, writer, pwd, number, topic, postId, deleteArr, result;
+            var _a, topic, postId, deleteArr;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.body, writer = _a.writer, pwd = _a.pwd, number = _a.number, topic = _a.topic, postId = _a.postId, deleteArr = _a.deleteArr;
-                        return [4 /*yield*/, index_model_1.default.deleteComment(writer, pwd, number, topic, postId, deleteArr)];
+                        _a = req.body, topic = _a.topic, postId = _a.postId, deleteArr = _a.deleteArr;
+                        return [4 /*yield*/, index_model_1.default.deleteComment(topic, postId, deleteArr)];
                     case 1:
-                        result = _b.sent();
-                        result.state
-                            ? res.status(200).json({ state: true })
-                            : res.status(200).json({ state: false });
+                        _b.sent();
                         return [2 /*return*/];
                 }
             });

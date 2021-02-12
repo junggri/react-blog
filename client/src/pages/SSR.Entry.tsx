@@ -9,7 +9,6 @@ import { Route } from "react-router-dom";
 import util from "../lib/axios";
 import useCSRF from "../useHooks/useCSRF";
 import useLoginFlag from "../useHooks/useLoginFlag";
-import ReactHelmet from "../useHooks/useHelmet";
 
 function SSREntry({ match, location }: any) {
    useLoginFlag();
@@ -42,11 +41,6 @@ function SSREntry({ match, location }: any) {
 
    return (
       <>
-         <ReactHelmet
-            title={"정그리의 블로그입니다."}
-            keywords={"자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드"}
-            description={"자바스크립트와 노드 그리고, 오늘보다 나은 내일을 위해 성장해나가는 블로그입니다."}
-         />
          <EntryContainerComp>
             <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
             <Route path={["/", "/post"]} exact={true} render={() => (

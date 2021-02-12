@@ -52,11 +52,6 @@ function makeDate() {
     });
     return dateString;
 }
-function promiseArray(conn, query, dep) {
-    return new Promise(function (resolve, reject) {
-        resolve(conn.execute(query, dep));
-    });
-}
 var indexModel = {
     createNewCommetTable: function (ref) {
         return __awaiter(this, void 0, void 0, function () {
@@ -244,50 +239,48 @@ var indexModel = {
             });
         });
     },
-    deleteComment: function (writer, pwd, number, topic, postId, deleteArr) {
+    deleteComment: function (topic, postId, deleteArr) {
         return __awaiter(this, void 0, void 0, function () {
-            var conn, find_query, dep, result, state, query_1, promises, e_6;
+            function promiseArray(array) {
+                return __awaiter(this, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        return [2 /*return*/, new Promise(function (resolve, reject) {
+                                resolve();
+                            })];
+                    });
+                });
+            }
+            var conn, e_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, comment_connection_1.default()];
                     case 1:
                         conn = _a.sent();
-                        if (!(conn !== undefined)) return [3 /*break*/, 10];
+                        if (!(conn !== undefined)) return [3 /*break*/, 5];
                         _a.label = 2;
                     case 2:
-                        _a.trys.push([2, 9, , 10]);
-                        find_query = "select * from " + postId.replace(/-/g, "_") + " where board = ?";
-                        dep = [number];
-                        return [4 /*yield*/, conn.execute(find_query, dep)];
-                    case 3:
-                        result = (_a.sent())[0];
-                        return [4 /*yield*/, cryptoPwd_1.decryptoPwd(result[0], pwd, writer)];
-                    case 4:
-                        state = _a.sent();
-                        if (!state) return [3 /*break*/, 7];
-                        query_1 = "DELETE FROM `" + postId.replace(/-/g, "_") + "` where board = ?";
-                        promises = deleteArr.map(function (e) { return promiseArray(conn, query_1, [e]); });
-                        return [4 /*yield*/, Promise.all(promises)];
-                    case 5:
-                        _a.sent();
+                        _a.trys.push([2, 4, , 5]);
+                        // deleteArr.forEach((e) => {
+                        //    const query = `DELETE FROM \`${postId.replace(/-/g, "_")}\` where board = ?`;
+                        //    const dep = [e];
+                        // });
                         return [4 /*yield*/, topic_model_1.default.decreaseCmtCount(topic, postId, deleteArr.length)];
-                    case 6:
+                    case 3:
+                        // deleteArr.forEach((e) => {
+                        //    const query = `DELETE FROM \`${postId.replace(/-/g, "_")}\` where board = ?`;
+                        //    const dep = [e];
+                        // });
                         _a.sent();
-                        conn.release();
-                        return [2 /*return*/, { state: true }];
-                    case 7:
-                        conn.release();
-                        return [2 /*return*/, { state: false }];
-                    case 8: return [3 /*break*/, 10];
-                    case 9:
+                        return [3 /*break*/, 5];
+                    case 4:
                         e_6 = _a.sent();
                         console.error(e_6);
-                        conn.release();
-                        return [2 /*return*/, { state: false }];
-                    case 10: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
     },
 };
+;
 exports.default = indexModel;

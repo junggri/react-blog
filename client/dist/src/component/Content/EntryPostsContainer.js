@@ -8,7 +8,6 @@ var styled_comp_1 = require("../../styled-comp");
 var react_router_dom_1 = require("react-router-dom");
 var io5_1 = require("react-icons/io5");
 var md_1 = require("react-icons/md");
-var fa_1 = require("react-icons/fa");
 var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
 var EntryPostsContainer = function (_a) {
     var posts = _a.posts, onDelete = _a.onDelete, login = _a.login, csrf = _a.csrf;
@@ -33,10 +32,7 @@ var EntryPostsContainer = function (_a) {
                         react_1.default.createElement(react_router_dom_1.Link, { to: "/write?modify=" + e.uid + "&topic=" + e.topic },
                             react_1.default.createElement(io5_1.IoColorWand, null))),
                     react_1.default.createElement("span", { className: 'posts-admin-delete', onClick: onDelete },
-                        react_1.default.createElement(md_1.MdDelete, null))),
-            react_1.default.createElement("div", { className: "content-cmt-box" },
-                react_1.default.createElement(fa_1.FaRegComment, { className: "content-cmt-icons" }),
-                react_1.default.createElement("span", null, e.comment)))); }),
+                        react_1.default.createElement(md_1.MdDelete, null))))); }),
         react_1.default.createElement("div", { className: "sidebar-copyright" }, "Copyright 2021. junggri All rights reserved.")));
 };
 exports.default = (EntryPostsContainer);

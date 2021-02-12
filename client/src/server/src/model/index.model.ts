@@ -161,7 +161,7 @@ const indexModel = {
                return { state: true };
             } else {
                conn.release();
-               return { state: false };
+               throw new SyntaxError("invalid Auth");
             }
          } catch (e) {
             console.error(e);
@@ -170,5 +170,5 @@ const indexModel = {
          }
    },
 };
-
+;
 export default indexModel;

@@ -67,7 +67,6 @@ var react_router_dom_1 = require("react-router-dom");
 var axios_1 = __importDefault(require("../lib/axios"));
 var useCSRF_1 = __importDefault(require("../useHooks/useCSRF"));
 var useLoginFlag_1 = __importDefault(require("../useHooks/useLoginFlag"));
-var useHelmet_1 = __importDefault(require("../useHooks/useHelmet"));
 function SSREntry(_a) {
     var _this = this;
     var match = _a.match, location = _a.location;
@@ -102,7 +101,6 @@ function SSREntry(_a) {
         onGetGaCount();
     }, []);
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        react_1.default.createElement(useHelmet_1.default, { title: "정그리의 블로그입니다.", keywords: "자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드", description: "자바스크립트와 노드 그리고, 오늘보다 나은 내일을 위해 성장해나가는 블로그입니다." }),
         react_1.default.createElement(styled_comp_1.EntryContainerComp, null,
             react_1.default.createElement(component_1.SideBarContainer, { topic: AllPosts, login: login, location: location, count: count }),
             react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post"], exact: true, render: function () { return (react_1.default.createElement(component_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),

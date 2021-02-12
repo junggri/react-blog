@@ -58,7 +58,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decryptoPwd = exports.cryptoPwd = void 0;
+exports.cryptoPwd = void 0;
 var crypto_1 = __importDefault(require("crypto"));
 var util_1 = __importDefault(require("util"));
 var dotenv = __importStar(require("dotenv"));
@@ -86,20 +86,3 @@ function cryptoPwd(pwd) {
     });
 }
 exports.cryptoPwd = cryptoPwd;
-function decryptoPwd(data, pwd, writer) {
-    return __awaiter(this, void 0, void 0, function () {
-        var key;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!(data.writer === writer)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, promise(pwd, data.salt, Number(process.env.REACT_APP_CRYPTO_ITER), Number(process.env.REACT_APP_CRYPTO_NUM), String(process.env.REACT_APP_CRYPTO_ALGO))];
-                case 1:
-                    key = _a.sent();
-                    return [2 /*return*/, data.pwd === key.toString("base64")];
-                case 2: return [2 /*return*/, false];
-            }
-        });
-    });
-}
-exports.decryptoPwd = decryptoPwd;

@@ -65,6 +65,7 @@ const postsContainerMixin = css`
   position: absolute;
   top:0;
   & .content-cmt-box{
+ 
     display: flex;
     opacity: 0.6;
     margin-top:20px;

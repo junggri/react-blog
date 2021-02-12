@@ -16,6 +16,7 @@ export default function createPage(root: any, script: any, styles: any, helmet: 
       <!DOCTYPE html>
       <html lang="ko" ${helmet.htmlAttributes.toString()}>
       <head>
+      <title>정그리의 블로그입니다.</title>
           ${helmet.title.toString()}
           ${helmet.meta.toString()}
           ${helmet.link.toString()}
@@ -23,7 +24,6 @@ export default function createPage(root: any, script: any, styles: any, helmet: 
          <meta content="width=device-width, initial-scale=1" name="viewport" />
          ${styles}
          <link href="${manifest.files["main.css"]}" rel="stylesheet" />
-         <script data-ad-client="ca-pub-6475394953521607" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186554267-1"></script>
          <script>
                window.dataLayer = window.dataLayer || [];
@@ -35,6 +35,7 @@ export default function createPage(root: any, script: any, styles: any, helmet: 
             </script>
          </head>
          <body  ${helmet.bodyAttributes.toString()}>
+         <noscript>You need to enable JavaScript to run this app.</noscript>
          <div id="root">
             ${root}   
          </div>    

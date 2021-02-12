@@ -8,8 +8,6 @@ import { usePreloader } from "../../lib/PreloadContext";
 import { onGetComment } from "../../modules/Comment";
 import util from "../../lib/axios";
 import { FaRegCommentDots } from "react-icons/fa";
-import { ICommonModuleProps } from "../../modules/Common/common.interface";
-import useCommon from "../../useHooks/useCommon";
 
 interface ICommnet {
    board: number
@@ -25,7 +23,6 @@ interface ICommnet {
 function CommentContainer({ postid, topic }: { postid: string, topic: string }) {
    const csrf = useCSRF();
    const dispatch = useDispatch();
-   const { newRequest, setNewRequset }: ICommonModuleProps = useCommon();
    const { list, getComment } = useComment();
    const [cmt, setCmt] = useState("");
    const [auth, setAuth] = useState({
@@ -58,7 +55,6 @@ function CommentContainer({ postid, topic }: { postid: string, topic: string }) 
       const grp = e.currentTarget.parentNode.parentNode.parentNode.dataset.grp;
       await util.saveComment(cmt, grp, topic, postid, auth.cmt_user, auth.cmt_pwd, csrf);
       getComment(postid);
-      setNewRequset(true);
       setCmt("");
       setAuth({
          cmt_user: "",
@@ -95,7 +91,6 @@ function CommentContainer({ postid, topic }: { postid: string, topic: string }) 
                   csrf={csrf}
                   list={list}
                   getComment={getComment}
-                  setNewRequset={setNewRequset}
                   topic={topic}
                   postid={postid}
                />))}

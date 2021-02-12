@@ -145,10 +145,9 @@ module.exports = {
       ],
    },
    resolve: {
-      modules: ["node_modules"],
+      modules: ["node_modules", "react-helmet"],
    },
    externals: [
-      "react-helmet",
       nodeExternals({
          allowlist: [/@babel/],
       }),
