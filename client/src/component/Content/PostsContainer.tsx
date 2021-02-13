@@ -11,6 +11,7 @@ import { usePreloader } from "../../lib/PreloadContext";
 import { onRequsetPost } from "../../modules/Posts";
 import { useDispatch } from "react-redux";
 import CommentContainer from "./Comment";
+import { onGetComment } from "../../modules/Comment";
 
 const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
@@ -20,6 +21,7 @@ function PostsContainer({ match }: any) {
    const dispatch = useDispatch();
 
    usePreloader(() => dispatch(onRequsetPost({ topic: match.params.topic, postsId: match.params.postsId })));
+   usePreloader(() => dispatch(onGetComment(match.params.postsId)));
 
    useEffect(() => {
       getPost(match.params.topic, match.params.postsId);

@@ -158,11 +158,11 @@ var util = {
             headers: { "X-XSRF-TOKEN": token },
         });
     },
-    deleteComment: function (topic, postId, deleteArr, token) {
+    deleteComment: function (writer, pwd, number, topic, postId, deleteArr, token) {
         return axois_config_1.default({
             url: "/api/comment/items",
             method: "post",
-            data: { topic: topic, postId: postId, deleteArr: deleteArr },
+            data: { writer: writer, pwd: pwd, number: number, topic: topic, postId: postId, deleteArr: deleteArr },
             headers: { "X-XSRF-TOKEN": token },
         });
     },

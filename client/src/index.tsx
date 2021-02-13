@@ -14,6 +14,7 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "./lib/store";
 import { Provider } from "react-redux";
 
+
 const mountElement = document.getElementById("root") as HTMLElement;
 const reactMountFn = (mountElement.childElementCount === 0)
    ? ReactDOM.render

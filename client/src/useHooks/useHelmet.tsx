@@ -9,20 +9,22 @@ interface IReactHelmet {
 }
 
 function ReactHelmet({ title, keywords, description }: IReactHelmet) {
+   console.log(title, keywords, description);
    return (
       <Helmet>
          <title>{title}</title>
-         <meta name="description" content={description} data-react-helmet="true" />
-         <meta name="keywords" content={keywords} data-react-helmet="true" />
-         <meta property="og:title" content={title} data-react-helmet="true" />
-         <meta property="og:description" content={description} data-react-helmet="true" />
-         <meta property="og:image" content="http://junggri.com/images/og.jpg" data-react-helmet="true" />
-         <meta property="og:url" content="http://junggri.com" data-react-helmet="true" />
-         <meta property="og:locale" content="ko_KR" data-react-helmet="true" />
-         <meta property="og:type" content="website" data-react-helmet="true" />
-         <meta property="og:site_name" content="JUNGGRI BLOG" data-react-helmet="true" />
-         <meta property="og:image:width" content="1080" data-react-helmet="true" />
-         <meta property="og:image:height" content="600" data-react-helmet="true" />
+         <meta name="description" content={description} />
+         <meta name="keywords" content={keywords} />
+         <meta property="og:title" content={title} />
+         <meta property="og:image" content="http://www.junggri.com/images/og.jpg" />
+         <meta property="og:image:secure_url" content="https://www.junggri.com/images/og.jpg" />
+         <meta property="og:url" content="https://www.junggri.com" />
+         <meta property="og:description" content={description} />
+         <meta property="og:locale" content="ko_KR" />
+         <meta property="og:type" content="website" />
+         <meta property="og:site_name" content="JUNGGRI BLOG" />
+         <meta property="og:image:width" content="1080" />
+         <meta property="og:image:height" content="600" />
       </Helmet>
    );
 }

@@ -4,6 +4,7 @@ import { IoRemoveOutline } from "react-icons/io5";
 import { HiCode } from "react-icons/hi";
 import { DiGithubFull } from "react-icons/di";
 import { SiGmail } from "react-icons/si";
+import ReactHelmet from "../../useHooks/useHelmet";
 
 interface IAboutContainer {
    width: number
@@ -12,11 +13,16 @@ interface IAboutContainer {
 function AboutContainer() {
    return (
       <AboutContainerComp>
+         <ReactHelmet
+            title={"이정수라는 사람이란."}
+            keywords={"노력, 희망, 열심 ,열정"}
+            description={"배는 항구에 있을때에 가장 안전하지만, 그것이 배의 존재의 이유는 아니다."}
+         />
          <div className="about-me">이정수</div>
          <div className="about-me-nickname">junggri</div>
          <div className="about-icon-box">
             <a href="https://github.com/junggri" target="_blank" rel="noreferrer"><DiGithubFull className="aib-github" /></a>
-            <a href="mailto:jjuu6933@naver.com"><SiGmail className="aib-mail" /></a>
+            <a href="mailto:junggri.blog@gmail.com"><SiGmail className="aib-mail" /></a>
          </div>
          <ul className="about-detail">
             <div className="about-detail-slo"><HiCode className="slo-icons" />간단소개</div>

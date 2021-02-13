@@ -13,14 +13,14 @@ interface Controller {
    deleteComment: (req: Request, res: Response) => void
 }
 
-let indexController: Controller = {
+const indexController: Controller = {
    async getCsrf(req, res) {
       res.status(200).json({ token: req.csrfToken() });
    },
 
    async getGaCount(req, res) {
       try {
-         let data: any = await googleReport();
+         const data: any = await googleReport();
          res.status(200).json({ data: JSON.parse(data) });
       } catch (err) {
          console.log(err);
@@ -63,7 +63,7 @@ let indexController: Controller = {
       const result: any = await model.deleteComment(writer, pwd, number, topic, postId, deleteArr);
       result.state
          ? res.status(200).json({ state: true })
-         : res.status(404).json({ state: false });
+         : res.status(200).json({ state: false });
    },
 };
 

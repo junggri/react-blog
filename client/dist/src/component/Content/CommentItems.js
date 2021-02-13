@@ -81,10 +81,8 @@ function CommentItem(_a) {
     var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
     var _b = react_1.useState(""), reply = _b[0], setReply = _b[1];
     var _c = react_1.useState([]), depthReply = _c[0], setDepthReply = _c[1];
-    var _d = react_1.useState({
-        cmt_user: "",
-        cmt_pwd: "",
-    }), auth = _d[0], setAuth = _d[1];
+    var _d = react_1.useState({ delete_cmt_user: "", delete_cmt_pwd: "" }), cmtData = _d[0], setCmtData = _d[1];
+    var _e = react_1.useState({ cmt_user: "", cmt_pwd: "" }), auth = _e[0], setAuth = _e[1];
     var makeComment = function (e) { return ({
         __html: typeof window === "object" ? DOMPurify.sanitize(e.cmt) : null,
     }); };
@@ -175,22 +173,40 @@ function CommentItem(_a) {
                     board = e.currentTarget.dataset.board;
                     parent = e.currentTarget.dataset.pr;
                     deleteArr.push(Number(board));
+                    if (e.currentTarget.dataset.dp > 0) {
+                        e.currentTarget.parentNode.parentNode.parentNode.nextSibling.classList.toggle("visible");
+                    }
+                    e.currentTarget.parentNode.parentNode.parentNode.classList.toggle("visible");
                     findDepth(Number(board), Number(parent));
-                    return [4 /*yield*/, axios_1.default.deleteComment(topic, postid, deleteArr, csrf)];
+                    return [4 /*yield*/, axios_1.default.deleteComment(cmtData.delete_cmt_user, cmtData.delete_cmt_pwd, board, topic, postid, deleteArr, csrf)];
                 case 1:
                     _a.sent();
+                    getComment(postid);
                     return [2 /*return*/];
             }
         });
     }); };
+    var showDeleteBox = function (e) {
+        e.currentTarget.nextSibling.classList.toggle("visible");
+    };
+    var onChangeDelete = function (e) {
+        var _a;
+        console.log(e.currentTarget.name, e.currentTarget.value);
+        setCmtData(__assign(__assign({}, cmtData), (_a = {}, _a[e.currentTarget.name] = e.currentTarget.value, _a)));
+    };
     return (react_1.default.createElement(styled_comp_1.CommentItmesComp, { depth: Number(e.depth) + 1, className: "depth" + (Number(e.depth) + 1) },
         react_1.default.createElement("div", { className: "cmt-whoami" },
             react_1.default.createElement("img", { src: "/images/og.jpg", alt: "" }),
             react_1.default.createElement("div", { className: "cmt-whoami-sub" },
                 react_1.default.createElement("span", { className: "cmt-writer" }, e.writer),
                 react_1.default.createElement("span", { className: "cmt-created" }, e.created)),
-            react_1.default.createElement("span", { className: "cmt-delete-icons", onClick: deleteComment, "data-pr": e.parent, "data-grp": e.bgroup, "data-dp": e.depth, "data-board": e.board },
-                react_1.default.createElement(fi_1.FiDelete, null))),
+            react_1.default.createElement("div", { className: "cmt-delete-icons", onClick: showDeleteBox },
+                react_1.default.createElement(fi_1.FiDelete, null)),
+            react_1.default.createElement("div", { className: "cmt-delete-box" },
+                react_1.default.createElement("div", { className: "cmt-delete-inputbox" },
+                    react_1.default.createElement("input", { type: "text", name: "delete_cmt_user", value: cmtData.delete_cmt_user, placeholder: "\uC791\uC131\uC790", onChange: onChangeDelete }),
+                    react_1.default.createElement("input", { type: "password", name: "delete_cmt_pwd", value: cmtData.delete_cmt_pwd, placeholder: "\uBE44\uBC00\uBC88\uD638", onChange: onChangeDelete }),
+                    react_1.default.createElement("div", { className: "delete-btn", onClick: deleteComment, "data-pr": e.parent, "data-grp": e.bgroup, "data-dp": e.depth, "data-board": e.board }, "\uC0AD\uC81C\uD558\uAE30")))),
         react_1.default.createElement("div", { className: "cmt-content", dangerouslySetInnerHTML: makeComment(e) }),
         react_1.default.createElement("div", { className: "cmt-reply-box" },
             react_1.default.createElement("div", { className: "cmt-btn-reply", "data-grp": e.bgroup, "data-dp": e.depth, "data-board": e.board, onClick: onClickReply },

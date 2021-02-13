@@ -39,7 +39,6 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
          {posts.data !== null &&
          (posts.data).map((e: IPostCommonProps) => (
             <SpecificTopicItemsComp key={e.uid}>
-
                <span className="item-created">🗓
                   {e.created}
                   <Link to={`/tag/${e.topic}`}>
