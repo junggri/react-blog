@@ -28,13 +28,11 @@ function PostsContainer({ match }: any) {
       return () => onCleatPostData();
    }, [match.params.topic, match.params.postsId, onCleatPostData, getPost]);
 
-
    const MakeHtml = () => ({
       __html: typeof window === "object" ? (DOMPurify as any).sanitize((data as IPostDataProps).content) : null,
    });
 
    if (!post.data) return null;
-
    return (
       <>
          <PostsContainerComp>

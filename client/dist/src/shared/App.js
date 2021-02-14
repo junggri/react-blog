@@ -9,7 +9,11 @@ var pages_1 = require("../pages");
 function App() {
     return (react_1.default.createElement("div", { id: "App" },
         react_1.default.createElement(react_router_dom_1.Switch, null,
-            react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post", "/tag", "/tag/:topic", "/about"], exact: true, component: pages_1.SSR_Entry }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/", exact: true, component: pages_1.Entry }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/post", exact: true, component: pages_1.Entry }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag", exact: true, component: pages_1.Entry2 }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag/:topic", exact: true, component: pages_1.Entry2 }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/about", exact: true, component: pages_1.Entry2 }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/topic/:topic/:postsId", exact: true, component: pages_1.Posts }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/write", exact: true, component: pages_1.TextEditor }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/admin/leejeongsoo", exact: true, component: pages_1.Admin }),

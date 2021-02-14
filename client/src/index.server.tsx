@@ -88,9 +88,9 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
    preloadContext.done = true;
    const html = ReactDOMServer.renderToString(sheet.collectStyles(jsx));
    const styles = sheet.getStyleTags();
-   const RHelmet = Helmet.renderStatic();
    const stateString = JSON.stringify(store.getState()).replace(/</g, "\\u003c");
    const stateScript = `<script>__PRELOADED_STATE__=${stateString}</script>`;
+   const RHelmet = Helmet.renderStatic();
    res.send(createPage(html, stateScript, styles, RHelmet));
 };
 

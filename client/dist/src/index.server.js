@@ -96,7 +96,7 @@ app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use("/admin", admin_1.default);
 var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var sheet, context, preloadContext, jsx, e_1, html, styles, RHelmet, stateString, stateScript;
+    var sheet, context, preloadContext, jsx, e_1, html, styles, stateString, stateScript, RHelmet;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -124,9 +124,9 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
                 preloadContext.done = true;
                 html = server_1.default.renderToString(sheet.collectStyles(jsx));
                 styles = sheet.getStyleTags();
-                RHelmet = react_helmet_1.Helmet.renderStatic();
                 stateString = JSON.stringify(store_1.store.getState()).replace(/</g, "\\u003c");
                 stateScript = "<script>__PRELOADED_STATE__=" + stateString + "</script>";
+                RHelmet = react_helmet_1.Helmet.renderStatic();
                 res.send(createPage_1.default(html, stateScript, styles, RHelmet));
                 return [2 /*return*/];
         }

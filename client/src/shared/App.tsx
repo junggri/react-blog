@@ -1,16 +1,20 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Admin, Posts, SSR_Entry, TextEditor } from "../pages";
+import { Admin, Entry, Entry2, Posts, TextEditor } from "../pages";
 
 
 function App() {
    return (
       <div id="App">
          <Switch>
-            <Route path={["/", "/post", "/tag", "/tag/:topic", "/about"]} exact={true} component={SSR_Entry} />
-            <Route path="/topic/:topic/:postsId" exact={true} component={Posts} />
-            <Route path="/write" exact={true} component={TextEditor} />
-            <Route path="/admin/leejeongsoo" exact={true} component={Admin} />
+            <Route path="/" exact component={Entry} />
+            <Route path="/post" exact component={Entry} />
+            <Route path="/tag" exact component={Entry2} />
+            <Route path="/tag/:topic" exact component={Entry2} />
+            <Route path="/about" exact component={Entry2} />
+            <Route path="/topic/:topic/:postsId" exact component={Posts} />
+            <Route path="/write" exact component={TextEditor} />
+            <Route path="/admin/leejeongsoo" exact component={Admin} />
             <Route render={() => <h1>Not found</h1>} />
          </Switch>
       </div>

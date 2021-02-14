@@ -29,7 +29,7 @@ var usePosts_1 = __importDefault(require("../useHooks/usePosts"));
 var component_1 = require("../component");
 var react_router_dom_1 = require("react-router-dom");
 var useLoginFlag_1 = __importDefault(require("../useHooks/useLoginFlag"));
-function SSREntry(_a) {
+function Entry2(_a) {
     var match = _a.match, location = _a.location;
     useLoginFlag_1.default();
     var _b = useCommon_1.default(), login = _b.login, onGetGaCount = _b.onGetGaCount, count = _b.count;
@@ -43,4 +43,4 @@ function SSREntry(_a) {
         react_1.default.createElement(react_router_dom_1.Route, { path: "/tag", exact: true, render: function () { return (react_1.default.createElement(component_1.TagsContainer, { Allposts: AllPosts })); } }),
         react_1.default.createElement(react_router_dom_1.Route, { path: "/about", exact: true, render: function () { return (react_1.default.createElement(component_1.AboutContainer, null)); } })));
 }
-exports.default = SSREntry;
+exports.default = Entry2;
