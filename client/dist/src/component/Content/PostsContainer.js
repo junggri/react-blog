@@ -29,12 +29,12 @@ var react_router_dom_1 = require("react-router-dom");
 var cg_1 = require("react-icons/cg");
 var react_highlight_js_1 = __importDefault(require("react-highlight.js"));
 var dompurify_1 = __importDefault(require("dompurify"));
-var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 var PreloadContext_1 = require("../../lib/PreloadContext");
 var Posts_1 = require("../../modules/Posts");
 var react_redux_1 = require("react-redux");
 var Comment_1 = __importDefault(require("./Comment"));
 var Comment_2 = require("../../modules/Comment");
+var UseMeta_1 = __importDefault(require("../../useHooks/UseMeta"));
 var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
 function PostsContainer(_a) {
     var match = _a.match;
@@ -47,14 +47,20 @@ function PostsContainer(_a) {
         getPost(match.params.topic, match.params.postsId);
         return function () { return onCleatPostData(); };
     }, [match.params.topic, match.params.postsId, onCleatPostData, getPost]);
+    if (!post.data)
+        return null;
     var MakeHtml = function () { return ({
         __html: typeof window === "object" ? DOMPurify.sanitize(data.content) : null,
     }); };
-    if (!post.data)
-        return null;
+    var meta = {
+        title: data.result[0].content_name,
+        description: data.result[0].detail,
+        image: "https://www.junggri.com/images/og.jpg",
+        type: "website",
+    };
     return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(UseMeta_1.default, { data: meta }),
         react_1.default.createElement(styled_comp_1.PostsContainerComp, null,
-            react_1.default.createElement(useHelmet_1.default, { title: data.result[0].content_name, keywords: data.result[0].content_name, description: data.result[0].detail }),
             react_1.default.createElement("div", { className: "posts-container-iconbox" },
                 react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
                     react_1.default.createElement(cg_1.CgHome, { className: "icon-tohome" }))),
@@ -63,6 +69,6 @@ function PostsContainer(_a) {
             react_1.default.createElement(react_highlight_js_1.default, { language: "react" },
                 react_1.default.createElement("div", { dangerouslySetInnerHTML: MakeHtml(), className: "posts-content" })),
             react_1.default.createElement("div", { className: "posts-created" }, data.result[0].created)),
-        react_1.default.createElement(Comment_1.default, { postid: match.params.postsId, topic: match.params.topic })));
+        react_1.default.createElement(Comment_1.default, { postname: data.result[0].content_name, postid: match.params.postsId, topic: match.params.topic })));
 }
 exports.default = PostsContainer;

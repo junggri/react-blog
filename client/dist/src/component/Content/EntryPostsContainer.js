@@ -10,14 +10,12 @@ var io5_1 = require("react-icons/io5");
 var md_1 = require("react-icons/md");
 var fa_1 = require("react-icons/fa");
 var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
-var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
 var EntryPostsContainer = function (_a) {
     var posts = _a.posts, onDelete = _a.onDelete, login = _a.login, csrf = _a.csrf;
     if (!posts.data)
         return null;
     var data = Object.values(posts.data).flat();
     return (react_1.default.createElement(styled_comp_1.EntryPostsContainerComp, null,
-        react_1.default.createElement(useHelmet_1.default, { title: "정그리의 블로그입니다.", keywords: "자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드", description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다." }),
         data.map(function (e) { return (react_1.default.createElement(styled_comp_1.EntryPostsItemComp, { key: e.uid },
             react_1.default.createElement("span", { className: "item-created" },
                 "\uD83D\uDDD3",

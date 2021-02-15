@@ -138,7 +138,8 @@ var contentModel = {
                         return [4 /*yield*/, conn.execute("select comment from " + topic + " where uid = ?", [postid])];
                     case 3:
                         result = (_a.sent())[0];
-                        if (!(result > 1)) return [3 /*break*/, 5];
+                        console.log(result, length, topic);
+                        if (!(result[0].comment >= 1)) return [3 /*break*/, 5];
                         query = "UPDATE " + topic + " set comment = comment-" + length + " where uid = ?";
                         dep = [postid];
                         return [4 /*yield*/, conn.execute(query, dep)];

@@ -142,11 +142,11 @@ var util = {
             url: "/api/item/" + postid + "/comment",
         });
     },
-    saveComment: function (content, grp, topic, postid, user, pwd, token) {
+    saveComment: function (postname, content, grp, topic, postid, user, pwd, token) {
         return axois_config_1.default({
             url: "/api/comment",
             method: "post",
-            data: { content: content, grp: grp, topic: topic, postid: postid, user: user, pwd: pwd },
+            data: { postname: postname, content: content, grp: grp, topic: topic, postid: postid, user: user, pwd: pwd },
             headers: { "X-XSRF-TOKEN": token },
         });
     },

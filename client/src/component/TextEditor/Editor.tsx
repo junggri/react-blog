@@ -61,8 +61,7 @@ const Editor = ({ history, location }: any) => {
 
 
    const howToSave = useCallback((mode: string, cb: any, _data?: ITempPost) => {
-      console.log(_data);
-      if (!_data) return history.push("/write");
+      // if (!_data) return history.push("/write");
       setMode(mode);
       (async () => {
          const { data } = await cb;

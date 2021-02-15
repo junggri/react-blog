@@ -7,7 +7,7 @@ import isNew from "../../lib/isNewPost";
 import { usePreloader } from "../../lib/PreloadContext";
 import { onRequestPosts } from "../../modules/Posts";
 import { FaRegComment } from "react-icons/fa";
-import ReactHelmet from "../../useHooks/useHelmet";
+import Meta from "../../useHooks/UseMeta";
 
 interface ISpecificTopicContainer {
    match: any
@@ -29,13 +29,16 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
 
    usePreloader(() => dispatch(onRequestPosts({ params })));
 
+   const meta = {
+      title: `${params}에 관련된 게시글들입니다`,
+      description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다.",
+      image: "https://www.junggri.com/images/og.jpg",
+      type: "website",
+   };
+
    return (
       <SpecificTopicContainerComp>
-         <ReactHelmet
-            title={`${params}에 관련된 게시글들입니다.`}
-            keywords={"자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드"}
-            description={"자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다."}
-         />
+         <Meta data={meta} />
          {posts.data !== null &&
          (posts.data).map((e: IPostCommonProps) => (
             <SpecificTopicItemsComp key={e.uid}>

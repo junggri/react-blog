@@ -11,15 +11,26 @@ const chunks = Object.keys(manifest.files)
    .join("");
 
 
+// <meta property="og:image" content="http://www.junggri.com/images/og.jpg" />
+// <meta property="og:image:secure_url" content="https://www.junggri.com/images/og.jpg" />
+// <meta property="og:url" content="https://www.junggri.com" />
+// <meta property="og:locale" content="ko_KR" />
+// <meta property="og:type" content="website" />
+// <meta property="og:site_name" content="JUNGGRI BLOG" />
+// <meta property="og:image:width" content="1080" />
+// <meta property="og:image:height" content="600" />
+// ${helmet.title.toString()}
+
 export default function createPage(root: any, script: any, styles: any, helmet: any) {
    return `
       <!DOCTYPE html>
       <html lang="ko" ${helmet.htmlAttributes.toString()}>
       <head>
-         <title>정그리의 블로그입니다.</title>
+         <title>정그리의 블로그입니다</title>
          <meta charset="utf-8" />
          <meta content="width=device-width, initial-scale=1" name="viewport" />
-         ${helmet.title.toString()}
+         <meta name="description" content="자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다." />
+         <meta name="keywords" content="자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드"/>
          <link href="${manifest.files["main.css"]}" rel="stylesheet" />
          <script>
                window.dataLayer = window.dataLayer || [];

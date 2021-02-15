@@ -93,15 +93,15 @@ var indexController = {
     },
     saveComment: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, content, grp, topic, postid, user, pwd, result, e_1;
+            var _a, postname, content, grp, topic, postid, user, pwd, result, e_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.body, content = _a.content, grp = _a.grp, topic = _a.topic, postid = _a.postid, user = _a.user, pwd = _a.pwd;
+                        _a = req.body, postname = _a.postname, content = _a.content, grp = _a.grp, topic = _a.topic, postid = _a.postid, user = _a.user, pwd = _a.pwd;
                         _b.label = 1;
                     case 1:
                         _b.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, index_model_1.default.saveComment(content, grp, topic, postid, user, pwd)];
+                        return [4 /*yield*/, index_model_1.default.saveComment(postname, content, grp, topic, postid, user, pwd)];
                     case 2:
                         result = _b.sent();
                         result.state

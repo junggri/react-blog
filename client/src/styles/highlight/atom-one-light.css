@@ -28,7 +28,7 @@ hue-6-2: #c18401
 
 .ql-syntax .hljs-comment,
 .ql-syntax .hljs-quote {
-    color: #a0a1a7 !important;
+    color: #a0a1a7;
     font-style: italic;
 }
 

@@ -24,10 +24,37 @@ import adminApi from "./server/src/router/admin";
 import { ServerStyleSheet } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Helmet } from "react-helmet";
-// @ts-ignore
+import { buildSchema } from "graphql";
+import { graphqlHTTP } from "express-graphql";
 
 const app = express();
 
+const schema = buildSchema(`
+   type Query{
+      hello:String
+      persons:[Person]
+   }
+   type Person{
+      name:String 
+      age:Int
+   }
+`);
+
+const root = {
+   hello: () => "hello world",
+   persons: () => {
+      return [
+         { name: "kim", age: "12" },
+         { name: "lee", age: "13" },
+         { name: "dong", age: "14" }];
+   },
+};
+
+app.use("/graphql", graphqlHTTP({
+   schema: schema,
+   rootValue: root,
+   graphiql: true,
+}));
 
 app.disable("x-powered-by");
 

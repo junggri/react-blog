@@ -112,9 +112,7 @@ var Editor = function (_a) {
         }
     }, [history, requestTopic, login]);
     var howToSave = react_1.useCallback(function (mode, cb, _data) {
-        console.log(_data);
-        if (!_data)
-            return history.push("/write");
+        // if (!_data) return history.push("/write");
         setMode(mode);
         (function () { return __awaiter(void 0, void 0, void 0, function () {
             var data;

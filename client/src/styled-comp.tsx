@@ -103,7 +103,11 @@ const postsContainerMixin = css`
     display: flex;
     opacity: 0.6;
     margin-top:20px;
-    font-size:1.12rem;  
+    font-size:1.12rem;
+    ${media.mobile`
+      font-size:0.9rem;
+      margin-top:10px;
+    `};
     & .content-cmt-icons{
       margin-right: 4px;
     }
@@ -152,11 +156,15 @@ const postsItemMixin = css`
     margin-top:6px;
     letter-spacing: 2px;
     font-weight: 450;
+    ${media.tablet`margin-top:-4px`};
+    ${media.mobile`margin-top:-8px`};
+    & span{
     ${media.tablet`
       font-size:2rem;
-      margin-top:-4px
     `};
-    & span{
+    ${media.mobile`
+       font-size:1.4rem;    
+    `};
       &:hover{
         text-decoration:none; 
         border-bottom:1px solid black;
@@ -176,7 +184,11 @@ const postsItemMixin = css`
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    ${media.tablet`font-size:0.8rem`}
+    ${media.tablet`font-size:0.9rem`}
+    ${media.tablet`
+      font-size:0.9rem;
+      margin-top:4px;
+    `}
   }
   & .posts-admin-box{
     position: absolute;
@@ -497,7 +509,7 @@ export const PostsContainerComp = styled.section`
   & .posts-content{
     word-break:break-all;
     font-size:1.2rem;
-    margin-top:50px;  
+    margin-top:50px;
     a {
       color:#06c !important;
       text-decoration: underline;
@@ -1097,6 +1109,10 @@ export const TemporaryPostComp = styled.div<any>`
 
 export const AboutContainerComp = styled.div`
   ${postsContainerMixin};
+  & .about-me-slogan{
+    margin-top:7px;
+    opacity: 0.6;
+  }
   & .about-icon-box{
     a {
      display: flex;

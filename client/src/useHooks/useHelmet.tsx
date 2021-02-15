@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 interface IReactHelmet {
    keywords: string
-   description: string
+   description?: string
    title: string
    canonical?: string
    img?: string

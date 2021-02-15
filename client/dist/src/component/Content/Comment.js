@@ -76,11 +76,13 @@ var useComment_1 = __importDefault(require("../../useHooks/useComment"));
 var CommentItems_1 = __importDefault(require("./CommentItems"));
 var axios_1 = __importDefault(require("../../lib/axios"));
 var fa_1 = require("react-icons/fa");
+var useCommon_1 = __importDefault(require("../../useHooks/useCommon"));
 function CommentContainer(_a) {
     var _this = this;
-    var postid = _a.postid, topic = _a.topic;
+    var postname = _a.postname, postid = _a.postid, topic = _a.topic;
     var csrf = useCSRF_1.default();
     var _b = useComment_1.default(), list = _b.list, getComment = _b.getComment;
+    var setNewRequset = useCommon_1.default().setNewRequset;
     var _c = react_1.useState(""), cmt = _c[0], setCmt = _c[1];
     var _d = react_1.useState({
         cmt_user: "",
@@ -106,10 +108,11 @@ function CommentContainer(_a) {
                     if (!auth.cmt_pwd || !auth.cmt_pwd)
                         return [2 /*return*/, alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요")];
                     grp = e.currentTarget.parentNode.parentNode.parentNode.dataset.grp;
-                    return [4 /*yield*/, axios_1.default.saveComment(cmt, grp, topic, postid, auth.cmt_user, auth.cmt_pwd, csrf)];
+                    return [4 /*yield*/, axios_1.default.saveComment(postname, cmt, grp, topic, postid, auth.cmt_user, auth.cmt_pwd, csrf)];
                 case 1:
                     _a.sent();
                     getComment(postid);
+                    setNewRequset(true);
                     setCmt("");
                     setAuth({
                         cmt_user: "",
@@ -137,7 +140,7 @@ function CommentContainer(_a) {
             list.filter(function (e, i) {
                 if (e.sorts === 0)
                     return list[i];
-            }).map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, topic: topic, postid: postid })); }),
+            }).map(function (e, i) { return (react_1.default.createElement(CommentItems_1.default, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, topic: topic, postid: postid, setNewRequset: setNewRequset })); }),
         react_1.default.createElement("div", { style: { height: "120px" } })));
 }
 exports.default = react_1.default.memo(CommentContainer);

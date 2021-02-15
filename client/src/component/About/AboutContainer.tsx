@@ -4,22 +4,27 @@ import { IoRemoveOutline } from "react-icons/io5";
 import { HiCode } from "react-icons/hi";
 import { DiGithubFull } from "react-icons/di";
 import { SiGmail } from "react-icons/si";
-import ReactHelmet from "../../useHooks/useHelmet";
+import Meta from "../../useHooks/UseMeta";
 
 interface IAboutContainer {
    width: number
 }
 
 function AboutContainer() {
+
+   const meta = {
+      title: `이정수라는 사람이란`,
+      description: "배는 항구에 있을때에 가장 안전하지만, 그것이 배의 존재의 이유는 아니다.",
+      image: "https://www.junggri.com/images/og.jpg",
+      type: "website",
+   };
+
    return (
       <AboutContainerComp>
-         <ReactHelmet
-            title={"이정수라는 사람이란."}
-            keywords={"노력, 희망, 열심 ,열정"}
-            description={"배는 항구에 있을때에 가장 안전하지만, 그것이 배의 존재의 이유는 아니다."}
-         />
+         <Meta data={meta} />
          <div className="about-me">이정수</div>
-         <div className="about-me-nickname">junggri</div>
+         <div className="about-me-nickname">junggri - 배는 항구에 있을 때 가장 안전하지만, 그게 배의 존재 이유는 아니다.</div>
+         {/*<div className="about-me-slogan">배는 항구에 있을 때 가장 안전하지만, 그게 배의 존재 이유는 아니다.</div>*/}
          <div className="about-icon-box">
             <a href="https://github.com/junggri" target="_blank" rel="noreferrer"><DiGithubFull className="aib-github" /></a>
             <a href="mailto:junggri.blog@gmail.com"><SiGmail className="aib-mail" /></a>

@@ -39,9 +39,9 @@ const indexController: Controller = {
 
 
    async saveComment(req, res) {
-      const { content, grp, topic, postid, user, pwd } = req.body;
+      const { postname, content, grp, topic, postid, user, pwd } = req.body;
       try {
-         const result: any = await model.saveComment(content, grp, topic, postid, user, pwd);
+         const result: any = await model.saveComment(postname, content, grp, topic, postid, user, pwd);
          result.state
             ? res.status(200).json({ state: true })
             : res.status(404).json({ state: false });

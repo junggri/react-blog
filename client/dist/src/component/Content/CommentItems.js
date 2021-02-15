@@ -77,7 +77,7 @@ var hi_1 = require("react-icons/hi");
 var fi_1 = require("react-icons/fi");
 function CommentItem(_a) {
     var _this = this;
-    var e = _a.e, csrf = _a.csrf, list = _a.list, getComment = _a.getComment, topic = _a.topic, postid = _a.postid;
+    var e = _a.e, csrf = _a.csrf, list = _a.list, getComment = _a.getComment, topic = _a.topic, postid = _a.postid, setNewRequset = _a.setNewRequset;
     var DOMPurify = typeof window === "object" ? dompurify_1.default(window) : function () { return false; };
     var _b = react_1.useState(""), reply = _b[0], setReply = _b[1];
     var _c = react_1.useState([]), depthReply = _c[0], setDepthReply = _c[1];
@@ -173,15 +173,13 @@ function CommentItem(_a) {
                     board = e.currentTarget.dataset.board;
                     parent = e.currentTarget.dataset.pr;
                     deleteArr.push(Number(board));
-                    if (e.currentTarget.dataset.dp > 0) {
-                        e.currentTarget.parentNode.parentNode.parentNode.nextSibling.classList.toggle("visible");
-                    }
-                    e.currentTarget.parentNode.parentNode.parentNode.classList.toggle("visible");
+                    e.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
                     findDepth(Number(board), Number(parent));
                     return [4 /*yield*/, axios_1.default.deleteComment(cmtData.delete_cmt_user, cmtData.delete_cmt_pwd, board, topic, postid, deleteArr, csrf)];
                 case 1:
                     _a.sent();
                     getComment(postid);
+                    setNewRequset(true);
                     return [2 /*return*/];
             }
         });
@@ -191,7 +189,6 @@ function CommentItem(_a) {
     };
     var onChangeDelete = function (e) {
         var _a;
-        console.log(e.currentTarget.name, e.currentTarget.value);
         setCmtData(__assign(__assign({}, cmtData), (_a = {}, _a[e.currentTarget.name] = e.currentTarget.value, _a)));
     };
     return (react_1.default.createElement(styled_comp_1.CommentItmesComp, { depth: Number(e.depth) + 1, className: "depth" + (Number(e.depth) + 1) },
@@ -212,7 +209,7 @@ function CommentItem(_a) {
             react_1.default.createElement("div", { className: "cmt-btn-reply", "data-grp": e.bgroup, "data-dp": e.depth, "data-board": e.board, onClick: onClickReply },
                 react_1.default.createElement(hi_1.HiCode, { className: "reply-icons" }),
                 !isExistReply(e).length ? react_1.default.createElement("span", null, "\uB313\uAE00\uB2EC\uAE30") : react_1.default.createElement("span", null, isExistReply(e).length + "개의 댓글")),
-            react_1.default.createElement("div", { className: "reply-depth" }, depthReply.map(function (e, i) { return (react_1.default.createElement(CommentItem, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, topic: topic, postid: postid })); })),
+            react_1.default.createElement("div", { className: "reply-depth" }, depthReply.map(function (e, i) { return (react_1.default.createElement(CommentItem, { key: i, e: e, csrf: csrf, list: list, getComment: getComment, topic: topic, postid: postid, setNewRequset: setNewRequset })); })),
             react_1.default.createElement("div", { className: "depth-reply-btn", onClick: onClickDepthReplyBtn }, "\uB313\uAE00 \uB2EC\uAE30"),
             react_1.default.createElement("div", { className: "depth-reply-box" },
                 react_1.default.createElement(styled_comp_1.CommentInputItem, null,

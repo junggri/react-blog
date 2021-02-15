@@ -23,9 +23,10 @@ interface ICmtItem {
    getComment: any
    topic: string
    postid: string
+   setNewRequset: any
 }
 
-function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
+function CommentItem({ e, csrf, list, getComment, topic, postid, setNewRequset }: ICmtItem) {
    const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
    const [reply, setReply] = useState("");
    const [depthReply, setDepthReply] = useState([]);
@@ -111,10 +112,7 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
       const board = e.currentTarget.dataset.board;
       const parent = e.currentTarget.dataset.pr;
       deleteArr.push(Number(board));
-      if (e.currentTarget.dataset.dp > 0) {
-         e.currentTarget.parentNode.parentNode.parentNode.nextSibling.classList.toggle("visible");
-      }
-      e.currentTarget.parentNode.parentNode.parentNode.classList.toggle("visible");
+      e.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
 
       function findDepth(board: number, parent: number) {
          const _list = list.filter(e => e.parent === Number(board));
@@ -127,6 +125,7 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
       findDepth(Number(board), Number(parent));
       await util.deleteComment(cmtData.delete_cmt_user, cmtData.delete_cmt_pwd, board, topic, postid, deleteArr, csrf);
       getComment(postid);
+      setNewRequset(true);
    };
 
    const showDeleteBox = (e: any) => {
@@ -134,7 +133,6 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
    };
 
    const onChangeDelete = (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e.currentTarget.name, e.currentTarget.value);
       setCmtData({
          ...cmtData,
          [e.currentTarget.name]: e.currentTarget.value,
@@ -176,6 +174,7 @@ function CommentItem({ e, csrf, list, getComment, topic, postid }: ICmtItem) {
                      getComment={getComment}
                      topic={topic}
                      postid={postid}
+                     setNewRequset={setNewRequset}
                   />
                ))}
             </div>

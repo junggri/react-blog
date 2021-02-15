@@ -2,6 +2,7 @@ import connection from "../config/comment.connection";
 import sanitize from "sanitize-html";
 import { cryptoPwd, decryptoPwd } from "../lib/cryptoPwd";
 import contentModel from "./topic.model";
+import sendMsg from "../lib/sendMsg";
 
 function makeDate() {
    const today = new Date();
@@ -65,7 +66,7 @@ const indexModel = {
          }
    },
 
-   async saveComment(cmt: string, grp: number, topic: string, postid: string, writer: string, pwd: string) {
+   async saveComment(postname: string, cmt: string, grp: number, topic: string, postid: string, writer: string, pwd: string) {
       const conn = await connection();
       const sanitize_writer = sanitize(writer);
       const sanitize_pwd = sanitize(pwd);
@@ -76,6 +77,7 @@ const indexModel = {
             const dep = [grp, 0, 0, cmt, makeDate(), sanitize_writer, _cyrpto._pwd, _cyrpto.salt];
             await conn.execute(query, dep);
             conn.release();
+            sendMsg(postname, sanitize_writer, cmt);
             await contentModel.increaseCmtCount<string, string>(topic, postid);
             return { state: true };
          } catch (e) {

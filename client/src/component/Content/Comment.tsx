@@ -5,11 +5,14 @@ import useComment from "../../useHooks/useComment";
 import CommentItems from "./CommentItems";
 import util from "../../lib/axios";
 import { FaRegCommentDots } from "react-icons/fa";
+import { ICommonModuleProps } from "../../modules/Common/common.interface";
+import useCommon from "../../useHooks/useCommon";
 
 
-function CommentContainer({ postid, topic }: { postid: string, topic: string }) {
+function CommentContainer({ postname, postid, topic }: { postname: string, postid: string, topic: string }) {
    const csrf = useCSRF();
    const { list, getComment } = useComment();
+   const { setNewRequset }: ICommonModuleProps = useCommon();
    const [cmt, setCmt] = useState("");
    const [auth, setAuth] = useState({
       cmt_user: "",
@@ -36,8 +39,9 @@ function CommentContainer({ postid, topic }: { postid: string, topic: string }) 
       if (cmt === "") return alert("글을 입력해주세요");
       if (!auth.cmt_pwd || !auth.cmt_pwd) return alert("댓글을 작성하시려면 아이디와 비밀번호를 입력해주세요");
       const grp = e.currentTarget.parentNode.parentNode.parentNode.dataset.grp;
-      await util.saveComment(cmt, grp, topic, postid, auth.cmt_user, auth.cmt_pwd, csrf);
+      await util.saveComment(postname, cmt, grp, topic, postid, auth.cmt_user, auth.cmt_pwd, csrf);
       getComment(postid);
+      setNewRequset(true);
       setCmt("");
       setAuth({
          cmt_user: "",
@@ -76,6 +80,7 @@ function CommentContainer({ postid, topic }: { postid: string, topic: string }) 
                   getComment={getComment}
                   topic={topic}
                   postid={postid}
+                  setNewRequset={setNewRequset}
                />))}
          <div style={{ height: "120px" }} />
       </CommentContainerComp>

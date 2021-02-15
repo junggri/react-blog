@@ -9,12 +9,18 @@ var io5_1 = require("react-icons/io5");
 var hi_1 = require("react-icons/hi");
 var di_1 = require("react-icons/di");
 var si_1 = require("react-icons/si");
-var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
+var UseMeta_1 = __importDefault(require("../../useHooks/UseMeta"));
 function AboutContainer() {
+    var meta = {
+        title: "\uC774\uC815\uC218\uB77C\uB294 \uC0AC\uB78C\uC774\uB780",
+        description: "배는 항구에 있을때에 가장 안전하지만, 그것이 배의 존재의 이유는 아니다.",
+        image: "https://www.junggri.com/images/og.jpg",
+        type: "website",
+    };
     return (react_1.default.createElement(styled_comp_1.AboutContainerComp, null,
-        react_1.default.createElement(useHelmet_1.default, { title: "이정수라는 사람이란.", keywords: "노력, 희망, 열심 ,열정", description: "배는 항구에 있을때에 가장 안전하지만, 그것이 배의 존재의 이유는 아니다." }),
+        react_1.default.createElement(UseMeta_1.default, { data: meta }),
         react_1.default.createElement("div", { className: "about-me" }, "\uC774\uC815\uC218"),
-        react_1.default.createElement("div", { className: "about-me-nickname" }, "junggri"),
+        react_1.default.createElement("div", { className: "about-me-nickname" }, "junggri - \uBC30\uB294 \uD56D\uAD6C\uC5D0 \uC788\uC744 \uB54C \uAC00\uC7A5 \uC548\uC804\uD558\uC9C0\uB9CC, \uADF8\uAC8C \uBC30\uC758 \uC874\uC7AC \uC774\uC720\uB294 \uC544\uB2C8\uB2E4."),
         react_1.default.createElement("div", { className: "about-icon-box" },
             react_1.default.createElement("a", { href: "https://github.com/junggri", target: "_blank", rel: "noreferrer" },
                 react_1.default.createElement(di_1.DiGithubFull, { className: "aib-github" })),

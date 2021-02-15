@@ -3,19 +3,18 @@ import { EntryContainerComp } from "../styled-comp";
 import { ICommonModuleProps } from "../modules/Common/common.interface";
 import useCommon from "../useHooks/useCommon";
 import usePosts from "../useHooks/usePosts";
-import { EntryPostsContainer, SideBarContainer } from "../component";
+import { AboutContainer, EntryPostsContainer, SideBarContainer, SpecificTopicContainer, TagsContainer } from "../component";
 import { IPostsModuleProps } from "../modules/Posts/posts.interface";
 import { Route } from "react-router-dom";
 import util from "../lib/axios";
 import useCSRF from "../useHooks/useCSRF";
 import useLoginFlag from "../useHooks/useLoginFlag";
 
-function Entry({ location }: any) {
+function SSREntry({ match, location }: any) {
    useLoginFlag();
-
    const csrf = useCSRF();
    const { login, newRequest, setNewRequset, onGetGaCount, count }: ICommonModuleProps = useCommon();
-   const { AllPosts, getAllPosts }: IPostsModuleProps = usePosts();
+   const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
 
    useEffect(() => {
       if (newRequest) {
@@ -40,18 +39,35 @@ function Entry({ location }: any) {
    }, []);
 
    return (
-      <EntryContainerComp>
-         <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
-         <Route path={["/", "/post"]} exact={true} render={() => (
-            <EntryPostsContainer
-               posts={AllPosts}
-               onDelete={onDelete}
-               login={login}
-               csrf={csrf}
-            />
-         )} />
-      </EntryContainerComp>
+      <>
+         <EntryContainerComp>
+            <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
+            <Route path={["/", "/post"]} exact render={() => (
+               <EntryPostsContainer
+                  posts={AllPosts}
+                  onDelete={onDelete}
+                  login={login}
+                  csrf={csrf}
+               />
+            )} />
+            <Route path="/tag/:topic" exact render={() => (
+               <SpecificTopicContainer
+                  match={match}
+                  posts={posts}
+                  login={login}
+                  onClearPost={onClearPost}
+                  getPosts={getPosts}
+               />
+            )} />
+            <Route path="/tag" exact render={() => (
+               <TagsContainer Allposts={AllPosts} />
+            )} />
+            <Route path="/about" exact render={() => (
+               <AboutContainer />
+            )} />
+         </EntryContainerComp>
+      </>
    );
 }
 
-export default Entry;
+export default SSREntry;

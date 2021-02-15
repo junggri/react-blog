@@ -65,8 +65,25 @@ var admin_1 = __importDefault(require("./server/src/router/admin"));
 var styled_components_1 = require("styled-components");
 var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
 var react_helmet_1 = require("react-helmet");
-// @ts-ignore
+var graphql_1 = require("graphql");
+var express_graphql_1 = require("express-graphql");
 var app = express_1.default();
+var schema = graphql_1.buildSchema("\n   type Query{\n      hello:String\n      persons:[Person]\n   }\n   type Person{\n      name:String \n      age:Int\n   }\n");
+var root = {
+    hello: function () { return "hello world"; },
+    persons: function () {
+        return [
+            { name: "kim", age: "12" },
+            { name: "lee", age: "13" },
+            { name: "dong", age: "14" }
+        ];
+    },
+};
+app.use("/graphql", express_graphql_1.graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+}));
 app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
     cookie: {

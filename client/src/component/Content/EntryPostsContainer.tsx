@@ -6,7 +6,6 @@ import { MdDelete } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 import { IAllPost, IPostCommonProps } from "../../modules/Posts/posts.interface";
 import isNew from "../../lib/isNewPost";
-import ReactHelmet from "../../useHooks/useHelmet";
 
 interface IEntryPostsContainer {
    posts: IAllPost
@@ -21,11 +20,6 @@ const EntryPostsContainer = ({ posts, onDelete, login, csrf }: IEntryPostsContai
 
    return (
       <EntryPostsContainerComp>
-         <ReactHelmet
-            title={"정그리의 블로그입니다."}
-            keywords={"자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드"}
-            description={"자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다."}
-         />
          {data.map((e: IPostCommonProps) => (
             <EntryPostsItemComp key={e.uid}>
                <span className="item-created">🗓

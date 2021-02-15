@@ -67,13 +67,13 @@ var react_router_dom_1 = require("react-router-dom");
 var axios_1 = __importDefault(require("../lib/axios"));
 var useCSRF_1 = __importDefault(require("../useHooks/useCSRF"));
 var useLoginFlag_1 = __importDefault(require("../useHooks/useLoginFlag"));
-function Entry(_a) {
+function SSREntry(_a) {
     var _this = this;
-    var location = _a.location;
+    var match = _a.match, location = _a.location;
     useLoginFlag_1.default();
     var csrf = useCSRF_1.default();
     var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset, onGetGaCount = _b.onGetGaCount, count = _b.count;
-    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts;
+    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
     react_1.useEffect(function () {
         if (newRequest) {
             getAllPosts();
@@ -100,8 +100,12 @@ function Entry(_a) {
     react_1.useEffect(function () {
         onGetGaCount();
     }, []);
-    return (react_1.default.createElement(styled_comp_1.EntryContainerComp, null,
-        react_1.default.createElement(component_1.SideBarContainer, { topic: AllPosts, login: login, location: location, count: count }),
-        react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post"], exact: true, render: function () { return (react_1.default.createElement(component_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } })));
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(styled_comp_1.EntryContainerComp, null,
+            react_1.default.createElement(component_1.SideBarContainer, { topic: AllPosts, login: login, location: location, count: count }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post"], exact: true, render: function () { return (react_1.default.createElement(component_1.EntryPostsContainer, { posts: AllPosts, onDelete: onDelete, login: login, csrf: csrf })); } }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag/:topic", exact: true, render: function () { return (react_1.default.createElement(component_1.SpecificTopicContainer, { match: match, posts: posts, login: login, onClearPost: onClearPost, getPosts: getPosts })); } }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/tag", exact: true, render: function () { return (react_1.default.createElement(component_1.TagsContainer, { Allposts: AllPosts })); } }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/about", exact: true, render: function () { return (react_1.default.createElement(component_1.AboutContainer, null)); } }))));
 }
-exports.default = Entry;
+exports.default = SSREntry;

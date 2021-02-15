@@ -162,11 +162,11 @@ const util = {
       });
    },
 
-   saveComment(content: string, grp: number, topic: string, postid: string, user: string, pwd: string, token: string) {
+   saveComment(postname: string, content: string, grp: number, topic: string, postid: string, user: string, pwd: string, token: string) {
       return instance({
          url: "/api/comment",
          method: "post",
-         data: { content, grp, topic, postid, user, pwd },
+         data: { postname, content, grp, topic, postid, user, pwd },
          headers: { "X-XSRF-TOKEN": token },
       });
    },

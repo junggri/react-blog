@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import { CgHome } from "react-icons/cg";
 import Highlight from "react-highlight.js";
 import createDOMPurify from "dompurify";
-import ReactHelmet from "../../useHooks/useHelmet";
 import { usePreloader } from "../../lib/PreloadContext";
 import { onRequsetPost } from "../../modules/Posts";
 import { useDispatch } from "react-redux";
 import CommentContainer from "./Comment";
 import { onGetComment } from "../../modules/Comment";
+import Meta from "../../useHooks/UseMeta";
 
 const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
@@ -28,19 +28,24 @@ function PostsContainer({ match }: any) {
       return () => onCleatPostData();
    }, [match.params.topic, match.params.postsId, onCleatPostData, getPost]);
 
+
+   if (!post.data) return null;
+
    const MakeHtml = () => ({
       __html: typeof window === "object" ? (DOMPurify as any).sanitize((data as IPostDataProps).content) : null,
    });
 
-   if (!post.data) return null;
+   const meta = {
+      title: (data as IPostDataProps).result[0].content_name,
+      description: (data as IPostDataProps).result[0].detail,
+      image: "https://www.junggri.com/images/og.jpg",
+      type: "website",
+   };
+
    return (
       <>
+         <Meta data={meta} />
          <PostsContainerComp>
-            <ReactHelmet
-               title={(data as IPostDataProps).result[0].content_name}
-               keywords={(data as IPostDataProps).result[0].content_name}
-               description={(data as IPostDataProps).result[0].detail}
-            />
             <div className="posts-container-iconbox">
                <Link to="/">
                   <CgHome className="icon-tohome" />
@@ -59,7 +64,11 @@ function PostsContainer({ match }: any) {
                {(data as IPostDataProps).result[0].created}
             </div>
          </PostsContainerComp>
-         <CommentContainer postid={match.params.postsId} topic={match.params.topic} />
+         <CommentContainer
+            postname={(data as IPostDataProps).result[0].content_name}
+            postid={match.params.postsId}
+            topic={match.params.topic}
+         />
       </>
    );
 }

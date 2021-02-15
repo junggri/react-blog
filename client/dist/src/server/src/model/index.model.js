@@ -43,6 +43,7 @@ var comment_connection_1 = __importDefault(require("../config/comment.connection
 var sanitize_html_1 = __importDefault(require("sanitize-html"));
 var cryptoPwd_1 = require("../lib/cryptoPwd");
 var topic_model_1 = __importDefault(require("./topic.model"));
+var sendMsg_1 = __importDefault(require("../lib/sendMsg"));
 function makeDate() {
     var today = new Date();
     var dateString = today.toLocaleDateString("ko-KR", {
@@ -114,7 +115,7 @@ var indexModel = {
             });
         });
     },
-    saveComment: function (cmt, grp, topic, postid, writer, pwd) {
+    saveComment: function (postname, cmt, grp, topic, postid, writer, pwd) {
         return __awaiter(this, void 0, void 0, function () {
             var conn, sanitize_writer, sanitize_pwd, _cyrpto, query, dep, e_3;
             return __generator(this, function (_a) {
@@ -137,6 +138,7 @@ var indexModel = {
                     case 4:
                         _a.sent();
                         conn.release();
+                        sendMsg_1.default(postname, sanitize_writer, cmt);
                         return [4 /*yield*/, topic_model_1.default.increaseCmtCount(topic, postid)];
                     case 5:
                         _a.sent();

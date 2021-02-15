@@ -30,7 +30,7 @@ var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
 var PreloadContext_1 = require("../../lib/PreloadContext");
 var Posts_1 = require("../../modules/Posts");
 var fa_1 = require("react-icons/fa");
-var useHelmet_1 = __importDefault(require("../../useHooks/useHelmet"));
+var UseMeta_1 = __importDefault(require("../../useHooks/UseMeta"));
 function SpecificTopicContainer(_a) {
     var match = _a.match, login = _a.login, posts = _a.posts, onClearPost = _a.onClearPost, getPosts = _a.getPosts;
     var params = match.params.topic;
@@ -40,8 +40,14 @@ function SpecificTopicContainer(_a) {
         return function () { return onClearPost(); };
     }, [params]);
     PreloadContext_1.usePreloader(function () { return dispatch(Posts_1.onRequestPosts({ params: params })); });
+    var meta = {
+        title: params + "\uC5D0 \uAD00\uB828\uB41C \uAC8C\uC2DC\uAE00\uB4E4\uC785\uB2C8\uB2E4",
+        description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다.",
+        image: "https://www.junggri.com/images/og.jpg",
+        type: "website",
+    };
     return (react_1.default.createElement(styled_comp_1.SpecificTopicContainerComp, null,
-        react_1.default.createElement(useHelmet_1.default, { title: params + "\uC5D0 \uAD00\uB828\uB41C \uAC8C\uC2DC\uAE00\uB4E4\uC785\uB2C8\uB2E4.", keywords: "자바스크립트,nodejs,알고리즘,책,프로그래밍,프론트엔드,백엔드", description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다." }),
+        react_1.default.createElement(UseMeta_1.default, { data: meta }),
         posts.data !== null &&
             (posts.data).map(function (e) { return (react_1.default.createElement(styled_comp_1.SpecificTopicItemsComp, { key: e.uid },
                 react_1.default.createElement("span", { className: "item-created" },
