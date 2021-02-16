@@ -22,7 +22,8 @@ const EntryPostsContainer = ({ posts, onDelete, login, csrf }: IEntryPostsContai
       <EntryPostsContainerComp>
          {data.map((e: IPostCommonProps) => (
             <EntryPostsItemComp key={e.uid}>
-               <span className="item-created">🗓
+               <span className="item-created">
+                  <span className="ic-icons">🗓 </span>
                   {e.created}
                   <Link to={`/tag/${e.topic}`}>
                      <span className="topic_link">{(e.topic).toUpperCase()}</span>

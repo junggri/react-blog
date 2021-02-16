@@ -78,7 +78,7 @@ var Editor = function (_a) {
     var _c = react_1.useState([]), temp = _c[0], setTemp = _c[1];
     var _d = useCommon_1.default(), setNewRequset = _d.setNewRequset, login = _d.login;
     var _e = useTopic_1.default(), topic = _e.topic, requestTopic = _e.requestTopic;
-    var _f = useTextEdit_1.default(), data = _f.data, setContent = _f.setContent, setContentName = _f.setContentName, setTopic = _f.setTopic, setKindOfPosts = _f.setKindOfPosts, setDetail = _f.setDetail, setTempData = _f.setTempData;
+    var _f = useTextEdit_1.default(), data = _f.data, setContent = _f.setContent, setContentName = _f.setContentName, setTopic = _f.setTopic, setKindOfPosts = _f.setKindOfPosts, setDetail = _f.setDetail, setTempData = _f.setTempData, setThumbnail = _f.setThumbnail;
     react_1.useEffect(function () {
         (function () { return __awaiter(void 0, void 0, void 0, function () {
             var data;
@@ -159,6 +159,9 @@ var Editor = function (_a) {
     var onChangeDetail = react_1.useCallback(function (detail) {
         setDetail(detail);
     }, [setDetail]);
+    var onChangeThumbnail = react_1.useCallback(function (img) {
+        setThumbnail(img);
+    }, [setThumbnail]);
     var onMakeOrDelteTopic = react_1.useCallback(function () {
         requestTopic();
     }, [requestTopic]);
@@ -237,6 +240,7 @@ var Editor = function (_a) {
             react_1.default.createElement(index_1.CreateNewTopic, { topic: topic, token: csrf, onMakeOrDelteTopic: onMakeOrDelteTopic }),
             react_1.default.createElement(index_1.KindOfPosts, { onCheck: onCheckKindOfPosts, checked: data.kindofPosts }),
             react_1.default.createElement(index_1.PostsDetail, { onChangeDetail: onChangeDetail, detailValue: data.detail }),
+            react_1.default.createElement(index_1.Thumbnail, { token: csrf, onChangeThumbnail: onChangeThumbnail }),
             react_1.default.createElement(index_1.TextEditBtnBox, { onSubmit: onSubmit, onSaveTemporaryPost: onSaveTemporaryPost }),
             react_1.default.createElement(index_1.StoragePost, { temp: temp, onDelete: onDelete }))));
 };

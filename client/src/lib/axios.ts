@@ -17,6 +17,15 @@ const util = {
       });
    },
 
+   saveThumbnail(token: string, data: any) {
+      return instance({
+         url: "/topic/thumbnail",
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
    getTopicName() {
       return instance({
          url: "/topic/contents/name",
@@ -188,6 +197,8 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
+
+
 };
 
 export default util;

@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var topic_model_1 = __importDefault(require("../model/topic.model"));
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
+var multer_1 = require("../lib/multer");
 function makePath(folderName, fileName) {
     var _path = path_1.default.resolve("../" + folderName);
     var filePath = _path + ("/" + fileName + ".html");
@@ -100,6 +101,20 @@ var contentController = {
                         _a.label = 4;
                     case 4: return [2 /*return*/];
                 }
+            });
+        });
+    },
+    saveThumbnail: function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                multer_1.uploadThumbnail(req, res, function (err) {
+                    res.status(200).json({ state: true, filename: req.file.filename });
+                    if (err) {
+                        console.error(err);
+                        res.status(404).json({ state: false });
+                    }
+                });
+                return [2 /*return*/];
             });
         });
     },

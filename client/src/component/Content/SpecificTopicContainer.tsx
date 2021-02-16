@@ -42,7 +42,8 @@ function SpecificTopicContainer({ match, login, posts, onClearPost, getPosts }: 
          {posts.data !== null &&
          (posts.data).map((e: IPostCommonProps) => (
             <SpecificTopicItemsComp key={e.uid}>
-               <span className="item-created">🗓
+               <span className="item-created">
+                   <span className="ic-icons">🗓 </span>
                   {e.created}
                   <Link to={`/tag/${e.topic}`}>
                      <span className="topic_link">{(e.topic).toUpperCase()}</span>

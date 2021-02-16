@@ -8,6 +8,7 @@ const SET_CONTENT_NAME = "textEdit/SET_CONTENT_NAME" as const;
 const SET_TOPIC = "textEdit/SET_TOPIC" as const;
 const SET_KIND_OF_POSTS = "textEdit/SET_KIND_OF_POSTS" as const;
 const SET_DETAIL = "textEdit/SET_DETAIL" as const;
+const SET_THUMBNAIL = "textEdit/SET_THUMBNAIL" as const;
 const SET_TEMP_DATA = "textEdit/SET_TEMP_DATA" as const;
 
 export const onSetContent = (content: string) => ({ type: SET_CONTENT, payload: content });
@@ -15,6 +16,7 @@ export const onSetContentName = (contentName: string) => ({ type: SET_CONTENT_NA
 export const onSetTopic = (topic: string) => ({ type: SET_TOPIC, payload: topic });
 export const onSetKindOfPosts = (kindOfPosts: string) => ({ type: SET_KIND_OF_POSTS, payload: kindOfPosts });
 export const onSetDetail = (detail: string) => ({ type: SET_DETAIL, payload: detail });
+export const onSetThumbNail = (thumbnail: string) => ({ type: SET_THUMBNAIL, payload: thumbnail });
 export const onSetTempData = (data: ITextInitialProps) => ({ type: SET_TEMP_DATA, payload: data });
 
 const initialState: ITextInitialProps = {
@@ -23,6 +25,7 @@ const initialState: ITextInitialProps = {
    topicName: "",
    kindofPosts: "",
    detail: "",
+   thumbnail: null,
 };
 
 
@@ -53,6 +56,11 @@ function TextEditor(state: ITextInitialProps = initialState, action: EditorActio
             ...state,
             detail: action.payload,
          };
+      case SET_THUMBNAIL:
+         return {
+            ...state,
+            thumbnail: action.payload,
+         };
       case SET_TEMP_DATA:
          return {
             ...state,
@@ -61,6 +69,7 @@ function TextEditor(state: ITextInitialProps = initialState, action: EditorActio
             topicName: action.payload.topicName,
             kindofPosts: action.payload.kindofPosts,
             detail: action.payload.detail,
+            thumbnail: action.payload.thumbnail,
          };
       default:
          return state;

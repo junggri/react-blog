@@ -1,4 +1,4 @@
-import { onSetContent, onSetContentName, onSetDetail, onSetKindOfPosts, onSetTempData, onSetTopic } from "./index";
+import { onSetContent, onSetContentName, onSetDetail, onSetKindOfPosts, onSetTempData, onSetThumbNail, onSetTopic } from "./index";
 
 export interface ITextInitialProps {
    contentName: string
@@ -6,6 +6,7 @@ export interface ITextInitialProps {
    topicName: string
    kindofPosts: string
    detail: string
+   thumbnail: null | string
 }
 
 export type EditorAction =
@@ -15,7 +16,7 @@ export type EditorAction =
    | ReturnType<typeof onSetKindOfPosts>
    | ReturnType<typeof onSetDetail>
    | ReturnType<typeof onSetTempData>
-
+   | ReturnType<typeof onSetThumbNail>
 
 export interface ITextEditModuleProps {
    data: ITextInitialProps
@@ -24,5 +25,6 @@ export interface ITextEditModuleProps {
    setTopic: (payload: string) => void
    setKindOfPosts: (payload: string) => void
    setDetail: (payload: string) => void
+   setThumbnail: (payload: string) => void
    setTempData: (payload: any) => void
 }

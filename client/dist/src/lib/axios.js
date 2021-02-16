@@ -17,6 +17,14 @@ var util = {
             method: "get",
         });
     },
+    saveThumbnail: function (token, data) {
+        return axois_config_1.default({
+            url: "/topic/thumbnail",
+            method: "post",
+            data: data,
+            headers: { "X-XSRF-TOKEN": token },
+        });
+    },
     getTopicName: function () {
         return axois_config_1.default({
             url: "/topic/contents/name",

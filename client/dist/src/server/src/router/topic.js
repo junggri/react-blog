@@ -12,6 +12,7 @@ router.get("/posts/:topic", topic_controller_1.default.getPostsFromTopicName);
 router.get("/:topic/posts/:postsId", topic_controller_1.default.getPostsFromPostsId);
 router.get("/temp/items", topic_controller_1.default.getTempPost);
 router.get("/temp/:tempId", topic_controller_1.default.getTempPostFromId);
+router.post("/thumbnail", topic_controller_1.default.saveThumbnail);
 router.post("/posts", topic_controller_1.default.savePosts); //save content
 router.post("/temp", topic_controller_1.default.saveTempPost);
 router.post("/modify/post", topic_controller_1.default.modifyPost);

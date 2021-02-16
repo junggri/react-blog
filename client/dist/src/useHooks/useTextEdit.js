@@ -21,9 +21,12 @@ function useTextEdit() {
     var setDetail = react_1.useCallback(function (detail) {
         dispatch(TextEditor_1.onSetDetail(detail));
     }, [dispatch]);
+    var setThumbnail = react_1.useCallback(function (thumbnail) {
+        dispatch(TextEditor_1.onSetThumbNail(thumbnail));
+    }, [dispatch]);
     var setTempData = react_1.useCallback(function (data) {
         dispatch(TextEditor_1.onSetTempData(data));
     }, [dispatch]);
-    return { data: data, setContent: setContent, setContentName: setContentName, setTopic: setTopic, setKindOfPosts: setKindOfPosts, setDetail: setDetail, setTempData: setTempData };
+    return { data: data, setContent: setContent, setContentName: setContentName, setTopic: setTopic, setKindOfPosts: setKindOfPosts, setDetail: setDetail, setThumbnail: setThumbnail, setTempData: setTempData };
 }
 exports.default = useTextEdit;

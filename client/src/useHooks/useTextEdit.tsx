@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
-import { onSetContent, onSetContentName, onSetDetail, onSetKindOfPosts, onSetTempData, onSetTopic } from "../modules/TextEditor";
+import { onSetContent, onSetContentName, onSetDetail, onSetKindOfPosts, onSetTempData, onSetThumbNail, onSetTopic } from "../modules/TextEditor";
 import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
 
 function useTextEdit() {
@@ -28,11 +28,15 @@ function useTextEdit() {
       dispatch(onSetDetail(detail));
    }, [dispatch]);
 
+   const setThumbnail = useCallback((thumbnail: string) => {
+      dispatch(onSetThumbNail(thumbnail));
+   }, [dispatch]);
+
    const setTempData = useCallback((data: ITextInitialProps) => {
       dispatch(onSetTempData(data));
    }, [dispatch]);
 
-   return { data, setContent, setContentName, setTopic, setKindOfPosts, setDetail, setTempData };
+   return { data, setContent, setContentName, setTopic, setKindOfPosts, setDetail, setThumbnail, setTempData };
 }
 
 export default useTextEdit;

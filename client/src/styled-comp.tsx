@@ -138,6 +138,10 @@ const postsItemMixin = css`
     font-weight: 600;
     opacity: 0.8;
     ${media.tablet`font-size:0.8rem`};
+    & .ic-icons{
+      margin-right:4px;
+      display:inline-block;
+    }
     & .topic_link{
       margin-left:6px;
       color:#3ab09e;
@@ -886,6 +890,7 @@ export const WriteConditionBox = memo(styled.section`
    width: 50%;
    height: 100%;
    overflow: scroll;
+   padding-bottom:100px;
 `);
 
 
@@ -1102,6 +1107,30 @@ export const TemporaryPostComp = styled.div<any>`
   font-size:1.4rem;
   &:hover{
     text-decoration: underline;
+  }
+`;
+
+export const ThumbnailComp = styled.div`
+  padding-left:60px;
+  padding-right: 60px;
+  margin-top:50px;
+  margin-bottom:50px;
+  & .thumbnail-slo{
+    font-size:1.7rem;
+    margin-bottom:20px;
+  }
+  & .thumbnail-imgbox{
+    margin-top:20px;
+    img{
+      border:1px solid rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+  }
+  & > h2{
+    font-size:1.125rem;
+    margin-top:10px;
+    font-weight: 600;
+    color:#ff6b6b;
   }
 `;
 //--------------------------------write---------------------------------------

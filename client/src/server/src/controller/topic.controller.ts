@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import model from "../model/topic.model";
 import { promises as fs } from "fs";
 import path from "path";
+import { uploadThumbnail } from "../lib/multer";
 
 
 function makePath(folderName: string, fileName: string) {
@@ -25,6 +26,7 @@ interface Controller {
    deleteTopic(req: Request, res: Response): any
    deleteTempPost(req: Request, res: Response): any
    temporaryPost(req: Request, res: Response): any
+   saveThumbnail(req: Request, res: Response): any
 }
 
 let contentController: Controller = {
@@ -54,6 +56,16 @@ let contentController: Controller = {
       } else {
          res.status(500).json({ state: false });
       }
+   },
+
+   async saveThumbnail(req: Request, res: Response) {
+      uploadThumbnail(req, res, (err: any) => {
+         res.status(200).json({ state: true, filename: req.file.filename });
+         if (err) {
+            console.error(err);
+            res.status(404).json({ state: false });
+         }
+      });
    },
 
    saveTempPost: async (req: Request, res: Response) => {

@@ -10,7 +10,7 @@ import { ITextEditModuleProps } from "../../modules/TextEditor/textEdit.interfac
 import { ITopicModuleProps } from "../../modules/Topic/topic.interface";
 import { ICommonModuleProps } from "../../modules/Common/common.interface";
 import { ITempPost } from "../../interface/index.interface";
-import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox, WriteTopicName } from "../index";
+import { CreateNewTopic, KindOfPosts, PostsDetail, SelectTopic, StoragePost, TextEditBtnBox, Thumbnail, WriteTopicName } from "../index";
 import qs from "query-string";
 import checkUserState from "../../lib/checkUserState";
 
@@ -31,6 +31,7 @@ const Editor = ({ history, location }: any) => {
       setKindOfPosts,
       setDetail,
       setTempData,
+      setThumbnail,
    }: ITextEditModuleProps = useTextEdit();
 
 
@@ -107,9 +108,14 @@ const Editor = ({ history, location }: any) => {
       setDetail(detail);
    }, [setDetail]);
 
+   const onChangeThumbnail = useCallback((img: string) => {
+      setThumbnail(img);
+   }, [setThumbnail]);
+
    const onMakeOrDelteTopic = useCallback(() => {
       requestTopic();
    }, [requestTopic]);
+
 
    const onSubmit = async (): Promise<void> => {
       if (data.content === "" || data.contentName === "" || data.detail === "" || data.kindofPosts === "" || data.topicName === "") {
@@ -140,6 +146,7 @@ const Editor = ({ history, location }: any) => {
       setTemp(new_temp);
    }, [temp, csrf]);
 
+
    return (
       <>
          <WriteBox>
@@ -156,6 +163,7 @@ const Editor = ({ history, location }: any) => {
             <CreateNewTopic topic={topic} token={csrf} onMakeOrDelteTopic={onMakeOrDelteTopic} />
             <KindOfPosts onCheck={onCheckKindOfPosts} checked={data.kindofPosts} />
             <PostsDetail onChangeDetail={onChangeDetail} detailValue={data.detail} />
+            <Thumbnail token={csrf} onChangeThumbnail={onChangeThumbnail} />
             <TextEditBtnBox onSubmit={onSubmit} onSaveTemporaryPost={onSaveTemporaryPost} />
             <StoragePost temp={temp} onDelete={onDelete} />
          </WriteConditionBox>

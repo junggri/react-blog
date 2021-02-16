@@ -7,6 +7,7 @@ export { default as KindOfPosts } from "./TextEditor/SelectKindOfPosts";
 export { default as PostsDetail } from "./TextEditor/PostsDetail";
 export { default as CreateNewTopic } from "./TextEditor/CreateNewTopic";
 export { default as StoragePost } from "./TextEditor/StoragePost";
+export { default as Thumbnail } from "./TextEditor/Thumbnail";
 //////containers
 export { default as PostsContainer } from "./Content/PostsContainer";
 export { default as CommnectContainer } from "./Content/Comment";

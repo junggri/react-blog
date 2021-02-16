@@ -38,6 +38,7 @@ export interface IPostCommonProps {
    created: string
    file: string,
    detail: string
+   thumbnail: string
    kindOfPosts: string
    modified: string | null
    topic: string

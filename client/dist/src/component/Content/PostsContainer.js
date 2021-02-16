@@ -55,7 +55,9 @@ function PostsContainer(_a) {
     var meta = {
         title: data.result[0].content_name,
         description: data.result[0].detail,
-        image: "https://www.junggri.com/images/og.jpg",
+        image: !data.result[0].thumbnail
+            ? "https://www.junggri.com/images/og.jpg"
+            : "https://www.junggri.com/images/" + data.result[0].thumbnail,
         type: "website",
     };
     return (react_1.default.createElement(react_1.default.Fragment, null,

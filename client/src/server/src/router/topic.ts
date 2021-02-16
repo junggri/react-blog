@@ -3,7 +3,6 @@ import contentController from "../controller/topic.controller";
 
 const router = express.Router();
 
-
 router.get("/contents/name", contentController.getContentName); //show all list in main view
 
 router.get("/posts/items", contentController.getAllPostsItems);
@@ -15,6 +14,8 @@ router.get("/:topic/posts/:postsId", contentController.getPostsFromPostsId);
 router.get("/temp/items", contentController.getTempPost);
 
 router.get("/temp/:tempId", contentController.getTempPostFromId);
+
+router.post("/thumbnail", contentController.saveThumbnail);
 
 router.post("/posts", contentController.savePosts); //save content
 

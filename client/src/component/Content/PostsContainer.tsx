@@ -38,7 +38,9 @@ function PostsContainer({ match }: any) {
    const meta = {
       title: (data as IPostDataProps).result[0].content_name,
       description: (data as IPostDataProps).result[0].detail,
-      image: "https://www.junggri.com/images/og.jpg",
+      image: !(data as IPostDataProps).result[0].thumbnail
+         ? "https://www.junggri.com/images/og.jpg"
+         : `https://www.junggri.com/images/${(data as IPostDataProps).result[0].thumbnail}`,
       type: "website",
    };
 
