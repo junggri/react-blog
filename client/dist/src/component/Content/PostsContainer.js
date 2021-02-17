@@ -57,7 +57,7 @@ function PostsContainer(_a) {
         description: data.result[0].detail,
         image: !data.result[0].thumbnail
             ? "https://www.junggri.com/images/og.jpg"
-            : "https://www.junggri.com/images/" + data.result[0].thumbnail,
+            : "https://www.junggri.com/thumbnail/" + data.result[0].thumbnail,
         type: "website",
     };
     return (react_1.default.createElement(react_1.default.Fragment, null,

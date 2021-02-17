@@ -55,8 +55,8 @@ function savePost(folderName, data) {
         day: "numeric",
     });
     if (folderName === "contents") {
-        query = "INSERT INTO " + data.topicName + " \n               (uid, topic, content_name, created, modified, file, kindofPosts, detail,thumbnail, date) \n                VALUES (?,?,?,?,?,?,?,?,?,?)";
-        dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", data.kindofPosts, data.detail, data.thumbnail, new Date()];
+        query = "INSERT INTO " + data.topicName + " \n               (uid, topic, content_name, created, modified, file, kindofPosts, detail, thumbnail, date, comment) \n                VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", data.kindofPosts, data.detail, data.thumbnail, new Date(), 0];
     }
     else {
         query = "INSERT INTO post \n               (uid, topic, content_name, created, file, detail) \n               VALUES (?,?,?,?,?,?)";

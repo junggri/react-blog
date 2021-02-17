@@ -40,7 +40,7 @@ function PostsContainer({ match }: any) {
       description: (data as IPostDataProps).result[0].detail,
       image: !(data as IPostDataProps).result[0].thumbnail
          ? "https://www.junggri.com/images/og.jpg"
-         : `https://www.junggri.com/images/${(data as IPostDataProps).result[0].thumbnail}`,
+         : `https://www.junggri.com/thumbnail/${(data as IPostDataProps).result[0].thumbnail}`,
       type: "website",
    };
 

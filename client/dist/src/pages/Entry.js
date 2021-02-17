@@ -75,6 +75,23 @@ function SSREntry(_a) {
     var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset, onGetGaCount = _b.onGetGaCount, count = _b.count;
     var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
     react_1.useEffect(function () {
+        console.log(csrf);
+        if (!csrf)
+            return;
+        (function () { return __awaiter(_this, void 0, void 0, function () {
+            var data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, axios_1.default.graphql(csrf)];
+                    case 1:
+                        data = (_a.sent()).data;
+                        console.log(data);
+                        return [2 /*return*/];
+                }
+            });
+        }); })();
+    }, [csrf]);
+    react_1.useEffect(function () {
         if (newRequest) {
             getAllPosts();
             setNewRequset(false);

@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -68,22 +79,6 @@ var react_helmet_1 = require("react-helmet");
 var graphql_1 = require("graphql");
 var express_graphql_1 = require("express-graphql");
 var app = express_1.default();
-var schema = graphql_1.buildSchema("\n   type Query{\n      hello:String\n      persons:[Person]\n   }\n   type Person{\n      name:String \n      age:Int\n   }\n");
-var root = {
-    hello: function () { return "hello world"; },
-    persons: function () {
-        return [
-            { name: "kim", age: "12" },
-            { name: "lee", age: "13" },
-            { name: "dong", age: "14" }
-        ];
-    },
-};
-app.use("/graphql", express_graphql_1.graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
-}));
 app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
     cookie: {
@@ -106,9 +101,27 @@ app
     .use(express_session_1.default(session_config_1.sessionConfig))
     .use(cookie_parser_1.default(server_env_json_1.default.SESSEION_KEY))
     .use(helmet_1.default.frameguard({ action: "deny" }))
+    .use("/thumbnail", express_1.default.static(path_1.default.resolve("../thumbnail")))
     .use(cors_1.default({ origin: true, credentials: true }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(csrfProtection);
+var schema = graphql_1.buildSchema("\n   type Query{\n      data:String\n      name:Int\n   }\n   type Person{\n      data:String\n   }\n \n");
+var one = {
+    data: function () {
+        return "123";
+    },
+};
+var two = {
+    name: function () {
+        return 1;
+    },
+};
+var root = __assign(__assign({}, one), two);
+app.use("/graphql", express_graphql_1.graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+    graphiql: true,
+}));
 app.use("/api", router_1.default); //공통라우터
 app.use("/topic", topic_1.default); //콘텐츠 관련 라우터
 app.use("/admin", admin_1.default);

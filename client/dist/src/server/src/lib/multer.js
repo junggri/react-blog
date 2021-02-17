@@ -25,16 +25,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.uploadThumbnail = void 0;
 var multer_1 = __importDefault(require("multer"));
 var path = __importStar(require("path"));
-var _path = process.env.NODE_ENV === "development"
-    ? path.resolve("../thumbnail")
-    : path.resolve("./public/images");
+var _path = path.resolve("../thumbnail");
 exports.uploadThumbnail = multer_1.default({
     storage: multer_1.default.diskStorage({
         destination: function (req, file, cb) {
+            req.session.img = [];
             cb(null, _path);
         },
         filename: function (req, file, cb) {
             var filename = new Date().valueOf() + path.extname(file.originalname);
+            if (req.session.img !== null)
+                req.session.img.push(filename);
             cb(null, filename);
         },
     }),

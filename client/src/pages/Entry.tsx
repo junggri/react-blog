@@ -17,6 +17,15 @@ function SSREntry({ match, location }: any) {
    const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
 
    useEffect(() => {
+      console.log(csrf);
+      if (!csrf) return;
+      (async () => {
+         const { data } = await util.graphql(csrf);
+         console.log(data);
+      })();
+   }, [csrf]);
+
+   useEffect(() => {
       if (newRequest) {
          getAllPosts();
          setNewRequset(false);

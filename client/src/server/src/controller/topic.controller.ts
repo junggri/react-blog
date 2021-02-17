@@ -4,6 +4,11 @@ import { promises as fs } from "fs";
 import path from "path";
 import { uploadThumbnail } from "../lib/multer";
 
+declare module "express-session" {
+   interface Session {
+      img: string[] | null
+   }
+}
 
 function makePath(folderName: string, fileName: string) {
    let _path = path.resolve(`../${folderName}`);
@@ -41,6 +46,7 @@ let contentController: Controller = {
 
    savePosts: async (req, res) => {
       let result: any = await model.savePosts(req.body);
+      req.session.img = null;
       result.state
          ? res.status(200).json({ state: true })
          : res.status(500).json({ state: false });
@@ -57,8 +63,9 @@ let contentController: Controller = {
          res.status(500).json({ state: false });
       }
    },
-
    async saveThumbnail(req: Request, res: Response) {
+      console.log(req.session.img, path.resolve(`../thumbnail`));
+      if (req.session.img) await fs.unlink(path.resolve(`../thumbnail/${req.session.img[0]}`));
       uploadThumbnail(req, res, (err: any) => {
          res.status(200).json({ state: true, filename: req.file.filename });
          if (err) {

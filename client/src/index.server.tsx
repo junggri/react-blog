@@ -29,32 +29,6 @@ import { graphqlHTTP } from "express-graphql";
 
 const app = express();
 
-const schema = buildSchema(`
-   type Query{
-      hello:String
-      persons:[Person]
-   }
-   type Person{
-      name:String 
-      age:Int
-   }
-`);
-
-const root = {
-   hello: () => "hello world",
-   persons: () => {
-      return [
-         { name: "kim", age: "12" },
-         { name: "lee", age: "13" },
-         { name: "dong", age: "14" }];
-   },
-};
-
-app.use("/graphql", graphqlHTTP({
-   schema: schema,
-   rootValue: root,
-   graphiql: true,
-}));
 
 app.disable("x-powered-by");
 
@@ -82,9 +56,43 @@ app
    .use(session(sessionConfig))
    .use(cookieParser(env.SESSEION_KEY))
    .use(helmet.frameguard({ action: "deny" }))
+   .use("/thumbnail", express.static(path.resolve("../thumbnail")))
    .use(cors({ origin: true, credentials: true }))
    .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
+
+
+const schema = buildSchema(`
+   type Query{
+      data:String
+      name:Int
+   }
+   type Person{
+      data:String
+   }
+ 
+`);
+
+const one = {
+   data: () => {
+      return "123";
+   },
+};
+const two = {
+   name: () => {
+      return 1;
+   },
+};
+const root = {
+   //resolver
+   ...one, ...two,
+};
+
+app.use("/graphql", graphqlHTTP({
+   schema: schema,
+   rootValue: root,
+   graphiql: true,
+}));
 
 app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터

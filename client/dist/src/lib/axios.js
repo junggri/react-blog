@@ -4,7 +4,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var axois_config_1 = __importDefault(require("../config/axois.config"));
+var URL = "http://localhost:4000/graphql";
 var util = {
+    graphql: function (token) {
+        return axois_config_1.default({
+            url: URL,
+            method: "post",
+            headers: { "X-XSRF-TOKEN": token },
+            data: {
+                query: "\n               query{\n                  data\n                  name\n               }\n               ",
+            },
+        });
+    },
     getCSRTtoken: function () {
         return axois_config_1.default({
             url: "/api/csrf",

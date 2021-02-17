@@ -26,16 +26,15 @@ exports.sessionConfig = void 0;
 var connect_redis_1 = __importDefault(require("connect-redis"));
 var express_session_1 = __importDefault(require("express-session"));
 var redis_1 = __importDefault(require("redis"));
-var server_env_json_1 = __importDefault(require("../../../../server.env.json"));
 var dotenv = __importStar(require("dotenv"));
 dotenv.config();
 var RedisStore = connect_redis_1.default(express_session_1.default);
 var _client = redis_1.default.createClient({
     host: process.env.REACT_APP_REDIS,
-    port: server_env_json_1.default.SESSION_PORT,
+    port: Number(process.env.REACT_APP_SESSION_PORT),
 });
 exports.sessionConfig = {
-    secret: server_env_json_1.default.SESSEION_KEY,
+    secret: process.env.REACT_APP_SESSEION_KEY,
     name: "sid",
     resave: false,
     saveUninitialized: true,

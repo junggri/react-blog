@@ -18,9 +18,9 @@ function savePost(folderName: string, data: ITextInitialProps) {
    });
    if (folderName === "contents") {
       query = `INSERT INTO ${data.topicName} 
-               (uid, topic, content_name, created, modified, file, kindofPosts, detail,thumbnail, date) 
-                VALUES (?,?,?,?,?,?,?,?,?,?)`;
-      dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", data.kindofPosts, data.detail, data.thumbnail, new Date()];
+               (uid, topic, content_name, created, modified, file, kindofPosts, detail, thumbnail, date, comment) 
+                VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
+      dep = [uid, data.topicName, data.contentName, dateString, null, uid + ".html", data.kindofPosts, data.detail, data.thumbnail, new Date(), 0];
    } else {
       query = `INSERT INTO post 
                (uid, topic, content_name, created, file, detail) 

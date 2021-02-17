@@ -1,7 +1,6 @@
 import connectRedis from "connect-redis";
 import session from "express-session";
 import redis from "redis";
-import env from "../../../../server.env.json";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -9,12 +8,12 @@ const RedisStore = connectRedis(session);
 
 const _client = redis.createClient({
    host: process.env.REACT_APP_REDIS,
-   port: env.SESSION_PORT,
+   port: Number(process.env.REACT_APP_SESSION_PORT),
 });
 
 
 export const sessionConfig = {
-   secret: env.SESSEION_KEY,
+   secret: process.env.REACT_APP_SESSEION_KEY as string,
    name: "sid",
    resave: false,
    saveUninitialized: true,

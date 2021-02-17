@@ -73,6 +73,7 @@ var contentController = {
                 case 0: return [4 /*yield*/, topic_model_1.default.savePosts(req.body)];
                 case 1:
                     result = _a.sent();
+                    req.session.img = null;
                     result.state
                         ? res.status(200).json({ state: true })
                         : res.status(500).json({ state: false });
@@ -107,14 +108,24 @@ var contentController = {
     saveThumbnail: function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                multer_1.uploadThumbnail(req, res, function (err) {
-                    res.status(200).json({ state: true, filename: req.file.filename });
-                    if (err) {
-                        console.error(err);
-                        res.status(404).json({ state: false });
-                    }
-                });
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        console.log(req.session.img, path_1.default.resolve("../thumbnail"));
+                        if (!req.session.img) return [3 /*break*/, 2];
+                        return [4 /*yield*/, fs_1.promises.unlink(path_1.default.resolve("../thumbnail/" + req.session.img[0]))];
+                    case 1:
+                        _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        multer_1.uploadThumbnail(req, res, function (err) {
+                            res.status(200).json({ state: true, filename: req.file.filename });
+                            if (err) {
+                                console.error(err);
+                                res.status(404).json({ state: false });
+                            }
+                        });
+                        return [2 /*return*/];
+                }
             });
         });
     },

@@ -1,8 +1,23 @@
 import instance from "../config/axois.config";
 import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
 
-
+const URL = "http://localhost:4000/graphql";
 const util = {
+   graphql(token: string) {
+      return instance({
+         url: URL,
+         method: "post",
+         headers: { "X-XSRF-TOKEN": token },
+         data: {
+            query: `
+               query{
+                  data
+                  name
+               }
+               `,
+         },
+      });
+   },
    getCSRTtoken() {
       return instance({
          url: "/api/csrf",
