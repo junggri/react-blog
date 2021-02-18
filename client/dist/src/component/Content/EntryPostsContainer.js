@@ -12,11 +12,11 @@ var fa_1 = require("react-icons/fa");
 var isNewPost_1 = __importDefault(require("../../lib/isNewPost"));
 var EntryPostsContainer = function (_a) {
     var posts = _a.posts, onDelete = _a.onDelete, login = _a.login, csrf = _a.csrf;
-    if (posts.data === null)
+    if (!posts.data)
         return null;
-    console.log(posts.data);
+    var data = Object.values(posts.data).flat();
     return (react_1.default.createElement(styled_comp_1.EntryPostsContainerComp, null,
-        posts.data.map(function (e) { return (react_1.default.createElement(styled_comp_1.EntryPostsItemComp, { key: e.uid },
+        data.map(function (e) { return (react_1.default.createElement(styled_comp_1.EntryPostsItemComp, { key: e.uid },
             react_1.default.createElement("span", { className: "item-created" },
                 react_1.default.createElement("span", { className: "ic-icons" }, "\uD83D\uDDD3 "),
                 e.created,

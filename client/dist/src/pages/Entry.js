@@ -74,13 +74,6 @@ function SSREntry(_a) {
     var csrf = useCSRF_1.default();
     var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset, onGetGaCount = _b.onGetGaCount, count = _b.count;
     var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
-    // useEffect(() => {
-    //    if (!csrf) return;
-    //    (async () => {
-    //       const { data } = await util.graphql(csrf);
-    //       console.log(data);
-    //    })();
-    // }, [csrf]);
     react_1.useEffect(function () {
         if (newRequest) {
             getAllPosts();

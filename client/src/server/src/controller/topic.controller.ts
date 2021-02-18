@@ -67,7 +67,6 @@ let contentController: Controller = {
       if (req.session.img) {
          await fs.unlink(path.resolve(`../thumbnail/${req.session.img[0]}`));
       }
-      console.log(req.session.img, req.session, path.resolve(`../thumbnail`));
       uploadThumbnail(req, res, (err: any) => {
          res.status(200).json({ state: true, filename: req.file.filename });
          if (err) {

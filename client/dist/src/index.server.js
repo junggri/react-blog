@@ -105,6 +105,7 @@ var root = {
                 case 0: return [4 /*yield*/, topic_model_1.default.getAllPostsItems()];
                 case 1:
                     result = _a.sent();
+                    console.log(result);
                     return [2 /*return*/, result];
             }
         });

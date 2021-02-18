@@ -88,6 +88,7 @@ const schema = buildSchema(`
 const root = {
    Allposts: async () => {
       let result: any = await model.getAllPostsItems();
+      console.log(result);
       return result;
    },
    name: () => 123,

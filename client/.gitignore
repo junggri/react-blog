@@ -14,10 +14,10 @@
 # misc
 .DS_Store
 
-/.env.development
-/.env.production
-/.env
-/server.env.json
+.env.development
+.env.production
+.env
+server.env.json
 
 npm-debug.log*
 yarn-debug.log*

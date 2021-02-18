@@ -15,11 +15,11 @@ interface IEntryPostsContainer {
 }
 
 const EntryPostsContainer = ({ posts, onDelete, login, csrf }: IEntryPostsContainer) => {
-   if (posts.data === null) return null;
-   console.log(posts.data);
+   if (!posts.data) return null;
+   const data = Object.values(posts.data).flat();
    return (
       <EntryPostsContainerComp>
-         {posts.data.map((e: IPostCommonProps) => (
+         {data.map((e: IPostCommonProps) => (
             <EntryPostsItemComp key={e.uid}>
                <span className="item-created">
                   <span className="ic-icons">🗓 </span>

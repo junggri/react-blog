@@ -116,7 +116,6 @@ var contentController = {
                         _a.sent();
                         _a.label = 2;
                     case 2:
-                        console.log(req.session.img, req.session, path_1.default.resolve("../thumbnail"));
                         multer_1.uploadThumbnail(req, res, function (err) {
                             res.status(200).json({ state: true, filename: req.file.filename });
                             if (err) {
