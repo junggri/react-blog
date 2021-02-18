@@ -1,18 +1,16 @@
 import React from "react";
 import { SideBarComp, SideBarMetaDataComp, SideBarThunmbNailComp } from "../../styled-comp";
 import { Link, NavLink } from "react-router-dom";
-import { IAllPost } from "../../modules/Posts/posts.interface";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface ISideBarNavContainer {
-   topic: IAllPost
    login: boolean
    location: any
    count: any
 }
 
 
-function SideBarNavContainer({ topic, login, location, count }: ISideBarNavContainer) {
+function SideBarNavContainer({ login, location, count }: ISideBarNavContainer) {
    return (
       <SideBarComp>
          <SideBarThunmbNailComp src="/images/og.jpg" />

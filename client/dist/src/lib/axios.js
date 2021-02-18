@@ -12,7 +12,7 @@ var util = {
             method: "post",
             headers: { "X-XSRF-TOKEN": token },
             data: {
-                query: "\n               query{\n                  data\n                  name\n               }\n               ",
+                query: "\n               query {\n                    name\n                    Allposts\n               }\n               ",
             },
         });
     },

@@ -68,7 +68,6 @@ const contentModel = {
       if (conn !== undefined)
          try {
             const [result]: any = await conn.execute(`select comment from ${topic} where uid = ?`, [postid]);
-            console.log(result, length, topic);
             if (result[0].comment >= 1) {
                const query = `UPDATE ${topic} set comment = comment-${length} where uid = ?`;
                const dep = [postid];
@@ -199,21 +198,24 @@ const contentModel = {
 
    getAllPostsItems: async () => {
       const conn = await connection();
-      const dataObj: any = {};
       if (conn !== undefined)
          try {
-            const [result]: any = await conn.execute("show tables");
+            let _query: string = "";
+            const [tables]: any = await conn.execute("show tables");
             conn.release();
-            for (let i = 0; i < result.length; i++) {
-               const [data]: any = await conn.execute(`select * from ${result[i]["Tables_in_contents"]} order by id DESC`);
-               conn.release();
-               if (data.length !== 0) dataObj[result[i]["Tables_in_contents"]] = data;
-            }
+            tables.forEach((e: any, idx: number) => {
+               tables.length - 1 !== idx
+                  ? _query += `select * from ${e["Tables_in_contents"]} union `
+                  : _query += `select * from ${e["Tables_in_contents"]}`;
+            });
+            const [posts] = await conn.execute(_query);
+            conn.release();
+            return posts;
          } catch (e) {
             conn.release();
             console.log(e);
          }
-      return dataObj;
+      ;
    },
 
    deleteTopic: async (topicName: string) => {

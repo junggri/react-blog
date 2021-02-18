@@ -110,13 +110,13 @@ var contentController = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log(req.session.img, path_1.default.resolve("../thumbnail"));
                         if (!req.session.img) return [3 /*break*/, 2];
                         return [4 /*yield*/, fs_1.promises.unlink(path_1.default.resolve("../thumbnail/" + req.session.img[0]))];
                     case 1:
                         _a.sent();
                         _a.label = 2;
                     case 2:
+                        console.log(req.session.img, req.session, path_1.default.resolve("../thumbnail"));
                         multer_1.uploadThumbnail(req, res, function (err) {
                             res.status(200).json({ state: true, filename: req.file.filename });
                             if (err) {

@@ -26,6 +26,9 @@ import GlobalStyles from "./styles/GlobalStyles";
 import { Helmet } from "react-helmet";
 import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
+import "graphql-import-node";
+import model from "./server/src/model/topic.model";
+
 
 const app = express();
 
@@ -46,7 +49,6 @@ app.use(function(req, res, next) {
    next();
 });
 
-
 app
    .use(logger("dev"))
    .use(compression())
@@ -61,31 +63,34 @@ app
    .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
 
-
 const schema = buildSchema(`
    type Query{
-      data:String
       name:Int
+      Allposts:[Allposts]
    }
-   type Person{
-      data:String
+
+   type Allposts{
+      id: Int
+      comment: Int
+      uid: String
+      content_name: String
+      date: String
+      created: String
+      file: String
+      detail:String
+      thumbnail:String
+      kindOfPosts: String
+      modified: String
+      topic: String
    }
- 
 `);
 
-const one = {
-   data: () => {
-      return "123";
-   },
-};
-const two = {
-   name: () => {
-      return 1;
-   },
-};
 const root = {
-   //resolver
-   ...one, ...two,
+   Allposts: async () => {
+      let result: any = await model.getAllPostsItems();
+      return result;
+   },
+   name: () => 123,
 };
 
 app.use("/graphql", graphqlHTTP({
@@ -100,6 +105,7 @@ app.use("/admin", adminApi);
 
 
 const serverRender = async (req: Request, res: Response, next: NextFunction) => {
+   console.log(123, req.session);
    const sheet = new ServerStyleSheet();
    const context = {};
    const preloadContext: any = { done: false, promises: [] };
@@ -147,3 +153,18 @@ app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
 app.listen(4000, () => {
    console.log("running on 4000 and start server");
 });
+
+const name = {
+   a: "123",
+   b: "asdasd",
+};
+
+interface INmae {
+   a: string
+   b: string
+}
+
+function a<T, K extends keyof T>(obj: T, key: K): T[K] {
+   console.log(obj[key]);
+   return obj[key];
+}

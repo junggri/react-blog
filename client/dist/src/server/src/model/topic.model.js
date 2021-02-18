@@ -138,7 +138,6 @@ var contentModel = {
                         return [4 /*yield*/, conn.execute("select comment from " + topic + " where uid = ?", [postid])];
                     case 3:
                         result = (_a.sent())[0];
-                        console.log(result, length, topic);
                         if (!(result[0].comment >= 1)) return [3 /*break*/, 5];
                         query = "UPDATE " + topic + " set comment = comment-" + length + " where uid = ?";
                         dep = [postid];
@@ -353,42 +352,39 @@ var contentModel = {
         });
     }); },
     getAllPostsItems: function () { return __awaiter(void 0, void 0, void 0, function () {
-        var conn, dataObj, result, i, data, e_7;
+        var conn, _query_1, tables_1, posts, e_7;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, topic_connection_1.default()];
                 case 1:
                     conn = _a.sent();
-                    dataObj = {};
-                    if (!(conn !== undefined)) return [3 /*break*/, 9];
+                    if (!(conn !== undefined)) return [3 /*break*/, 6];
                     _a.label = 2;
                 case 2:
-                    _a.trys.push([2, 8, , 9]);
+                    _a.trys.push([2, 5, , 6]);
+                    _query_1 = "";
                     return [4 /*yield*/, conn.execute("show tables")];
                 case 3:
-                    result = (_a.sent())[0];
+                    tables_1 = (_a.sent())[0];
                     conn.release();
-                    i = 0;
-                    _a.label = 4;
+                    tables_1.forEach(function (e, idx) {
+                        tables_1.length - 1 !== idx
+                            ? _query_1 += "select * from " + e["Tables_in_contents"] + " union "
+                            : _query_1 += "select * from " + e["Tables_in_contents"];
+                    });
+                    return [4 /*yield*/, conn.execute(_query_1)];
                 case 4:
-                    if (!(i < result.length)) return [3 /*break*/, 7];
-                    return [4 /*yield*/, conn.execute("select * from " + result[i]["Tables_in_contents"] + " order by id DESC")];
-                case 5:
-                    data = (_a.sent())[0];
+                    posts = (_a.sent())[0];
                     conn.release();
-                    if (data.length !== 0)
-                        dataObj[result[i]["Tables_in_contents"]] = data;
-                    _a.label = 6;
-                case 6:
-                    i++;
-                    return [3 /*break*/, 4];
-                case 7: return [3 /*break*/, 9];
-                case 8:
+                    return [2 /*return*/, posts];
+                case 5:
                     e_7 = _a.sent();
                     conn.release();
                     console.log(e_7);
-                    return [3 /*break*/, 9];
-                case 9: return [2 /*return*/, dataObj];
+                    return [3 /*break*/, 6];
+                case 6:
+                    ;
+                    return [2 /*return*/];
             }
         });
     }); },

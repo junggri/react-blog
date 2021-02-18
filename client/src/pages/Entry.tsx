@@ -16,14 +16,13 @@ function SSREntry({ match, location }: any) {
    const { login, newRequest, setNewRequset, onGetGaCount, count }: ICommonModuleProps = useCommon();
    const { AllPosts, getAllPosts, onClearPost, getPosts, posts }: IPostsModuleProps = usePosts();
 
-   useEffect(() => {
-      console.log(csrf);
-      if (!csrf) return;
-      (async () => {
-         const { data } = await util.graphql(csrf);
-         console.log(data);
-      })();
-   }, [csrf]);
+   // useEffect(() => {
+   //    if (!csrf) return;
+   //    (async () => {
+   //       const { data } = await util.graphql(csrf);
+   //       console.log(data);
+   //    })();
+   // }, [csrf]);
 
    useEffect(() => {
       if (newRequest) {
@@ -50,7 +49,7 @@ function SSREntry({ match, location }: any) {
    return (
       <>
          <EntryContainerComp>
-            <SideBarContainer topic={AllPosts} login={login} location={location} count={count} />
+            <SideBarContainer login={login} location={location} count={count} />
             <Route path={["/", "/post"]} exact render={() => (
                <EntryPostsContainer
                   posts={AllPosts}

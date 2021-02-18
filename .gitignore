@@ -1,6 +1,9 @@
 /server/node_modules
 /client/node_modules
 /.idea
+/client/.env
+/client/.env.development
+/client/.env.production
 server/dist/server/src/config/session.config.js
 server/dist/server/src/config/session.config.js.map
 server/public/

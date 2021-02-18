@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -78,6 +67,8 @@ var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
 var react_helmet_1 = require("react-helmet");
 var graphql_1 = require("graphql");
 var express_graphql_1 = require("express-graphql");
+require("graphql-import-node");
+var topic_model_1 = __importDefault(require("./server/src/model/topic.model"));
 var app = express_1.default();
 app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
@@ -105,18 +96,21 @@ app
     .use(cors_1.default({ origin: true, credentials: true }))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(csrfProtection);
-var schema = graphql_1.buildSchema("\n   type Query{\n      data:String\n      name:Int\n   }\n   type Person{\n      data:String\n   }\n \n");
-var one = {
-    data: function () {
-        return "123";
-    },
+var schema = graphql_1.buildSchema("\n   type Query{\n      name:Int\n      Allposts:[Allposts]\n   }\n\n   type Allposts{\n      id: Int\n      comment: Int\n      uid: String\n      content_name: String\n      date: String\n      created: String\n      file: String\n      detail:String\n      thumbnail:String\n      kindOfPosts: String\n      modified: String\n      topic: String\n   }\n");
+var root = {
+    Allposts: function () { return __awaiter(void 0, void 0, void 0, function () {
+        var result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, topic_model_1.default.getAllPostsItems()];
+                case 1:
+                    result = _a.sent();
+                    return [2 /*return*/, result];
+            }
+        });
+    }); },
+    name: function () { return 123; },
 };
-var two = {
-    name: function () {
-        return 1;
-    },
-};
-var root = __assign(__assign({}, one), two);
 app.use("/graphql", express_graphql_1.graphqlHTTP({
     schema: schema,
     rootValue: root,
@@ -130,6 +124,7 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                console.log(123, req.session);
                 sheet = new styled_components_1.ServerStyleSheet();
                 context = {};
                 preloadContext = { done: false, promises: [] };
@@ -174,3 +169,11 @@ app.use(function (err, req, res, next) {
 app.listen(4000, function () {
     console.log("running on 4000 and start server");
 });
+var name = {
+    a: "123",
+    b: "asdasd",
+};
+function a(obj, key) {
+    console.log(obj[key]);
+    return obj[key];
+}

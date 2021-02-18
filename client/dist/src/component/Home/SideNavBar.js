@@ -8,7 +8,7 @@ var styled_comp_1 = require("../../styled-comp");
 var react_router_dom_1 = require("react-router-dom");
 var ai_1 = require("react-icons/ai");
 function SideBarNavContainer(_a) {
-    var topic = _a.topic, login = _a.login, location = _a.location, count = _a.count;
+    var login = _a.login, location = _a.location, count = _a.count;
     return (react_1.default.createElement(styled_comp_1.SideBarComp, null,
         react_1.default.createElement(styled_comp_1.SideBarThunmbNailComp, { src: "/images/og.jpg" }),
         react_1.default.createElement(styled_comp_1.SideBarMetaDataComp, null,

@@ -20,29 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/thumbnail/1613552619053.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thumbnail/1613556739987.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/mutation.resolvers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/query.resolver.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/query.resolvers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/type.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/mutation.resolvers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/query.resolvers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/schema.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thumbnail/1613577853081.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/@types/declaration.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/@types/declaration.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/PostsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/TagsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/TagsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/index.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/index.server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/lib/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/pages/Entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/Entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/config/session.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/config/session.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/lib/multer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/lib/multer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/output/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/output/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/PostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/TagsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/TagsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/index.server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.server.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Entry.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/config/session.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/config/session.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/server/src/lib/multer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/lib/multer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thumbnail/1613556739987.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,7 +419,9 @@
       <workItem from="1613463796068" duration="13539000" />
       <workItem from="1613478608037" duration="5879000" />
       <workItem from="1613549661664" duration="6942000" />
-      <workItem from="1613565505523" duration="4055000" />
+      <workItem from="1613565505523" duration="8139000" />
+      <workItem from="1613607219590" duration="65000" />
+      <workItem from="1613639048382" duration="15897000" />
     </task>
     <servers />
   </component>
@@ -584,19 +599,19 @@
     <state x="561" y="251" key="run.anything.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1611223739281" />
     <state x="561" y="251" key="run.anything.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1611201230528" />
     <state x="2393" y="254" key="run.anything.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1611838884496" />
-    <state x="561" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1613468205439">
-      <screen x="0" y="25" width="1792" height="1039" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup" timestamp="1613656950116">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/-1102.403.1102.717/0.25.1792.1039@0.25.1792.1039" timestamp="1612323897730" />
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/-96.-1055.1920.1055/0.25.1792.1039@0.25.1792.1039" timestamp="1613190428644" />
     <state x="561" y="256" width="670" height="675" key="search.everywhere.popup/0.25.1792.1038@0.25.1792.1038" timestamp="1607763182508" />
-    <state x="561" y="257" width="672" height="678" key="search.everywhere.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1613468205439" />
+    <state x="561" y="257" width="672" height="678" key="search.everywhere.popup/0.25.1792.1039@0.25.1792.1039" timestamp="1613651758216" />
     <state x="561" y="256" width="670" height="676" key="search.everywhere.popup/0.25.1792.1040@0.25.1792.1040" timestamp="1606824410062" />
     <state x="561" y="257" width="671" height="678" key="search.everywhere.popup/0.25.1792.1041@0.25.1792.1041" timestamp="1609812563974" />
     <state x="2393" y="248" width="719" height="652" key="search.everywhere.popup/1792.25.1920.1001/0.25.1792.1095@1792.25.1920.1001" timestamp="1608474232755" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1038@1792.25.1920.1055" timestamp="1607686510118" />
     <state x="561" y="257" width="672" height="679" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@0.25.1792.1039" timestamp="1610879652051" />
-    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1613305483704" />
+    <state x="2393" y="261" width="720" height="689" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1039@1792.25.1920.1055" timestamp="1613656950116" />
     <state x="2393" y="259" width="718" height="686" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1040@1792.25.1920.1055" timestamp="1606746454681" />
     <state x="2393" y="260" width="718" height="687" key="search.everywhere.popup/1792.25.1920.1055/0.25.1792.1041@1792.25.1920.1055" timestamp="1609405335764" />
     <state x="2393" y="248" width="719" height="651" key="search.everywhere.popup/1792.25.1920.999/0.25.1792.1095@1792.25.1920.999" timestamp="1613318350464" />

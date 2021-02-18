@@ -10,9 +10,9 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
          data: {
             query: `
-               query{
-                  data
-                  name
+               query {
+                    name
+                    Allposts
                }
                `,
          },

@@ -4,7 +4,6 @@ import googleReport from "../lib/googleReport";
 import model from "../model/index.model";
 
 interface Controller {
-
    getCsrf: (req: Request, res: Response) => void
    getGaCount: (req: Request, res: Response) => void
    saveComment: (req: Request, res: Response) => void

@@ -51,7 +51,16 @@ export interface IPostInitialState {
 }
 
 export interface IAllPost {
-   data: { [index: string]: IPostCommonProps[] } | null
+   data: [IPostCommonProps] | null
+   loading: boolean
+   error: Error | null
+}
+
+// data: { [index: string]: IPostCommonProps[] } | null
+// loading: boolean
+// error: Error | null
+export interface ITest {
+   data: [IPostCommonProps] | null
    loading: boolean
    error: Error | null
 }
