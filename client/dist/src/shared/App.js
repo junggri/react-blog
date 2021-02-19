@@ -25,11 +25,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var react_router_dom_1 = require("react-router-dom");
 var UseMeta_1 = __importDefault(require("../useHooks/UseMeta"));
-var Loadable_1 = __importDefault(require("../lib/Loadable"));
-var Admin = Loadable_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Admin")); }); });
-var Entry = Loadable_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Entry")); }); });
-var Posts = Loadable_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Posts")); }); });
-var TextEditor = Loadable_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Admin")); }); });
+var pages_1 = require("../pages");
+var component_1 = __importDefault(require("@loadable/component"));
+var Entry = component_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Entry")); }); });
+var Admin = component_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Admin")); }); });
+var Posts = component_1.default(function () { return Promise.resolve().then(function () { return __importStar(require("../pages/Posts")); }); });
 function App() {
     var data = {
         title: "junggri blog",
@@ -42,7 +42,7 @@ function App() {
         react_1.default.createElement(react_router_dom_1.Switch, null,
             react_1.default.createElement(react_router_dom_1.Route, { path: ["/", "/post", "/tag", "/tag/:topic", "/about"], exact: true, component: Entry }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/topic/:topic/:postsId", exact: true, component: Posts }),
-            react_1.default.createElement(react_router_dom_1.Route, { path: "/write", exact: true, component: TextEditor }),
+            react_1.default.createElement(react_router_dom_1.Route, { path: "/write", exact: true, component: pages_1.TextEditor }),
             react_1.default.createElement(react_router_dom_1.Route, { path: "/admin/leejeongsoo", exact: true, component: Admin }),
             react_1.default.createElement(react_router_dom_1.Route, { render: function () { return react_1.default.createElement("h1", null, "Not found"); } }))));
 }

@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
-var react_helmet_1 = require("react-helmet");
+var react_helmet_async_1 = require("react-helmet-async");
 var locales = {
     en: "en_US",
     ko: "ko_KR",
@@ -20,7 +20,7 @@ var Meta = function (_a) {
     var type = data.type === undefined ? "website" : data.type;
     var width = data.image && (data.width || 1200);
     var height = data.image && (data.height || 630);
-    return (react_1.default.createElement(react_helmet_1.Helmet, { titleTemplate: "%s" },
+    return (react_1.default.createElement(react_helmet_async_1.Helmet, { titleTemplate: "%s" },
         react_1.default.createElement("html", { lang: lang }),
         react_1.default.createElement("title", null, title),
         react_1.default.createElement("meta", { name: "description", content: description }),

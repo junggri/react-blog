@@ -44,7 +44,11 @@ var express_1 = __importDefault(require("express"));
 var path_1 = __importDefault(require("path"));
 var csurf_1 = __importDefault(require("csurf"));
 var server_env_json_1 = __importDefault(require("../server.env.json"));
+var PreloadContext_1 = __importDefault(require("./lib/PreloadContext"));
+var react_redux_1 = require("react-redux");
 var store_1 = require("./lib/store");
+var react_router_dom_1 = require("react-router-dom");
+var App_1 = __importDefault(require("./shared/App"));
 var server_1 = __importDefault(require("react-dom/server"));
 var createPage_1 = __importDefault(require("./lib/createPage"));
 var morgan_1 = __importDefault(require("morgan"));
@@ -59,17 +63,15 @@ var router_1 = __importDefault(require("./server/src/router"));
 var topic_1 = __importDefault(require("./server/src/router/topic"));
 var admin_1 = __importDefault(require("./server/src/router/admin"));
 var styled_components_1 = require("styled-components");
-var react_helmet_1 = require("react-helmet");
+// import { Helmet } from "react-helmet";
 var graphql_1 = require("graphql");
+var topic_model_1 = __importDefault(require("./server/src/model/topic.model"));
 var express_graphql_1 = require("express-graphql");
 require("graphql-import-node");
-var topic_model_1 = __importDefault(require("./server/src/model/topic.model"));
 var server_2 = require("@loadable/server");
-var PreloadContext_1 = __importDefault(require("./lib/PreloadContext"));
-var react_redux_1 = require("react-redux");
-var react_router_dom_1 = require("react-router-dom");
-var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
-var App_1 = __importDefault(require("./shared/App"));
+var react_helmet_async_1 = require("react-helmet-async");
+// asset-manifest.json 에서 파일 경로들을 조회합니다.
+var statsFile = path_1.default.resolve("./build/loadable-stats.json");
 var app = express_1.default();
 app.disable("x-powered-by");
 var csrfProtection = csurf_1.default({
@@ -99,22 +101,21 @@ app
     .use(csrfProtection);
 var schema = graphql_1.buildSchema("\n   type Query{\n      name:Int\n      Allposts:[Allposts]\n   }\n\n   type Allposts{\n      id: Int\n      comment: Int\n      uid: String\n      content_name: String\n      date: String\n      created: String\n      file: String\n      detail:String\n      thumbnail:String\n      kindOfPosts: String\n      modified: String\n      topic: String\n   }\n");
 var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var sheet, statsFile, context, preloadContext, extractor, jsx, e_1, html, styles, stateString, stateScript, RHelmet, tags;
+    var sheet, extractor, context, helmetContext, preloadContext, jsx, e_1, html, styles, stateString, stateScript, RHelmet, tags;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log(123, req.session);
                 sheet = new styled_components_1.ServerStyleSheet();
-                statsFile = path_1.default.resolve("./build/loadable-stats.json");
-                context = {};
-                preloadContext = { done: false, promises: [] };
                 extractor = new server_2.ChunkExtractor({ statsFile: statsFile });
+                context = {};
+                helmetContext = {};
+                preloadContext = { done: false, promises: [] };
                 jsx = (react_1.default.createElement(server_2.ChunkExtractorManager, { extractor: extractor },
                     react_1.default.createElement(PreloadContext_1.default.Provider, { value: preloadContext },
-                        react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
-                            react_1.default.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
-                                react_1.default.createElement(GlobalStyles_1.default, null),
-                                react_1.default.createElement(App_1.default, null))))));
+                        react_1.default.createElement(react_helmet_async_1.HelmetProvider, { context: helmetContext },
+                            react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
+                                react_1.default.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
+                                    react_1.default.createElement(App_1.default, null)))))));
                 server_1.default.renderToStaticMarkup(jsx);
                 _a.label = 1;
             case 1:
@@ -133,13 +134,13 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
                 styles = sheet.getStyleTags();
                 stateString = JSON.stringify(store_1.store.getState()).replace(/</g, "\\u003c");
                 stateScript = "<script>__PRELOADED_STATE__=" + stateString + "</script>";
-                RHelmet = react_helmet_1.Helmet.renderStatic();
+                RHelmet = helmetContext.helmet;
                 tags = {
                     scripts: stateScript + extractor.getScriptTags(),
                     links: extractor.getLinkTags(),
                     styles: extractor.getStyleTags(),
                 };
-                res.send(createPage_1.default(html, stateScript, styles, RHelmet, tags));
+                res.send(createPage_1.default(html, stateScript, styles, RHelmet));
                 return [2 /*return*/];
         }
     });
@@ -152,7 +153,6 @@ var root = {
                 case 0: return [4 /*yield*/, topic_model_1.default.getAllPostsItems()];
                 case 1:
                     result = _a.sent();
-                    console.log(123, result);
                     return [2 /*return*/, result];
             }
         });
@@ -179,11 +179,17 @@ app.use(function (err, req, res, next) {
 app.listen(4000, function () {
     console.log("running on 4000 and start server");
 });
-var name = {
-    a: "123",
-    b: "asdasd",
-};
-function a(obj, key) {
-    console.log(obj[key]);
-    return obj[key];
-}
+// const name = {
+//    a: "123",
+//    b: "asdasd",
+// };
+//
+// interface INmae {
+//    a: string
+//    b: string
+// }
+//
+// function a<T, K extends keyof T>(obj: T, key: K): T[K] {
+//    console.log(obj[key]);
+//    return obj[key];
+// }

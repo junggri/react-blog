@@ -4,11 +4,11 @@ const webpack = require("webpack");
 const getClientEnvironment = require("./env");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const LoadablePlugin = require("@loadable/webpack-plugin");
 
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 
@@ -130,6 +130,19 @@ module.exports = {
                      name: "static/media/[name].[hash:8].[ext]",
                   },
                },
+               {
+                  test: /\.(ts|tsx)$/,
+                  exclude: /node_modules/,
+                  use: [
+                     {
+                        loader: require.resolve("babel-loader"),
+                        options: {
+                           babelrc: false,
+                           plugins: ["@loadable/babel-plugin"],
+                        },
+                     }],
+               },
+
                // 위에서 설정된 확장자를 제외한 파일들은
                // file-loader 를 사용합니다.
                {

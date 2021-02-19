@@ -1,12 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { Admin, Entry, Posts, TextEditor } from "../pages";
 import Meta from "../useHooks/UseMeta";
-import Loadable from "../lib/Loadable";
 
-const Admin = Loadable(() => import("../pages/Admin"));
-const Entry = Loadable(() => import("../pages/Entry"));
-const Posts = Loadable(() => import("../pages/Posts"));
-const TextEditor = Loadable(() => import("../pages/Admin"));
 
 function App() {
    const data = {

@@ -30,7 +30,6 @@ require("react-app-polyfill/stable");
 var react_1 = __importDefault(require("react"));
 var react_dom_1 = __importDefault(require("react-dom"));
 var reportWebVitals_1 = __importDefault(require("./reportWebVitals"));
-var GlobalStyles_1 = __importDefault(require("./styles/GlobalStyles"));
 var serviceWorkerRegistration = __importStar(require("./serviceWorkerRegistration"));
 require("../src/styles/highlight/atom-one-light.css");
 var App_1 = __importDefault(require("./shared/App"));
@@ -38,14 +37,17 @@ var react_router_dom_1 = require("react-router-dom");
 var store_1 = require("./lib/store");
 var react_redux_1 = require("react-redux");
 var component_1 = require("@loadable/component");
+var react_helmet_async_1 = require("react-helmet-async");
 var Root = function () {
-    return (react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
-        react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
-            react_1.default.createElement(GlobalStyles_1.default, null),
-            react_1.default.createElement(App_1.default, null))));
+    return (react_1.default.createElement(react_helmet_async_1.HelmetProvider, null,
+        react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
+            react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
+                react_1.default.createElement(App_1.default, null)))));
 };
 var root = document.getElementById("root");
-if (process.env.NODE_ENV === "development") {
+// 프로덕션 환경 에서는 loadableReady 와 hydrate 를 사용하고
+// 개발 환경에서는 기존 하던 방식으로 처리
+if (process.env.NODE_ENV === "production") {
     component_1.loadableReady(function () {
         react_dom_1.default.hydrate(react_1.default.createElement(Root, null), root);
     });

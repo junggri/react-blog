@@ -19,7 +19,48 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="8dc59e16-e08f-4ac6-a6c8-92027e44fb32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/mutation.resolvers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/query.resolver.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/query.resolvers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/dist/src/graphql/type.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/mutation.resolvers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/query.resolvers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/schema.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/graphql/type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thumbnail/1613577853081.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/client/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/EntryPostsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Content/TagsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Content/TagsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/component/Home/SideNavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/index.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/index.server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/lib/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/lib/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/pages/Entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/pages/Entry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/controller/topic.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/dist/src/server/src/model/topic.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/dump.rdb" beforeDir="false" afterPath="$PROJECT_DIR$/client/dump.rdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/output/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/output/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/EntryPostsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Content/TagsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Content/TagsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/component/Home/SideNavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.server.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.server.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/lib/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/lib/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/Posts/posts.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Entry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Entry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/index.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/controller/topic.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/server/src/model/topic.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thumbnail/1613556739987.png" beforeDir="false" />
+    </list>
+>>>>>>> parent of 395d86a2... what
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -384,12 +425,16 @@
       <workItem from="1613549661664" duration="6942000" />
       <workItem from="1613565505523" duration="8139000" />
       <workItem from="1613607219590" duration="65000" />
+<<<<<<< HEAD
       <workItem from="1613639048382" duration="17093000" />
       <workItem from="1613658317276" duration="452000" />
       <workItem from="1613660131905" duration="3227000" />
       <workItem from="1613690426789" duration="8690000" />
       <workItem from="1613703425743" duration="4000" />
       <workItem from="1613703475526" duration="27000" />
+=======
+      <workItem from="1613639048382" duration="15897000" />
+>>>>>>> parent of 395d86a2... what
     </task>
     <servers />
   </component>
