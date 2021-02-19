@@ -6,6 +6,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "plugins": [
+      {
+        "transform": "typescript-loadable-components-plugin"
+      }
+    ],
     "outDir": "./dist",
     "allowJs": true,
     "skipLibCheck": true,

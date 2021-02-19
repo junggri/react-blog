@@ -12,7 +12,20 @@ const util = {
             query: `
                query {
                     name
-                    Allposts
+                    Allposts{
+                     id
+                     comment
+                     uid
+                     content_name
+                     date
+                     created
+                     file
+                     detail
+                     thumbnail
+                     kindOfPosts
+                     modified
+                     topic
+                    }
                }
                `,
          },

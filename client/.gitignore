@@ -17,6 +17,7 @@
 .env.development
 .env.production
 .env
+.env.*
 server.env.json
 
 npm-debug.log*

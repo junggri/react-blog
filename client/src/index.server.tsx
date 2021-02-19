@@ -3,11 +3,7 @@ import express, { NextFunction, Request, Response } from "express";
 import path from "path";
 import csrf from "csurf";
 import env from "../server.env.json";
-import PreloadContext from "./lib/PreloadContext";
-import { Provider } from "react-redux";
 import { store } from "./lib/store";
-import { StaticRouter } from "react-router-dom";
-import App from "./shared/App";
 import ReactDOMServer from "react-dom/server";
 import createPage from "./lib/createPage";
 import logger from "morgan";
@@ -22,12 +18,18 @@ import indexApi from "./server/src/router";
 import topicApi from "./server/src/router/topic";
 import adminApi from "./server/src/router/admin";
 import { ServerStyleSheet } from "styled-components";
-import GlobalStyles from "./styles/GlobalStyles";
 import { Helmet } from "react-helmet";
 import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
 import "graphql-import-node";
 import model from "./server/src/model/topic.model";
+import { ChunkExtractor, ChunkExtractorManager } from "@loadable/server";
+import PreloadContext from "./lib/PreloadContext";
+import { Provider } from "react-redux";
+import { StaticRouter } from "react-router-dom";
+import GlobalStyles from "./styles/GlobalStyles";
+
+import App from "./shared/App";
 
 
 const app = express();
@@ -85,40 +87,25 @@ const schema = buildSchema(`
    }
 `);
 
-const root = {
-   Allposts: async () => {
-      let result: any = await model.getAllPostsItems();
-      console.log(result);
-      return result;
-   },
-   name: () => 123,
-};
-
-app.use("/graphql", graphqlHTTP({
-   schema: schema,
-   rootValue: root,
-   graphiql: true,
-}));
-
-app.use("/api", indexApi); //공통라우터
-app.use("/topic", topicApi); //콘텐츠 관련 라우터
-app.use("/admin", adminApi);
-
-
 const serverRender = async (req: Request, res: Response, next: NextFunction) => {
    console.log(123, req.session);
    const sheet = new ServerStyleSheet();
+   const statsFile = path.resolve("./build/loadable-stats.json");
    const context = {};
    const preloadContext: any = { done: false, promises: [] };
+   const extractor = new ChunkExtractor({ statsFile });
+
    const jsx = (
-      <PreloadContext.Provider value={preloadContext}>
-         <Provider store={store}>
-            <StaticRouter location={req.url} context={context}>
-               <GlobalStyles />
-               <App />
-            </StaticRouter>
-         </Provider>
-      </PreloadContext.Provider>
+      <ChunkExtractorManager extractor={extractor}>
+         <PreloadContext.Provider value={preloadContext}>
+            <Provider store={store}>
+               <StaticRouter location={req.url} context={context}>
+                  <GlobalStyles />
+                  <App />
+               </StaticRouter>
+            </Provider>
+         </PreloadContext.Provider>
+      </ChunkExtractorManager>
    );
 
    ReactDOMServer.renderToStaticMarkup(jsx);
@@ -134,8 +121,33 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
    const stateString = JSON.stringify(store.getState()).replace(/</g, "\\u003c");
    const stateScript = `<script>__PRELOADED_STATE__=${stateString}</script>`;
    const RHelmet = Helmet.renderStatic();
-   res.send(createPage(html, stateScript, styles, RHelmet));
+   const tags = {
+      scripts: stateScript + extractor.getScriptTags(),
+      links: extractor.getLinkTags(),
+      styles: extractor.getStyleTags(),
+   };
+   res.send(createPage(html, stateScript, styles, RHelmet, tags));
 };
+
+const root = {
+   Allposts: async () => {
+      let result: any = await model.getAllPostsItems();
+      console.log(123, result);
+      return result;
+   },
+   name: () => 123,
+};
+
+app.use("/graphql", graphqlHTTP({
+   schema: schema,
+   rootValue: root,
+   graphiql: true,
+}));
+app.use("/api", indexApi); //공통라우터
+app.use("/topic", topicApi); //콘텐츠 관련 라우터
+
+
+app.use("/admin", adminApi);
 
 const serve = express.static(path.resolve("./build"), { index: false });
 

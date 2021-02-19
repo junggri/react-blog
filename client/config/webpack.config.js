@@ -28,11 +28,9 @@ const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-
+const LoadablePlugin = require("@loadable/webpack-plugin");
 const postcssNormalize = require("postcss-normalize");
-
 const appPackageJson = require(paths.appPackageJson);
-
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 
@@ -556,6 +554,7 @@ module.exports = function(webpackEnv) {
          new webpack.ProvidePlugin({
             "window.Quill": "quill",
          }),
+         new LoadablePlugin(),
          // Generates an `index.html` file with the <script> injected.
          new HtmlWebpackPlugin(
             Object.assign(
