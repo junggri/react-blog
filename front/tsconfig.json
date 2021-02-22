@@ -6,6 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "outDir": "compile",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,15 +14,18 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+    "noEmit": false
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "./node_modules"
   ]
 }

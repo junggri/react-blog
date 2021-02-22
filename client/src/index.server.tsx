@@ -28,10 +28,12 @@ import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
 import "graphql-import-node";
 import model from "./server/src/model/topic.model";
+import { ChunkExtractor } from "@loadable/server";
 
-
+const statsFile = path.resolve("./build/loadable-stats.json");
+// We create an extractor from the statsFile
+const extractor = new ChunkExtractor({ statsFile });
 const app = express();
-
 
 app.disable("x-powered-by");
 
@@ -88,7 +90,6 @@ const schema = buildSchema(`
 const root = {
    Allposts: async () => {
       let result: any = await model.getAllPostsItems();
-      console.log(result);
       return result;
    },
    name: () => 123,
@@ -106,11 +107,11 @@ app.use("/admin", adminApi);
 
 
 const serverRender = async (req: Request, res: Response, next: NextFunction) => {
-   console.log(123, req.session);
+
    const sheet = new ServerStyleSheet();
    const context = {};
    const preloadContext: any = { done: false, promises: [] };
-   const jsx = (
+   const jsx = extractor.collectChunks(
       <PreloadContext.Provider value={preloadContext}>
          <Provider store={store}>
             <StaticRouter location={req.url} context={context}>
@@ -118,7 +119,7 @@ const serverRender = async (req: Request, res: Response, next: NextFunction) => 
                <App />
             </StaticRouter>
          </Provider>
-      </PreloadContext.Provider>
+      </PreloadContext.Provider>,
    );
 
    ReactDOMServer.renderToStaticMarkup(jsx);

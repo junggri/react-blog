@@ -13,22 +13,29 @@ import App from "./shared/App";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./lib/store";
 import { Provider } from "react-redux";
+import { loadableReady } from "@loadable/component";
 
 
-const mountElement = document.getElementById("root") as HTMLElement;
-const reactMountFn = (mountElement.childElementCount === 0)
-   ? ReactDOM.render
-   : ReactDOM.hydrate;
+const Root = () => {
+   return (
+      <Provider store={store}>
+         <BrowserRouter>
+            <GlobalStyles />
+            <App />
+         </BrowserRouter>
+      </Provider>
+   );
+};
 
+const root = document.getElementById("root");
 
-reactMountFn(
-   <Provider store={store}>
-      <BrowserRouter>
-         <GlobalStyles />
-         <App />
-      </BrowserRouter>
-   </Provider>, mountElement);
-
+if (process.env.NODE_ENV === "development") {
+   loadableReady(() => {
+      ReactDOM.hydrate(<Root />, root);
+   });
+} else {
+   ReactDOM.render(<Root />, root);
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

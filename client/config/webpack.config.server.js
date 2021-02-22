@@ -3,12 +3,12 @@ const paths = require("./paths");
 const webpack = require("webpack");
 const getClientEnvironment = require("./env");
 const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
-const LoadablePlugin = require("@loadable/webpack-plugin");
+const { loadableTransformer } = require("loadable-ts-transformer");
 
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 
@@ -29,26 +29,25 @@ module.exports = {
                // 자바스크립트를 위한 처리
                // 기존 webpack.config.js 를 참고하여 작성
                {
+                  test: /\.tsx?$/,
+                  loader: "ts-loader",
+                  options: {
+                     getCustomTransformers: () => ({ before: [loadableTransformer] }),
+                  },
+               },
+               {
                   test: /\.(js|mjs|jsx|ts|tsx)$/,
                   include: paths.appSrc,
                   loader: require.resolve("babel-loader"),
                   options: {
                      customize: require.resolve("babel-preset-react-app/webpack-overrides"),
-                     presets: [
-                        [
-                           require.resolve("babel-preset-react-app"),
-                           {
-                              runtime: "automatic",
-                           },
-                        ],
-                     ],
                      plugins: [
                         [
                            require.resolve("babel-plugin-named-asset-import"),
                            {
                               loaderMap: {
                                  svg: {
-                                    ReactComponent: "@svgr/webpack?-svgo,+titleProp,+ref![path]",
+                                    ReactComponent: "@svgr/webpack?-svgo![path]",
                                  },
                               },
                            },
@@ -59,6 +58,7 @@ module.exports = {
                      compact: false,
                   },
                },
+
                // CSS 를 위한 처리
                {
                   test: cssRegex,
@@ -66,10 +66,7 @@ module.exports = {
                   //  exportOnlyLocals: true 옵션을 설정해야 실제 css 파일을 생성하지 않습니다.
                   loader: require.resolve("css-loader"),
                   options: {
-                     importLoaders: 1,
-                     modules: {
-                        exportOnlyLocals: true,
-                     },
+                     exportOnlyLocals: true,
                   },
                },
                // CSS Module 을 위한 처리
@@ -77,11 +74,9 @@ module.exports = {
                   test: cssModuleRegex,
                   loader: require.resolve("css-loader"),
                   options: {
-                     importLoaders: 1,
-                     modules: {
-                        exportOnlyLocals: true,
-                        getLocalIdent: getCSSModuleLocalIdent,
-                     },
+                     modules: true,
+                     exportOnlyLocals: true,
+                     getLocalIdent: getCSSModuleLocalIdent,
                   },
                },
                // Sass 를 위한 처리
@@ -92,10 +87,7 @@ module.exports = {
                      {
                         loader: require.resolve("css-loader"),
                         options: {
-                           importLoaders: 3,
-                           modules: {
-                              exportOnlyLocals: true,
-                           },
+                           exportOnlyLocals: true,
                         },
                      },
                      require.resolve("sass-loader"),
@@ -109,11 +101,9 @@ module.exports = {
                      {
                         loader: require.resolve("css-loader"),
                         options: {
-                           importLoaders: 3,
-                           modules: {
-                              exportOnlyLocals: true,
-                              getLocalIdent: getCSSModuleLocalIdent,
-                           },
+                           modules: true,
+                           exportOnlyLocals: true,
+                           getLocalIdent: getCSSModuleLocalIdent,
                         },
                      },
                      require.resolve("sass-loader"),
@@ -130,19 +120,6 @@ module.exports = {
                      name: "static/media/[name].[hash:8].[ext]",
                   },
                },
-               {
-                  test: /\.(ts|tsx)$/,
-                  exclude: /node_modules/,
-                  use: [
-                     {
-                        loader: require.resolve("babel-loader"),
-                        options: {
-                           babelrc: false,
-                           plugins: ["@loadable/babel-plugin"],
-                        },
-                     }],
-               },
-
                // 위에서 설정된 확장자를 제외한 파일들은
                // file-loader 를 사용합니다.
                {
@@ -159,7 +136,8 @@ module.exports = {
    },
    resolve: {
       modules: ["node_modules"],
+      extensions: [".ts", ".tsx", ".js", ".jsx"],
    },
    externals: [nodeExternals({ allowlist: [/@babel/] }), "react-helmet"],
-   plugins: [new webpack.DefinePlugin(env.stringified), new MiniCssExtractPlugin({ filename: "_asset.style.css" })],
+   plugins: [new webpack.DefinePlugin(env.stringified)],
 };

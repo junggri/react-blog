@@ -27,11 +27,10 @@ const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const LoadablePlugin = require("@loadable/webpack-plugin");
-
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const postcssNormalize = require("postcss-normalize");
-
 const appPackageJson = require(paths.appPackageJson);
-
+const { loadableTransformer } = require("loadable-ts-transformer");
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 
@@ -361,11 +360,13 @@ module.exports = function(webpackEnv) {
          rules: [
             // Disable require.ensure as it's not a standard language feature.
             { parser: { requireEnsure: false } },
+
             {
                // "oneOf" will traverse all following loaders until one will
                // match the requirements. When no loader matches it will fall
                // back to the "file" loader at the end of the loader list.
                oneOf: [
+
                   // TODO: Merge this config once `image/avif` is in the mime-db
                   // https://github.com/jshttp/mime-db
                   {
@@ -398,6 +399,7 @@ module.exports = function(webpackEnv) {
                         customize: require.resolve(
                            "babel-preset-react-app/webpack-overrides",
                         ),
+
                         presets: [
                            [
                               require.resolve("babel-preset-react-app"),
@@ -406,7 +408,6 @@ module.exports = function(webpackEnv) {
                               },
                            ],
                         ],
-
                         plugins: [
                            [
                               require.resolve("babel-plugin-named-asset-import"),
@@ -556,6 +557,7 @@ module.exports = function(webpackEnv) {
          ],
       },
       plugins: [
+         // new BundleAnalyzerPlugin(),
          new LoadablePlugin(),
          // Generates an `index.html` file with the <script> injected.
          new HtmlWebpackPlugin(

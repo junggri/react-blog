@@ -1,0 +1,8 @@
+type Query{
+    data:String
+    name:Int
+    date:String
+}
+type Person{
+    data:String
+}

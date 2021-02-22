@@ -6,12 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "plugins": [
-      {
-        "transform": "typescript-loadable-components-plugin"
-      }
-    ],
-    "outDir": "./dist",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,10 +15,11 @@
     "noFallthroughCasesInSwitch": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "downlevelIteration": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
-    "baseUrl": "src",
+    "noEmit": false,
     "typeRoots": [
       "./@types",
       "./node_modules/@types"
