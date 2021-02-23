@@ -1,7 +1,19 @@
 import instance from "../config/axios.config";
 import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
 
-const URL = "http://localhost:4000/graphql";
+const URL = "http://localhost:5000/graphql";
+
+function aixosCommonObj<T>(query: T, token: T) {
+   return {
+      url: URL,
+      method: "post",
+      headers: { "X-XSRF-TOKEN": token },
+      data: {
+         query: query,
+      },
+   };
+}
+
 const util = {
    graphql(token: string) {
       return instance({
@@ -11,17 +23,29 @@ const util = {
          data: {
             query: `
                query {
-                    name
-                    Allposts
+                    Allposts{
+                       id
+                       comment 
+                       uid 
+                       content_name 
+                       date 
+                       created 
+                       file 
+                       detail 
+                       thumbnail 
+                       kindOfPosts 
+                       modified 
+                       topic
+                  }
                }
                `,
          },
       });
    },
+
    getCSRTtoken() {
       return instance({
          url: "/api/csrf",
-         method: "get",
       });
    },
 
@@ -86,10 +110,9 @@ const util = {
 
    getTempPostFromId(id: string) {
       return instance({
-            url: `/topic/temp/${id}`,
-            method: "get",
-         },
-      );
+         url: `/topic/temp/${id}`,
+         method: "get",
+      });
    },
 
    getTempPost() {
@@ -99,11 +122,36 @@ const util = {
       });
    },
 
-   getAllPostsItems() {
+   getAllPostsItems(token: string) {
       return instance({
          url: "/topic/posts/items",
          method: "get",
       });
+      // return instance({
+      //    url: URL,
+      //    method: "post",
+      //    headers: { "X-XSRF-TOKEN": token },
+      //    data: {
+      //       query: `
+      //          query {
+      //               Allposts{
+      //                  id
+      //                  comment
+      //                  uid
+      //                  content_name
+      //                  date
+      //                  created
+      //                  file
+      //                  detail
+      //                  thumbnail
+      //                  kindOfPosts
+      //                  modified
+      //                  topic
+      //             }
+      //          }
+      //          `,
+      //    },
+      // });
    },
 
    getPostFromParams(parmas: string) {
@@ -118,7 +166,6 @@ const util = {
          url: `/topic/${encodeURIComponent(topic)}/posts/${postsId}`,
       });
    },
-
 
    deleteTopic(topicName: string, token: string) {
       return instance({
@@ -212,8 +259,6 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
-
-
 };
 
 export default util;

@@ -6,45 +6,45 @@ import { clearPost, clearPostData } from "../modules/Posts/lib/PostsAction";
 import { usePreloader } from "./usePreloader";
 
 export default function usePosts() {
-  const dispatch = useDispatch();
-  const { posts, post, AllPosts } = useSelector((state: RootState) => state.posts);
+   const dispatch = useDispatch();
+   const { posts, post, AllPosts } = useSelector((state: RootState) => state.posts);
 
-  const getPosts = useCallback(
-    (params: string) => {
-      dispatch(onRequestPosts({ params: params }));
-    },
-    [dispatch]
-  );
+   const getPosts = useCallback(
+      (params: string) => {
+         dispatch(onRequestPosts({ params: params }));
+      },
+      [dispatch],
+   );
 
-  const getPost = useCallback(
-    (topic: string, postsId: string) => {
-      dispatch(onRequsetPost({ topic, postsId }));
-    },
-    [dispatch]
-  );
+   const getPost = useCallback(
+      (topic: string, postsId: string) => {
+         dispatch(onRequsetPost({ topic, postsId }));
+      },
+      [dispatch],
+   );
 
-  const getAllPosts = useCallback(() => {
-    dispatch(onRequestAllPosts({}));
-  }, [dispatch]);
+   const getAllPosts = useCallback((token: string) => {
+      dispatch(onRequestAllPosts({ token }));
+   }, [dispatch]);
 
-  const onClearPost = useCallback(() => {
-    dispatch(clearPost());
-  }, [dispatch]);
+   const onClearPost = useCallback(() => {
+      dispatch(clearPost());
+   }, [dispatch]);
 
-  const onCleatPostData = useCallback(() => {
-    dispatch(clearPostData());
-  }, [dispatch]);
+   const onCleatPostData = useCallback(() => {
+      dispatch(clearPostData());
+   }, [dispatch]);
 
-  usePreloader(() => dispatch(onRequestAllPosts({})));
+   usePreloader(() => dispatch(onRequestAllPosts({})));
 
-  return {
-    AllPosts,
-    posts,
-    post,
-    getPosts,
-    getPost,
-    getAllPosts,
-    onClearPost,
-    onCleatPostData,
-  };
+   return {
+      AllPosts,
+      posts,
+      post,
+      getPosts,
+      getPost,
+      getAllPosts,
+      onClearPost,
+      onCleatPostData,
+   };
 }

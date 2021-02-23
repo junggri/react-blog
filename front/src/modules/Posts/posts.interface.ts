@@ -91,7 +91,7 @@ export interface IPostsModuleProps {
    AllPosts: IAllPost
    getPosts: (params: string) => void
    getPost: (topic: string, postId: string) => void
-   getAllPosts: () => void
+   getAllPosts: (token: string) => void
    onClearPost: () => void
    onCleatPostData: () => void
 }

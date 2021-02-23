@@ -1,17 +1,19 @@
 import fs from "fs";
 import path from "path";
 
-const manifest = JSON.parse(fs.readFileSync(path.resolve("./build/asset-manifest.json"), "utf8"));
+const manifest = JSON.parse(
+   fs.readFileSync(path.resolve("./build/asset-manifest.json"), "utf8"),
+);
 
 const chunks = Object.keys(manifest.files)
-  .filter((key) => /chunk\.js$/.exec(key))
-  .map((key) => `<script src="${manifest.files[key]}"></script>`)
-  .join("");
+   .filter(key => /chunk\.js$/.exec(key))
+   .map(key => `<script src="${manifest.files[key]}"></script>`)
+   .join("");
 
-const GA =
-  process.env.NODE_ENV === "development"
-    ? ""
-    : `<script>
+
+const GA = process.env.NODE_ENV === "development"
+   ? ""
+   : `<script>
            window.dataLayer = window.dataLayer || [];
            function gtag() {
                 dataLayer.push(arguments);
@@ -23,7 +25,7 @@ const GA =
        `;
 
 export default function createPage(root: any, script: any, styles: any, helmet: any) {
-  return `
+   return `
       <!DOCTYPE html>
       <html lang="ko" ${helmet.htmlAttributes.toString()}>
       <head>

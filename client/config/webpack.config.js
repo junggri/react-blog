@@ -1,4 +1,6 @@
 "use strict";
+"use strict";
+
 
 const fs = require("fs");
 const path = require("path");
@@ -26,11 +28,11 @@ const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const LoadablePlugin = require("@loadable/webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+
 const postcssNormalize = require("postcss-normalize");
+
 const appPackageJson = require(paths.appPackageJson);
-const { loadableTransformer } = require("loadable-ts-transformer");
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 
@@ -213,13 +215,12 @@ module.exports = function(webpackEnv) {
          publicPath: paths.publicUrlOrPath,
          // Point sourcemap entries to original disk location (format as URL on Windows)
          devtoolModuleFilenameTemplate: isEnvProduction
-            ? (info) =>
+            ? info =>
                path
                   .relative(paths.appSrc, info.absoluteResourcePath)
                   .replace(/\\/g, "/")
             : isEnvDevelopment &&
-            ((info) =>
-               path.resolve(info.absoluteResourcePath).replace(/\\/g, "/")),
+            (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, "/")),
          // Prevents conflicts when multiple webpack runtimes (from different apps)
          // are used on the same page.
          jsonpFunction: `webpackJsonp${appPackageJson.name}`,
@@ -302,7 +303,7 @@ module.exports = function(webpackEnv) {
          // https://twitter.com/wSokra/status/969679223278505985
          // https://github.com/facebook/create-react-app/issues/5358
          runtimeChunk: {
-            name: (entrypoint) => `runtime-${entrypoint.name}`,
+            name: entrypoint => `runtime-${entrypoint.name}`,
          },
       },
       resolve: {
@@ -320,8 +321,8 @@ module.exports = function(webpackEnv) {
          // `web` extension prefixes have been added for better support
          // for React Native Web.
          extensions: paths.moduleFileExtensions
-            .map((ext) => `.${ext}`)
-            .filter((ext) => useTypeScript || !ext.includes("ts")),
+            .map(ext => `.${ext}`)
+            .filter(ext => useTypeScript || !ext.includes("ts")),
          alias: {
             // Support React Native Web
             // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -360,13 +361,16 @@ module.exports = function(webpackEnv) {
          rules: [
             // Disable require.ensure as it's not a standard language feature.
             { parser: { requireEnsure: false } },
-
+            {
+               test: /\.js$/,
+               exclude: /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/,
+               loader: "babel-loader",
+            },
             {
                // "oneOf" will traverse all following loaders until one will
                // match the requirements. When no loader matches it will fall
                // back to the "file" loader at the end of the loader list.
                oneOf: [
-
                   // TODO: Merge this config once `image/avif` is in the mime-db
                   // https://github.com/jshttp/mime-db
                   {
@@ -400,14 +404,6 @@ module.exports = function(webpackEnv) {
                            "babel-preset-react-app/webpack-overrides",
                         ),
 
-                        presets: [
-                           [
-                              require.resolve("babel-preset-react-app"),
-                              {
-                                 runtime: hasJsxRuntime ? "automatic" : "classic",
-                              },
-                           ],
-                        ],
                         plugins: [
                            [
                               require.resolve("babel-plugin-named-asset-import"),
@@ -557,8 +553,9 @@ module.exports = function(webpackEnv) {
          ],
       },
       plugins: [
-         // new BundleAnalyzerPlugin(),
-         new LoadablePlugin(),
+         new webpack.ProvidePlugin({
+            "window.Quill": "quill",
+         }),
          // Generates an `index.html` file with the <script> injected.
          new HtmlWebpackPlugin(
             Object.assign(
@@ -655,7 +652,7 @@ module.exports = function(webpackEnv) {
                   return manifest;
                }, seed);
                const entrypointFiles = entrypoints.main.filter(
-                  (fileName) => !fileName.endsWith(".map"),
+                  fileName => !fileName.endsWith(".map"),
                );
 
                return {
@@ -678,10 +675,6 @@ module.exports = function(webpackEnv) {
             swSrc,
             dontCacheBustURLsMatching: /\.[0-9a-f]{8}\./,
             exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
-            // Bump up the default maximum size (2mb) that's precached,
-            // to make lazy-loading failure scenarios less likely.
-            // See https://github.com/cra-template/pwa/issues/13#issuecomment-722667270
-            maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
          }),
          // TypeScript type checking
          useTypeScript &&
@@ -720,7 +713,6 @@ module.exports = function(webpackEnv) {
             formatter: require.resolve("react-dev-utils/eslintFormatter"),
             eslintPath: require.resolve("eslint"),
             context: paths.appSrc,
-            cache: true,
             // ESLint class options
             cwd: paths.appPath,
             resolvePluginsRelativeTo: __dirname,

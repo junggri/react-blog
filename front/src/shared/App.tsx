@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import loadable from "@loadable/component";
 
 // const Test1 = loadable(/* #__LOADABLE__ */ () => import("../test1"));
-const Entry = loadable(() => import(/* webpackChunkName: "Header" */ "../pages/Entry"));
+const Entry = loadable(() => import(/* webpackChunkName: "Entry" */ "../pages/Entry"));
 
 function App() {
    return (

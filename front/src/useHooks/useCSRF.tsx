@@ -13,7 +13,6 @@ function CSRF() {
          setCsrf("");
       };
    }, []);
-
    return csrf;
 }
 

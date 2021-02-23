@@ -16,7 +16,6 @@ var cors_1 = __importDefault(require("cors"));
 var middlewares_1 = require("./lib/middlewares");
 var app = express_1.default();
 app.disable("x-powered-by");
-console.log(process.env.NODE_ENV);
 app
     .use(middlewares_1.header)
     .use(morgan_1.default("dev"))
@@ -31,14 +30,6 @@ app
     .use("/thumbnail", express_1.default.static(path_1.default.resolve("../thumbnail")))
     .use(body_parser_1.default.urlencoded({ extended: false }))
     .use(middlewares_1.csrfProtection);
-app.get("/test", function (req, res) {
-    try {
-        res.status(200).json(200);
-    }
-    catch (e) {
-        console.log(e);
-    }
-});
 app.use(function (err, req, res, next) {
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
