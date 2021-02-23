@@ -10,5 +10,5 @@ contents
 temporary-storage
 
 
-server/dist/server/src/config/session.config.js
-server/dist/server/src/config/session.config.js.map
+server/dist
+server/server.env.json
