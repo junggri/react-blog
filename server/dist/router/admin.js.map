@@ -1,1 +1,0 @@
-{"version":3,"file":"admin.js","sourceRoot":"","sources":["../../src/router/admin.ts"],"names":[],"mappings":";;;;;AAAA,oDAA8B;AAC9B,oFAA6D;AAE7D,IAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAGhC,MAAM,CAAC,IAAI,CAAC,QAAQ,EAAE,0BAAe,CAAC,KAAK,CAAC,CAAC;AAE7C,MAAM,CAAC,IAAI,CAAC,QAAQ,EAAE,0BAAe,CAAC,QAAQ,CAAC,CAAC;AAGhD,kBAAe,MAAM,CAAC"}

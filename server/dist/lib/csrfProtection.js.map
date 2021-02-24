@@ -1,1 +1,0 @@
-{"version":3,"file":"csrfProtection.js","sourceRoot":"","sources":["../../src/lib/csrfProtection.ts"],"names":[],"mappings":";;;;;AAAA,gDAAyB;AAEzB,IAAM,cAAc,GAAG,eAAI,CAAC;IACzB,MAAM,EAAE;QACL,QAAQ,EAAE,IAAI;QACd,MAAM,EAAE,OAAO,CAAC,GAAG,CAAC,QAAQ,KAAK,YAAY;KAC/C;CACH,CAAC,CAAC"}
