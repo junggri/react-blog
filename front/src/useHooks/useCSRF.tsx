@@ -3,14 +3,15 @@ import util from "../lib/axios";
 
 
 function CSRF() {
-   const [csrf, setCsrf] = useState("");
+   const [csrf, setCsrf] = useState<string | null>(null);
+
    useEffect(() => {
       (async () => {
          const { data } = await util.getCSRTtoken();
          setCsrf(data.token);
       })();
       return function cleanUp() {
-         setCsrf("");
+         setCsrf(null);
       };
    }, []);
    return csrf;

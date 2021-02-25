@@ -125,7 +125,6 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log(123, req.session);
                 sheet = new styled_components_1.ServerStyleSheet();
                 context = {};
                 preloadContext = { done: false, promises: [] };

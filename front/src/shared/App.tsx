@@ -1,15 +1,31 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import loadable from "@loadable/component";
+import Meta from "../useHooks/UseMeta";
 
-// const Test1 = loadable(/* #__LOADABLE__ */ () => import("../test1"));
+
 const Entry = loadable(() => import(/* webpackChunkName: "Entry" */ "../pages/Entry"));
+const Post = loadable(() => import(/* webpackChunkName: "Post" */"../pages/Post"));
+const Write = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Write"));
+
 
 function App() {
+   const data = {
+      title: "junggri blog",
+      description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다.",
+      image: "https://www.junggri.com/images/og.jpg",
+      type: "website",
+   };
+
    return (
       <div className="App">
-         <Route path="/" component={Entry} />
-
+         <Meta data={data} />
+         <Switch>
+            <Route path={["/", "/tag", "/tag/:topic"]} exact component={Entry} />
+            <Route path="/topic/:topic/:postId" exact component={Post} />
+            <Route path="/write" exact component={Write} />
+            <Route render={() => <h1>Not found</h1>} />
+         </Switch>
       </div>
    );
 }

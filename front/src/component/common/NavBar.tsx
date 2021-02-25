@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { NavBarComp, NavBarContainer, SearchBoxComp } from "../styledComponent";
+import { NavBarComp, NavBarContainer, SearchBoxComp } from "../../styledComponent";
 import { GrFormSearch } from "react-icons/gr";
 import { BiUpArrowAlt } from "react-icons/bi";
+import { RiHome2Fill } from "react-icons/ri";
 
 const NavBar = () => {
    const ref = useRef<HTMLDivElement>(null);
@@ -46,13 +47,12 @@ const NavBar = () => {
                ref={input}
                onChange={onChangeValue}
                onKeyUp={onKeyUp}
-
             />
             <BiUpArrowAlt className="search-box-cancel-icon" onClick={onClickCancelBtn} />
          </SearchBoxComp>
          <NavBarComp>
             <Link to="/">
-               <div className="navbar-logo"></div>
+               <div className="navbar-logo"><RiHome2Fill className="logo-icons" /></div>
             </Link>
             <nav>
                <ul>

@@ -1,7 +1,8 @@
 import instance from "../config/axios.config";
 import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
+import { AxiosRequestConfig } from "axios";
 
-const URL = "http://localhost:5000/graphql";
+const URL = process.env.REACT_APP_GRAPHQL_URL;
 
 function aixosCommonObj<T>(query: T, token: T) {
    return {
@@ -15,37 +16,81 @@ function aixosCommonObj<T>(query: T, token: T) {
 }
 
 const util = {
-   graphql(token: string) {
-      return instance({
-         url: URL,
-         method: "post",
-         headers: { "X-XSRF-TOKEN": token },
-         data: {
-            query: `
+   getPostFromPostId(topic: string, postsId: string, token: string) {
+      const option = aixosCommonObj(`
+      query {
+         postContent(topic:"${encodeURIComponent(topic)}" ,postsId:"${postsId}"){
+            content
+            result{
+               id
+               comment
+               uid
+               content_name
+               date
+               created
+               file
+               detail
+               thumbnail
+               kindOfPosts
+               modified
+               topic
+            }
+         }
+      }
+      `, token);
+      return instance(option as AxiosRequestConfig);
+   },
+
+   getAllPosts(token: string) {
+      const option = aixosCommonObj(`
                query {
                     Allposts{
                        id
-                       comment 
-                       uid 
-                       content_name 
-                       date 
-                       created 
-                       file 
-                       detail 
-                       thumbnail 
-                       kindOfPosts 
-                       modified 
+                       comment
+                       uid
+                       content_name
+                       date
+                       created
+                       file
+                       detail
+                       thumbnail
+                       kindOfPosts
+                       modified
                        topic
                   }
                }
-               `,
-         },
-      });
+               `, token);
+      return instance(option as AxiosRequestConfig);
    },
 
+   getAllTopicName(token: string) {
+      const option = aixosCommonObj(`
+               query {
+                    tableName{
+                        Tables_in_contents
+                    }
+               }
+               `, token);
+      return instance(option as AxiosRequestConfig);
+   }
+   ,
    getCSRTtoken() {
       return instance({
          url: "/api/csrf",
+      });
+   },
+
+   preloadGetAllPosts() {
+      return instance({
+         url: "/topic/posts/items",
+         method: "get",
+      });
+   },
+
+   preloadGetPost(topic: string, postsId: string) {
+      return instance({
+         url: `/topic/preload/${encodeURIComponent(topic)}/posts/${postsId}`,
+         method: "get",
       });
    },
 
@@ -122,37 +167,6 @@ const util = {
       });
    },
 
-   getAllPostsItems(token: string) {
-      return instance({
-         url: "/topic/posts/items",
-         method: "get",
-      });
-      // return instance({
-      //    url: URL,
-      //    method: "post",
-      //    headers: { "X-XSRF-TOKEN": token },
-      //    data: {
-      //       query: `
-      //          query {
-      //               Allposts{
-      //                  id
-      //                  comment
-      //                  uid
-      //                  content_name
-      //                  date
-      //                  created
-      //                  file
-      //                  detail
-      //                  thumbnail
-      //                  kindOfPosts
-      //                  modified
-      //                  topic
-      //             }
-      //          }
-      //          `,
-      //    },
-      // });
-   },
 
    getPostFromParams(parmas: string) {
       return instance({
@@ -161,11 +175,6 @@ const util = {
       });
    },
 
-   getPostFromPostId(topic: string, postsId: string) {
-      return instance({
-         url: `/topic/${encodeURIComponent(topic)}/posts/${postsId}`,
-      });
-   },
 
    deleteTopic(topicName: string, token: string) {
       return instance({

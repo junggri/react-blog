@@ -18,6 +18,14 @@ export const GET_TEMP_POST = "data/GET_TEMP_POST";
 export const GET_TEMP_POST_SUCCESS = "data/GET_TEMP_POST_SUCCESS";
 export const GET_TEMP_POST_ERROR = "data/GET_TEMP_POST_ERROR";
 
+export const PRELOAD_ALL_POSTS = "preload/PRELOAD_ALL_POSTS";
+export const PRELOAD_ALL_POSTS_SUCCESS = "preload/PRELOAD_ALL_POSTS_SUCCESS";
+export const PRELOAD_ALL_POSTS_ERROR = "preload/PRELOAD_ALL_POSTS_ERROR";
+
+export const PRELOAD_POST = "preload/PRELOAD_POST";
+export const PRELOAD_POST_SUCCESS = "preload/PRELOAD_POST_SUCCESS";
+export const PRELOAD_POST_ERROR = "preload/PRELOAD_POST_ERROR";
+
 
 export const CLEAR_POST = "data/CLEAR_POST";
 export const CLEAR_POST_DATA = "data/CLEAR_POST_DATA";
@@ -27,9 +35,11 @@ export const onRequestPosts = createThunk(GET_POSTS, util.getPostFromParams);
 
 export const onRequsetPost = createThunk(GET_POST, util.getPostFromPostId);
 
-export const onRequestAllPosts = createThunk(GET_ALL_POSTS, util.getAllPostsItems);
+export const onRequestAllPosts = createThunk(GET_ALL_POSTS, util.getAllPosts);
 
-export const onRequestTemoPost = createThunk(GET_TEMP_POST, util.getTempPost);
+export const onPreloadAllPosts = createThunk(PRELOAD_ALL_POSTS, util.preloadGetAllPosts);
+
+export const onPreloadPost = createThunk(PRELOAD_POST, util.preloadGetPost);
 
 
 const initialState: IPostInitialState = {
@@ -37,7 +47,6 @@ const initialState: IPostInitialState = {
    post: reducerUtil.initial(null),
    AllPosts: reducerUtil.initial(null),
 };
-
 
 export default function Posts(state: IPostInitialState = initialState, action: DataAction): IPostInitialState {
    switch (action.type) {
@@ -54,6 +63,14 @@ export default function Posts(state: IPostInitialState = initialState, action: D
       case GET_ALL_POSTS_SECCUESS:
       case GET_ALL_POSTS_ERROR:
          return handleAction(GET_ALL_POSTS, "AllPosts", true)(state, action);
+      case PRELOAD_ALL_POSTS:
+      case PRELOAD_ALL_POSTS_SUCCESS:
+      case PRELOAD_ALL_POSTS_ERROR:
+         return handleAction(GET_ALL_POSTS, "AllPosts", true)(state, action);
+      case PRELOAD_POST:
+      case PRELOAD_POST_SUCCESS:
+      case PRELOAD_POST_ERROR:
+         return handleAction(GET_POST, "post", true)(state, action);
       case CLEAR_POST:
          return {
             ...state,

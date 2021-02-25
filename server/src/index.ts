@@ -9,11 +9,13 @@ import sessionConfig from "./config/session";
 import path from "path";
 import cors from "cors";
 import { csrfProtection, header } from "./lib/middlewares";
-import model from "../src/model/topic.model";
+// import model from "../src/model/topic.model";
 import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
 import indexApi from "../src/router";
 import topicApi from "../src/router/topic";
+import queryResolver from "./graphql/query.resolvers";
+
 
 const app = express();
 app.disable("x-powered-by");
@@ -34,11 +36,15 @@ app
    .use(csrfProtection);
 
 const schema = buildSchema(`
-     type Query{
-      name:Int
+    type Query{
       Allposts:[Allposts]
+      postContent(topic:String ,postsId:String) : postContent
+      tableName:[table]
     }
-
+   type postContent{
+      content:String
+      result:[Allposts]
+   }
    type Allposts{
       id: Int
       comment: Int
@@ -53,17 +59,15 @@ const schema = buildSchema(`
       modified: String
       topic: String
    }
+   
+   type table{
+      Tables_in_contents:String
+   }
+
 `);
 
 const root = {
-   Allposts: async () => {
-      let result: any = await model.getAllPostsItems();
-      console.log(result);
-      return result;
-   },
-   csrf: async (req: Request, res: Response) => {
-      return res.status(200).json({ token: req.csrfToken() });
-   },
+   ...queryResolver,
 };
 
 app.use(

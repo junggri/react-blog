@@ -1,8 +1,19 @@
 import React from "react";
+import { IPostCommonProps } from "../../modules/Posts/posts.interface";
+import { PostItem } from "../index";
 
-const EntryPostContaier = () => {
+interface IEntryPostContainer {
+   data: [IPostCommonProps] | null
+}
+
+const EntryPostContaier = ({ data }: IEntryPostContainer) => {
+   if (!data) return null;
    return (
-      <div>asd</div>
+      <>
+         {data.map((e, i) => (
+            <PostItem data={e} key={e.uid} />
+         ))}
+      </>
    );
 };
-export default EntryPostContaier;
+export default React.memo(EntryPostContaier);

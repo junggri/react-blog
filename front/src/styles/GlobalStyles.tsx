@@ -37,26 +37,30 @@ const GlobalStyles = createGlobalStyle`
     }
   
     b { 
-        font-weight: bold !important; 
+       font-weight: bold !important; 
     }
     i { 
-        font-style : italic;
+       font-style : italic;
     }
     .quill{
-        height: 89%;
-       
+     position:relative;
+     border:1px solid black;
+     width:50%;
+     height:100vh;
+     display: inline-block;
     }
-    .quill img{
-        height: auto;
-        width:auto;
-        max-height: 700px;
-        position: relative;
-        margin :0 auto;
+    .ql-container.ql-snow{
+      height:93%;
+      position: relative;
+      border:none;
     }
-   .ql-container.ql-snow{
-        height:90%;
-        border:none !important;
-    }
+    //.quill img{
+    //    height: auto;
+    //    width:auto;
+    //    max-height: 700px;
+    //    position: relative;
+    //    margin :0 auto;
+    //}
     .ql-size-huge{
         font-size:4rem !important;
     }
@@ -74,9 +78,6 @@ const GlobalStyles = createGlobalStyle`
         width:50%;
         border: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    }
-    .react,.hljs,.stata{
-       background: white !important;
     }
     .content-title::placeholder{
         font-size:3rem;

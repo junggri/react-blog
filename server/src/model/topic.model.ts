@@ -202,6 +202,7 @@ const contentModel = {
          try {
             let _query: string = "";
             const [tables]: any = await conn.execute("show tables");
+            console.log(tables);
             conn.release();
             tables.forEach((e: any, idx: number) => {
                tables.length - 1 !== idx

@@ -5,10 +5,18 @@
 /client/.env.development
 /client/.env.production
 
-server/.env
+./server/.env
+./server/dist
+
+./front/.env
+./front/.env.production
+./front/dist
+
 contents
 temporary-storage
 
 
 server/dist
 server/server.env.json
+server/src/controller/admin.controller.ts
+server/src/model/admin.model.ts

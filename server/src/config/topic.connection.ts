@@ -11,7 +11,7 @@ const option = {
    connectionLimit: 40,
    waitForConnections: true,
 };
-console.log(option);
+
 
 async function getConnection() {
    try {

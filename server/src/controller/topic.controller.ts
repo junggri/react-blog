@@ -3,6 +3,7 @@ import model from "../model/topic.model";
 import { promises as fs } from "fs";
 import path from "path";
 import { uploadThumbnail } from "../lib/multer";
+import model1 from "../model/topic1.model";
 
 declare module "express-session" {
    interface Session {
@@ -28,13 +29,38 @@ interface Controller {
    getPostsFromPostsId(req: Request, res: Response): void
    makeNewTopic(req: Request, res: Response): void
    getAllPostsItems(req: Request, res: Response): any
+   preloadAllPosts(req: Request, res: Response): any
    deleteTopic(req: Request, res: Response): any
    deleteTempPost(req: Request, res: Response): any
    temporaryPost(req: Request, res: Response): any
    saveThumbnail(req: Request, res: Response): any
+//////////////////////////
+   getAllPosts(req: Request, res: Response): any
+   getPostPreload(req: Request, res: Response): any
 }
 
 let contentController: Controller = {
+   getAllPosts: async (req, res) => {
+      const result = await model1.getAllPosts();
+      res.status(200).json(result);
+   },
+
+   getPostPreload: async (req, res) => {
+      const { topic, postsId } = req.params;
+      const result = await model1.getPostData(topic, postsId);
+      res.status(200).json(result);
+   },
+//////////////////////////
+   getAllPostsItems: async (req, res) => {
+      const result: any = await model.getAllPostsItems();
+      res.status(200).json(result);
+   },
+
+   preloadAllPosts: async (req, res) => {
+      const result: any = await model.getAllPostsItems();
+      res.status(200).json(result);
+   },
+
    getContentName: async (req, res) => {
       let result: any = await model.getAllTopic();
       if (result.state) {
@@ -132,10 +158,6 @@ let contentController: Controller = {
          : res.status(404).json({ state: false });
    },
 
-   getAllPostsItems: async (req, res) => {
-      const result: any = await model.getAllPostsItems();
-      res.status(200).json(result);
-   },
 
    deleteTopic: async (req, res) => {
       let result: any = await model.deleteTopic(req.body.topicName);

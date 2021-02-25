@@ -34,7 +34,7 @@ var _client = redis_1.default.createClient({
     port: Number(process.env.REACT_APP_SESSION_PORT),
 });
 exports.sessionConfig = {
-    secret: process.env.REACT_APP_SESSEION_KEY,
+    secret: "Asdasdasdads",
     name: "sid",
     resave: false,
     saveUninitialized: true,

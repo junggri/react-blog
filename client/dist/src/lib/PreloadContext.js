@@ -20,6 +20,7 @@ var Preloader = function (_a) {
 exports.Preloader = Preloader;
 var usePreloader = function (resolve) {
     var preloadContext = react_1.useContext(PreloadContext);
+    console.log(preloadContext);
     if (!preloadContext)
         return null;
     if (preloadContext.done)

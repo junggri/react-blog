@@ -11,11 +11,11 @@ export const getTopicSuccess = (payload: any[]) => ({ type: GET_TOPIC_SUCCESS, p
 export const getTopicError = (e: Error) => ({ type: GET_TOPIC_ERROR, e });
 
 
-export const onReqTopicsName = () => async (dispatch: any, getState: any) => {
+export const onRequestTopicNames = (token: string) => async (dispatch: any, getState: any) => {
    dispatch(getTopic());
    try {
-      const { data } = await util.getTopicName();
-      dispatch(getTopicSuccess(data));
+      const { data } = await util.getAllTopicName(token);
+      dispatch(getTopicSuccess(data.data.tableName));
    } catch (e) {
       dispatch(getTopicError(e));
    }

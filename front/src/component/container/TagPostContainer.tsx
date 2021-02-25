@@ -1,14 +1,24 @@
 import React from "react";
 import { IPostCommonProps } from "../../modules/Posts/posts.interface";
+import { PostItem } from "../index";
 
-interface ITagContainer {
+interface ITagPostContainer {
    data: IPostCommonProps[] | null
+   topic: string
 }
 
-const TagContainer = () => {
+
+const TagPostContainer = ({ data, topic }: ITagPostContainer) => {
+
    return (
-      <div>123</div>
+      <>
+         {data?.map((e) => {
+            if (e.topic === topic) {
+               return <PostItem data={e} key={e.uid} />;
+            }
+         })}
+      </>
    );
 };
 
-export default TagContainer;
+export default React.memo(TagPostContainer);

@@ -4,9 +4,10 @@ import axios from "axios";
 
 dotenv.config();
 
+console.log();
 const instance = axios.create({
    withCredentials: true,
-   baseURL: process.env.NODE_ENV === "development" ? "http://localhost:5000" : "https://junggri.com",
+   baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 instance.defaults.headers.common["Content-Type"] = "application/json";

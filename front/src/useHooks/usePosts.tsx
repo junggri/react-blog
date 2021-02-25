@@ -3,28 +3,21 @@ import { RootState } from "../modules";
 import { onRequestAllPosts, onRequestPosts, onRequsetPost } from "../modules/Posts";
 import { useCallback } from "react";
 import { clearPost, clearPostData } from "../modules/Posts/lib/PostsAction";
-import { usePreloader } from "./usePreloader";
 
 export default function usePosts() {
    const dispatch = useDispatch();
    const { posts, post, AllPosts } = useSelector((state: RootState) => state.posts);
 
-   const getPosts = useCallback(
-      (params: string) => {
-         dispatch(onRequestPosts({ params: params }));
-      },
-      [dispatch],
-   );
+   const getPosts = useCallback((params: string) => {
+      dispatch(onRequestPosts({ params: params }));
+   }, [dispatch]);
 
-   const getPost = useCallback(
-      (topic: string, postsId: string) => {
-         dispatch(onRequsetPost({ topic, postsId }));
-      },
-      [dispatch],
-   );
+   const getPost = useCallback((topic: string, postsId: string, csrf: string) => {
+      dispatch(onRequsetPost({ topic, postsId, csrf }));
+   }, [dispatch]);
 
-   const getAllPosts = useCallback((token: string) => {
-      dispatch(onRequestAllPosts({ token }));
+   const getAllPosts = useCallback((csrf: string) => {
+      dispatch(onRequestAllPosts({ csrf }));
    }, [dispatch]);
 
    const onClearPost = useCallback(() => {
@@ -35,7 +28,6 @@ export default function usePosts() {
       dispatch(clearPostData());
    }, [dispatch]);
 
-   usePreloader(() => dispatch(onRequestAllPosts({})));
 
    return {
       AllPosts,

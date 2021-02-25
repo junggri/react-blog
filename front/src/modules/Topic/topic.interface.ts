@@ -18,6 +18,6 @@ export interface ITopicModuleProps {
    topic: null | any[]
    loading: boolean,
    error: Error | null
-   requestTopic: () => void
+   requestTopic: (token: string) => void
 
 }

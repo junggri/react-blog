@@ -10,6 +10,12 @@ import {
    GET_POSTS,
    GET_POSTS_ERROR,
    GET_POSTS_SUCCESS,
+   PRELOAD_ALL_POSTS,
+   PRELOAD_ALL_POSTS_ERROR,
+   PRELOAD_ALL_POSTS_SUCCESS,
+   PRELOAD_POST,
+   PRELOAD_POST_ERROR,
+   PRELOAD_POST_SUCCESS,
 } from "./index";
 
 export interface DataAction {
@@ -24,6 +30,13 @@ export interface DataAction {
       | typeof GET_ALL_POSTS_ERROR
       | typeof CLEAR_POST
       | typeof CLEAR_POST_DATA
+      | typeof PRELOAD_ALL_POSTS
+      | typeof PRELOAD_ALL_POSTS_SUCCESS
+      | typeof PRELOAD_ALL_POSTS_ERROR
+      | typeof PRELOAD_POST
+      | typeof PRELOAD_POST_SUCCESS
+      | typeof PRELOAD_POST_ERROR
+
    payload: any
    error: Error
 
@@ -56,15 +69,6 @@ export interface IAllPost {
    error: Error | null
 }
 
-// data: { [index: string]: IPostCommonProps[] } | null
-// loading: boolean
-// error: Error | null
-export interface ITest {
-   data: [IPostCommonProps] | null
-   loading: boolean
-   error: Error | null
-}
-
 export interface IPostsProps {
    data: IPostCommonProps[] | null
    loading: boolean
@@ -90,8 +94,8 @@ export interface IPostsModuleProps {
    post: IPostProps<IPostDataProps>
    AllPosts: IAllPost
    getPosts: (params: string) => void
-   getPost: (topic: string, postId: string) => void
-   getAllPosts: (token: string) => void
+   getPost: (topic: string, postId: string, csrf: string) => void
+   getAllPosts: (csrf: string) => void
    onClearPost: () => void
    onCleatPostData: () => void
 }

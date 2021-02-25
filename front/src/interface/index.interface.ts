@@ -1,8 +1,3 @@
-export interface ITopCommonSectionProps {//top
-   width: number
-   onGetHeight: (payload: HTMLDivElement) => void
-}
-
 export interface IHomeMainSectionProps {//HomeMainSection
    width: any;
    list: any;
