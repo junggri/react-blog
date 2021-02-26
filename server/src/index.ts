@@ -14,7 +14,9 @@ import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
 import indexApi from "../src/router";
 import topicApi from "../src/router/topic";
+import adminApi from "../src/router/admin";
 import queryResolver from "./graphql/query.resolvers";
+import mutationResolver from "./graphql/mutation.resolvers";
 
 
 const app = express();
@@ -40,12 +42,50 @@ const schema = buildSchema(`
       Allposts:[Allposts]
       postContent(topic:String ,postsId:String) : postContent
       tableName:[table]
+      temporaryPost:[temporaryPost]
+      getTextEditorData: textEditorData
+      getTemporaryContent(uid:String):content
     }
-   type postContent{
+    
+    type Mutation{
+      savePost(input:postData):result
+      createTopic(topic:String):result
+      saveTemporaryPost(input:temporaryData):result
+      deleteTopic(topic:String):result
+      deletePost(topic:String, identifier:String):result
+      deleteTemporaryPost(identifier:String):result
+    }
+      
+    input temporaryData{
+      topicName:String
+      content:String
+      contentName:String
+      detail:String
+    } 
+    
+    input postData{
+      contentName:String
+      content:String
+      topicName:String
+      kindofPosts:String
+      detail:String
+      thumbnail:String
+    }
+     
+    type result{
+      state:Boolean
+    }
+    
+    type content{
+      content:String
+    }
+    
+    type postContent{
       content:String
       result:[Allposts]
-   }
-   type Allposts{
+    }
+   
+    type Allposts{
       id: Int
       comment: Int
       uid: String
@@ -58,16 +98,30 @@ const schema = buildSchema(`
       kindOfPosts: String
       modified: String
       topic: String
-   }
+    }
    
-   type table{
+    type table {
       Tables_in_contents:String
-   }
-
+    }
+   
+    type temporaryPost{
+      uid: String
+      topic: String
+      created: String
+      content_name:String
+      detail: String
+      file: String
+    }
+   
+    type textEditorData{
+      tableName:[table]
+      tempPostList:[temporaryPost]
+    }
 `);
 
 const root = {
    ...queryResolver,
+   ...mutationResolver,
 };
 
 app.use(
@@ -81,7 +135,7 @@ app.use(
 
 app.use("/api", indexApi); //공통라우터
 app.use("/topic", topicApi); //콘텐츠 관련 라우터
-
+app.use("/admin", adminApi);
 
 app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
    res.locals.message = err.message;

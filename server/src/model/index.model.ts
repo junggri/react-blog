@@ -3,6 +3,7 @@ import sanitize from "sanitize-html";
 import { cryptoPwd, decryptoPwd } from "../lib/cryptoPwd";
 import contentModel from "./topic.model";
 import sendMsg from "../lib/sendMsg";
+import { PoolConnection } from "mysql2/promise";
 
 function makeDate() {
    const today = new Date();
@@ -22,7 +23,7 @@ function promiseArray(conn: any, query: string, dep: number[]) {
 
 const indexModel = {
    async createNewCommetTable(ref: string) {
-      const conn = await connection();
+      const conn: PoolConnection | undefined = await connection();
       const table_name = ref.replace(/-/g, "_");
       if (conn !== undefined)
          try {
@@ -48,7 +49,7 @@ const indexModel = {
    },
 
    async getComment(postid: string) {
-      const conn = await connection();
+      const conn: PoolConnection | undefined = await connection();
       if (conn !== undefined)
          try {
             const query = `
@@ -67,7 +68,7 @@ const indexModel = {
    },
 
    async saveComment(postname: string, cmt: string, grp: number, topic: string, postid: string, writer: string, pwd: string) {
-      const conn = await connection();
+      const conn: PoolConnection | undefined = await connection();
       const sanitize_writer = sanitize(writer);
       const sanitize_pwd = sanitize(pwd);
       const _cyrpto = await cryptoPwd(sanitize_pwd);
@@ -88,7 +89,7 @@ const indexModel = {
    },
 
    async saveReply(reply: string, bn: number, grp: number, sorts: number, depth: number, topic: string, postid: string, writer: string, pwd: string) {
-      const conn = await connection();
+      const conn: PoolConnection | undefined = await connection();
       const sanitize_writer = sanitize(writer);
       const sanitize_pwd = sanitize(pwd);
       const _cyrpto = await cryptoPwd(sanitize_pwd);
@@ -135,7 +136,7 @@ const indexModel = {
    },
 
    async deleteCmtTable(postid: string) {
-      const conn = await connection();
+      const conn: PoolConnection | undefined = await connection();
       if (conn !== undefined)
          try {
             const query = `DROP TABLE \`${postid.replace(/-/g, "_")}\``;
@@ -147,7 +148,7 @@ const indexModel = {
 
 
    async deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[]) {
-      const conn = await connection();
+      const conn: PoolConnection | undefined = await connection();
       if (conn !== undefined)
          try {
             const find_query = `select * from ${postId.replace(/-/g, "_")} where board = ?`;

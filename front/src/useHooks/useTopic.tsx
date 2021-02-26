@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
 import { useCallback } from "react";
-import { onRequestTopicNames } from "../modules/Topic";
+import { onRequestTopicAndTempPostData } from "../modules/Topic";
+import { IWriteData } from "../modules/Topic/topic.interface";
 
 export default function useTopic() {
    const dispatch = useDispatch();
-   const { topic, loading, error } = useSelector((state: RootState) => state.topic);
+   const { writeData, loading, error } = useSelector((state: RootState) => state.topic);
+   const { tableName, tempPostList }: IWriteData = writeData;
 
-   const requestTopic = useCallback((token: string) => {
-      dispatch(onRequestTopicNames(token));
+   const requestTopicAndTempPostData = useCallback((token: string) => {
+      dispatch(onRequestTopicAndTempPostData(token));
    }, [dispatch]);
 
 
-   return { topic, loading, error, requestTopic };
+   return { tableName, tempPostList, loading, error, requestTopicAndTempPostData };
 }

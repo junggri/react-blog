@@ -8,3 +8,6 @@ export { default as TagPostContainer } from "./container/TagPostContainer";
 export { default as TextEditContentName } from "./common/TextEditInput";
 export { default as SelectTopic } from "./common/SelectTopic";
 export { default as KindofPosts } from "./common/KindOfPosts";
+export { default as ThumbNail } from "./common/ThumbNail";
+export { default as TextEditorBtnBox } from "./common/TextEditorBtnBox";
+export { default as TemporaryPost } from "./common/TemporaryPost";

@@ -8,16 +8,26 @@ export interface TopicAction {
    error: Error
 }
 
+export interface IWriteData {
+   tableName: [{ Tables_in_contents: string }] | null
+   tempPostList: [{
+      uid: string,
+      topic: string,
+      created: string
+      content_name: string
+      detail: string
+      file: string
+   }] | null
+}
+
 export interface ITopicinitialState {
-   topic: null | any[]
+   writeData: IWriteData
    loading: boolean
    error: Error | null
 }
 
-export interface ITopicModuleProps {
-   topic: null | any[]
+export interface ITopicModuleProps extends IWriteData {
    loading: boolean,
    error: Error | null
-   requestTopic: (token: string) => void
-
+   requestTopicAndTempPostData: (token: string) => void
 }

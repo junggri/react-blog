@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
     }
     .quill{
      position:relative;
-     border:1px solid black;
+     border:1px solid rgba(0,0,0,0.2);
      width:50%;
      height:100vh;
      display: inline-block;
@@ -63,25 +63,6 @@ const GlobalStyles = createGlobalStyle`
     //}
     .ql-size-huge{
         font-size:4rem !important;
-    }
-    .content-title{
-        width:100%;
-        height:100px;
-        resize:none;
-        border:none;
-        outline-style:none;
-        padding:25px;
-        font-size:3rem;
-    }
-    .writeBox-inputs{
-        border:1px solid black;
-        width:50%;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    }
-    .content-title::placeholder{
-        font-size:3rem;
-        font-style:italic
     }
     .preview-title{
         border:1px solid black;
@@ -115,6 +96,7 @@ const GlobalStyles = createGlobalStyle`
     .ql-toolbar.ql-snow{
         border-left:none;
         border-right:none;
+        border-top:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }   
     .hljs-function{
