@@ -9,6 +9,15 @@ export interface ITextInitialProps {
    thumbnail: null | string
 }
 
+export interface ITempPost {
+   uid: string,
+   topic: string,
+   content_name: string,
+   created: string,
+   detail: string,
+   file: string
+}
+
 export type EditorAction =
    | ReturnType<typeof onSetContent>
    | ReturnType<typeof onSetContentName>

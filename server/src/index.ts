@@ -9,7 +9,6 @@ import sessionConfig from "./config/session";
 import path from "path";
 import cors from "cors";
 import { csrfProtection, header } from "./lib/middlewares";
-// import model from "../src/model/topic.model";
 import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
 import indexApi from "../src/router";
@@ -45,6 +44,7 @@ const schema = buildSchema(`
       temporaryPost:[temporaryPost]
       getTextEditorData: textEditorData
       getTemporaryContent(uid:String):content
+      getPostDataUpdate(identifier:String) : postContentForUpdate
     }
     
     type Mutation{
@@ -55,7 +55,7 @@ const schema = buildSchema(`
       deletePost(topic:String, identifier:String):result
       deleteTemporaryPost(identifier:String):result
     }
-      
+    
     input temporaryData{
       topicName:String
       content:String
@@ -71,7 +71,7 @@ const schema = buildSchema(`
       detail:String
       thumbnail:String
     }
-     
+    
     type result{
       state:Boolean
     }
@@ -95,7 +95,7 @@ const schema = buildSchema(`
       file: String
       detail:String
       thumbnail:String
-      kindOfPosts: String
+      kindofPosts: String
       modified: String
       topic: String
     }
@@ -116,6 +116,10 @@ const schema = buildSchema(`
     type textEditorData{
       tableName:[table]
       tempPostList:[temporaryPost]
+    }
+    
+    type postContentForUpdate{
+      content:String
     }
 `);
 

@@ -2,7 +2,6 @@ import connection from "../config/topic.connection";
 import tempConnection from "../config/temp.connetion";
 import path from "path";
 import { promises as fs } from "fs";
-import { RowDataPacket } from "mysql2";
 import { PoolConnection } from "mysql2/promise";
 import { ITextInitialProps } from "../interace";
 import saveDataCommonProcess from "../lib/saveDataCommonProcess";
@@ -14,10 +13,6 @@ function makePath<T>(folderName: T, fileName: T) {
    return { filePath: filePath, _path: _path };
 }
 
-interface IResult extends RowDataPacket {
-   state: boolean
-   data?: any
-}
 
 async function poolConnction<T>(query: string, dep?: T[]) {
    const conn: PoolConnection | undefined = await connection();
@@ -91,6 +86,16 @@ class topicModel {
    static async getTemporaryContent(uid: string) {
       try {
          const _path = makePath("temporary-storage", uid);
+         const data = await fs.readFile(_path.filePath, "utf-8");
+         return { content: data };
+      } catch (e) {
+         console.error(e);
+      }
+   }
+
+   static async getPostDataForUpdate(uid: string) {
+      try {
+         const _path = makePath("contents", uid);
          const data = await fs.readFile(_path.filePath, "utf-8");
          return { content: data };
       } catch (e) {
@@ -174,10 +179,12 @@ class topicModel {
 
    static async deleteTemporaryPost(input: { identifier: string }) {
       const conn: PoolConnection | undefined = await tempConnection();
+      let _path = makePath("temporary-storage", input.identifier);
       if (conn !== undefined)
          try {
             const query = "DELETE FROM post WHERE uid = ?";
             const dep = [input.identifier];
+            await fs.unlink(_path.filePath);
             await conn.execute(query, dep);
             conn.release();
             return { state: true };

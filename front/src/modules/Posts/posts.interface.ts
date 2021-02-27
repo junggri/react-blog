@@ -52,7 +52,7 @@ export interface IPostCommonProps {
    file: string,
    detail: string
    thumbnail: string
-   kindOfPosts: string
+   kindofPosts: string
    modified: string | null
    topic: string
 }

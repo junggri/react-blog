@@ -17,7 +17,7 @@ function axiosCommonObj<T>(query: T, token: T) {
 
 const util = {
    getPostFromPostId(topic: string, postsId: string, token: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
       query {
          postContent(topic:"${encodeURIComponent(topic)}" ,postsId:"${postsId}"){
             content
@@ -31,7 +31,7 @@ const util = {
                file
                detail
                thumbnail
-               kindOfPosts
+               kindofPosts
                modified
                topic
             }
@@ -42,7 +42,7 @@ const util = {
    },
 
    getAllPosts(token: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
                query {
                     Allposts{
                        id
@@ -54,7 +54,7 @@ const util = {
                        file
                        detail
                        thumbnail
-                       kindOfPosts
+                       kindofPosts
                        modified
                        topic
                   }
@@ -64,7 +64,7 @@ const util = {
    },
 
    getTopicAndTempPostsData(token: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
                query {
                     getTextEditorData{
                         tableName{
@@ -85,7 +85,7 @@ const util = {
    },
 
    getTemporaryContent(uid: string, token: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
          query{
             getTemporaryContent(uid:"${uid}"){
                content
@@ -95,8 +95,19 @@ const util = {
       return instance(option as AxiosRequestConfig);
    },
 
+   getPostDataForUpdate(uid: string, token: string) {
+      const option = axiosCommonObj<string>(`
+        query{
+            getPostDataUpdate(identifier:"${uid}"){
+               content
+            }
+        }
+      `, token);
+      return instance(option as AxiosRequestConfig);
+   },
+
    savePost({ data, csrf }: { data: ITextInitialProps, csrf: string }) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
          mutation {
              savePost(input:{contentName:"${data.contentName}", content:"${data.content}", topicName:"${data.topicName}" ,kindofPosts:"${data.kindofPosts}",detail:"${data.detail}", thumbnail:"${data.thumbnail}"}){
                  state
@@ -107,7 +118,7 @@ const util = {
    },
 
    saveTemporaryPost(data: ITextInitialProps, csrf: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
          mutation{
             saveTemporaryPost(input:{topicName:"${data.topicName}", content:"${data.content}" ,contentName:"${data.contentName}",detail:"${data.detail}"}){
                state
@@ -129,7 +140,7 @@ const util = {
    },
 
    deletePost(topic: string, identifier: string, token: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
          mutation{
             deletePost(topic:"${topic}", identifier:"${identifier}"){
                state
@@ -151,7 +162,7 @@ const util = {
    },
 
    deleteTemporaryPost(post_id: string, token: string) {
-      const option = axiosCommonObj(`
+      const option = axiosCommonObj<string>(`
          mutation{
             deleteTemporaryPost(identifier:"${post_id}"){
                state

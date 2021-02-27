@@ -6,8 +6,7 @@ function LoginFlag() {
    const { onSetLogin } = useCommon();
 
    useEffect(() => {
-      const token = localStorage.getItem("_jt");
-      const status = checkUserState(token);
+      const status = checkUserState();
       status ? onSetLogin(true) : onSetLogin(false);
    }, []);
 }

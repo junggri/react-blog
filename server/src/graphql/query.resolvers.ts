@@ -22,6 +22,11 @@ const queryResolver = {
    getTemporaryContent: async ({ uid }: { uid: string }) => {
       return await model.getTemporaryContent(uid);
    },
+
+   getPostDataUpdate: async ({ identifier }: { identifier: string }) => {
+      return await model.getPostDataForUpdate(identifier);
+   },
+
 };
 
 export default queryResolver;

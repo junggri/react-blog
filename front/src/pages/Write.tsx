@@ -1,4 +1,6 @@
 import React, { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import util from "../lib/axios";
+import qs from "qs";
 import { Snow } from "../styles/snow";
 import { RouteComponentProps } from "react-router-dom";
 import { formats, modules } from "../config/textEditor.config";
@@ -8,16 +10,17 @@ import useCSRF from "../useHooks/useCSRF";
 import useTopic from "../useHooks/useTopic";
 import useCommon from "../useHooks/useCommon";
 import useTextEdit from "../useHooks/useTextEdit";
-import util from "../lib/axios";
-import qs from "qs";
-import { ITopicModuleProps } from "../modules/Topic/topic.interface";
-import { ITextEditModuleProps } from "../modules/TextEditor/textEdit.interface";
-import { ICommonModuleProps } from "../modules/Common/common.interface";
+import usePosts from "../useHooks/usePosts";
 import checkUserState from "../lib/checkUserState";
 import validationWrite from "../lib/validationWrite";
+import { ITopicModuleProps } from "../modules/Topic/topic.interface";
+import { ITempPost, ITextEditModuleProps } from "../modules/TextEditor/textEdit.interface";
+import { ICommonModuleProps } from "../modules/Common/common.interface";
+import { IPostCommonProps, IPostsModuleProps } from "../modules/Posts/posts.interface";
 
 interface ITextEdit extends HTMLElement {
    state: any
+   editor: any
 }
 
 interface IWriteData {
@@ -32,13 +35,16 @@ interface IWriteData {
    }]
 }
 
+//TODO 임시저장 저장/또 임시저장 그리고 axios extension 공부하기
+
 const Write = ({ history, location }: RouteComponentProps) => {
-   const csrf = useCSRF();
-   const [mode, setMode] = useState<string>("write");
    const ReactQuill = typeof window === "object" ? require("react-quill") : () => false;
+   const csrf = useCSRF();
    const textEdit = useRef<ITextEdit>(null);
-   const { tableName, tempPostList, requestTopicAndTempPostData }: ITopicModuleProps = useTopic();
+   const [fetch, setFetch] = useState<boolean>(false);
+   const { AllPosts, getAllPosts }: IPostsModuleProps = usePosts();
    const { setNewRequset, login }: ICommonModuleProps = useCommon();
+   const { tableName, tempPostList, requestTopicAndTempPostData }: ITopicModuleProps = useTopic();
    const {
       data,
       setContent,
@@ -51,35 +57,44 @@ const Write = ({ history, location }: RouteComponentProps) => {
    }: ITextEditModuleProps = useTextEdit();
 
 
-   const getDataFromMode = async (cb: Function, uid: string, token: string) => {
-      const { data } = await cb(uid, token);
-      console.log(data.data.getTemporaryContent.content);
+   const getDataFromModeAndSetData = async (mode: string, cb: any, content: ITempPost | IPostCommonProps) => {
+      const { data } = await cb;
+      console.log(data);
+      if (textEdit.current) {
+         mode === "temp"
+            ? textEdit.current.editor.scrollingContainer.innerHTML = data.data.getTemporaryContent.content
+            : textEdit.current.editor.scrollingContainer.innerHTML = data.data.getPostDataUpdate.content;
+      }
+      setTempData({
+         contentName: content.content_name,
+         topicName: content.topic,
+         kindofPosts: mode === "temp" ? "" : (content as IPostCommonProps).kindofPosts,
+         detail: content.detail,
+      });
    };
 
    useEffect(() => {
       if (Object.keys(qs.parse(location.search))[0] !== undefined) {
          const mode: string = Object.keys(qs.parse(location.search))[0].split("?")[1];
-         const uid = qs.parse(location.search)[`?${mode}`];
-         if (mode === "temp" && csrf) {
-            getDataFromMode(util.getTemporaryContent, uid as string, csrf);
-            // // tempPostList?.filter((e) => {
-            //    if (e.uid === qs.parse(location.search)[`?${mode}`]) {
-            //
-            //    }
-            // });
-         } else {
-
+         const uid = Object.entries(qs.parse(location.search))[0][1] as string;
+         const temp_post_data: ITempPost[] | undefined = tempPostList?.filter((e: ITempPost) => e.uid === uid);
+         if (mode === "temp" && csrf && temp_post_data) {
+            getDataFromModeAndSetData(mode, util.getTemporaryContent(uid, csrf), temp_post_data[0]);
+            setFetch(false);
+         } else if (mode === "update" && csrf && !fetch) {
+            if (!AllPosts.data) getAllPosts(csrf);
+            if (AllPosts.data) {
+               const post_data = AllPosts.data.filter((e: IPostCommonProps) => e.uid === uid);
+               getDataFromModeAndSetData(mode, util.getPostDataForUpdate(uid, csrf), post_data[0]);
+               setFetch(true);
+            }
          }
       }
-   }, [location, csrf]);
+   }, [location, csrf, tempPostList, AllPosts.data]);
 
    useEffect(() => {
-      if (csrf && !tempPostList && !tableName) {
-         requestTopicAndTempPostData(csrf);
-      }
-
-      const token = localStorage.getItem("_jt");
-      const status = checkUserState(token);
+      if (csrf && !tempPostList && !tableName) requestTopicAndTempPostData(csrf);
+      const status = checkUserState();
       if (!status) history.push("/");
       if (textEdit.current) textEdit.current.focus();
       return () => setTempData({
@@ -120,25 +135,17 @@ const Write = ({ history, location }: RouteComponentProps) => {
       requestTopicAndTempPostData(csrf);
    }, [requestTopicAndTempPostData, csrf]);
 
-   // const onSaveTemporaryPost = async (): Promise<void> => {
-   //    if (csrf) {
-   //       const temp_postId = Object.values(qs.parse(location.search))[0] as string;
-   //       const result = await util.temporaryPost(data, csrf, temp_postId);
-   //       if (result.request.status === 200) history.push("/");
-   //    }
-   // };
 
    const onSubmit = async (): Promise<void> => {
-      if (csrf) {
-         const valiidation: boolean = validationWrite(data);
-         if (valiidation) {
-            const result = await util.savePost({ data, csrf });
-            if (result?.status === 200) history.push("/");
-            setNewRequset(true);
-         } else {
-            alert("정보를 입력하세요");
-         }
+      const valiidation: boolean = validationWrite(data);
+      if (valiidation && csrf) {
+         const result = await util.savePost({ data, csrf });
+         if (result?.status === 200) history.push("/");
+         setNewRequset(true);
+      } else {
+         alert("정보를 입력하세요");
       }
+
    };
 
    const onSubmitTemporaryPost = async (): Promise<void> => {
@@ -151,8 +158,10 @@ const Write = ({ history, location }: RouteComponentProps) => {
    };
 
    const deleteTemporaryPost = async (identifier: string, ref: RefObject<HTMLSpanElement>) => {
-      if (csrf) await util.deleteTemporaryPost(identifier, csrf);
-      if (ref.current) ref.current.style.display = "none";
+      if (csrf && ref.current) {
+         await util.deleteTemporaryPost(identifier, csrf);
+         ref.current.style.display = "none";
+      }
    };
 
 
