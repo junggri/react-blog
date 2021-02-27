@@ -5,16 +5,17 @@ import { PostItem } from "../index";
 interface ITagPostContainer {
    data: IPostCommonProps[] | null
    topic: string
+   onDelete: (topic: string, identifier: string) => void
 }
 
 
-const TagPostContainer = ({ data, topic }: ITagPostContainer) => {
+const TagPostContainer = ({ data, topic, onDelete }: ITagPostContainer) => {
 
    return (
       <>
          {data?.map((e) => {
             if (e.topic === topic) {
-               return <PostItem data={e} key={e.uid} />;
+               return <PostItem data={e} key={e.uid} onDelete={onDelete} />;
             }
          })}
       </>

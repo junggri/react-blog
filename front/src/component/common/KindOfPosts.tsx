@@ -2,7 +2,7 @@ import React from "react";
 import { KindofPostItemComp, KindofPostsComp } from "../../styledComponent";
 
 interface IKindofPosts {
-   onCheck: any
+   onCheck: (value: string) => void
    checked: string
 }
 
@@ -26,4 +26,4 @@ const KindofPosts = ({ onCheck, checked }: IKindofPosts) => {
       </KindofPostsComp>
    );
 };
-export default KindofPosts;
+export default React.memo(KindofPosts);

@@ -4,14 +4,15 @@ import { PostItem } from "../index";
 
 interface IEntryPostContainer {
    data: [IPostCommonProps] | null
+   onDelete: (topic: string, identifier: string) => void
 }
 
-const EntryPostContaier = ({ data }: IEntryPostContainer) => {
+const EntryPostContaier = ({ data, onDelete }: IEntryPostContainer) => {
    if (!data) return null;
    return (
       <>
          {data.map((e, i) => (
-            <PostItem data={e} key={e.uid} />
+            <PostItem data={e} key={e.uid} onDelete={onDelete} />
          ))}
       </>
    );

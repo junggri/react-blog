@@ -148,6 +148,18 @@ export const SearchBoxComp = styled.section`
     }
   }
 `;
+
+export const WriteBoxBtnComp = styled.div`
+  border:1px solid rgba(0,0,0,0.2);
+  position: absolute;
+  top:2%;
+  left:2%;
+  padding:8px 14px;
+  cursor:pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+`;
+
 export const MainContainerComp = styled.div`
   position: relative;
   margin: 0 auto;
@@ -225,6 +237,7 @@ export const PostItemComp = styled.article`
   margin-bottom:70px;
   border-bottom:1px solid rgba(0,0,0,0.1);
   padding-bottom: 35px;
+  position: relative;
   & .post-metadata-box{
     display: flex;
     justify-content: space-between;
@@ -316,6 +329,18 @@ export const PostItemComp = styled.article`
       margin-right:12px;
       font-size:0.95rem;
       opacity:0.7;
+    }
+  }
+  & .post-control-icon-box{
+    position: absolute;
+    right:0;
+    bottom:2%;
+    span{
+      opacity: 0.8;
+      cursor:pointer;
+      display: inline-block;
+      margin-left:20px;
+      font-size:1.5rem;
     }
   }
 `;
@@ -418,10 +443,11 @@ export const PostsContainerComp = styled.section`
 `;
 
 export const WriteMetaContainer = styled.section`
-  border:1px solid red;
   width:50%;
   float:right;
-  padding:20px;
+  padding:50px;
+  overflow: scroll;
+  height: 100vh;
 `;
 
 export const TextEditContentNameComp = styled.div`
@@ -548,5 +574,114 @@ export const KindofPostsComp = styled.div`
 `;
 
 export const ThumbnailComp = styled.div`
-  border:1px solid black;
+  margin-top:30px;
+  h1{
+    font-size:2rem;
+    margin-bottom:20px;
+  }
+  h2{
+    font-size:1.125rem;
+    margin-top:10px;
+    font-weight: 600;
+    color:#ff6b6b;
+  }
+  & .thumbnail-imgbox{
+    margin-top:20px;
+    max-height: 400px;
+    overflow-y: scroll;
+    img{
+      border:1px solid rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+  }
+`;
+
+export const TextEditorBoxComp = styled.div`
+  display: flex;
+  margin-top:30px;
+  div{
+    border:1px solid rgba(0,0,0,0.2);
+    padding:13px 20px;
+    margin-right:15px;
+    border-radius: 5px;
+    cursor:pointer;
+  }
+`;
+
+export const TempPostContainerComp = styled.div`;
+  margin-top:50px;
+  margin-bottom:40px;
+  & .tsc-slo{
+    font-size:2rem;
+  }
+  & .temp_item{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 60px;
+    align-items: center;
+    margin-top:20px;
+    & .posts-admin-delete{
+      font-size:1.4rem;
+      display: inline-block;
+      padding-top:5px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+`;
+
+export const TemporaryPostComp = styled.div<any>`
+  cursor:pointer;
+  font-size:1.4rem;
+  &:hover{
+    text-decoration: underline;
+  }
+`;
+
+////////
+export const AdminContainerComp = styled.div`
+  position: absolute;
+  width:30%;
+  left:50%;
+  top:40%;
+  transform: translate(-50%,-50%);
+  & .login-inputbox{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    & input{
+      padding:15px 10px;
+      outline-style: none;
+      border:1px solid rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+  }
+  & .login-btn{
+    border:1px solid rgb(0,0,0,0.2);
+    width:100%;
+    height: 57px;
+    outline-style: none;
+    cursor: pointer;
+  }
+  & .certification-numberBox{ 
+    display: flex;
+    button{
+      border:1px solid rgba(0,0,0,0.2);
+      outline-style: none;
+      height: 40px;
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      cursor: pointer ;
+    }
+    input{
+      height: 40px;  
+      outline-style: none;
+      border:1px solid rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      margin-right: 15px;
+      font-size: 1rem;
+      padding-left: 10px;
+    }
+  }
 `;

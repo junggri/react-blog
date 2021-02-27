@@ -7,7 +7,7 @@ import Meta from "../useHooks/UseMeta";
 const Entry = loadable(() => import(/* webpackChunkName: "Entry" */ "../pages/Entry"));
 const Post = loadable(() => import(/* webpackChunkName: "Post" */"../pages/Post"));
 const Write = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Write"));
-
+const Admin = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Admin"));
 
 function App() {
    const data = {
@@ -24,6 +24,7 @@ function App() {
             <Route path={["/", "/tag", "/tag/:topic"]} exact component={Entry} />
             <Route path="/topic/:topic/:postId" exact component={Post} />
             <Route path="/write" exact component={Write} />
+            <Route path="/admin/leejeongsoo" exact component={Admin} />
             <Route render={() => <h1>Not found</h1>} />
          </Switch>
       </div>

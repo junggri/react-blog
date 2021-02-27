@@ -2,12 +2,19 @@ import React from "react";
 import { PostItemComp } from "../../styledComponent";
 import { Link } from "react-router-dom";
 import { IPostCommonProps } from "../../modules/Posts/posts.interface";
+import { FiDelete } from "react-icons/fi";
+import { AiTwotoneEdit } from "react-icons/ai";
 
 interface IPostItem {
    data: IPostCommonProps
+   onDelete: (topic: string, identifier: string) => void
 }
 
-const PostItem = ({ data }: IPostItem) => {
+const PostItem = ({ data, onDelete }: IPostItem) => {
+   const onClickDeleteBtn = (e: React.MouseEvent) => {
+      onDelete(data.topic, data.uid);
+   };
+
    return (
       <PostItemComp>
          <section className="post-metadata-box">
@@ -33,6 +40,10 @@ const PostItem = ({ data }: IPostItem) => {
                <span>comment</span>
             </div>
          </footer>
+         <section className="post-control-icon-box">
+            <span><Link to={`/write?update=${data.uid}&topic=${data.topic}`}><AiTwotoneEdit /></Link></span>
+            <span onClick={onClickDeleteBtn}><FiDelete /></span>
+         </section>
       </PostItemComp>
    );
 };
