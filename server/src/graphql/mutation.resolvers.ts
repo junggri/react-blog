@@ -1,13 +1,23 @@
-import model from "../model/topic1.model";
+import model from "../model/graphql.model";
 import { ITextInitialProps } from "../interace";
+import { Request } from "express";
 
 const mutationResolver = {
-   savePost: async ({ ...input }: ITextInitialProps) => {
-      await model.savePost(input);
+   savePost: async ({ ...input }: ITextInitialProps, req: Request) => {
+      req.session.img = null;
+      return await model.savePost(input);
    },
 
    saveTemporaryPost: async ({ ...input }: ITextInitialProps) => {
       return await model.saveTemporaryPost(input);
+   },
+
+   deleteTemporaryPostAndSavePost: async (input: ITextInitialProps) => {
+      return await model.deleteTemporaryPostAndSavePost(input);
+   },
+
+   updatePost: async (input: ITextInitialProps) => {
+      return await model.updatePost(input);
    },
 
    createTopic: async (input: { topic: string }) => {
@@ -25,6 +35,7 @@ const mutationResolver = {
    deleteTemporaryPost: async (input: { identifier: string }) => {
       return await model.deleteTemporaryPost(input);
    },
+
 
 };
 export default mutationResolver;

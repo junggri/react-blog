@@ -6,26 +6,12 @@ import { PoolConnection } from "mysql2/promise";
 import { ITextInitialProps } from "../interace";
 import saveDataCommonProcess from "../lib/saveDataCommonProcess";
 import indexModel from "./index.model";
+import { poolConnction, tempPoolConnction } from "../config/connection.builder";
 
 function makePath<T>(folderName: T, fileName: T) {
    let _path = path.resolve(`../${folderName}`);
    const filePath = _path + `/${fileName}.html`;
    return { filePath: filePath, _path: _path };
-}
-
-
-async function poolConnction<T>(query: string, dep?: T[]) {
-   const conn: PoolConnection | undefined = await connection();
-   if (conn !== undefined)
-      try {
-         const [result] = await conn.execute(query, dep);
-         conn.release();
-         return { state: true, data: result };
-      } catch (e) {
-         console.log(e);
-         conn.release();
-         return { state: false };
-      }
 }
 
 class topicModel {
@@ -55,19 +41,15 @@ class topicModel {
       const query = `SELECT * from ${decodeURIComponent(topic)} where uid = ?`;
       const dep = [postId];
       const result: any = await poolConnction(query, dep);
-      if (result.state) {
-         let content = await fs.readFile(_path.filePath, "utf-8");
-         return ({ content: content, result: result.data });
-      } else {
-         return ({ state: false });
-      }
+      let content = await fs.readFile(_path.filePath, "utf-8");
+      return ({ content, result });
    }
 
    static async getTableName() {
       try {
          const query = `SHOW TABLES`;
          const result: any = await poolConnction(query);
-         return result.data;
+         return result;
       } catch (e) {
          console.error(e);
       }
@@ -78,6 +60,28 @@ class topicModel {
          const conn: PoolConnection | undefined = await tempConnection();
          const [result]: any = await conn?.execute("select * from post");
          return result;
+      } catch (e) {
+         console.error(e);
+      }
+   }
+
+   static async getDataFromMode(identifier: string, topic: string | undefined) {
+      let _path = topic === "undefined"
+         ? makePath<string>("temporary-storage", identifier)
+         : makePath<string>("contents", identifier);
+      const content = await fs.readFile(_path.filePath, "utf-8");
+      try {
+         if (topic === "undefined") {
+            const query = "SELECT * FROM post WHERE uid = ?";
+            const dep = [identifier];
+            const [result]: any = await tempPoolConnction<string>(query, dep);
+            return { result, content };
+         } else {
+            const query = `SELECT * FROM ${topic} WHERE uid = ?`;
+            const dep = [identifier];
+            const [result]: any = await poolConnction<string>(query, dep);
+            return { result, content };
+         }
       } catch (e) {
          console.error(e);
       }
@@ -120,14 +124,58 @@ class topicModel {
       const conn: PoolConnection | undefined = await tempConnection();
       if (conn !== undefined)
          try {
-            await conn.execute(saveData.query, saveData.dep);
-            await fs.writeFile(saveData.filePath, data.input.content, "utf8");
-            conn.release();
-            return { state: true };
+            if (data.input.identifier === "undefined") {
+               await conn.execute(saveData.query, saveData.dep);
+               await fs.writeFile(saveData.filePath, data.input.content, "utf8");
+            } else {
+               const [result]: any = await conn.execute(`select 1 from post where uid =?`, [data.input.identifier]);
+               if (result[0][1] === 1) {
+                  const query = `UPDATE post SET content_name = ? , detail = ? WHERE uid = ?`;
+                  const dep = [data.input.contentName, data.input.detail, data.input.identifier];
+                  await conn.execute(query, dep);
+                  await fs.writeFile(path.resolve(`../temporary-storage`) + `/${data.input.identifier}.html`, data.input.content, "utf8");
+                  conn.release();
+               } else {
+                  return { state: false };
+               }
+               return { state: true };
+            }
          } catch (e) {
             console.error(e);
             conn.release();
          }
+   }
+
+   static async deleteTemporaryPostAndSavePost(data: ITextInitialProps) {
+      const _path = makePath("temporary-storage", data.input.identifier);
+      const saveData = saveDataCommonProcess("contents", data.input);
+      const query = `DELETE FROM post WHERE uid=?`;
+      const dep = [data.input.identifier];
+      try {
+         await poolConnction(saveData.query, saveData.dep);
+         await tempPoolConnction(query, dep);
+         await fs.unlink(_path.filePath);
+         await fs.writeFile(saveData.filePath, data.input.content, "utf8");
+         await indexModel.createNewCommetTable(saveData.uid);
+         return { state: true };
+      } catch (e) {
+         console.error(e);
+         return { state: false };
+      }
+   }
+
+   static async updatePost(data: ITextInitialProps) {
+      let _path = makePath("contents", data.input.identifier);
+      const today: Date = new Date();
+      const dateString = today.toLocaleDateString("en-US", {
+         year: "numeric",
+         month: "long",
+         day: "numeric",
+      });
+      const query = `UPDATE ${data.input.topicName} SET content_name = ?, topic = ?, kindofPosts = ?, detail = ?, modified = ? WHERE uid = ?`;
+      const dep = [data.input.contentName, data.input.topicName, data.input.kindofPosts, data.input.detail, dateString, data.input.identifier];
+      await fs.writeFile(_path.filePath, data.input.content, "utf8");
+      return await poolConnction(query, dep);
    }
 
    static async createTopic(input: { topic: string }) {
@@ -166,10 +214,12 @@ class topicModel {
    }
 
    static async deletePost({ topic, identifier }: { topic: string, identifier: string }) {
+      let _path = makePath("contents", identifier);
       try {
          const query = `DELETE FROM \`${topic}\` WHERE uid=?`;
          const dep = [identifier];
          await poolConnction(query, dep);
+         await fs.unlink(_path.filePath);
          await indexModel.deleteCmtTable(identifier);
          return { state: true };
       } catch (e) {

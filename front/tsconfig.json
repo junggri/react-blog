@@ -20,7 +20,28 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
-    "noEmit": false
+    "noEmit": false,
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@component/*": [
+        "src/component/*"
+      ],
+      "@useHooks/*": [
+        "src/useHooks/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ]
+    }
   },
   "include": [
     "src"

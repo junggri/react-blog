@@ -1,5 +1,6 @@
 export interface ITextInitialProps {
    input: {
+      identifier: string | undefined
       contentName: string
       content: string
       topicName: string
@@ -8,3 +9,6 @@ export interface ITextInitialProps {
       thumbnail: null | string
    }
 }
+
+
+

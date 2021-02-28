@@ -24,22 +24,17 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
    const { data } = post;
    const dispatch = useDispatch();
 
-   // usePreloader(() => dispatch(onPreloadPost({ topic: match.params.topic, postsId: match.params.postId })));
-   // usePreloader(() => dispatch(onGetComment(match.params.postId)));
-
    useEffect(() => {
-      if (csrf) {
-         getPost(match.params.topic, match.params.postId, csrf);
-      }
+      if (csrf) getPost(match.params.topic, match.params.postId, csrf);
       return () => onCleatPostData();
    }, [match.params.topic, match.params.postId, onCleatPostData, getPost, csrf]);
-
 
    const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
    usePreloader(() => dispatch(onPreloadPost({ topic: match.params.topic, postsId: match.params.postId })));
 
    if (!data) return null;
+
    const meta = {
       title: data.result[0].content_name,
       description: data.result[0].detail,
@@ -48,6 +43,7 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
          : `https://www.junggri.com/thumbnail/${data.result[0].thumbnail}`,
       type: "website",
    };
+
    const MakeHtml = () => ({
       __html: typeof window === "object" ? (DOMPurify as any).sanitize(data.content) : null,
    });

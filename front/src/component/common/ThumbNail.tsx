@@ -1,18 +1,13 @@
 import React, { useRef } from "react";
 import { ThumbnailComp } from "../../styledComponent";
-
-interface IThumbNail {
-   token: string | null
-   onChangeThumbnail: any
-}
-
-interface Ref extends HTMLImageElement {
-   src: any
-}
+import util from "@lib/axios";
+import { AxiosResponse } from "axios";
+import { IThumbNail, IThumbnailFetchData, Ref } from "@src/globalInterface";
 
 
 const ThumbNail = ({ token, onChangeThumbnail }: IThumbNail) => {
    const imgRef: React.RefObject<Ref> = useRef(null);
+
    const onChangeImg = async (e: any) => {
       if (imgRef.current && token) {
          const formData = new FormData();
@@ -20,6 +15,8 @@ const ThumbNail = ({ token, onChangeThumbnail }: IThumbNail) => {
          const file: File = (target.files as FileList)[0];
          formData.append("data", file);
          imgRef.current.src = URL.createObjectURL(file);
+         const { data }: AxiosResponse<IThumbnailFetchData> = await util.saveThumbnail(token, formData);
+         onChangeThumbnail(data.filename);
       }
    };
 

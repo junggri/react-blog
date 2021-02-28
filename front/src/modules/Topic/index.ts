@@ -1,5 +1,6 @@
 import util from "../../lib/axios";
 import { ITopicinitialState, TopicAction } from "./topic.interface";
+import { Dispatch } from "redux";
 
 export const GET_TOPIC = "topic/GET_TOPIC";
 export const GET_TOPIC_SUCCESS = "topic/GET_TOPIC_SUCCESS";
@@ -11,7 +12,7 @@ export const getTopicSuccess = (payload: any[]) => ({ type: GET_TOPIC_SUCCESS, p
 export const getTopicError = (e: Error) => ({ type: GET_TOPIC_ERROR, e });
 
 
-export const onRequestTopicAndTempPostData = (token: string) => async (dispatch: any, getState: any) => {
+export const onRequestTopicAndTempPostData = (token: string) => async (dispatch: Dispatch, getState: any) => {
    dispatch(getTopic());
    try {
       const { data } = await util.getTopicAndTempPostsData(token);

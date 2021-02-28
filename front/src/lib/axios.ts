@@ -1,5 +1,5 @@
-import instance from "../config/axios.config";
-import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
+import instance from "@config/axios.config";
+import { ITextInitialProps } from "@modules/TextEditor/textEdit.interface";
 import { AxiosRequestConfig } from "axios";
 
 const URL = process.env.REACT_APP_GRAPHQL_URL;
@@ -63,6 +63,25 @@ const util = {
       return instance(option as AxiosRequestConfig);
    },
 
+   getDataFromMode(token: string, identifier: string, topic?: string) {
+      const option = axiosCommonObj<string>(`
+         query{
+            getDataFromMode(identifier:"${identifier}",topic:"${topic}"){
+               content
+               postdata{
+                  content_name
+                  detail
+                  kindofPosts
+                  topic
+                  thumbnail
+               }
+            }
+         }
+      `, token);
+      return instance(option as AxiosRequestConfig);
+   },
+
+
    getTopicAndTempPostsData(token: string) {
       const option = axiosCommonObj<string>(`
                query {
@@ -84,27 +103,6 @@ const util = {
       return instance(option as AxiosRequestConfig);
    },
 
-   getTemporaryContent(uid: string, token: string) {
-      const option = axiosCommonObj<string>(`
-         query{
-            getTemporaryContent(uid:"${uid}"){
-               content
-            }
-         }
-      `, token);
-      return instance(option as AxiosRequestConfig);
-   },
-
-   getPostDataForUpdate(uid: string, token: string) {
-      const option = axiosCommonObj<string>(`
-        query{
-            getPostDataUpdate(identifier:"${uid}"){
-               content
-            }
-        }
-      `, token);
-      return instance(option as AxiosRequestConfig);
-   },
 
    savePost({ data, csrf }: { data: ITextInitialProps, csrf: string }) {
       const option = axiosCommonObj<string>(`
@@ -117,14 +115,36 @@ const util = {
       return instance(option as AxiosRequestConfig);
    },
 
-   saveTemporaryPost(data: ITextInitialProps, csrf: string) {
+   saveTemporaryPost(data: ITextInitialProps, csrf: string, temp_id?: string) {
       const option = axiosCommonObj<string>(`
          mutation{
-            saveTemporaryPost(input:{topicName:"${data.topicName}", content:"${data.content}" ,contentName:"${data.contentName}",detail:"${data.detail}"}){
+            saveTemporaryPost(input:{identifier:"${temp_id}",topicName:"${data.topicName}", content:"${data.content}" ,contentName:"${data.contentName}",detail:"${data.detail}"}){
                state
             }
          }
       `, csrf);
+      return instance(option as AxiosRequestConfig);
+   },
+
+   deleteTemporaryPostAndSavePost(data: ITextInitialProps, identifier: string, token: string) {
+      const option = axiosCommonObj(`
+         mutation {
+             deleteTemporaryPostAndSavePost(input:{identifier:"${identifier}",contentName:"${data.contentName}", content:"${data.content}", topicName:"${data.topicName}" ,kindofPosts:"${data.kindofPosts}",detail:"${data.detail}", thumbnail:"${data.thumbnail}"}){
+                 state
+             }
+         }  
+      `, token);
+      return instance(option as AxiosRequestConfig);
+   },
+
+   updatePost(data: ITextInitialProps, identifier: string, token: string) {
+      const option = axiosCommonObj(`
+         mutation{
+             updatePost(input:{identifier:"${identifier}",contentName:"${data.contentName}", content:"${data.content}", topicName:"${data.topicName}" ,kindofPosts:"${data.kindofPosts}",detail:"${data.detail}", thumbnail:"${data.thumbnail}"}){
+                 state
+             }
+         }
+      `, token);
       return instance(option as AxiosRequestConfig);
    },
 
@@ -207,7 +227,7 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
-
+///////t사용하는 것들///////t사용하는 것들///////t사용하는 것들
    getTopicName() {
       return instance({
          url: "/topic/contents/name",

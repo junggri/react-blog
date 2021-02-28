@@ -74,7 +74,6 @@ function TextEditor(state: ITextInitialProps = initialState, action: EditorActio
       default:
          return state;
    }
-   ;
 }
 
 export default TextEditor;

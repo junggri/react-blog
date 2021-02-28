@@ -2,13 +2,14 @@ import React, { useMemo, useRef, useState } from "react";
 import { DeleteBtnComp, SelectTopicComp, SelectTopicItempComp } from "../../styledComponent";
 import { MdDelete } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
-import util from "../../lib/axios";
+import util from "@lib/axios";
 
 interface ISelectTopic {
    topic: { Tables_in_contents: string }[] | null
    onIsChecked: (value: string) => void
    checked: string
    token: string | null
+   onRequestAfterMakeOrDeleteTopic: (token: string) => void
 }
 
 interface Ref extends HTMLElement {
@@ -16,7 +17,7 @@ interface Ref extends HTMLElement {
    align: any
 }
 
-const SelectTopic = ({ topic, onIsChecked, checked, token }: ISelectTopic) => {
+const SelectTopic = ({ topic, onIsChecked, checked, token, onRequestAfterMakeOrDeleteTopic }: ISelectTopic) => {
    const [value, setValue] = useState<string>("");
    const parentRef: React.RefObject<HTMLDivElement> = useRef(null);
    const topicList: React.RefObject<Ref>[] | undefined = useMemo(
@@ -39,6 +40,7 @@ const SelectTopic = ({ topic, onIsChecked, checked, token }: ISelectTopic) => {
       if (!value) return;
       if (token && parentRef.current) {
          await util.createTopic(value, token);
+         onRequestAfterMakeOrDeleteTopic(token);
          setValue("");
       }
    };

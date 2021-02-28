@@ -1,4 +1,4 @@
-import model from "../model/topic1.model";
+import model from "../model/graphql.model";
 
 const queryResolver = {
    Allposts: async () => {
@@ -27,6 +27,10 @@ const queryResolver = {
       return await model.getPostDataForUpdate(identifier);
    },
 
+   getDataFromMode: async ({ identifier, topic }: { identifier: string, topic?: string }) => {
+      const data = await model.getDataFromMode(identifier, topic);
+      if (data) return { content: data.content, postdata: data.result };
+   },
 };
 
 export default queryResolver;

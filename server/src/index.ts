@@ -16,7 +16,7 @@ import topicApi from "../src/router/topic";
 import adminApi from "../src/router/admin";
 import queryResolver from "./graphql/query.resolvers";
 import mutationResolver from "./graphql/mutation.resolvers";
-
+import schemaType from "./graphql/type";
 
 const app = express();
 app.disable("x-powered-by");
@@ -36,92 +36,7 @@ app
    .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
 
-const schema = buildSchema(`
-    type Query{
-      Allposts:[Allposts]
-      postContent(topic:String ,postsId:String) : postContent
-      tableName:[table]
-      temporaryPost:[temporaryPost]
-      getTextEditorData: textEditorData
-      getTemporaryContent(uid:String):content
-      getPostDataUpdate(identifier:String) : postContentForUpdate
-    }
-    
-    type Mutation{
-      savePost(input:postData):result
-      createTopic(topic:String):result
-      saveTemporaryPost(input:temporaryData):result
-      deleteTopic(topic:String):result
-      deletePost(topic:String, identifier:String):result
-      deleteTemporaryPost(identifier:String):result
-    }
-    
-    input temporaryData{
-      topicName:String
-      content:String
-      contentName:String
-      detail:String
-    } 
-    
-    input postData{
-      contentName:String
-      content:String
-      topicName:String
-      kindofPosts:String
-      detail:String
-      thumbnail:String
-    }
-    
-    type result{
-      state:Boolean
-    }
-    
-    type content{
-      content:String
-    }
-    
-    type postContent{
-      content:String
-      result:[Allposts]
-    }
-   
-    type Allposts{
-      id: Int
-      comment: Int
-      uid: String
-      content_name: String
-      date: String
-      created: String
-      file: String
-      detail:String
-      thumbnail:String
-      kindofPosts: String
-      modified: String
-      topic: String
-    }
-   
-    type table {
-      Tables_in_contents:String
-    }
-   
-    type temporaryPost{
-      uid: String
-      topic: String
-      created: String
-      content_name:String
-      detail: String
-      file: String
-    }
-   
-    type textEditorData{
-      tableName:[table]
-      tempPostList:[temporaryPost]
-    }
-    
-    type postContentForUpdate{
-      content:String
-    }
-`);
+const schema = buildSchema(schemaType);
 
 const root = {
    ...queryResolver,
