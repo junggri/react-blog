@@ -3,14 +3,15 @@ import { PostsContainerComp } from "../styledComponent";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { CgHome } from "react-icons/cg";
 import Highlight from "react-highlight.js";
-import { IPostsModuleProps } from "../modules/Posts/posts.interface";
-import usePosts from "../useHooks/usePosts";
-import useCSRF from "../useHooks/useCSRF";
+import { IPostsModuleProps } from "@modules/Posts/posts.interface";
+import usePosts from "@useHooks/usePosts";
+import useCSRF from "@useHooks/useCSRF";
 import createDOMPurify from "dompurify";
 import { useDispatch } from "react-redux";
-import Meta from "../useHooks/UseMeta";
-import { usePreloader } from "../lib/PreloadContext";
-import { onPreloadPost } from "../modules/Posts";
+import Meta from "@useHooks/UseMeta";
+import { usePreloader } from "@lib/PreloadContext";
+import { onPreloadPost } from "@modules/Posts";
+import { CommentContainer } from "@component/index";
 
 interface IMatchParams {
    id: string
@@ -70,6 +71,8 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
                {data.result[0].created}
             </div>
          </PostsContainerComp>
+         <CommentContainer />
+      
          {/*<CommentContainer*/}
          {/*   postname={(data as IPostDataProps).result[0].content_name}*/}
          {/*   postid={match.params.postsId}*/}

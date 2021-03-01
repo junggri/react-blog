@@ -44,7 +44,9 @@ const GlobalStyles = createGlobalStyle`
     }
     .quill{
      position:relative;
-     border:1px solid rgba(0,0,0,0.2);
+     border-right:1px solid rgba(0,0,0,0.2);
+     border-top:1px solid rgba(0,0,0,0.2);
+     border-bottom:1px solid rgba(0,0,0,0.2);
      width:50%;
      height:100vh;
      display: inline-block;
@@ -63,12 +65,6 @@ const GlobalStyles = createGlobalStyle`
     //}
     .ql-size-huge{
         font-size:4rem !important;
-    }
-    .preview-title{
-        border:1px solid black;
-        font-size:3rem;
-        word-break:break-all;
-        margin-bottom:100px;
     }
     .ql-editor .ql-syntax{
         background: rgb(248 249 250) !important;
@@ -90,8 +86,9 @@ const GlobalStyles = createGlobalStyle`
        `};
       }
     }
+    
     .ql-snow .ql-editor pre.ql-syntax{
-      color:black !important;
+      //color:black !important;
      }
     .ql-toolbar.ql-snow{
         border-left:none;
@@ -99,19 +96,14 @@ const GlobalStyles = createGlobalStyle`
         border-top:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }   
-    .hljs-function{
-      .hljs-params{
-         //color:rgb(36, 41, 46);
-      }
-    }
-    .ql-editor blockquote{
-      padding:10px 20px;
-      border-left:5px solid #f58320 !important;
-      background: rgb(248 249 250);
-    }
-    .hljs-params,.hljs-attr{
-      color:rgb(36, 41, 46) !important;
-    }
+    //.hljs-function{
+    //  .hljs-params{
+    //     //color:rgb(36, 41, 46);
+    //  }
+    //}
+    //.hljs-params,.hljs-attr{
+    //  color:rgb(36, 41, 46) !important;
+    //}
     .ql-syntax .hljs-tag{
       color:black;
       & .hljs-name{
@@ -125,7 +117,7 @@ const GlobalStyles = createGlobalStyle`
       font-size:3.5rem !important;
     }
     .ql-size-large{
-      font-size: 2.3rem !important;
+      font-size: 2.2rem !important;
       ${media.mobile`font-size:1.5rem !important`};
     }
     .ql-size-small{

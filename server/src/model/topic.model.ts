@@ -1,6 +1,19 @@
 import connection from "../config/topic.connection";
 import tempConn from "../config/temp.connetion";
+import tempConnection from "../config/temp.connetion";
+import { ITextEditSaveProps } from "../interace";
+import saveDataCommonProcess from "../lib/saveDataCommonProcess";
+import { poolConnction, tempPoolConnction } from "../config/connection.builder";
+import { promises as fs } from "fs";
+import indexModel from "./index.model";
+import path from "path";
+import { PoolConnection } from "mysql2/promise";
 
+function makePath(folderName: string, fileName: string) {
+   let _path = path.resolve(`../${folderName}`);
+   const filePath = _path + `/${fileName}.html`;
+   return { filePath: filePath, _path: _path };
+}
 
 const contentModel = {
    async increaseCmtCount<T, U>(topic: T, postid: U) {
@@ -32,6 +45,73 @@ const contentModel = {
             console.error(e);
             conn.release();
          }
+   },
+
+   async savePost(data: ITextEditSaveProps) {
+      const saveData = saveDataCommonProcess("contents", data);
+      const result = await poolConnction(saveData.query, saveData.dep);
+      await fs.writeFile(saveData.filePath, data.content, "utf8");
+      await indexModel.createNewCommetTable(saveData.uid);
+      return { state: true };
+   },
+
+   async saveTemporaryPost(data: ITextEditSaveProps, uid?: string) {
+      const saveData = saveDataCommonProcess("temporary-storage", data);
+      const conn: PoolConnection | undefined = await tempConnection();
+      if (conn !== undefined)
+         try {
+            if (uid === undefined) {
+               await conn.execute(saveData.query, saveData.dep);
+               await fs.writeFile(saveData.filePath, data.content, "utf8");
+            } else {
+               const [result]: any = await conn.execute(`select 1 from post where uid =?`, [uid]);
+               if (result[0][1] === 1) {
+                  const query = `UPDATE post SET content_name = ? , detail = ? WHERE uid = ?`;
+                  const dep = [data.contentName, data.detail, uid];
+                  await conn.execute(query, dep);
+                  await fs.writeFile(path.resolve(`../temporary-storage`) + `/${uid}.html`, data.content, "utf8");
+                  conn.release();
+               } else {
+                  return { state: false };
+               }
+            }
+            return { state: true };
+         } catch (e) {
+            console.error(e);
+            conn.release();
+         }
+   },
+
+   async deleteTemporaryPostAndSavePost(params: any, data: ITextEditSaveProps) {
+      const _path = makePath("temporary-storage", params.tempId);
+      const saveData = saveDataCommonProcess("contents", data);
+      const query = `DELETE FROM post WHERE uid=?`;
+      const dep = [params.tempId];
+      try {
+         await poolConnction(saveData.query, saveData.dep);
+         await tempPoolConnction(query, dep);
+         await fs.unlink(_path.filePath);
+         await fs.writeFile(saveData.filePath, data.content, "utf8");
+         await indexModel.createNewCommetTable(saveData.uid);
+         return { state: true };
+      } catch (e) {
+         console.error(e);
+      }
+   },
+
+   async updaetPost(params: any, data: ITextEditSaveProps) {
+      console.log(params, data);
+      const _path = makePath("contents", params.postId);
+      const dateString = new Date().toLocaleDateString("en-US", {
+         year: "numeric",
+         month: "long",
+         day: "numeric",
+      });
+      const query = `UPDATE ${data.topicName} SET content_name = ?, topic = ?, kindofPosts = ?, detail = ?, modified = ? WHERE uid = ?`;
+      const dep = [data.contentName, data.topicName, data.kindofPosts, data.detail, dateString, params.postId];
+      await fs.writeFile(_path.filePath, data.content, "utf8");
+      await poolConnction(query, dep);
+      return { state: true };
    },
 
    // getAllTopic: async () => {//토픽목록 가져오기

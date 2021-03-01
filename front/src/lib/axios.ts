@@ -105,47 +105,41 @@ const util = {
 
 
    savePost({ data, csrf }: { data: ITextInitialProps, csrf: string }) {
-      const option = axiosCommonObj<string>(`
-         mutation {
-             savePost(input:{contentName:"${data.contentName}", content:"${data.content}", topicName:"${data.topicName}" ,kindofPosts:"${data.kindofPosts}",detail:"${data.detail}", thumbnail:"${data.thumbnail}"}){
-                 state
-             }
-         }  
-      `, csrf);
-      return instance(option as AxiosRequestConfig);
+      return instance({
+         url: `/topic/post`,
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": csrf },
+      });
    },
 
    saveTemporaryPost(data: ITextInitialProps, csrf: string, temp_id?: string) {
-      const option = axiosCommonObj<string>(`
-         mutation{
-            saveTemporaryPost(input:{identifier:"${temp_id}",topicName:"${data.topicName}", content:"${data.content}" ,contentName:"${data.contentName}",detail:"${data.detail}"}){
-               state
-            }
-         }
-      `, csrf);
-      return instance(option as AxiosRequestConfig);
+      return instance({
+         "url": "/topic/temp",
+         method: "post",
+         data: { data: data, uid: temp_id },
+         headers: { "X-XSRF-TOKEN": csrf },
+      });
    },
 
    deleteTemporaryPostAndSavePost(data: ITextInitialProps, identifier: string, token: string) {
-      const option = axiosCommonObj(`
-         mutation {
-             deleteTemporaryPostAndSavePost(input:{identifier:"${identifier}",contentName:"${data.contentName}", content:"${data.content}", topicName:"${data.topicName}" ,kindofPosts:"${data.kindofPosts}",detail:"${data.detail}", thumbnail:"${data.thumbnail}"}){
-                 state
-             }
-         }  
-      `, token);
-      return instance(option as AxiosRequestConfig);
+      return instance({
+         url: `/topic/${data.topicName}/temps/${identifier}`,
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": token },
+      });
    },
 
    updatePost(data: ITextInitialProps, identifier: string, token: string) {
-      const option = axiosCommonObj(`
-         mutation{
-             updatePost(input:{identifier:"${identifier}",contentName:"${data.contentName}", content:"${data.content}", topicName:"${data.topicName}" ,kindofPosts:"${data.kindofPosts}",detail:"${data.detail}", thumbnail:"${data.thumbnail}"}){
-                 state
-             }
-         }
-      `, token);
-      return instance(option as AxiosRequestConfig);
+      return instance({
+         "url": `topic/${data.topicName}/posts/${identifier}`,
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": token },
+      });
+      // const option = axiosCommonObj(`
+
    },
 
    createTopic(topic: string, token: string) {

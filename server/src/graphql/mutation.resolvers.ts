@@ -1,24 +1,23 @@
 import model from "../model/graphql.model";
-import { ITextInitialProps } from "../interace";
-import { Request } from "express";
 
 const mutationResolver = {
-   savePost: async ({ ...input }: ITextInitialProps, req: Request) => {
-      req.session.img = null;
-      return await model.savePost(input);
-   },
+   // savePost: async ({ ...input }: ITextInitialProps, req: Request) => {
+   //    console.log(input);
+   //    req.session.img = null;
+   //    return await model.savePost(input);
+   // },
 
-   saveTemporaryPost: async ({ ...input }: ITextInitialProps) => {
-      return await model.saveTemporaryPost(input);
-   },
+   // saveTemporaryPost: async ({ ...input }: ITextInitialProps) => {
+   //    return await model.saveTemporaryPost(input);
+   // },
 
-   deleteTemporaryPostAndSavePost: async (input: ITextInitialProps) => {
-      return await model.deleteTemporaryPostAndSavePost(input);
-   },
+   // deleteTemporaryPostAndSavePost: async (input: ITextInitialProps) => {
+   //    return await model.deleteTemporaryPostAndSavePost(input);
+   // },
 
-   updatePost: async (input: ITextInitialProps) => {
-      return await model.updatePost(input);
-   },
+   // updatePost: async (input: ITextInitialProps) => {
+   //    return await model.updatePost(input);
+   // },
 
    createTopic: async (input: { topic: string }) => {
       return await model.createTopic(input);

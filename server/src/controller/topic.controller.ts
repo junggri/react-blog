@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import path from "path";
 import graphqlModel from "../model/graphql.model";
+import model from "../model/topic.model";
+import { uploadThumbnail } from "../lib/multer";
+import { promises as fs } from "fs";
 
 declare module "express-session" {
    interface Session {
@@ -13,6 +16,7 @@ function makePath(folderName: string, fileName: string) {
    const filePath = _path + `/${fileName}.html`;
    return { filePath: filePath, _path: _path };
 }
+
 
 interface Controller {
    // deletePost: (req: Request, res: Response) => void
@@ -30,10 +34,14 @@ interface Controller {
    // deleteTopic(req: Request, res: Response): any
    // deleteTempPost(req: Request, res: Response): any
    // temporaryPost(req: Request, res: Response): any
-   // saveThumbnail(req: Request, res: Response): any
+   savePost(req: Request, res: Response): void
+   saveTemporaryPost(req: Request, res: Response): void
+   deleteTemporaryPostAndSavePost(req: Request, res: Response): void
+   updatePost(req: Request, res: Response): void
 //////////////////////////
    getAllPostsPreload(req: Request, res: Response): any
    getPostPreload(req: Request, res: Response): any
+   saveThumbnail(req: Request, res: Response): any
 }
 
 let contentController: Controller = {
@@ -46,6 +54,39 @@ let contentController: Controller = {
       const { topic, postsId } = req.params;
       const result = await graphqlModel.getPostData(topic, postsId);
       res.status(200).json(result);
+   },
+
+   async saveThumbnail(req: Request, res: Response) {
+      if (req.session.img?.length) {
+         await fs.unlink(path.resolve(`../thumbnail/${req.session.img[0]}`));
+      }
+      uploadThumbnail(req, res, (err: any) => {
+         res.status(200).json({ state: true, filename: req.file.filename });
+         if (err) {
+            console.error(err);
+            res.status(404).json({ state: false });
+         }
+      });
+   },
+
+   async savePost(req, res) {
+      const result = await model.savePost(req.body);
+      if (result.state) res.status(200).json({ state: true });
+   },
+
+   async saveTemporaryPost(req, res) {
+      const result = await model.saveTemporaryPost(req.body.data, req.body.uid);
+      if (result?.state) res.status(200).json({ state: true });
+   },
+
+   async deleteTemporaryPostAndSavePost(req, res) {
+      const result = await model.deleteTemporaryPostAndSavePost(req.params, req.body);
+      if (result?.state) res.status(200).json({ state: true });
+   },
+
+   async updatePost(req, res) {
+      const result = await model.updaetPost(req.params, req.body);
+      if (result.state) res.status(200).json({ state: true });
    },
 //////////////////////////
 //    getAllPostsItems: async (req, res) => {
@@ -86,18 +127,7 @@ let contentController: Controller = {
    //       res.status(500).json({ state: false });
    //    }
    // },
-   // async saveThumbnail(req: Request, res: Response) {
-   //    if (req.session.img?.length) {
-   //       await fs.unlink(path.resolve(`../thumbnail/${req.session.img[0]}`));
-   //    }
-   //    uploadThumbnail(req, res, (err: any) => {
-   //       res.status(200).json({ state: true, filename: req.file.filename });
-   //       if (err) {
-   //          console.error(err);
-   //          res.status(404).json({ state: false });
-   //       }
-   //    });
-   // },
+
 
    // saveTempPost: async (req: Request, res: Response) => {
    //    let _path = makePath("temporary-storage", req.body.uid);

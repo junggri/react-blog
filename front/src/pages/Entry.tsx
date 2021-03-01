@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import { MainContainerComp, WriteBoxBtnComp } from "../styledComponent";
 import { EntryPostContainer, NavBar, SideNavBar, TagPostContainer } from "../component";
 import { Link, Route, RouteComponentProps } from "react-router-dom";
-import useLoginFlag from "../useHooks/useLoginFlag";
-import { ICommonModuleProps } from "../modules/Common/common.interface";
-import { IPostsModuleProps } from "../modules/Posts/posts.interface";
-import usePosts from "../useHooks/usePosts";
-import useCommon from "../useHooks/useCommon";
-import useCSRF from "../useHooks/useCSRF";
-import { usePreloader } from "../lib/PreloadContext";
-import { onPreloadAllPosts } from "../modules/Posts";
+import useLoginFlag from "@useHooks/useLoginFlag";
+import { ICommonModuleProps } from "@modules/Common/common.interface";
+import { IPostsModuleProps } from "@modules/Posts/posts.interface";
+import usePosts from "@useHooks/usePosts";
+import useCommon from "@useHooks/useCommon";
+import useCSRF from "@useHooks/useCSRF";
+import { usePreloader } from "@lib/PreloadContext";
+import { onPreloadAllPosts } from "@modules/Posts";
 import { useDispatch } from "react-redux";
-import util from "../lib/axios";
+import util from "@lib/axios";
 
 interface IMatchParams {
    id: string
@@ -34,8 +34,13 @@ const Entry = ({ match }: RouteComponentProps<IMatchParams>) => {
       }
    }, [getAllPosts, newRequest, setNewRequset, csrf]);
 
+   useEffect(() => {
+      onGetGaCount();
+   }, []);
+
    const deletePost = async (topic: string, identifier: string) => {
       if (csrf) await util.deletePost(topic, identifier, csrf);
+      setNewRequset(true);
    };
 
    return (
@@ -47,13 +52,15 @@ const Entry = ({ match }: RouteComponentProps<IMatchParams>) => {
          }
          <NavBar />
          <MainContainerComp>
-            <SideNavBar data={AllPosts.data} />
-            <Route path={["/"]} exact render={() =>
-               <EntryPostContainer data={AllPosts.data} onDelete={deletePost} />
-            } />
-            <Route path="/tag/:topic" exact render={() =>
-               <TagPostContainer data={AllPosts.data} topic={match.params.topic} onDelete={deletePost} />
-            } />
+            <SideNavBar data={AllPosts.data} count={count} />
+            <div className="post-item-container">
+               <Route path={["/"]} exact render={() =>
+                  <EntryPostContainer data={AllPosts.data} onDelete={deletePost} />
+               } />
+               <Route path="/tag/:topic" exact render={() =>
+                  <TagPostContainer data={AllPosts.data} topic={match.params.topic} onDelete={deletePost} />
+               } />
+            </div>
          </MainContainerComp>
       </>
    );

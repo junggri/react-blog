@@ -26,14 +26,14 @@ app
    .use(logger("dev"))
    .use(compression())
    .use(helmet.noSniff())
-   .use(bodyParser.json())
    .use(helmet.xssFilter())
    .use(session(sessionConfig))
    .use(cookieParser(process.env.SESSEION_KEY))
    .use(helmet.frameguard({ action: "deny" }))
    .use(cors({ origin: true, credentials: true }))
    .use("/thumbnail", express.static(path.resolve("../thumbnail")))
-   .use(bodyParser.urlencoded({ extended: false }))
+   .use(bodyParser.json({ limit: "10mb" }))
+   .use(bodyParser.urlencoded({ extended: false, limit: "10mb" }))
    .use(csrfProtection);
 
 const schema = buildSchema(schemaType);
@@ -66,3 +66,19 @@ app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
 app.listen(5000, () => {
    console.log("running on 5000 and start server");
 });
+
+
+const name = {
+   a: "123",
+   b: "asdasd",
+};
+
+interface INmae {
+   a: string
+   b: string
+}
+
+function a<T, K extends keyof T>(obj: T, key: K): T[K] {
+   console.log(obj[key]);
+   return obj[key];
+}

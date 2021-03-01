@@ -50,12 +50,12 @@ const Write = ({ history, location }: RouteComponentProps) => {
          const identifier: string | string[] | QueryString.ParsedQs | QueryString.ParsedQs[] | undefined = Object.entries(qs.parse(location.search))[0][1];
          if (mode === "?temp" && csrf && typeof identifier === "string" && !fetch) {
             getDataFromMode(mode, util.getDataFromMode(csrf, identifier));
-            setFetch(true);
          } else if (mode === "?update" && csrf && typeof identifier === "string") {
             const topic: string | string[] | QueryString.ParsedQs | QueryString.ParsedQs[] | undefined = Object.entries(qs.parse(location.search))[1][1];
             if (typeof topic === "string") getDataFromMode(mode, util.getDataFromMode(csrf, identifier, topic));
          }
          setMode(mode.split("?")[1]);
+         setFetch(false);
       } else {
          setMode("write");
       }
@@ -108,6 +108,7 @@ const Write = ({ history, location }: RouteComponentProps) => {
 
    const onSubmit = async (): Promise<void> => {
       const valiidation: boolean = validationWrite(data);
+      if (!valiidation) alert("정보를 입력하세요");
       const identifier = Object.values(qs.parse(location.search))[0] as string;
       if (valiidation && csrf) {
          const result = mode === "write"
@@ -118,8 +119,6 @@ const Write = ({ history, location }: RouteComponentProps) => {
          setNewRequset(true);
          onRequestAfterMakeOrDeleteTopic(csrf);
          history.push("/");
-      } else {
-         alert("정보를 입력하세요");
       }
    };
 

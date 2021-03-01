@@ -6,8 +6,15 @@ const router = express.Router();
 router.get("/posts/items", contentController.getAllPostsPreload);
 //preload data
 router.get("/preload/:topic/posts/:postsId", contentController.getPostPreload);
-//re new all
-///////
+
+router.post("/post", contentController.savePost);
+
+router.post("/temp", contentController.saveTemporaryPost);
+
+router.post("/:topic/temps/:tempId", contentController.deleteTemporaryPostAndSavePost);
+
+router.post("/:topic/posts/:postId", contentController.updatePost);
+//renew all
 // router.get("/contents/name", contentController.getContentName); //show all list in main view
 
 // router.get("/posts/items", contentController.getAllPostsItems);

@@ -3,8 +3,6 @@ import tempConnection from "../config/temp.connetion";
 import path from "path";
 import { promises as fs } from "fs";
 import { PoolConnection } from "mysql2/promise";
-import { ITextInitialProps } from "../interace";
-import saveDataCommonProcess from "../lib/saveDataCommonProcess";
 import indexModel from "./index.model";
 import { poolConnction, tempPoolConnction } from "../config/connection.builder";
 
@@ -107,76 +105,76 @@ class topicModel {
       }
    }
 
-   static async savePost(data: ITextInitialProps) {
-      try {
-         const saveData = saveDataCommonProcess("contents", data.input);
-         await poolConnction<any>(saveData.query, saveData.dep);
-         await fs.writeFile(saveData.filePath, data.input.content, "utf8");
-         await indexModel.createNewCommetTable(saveData.uid);
-         return { state: true };
-      } catch (e) {
-         console.error(e);
-      }
-   }
+   // static async savePost(data: ITextInitialProps) {
+   //    try {
+   //       const saveData = saveDataCommonProcess("contents", data.input);
+   //       await poolConnction<any>(saveData.query, saveData.dep);
+   //       await fs.writeFile(saveData.filePath, data.input.content, "utf8");
+   //       await indexModel.createNewCommetTable(saveData.uid);
+   //       return { state: true };
+   //    } catch (e) {
+   //       console.error(e);
+   //    }
+   // }
 
-   static async saveTemporaryPost(data: ITextInitialProps) {
-      const saveData = saveDataCommonProcess("temporary-storage", data.input);
-      const conn: PoolConnection | undefined = await tempConnection();
-      if (conn !== undefined)
-         try {
-            if (data.input.identifier === "undefined") {
-               await conn.execute(saveData.query, saveData.dep);
-               await fs.writeFile(saveData.filePath, data.input.content, "utf8");
-            } else {
-               const [result]: any = await conn.execute(`select 1 from post where uid =?`, [data.input.identifier]);
-               if (result[0][1] === 1) {
-                  const query = `UPDATE post SET content_name = ? , detail = ? WHERE uid = ?`;
-                  const dep = [data.input.contentName, data.input.detail, data.input.identifier];
-                  await conn.execute(query, dep);
-                  await fs.writeFile(path.resolve(`../temporary-storage`) + `/${data.input.identifier}.html`, data.input.content, "utf8");
-                  conn.release();
-               } else {
-                  return { state: false };
-               }
-               return { state: true };
-            }
-         } catch (e) {
-            console.error(e);
-            conn.release();
-         }
-   }
+   // static async saveTemporaryPost(data: ITextInitialProps) {
+   //    const saveData = saveDataCommonProcess("temporary-storage", data.input);
+   //    const conn: PoolConnection | undefined = await tempConnection();
+   //    if (conn !== undefined)
+   //       try {
+   //          if (data.input.identifier === "undefined") {
+   //             await conn.execute(saveData.query, saveData.dep);
+   //             await fs.writeFile(saveData.filePath, data.input.content, "utf8");
+   //          } else {
+   //             const [result]: any = await conn.execute(`select 1 from post where uid =?`, [data.input.identifier]);
+   //             if (result[0][1] === 1) {
+   //                const query = `UPDATE post SET content_name = ? , detail = ? WHERE uid = ?`;
+   //                const dep = [data.input.contentName, data.input.detail, data.input.identifier];
+   //                await conn.execute(query, dep);
+   //                await fs.writeFile(path.resolve(`../temporary-storage`) + `/${data.input.identifier}.html`, data.input.content, "utf8");
+   //                conn.release();
+   //             } else {
+   //                return { state: false };
+   //             }
+   //             return { state: true };
+   //          }
+   //       } catch (e) {
+   //          console.error(e);
+   //          conn.release();
+   //       }
+   // }
 
-   static async deleteTemporaryPostAndSavePost(data: ITextInitialProps) {
-      const _path = makePath("temporary-storage", data.input.identifier);
-      const saveData = saveDataCommonProcess("contents", data.input);
-      const query = `DELETE FROM post WHERE uid=?`;
-      const dep = [data.input.identifier];
-      try {
-         await poolConnction(saveData.query, saveData.dep);
-         await tempPoolConnction(query, dep);
-         await fs.unlink(_path.filePath);
-         await fs.writeFile(saveData.filePath, data.input.content, "utf8");
-         await indexModel.createNewCommetTable(saveData.uid);
-         return { state: true };
-      } catch (e) {
-         console.error(e);
-         return { state: false };
-      }
-   }
+   // static async deleteTemporaryPostAndSavePost(data: ITextInitialProps) {
+   //    const _path = makePath("temporary-storage", data.input.identifier);
+   //    const saveData = saveDataCommonProcess("contents", data.input);
+   //    const query = `DELETE FROM post WHERE uid=?`;
+   //    const dep = [data.input.identifier];
+   //    try {
+   //       await poolConnction(saveData.query, saveData.dep);
+   //       await tempPoolConnction(query, dep);
+   //       await fs.unlink(_path.filePath);
+   //       await fs.writeFile(saveData.filePath, data.input.content, "utf8");
+   //       await indexModel.createNewCommetTable(saveData.uid);
+   //       return { state: true };
+   //    } catch (e) {
+   //       console.error(e);
+   //       return { state: false };
+   //    }
+   // }
 
-   static async updatePost(data: ITextInitialProps) {
-      let _path = makePath("contents", data.input.identifier);
-      const today: Date = new Date();
-      const dateString = today.toLocaleDateString("en-US", {
-         year: "numeric",
-         month: "long",
-         day: "numeric",
-      });
-      const query = `UPDATE ${data.input.topicName} SET content_name = ?, topic = ?, kindofPosts = ?, detail = ?, modified = ? WHERE uid = ?`;
-      const dep = [data.input.contentName, data.input.topicName, data.input.kindofPosts, data.input.detail, dateString, data.input.identifier];
-      await fs.writeFile(_path.filePath, data.input.content, "utf8");
-      return await poolConnction(query, dep);
-   }
+   // static async updatePost(data: ITextInitialProps) {
+   //    let _path = makePath("contents", data.input.identifier);
+   //    const today: Date = new Date();
+   //    const dateString = today.toLocaleDateString("en-US", {
+   //       year: "numeric",
+   //       month: "long",
+   //       day: "numeric",
+   //    });
+   //    const query = `UPDATE ${data.input.topicName} SET content_name = ?, topic = ?, kindofPosts = ?, detail = ?, modified = ? WHERE uid = ?`;
+   //    const dep = [data.input.contentName, data.input.topicName, data.input.kindofPosts, data.input.detail, dateString, data.input.identifier];
+   //    await fs.writeFile(_path.filePath, data.input.content, "utf8");
+   //    return await poolConnction(query, dep);
+   // }
 
    static async createTopic(input: { topic: string }) {
       try {
