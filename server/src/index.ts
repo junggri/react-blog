@@ -32,8 +32,8 @@ app
    .use(helmet.frameguard({ action: "deny" }))
    .use(cors({ origin: true, credentials: true }))
    .use("/thumbnail", express.static(path.resolve("../thumbnail")))
-   .use(bodyParser.json({ limit: "10mb" }))
-   .use(bodyParser.urlencoded({ extended: false, limit: "10mb" }))
+   .use(bodyParser.json())
+   .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
 
 const schema = buildSchema(schemaType);

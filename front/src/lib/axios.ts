@@ -1,6 +1,7 @@
 import instance from "@config/axios.config";
 import { ITextInitialProps } from "@modules/TextEditor/textEdit.interface";
 import { AxiosRequestConfig } from "axios";
+import { ISaveCommentProps } from "@src/globalInterface";
 
 const URL = process.env.REACT_APP_GRAPHQL_URL;
 
@@ -221,7 +222,34 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
-///////t사용하는 것들///////t사용하는 것들///////t사용하는 것들
+
+   getComment(postid: string) {
+      return instance({
+         url: `/api/comments/comment/posts/${postid}`,
+      });
+   },
+
+   saveComment(data: ISaveCommentProps, token: string) {
+      return instance({
+         url: "/api/comments",
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
+   saveReply(data: any, token: string) {
+      console.log(data);
+      return instance({
+         url: "/api/reply",
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+///////t사용하는 것들///////t사용하는 것들///////t사용하는 것들////
+
+
    getTopicName() {
       return instance({
          url: "/topic/contents/name",
@@ -348,29 +376,24 @@ const util = {
       });
    },
 
-   getComment(postid: string) {
-      return instance({
-         url: `/api/item/${postid}/comment`,
-      });
-   },
 
-   saveComment(postname: string, content: string, grp: number, topic: string, postid: string, user: string, pwd: string, token: string) {
-      return instance({
-         url: "/api/comment",
-         method: "post",
-         data: { postname, content, grp, topic, postid, user, pwd },
-         headers: { "X-XSRF-TOKEN": token },
-      });
-   },
+   // saveComment(postname: string, content: string, grp: number, topic: string, postid: string, user: string, pwd: string, token: string) {
+   //    return instance({
+   //       url: "/api/comment",
+   //       method: "post",
+   //       data: { postname, content, grp, topic, postid, user, pwd },
+   //       headers: { "X-XSRF-TOKEN": token },
+   //    });
+   // },
 
-   saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, topic: string, postid: string, user: string, pwd: string, token: string) {
-      return instance({
-         url: "/api/reply",
-         method: "post",
-         data: { content, bn, grp, sorts, depth, topic, postid, user, pwd },
-         headers: { "X-XSRF-TOKEN": token },
-      });
-   },
+   // saveReply(content: string, bn: number, grp: number, sorts: number, depth: number, topic: string, postid: string, user: string, pwd: string, token: string) {
+   //    return instance({
+   //       url: "/api/reply",
+   //       method: "post",
+   //       data: { content, bn, grp, sorts, depth, topic, postid, user, pwd },
+   //       headers: { "X-XSRF-TOKEN": token },
+   //    });
+   // },
 
    deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[], token: string) {
       return instance({

@@ -5,12 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { GrAttachment } from "react-icons/gr";
 import { IoMdArrowDropdown } from "react-icons/io";
-
-interface Ref extends HTMLElement {
-   current: any | null
-   type: any
-   value: any
-}
+import { ISideBarRefObject } from "@src/globalInterface";
 
 interface ISideNavBar {
    data: IPostCommonProps[] | null
@@ -19,7 +14,7 @@ interface ISideNavBar {
 
 
 const SideNavBar = ({ data, count }: ISideNavBar) => {
-   const listRef: RefObject<Ref>[] | undefined = useMemo(() => data?.map(() => React.createRef()), [data]);
+   const listRef: RefObject<ISideBarRefObject>[] | undefined = useMemo(() => data?.map(() => React.createRef()), [data]);
    const [click, setClick] = useState<boolean>(false);
    const mediaMenu = useRef<HTMLDivElement>(null);
    const headerIcon = useRef<HTMLSpanElement>(null);

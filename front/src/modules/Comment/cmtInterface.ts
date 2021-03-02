@@ -1,7 +1,7 @@
 import { GET_COMMENT, GET_COMMENT_SUCCESS } from "./index";
 import { GET_ALL_POSTS_ERROR } from "../Posts";
 
-export interface ICommnet {
+export interface IComment {
    board: number
    bgroup: number
    parent: number
@@ -15,7 +15,7 @@ export interface ICommnet {
 }
 
 export interface IInitialState {
-   list: null | ICommnet[],
+   list: null | IComment[],
    loading: boolean
    error: null | Error
 }
@@ -23,11 +23,11 @@ export interface IInitialState {
 export interface ICmtAction {
    type:
       typeof GET_COMMENT | typeof GET_COMMENT_SUCCESS | typeof GET_ALL_POSTS_ERROR
-   data: ICommnet[]
+   data: IComment[]
    error: Error
 }
 
 export interface IUseComment {
-   list: ICommnet[]
+   list: IComment[]
    getComment: (cmt_id: string) => void
 }

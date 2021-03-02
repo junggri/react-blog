@@ -31,11 +31,11 @@ const router = express.Router();
 
 router.get("/csrf", indexController.getCsrf);
 
-router.get("/item/:postid/comment", indexController.getCommnet);
+router.get("/comments/comment/posts/:postid", indexController.getComment);
 
 router.get("/google/count", indexController.getGaCount);
 
-router.post("/comment", indexController.saveComment);
+router.post("/comments", indexController.saveComment);
 
 router.post("/reply", indexController.saveReply);
 

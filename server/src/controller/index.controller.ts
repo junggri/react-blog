@@ -7,7 +7,7 @@ interface Controller {
    getCsrf: (req: Request, res: Response) => void
    getGaCount: (req: Request, res: Response) => void
    saveComment: (req: Request, res: Response) => void
-   getCommnet: (req: Request, res: Response) => void
+   getComment: (req: Request, res: Response) => void
    saveReply: (req: Request, res: Response) => void
    deleteComment: (req: Request, res: Response) => void
 }
@@ -27,7 +27,7 @@ const indexController: Controller = {
       }
    },
 
-   async getCommnet(req, res) {
+   async getComment(req, res) {
       const result: any = await model.getComment(req.params.postid);
       if (result.state) {
          res.status(200).json({ result: result.data });
@@ -38,9 +38,8 @@ const indexController: Controller = {
 
 
    async saveComment(req, res) {
-      const { postname, content, grp, topic, postid, user, pwd } = req.body;
       try {
-         const result: any = await model.saveComment(postname, content, grp, topic, postid, user, pwd);
+         const result: any = await model.saveComment(req.body);
          result.state
             ? res.status(200).json({ state: true })
             : res.status(404).json({ state: false });
@@ -50,8 +49,8 @@ const indexController: Controller = {
    },
 
    async saveReply(req, res) {
-      const { content, bn, grp, sorts, depth, topic, postid, user, pwd } = req.body;
-      const result: any = await model.saveReply(content, bn, grp, sorts, depth, topic, postid, user, pwd);
+      const result: any = await model.saveReply(req.body);
+      console.log(result);
       result.state
          ? res.status(200).json({ state: true, comment: result.data })
          : res.status(404).json({ state: false });

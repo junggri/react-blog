@@ -19,12 +19,25 @@ export interface ITextEditSaveProps {
    thumbnail: null | string
 }
 
-interface ParamsDictionary {
-   [index: string]: any
+
+export interface ISaveCommentProps {
+   value: string
+   user: string
+   pwd: string
+   group: number
+   topic: string
+   postId: string
+   contentName: string
 }
 
-export interface IParams extends ParamsDictionary {
+export interface ISaveReplyProps {
+   value: string
+   user: string
+   pwd: string
+   board: number
+   grorp: number
+   sorts: number
+   depth: number
    topic: string
-   tempId: string
-   [index: string]: string
+   postId: string
 }

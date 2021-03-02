@@ -1,4 +1,6 @@
 import QueryString from "qs";
+import React from "react";
+import { IComment } from "@modules/Comment/cmtInterface";
 
 export interface ITextEditRefObject extends HTMLElement {
    state: any
@@ -51,4 +53,48 @@ export interface IThumbnailFetchData {
 
 export interface Ref extends HTMLImageElement {
    src: any
+}
+
+export interface ICommentValue {
+   value: string
+   cmtName: string
+   cmtPwd: string
+}
+
+
+export interface ISaveCommentProps {
+   value: string
+   user: string
+   pwd: string
+   group: number
+   topic: string
+   postId: string
+   contentName: string
+}
+
+export interface ICommentRefObject extends HTMLElement {
+   current: any | null
+}
+
+export interface ISideBarRefObject extends HTMLElement {
+   current: any | null
+   type: any
+   value: any
+}
+
+export interface ICommentProps {
+   children?: React.ReactNode
+   data: IComment
+   topic: string
+   postId: string
+   token: string
+   list: IComment[]
+   setNewRequset: (state: boolean) => void
+   getComment: (value: string) => void
+}
+
+export interface IReplyProps {
+   value: string
+   user: string
+   pwd: string
 }

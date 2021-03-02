@@ -71,13 +71,11 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
                {data.result[0].created}
             </div>
          </PostsContainerComp>
-         <CommentContainer />
-      
-         {/*<CommentContainer*/}
-         {/*   postname={(data as IPostDataProps).result[0].content_name}*/}
-         {/*   postid={match.params.postsId}*/}
-         {/*   topic={match.params.topic}*/}
-         {/*/>*/}
+         <CommentContainer
+            topic={match.params.topic}
+            postId={match.params.postId}
+            contentName={data.result[0].content_name}
+         />
       </>
    );
 };

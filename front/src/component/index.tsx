@@ -1,7 +1,7 @@
 export { default as NavBar } from "./common/NavBar";
 export { default as PostItem } from "./common/PostsItem";
 export { default as SideNavBar } from "./common/SideNavBar";
-;
+export { default as CommentItem } from "./common/CommentItem";
 
 export { default as EntryPostContainer } from "./container/EntryPostContainer";
 export { default as TagPostContainer } from "./container/TagPostContainer";

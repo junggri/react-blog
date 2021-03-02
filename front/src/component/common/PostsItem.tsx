@@ -62,5 +62,5 @@ const PostItem = ({ data, onDelete }: IPostItem) => {
       </PostItemComp>
    );
 };
-export default PostItem;
+export default React.memo(PostItem);
 
