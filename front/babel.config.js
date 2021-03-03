@@ -29,6 +29,7 @@ module.exports = (api) => {
             "root": ["./"],
             "alias": {
                "@src": "./src",
+               "@pages": "./src/pages",
                "@component": "./src/component",
                "@useHooks": "./src/useHooks",
                "@lib": "./src/lib",

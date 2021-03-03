@@ -35,7 +35,7 @@ const contentModel = {
       if (conn !== undefined)
          try {
             const [result]: any = await conn.execute(`select comment from ${topic} where uid = ?`, [postid]);
-            if (result[0].comment >= 1) {
+            if (result[0].comment - 1 >= 0) {
                const query = `UPDATE ${topic} set comment = comment-${length} where uid = ?`;
                const dep = [postid];
                await conn.execute(query, dep);

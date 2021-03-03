@@ -50,15 +50,14 @@ const indexController: Controller = {
 
    async saveReply(req, res) {
       const result: any = await model.saveReply(req.body);
-      console.log(result);
       result.state
          ? res.status(200).json({ state: true, comment: result.data })
          : res.status(404).json({ state: false });
    },
 
+
    async deleteComment(req, res) {
-      const { writer, pwd, number, topic, postId, deleteArr } = req.body;
-      const result: any = await model.deleteComment(writer, pwd, number, topic, postId, deleteArr);
+      const result: any = await model.deleteComment(req.body);
       result.state
          ? res.status(200).json({ state: true })
          : res.status(200).json({ state: false });

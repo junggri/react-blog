@@ -1,7 +1,7 @@
 import instance from "@config/axios.config";
 import { ITextInitialProps } from "@modules/TextEditor/textEdit.interface";
 import { AxiosRequestConfig } from "axios";
-import { ISaveCommentProps } from "@src/globalInterface";
+import { ICommentDeletDataProps, ISaveCommentProps } from "@src/globalInterface";
 
 const URL = process.env.REACT_APP_GRAPHQL_URL;
 
@@ -239,7 +239,6 @@ const util = {
    },
 
    saveReply(data: any, token: string) {
-      console.log(data);
       return instance({
          url: "/api/reply",
          method: "post",
@@ -247,6 +246,26 @@ const util = {
          headers: { "X-XSRF-TOKEN": token },
       });
    },
+
+
+   deleteComment(data: ICommentDeletDataProps, token: string) {
+      return instance({
+         url: "/api/comments/items",
+         method: "post",
+         data: data,
+         headers: { "X-XSRF-TOKEN": token },
+      });
+   },
+
+
+   // deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[], token: string) {
+   //    return instance({
+   //       url: "/api/comment/items",
+   //       method: "post",
+   //       data: { writer, pwd, number, topic, postId, deleteArr },
+   //       headers: { "X-XSRF-TOKEN": token },
+   //    });
+   // },
 ///////t사용하는 것들///////t사용하는 것들///////t사용하는 것들////
 
 
@@ -395,14 +414,6 @@ const util = {
    //    });
    // },
 
-   deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[], token: string) {
-      return instance({
-         url: "/api/comment/items",
-         method: "post",
-         data: { writer, pwd, number, topic, postId, deleteArr },
-         headers: { "X-XSRF-TOKEN": token },
-      });
-   },
 };
 
 export default util;

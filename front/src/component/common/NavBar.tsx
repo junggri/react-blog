@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { NavBarComp, NavBarContainer, SearchBoxComp } from "../../styledComponent";
-import { GrFormSearch } from "react-icons/gr";
 import { BiUpArrowAlt } from "react-icons/bi";
-import { RiHome2Fill } from "react-icons/ri";
 
 const NavBar = () => {
    const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +50,9 @@ const NavBar = () => {
          </SearchBoxComp>
          <NavBarComp>
             <Link to="/">
-               <div className="navbar-logo"><RiHome2Fill className="logo-icons" /></div>
+               <div className="navbar-logo">
+                  <img src="/images/Logo.svg" alt="" />
+               </div>
             </Link>
             <nav>
                <ul>
@@ -68,7 +68,7 @@ const NavBar = () => {
                </ul>
             </nav>
             <div className="navbar-icons-box" ref={icons} onClick={onClickSearchBtn}>
-               <GrFormSearch className="navbar-icon" />
+               {/*<GrFormSearch className="navbar-icon" />*/}
             </div>
          </NavBarComp>
       </NavBarContainer>

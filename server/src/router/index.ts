@@ -39,6 +39,6 @@ router.post("/comments", indexController.saveComment);
 
 router.post("/reply", indexController.saveReply);
 
-router.post("/comment/items", indexController.deleteComment);
+router.post("/comments/items", indexController.deleteComment);
 
 export default router;

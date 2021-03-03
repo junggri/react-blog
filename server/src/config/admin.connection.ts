@@ -5,8 +5,8 @@ dotenv.config();
 
 
 const option = {
-   host: process.env.DB_HOST,
-   user: process.env.DB_USER,
+   host: process.env.NODE_ENV === "development" ? process.env.DB_HOST : process.env.DB_HOST_PROD,
+   user: process.env.NODE_ENV === "development" ? process.env.DB_USER : process.env.DB_USER_PROD,
    password: process.env.DB_PWD,
    database: process.env.DB_DATABASE,
    waitForConnections: true,

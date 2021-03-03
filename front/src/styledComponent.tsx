@@ -66,22 +66,14 @@ export const NavBarComp = styled.section`
   ${mediaMixin};
   justify-content: space-between;
   align-items: center;
+  padding:10px 0;
   @media(min-width: 360px){
     width:95%
   }
   & .navbar-logo {
-    height: 40px;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    & .logo-icons{
-      font-size:1.3rem;
-      opacity: 0.7;
-      transition:0.3s all;
-      &:hover{
-        opacity:0.9
-      }
-    }
+    height: 30px;
+    width:30px;
+    display: flex;   
   }
   nav > ul {
     display: flex;
@@ -93,12 +85,12 @@ export const NavBarComp = styled.section`
     font-size: 0.86rem;
     transition: 0.2s all;
     &:hover {
-      color: #ff6666;
+      color: #6699FF;
       cursor: pointer;
     }
   }
   & .navbar-icons-box {
-    width: 100px;
+    width:30px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -113,7 +105,7 @@ export const NavBarComp = styled.section`
     }
   }
   & .active {
-    color: #ff6666;
+    color: #6699FF;
   }
 `;
 
@@ -179,6 +171,17 @@ export const MainContainerComp = styled.div`
       right:0;  
     }
   }
+  & .sidebar-copyright{
+    position: fixed;
+    bottom:0;
+    width:100%;
+    left:0;
+    background: white;
+    text-align: right;
+    padding-right:10px;
+    padding-bottom:5px;   
+    font-size:0.9rem; 
+  }
 `;
 
 export const SideBarComp = styled.div`
@@ -206,6 +209,7 @@ export const SideBarComp = styled.div`
    align-items: center;
    span{
     margin-right:4px;
+    color:#6699FF; 
     font-size:0.9rem;
    }
    & .media-icons{
@@ -250,7 +254,7 @@ export const SideBarComp = styled.div`
       }
    }
    .active{
-     color: #ff6666;
+     color: #6699FF;
    }
    
    & .sidebar-meta-data{
@@ -289,6 +293,15 @@ export const PostItemComp = styled.article`
   }
   @media(min-width:700px){
     width:700px;
+  }
+  & .categories{
+    position: absolute;
+    padding:5px 10px;
+    bottom:-36px;
+    left:13px;
+    border-radius: 4px;
+    background-color: #6699FF;
+    color:white; 
   }
   & .post-like__icons{
     position:absolute;
@@ -750,6 +763,9 @@ const CommentInputBox = css`
     display: flex;
     margin-top:30px;
     justify-content: space-between;
+    @media(max-width:540px){
+      flex-direction: column;
+    }
     button{
       width:100px;
       cursor: pointer;
@@ -758,9 +774,21 @@ const CommentInputBox = css`
       color:white;
       border-radius:3px;
       font-size:1.1rem;
+      @media(max-width:540px){
+        width:100%;
+        padding:12px 14px;
+      }
     }
      & .comment__user_data{
+       @media(max-width:540px){
+        display: flex;
+        flex-direction: column;
+       }
        input{
+        @media(max-width:540px){
+          width:100%;
+          margin-bottom: 6px;
+        }
         border:1px solid rgba(0,0,0,0.2);
         width:180px;
         padding:12px 10px;
@@ -771,8 +799,16 @@ const CommentInputBox = css`
      }
      & .comment__reply-btn-box{
       display: flex;
+      @media(max-width:675px){
+        justify-content: space-between;
+      }
       button{
-        margin-left:15px;
+        margin-left:15px;    
+        @media(max-width:675px){
+          padding:12px 14px;
+          margin:0;
+          width:44%;
+        }  
       }
      }
   }
@@ -806,6 +842,7 @@ export const CommentItemComp = styled.div<{ depth: number }>`
   section{
     display: flex;
     flex-direction: column;
+    position: relative;
     & .username-icons{
       //color:#6699FF;
       font-size:1.5rem;
@@ -821,6 +858,57 @@ export const CommentItemComp = styled.div<{ depth: number }>`
     & .user_metaData-date{
       font-size:1rem;
       margin-top:8px;
+    }
+    & .delete_comment-btn{
+      position: absolute;
+      right:1%;
+      font-size:1.3rem;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    & .delete-user-data{
+      padding:6px;
+      border-radius:2px;
+      background:#6699FF;
+      opacity: 0;
+      transition:0.3s all;
+      display: flex;
+      flex-direction: column;
+      position:absolute;
+      align-items: flex-end;
+      right:1%;
+      margin-top:24px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      input{
+        border:1px solid rgba(0,0,0,0.2);
+        padding:4px;
+        margin-bottom: 5px;
+        width:140px;
+        background: white;
+        border-right: 2px;
+      }
+      button{
+        background: white;
+        width:45px;
+        border:none;
+        cursor:pointer;
+        z-index: 9;
+        margin-top:6px;
+        border-radius:3px;
+        color:black;
+        font-weight: 500;
+        font-size:0.9rem;
+        padding:3px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+          margin-top:2px
+        }       
+      }
+    }
+    & .visible{
+      opacity: 1;
     }
   }
   & .comment__data{
@@ -862,7 +950,6 @@ export const CommentItemComp = styled.div<{ depth: number }>`
     display: none;
     margin-top:10px;
     background: white;
-    
     button{
       outline-style: none;
       width:100%;
@@ -881,5 +968,64 @@ export const CommentItemComp = styled.div<{ depth: number }>`
     ${CommentInputBox};
     display: none;
     margin-top:20px;
+    & .comment__item_user_data_box{
+      @media(max-width:675px){
+        display: flex;
+        flex-direction: column;
+      }
+      & .comment__item__user_data{
+        display: flex;
+        @media(max-width:675px){
+          display: flex;
+          flex-direction: column;
+          input{
+            width:100%;
+            margin-bottom:10px;
+          }
+        }
+      }
+    }
+  }
+`;
+
+
+export const AboutContainerComp = styled.section`
+  position: relative;
+  margin:0 auto;
+  width:900px;
+  flex-grow:1;
+  padding:13px;
+  & .img-box{
+    width:50%;
+    position: relative;
+    margin:0 auto;
+  }
+  article{
+   h1{
+      font-size:2rem;
+      font-weight: bolder;
+      margin-top:60px;
+      display: flex;
+      align-items: center;
+      & .about-icons{
+        margin-right:10px;
+        color:#6699FF;
+      }
+    }
+   h2{
+     font-size:1.125rem;
+     line-height: 1.3;
+     margin-top:14px;
+   } 
+  }
+  & .about-skill-summary{
+    
+  }
+  & .about__me-data{
+    border:1px solid black;
+    margin-top:40px;
+  }
+  @media(max-width:900px){
+    width:100%
   }
 `;

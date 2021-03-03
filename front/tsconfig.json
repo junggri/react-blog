@@ -26,6 +26,9 @@
       "@src/*": [
         "src/*"
       ],
+      "@pages": [
+        "src/pages/*"
+      ],
       "@component/*": [
         "src/component/*"
       ],

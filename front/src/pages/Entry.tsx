@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { MainContainerComp, WriteBoxBtnComp } from "../styledComponent";
-import { EntryPostContainer, NavBar, SideNavBar, TagPostContainer } from "../component";
+import { EntryPostContainer, SideNavBar, TagPostContainer } from "../component";
 import { Link, Route, RouteComponentProps } from "react-router-dom";
 import useLoginFlag from "@useHooks/useLoginFlag";
 import { ICommonModuleProps } from "@modules/Common/common.interface";
@@ -12,6 +12,8 @@ import { usePreloader } from "@lib/PreloadContext";
 import { onPreloadAllPosts } from "@modules/Posts";
 import { useDispatch } from "react-redux";
 import util from "@lib/axios";
+import { NavBar } from "@component/index";
+
 
 interface IMatchParams {
    id: string
@@ -61,6 +63,9 @@ const Entry = ({ match }: RouteComponentProps<IMatchParams>) => {
                   <TagPostContainer data={AllPosts.data} topic={match.params.topic} onDelete={deletePost} />
                } />
             </div>
+            <footer>
+               <div className="sidebar-copyright">Copyright 2021. junggri All rights reserved.</div>
+            </footer>
          </MainContainerComp>
       </>
    );

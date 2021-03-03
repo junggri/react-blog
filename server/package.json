@@ -7,7 +7,7 @@
     "tsc": "tsc --watch",
     "start": "cross-env NODE_ENV=production REDIS=localhost nodemon dist/server/src/index.js",
     "dev": "cross-env NODE_ENV=development REDIS=localhost nodemon --watch src -e ts --exec ts-node src/index.ts",
-    "start:build": "cross-env NODE_ENV=production REDIS=redis pm2-runtime dist/server/src/index.js",
+    "start:pord": "cross-env NODE_ENV=production REDIS=redis pm2-runtime dist/server/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

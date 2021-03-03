@@ -51,7 +51,7 @@ const SideNavBar = ({ data, count }: ISideNavBar) => {
    return (
       <SideBarComp>
          <header>
-            <span><GrAttachment /></span>
+            <span><GrAttachment className="header-icons" /></span>
             <Link to="/"><h1>전체 토픽</h1></Link>
             <span className="media-icons" onClick={clickMenuBar} ref={headerIcon}>
                <IoMdArrowDropdown />

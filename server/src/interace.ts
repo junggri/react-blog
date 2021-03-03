@@ -41,3 +41,19 @@ export interface ISaveReplyProps {
    topic: string
    postId: string
 }
+
+export interface ICommentDeletDataProps {
+   board: number
+   user: string
+   pwd: string
+   topic: string
+   postsId: string
+   deleteArr: number[]
+}
+
+export interface IUserData {
+   board: number
+   user: string
+   pwd: string
+   postid: string
+}

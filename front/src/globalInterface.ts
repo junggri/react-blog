@@ -98,3 +98,24 @@ export interface IReplyProps {
    user: string
    pwd: string
 }
+
+export interface ICommentUserData {
+   user: string
+   pwd: string
+}
+
+export interface ICommentDeletDataProps {
+   board: number
+   user: string
+   pwd: string
+   topic: string
+   postsId: string
+   deleteArr: number[]
+}
+
+export interface IUserData {
+   board: number
+   user: string
+   pwd: string
+   postid: string
+}

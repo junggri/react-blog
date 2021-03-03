@@ -1,7 +1,7 @@
 const GA =
-  process.env.NODE_ENV === "development"
-    ? ""
-    : `<script>
+   process.env.NODE_ENV === "development"
+      ? ""
+      : `<script>
            window.dataLayer = window.dataLayer || [];
            function gtag() {
                 dataLayer.push(arguments);
@@ -13,11 +13,12 @@ const GA =
        `;
 
 export default function createPage(root: any, script: any, styles: any, helmet: any, tags: any) {
-  return `
+   return `
   <!DOCTYPE html>
   <html lang="ko" ${helmet.htmlAttributes.toString()}>
   <head>
      <title>정그리의 블로그입니다</title>
+     <link rel="icon" href="https://junggri.com/images/Logo.svg"/>
      <meta charset="utf-8" />
      <meta content="width=device-width, initial-scale=1" name="viewport" />
      <meta name="description" content="자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다." />

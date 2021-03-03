@@ -27,7 +27,6 @@ const CommentContainer = ({ topic, postId, contentName }: ICommentCotainer) => {
 
    const commentList: React.RefObject<ICommentRefObject>[] | undefined = useMemo(() => list?.map(() => React.createRef()), [list]);
 
-
    useEffect(() => {
       getComment(postId);
    }, [postId]);
@@ -52,9 +51,15 @@ const CommentContainer = ({ topic, postId, contentName }: ICommentCotainer) => {
             postId,
             contentName,
          };
-         util.saveComment(saveData, csrf);
-         setNewRequset(true);
+         await util.saveComment(saveData, csrf);
       }
+      setCommentValue({
+         value: "",
+         cmtName: "",
+         cmtPwd: "",
+      });
+      getComment(postId);
+      setNewRequset(true);
    };
 
    const depthZeroComment = useMemo(() => list?.filter(e => e.sorts === 0), [list]);
@@ -71,7 +76,7 @@ const CommentContainer = ({ topic, postId, contentName }: ICommentCotainer) => {
                <div className="comment__user_data_box">
                   <div className="comment__user_data">
                      <input type="text" name="cmtName" value={commentValue.cmtName} placeholder="작성자" onChange={onChangeCommentValue} />
-                     <input type="text" name="cmtPwd" value={commentValue.cmtPwd} placeholder="비밀번호" onChange={onChangeCommentValue} />
+                     <input type="password" name="cmtPwd" value={commentValue.cmtPwd} placeholder="비밀번호" onChange={onChangeCommentValue} />
                   </div>
                   <button onClick={onSubmitComment}>등록하기</button>
                </div>
