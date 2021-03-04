@@ -59,7 +59,7 @@ var react_1 = require("react");
 var axios_1 = __importDefault(require("../lib/axios"));
 function CSRF() {
     var _this = this;
-    var _a = __read(react_1.useState(""), 2), csrf = _a[0], setCsrf = _a[1];
+    var _a = __read(react_1.useState(null), 2), csrf = _a[0], setCsrf = _a[1];
     react_1.useEffect(function () {
         (function () { return __awaiter(_this, void 0, void 0, function () {
             var data;
@@ -74,7 +74,7 @@ function CSRF() {
             });
         }); })();
         return function cleanUp() {
-            setCsrf("");
+            setCsrf(null);
         };
     }, []);
     return csrf;

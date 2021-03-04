@@ -1,5 +1,5 @@
 import { DataAction } from "../posts.interface";
-import { PRELOAD_ALL_POSTS, PRELOAD_ALL_POSTS_ERROR, PRELOAD_ALL_POSTS_SUCCESS, PRELOAD_POST, PRELOAD_POST_ERROR, PRELOAD_POST_SUCCESS } from "../index";
+
 
 interface IParameter {
    params?: string
@@ -46,15 +46,9 @@ export const createThunk = (type: string, cb: any) => {
          } else if (type === "data/GET_POST") {
             const { data } = await cb(parameter.topic, parameter.postsId, parameter.csrf);
             dispatch({ type: SUCCESS, payload: data.data.postContent });
-         } else if (type === "preload/PRELOAD_ALL_POSTS") {
+         } else {
             const { data } = await cb();
             dispatch({ type: SUCCESS, payload: data });
-         } else if (type === "preload/PRELOAD_POST") {
-            const { data } = await cb(parameter.topic, parameter.postsId);
-            dispatch({ type: SUCCESS, payload: data });
-         } else {
-            const { data } = await cb(parameter.csrf);
-            dispatch({ type: SUCCESS, payload: data.data.Allposts });
          }
       } catch (e) {
          console.error(e);
@@ -69,22 +63,16 @@ export function handleAction(type: string, key: string, keepData?: boolean) {
    return (state: any, action: DataAction) => {
       switch (action.type) {
          case type:
-         case PRELOAD_ALL_POSTS:
-         case PRELOAD_POST:
             return {
                ...state,
                [key]: reducerUtil.loading(keepData ? state[key].data : null),
             };
          case SUCCESS:
-         case PRELOAD_ALL_POSTS_SUCCESS:
-         case PRELOAD_POST_SUCCESS:
             return {
                ...state,
                [key]: reducerUtil.success(action.payload),
             };
          case ERROR:
-         case PRELOAD_ALL_POSTS_ERROR:
-         case PRELOAD_POST_ERROR:
             return {
                ...state,
                [key]: reducerUtil.error(action.error),

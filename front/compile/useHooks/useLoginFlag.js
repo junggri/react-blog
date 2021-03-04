@@ -9,8 +9,7 @@ var checkUserState_1 = __importDefault(require("../lib/checkUserState"));
 function LoginFlag() {
     var onSetLogin = useCommon_1.default().onSetLogin;
     react_1.useEffect(function () {
-        var token = localStorage.getItem("_jt");
-        var status = checkUserState_1.default(token);
+        var status = checkUserState_1.default();
         status ? onSetLogin(true) : onSetLogin(false);
     }, []);
 }

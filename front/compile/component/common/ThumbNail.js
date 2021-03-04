@@ -59,62 +59,36 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importStar(require("react"));
-var styledComponent_1 = require("../styledComponent");
-var react_router_dom_1 = require("react-router-dom");
-var useLoginFlag_1 = __importDefault(require("@useHooks/useLoginFlag"));
-var usePosts_1 = __importDefault(require("@useHooks/usePosts"));
-var useCommon_1 = __importDefault(require("@useHooks/useCommon"));
-var useCSRF_1 = __importDefault(require("@useHooks/useCSRF"));
-var react_redux_1 = require("react-redux");
-var index_1 = require("@component/index");
+var styledComponent_1 = require("../../styledComponent");
 var axios_1 = __importDefault(require("@lib/axios"));
-var Entry = function (_a) {
-    var match = _a.match;
-    useLoginFlag_1.default();
-    var dispatch = react_redux_1.useDispatch();
-    var csrf = useCSRF_1.default();
-    var _b = useCommon_1.default(), login = _b.login, newRequest = _b.newRequest, setNewRequset = _b.setNewRequset, onGetGaCount = _b.onGetGaCount, count = _b.count;
-    var _c = usePosts_1.default(), AllPosts = _c.AllPosts, getAllPosts = _c.getAllPosts, onClearPost = _c.onClearPost, getPosts = _c.getPosts, posts = _c.posts;
-    // usePreloader(() => dispatch(onRequestAllPosts({})));
-    react_1.useEffect(function () {
-        if (newRequest) {
-            getAllPosts();
-            setNewRequset(false);
-        }
-    }, [getAllPosts, newRequest, setNewRequset]);
-    react_1.useEffect(function () {
-        onGetGaCount();
-    }, [onGetGaCount]);
-    var deletePost = react_1.useCallback(function (topic, identifier) { return __awaiter(void 0, void 0, void 0, function () {
+var ThumbNail = function (_a) {
+    var token = _a.token, onChangeThumbnail = _a.onChangeThumbnail;
+    var imgRef = react_1.useRef(null);
+    var onChangeImg = function (e) { return __awaiter(void 0, void 0, void 0, function () {
+        var formData, target, file, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!csrf) return [3 /*break*/, 2];
-                    return [4 /*yield*/, axios_1.default.deletePost(topic, identifier, csrf)];
+                    if (!(imgRef.current && token)) return [3 /*break*/, 2];
+                    formData = new FormData();
+                    target = e.target;
+                    file = target.files[0];
+                    formData.append("data", file);
+                    imgRef.current.src = URL.createObjectURL(file);
+                    return [4 /*yield*/, axios_1.default.saveThumbnail(token, formData)];
                 case 1:
-                    _a.sent();
+                    data = (_a.sent()).data;
+                    onChangeThumbnail(data.filename);
                     _a.label = 2;
-                case 2:
-                    setNewRequset(true);
-                    return [2 /*return*/];
+                case 2: return [2 /*return*/];
             }
         });
-    }); }, [csrf, setNewRequset]);
-    return (react_1.default.createElement(react_1.default.Fragment, null,
-        login &&
-            react_1.default.createElement(styledComponent_1.WriteBoxBtnComp, null,
-                react_1.default.createElement(react_router_dom_1.Link, { to: "/write" }, "\uC0C8\uAE00\uC4F0\uAE30")),
-        react_1.default.createElement(index_1.NavBar, null),
-        react_1.default.createElement(styledComponent_1.MainContainerComp, null,
-            react_1.default.createElement(index_1.SideNavBar, { data: AllPosts.data, count: count }),
-            react_1.default.createElement("div", { className: "post-item-container" },
-                react_1.default.createElement(react_router_dom_1.Route, { path: ["/"], exact: true, render: function () {
-                        return react_1.default.createElement(index_1.EntryPostContainer, { data: AllPosts.data, onDelete: deletePost });
-                    } }),
-                react_1.default.createElement(react_router_dom_1.Route, { path: "/tag/:topic", exact: true, render: function () {
-                        return react_1.default.createElement(index_1.TagPostContainer, { data: AllPosts.data, topic: match.params.topic, onDelete: deletePost });
-                    } })),
-            react_1.default.createElement("footer", null,
-                react_1.default.createElement("div", { className: "sidebar-copyright" }, "Copyright 2021. junggri All rights reserved.")))));
+    }); };
+    return (react_1.default.createElement(styledComponent_1.ThumbnailComp, null,
+        react_1.default.createElement("h1", null, "ThumbNail"),
+        react_1.default.createElement("input", { type: "file", name: "file", accept: "image/*", multiple: true, onChange: onChangeImg }),
+        react_1.default.createElement("h2", null, "\uC774\uBBF8\uC9C0 \uC800\uC7A5\uD560\uB54C jpg, png\uB85C \uC800\uC7A5\uD574\uC57C\uD55C\uB2E4 svg\uB294 \uC0AC\uC6A9\uD560 \uC218 \uC5C6\uB2E4\uB294 \uAC70 \uC54C\uC9C0?"),
+        react_1.default.createElement("section", { className: "thumbnail-imgbox" },
+            react_1.default.createElement("img", { ref: imgRef }))));
 };
-exports.default = Entry;
+exports.default = react_1.default.memo(ThumbNail);

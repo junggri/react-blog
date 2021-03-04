@@ -121,7 +121,7 @@
     "build": "dotenv -e .env.production node scripts/build.js",
     "build:dev": "dotenv -e .env node scripts/build.js",
     "build:server": "node scripts/build.server.js",
-    "start:server": "nodemon dist/server.js",
+    "start:server": "pm2-runtime dist/server.js",
     "tsc": "tsc --watch",
     "test": "node scripts/test.js"
   },

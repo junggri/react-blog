@@ -124,12 +124,12 @@ var createThunk = function (type, cb) {
                         return [3 /*break*/, 7];
                     case 3:
                         if (!(type === "data/GET_POST")) return [3 /*break*/, 5];
-                        return [4 /*yield*/, cb(parameter.topic, parameter.postsId)];
+                        return [4 /*yield*/, cb(parameter.topic, parameter.postsId, parameter.csrf)];
                     case 4:
                         data = (_a.sent()).data;
                         dispatch({ type: SUCCESS, payload: data });
                         return [3 /*break*/, 7];
-                    case 5: return [4 /*yield*/, cb(parameter.token)];
+                    case 5: return [4 /*yield*/, cb(parameter.csrf)];
                     case 6:
                         data = (_a.sent()).data;
                         dispatch({ type: SUCCESS, payload: data });

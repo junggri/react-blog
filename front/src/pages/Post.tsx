@@ -9,8 +9,6 @@ import useCSRF from "@useHooks/useCSRF";
 import createDOMPurify from "dompurify";
 import { useDispatch } from "react-redux";
 import Meta from "@useHooks/UseMeta";
-import { usePreloader } from "@lib/PreloadContext";
-import { onPreloadPost } from "@modules/Posts";
 import { CommentContainer } from "@component/index";
 
 interface IMatchParams {
@@ -32,7 +30,7 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
 
    const DOMPurify = typeof window === "object" ? createDOMPurify(window) : () => false;
 
-   usePreloader(() => dispatch(onPreloadPost({ topic: match.params.topic, postsId: match.params.postId })));
+   // usePreloader(() => dispatch(onPreloadPost({ topic: match.params.topic, postsId: match.params.postId })));
 
    if (!data) return null;
 

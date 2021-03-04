@@ -16,8 +16,8 @@ export default function usePosts() {
       dispatch(onRequsetPost({ topic, postsId, csrf }));
    }, [dispatch]);
 
-   const getAllPosts = useCallback((csrf: string) => {
-      dispatch(onRequestAllPosts({ csrf }));
+   const getAllPosts = useCallback(() => {
+      dispatch(onRequestAllPosts({}));
    }, [dispatch]);
 
    const onClearPost = useCallback(() => {

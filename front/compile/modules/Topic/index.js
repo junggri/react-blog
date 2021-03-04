@@ -50,7 +50,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.onReqTopicsName = exports.getTopicError = exports.getTopicSuccess = exports.getTopic = exports.GET_TOPIC_ERROR = exports.GET_TOPIC_SUCCESS = exports.GET_TOPIC = void 0;
+exports.onRequestTopicAndTempPostData = exports.getTopicError = exports.getTopicSuccess = exports.getTopic = exports.GET_TOPIC_ERROR = exports.GET_TOPIC_SUCCESS = exports.GET_TOPIC = void 0;
 var axios_1 = __importDefault(require("../../lib/axios"));
 exports.GET_TOPIC = "topic/GET_TOPIC";
 exports.GET_TOPIC_SUCCESS = "topic/GET_TOPIC_SUCCESS";
@@ -61,7 +61,7 @@ var getTopicSuccess = function (payload) { return ({ type: exports.GET_TOPIC_SUC
 exports.getTopicSuccess = getTopicSuccess;
 var getTopicError = function (e) { return ({ type: exports.GET_TOPIC_ERROR, e: e }); };
 exports.getTopicError = getTopicError;
-var onReqTopicsName = function () { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
+var onRequestTopicAndTempPostData = function (token) { return function (dispatch, getState) { return __awaiter(void 0, void 0, void 0, function () {
     var data, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -70,10 +70,10 @@ var onReqTopicsName = function () { return function (dispatch, getState) { retur
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, axios_1.default.getTopicName()];
+                return [4 /*yield*/, axios_1.default.getTopicAndTempPostsData(token)];
             case 2:
                 data = (_a.sent()).data;
-                dispatch(exports.getTopicSuccess(data));
+                dispatch(exports.getTopicSuccess(data.data.getTextEditorData));
                 return [3 /*break*/, 4];
             case 3:
                 e_1 = _a.sent();
@@ -83,9 +83,9 @@ var onReqTopicsName = function () { return function (dispatch, getState) { retur
         }
     });
 }); }; };
-exports.onReqTopicsName = onReqTopicsName;
+exports.onRequestTopicAndTempPostData = onRequestTopicAndTempPostData;
 var initialState = {
-    topic: null,
+    writeData: { tableName: null, tempPostList: null },
     loading: false,
     error: null,
 };
@@ -95,7 +95,7 @@ function Topic(state, action) {
         case exports.GET_TOPIC:
             return __assign(__assign({}, state), { loading: true });
         case exports.GET_TOPIC_SUCCESS:
-            return __assign(__assign({}, state), { topic: action.payload, loading: false });
+            return __assign(__assign({}, state), { writeData: action.payload, loading: false });
         case exports.GET_TOPIC_ERROR:
             return __assign(__assign({}, state), { error: action.error });
         default:

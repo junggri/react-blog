@@ -64,15 +64,15 @@ export const NavBarComp = styled.section`
   transform: translate(-50%,0);  
   max-width:1100px;
   ${mediaMixin};
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding:10px 0;
   @media(min-width: 360px){
     width:95%
   }
   & .navbar-logo {
-    height: 30px;
-    width:30px;
+    height: 40px;
+    width:40px;
     display: flex;   
   }
   nav > ul {
@@ -1000,6 +1000,18 @@ export const AboutContainerComp = styled.section`
     position: relative;
     margin:0 auto;
   }
+  & .about__summary{
+    font-size:2rem;
+    & .icon__box{
+      margin-top:20px;
+      display: flex;
+      align-items: center;
+      span{
+        cursor: pointer;
+        margin-right:15px;
+      }
+    }
+  }
   article{
    h1{
       font-size:2rem;
@@ -1019,7 +1031,68 @@ export const AboutContainerComp = styled.section`
    } 
   }
   & .about-skill-summary{
-    
+    & .about-skill-summary-icons{
+      color:#6699FF;
+      margin-right:10px;
+    }
+    h2{
+      font-size:1.5rem;
+      font-weight:500;
+      margin-bottom:10px;
+      div{
+         border:1px solid black;
+      }
+    }
+    div{
+      line-height: 1.4;
+      padding-left:20px;
+      font-size:1.125rem;
+    }
+  }
+  & .about__me_etc{
+    & .about-etc-icons{
+      color:#6699FF;
+      margin-right:10px;
+    }
+    h2{
+      font-size:1.5rem;
+      font-weight:500;
+      margin-bottom:10px;
+      div{
+         border:1px solid black;
+      }
+    }
+    div{
+      line-height: 1.4;
+      //padding-left:20px;
+      font-size:1.125rem;
+    }  
+    nav{
+      li{
+        font-size:1.125rem;
+        line-height: 1.5;
+      }
+    }
+  }
+  & .about__me-book{
+   & .about-book-icons{
+      margin-right:10px;
+      color:#6699FF;
+   }
+   h2{
+      font-size:1.5rem;
+      font-weight:500;
+      margin-bottom:10px;
+      div{
+         border:1px solid black;
+      }
+   }
+   nav{
+      li{
+        font-size:1.125rem;
+        line-height: 1.5;
+      }
+    }
   }
   & .about__me-data{
     border:1px solid black;

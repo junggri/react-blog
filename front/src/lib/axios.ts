@@ -3,7 +3,7 @@ import { ITextInitialProps } from "@modules/TextEditor/textEdit.interface";
 import { AxiosRequestConfig } from "axios";
 import { ICommentDeletDataProps, ISaveCommentProps } from "@src/globalInterface";
 
-const URL = process.env.REACT_APP_GRAPHQL_URL;
+const URL = "http://localhost:5000/graphql";
 
 function axiosCommonObj<T>(query: T, token: T) {
    return {
@@ -18,7 +18,8 @@ function axiosCommonObj<T>(query: T, token: T) {
 
 const util = {
    getPostFromPostId(topic: string, postsId: string, token: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
       query {
          postContent(topic:"${encodeURIComponent(topic)}" ,postsId:"${postsId}"){
             content
@@ -38,34 +39,22 @@ const util = {
             }
          }
       }
-      `, token);
+      `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
-   getAllPosts(token: string) {
-      const option = axiosCommonObj<string>(`
-               query {
-                    Allposts{
-                       id
-                       comment
-                       uid
-                       content_name
-                       date
-                       created
-                       file
-                       detail
-                       thumbnail
-                       kindofPosts
-                       modified
-                       topic
-                  }
-               }
-               `, token);
-      return instance(option as AxiosRequestConfig);
+   getAllPosts() {
+      return instance({
+         url: "/topic/posts/items",
+         method: "get",
+      });
    },
 
    getDataFromMode(token: string, identifier: string, topic?: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
          query{
             getDataFromMode(identifier:"${identifier}",topic:"${topic}"){
                content
@@ -78,13 +67,15 @@ const util = {
                }
             }
          }
-      `, token);
+      `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
-
    getTopicAndTempPostsData(token: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
                query {
                     getTextEditorData{
                         tableName{
@@ -100,12 +91,13 @@ const util = {
                         }
                     }
                }
-               `, token);
+               `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
-
-   savePost({ data, csrf }: { data: ITextInitialProps, csrf: string }) {
+   savePost({ data, csrf }: { data: ITextInitialProps; csrf: string }) {
       return instance({
          url: `/topic/post`,
          method: "post",
@@ -116,7 +108,7 @@ const util = {
 
    saveTemporaryPost(data: ITextInitialProps, csrf: string, temp_id?: string) {
       return instance({
-         "url": "/topic/temp",
+         url: "/topic/temp",
          method: "post",
          data: { data: data, uid: temp_id },
          headers: { "X-XSRF-TOKEN": csrf },
@@ -134,56 +126,67 @@ const util = {
 
    updatePost(data: ITextInitialProps, identifier: string, token: string) {
       return instance({
-         "url": `topic/${data.topicName}/posts/${identifier}`,
+         url: `topic/${data.topicName}/posts/${identifier}`,
          method: "post",
          data: data,
          headers: { "X-XSRF-TOKEN": token },
       });
       // const option = axiosCommonObj(`
-
    },
 
    createTopic(topic: string, token: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
          mutation{
             createTopic(topic:"${topic}"){
                state
             }
          }
-      `, token);
+      `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
    deletePost(topic: string, identifier: string, token: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
          mutation{
             deletePost(topic:"${topic}", identifier:"${identifier}"){
                state
             }
          }
-      `, token);
+      `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
    deleteTopic(topic: string, token: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
          mutation {
             deleteTopic(topic:"${topic}"){
                state
             }
          }
-      `, token);
+      `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
    deleteTemporaryPost(post_id: string, token: string) {
-      const option = axiosCommonObj<string>(`
+      const option = axiosCommonObj<string>(
+         `
          mutation{
             deleteTemporaryPost(identifier:"${post_id}"){
                state
             }
          }
-      `, token);
+      `,
+         token,
+      );
       return instance(option as AxiosRequestConfig);
    },
 
@@ -247,7 +250,6 @@ const util = {
       });
    },
 
-
    deleteComment(data: ICommentDeletDataProps, token: string) {
       return instance({
          url: "/api/comments/items",
@@ -257,7 +259,6 @@ const util = {
       });
    },
 
-
    // deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[], token: string) {
    //    return instance({
    //       url: "/api/comment/items",
@@ -266,8 +267,7 @@ const util = {
    //       headers: { "X-XSRF-TOKEN": token },
    //    });
    // },
-///////t사용하는 것들///////t사용하는 것들///////t사용하는 것들////
-
+   ///////t사용하는 것들///////t사용하는 것들///////t사용하는 것들////
 
    getTopicName() {
       return instance({
@@ -326,14 +326,12 @@ const util = {
    //    });
    // },
 
-
    getPostFromParams(parmas: string) {
       return instance({
          url: `/topic/posts/${encodeURIComponent(parmas)}`,
          method: "get",
       });
    },
-
 
    // deleteTopic(topicName: string, token: string) {
    //    return instance({
@@ -395,7 +393,6 @@ const util = {
       });
    },
 
-
    // saveComment(postname: string, content: string, grp: number, topic: string, postid: string, user: string, pwd: string, token: string) {
    //    return instance({
    //       url: "/api/comment",
@@ -413,7 +410,6 @@ const util = {
    //       headers: { "X-XSRF-TOKEN": token },
    //    });
    // },
-
 };
 
 export default util;

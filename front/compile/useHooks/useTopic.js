@@ -5,10 +5,11 @@ var react_1 = require("react");
 var Topic_1 = require("../modules/Topic");
 function useTopic() {
     var dispatch = react_redux_1.useDispatch();
-    var _a = react_redux_1.useSelector(function (state) { return state.topic; }), topic = _a.topic, loading = _a.loading, error = _a.error;
-    var requestTopic = react_1.useCallback(function () {
-        dispatch(Topic_1.onReqTopicsName());
+    var _a = react_redux_1.useSelector(function (state) { return state.topic; }), writeData = _a.writeData, loading = _a.loading, error = _a.error;
+    var tableName = writeData.tableName, tempPostList = writeData.tempPostList;
+    var requestTopicAndTempPostData = react_1.useCallback(function (token) {
+        dispatch(Topic_1.onRequestTopicAndTempPostData(token));
     }, [dispatch]);
-    return { topic: topic, loading: loading, error: error, requestTopic: requestTopic };
+    return { tableName: tableName, tempPostList: tempPostList, loading: loading, error: error, requestTopicAndTempPostData: requestTopicAndTempPostData };
 }
 exports.default = useTopic;

@@ -52,6 +52,7 @@ var store_1 = require("./lib/store");
 var react_helmet_1 = require("react-helmet");
 var server_2 = require("@loadable/server");
 var createPage_1 = __importDefault(require("./lib/createPage"));
+var PreloadContext_1 = __importDefault(require("./lib/PreloadContext"));
 var statsFile = path_1.default.resolve("./build/loadable-stats.json");
 var app = express_1.default();
 var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
@@ -64,10 +65,11 @@ var serverRender = function (req, res, next) { return __awaiter(void 0, void 0, 
                 preloadContext = { done: false, promises: [] };
                 extractor = new server_2.ChunkExtractor({ statsFile: statsFile });
                 jsx = (react_1.default.createElement(server_2.ChunkExtractorManager, { extractor: extractor },
-                    react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
-                        react_1.default.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
-                            react_1.default.createElement(GlobalStyles_1.default, null),
-                            react_1.default.createElement(App_1.default, null)))));
+                    react_1.default.createElement(PreloadContext_1.default.Provider, { value: preloadContext },
+                        react_1.default.createElement(react_redux_1.Provider, { store: store_1.store },
+                            react_1.default.createElement(react_router_dom_1.StaticRouter, { location: req.url, context: context },
+                                react_1.default.createElement(GlobalStyles_1.default, null),
+                                react_1.default.createElement(App_1.default, null))))));
                 server_1.default.renderToStaticMarkup(jsx);
                 _a.label = 1;
             case 1:
