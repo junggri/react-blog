@@ -28,7 +28,6 @@ const router = express.Router();
 //    }
 // });
 
-
 router.get("/csrf", indexController.getCsrf);
 
 router.get("/comments/comment/posts/:postid", indexController.getComment);

@@ -7,21 +7,20 @@ export interface ITextEditRefObject extends HTMLElement {
    editor: any
 }
 
-export interface IGetDataFromMode<T> {
-   data: T
-}
-
-export interface IGetDataFromModeData {
-   getDataFromMode: {
-      content: string | null
-      postdata: {
-         content_name: string | null
-         detail: string | null
-         kindofPosts: string | null
-         thumbnail: string | null
-         topic: string | null
-      }
-   }
+export interface IGetDataFromMode {
+   content: string
+   id: number
+   topic: string
+   uid: string
+   content_name: string
+   detail: string
+   thumbnail: null | string,
+   file: string
+   created: string
+   modified: null | string,
+   kindofPosts: string
+   date: Date
+   comment: number
 }
 
 export interface IModeFromQueryString {

@@ -1,6 +1,6 @@
 import connection from "../config/topic.connection";
-import tempConn from "../config/temp.connetion";
 import tempConnection from "../config/temp.connetion";
+import tempConn from "../config/temp.connetion";
 import { ITextEditSaveProps } from "../interace";
 import saveDataCommonProcess from "../lib/saveDataCommonProcess";
 import { poolConnction, tempPoolConnction } from "../config/connection.builder";
@@ -16,6 +16,51 @@ function makePath(folderName: string, fileName: string) {
 }
 
 const contentModel = {
+   async getAllPosts() {
+      const conn = await connection();
+      if (conn !== undefined)
+         try {
+            let _query: string = "";
+            const [tables]: any = await conn.execute("show tables");
+            conn.release();
+            tables.forEach((e: any, idx: number) => {
+               tables.length - 1 !== idx
+                  ? _query += `select * from ${e["Tables_in_contents"]} union `
+                  : _query += `select * from ${e["Tables_in_contents"]}`;
+            });
+            const [posts] = await conn.execute(_query);
+            conn.release();
+            return posts;
+         } catch (e) {
+            conn.release();
+            console.log(e);
+         }
+   },
+
+   async getTemporaryPost(uid: string) {
+      const query = `SELECT * FROM post WHERE uid = ?`;
+      const dep = [uid];
+      return await tempPoolConnction<string>(query, dep);
+   },
+
+   async getPost(topic: string, uid: string) {
+      const query = `SELECT * FROM ${decodeURIComponent(topic)} where uid = ?`;
+      const dep = [uid];
+      return await poolConnction(query, dep);
+   },
+
+   async getTopicAndTemporaryPost() {
+      try {
+         const query = `SHOW TABLES`;
+         const tables = await poolConnction(query);
+         const posts = await tempPoolConnction("select * from post");
+         return { tables, posts };
+      } catch (e) {
+         console.error(e);
+         return { state: false };
+      }
+   },
+
    async increaseCmtCount<T, U>(topic: T, postid: U) {
       const conn = await connection();
       if (conn !== undefined)
@@ -99,8 +144,7 @@ const contentModel = {
       }
    },
 
-   async updaetPost(params: any, data: ITextEditSaveProps) {
-      console.log(params, data);
+   async updatePost(params: any, data: ITextEditSaveProps) {
       const _path = makePath("contents", params.postId);
       const dateString = new Date().toLocaleDateString("en-US", {
          year: "numeric",
@@ -114,6 +158,31 @@ const contentModel = {
       return { state: true };
    },
 
+   deletePost: async ({ uid, topic }: { uid: string, topic: string }) => {
+      const query = `DELETE FROM ${topic} where uid = ? `;
+      try {
+         await indexModel.deleteCmtTable(uid);
+         await poolConnction(query, [uid]);
+         return { state: true };
+      } catch (e) {
+         return { state: false };
+      }
+   },
+
+   async deleteTemporaryPost(uid: string) {
+      const conn = await tempConn();
+      const query = `DELETE FROM post where uid = ?`;
+      const dep = [uid];
+      if (conn !== undefined)
+         try {
+            await conn.execute(query, dep);
+            conn.release();
+            return { state: true };
+         } catch (e) {
+            console.log(e);
+            return { statet: false };
+         }
+   },
    // getAllTopic: async () => {//토픽목록 가져오기
    //    return await poolConnction("show tables");
    // },
@@ -257,27 +326,6 @@ const contentModel = {
    //    const query = `DROP TABLE ${topicName}`;
    //    return await poolConnction(query);
    // },
-
-   // deletePost: async ({ uid, topic }: { uid: string, topic: string }) => {
-   //    const query = `DELETE FROM ${topic} where uid = ? `;
-   //    await indexModel.deleteCmtTable(uid);
-   //    return await poolConnction(query, [uid]);
-   // },
-
-   async deleteTempPost({ uid }: { uid: string }) {
-      const conn = await tempConn();
-      const query = `DELETE FROM post where uid = ?`;
-      const dep = [uid];
-      if (conn !== undefined)
-         try {
-            await conn.execute(query, dep);
-            conn.release();
-            return { state: true };
-         } catch (e) {
-            console.log(e);
-            return { statet: false };
-         }
-   },
 };
 
 export default contentModel;

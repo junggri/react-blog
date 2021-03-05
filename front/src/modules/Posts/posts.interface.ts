@@ -72,9 +72,8 @@ export interface IPostProps<T> {
 }
 
 
-export interface IPostDataProps {
+export interface IPostDataProps extends IPostCommonProps {
    content: string
-   result: IPostCommonProps[]
 }
 
 export interface IPostsModuleProps {
@@ -82,7 +81,7 @@ export interface IPostsModuleProps {
    post: IPostProps<IPostDataProps>
    AllPosts: IAllPost
    getPosts: (params: string) => void
-   getPost: (topic: string, postId: string, csrf: string) => void
+   getPost: (topic: string, postId: string) => void
    getAllPosts: () => void
    onClearPost: () => void
    onCleatPostData: () => void

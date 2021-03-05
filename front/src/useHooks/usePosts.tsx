@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
 import { onRequestAllPosts, onRequestPosts, onRequsetPost } from "../modules/Posts";
 import { useCallback } from "react";
-import { clearPost, clearPostData } from "../modules/Posts/lib/PostsAction";
+import { clearPost, clearPostData } from "@modules/Posts/lib/PostsAction";
 
 export default function usePosts() {
    const dispatch = useDispatch();
@@ -12,8 +12,8 @@ export default function usePosts() {
       dispatch(onRequestPosts({ params: params }));
    }, [dispatch]);
 
-   const getPost = useCallback((topic: string, postsId: string, csrf: string) => {
-      dispatch(onRequsetPost({ topic, postsId, csrf }));
+   const getPost = useCallback((topic: string, postsId: string) => {
+      dispatch(onRequsetPost({ topic, postsId }));
    }, [dispatch]);
 
    const getAllPosts = useCallback(() => {

@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import path from "path";
-import graphqlModel from "../model/graphql.model";
 import model from "../model/topic.model";
 import { uploadThumbnail } from "../lib/multer";
 import { promises as fs } from "fs";
@@ -11,7 +10,7 @@ declare module "express-session" {
    }
 }
 
-function makePath(folderName: string, fileName: string) {
+function makePath<T>(folderName: T, fileName: T) {
    let _path = path.resolve(`../${folderName}`);
    const filePath = _path + `/${fileName}.html`;
    return { filePath: filePath, _path: _path };
@@ -19,7 +18,7 @@ function makePath(folderName: string, fileName: string) {
 
 
 interface Controller {
-   // deletePost: (req: Request, res: Response) => void
+
    // getTempPostFromId: (req: Request, res: Response) => void
    // getContentName(req: Request, res: Response): void;
    // savePosts(req: Request, res: Response): void;
@@ -36,24 +35,41 @@ interface Controller {
    // temporaryPost(req: Request, res: Response): any
    savePost(req: Request, res: Response): void
    saveTemporaryPost(req: Request, res: Response): void
-   deleteTemporaryPostAndSavePost(req: Request, res: Response): void
    updatePost(req: Request, res: Response): void
-//////////////////////////
-   getAllPostsPreload(req: Request, res: Response): any
-   getPostPreload(req: Request, res: Response): any
+   deleteTemporaryPostAndSavePost(req: Request, res: Response): void
+   deletePost(req: Request, res: Response): void
+   deleteTemporaryPost(req: Request, res: Response): void
+   getAllPosts(req: Request, res: Response): void
+   getTemporaryPost(req: Request, res: Response): void
+   getPost(req: Request, res: Response): void
+   getTopicAndTemporaryPost(req: Request, res: Response): void
    saveThumbnail(req: Request, res: Response): any
 }
 
+
 let contentController: Controller = {
-   getAllPostsPreload: async (req, res) => {
-      const result = await graphqlModel.getAllPosts();
+   getAllPosts: async (req, res) => {
+      const result = await model.getAllPosts();
       res.status(200).json(result);
    },
+   async getTemporaryPost(req, res) {
+      const _path = makePath<string>("temporary-storage", req.params.uid);
+      const content: string = await fs.readFile(_path.filePath, "utf8");
+      const result: any = await model.getTemporaryPost(req.params.uid);
+      res.status(200).json({ content: content, ...result[0] });
+   },
 
-   getPostPreload: async (req, res) => {
-      const { topic, postsId } = req.params;
-      const result = await graphqlModel.getPostData(topic, postsId);
-      res.status(200).json(result);
+   async getPost(req, res) {
+      const { uid, topic } = req.params;
+      const _path = makePath<string>("contents", uid);
+      const content = await fs.readFile(_path.filePath, "utf8");
+      const result: any = await model.getPost(topic, uid);
+      res.status(200).json({ content: content, ...result[0] });
+   },
+
+   async getTopicAndTemporaryPost(req, res) {
+      const data = await model.getTopicAndTemporaryPost();
+      res.status(200).json({ result: data });
    },
 
    async saveThumbnail(req: Request, res: Response) {
@@ -85,8 +101,26 @@ let contentController: Controller = {
    },
 
    async updatePost(req, res) {
-      const result = await model.updaetPost(req.params, req.body);
+      const result = await model.updatePost(req.params, req.body);
       if (result.state) res.status(200).json({ state: true });
+   },
+
+   async deletePost(req, res) {
+      let _path = makePath("contents", req.body.uid);
+      let result: any = await model.deletePost(req.body);
+      if (result.state) {
+         await fs.unlink(_path.filePath);
+         res.status(200).json({ state: true });
+      } else {
+         res.status(404).json({ state: false });
+      }
+   },
+
+   async deleteTemporaryPost(req, res) {
+      const result: any = await model.deleteTemporaryPost(req.body.postid);
+      result.state
+         ? res.status(200).json({ state: true })
+         : res.status(400).json({ state: false });
    },
 //////////////////////////
 //    getAllPostsItems: async (req, res) => {
@@ -193,16 +227,6 @@ let contentController: Controller = {
    //       : res.status(404).json({ state: false });
    // },
 
-   // deletePost: async (req, res) => {
-   //    let _path = makePath("contents", req.body.uid);
-   //    let result: any = await model.deletePost(req.body);
-   //    if (result.state) {
-   //       await fs.unlink(_path.filePath);
-   //       res.status(200).json({ state: true });
-   //    } else {
-   //       res.status(404).json({ state: false });
-   //    }
-   // },
 
    // async deleteTempPost(req: Request, res: Response) {
    //    let _path = makePath("temporary-storage", req.body.uid);

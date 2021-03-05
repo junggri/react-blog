@@ -32,10 +32,14 @@ app
    .use(helmet.frameguard({ action: "deny" }))
    .use(cors({ origin: true, credentials: true }))
    .use("/thumbnail", express.static(path.resolve("../thumbnail")))
+   .use("/images", express.static(path.resolve(__dirname, "public/images")))
    .use(bodyParser.json())
    .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
 
+app.use("/api", indexApi); //공통라우터
+app.use("/topic", topicApi); //콘텐츠 관련 라우터
+app.use("/admin", adminApi);
 const schema = buildSchema(schemaType);
 
 const root = {
@@ -52,9 +56,6 @@ app.use(
    }),
 );
 
-app.use("/api", indexApi); //공통라우터
-app.use("/topic", topicApi); //콘텐츠 관련 라우터
-app.use("/admin", adminApi);
 
 app.use(function(err: any, req: Request, res: Response, next: NextFunction) {
    res.locals.message = err.message;

@@ -1,4 +1,3 @@
-import connection from "../config/topic.connection";
 import tempConnection from "../config/temp.connetion";
 import path from "path";
 import { promises as fs } from "fs";
@@ -13,55 +12,55 @@ function makePath<T>(folderName: T, fileName: T) {
 }
 
 class topicModel {
-   static async getAllPosts() {
-      const conn = await connection();
-      if (conn !== undefined)
-         try {
-            let _query: string = "";
-            const [tables]: any = await conn.execute("show tables");
-            conn.release();
-            tables.forEach((e: any, idx: number) => {
-               tables.length - 1 !== idx
-                  ? _query += `select * from ${e["Tables_in_contents"]} union `
-                  : _query += `select * from ${e["Tables_in_contents"]}`;
-            });
-            const [posts] = await conn.execute(_query);
-            conn.release();
-            return posts;
-         } catch (e) {
-            conn.release();
-            console.log(e);
-         }
-   }
+   // static async getAllPosts() {
+   //    const conn = await connection();
+   //    if (conn !== undefined)
+   //       try {
+   //          let _query: string = "";
+   //          const [tables]: any = await conn.execute("show tables");
+   //          conn.release();
+   //          tables.forEach((e: any, idx: number) => {
+   //             tables.length - 1 !== idx
+   //                ? _query += `select * from ${e["Tables_in_contents"]} union `
+   //                : _query += `select * from ${e["Tables_in_contents"]}`;
+   //          });
+   //          const [posts] = await conn.execute(_query);
+   //          conn.release();
+   //          return posts;
+   //       } catch (e) {
+   //          conn.release();
+   //          console.log(e);
+   //       }
+   // }
 
-   static async getPostData(topic: string, postId: string) {
-      const _path = makePath<string>("contents", postId);
-      const query = `SELECT * from ${decodeURIComponent(topic)} where uid = ?`;
-      const dep = [postId];
-      const result: any = await poolConnction(query, dep);
-      let content = await fs.readFile(_path.filePath, "utf-8");
-      return ({ content, result });
-   }
+   // static async getPostData(topic: string, postId: string) {
+   //    const _path = makePath<string>("contents", postId);
+   //    const query = `SELECT * from ${decodeURIComponent(topic)} where uid = ?`;
+   //    const dep = [postId];
+   //    const result: any = await poolConnction(query, dep);
+   //    let content = await fs.readFile(_path.filePath, "utf-8");
+   //    return ({ content, result });
+   // }
 
-   static async getTableName() {
-      try {
-         const query = `SHOW TABLES`;
-         const result: any = await poolConnction(query);
-         return result;
-      } catch (e) {
-         console.error(e);
-      }
-   }
+   // static async getTableName() {
+   //    try {
+   //       const query = `SHOW TABLES`;
+   //       const result: any = await poolConnction(query);
+   //       return result;
+   //    } catch (e) {
+   //       console.error(e);
+   //    }
+   // }
 
-   static async getTemporaryPost() {
-      try {
-         const conn: PoolConnection | undefined = await tempConnection();
-         const [result]: any = await conn?.execute("select * from post");
-         return result;
-      } catch (e) {
-         console.error(e);
-      }
-   }
+   // static async getTemporaryPost() {
+   //    try {
+   //       const conn: PoolConnection | undefined = await tempConnection();
+   //       const [result]: any = await conn?.execute("select * from post");
+   //       return result;
+   //    } catch (e) {
+   //       console.error(e);
+   //    }
+   // }
 
    static async getDataFromMode(identifier: string, topic: string | undefined) {
       let _path = topic === "undefined"

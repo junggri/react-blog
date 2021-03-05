@@ -5,7 +5,6 @@ interface IParameter {
    params?: string
    topic?: string
    postsId?: string
-   csrf?: string
 }
 
 export const reducerUtil = {
@@ -44,8 +43,8 @@ export const createThunk = (type: string, cb: any) => {
             const { data } = await cb(parameter.params);
             dispatch({ type: SUCCESS, payload: data });
          } else if (type === "data/GET_POST") {
-            const { data } = await cb(parameter.topic, parameter.postsId, parameter.csrf);
-            dispatch({ type: SUCCESS, payload: data.data.postContent });
+            const { data } = await cb(parameter.topic, parameter.postsId);
+            dispatch({ type: SUCCESS, payload: data });
          } else {
             const { data } = await cb();
             dispatch({ type: SUCCESS, payload: data });

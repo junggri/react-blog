@@ -7,7 +7,7 @@ import path from "path";
 import { ServerStyleSheet } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Provider } from "react-redux";
-import { store } from "./lib/store";
+import { store } from "@lib/store";
 import { Helmet } from "react-helmet";
 import { ChunkExtractor, ChunkExtractorManager } from "@loadable/server";
 import createPage from "./lib/createPage";
@@ -16,6 +16,7 @@ import PreloadContext from "./lib/PreloadContext";
 const statsFile = path.resolve("./build/loadable-stats.json");
 
 const app = express();
+app.disable("x-powered-by");
 
 const serverRender = async (req: any, res: any, next: any) => {
    const sheet = new ServerStyleSheet();

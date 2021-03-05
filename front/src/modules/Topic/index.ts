@@ -12,11 +12,11 @@ export const getTopicSuccess = (payload: any[]) => ({ type: GET_TOPIC_SUCCESS, p
 export const getTopicError = (e: Error) => ({ type: GET_TOPIC_ERROR, e });
 
 
-export const onRequestTopicAndTempPostData = (token: string) => async (dispatch: Dispatch, getState: any) => {
+export const onRequestTopicAndTempPostData = () => async (dispatch: Dispatch, getState: any) => {
    dispatch(getTopic());
    try {
-      const { data } = await util.getTopicAndTempPostsData(token);
-      dispatch(getTopicSuccess(data.data.getTextEditorData));
+      const { data } = await util.getTopicAndTempPostsData();
+      dispatch(getTopicSuccess(data.result));
    } catch (e) {
       dispatch(getTopicError(e));
    }
@@ -24,7 +24,7 @@ export const onRequestTopicAndTempPostData = (token: string) => async (dispatch:
 
 
 const initialState: ITopicinitialState = {
-   writeData: { tableName: null, tempPostList: null },
+   textEditorData: { tables: null, posts: null },
    loading: false,
    error: null,
 };
@@ -39,7 +39,7 @@ export default function Topic(state: ITopicinitialState = initialState, action: 
       case GET_TOPIC_SUCCESS:
          return {
             ...state,
-            writeData: action.payload,
+            textEditorData: action.payload,
             loading: false,
          };
       case GET_TOPIC_ERROR:

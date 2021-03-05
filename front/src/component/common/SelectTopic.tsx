@@ -9,7 +9,7 @@ interface ISelectTopic {
    onIsChecked: (value: string) => void
    checked: string
    token: string | null
-   onRequestAfterMakeOrDeleteTopic: (token: string) => void
+   onRequestAfterMakeOrDeleteTopic: () => void
 }
 
 interface Ref extends HTMLElement {
@@ -40,7 +40,7 @@ const SelectTopic = ({ topic, onIsChecked, checked, token, onRequestAfterMakeOrD
       if (!value) return;
       if (token && parentRef.current) {
          await util.createTopic(value, token);
-         onRequestAfterMakeOrDeleteTopic(token);
+         onRequestAfterMakeOrDeleteTopic();
          setValue("");
       }
    };

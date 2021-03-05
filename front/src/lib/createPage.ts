@@ -18,7 +18,7 @@ export default function createPage(root: any, script: any, styles: any, helmet: 
   <html lang="ko" ${helmet.htmlAttributes.toString()}>
   <head>
      <title>정그리의 블로그입니다</title>
-     <link rel="icon" href="https://junggri.com/images/Logo.svg"/>
+     <link rel="icon" href="https://www.junggri.com/images/Logo.ico"/>
      <meta charset="utf-8" />
      <meta content="width=device-width, initial-scale=1" name="viewport" />
      <meta name="description" content="자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다." />

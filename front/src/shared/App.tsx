@@ -14,8 +14,8 @@ const About = loadable(() => import(/* webpackChunkName: "About" */"../pages/Abo
 function App() {
    const data = {
       title: "junggri blog",
-      description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로입니다.",
-      image: "https://www.junggri.com/images/og.jpg",
+      description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로그입니다.",
+      image: "https://www.junggri.com/images/Logo.jpg",
       type: "website",
    };
 

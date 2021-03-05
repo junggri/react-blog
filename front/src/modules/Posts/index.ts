@@ -29,10 +29,6 @@ export const onRequsetPost = createThunk(GET_POST, util.getPostFromPostId);
 
 export const onRequestAllPosts = createThunk(GET_ALL_POSTS, util.getAllPosts);
 
-// export const onPreloadAllPosts = createThunk(PRELOAD_ALL_POSTS, util.preloadGetAllPosts);
-//
-// export const onPreloadPost = createThunk(PRELOAD_POST, util.preloadGetPost);
-
 
 const initialState: IPostInitialState = {
    posts: reducerUtil.initial(null),

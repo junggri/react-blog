@@ -10,12 +10,11 @@ import useCSRF from "@useHooks/useCSRF";
 import useTopic from "@useHooks/useTopic";
 import useCommon from "@useHooks/useCommon";
 import useTextEdit from "@useHooks/useTextEdit";
-import checkUserState from "@lib/checkUserState";
 import validationWrite from "@lib/validationWrite";
-import { ITopicModuleProps } from "@modules/Topic/topic.interface";
+import { ITopicModuleProps, IWriteData } from "@modules/Topic/topic.interface";
 import { ITextEditModuleProps } from "@modules/TextEditor/textEdit.interface";
 import { ICommonModuleProps } from "@modules/Common/common.interface";
-import { IGetDataFromMode, IGetDataFromModeData, ITextEditRefObject } from "@src/globalInterface";
+import { IGetDataFromMode, ITextEditRefObject } from "@src/globalInterface";
 import { AxiosPromise } from "axios";
 
 //TODO 임시저장 저장/또 임시저장 그리고 axios extension 공부하기
@@ -26,46 +25,44 @@ const Write = ({ history, location }: RouteComponentProps) => {
    const csrf: string | null = useCSRF();
    const [mode, setMode] = useState<string>("write");
    const textEdit = useRef<ITextEditRefObject>(null);
-   const [fetch, setFetch] = useState<boolean>(false);
-   const { setNewRequset, login }: ICommonModuleProps = useCommon();
-   const { tableName, tempPostList, requestTopicAndTempPostData }: ITopicModuleProps = useTopic();
+   const { setNewRequset }: ICommonModuleProps = useCommon();
+   const { textEditorData, requestTopicAndTempPostData }: ITopicModuleProps = useTopic();
    const { data, setContent, setContentName, setTopic, setKindOfPosts, setDetail, setTempData, setThumbnail }: ITextEditModuleProps = useTextEdit();
+   const { posts, tables }: IWriteData = textEditorData;
 
 
-   const getDataFromMode = async (mode: string, cb: AxiosPromise<IGetDataFromMode<IGetDataFromModeData>>) => {
+   const getDataFromMode = useCallback(async (cb: AxiosPromise<IGetDataFromMode>) => {
       const { data } = await cb;
-      if (textEdit.current) textEdit.current.editor.scrollingContainer.innerHTML = data.data.getDataFromMode.content;
+      if (textEdit.current) textEdit.current.editor.scrollingContainer.innerHTML = data.content;
       setTempData({
-         contentName: data.data.getDataFromMode.postdata.content_name,
-         topicName: data.data.getDataFromMode.postdata.topic,
-         kindofPosts: data.data.getDataFromMode.postdata.kindofPosts,
-         detail: data.data.getDataFromMode.postdata.detail,
-         thumbnail: data.data.getDataFromMode.postdata.thumbnail,
+         contentName: data.content_name,
+         topicName: data.topic,
+         content: data.content,
+         kindofPosts: data.kindofPosts,
+         detail: data.detail,
+         thumbnail: data.thumbnail ? data.thumbnail : null,
       });
-   };
+   }, [setTempData]);
 
    useEffect(() => {
       if (Object.entries(qs.parse(location.search))[0]) {//수정이나 임시저장을 불러올때 사용되는 것들
          const mode: string = Object.entries(qs.parse(location.search))[0][0];
          const identifier: string | string[] | QueryString.ParsedQs | QueryString.ParsedQs[] | undefined = Object.entries(qs.parse(location.search))[0][1];
-         if (mode === "?temp" && csrf && typeof identifier === "string" && !fetch) {
-            getDataFromMode(mode, util.getDataFromMode(csrf, identifier));
-         } else if (mode === "?update" && csrf && typeof identifier === "string") {
+         if (mode === "?temp" && typeof identifier === "string") {
+            getDataFromMode(util.getDataFromMode(identifier));
+         } else if (mode === "?update" && typeof identifier === "string") {
             const topic: string | string[] | QueryString.ParsedQs | QueryString.ParsedQs[] | undefined = Object.entries(qs.parse(location.search))[1][1];
-            if (typeof topic === "string") getDataFromMode(mode, util.getDataFromMode(csrf, identifier, topic));
+            if (typeof topic === "string") getDataFromMode(util.getDataFromMode(identifier, topic));
          }
          setMode(mode.split("?")[1]);
-         setFetch(false);
       } else {
          setMode("write");
       }
-   }, [location, csrf, tempPostList]);
+   }, [location]);
 
 
    useEffect(() => {
-      const status = checkUserState();
-      if (csrf && !tempPostList && !tableName) requestTopicAndTempPostData(csrf);
-      if (!status) history.push("/");
+      requestTopicAndTempPostData();
       if (textEdit.current) textEdit.current.focus();
       return () => setTempData({
          contentName: "",
@@ -75,7 +72,7 @@ const Write = ({ history, location }: RouteComponentProps) => {
          detail: "",
          thumbnail: null,
       });
-   }, [csrf, setTempData, login, history]);
+   }, []);
 
    const onContentChange = useCallback((data: string) => {
       setContentName(data);
@@ -101,9 +98,9 @@ const Write = ({ history, location }: RouteComponentProps) => {
       setThumbnail(img);
    }, [setThumbnail]);
 
-   const onRequestAfterMakeOrDeleteTopic = useCallback((csrf: string) => {
-      requestTopicAndTempPostData(csrf);
-   }, [requestTopicAndTempPostData, csrf]);
+   const onRequestAfterMakeOrDeleteTopic = useCallback(() => {
+      requestTopicAndTempPostData();
+   }, [requestTopicAndTempPostData]);
 
 
    const onSubmit = async (): Promise<void> => {
@@ -111,13 +108,13 @@ const Write = ({ history, location }: RouteComponentProps) => {
       if (!valiidation) alert("정보를 입력하세요");
       const identifier = Object.values(qs.parse(location.search))[0] as string;
       if (valiidation && csrf) {
-         const result = mode === "write"
+         mode === "write"
             ? await util.savePost({ data, csrf })
             : mode === "temp"
-               ? await util.deleteTemporaryPostAndSavePost(data, identifier, csrf)
-               : await util.updatePost(data, identifier, csrf);
+            ? await util.deleteTemporaryPostAndSavePost(data, identifier, csrf)
+            : await util.updatePost(data, identifier, csrf);
          setNewRequset(true);
-         onRequestAfterMakeOrDeleteTopic(csrf);
+         onRequestAfterMakeOrDeleteTopic();
          history.push("/");
       }
    };
@@ -127,16 +124,22 @@ const Write = ({ history, location }: RouteComponentProps) => {
       const temp_uid = Object.values(qs.parse(location.search))[0];
       if (csrf) {
          const result = await util.saveTemporaryPost(data, csrf, temp_uid as string);
-         onRequestAfterMakeOrDeleteTopic(csrf);
-         if (result.status == 200) history.push("/");
+         onRequestAfterMakeOrDeleteTopic();
+         if (result.status === 200) history.push("/");
       }
    };
 
    const deleteTemporaryPost = async (identifier: string, ref: RefObject<HTMLSpanElement>) => {
       if (csrf && ref.current) {
-         await util.deleteTemporaryPost(identifier, csrf);
-         onRequestAfterMakeOrDeleteTopic(csrf);
-         ref.current.style.display = "none";
+         const { data } = await util.deleteTemporaryPost(identifier, csrf);
+         console.log(data);
+         if (data.state) {
+            onRequestAfterMakeOrDeleteTopic();
+            ref.current.style.display = "none";
+         } else {
+            alert("오류가 났습니다");
+         }
+
       }
    };
 
@@ -159,7 +162,7 @@ const Write = ({ history, location }: RouteComponentProps) => {
                contentName={data.contentName}
             />
             <SelectTopic
-               topic={tableName}
+               topic={tables}
                onIsChecked={onIsChecked}
                checked={data.topicName}
                onRequestAfterMakeOrDeleteTopic={onRequestAfterMakeOrDeleteTopic}
@@ -168,7 +171,7 @@ const Write = ({ history, location }: RouteComponentProps) => {
             <KindofPosts onCheck={onCheckKindOfPosts} checked={data.kindofPosts} />
             <ThumbNail token={csrf} onChangeThumbnail={onChangeThumbnail} />
             <TemporaryPost
-               temp={tempPostList}
+               temp={posts}
                deleteTemporaryPost={deleteTemporaryPost}
             />
             <TextEditorBtnBox onSubmit={onSubmit} onSubmitTempPost={onSubmitTemporaryPost} />

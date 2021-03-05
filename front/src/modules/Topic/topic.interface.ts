@@ -9,8 +9,8 @@ export interface TopicAction {
 }
 
 export interface IWriteData {
-   tableName: [{ Tables_in_contents: string }] | null
-   tempPostList: [{
+   tables: [{ Tables_in_contents: string }] | null
+   posts: [{
       uid: string,
       topic: string,
       created: string
@@ -21,13 +21,14 @@ export interface IWriteData {
 }
 
 export interface ITopicinitialState {
-   writeData: IWriteData
+   textEditorData: IWriteData | null
    loading: boolean
    error: Error | null
 }
 
-export interface ITopicModuleProps extends IWriteData {
+export interface ITopicModuleProps {
+   textEditorData: IWriteData | null
    loading: boolean,
    error: Error | null
-   requestTopicAndTempPostData: (token: string) => void
+   requestTopicAndTempPostData: () => void
 }
