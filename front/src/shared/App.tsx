@@ -9,13 +9,13 @@ const Post = loadable(() => import(/* webpackChunkName: "Post" */"../pages/Post"
 const Write = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Write"));
 const Admin = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Admin"));
 const About = loadable(() => import(/* webpackChunkName: "About" */"../pages/About"));
-
+const Text = loadable(() => import(/* webpackChunkName: "About" */"../pages/TestWrite"));
 
 function App() {
    const data = {
       title: "junggri blog",
       description: "자바스크립트와 웹 프로그래밍, 매일 매일 성장해 나가기를 원하는 블로그입니다.",
-      image: "https://www.junggri.com/images/Logo.jpg",
+      image: "https://www.junggri.com/images/ogLogo.jpg",
       type: "website",
    };
 
@@ -27,6 +27,7 @@ function App() {
             <Route path="/topic/:topic/:postId" exact component={Post} />
             <Route path="/write" exact component={Write} />
             <Route path="/about" exact component={About} />
+            <Route path='/test' exact component={Text} />
             <Route path="/admin/leejeongsoo" exact component={Admin} />
             <Route render={() => <h1>Not found</h1>} />
          </Switch>

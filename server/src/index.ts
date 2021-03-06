@@ -12,11 +12,10 @@ import { csrfProtection, header } from "./lib/middlewares";
 import { buildSchema } from "graphql";
 import { graphqlHTTP } from "express-graphql";
 import indexApi from "../src/router";
-import topicApi from "../src/router/topic";
-import adminApi from "../src/router/admin";
 import queryResolver from "./graphql/query.resolvers";
 import mutationResolver from "./graphql/mutation.resolvers";
 import schemaType from "./graphql/type";
+import contentApi from "./router/content";
 
 const app = express();
 app.disable("x-powered-by");
@@ -37,9 +36,9 @@ app
    .use(bodyParser.urlencoded({ extended: false }))
    .use(csrfProtection);
 
+app.use("/content", contentApi); //콘텐츠 관련 라우터
 app.use("/api", indexApi); //공통라우터
-app.use("/topic", topicApi); //콘텐츠 관련 라우터
-app.use("/admin", adminApi);
+
 const schema = buildSchema(schemaType);
 
 const root = {

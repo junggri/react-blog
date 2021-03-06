@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import { IPostCommonProps } from "@modules/Posts/posts.interface";
 import { FiDelete } from "react-icons/fi";
 import { AiTwotoneEdit } from "react-icons/ai";
+import isNewPost from "@src/lib/isNewPost";
 
 interface IPostItem {
    data: IPostCommonProps
    onDelete: (topic: string, identifier: string) => void
+   login: boolean
 }
 
-const PostItem = ({ data, onDelete }: IPostItem) => {
+const PostItem = ({ data, onDelete, login }: IPostItem) => {
 
    const onClickDeleteBtn = (e: React.MouseEvent): void => {
       const check: boolean = window.confirm("삭제할꺼야??");
@@ -18,12 +20,13 @@ const PostItem = ({ data, onDelete }: IPostItem) => {
    };
 
 
-   const onClickLikeBtn = (e: React.MouseEvent): void => {
-
-   };
+   // const onClickLikeBtn = (e: React.MouseEvent): void => {
+   //
+   // };
 
    return (
       <PostItemComp>
+         {isNewPost(data.created) && <span>sads</span>}
          {/*<div className="post-like__icons" onClick={onClickLikeBtn} data-uid={data.uid}>*/}
          {/*   <VscBookmark />*/}
          {/*</div>*/}
@@ -61,10 +64,12 @@ const PostItem = ({ data, onDelete }: IPostItem) => {
                </div>
             </Link>
          </section>
+         {login &&
          <section className="post-control-icon-box">
             <span><Link to={`/write?update=${data.uid}&topic=${data.topic}`}><AiTwotoneEdit /></Link></span>
             <span onClick={onClickDeleteBtn}><FiDelete /></span>
          </section>
+         }
       </PostItemComp>
    );
 };

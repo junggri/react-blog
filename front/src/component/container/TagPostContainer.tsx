@@ -6,16 +6,17 @@ interface ITagPostContainer {
    data: IPostCommonProps[] | null
    topic: string
    onDelete: (topic: string, identifier: string) => void
+   login: boolean
 }
 
 
-const TagPostContainer = ({ data, topic, onDelete }: ITagPostContainer) => {
+const TagPostContainer = ({ data, topic, onDelete, login }: ITagPostContainer) => {
 
    return (
       <>
          {data?.map((e) => {
             if (e.topic === topic) {
-               return <PostItem data={e} key={e.uid} onDelete={onDelete} />;
+               return <PostItem data={e} key={e.uid} onDelete={onDelete} login={login} />;
             }
          })}
       </>

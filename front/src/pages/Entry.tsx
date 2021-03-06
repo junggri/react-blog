@@ -30,7 +30,6 @@ const Entry = ({ match, history }: RouteComponentProps<IMatchParams>) => {
 
    useEffect(() => {
       if (newRequest) {
-         console.log(123123);
          getAllPosts();
          setNewRequset(false);
       }
@@ -65,10 +64,10 @@ const Entry = ({ match, history }: RouteComponentProps<IMatchParams>) => {
             <SideNavBar data={AllPosts.data} count={count} />
             <div className="post-item-container">
                <Route path={["/"]} exact render={() =>
-                  <EntryPostContainer data={AllPosts.data} onDelete={deletePost} />
+                  <EntryPostContainer data={AllPosts.data} onDelete={deletePost} login={login} />
                } />
                <Route path="/tag/:topic" exact render={() =>
-                  <TagPostContainer data={AllPosts.data} topic={match.params.topic} onDelete={deletePost} />
+                  <TagPostContainer data={AllPosts.data} topic={match.params.topic} onDelete={deletePost} login={login} />
                } />
             </div>
             <footer>

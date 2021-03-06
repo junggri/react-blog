@@ -8,12 +8,14 @@ import useComment from "@useHooks/useComment";
 import useCommon from "@useHooks/useCommon";
 import util from "@lib/axios";
 import { IComment } from "@modules/Comment/cmtInterface";
+import { AiOutlineComment } from "react-icons/ai";
 
 interface ICommentCotainer {
    topic: string,
    postId: string,
    contentName: string
 }
+
 
 const CommentContainer = ({ topic, postId, contentName }: ICommentCotainer) => {
    const csrf = useCSRF();
@@ -69,7 +71,7 @@ const CommentContainer = ({ topic, postId, contentName }: ICommentCotainer) => {
       <>
          <CommentContainerComp>
             <header className="comment__header-box">
-               <h1>개의 댓글이 있습니다.</h1>
+               <h1><span><AiOutlineComment /></span>{list?.length} 개의 댓글이 있습니다.</h1>
             </header>
             <section className="comment-parent-input-box">
                <textarea name="value" value={commentValue.value} placeholder="댓글을 입력해주세요." className="cmt__value-input" onChange={onChangeCommentValue} />

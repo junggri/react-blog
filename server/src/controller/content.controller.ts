@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import path from "path";
-import model from "../model/topic.model";
+import model from "../model/content.model";
 import { uploadThumbnail } from "../lib/multer";
 import { promises as fs } from "fs";
 
@@ -37,13 +37,15 @@ interface Controller {
    saveTemporaryPost(req: Request, res: Response): void
    updatePost(req: Request, res: Response): void
    deleteTemporaryPostAndSavePost(req: Request, res: Response): void
-   deletePost(req: Request, res: Response): void
-   deleteTemporaryPost(req: Request, res: Response): void
    getAllPosts(req: Request, res: Response): void
    getTemporaryPost(req: Request, res: Response): void
    getPost(req: Request, res: Response): void
    getTopicAndTemporaryPost(req: Request, res: Response): void
    saveThumbnail(req: Request, res: Response): any
+   createNewTopic(req: Request, res: Response): any
+   deletePost(req: Request, res: Response): void
+   deleteTemporaryPost(req: Request, res: Response): void
+   deleteTopic(req: Request, res: Response): void
 }
 
 
@@ -100,6 +102,11 @@ let contentController: Controller = {
       if (result?.state) res.status(200).json({ state: true });
    },
 
+   async createNewTopic(req, res) {
+      await model.createNewTopic(req.body.topic);
+      res.status(200).json({ state: true });
+   },
+
    async updatePost(req, res) {
       const result = await model.updatePost(req.params, req.body);
       if (result.state) res.status(200).json({ state: true });
@@ -118,6 +125,13 @@ let contentController: Controller = {
 
    async deleteTemporaryPost(req, res) {
       const result: any = await model.deleteTemporaryPost(req.body.postid);
+      result.state
+         ? res.status(200).json({ state: true })
+         : res.status(400).json({ state: false });
+   },
+
+   async deleteTopic(req, res) {
+      const result: any = await model.deleteTopic(req.body.topic);
       result.state
          ? res.status(200).json({ state: true })
          : res.status(400).json({ state: false });

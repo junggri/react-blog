@@ -200,15 +200,15 @@ class topicModel {
       }
    }
 
-   static async deleteTopic(input: { topic: string }) {
-      try {
-         const query: string = `DROP TABLE \`${input.topic}\``;
-         await poolConnction(query);
-         return { state: true };
-      } catch (e) {
-         console.error(e);
-      }
-   }
+   // static async deleteTopic(input: { topic: string }) {
+   //    try {
+   //       const query: string = `DROP TABLE \`${input.topic}\``;
+   //       await poolConnction(query);
+   //       return { state: true };
+   //    } catch (e) {
+   //       console.error(e);
+   //    }
+   // }
 
    static async deletePost({ topic, identifier }: { topic: string, identifier: string }) {
       let _path = makePath("contents", identifier);

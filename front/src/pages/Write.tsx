@@ -4,7 +4,7 @@ import QueryString, * as qs from "qs";
 import { Snow } from "../styles/snow";
 import { RouteComponentProps } from "react-router-dom";
 import { formats, modules } from "@config/textEditor.config";
-import { WriteMetaContainer } from "../styledComponent";
+import { WriteLeftBoxContainer, WriteMetaContainer } from "../styledComponent";
 import { KindofPosts, SelectTopic, TemporaryPost, TextEditContentName, TextEditorBtnBox, ThumbNail } from "../component";
 import useCSRF from "@useHooks/useCSRF";
 import useTopic from "@useHooks/useTopic";
@@ -16,7 +16,7 @@ import { ITextEditModuleProps } from "@modules/TextEditor/textEdit.interface";
 import { ICommonModuleProps } from "@modules/Common/common.interface";
 import { IGetDataFromMode, ITextEditRefObject } from "@src/globalInterface";
 import { AxiosPromise } from "axios";
-
+// import "../styles/highlight/atom-one-light.css";
 //TODO 임시저장 저장/또 임시저장 그리고 axios extension 공부하기
 
 
@@ -29,7 +29,6 @@ const Write = ({ history, location }: RouteComponentProps) => {
    const { textEditorData, requestTopicAndTempPostData }: ITopicModuleProps = useTopic();
    const { data, setContent, setContentName, setTopic, setKindOfPosts, setDetail, setTempData, setThumbnail }: ITextEditModuleProps = useTextEdit();
    const { posts, tables }: IWriteData = textEditorData;
-
 
    const getDataFromMode = useCallback(async (cb: AxiosPromise<IGetDataFromMode>) => {
       const { data } = await cb;
@@ -146,21 +145,23 @@ const Write = ({ history, location }: RouteComponentProps) => {
    return (
       <>
          <Snow />
-         <ReactQuill
-            theme="snow"
-            modules={modules}
-            formats={formats}
-            onChange={rteChange}
-            placeholder="입력하기"
-            ref={textEdit}
-         />
-         <WriteMetaContainer>
+         <WriteLeftBoxContainer>
             <TextEditContentName
                onContentChange={onContentChange}
                onDetailChange={onDetailChange}
                detail={data.detail}
                contentName={data.contentName}
             />
+            <ReactQuill
+               theme="snow"
+               modules={modules}
+               formats={formats}
+               onChange={rteChange}
+               placeholder="입력하기"
+               ref={textEdit}
+            />
+         </WriteLeftBoxContainer>
+         <WriteMetaContainer>
             <SelectTopic
                topic={tables}
                onIsChecked={onIsChecked}

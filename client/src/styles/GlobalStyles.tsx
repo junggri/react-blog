@@ -43,37 +43,21 @@ const GlobalStyles = createGlobalStyle`
         font-style : italic;
     }
     .quill{
-        height: 89%;
-       
+     position:relative;
+     border-right:1px solid rgba(0,0,0,0.2);
+     border-top:1px solid rgba(0,0,0,0.2);
+     border-bottom:1px solid rgba(0,0,0,0.2);
+     width:50%;
+     height:100vh;
+     display: inline-block;
     }
-    .quill img{
-        height: auto;
-        width:auto;
-        max-height: 700px;
-        position: relative;
-        margin :0 auto;
-    }
-   .ql-container.ql-snow{
-        height:90%;
-        border:none !important;
+    .ql-container.ql-snow{
+      height:93%;
+      position: relative;
+      border:none;
     }
     .ql-size-huge{
         font-size:4rem !important;
-    }
-    .content-title{
-        width:100%;
-        height:100px;
-        resize:none;
-        border:none;
-        outline-style:none;
-        padding:25px;
-        font-size:3rem;
-    }
-    .writeBox-inputs{
-        border:1px solid black;
-        width:50%;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }
     .react,.hljs,.stata{
        background: white !important;

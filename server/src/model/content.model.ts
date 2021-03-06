@@ -144,6 +144,26 @@ const contentModel = {
       }
    },
 
+   async createNewTopic(topicName: string) {
+      const query = `
+                CREATE TABLE ${topicName}(
+                     id int(11) not null auto_increment primary key,
+                     topic varchar(11) not null,
+                     uid varchar(50) not null,
+                     content_name varchar(200) not null,
+                     detail varchar(200) not null,
+                     thumbnail varchar(25),
+                     file varchar(100) not null,
+                     created varchar(20) not null,
+                     modified varchar(20),
+                     kindofPosts varchar(20) not null,
+                     date timestamp not null,
+                     comment int(11) DEFAULT 0,
+                     INDEX index_uid (uid)
+                     )`;
+      return await poolConnction(query);
+   },
+
    async updatePost(params: any, data: ITextEditSaveProps) {
       const _path = makePath("contents", params.postId);
       const dateString = new Date().toLocaleDateString("en-US", {
@@ -182,6 +202,17 @@ const contentModel = {
             console.log(e);
             return { statet: false };
          }
+   },
+
+   async deleteTopic(topic: string) {
+      try {
+         const query: string = `DROP TABLE \`${topic}\``;
+         await poolConnction(query);
+         return { state: true };
+      } catch (e) {
+         console.error(e);
+         return { state: false };
+      }
    },
    // getAllTopic: async () => {//토픽목록 가져오기
    //    return await poolConnction("show tables");

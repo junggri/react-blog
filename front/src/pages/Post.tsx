@@ -12,6 +12,9 @@ import { CommentContainer } from "@component/index";
 import { usePreloader } from "@lib/PreloadContext";
 import { onRequsetPost } from "@modules/Posts";
 
+// import "../src/styles/highlight/atom-one-light.css";
+
+
 interface IMatchParams {
    id: string
    topic: string
@@ -39,7 +42,7 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
       title: data.content_name,
       description: data.detail,
       image: data.thumbnail === null
-         ? "https://www.junggri.com/images/Logo.jpg"
+         ? "https://www.junggri.com/images/ogLogo.jpg"
          : `https://www.junggri.com/thumbnail/${data.thumbnail}`,
       type: "website",
    };
@@ -63,7 +66,7 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
             <div className="posts-detail">
                {data.detail}
             </div>
-            <Highlight language="react">
+            <Highlight language="">
                <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" />
             </Highlight>
             <div className="posts-created">

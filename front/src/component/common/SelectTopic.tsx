@@ -31,15 +31,23 @@ const SelectTopic = ({ topic, onIsChecked, checked, token, onRequestAfterMakeOrD
    const deleteTopic = async (e: React.MouseEvent, ref: { current: any }) => {
       if (window.confirm("토픽을 삭제하겠습니까?")) {
          const topic: string | undefined = (e.currentTarget as HTMLElement).dataset.topic;
-         if (topic && token) await util.deleteTopic(topic, token);
-         ref.current.style.display = "none";
+         if (topic && token) {
+            const { data } = await util.deleteTopic(topic, token);
+            if (data.state) {
+               ref.current.style.display = "none";
+            } else {
+               alert("삭제하는데 오류가 났습니다");
+            }
+         }
+
       }
    };
 
    const createTopic = async (e: React.MouseEvent) => {
       if (!value) return;
       if (token && parentRef.current) {
-         await util.createTopic(value, token);
+         const { data } = await util.createTopic(value, token);
+         console.log(data);
          onRequestAfterMakeOrDeleteTopic();
          setValue("");
       }

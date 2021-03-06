@@ -465,7 +465,7 @@ export const PostsContainerComp = styled.section`
     }
     blockquote{
       padding:4px 13px;
-      border-left:4px solid #3ab09e;;
+      border-left:4px solid #6699FF;
       background: #FBFCFD;
       ${media.tablet`
        font-size:1rem;
@@ -499,9 +499,15 @@ export const PostsContainerComp = styled.section`
       white-space: pre;
       overflow:scroll;
    `};
-   } 
+   }  
 `;
 
+
+export const WriteLeftBoxContainer = styled.div`
+  width:50%;
+  display: inline-block;
+  height: 100vh;
+`;
 export const WriteMetaContainer = styled.section`
   width:50%;
   float:right;
@@ -511,17 +517,14 @@ export const WriteMetaContainer = styled.section`
 `;
 
 export const TextEditContentNameComp = styled.div`
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  h1{
-    font-size:2rem;
-  }
+  min-height: 140px;
   input{
-    margin-top:14px;
-    width:100%;
-    font-size:1.5rem;
-    outline-style: none;
     border:none;
-    padding:10px 0px;
+    width:100%;
+    font-size:2rem;
+    outline-style: none;
+    //border:none;
+    padding:20px 20px;
     &::placeholder{
       font-size:1.5rem;
     }
@@ -822,6 +825,17 @@ export const CommentContainerComp = styled.section`
   margin: 0 auto;
   padding-top:30px;
   margin-bottom:80px;
+  header{
+    h1{
+      font-size:1.4rem;
+      margin-bottom:20px;
+      display: flex;
+      align-items: center;
+      span{
+      margin-right:4px;
+      }    
+    }
+  }
   & .comment-parent-input-box{
     margin-bottom:100px;
   }

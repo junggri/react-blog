@@ -1,11 +1,15 @@
 import connection from "../config/comment.connection";
 import sanitize from "sanitize-html";
 import { cryptoPwd, decryptoPwd } from "../lib/cryptoPwd";
-import contentModel from "./topic.model";
+import contentModel from "./content.model";
 import { PoolConnection } from "mysql2/promise";
 import { ICommentDeletDataProps, ISaveCommentProps, ISaveReplyProps } from "../interace";
 import sendMsg from "../lib/sendMsg";
+import Adminconnection from "../config/admin.connection";
+import crypto from "crypto";
+import util from "util";
 
+const pbkdf2Promise = util.promisify(crypto.pbkdf2);
 
 function makeDate() {
    const today = new Date();
@@ -166,7 +170,7 @@ const indexModel = {
       },
 
       async deleteCmtTable(postid: string) {
-         const conn: PoolConnection | undefined = await connection();
+         const conn: PoolConnection | undefined = await Adminconnection();
          if (conn !== undefined)
             try {
                const query = `DROP TABLE \`${postid.replace(/-/g, "_")}\``;
@@ -176,33 +180,22 @@ const indexModel = {
             }
       },
 
-
-//    async deleteComment(writer: string, pwd: string, number: string, topic: string, postId: string, deleteArr: number[]) {
-//       const conn: PoolConnection | undefined = await connection();
-//       if (conn !== undefined)
-//          try {
-//             const find_query = `select * from ${postId.replace(/-/g, "_")} where board = ?`;
-//             const dep = [number];
-//             const [result]: any = await conn.execute(find_query, dep);
-//             const state: boolean = await decryptoPwd(result[0], pwd, writer);
-//             if (state) {
-//                const query = `DELETE FROM \`${postId.replace(/-/g, "_")}\` where board = ?`;
-//                const promises = deleteArr.map(e => promiseArray(conn, query, [e]));
-//                await Promise.all(promises);
-//                await contentModel.decreaseCmtCount<string, string>(topic, postId, deleteArr.length);
-//                conn.release();
-//                return { state: true };
-//             } else {
-//                conn.release();
-//                return { state: false };
-//             }
-//          } catch (e) {
-//             console.error(e);
-//             conn.release();
-//             return { state: false };
-//          }
-//    },
-// };
+      async login(data: { id: string, pwd: string }) {
+         const conn = await Adminconnection();
+         if (conn !== undefined)
+            try {
+               const [result]: any = await conn.execute("select * from user where id=?", [data.id]);
+               conn.release();
+               if (!result.length) return false;
+               else {
+                  const key = await pbkdf2Promise(data.pwd, result[0].salt, Number(process.env.CRYPTO_ITER), Number(process.env.CRYPTO_NUM), String(process.env.CRYPTO_ALGO));
+                  return result[0].password === key.toString("base64");
+               }
+            } catch (e) {
+               console.error(e);
+               conn.release();
+            }
+      },
    }
 ;
 export default indexModel;

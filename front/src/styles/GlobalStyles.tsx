@@ -44,25 +44,19 @@ const GlobalStyles = createGlobalStyle`
     }
     .quill{
      position:relative;
-     border-right:1px solid rgba(0,0,0,0.2);
-     border-top:1px solid rgba(0,0,0,0.2);
-     border-bottom:1px solid rgba(0,0,0,0.2);
-     width:50%;
-     height:100vh;
-     display: inline-block;
+     height:calc(100% - 160px); 
+     border:none;
+    }
+    .ql-toolbar.ql-snow{
+      border:none !important;
+      box-shadow: none !important;
     }
     .ql-container.ql-snow{
-      height:93%;
-      position: relative;
-      border:none;
+      position: relative;     
+      height: 90%;
+      border: none !important;
+      padding-top:10px
     }
-    //.quill img{
-    //    height: auto;
-    //    width:auto;
-    //    max-height: 700px;
-    //    position: relative;
-    //    margin :0 auto;
-    //}
     .ql-size-huge{
         font-size:4rem !important;
     }
@@ -86,24 +80,22 @@ const GlobalStyles = createGlobalStyle`
        `};
       }
     }
-    
     .ql-snow .ql-editor pre.ql-syntax{
-      //color:black !important;
+      color:black !important;
      }
     .ql-toolbar.ql-snow{
         border-left:none;
         border-right:none;
-        border-top:none;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     }   
-    //.hljs-function{
-    //  .hljs-params{
-    //     //color:rgb(36, 41, 46);
-    //  }
-    //}
-    //.hljs-params,.hljs-attr{
-    //  color:rgb(36, 41, 46) !important;
-    //}
+    .ql-editor blockquote{
+      padding:10px 20px;
+      border-left:5px solid #f58320 !important;
+      background: rgb(248 249 250);
+    }
+    .hljs-params,.hljs-attr{
+      color:rgb(36, 41, 46) !important;
+    }
     .ql-syntax .hljs-tag{
       color:black;
       & .hljs-name{

@@ -23,9 +23,9 @@ const mutationResolver = {
       return await model.createTopic(input);
    },
 
-   deleteTopic: async (input: { topic: string }) => {
-      return await model.deleteTopic(input);
-   },
+   // deleteTopic: async (input: { topic: string }) => {
+   //    return await model.deleteTopic(input);
+   // },
 
    deletePost: async (input: { topic: string, identifier: string }) => {
       return await model.deletePost({ ...input });
