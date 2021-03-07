@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../modules";
 import { onSetContent, onSetContentName, onSetDetail, onSetKindOfPosts, onSetTempData, onSetThumbNail, onSetTopic } from "../modules/TextEditor";
-import { ITextInitialProps } from "../modules/TextEditor/textEdit.interface";
+import { ITextInitialProps } from "@modules/TextEditor/textEdit.interface";
 
 function useTextEdit() {
    const data = useSelector((state: RootState) => state.textEdit);

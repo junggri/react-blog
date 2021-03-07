@@ -45,23 +45,106 @@ const postMediaMixin = css`
   }
 `;
 
-
+const commonPost = css`
+  & img{
+    height:auto;
+    width:auto;
+    max-height: 600px;
+    position: relative;
+    margin :0 auto;
+    ${media.desktop`max-width:100%`};
+  }
+  & .posts-name{
+    ${media.tablet`font-size:2.4rem`};
+    ${media.mobile`font-size:2.2rem`};
+    padding-top:50px;
+    font-size:3.3rem;
+    text-align: center;
+    font-weight: bold;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  & .posts-detail{
+    text-align: center;
+    margin-top:20px;
+    font-size:1.2rem
+  }
+  & .posts-content{
+    word-break:break-all;
+    font-size:1.2rem;
+    margin-top:50px;
+    a {
+      color:#06c !important;
+      text-decoration: underline;
+      span{
+        color:#06c !important;
+      } 
+    }
+    & *{
+      white-space: pre-wrap;
+      word-break: break-all;
+      line-height: 2.1;
+    } 
+    & p br{
+      display: block;
+      content: "";
+      padding:7px 0px;
+    }
+    blockquote{
+      padding:4px 13px;
+      border-left:4px solid #6699FF;
+      background: #FBFCFD;
+      ${media.tablet`
+       font-size:1rem;
+       padding:2px 10px;
+       border-left:3px solid #3ab09e;
+      `};
+      ${media.mobile`
+       border-left:2px solid #3ab09e;
+       padding:2px 10px;
+      `}
+    }
+    p,ol,blockquote,span{
+      color:black
+    }
+  }
+  & .posts-created{
+    margin-top: 60px;
+    text-align: right;
+    font-size:1rem;
+    font-weight:100;
+  }
+  & .ql-syntax{
+    padding:20px;
+    ${media.tablet`
+      font-size:0.9rem;
+      padding:15px 15px;
+   `};
+   ${media.mobile`
+      padding:10px 10px;
+      font-size:0.8rem;
+      white-space: pre;
+      overflow:scroll;
+   `};
+   }  
+`;
 // export const EntryContainerComp = styled.div`
 //   position: relative;
 //   margin: 0 auto;
 //   border: 1px solid black;
 //   ${mediaMixin}
 //   `;
-export const NavBarContainer = styled.div`
+export const NavBarContainer = styled.div<{ ref: any }>`
   width:100%;
+  position: fixed;
+  transition: 0.3s all;
+  z-index: 9;
 `;
 
 export const NavBarComp = styled.section`
-  z-index: 9;
   display: flex;
-  position: fixed;
-  left:50%;
-  transform: translate(-50%,0);  
+  position: relative; 
+  margin: 0 auto; 
   max-width:1100px;
   ${mediaMixin};
   justify-content: center;
@@ -294,6 +377,13 @@ export const PostItemComp = styled.article`
   @media(min-width:700px){
     width:700px;
   }
+  & .newpost__img{
+    position: absolute;
+    width:40px;
+    height: auto;
+    left:-32px;
+    top:3px;
+  }
   & .categories{
     position: absolute;
     padding:5px 10px;
@@ -507,26 +597,78 @@ export const WriteLeftBoxContainer = styled.div`
   width:50%;
   display: inline-block;
   height: 100vh;
+  & .write-btn-box-container{
+    position:relative;
+    //border-top:1px solid rgba(0,0,0,0.1);
+    height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background:white;
+    & .btn-box{     
+      position: absolute;
+      right:8%;
+      cursor:pointer;
+    }
+    button{
+      padding:13px 19px;
+      border-radius: 4px;
+      margin-left:20px;
+      color: white;
+      font-weight: 500;
+      border:none;
+      box-shadow: 0 0 4px rgba(0,0,0,0.2);
+      letter-spacing: 0.4px;
+      background:  #6699FF;;
+      cursor:pointer;
+    }
+  }
 `;
+
+
 export const WriteMetaContainer = styled.section`
   width:50%;
   float:right;
   padding:50px;
   overflow: scroll;
   height: 100vh;
+  background: rgb(248 249 250);
+  & .detail{
+    h1{
+      font-size:1.4rem;
+      font-weight: bolder;
+    };
+    input{
+      margin-top:15px;
+      border:none;
+      padding:10px 0;
+      width:100%;
+      outline-style: none;
+      font-size:1.2rem;
+      font-weight: 500;
+      &::placeholder{
+        font-size:1.2rem;
+        font-weight: bolder;
+      }
+    }
+  }
 `;
 
 export const TextEditContentNameComp = styled.div`
-  min-height: 140px;
   input{
     border:none;
     width:100%;
-    font-size:2rem;
+    font-size:3rem;
     outline-style: none;
-    //border:none;
     padding:20px 20px;
+    height: 120px;
+    max-height: 120px;
+    font-weight: bolder;
     &::placeholder{
-      font-size:1.5rem;
+      font-size:3rem;
+      opacity:0.7;
+
     }
   }
   & .summary_content{
@@ -546,8 +688,9 @@ export const TextEditContentNameComp = styled.div`
 export const SelectTopicComp = styled.div`
   margin-top:30px;
   h1{
-    font-size:2rem;
+    font-size:1.4rem;
     margin-bottom:15px;
+    font-weight: bolder;
   }
   & .select-item-box{
     max-height: 300px;
@@ -561,18 +704,28 @@ export const SelectTopicComp = styled.div`
     width:150px;
    }
    & .make_new_topic_box{
-    width:150px;
+    margin-top:10px;
+    width:200px;
     display: flex;
     align-items: center;
+    position: relative;
     input{
       border:1px solid rgba(0,0,0,0.2);
-      padding:5px;
+      padding:7px;
       margin-right: 10px;
       outline-style:none;
     }
-    span{
-      font-size:1.2rem;
+    div{
+      position: absolute;
+      height: 100%;
+      right:0;
+      padding:7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      background: #6699FF;
+      color:white;
     }
    }
 `;
@@ -631,15 +784,20 @@ export const KindofPostItemComp = styled.div`
 export const KindofPostsComp = styled.div`
   margin-top:30px;
   h1{
-    font-size:2rem;
+    font-size:1.4rem;
+    font-weight: bolder;
     margin-bottom:20px;
   }
 `;
 
 export const ThumbnailComp = styled.div`
   margin-top:30px;
+  input{
+    display: none;
+  }
   h1{
-    font-size:2rem;
+    font-size:1.4rem;
+    font-weight: bolder;
     margin-bottom:20px;
   }
   h2{
@@ -651,11 +809,24 @@ export const ThumbnailComp = styled.div`
   & .thumbnail-imgbox{
     margin-top:20px;
     max-height: 400px;
+    position:relative;
     overflow-y: scroll;
+    width:500px;
+    height: 300px;
     img{
-      border:1px solid rgba(0,0,0,0.2);
-      border-radius: 5px;
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height: 100%;
     }
+  }
+  & .thumbnail-btn{
+    display: inline-block;
+    padding:10px;
+    background: #6699FF;
+    color:white;
+    cursor: pointer;
   }
 `;
 
@@ -670,6 +841,7 @@ export const TextEditorBoxComp = styled.div`
     cursor:pointer;
   }
 `;
+
 
 export const TempPostContainerComp = styled.div`;
   margin-top:50px;

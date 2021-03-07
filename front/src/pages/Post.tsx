@@ -66,7 +66,7 @@ const Post = ({ match }: RouteComponentProps<IMatchParams>) => {
             <div className="posts-detail">
                {data.detail}
             </div>
-            <Highlight language="">
+            <Highlight language="javascript">
                <div dangerouslySetInnerHTML={MakeHtml()} className="posts-content" />
             </Highlight>
             <div className="posts-created">

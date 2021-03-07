@@ -14,7 +14,7 @@ const KindofPosts = ({ onCheck, checked }: IKindofPosts) => {
 
    return (
       <KindofPostsComp>
-         <h1>Kind of Posts</h1>
+         <h1>게시글 종류</h1>
          <KindofPostItemComp>
             <input className="select-input" type="radio" id="kind-of-notice" onChange={onChange} value="notice" name='kindofpost' checked={checked === "notice"} />
             <label className="select-label" htmlFor="kind-of-notice">공지</label>

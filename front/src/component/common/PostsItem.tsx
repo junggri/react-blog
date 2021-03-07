@@ -26,10 +26,9 @@ const PostItem = ({ data, onDelete, login }: IPostItem) => {
 
    return (
       <PostItemComp>
-         {isNewPost(data.created) && <span>sads</span>}
-         {/*<div className="post-like__icons" onClick={onClickLikeBtn} data-uid={data.uid}>*/}
-         {/*   <VscBookmark />*/}
-         {/*</div>*/}
+         {isNewPost(data.created) &&
+         <img src="./images/new.svg" alt="새로운 포스트" className="newpost__img" />
+         }
          <div className="categories">
             <Link to={`/tag/${data.topic}`}>{data.topic}</Link>
          </div>

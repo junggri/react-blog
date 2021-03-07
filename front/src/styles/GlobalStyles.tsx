@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
     body,html{
         font-size:14px;
         font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif !important;
-        color:rgb(36, 41, 46);
+        color:#333333;
         position:relative;
         height:100%;
         -webkit-font-smoothing: antialiased;
@@ -44,8 +44,17 @@ const GlobalStyles = createGlobalStyle`
     }
     .quill{
      position:relative;
-     height:calc(100% - 160px); 
+     height:calc(100% - 200px); 
      border:none;
+     letter-spacing: 0.7px;
+     & img{
+       height:auto;
+       width:auto;
+       max-height: 400px;
+       position: relative;
+       margin :0 auto;
+       ${media.desktop`max-width:100%`};
+     }
     }
     .ql-toolbar.ql-snow{
       border:none !important;
@@ -53,9 +62,9 @@ const GlobalStyles = createGlobalStyle`
     }
     .ql-container.ql-snow{
       position: relative;     
-      height: 90%;
+      height: 94%;
       border: none !important;
-      padding-top:10px
+      padding-top:10px;
     }
     .ql-size-huge{
         font-size:4rem !important;
@@ -65,14 +74,15 @@ const GlobalStyles = createGlobalStyle`
     }
     .ql-syntax{
       font-family: "Fira Mono", source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-      padding:25px 25px; 
-      letter-spacing: 0.2px;
+      padding:20px 20px; 
+      letter-spacing: 1px;
       border-radius: 4px;
       font-size: 0.9rem;
       background: #FBFCFD;
       font-weight: 300 !important;
       white-space: pre-wrap;
       tab-size: 1 !important;
+      overflow: scroll;
      & span{
         font-weight:300 !important;
         ${media.mobile`

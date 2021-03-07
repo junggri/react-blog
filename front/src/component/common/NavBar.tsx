@@ -1,13 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { NavBarComp, NavBarContainer, SearchBoxComp } from "../../styledComponent";
+import { NavBarComp, NavBarContainer, SearchBoxComp } from "@src/styledComponent";
 import { BiUpArrowAlt } from "react-icons/bi";
+import _ from "lodash";
 
 const NavBar = () => {
    const ref = useRef<HTMLDivElement>(null);
+   const logoRef = useRef<HTMLImageElement>(null);
    const icons = useRef<HTMLDivElement>(null);
    const input = useRef<HTMLInputElement>(null);
    const [value, setValue] = useState<string>("");
+
+   useEffect(() => {
+      window.addEventListener("scroll", _.throttle(onScrollThrottle, 100));
+   }, []);
 
    const onClickSearchBtn = (e: React.MouseEvent): void => {
       if (ref.current) {
@@ -34,9 +40,21 @@ const NavBar = () => {
       setValue(e.target.value);
    };
 
+
+   const onScrollThrottle = (e: Event) => {
+      if (window.pageYOffset > 0 && ref.current && logoRef.current) {
+         ref.current.style.background = "#333333";
+         logoRef.current.src = "/images/LogoBlack.svg";
+      } else if (window.pageYOffset === 0 && ref.current && logoRef.current) {
+         ref.current.style.background = "white";
+         logoRef.current.src = "/images/Logo.svg";
+      }
+   };
+
+
    return (
-      <NavBarContainer>
-         <SearchBoxComp ref={ref}>
+      <NavBarContainer ref={ref}>
+         <SearchBoxComp>
             <input
                type="text"
                name="search_value"
@@ -51,7 +69,7 @@ const NavBar = () => {
          <NavBarComp>
             <Link to="/">
                <div className="navbar-logo">
-                  <img src="/images/Logo.svg" alt="" />
+                  <img src="/images/Logo.svg" alt="" ref={logoRef} />
                </div>
             </Link>
             {/*<nav>*/}

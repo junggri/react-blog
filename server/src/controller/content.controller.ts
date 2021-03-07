@@ -125,9 +125,13 @@ let contentController: Controller = {
 
    async deleteTemporaryPost(req, res) {
       const result: any = await model.deleteTemporaryPost(req.body.postid);
-      result.state
-         ? res.status(200).json({ state: true })
-         : res.status(400).json({ state: false });
+      const _path = makePath<string>("temporary-storage", req.body.postid);
+      if (result.state) {
+         await fs.unlink(_path.filePath);
+         res.status(200).json({ state: true });
+      } else {
+         res.status(400).json({ state: false });
+      }
    },
 
    async deleteTopic(req, res) {

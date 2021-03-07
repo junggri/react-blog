@@ -75,6 +75,10 @@ export interface ICommentRefObject extends HTMLElement {
    current: any | null
 }
 
+export interface ISelectRefObj extends HTMLElement {
+   current: any | null
+}
+
 export interface ISideBarRefObject extends HTMLElement {
    current: any | null
    type: any

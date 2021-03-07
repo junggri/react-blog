@@ -1,7 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { DeleteBtnComp, SelectTopicComp, SelectTopicItempComp } from "../../styledComponent";
 import { MdDelete } from "react-icons/md";
-import { AiOutlinePlus } from "react-icons/ai";
 import util from "@lib/axios";
 
 interface ISelectTopic {
@@ -60,7 +59,7 @@ const SelectTopic = ({ topic, onIsChecked, checked, token, onRequestAfterMakeOrD
    if (topicList === undefined) return null;
    return (
       <SelectTopicComp>
-         <h1>Select Topic</h1>
+         <h1>토픽 선택하기</h1>
          <div className="select-item-box" ref={parentRef}>
             {topic && topic.map((e, i) => (
                <div className="select-items" ref={topicList[i]} key={e["Tables_in_contents"]}>
@@ -76,9 +75,9 @@ const SelectTopic = ({ topic, onIsChecked, checked, token, onRequestAfterMakeOrD
                </div>
             ))}
          </div>
-         <div className="make_new_topic_box" onClick={createTopic}>
+         <div className="make_new_topic_box">
             <input type="text" name="new_topic_name" value={value} onChange={onChangeValue} />
-            <span><AiOutlinePlus /></span>
+            <div onClick={createTopic}>생성하기</div>
          </div>
       </SelectTopicComp>
    );

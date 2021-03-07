@@ -5,7 +5,7 @@ import { Snow } from "../styles/snow";
 import { RouteComponentProps } from "react-router-dom";
 import { formats, modules } from "@config/textEditor.config";
 import { WriteLeftBoxContainer, WriteMetaContainer } from "../styledComponent";
-import { KindofPosts, SelectTopic, TemporaryPost, TextEditContentName, TextEditorBtnBox, ThumbNail } from "../component";
+import { KindofPosts, SelectTopic, TemporaryPost, TextEditContentName, ThumbNail } from "../component";
 import useCSRF from "@useHooks/useCSRF";
 import useTopic from "@useHooks/useTopic";
 import useCommon from "@useHooks/useCommon";
@@ -57,7 +57,19 @@ const Write = ({ history, location }: RouteComponentProps) => {
       } else {
          setMode("write");
       }
-   }, [location]);
+   }, [location, getDataFromMode]);
+
+   useEffect(() => {
+      document.addEventListener("keydown", async (e) => {
+         if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e["key"] === "s") {
+            e.preventDefault();
+
+         }
+      }, false);
+   }, []);
+   // const refresh = (data: any) => {
+   //    localStorage.data = (JSON.stringify(data));
+   // };
 
 
    useEffect(() => {
@@ -71,7 +83,12 @@ const Write = ({ history, location }: RouteComponentProps) => {
          detail: "",
          thumbnail: null,
       });
-   }, []);
+   }, [requestTopicAndTempPostData, setTempData]);
+
+
+   const setInLocalStorage = () => {
+      localStorage.
+   };
 
    const onContentChange = useCallback((data: string) => {
       setContentName(data);
@@ -89,8 +106,8 @@ const Write = ({ history, location }: RouteComponentProps) => {
       setKindOfPosts(kindOf);
    }, [setKindOfPosts]);
 
-   const onDetailChange = useCallback((detail: string) => {
-      setDetail(detail);
+   const onDetailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+      setDetail(e.target.value);
    }, [setDetail]);
 
    const onChangeThumbnail = useCallback((img: string) => {
@@ -128,17 +145,16 @@ const Write = ({ history, location }: RouteComponentProps) => {
       }
    };
 
+
    const deleteTemporaryPost = async (identifier: string, ref: RefObject<HTMLSpanElement>) => {
       if (csrf && ref.current) {
          const { data } = await util.deleteTemporaryPost(identifier, csrf);
-         console.log(data);
          if (data.state) {
             onRequestAfterMakeOrDeleteTopic();
             ref.current.style.display = "none";
          } else {
             alert("오류가 났습니다");
          }
-
       }
    };
 
@@ -148,8 +164,6 @@ const Write = ({ history, location }: RouteComponentProps) => {
          <WriteLeftBoxContainer>
             <TextEditContentName
                onContentChange={onContentChange}
-               onDetailChange={onDetailChange}
-               detail={data.detail}
                contentName={data.contentName}
             />
             <ReactQuill
@@ -160,8 +174,18 @@ const Write = ({ history, location }: RouteComponentProps) => {
                placeholder="입력하기"
                ref={textEdit}
             />
+            <div className="write-btn-box-container">
+               <div className="btn-box">
+                  <button onClick={onSubmitTemporaryPost}>임시저장</button>
+                  <button onClick={onSubmit}>게시하기</button>
+               </div>
+            </div>
          </WriteLeftBoxContainer>
          <WriteMetaContainer>
+            <div className="detail">
+               <h1>요약을 작성해주세요.</h1>
+               <input type="text" name="content_detail" placeholder="요약을 작성하세요." className="summary" onChange={onDetailChange} value={data.detail} />
+            </div>
             <SelectTopic
                topic={tables}
                onIsChecked={onIsChecked}
@@ -175,7 +199,6 @@ const Write = ({ history, location }: RouteComponentProps) => {
                temp={posts}
                deleteTemporaryPost={deleteTemporaryPost}
             />
-            <TextEditorBtnBox onSubmit={onSubmit} onSubmitTempPost={onSubmitTemporaryPost} />
          </WriteMetaContainer>
       </>
    );

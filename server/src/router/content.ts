@@ -15,6 +15,8 @@ router.post("/post", contentController.savePost);//save
 
 router.post("/temp", contentController.saveTemporaryPost);//save
 
+router.post("/thumbnail", contentController.saveThumbnail);
+
 router.post("/topics", contentController.createNewTopic);
 
 router.post("/:topic/posts/:postId", contentController.updatePost);//update
