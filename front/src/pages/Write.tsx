@@ -25,6 +25,7 @@ const Write = ({ history, location }: RouteComponentProps) => {
    const csrf: string | null = useCSRF();
    const [mode, setMode] = useState<string>("write");
    const textEdit = useRef<ITextEditRefObject>(null);
+   const showBoxRef = useRef<HTMLDivElement>(null);
    const { setNewRequset }: ICommonModuleProps = useCommon();
    const { textEditorData, requestTopicAndTempPostData }: ITopicModuleProps = useTopic();
    const { data, setContent, setContentName, setTopic, setKindOfPosts, setDetail, setTempData, setThumbnail }: ITextEditModuleProps = useTextEdit();
@@ -63,13 +64,14 @@ const Write = ({ history, location }: RouteComponentProps) => {
       document.addEventListener("keydown", async (e) => {
          if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e["key"] === "s") {
             e.preventDefault();
-
+            setInLocalStorage();
+            if (showBoxRef.current) {
+               showBoxRef.current.style.opacity = "1";
+            }
          }
       }, false);
-   }, []);
-   // const refresh = (data: any) => {
-   //    localStorage.data = (JSON.stringify(data));
-   // };
+      return () => setInLocalStorage();
+   }, [data]);
 
 
    useEffect(() => {
@@ -86,9 +88,9 @@ const Write = ({ history, location }: RouteComponentProps) => {
    }, [requestTopicAndTempPostData, setTempData]);
 
 
-   const setInLocalStorage = () => {
-      localStorage.
-   };
+   const setInLocalStorage = useCallback(() => {
+      localStorage._td = JSON.stringify(data);
+   }, [data]);
 
    const onContentChange = useCallback((data: string) => {
       setContentName(data);
@@ -199,6 +201,9 @@ const Write = ({ history, location }: RouteComponentProps) => {
                temp={posts}
                deleteTemporaryPost={deleteTemporaryPost}
             />
+            <div className="show__alert-box" ref={showBoxRef}>
+               임시저장 완료!
+            </div>
          </WriteMetaContainer>
       </>
    );

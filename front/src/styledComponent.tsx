@@ -13,6 +13,20 @@ const rotate = keyframes`
   }
 `;
 
+const showboxani = keyframes`
+   from{
+   opacity: 1;
+   }to{
+   opacity: 0;
+   }
+   //0%{
+   // transform: translateZ(30deg);
+   //}50%{
+   // transform: translateZ(0);
+   //}100%{
+   // transform: translateZ(-30deg);
+   //}
+`;
 const mediaMixin = css`
   @media (max-width: 369px) {
     //369이하일때 적용되는 것들
@@ -620,7 +634,7 @@ export const WriteLeftBoxContainer = styled.div`
       border:none;
       box-shadow: 0 0 4px rgba(0,0,0,0.2);
       letter-spacing: 0.4px;
-      background:  #6699FF;;
+      background:  #6699FF;
       cursor:pointer;
     }
   }
@@ -652,6 +666,21 @@ export const WriteMetaContainer = styled.section`
         font-weight: bolder;
       }
     }
+  }
+  & .show__alert-box{
+    position: absolute;
+    top:30px;
+    right:40px;
+    padding:20px 40px;
+    background:  #6699FF;
+    color:white;
+    font-size:1.2rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    .disapear{
+      animation: ${showboxani} ease 1s;
+    }    
   }
 `;
 
