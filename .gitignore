@@ -12,6 +12,11 @@
 ./front/.env.production
 ./front/dist
 
+./nest/package.json
+./nest/.env
+./next/dist
+./next/ormconfig.json
+
 contents
 temporary-storage
 
