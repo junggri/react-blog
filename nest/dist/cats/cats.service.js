@@ -10,14 +10,7 @@ exports.CatsService = void 0;
 var common_1 = require("@nestjs/common");
 var CatsService = (function () {
     function CatsService() {
-        this.cats = [];
     }
-    CatsService.prototype.create = function (cat) {
-        this.cats.push(cat);
-    };
-    CatsService.prototype.findAll = function () {
-        return this.cats;
-    };
     CatsService = __decorate([
         common_1.Injectable()
     ], CatsService);

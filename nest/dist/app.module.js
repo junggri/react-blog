@@ -8,25 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 var common_1 = require("@nestjs/common");
-var content_module_1 = require("./content/content.module");
-var comment_module_1 = require("./comment/comment.module");
-var config_1 = require("@nestjs/config");
-var typeorm_1 = require("@nestjs/typeorm");
-var user_entity_1 = require("./content/user.entity");
+var logger_middleware_1 = require("./middlewares/logger.middleware");
+var cats_controller_1 = require("./cats/cats.controller");
+var cats_service_1 = require("./cats/cats.service");
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule.prototype.configure = function (comsumer) {
+        comsumer.apply(logger_middleware_1.logger).forRoutes("*");
+    };
     AppModule = __decorate([
         common_1.Module({
-            imports: [
-                config_1.ConfigModule.forRoot({
-                    envFilePath: ".env",
-                    isGlobal: true,
-                }),
-                typeorm_1.TypeOrmModule.forFeature([user_entity_1.User]),
-                content_module_1.ContentModule,
-                comment_module_1.CommentModule,
-            ],
+            controllers: [cats_controller_1.CatsController],
+            providers: [cats_service_1.CatsService],
         })
     ], AppModule);
     return AppModule;

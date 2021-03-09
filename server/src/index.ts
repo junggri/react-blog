@@ -22,7 +22,6 @@ app.disable("x-powered-by");
 
 app
    .use(header)
-   .use(logger("dev"))
    .use(compression())
    .use(helmet.noSniff())
    .use(helmet.xssFilter())
@@ -34,7 +33,8 @@ app
    .use("/images", express.static(path.resolve(__dirname, "public/images")))
    .use(bodyParser.json())
    .use(bodyParser.urlencoded({ extended: false }))
-   .use(csrfProtection);
+   .use(csrfProtection)
+   .use(logger("dev"));
 
 app.use("/content", contentApi); //콘텐츠 관련 라우터
 app.use("/api", indexApi); //공통라우터

@@ -12,19 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContentController = void 0;
 var common_1 = require("@nestjs/common");
 var content_service_1 = require("./content.service");
-var comment_service_1 = require("../comment/comment.service");
 var config_1 = require("@nestjs/config");
+var comment_service_1 = require("../comment/comment.service");
 var ContentController = (function () {
-    function ContentController(contentService, commentService, configS) {
+    function ContentController(contentService, commentService, config) {
         this.contentService = contentService;
         this.commentService = commentService;
-        this.configS = configS;
+        this.config = config;
     }
     ContentController.prototype.find = function () {
-        console.log(this.configS.get("DB_USER"));
-        return this.contentService.getAllPosts();
-    };
-    ContentController.prototype.get = function () {
+        console.log(this.config.get("DB_HOST"));
         return this.commentService.get();
     };
     __decorate([
@@ -33,12 +30,6 @@ var ContentController = (function () {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Object)
     ], ContentController.prototype, "find", null);
-    __decorate([
-        common_1.Get(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Object)
-    ], ContentController.prototype, "get", null);
     ContentController = __decorate([
         common_1.Controller("content"),
         __metadata("design:paramtypes", [content_service_1.ContentService,

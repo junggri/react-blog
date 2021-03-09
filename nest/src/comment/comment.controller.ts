@@ -1,6 +1,11 @@
-import { Controller } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 
 @Controller("comment")
 export class CommentController {
 
+
+   @Get()
+   test() {
+      return 1;
+   }
 }

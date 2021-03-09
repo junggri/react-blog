@@ -6,22 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContentModule = void 0;
+exports.logger = void 0;
 var common_1 = require("@nestjs/common");
-var content_controller_1 = require("./content.controller");
-var content_service_1 = require("./content.service");
-var comment_module_1 = require("../comment/comment.module");
-var ContentModule = (function () {
-    function ContentModule() {
+var logger = (function () {
+    function logger() {
+        this.logger = new common_1.Logger("HTTP");
     }
-    ContentModule = __decorate([
-        common_1.Module({
-            imports: [comment_module_1.CommentModule],
-            controllers: [content_controller_1.ContentController],
-            providers: [content_service_1.ContentService],
-        })
-    ], ContentModule);
-    return ContentModule;
+    logger.prototype.use = function (req, res, next) {
+        console.log(123);
+        next();
+    };
+    logger = __decorate([
+        common_1.Injectable()
+    ], logger);
+    return logger;
 }());
-exports.ContentModule = ContentModule;
-//# sourceMappingURL=content.module.js.map
+exports.logger = logger;
+//# sourceMappingURL=logger.middleware.js.map

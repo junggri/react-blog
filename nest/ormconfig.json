@@ -1,6 +1,6 @@
 [
   {
-    "name": "contents",
+    "name": "default"
     "type": "mysql",
     "host": "localhost",
     "port": 3306,
@@ -13,17 +13,17 @@
     "synchronize": true
   },
   {
-    "name": "comment",
-    "type": "mysql",
-    "host": "localhost",
-    "port": 3306,
-    "username": "root",
-    "password": "wowwjd123",
-    "database": "test2",
-    "entities": [
-      "dist/**/*.entity{.ts,.js}"
-    ],
-    "synchronize": true
+      "name": "comment",
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "username": "root",
+      "password": "wowwjd123",
+      "database": "test2",
+      "entities": [
+        "dist/**/*.entity{.ts,.js}"
+      ],
+      "synchronize": true
   }
 ]
 
