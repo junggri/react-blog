@@ -77,6 +77,9 @@ const SideNavBar = ({ data, count }: ISideNavBar) => {
                </li>
             ))}
          </ul>
+         <ul>
+
+         </ul>
          <div className="sidebar-meta-data">
             <div>
                <span className="count-slo">전체 방문자</span>

@@ -10,6 +10,7 @@ const Write = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Wri
 const Admin = loadable(() => import(/* webpackChunkName: "Write" */"../pages/Admin"));
 const About = loadable(() => import(/* webpackChunkName: "About" */"../pages/About"));
 const Text = loadable(() => import(/* webpackChunkName: "About" */"../pages/TestWrite"));
+const PortFolio = loadable(() => import(/* webpackChunkName: "PortFolio" */"../pages/PortFolio"));
 
 function App() {
    const data = {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/about" exact component={About} />
             <Route path='/test' exact component={Text} />
             <Route path="/admin/leejeongsoo" exact component={Admin} />
+            <Route path="/portfolio/:portfolio" exact component={PortFolio} />
             <Route render={() => <h1>Not found</h1>} />
          </Switch>
       </div>

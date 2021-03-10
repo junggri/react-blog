@@ -1203,117 +1203,159 @@ export const CommentItemComp = styled.div<{ depth: number }>`
   }
 `;
 
-
+export const AboutNavbarComp = styled.nav`
+  height: 45px;
+  display: flex;
+  align-items: center;
+  img{
+    margin-left:14px;
+    height: 32px;
+    width:32px;
+  }
+`;
 export const AboutContainerComp = styled.section`
   position: relative;
-  margin:0 auto;
-  width:900px;
-  flex-grow:1;
-  padding:13px;
-  & .img-box{
-    width:50%;
-    position: relative;
-    margin:0 auto;
+  font-weight: 500;
+  padding-bottom:100px;
+  h2{
+    font-size:1.5rem;
+    font-weight: bold;
+    margin-top:70px;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    padding-bottom:10px;
   }
-  & .about__summary{
-    font-size:2rem;
-    & .icon__box{
-      margin-top:20px;
-      display: flex;
-      align-items: center;
+  ul{
+    margin-top:10px;
+    padding-left:30px;
+    li{
+      list-style: circle;
+      padding:5px 0;     
+      
+    } 
+  }
+  margin:0 auto;
+  width:700px;
+  & .about_me{
+    margin-top:50px;
+    h1{
+      font-size:2.1rem;
+      font-weight: bolder;
+    }
+  }
+  & .about__education{
+    li{
+      font-weight: bold;
+      font-size:1.1rem;
+    }
+    span{
+      font-size:1rem;
+      display: block;
+      margin-top:5px;
+    }
+  }
+  & .about__summary{ 
+    article{
+      margin-top:10px;
+      font-size:1rem;
+      line-height: 1.4;
+    }
+  }
+  & .about__portfolio{
+    & .pf__blog{
+      margin-top:10px;
+      font-weight: bold;
+      font-size:1.1rem;
       span{
-        cursor: pointer;
-        margin-right:15px;
+        font-weight: 400;
+        font-size:1.1rem;
+        margin-left:5px;
+        color: #6699FF;
+        text-decoration: underline;
       }
+    }
+    ul{
+      margin-top:0;
+    }
+  }
+`;
+
+export const PortFolioComp = styled.div`
+  width:800px;
+  position:relative;
+  margin :0 auto;
+  padding-bottom:100px;
+  h1{
+    font-size:2rem;
+    font-weight: bolder;
+    margin-top:20px;
+  }
+  & .blog__used_list{
+    margin-top:20px;
+    font-size:1.1rem;
+    ul{
+      padding-left: 20px;
+    }
+    li{
+      list-style: circle;
+      padding:5px 0;
+    }
+    nav > li{
+      list-style: circle;
+      padding-left:20px;
     }
   }
   article{
-   h1{
-      font-size:2rem;
-      font-weight: bolder;
-      margin-top:60px;
-      display: flex;
-      align-items: center;
-      & .about-icons{
-        margin-right:10px;
-        color:#6699FF;
-      }
-    }
-   h2{
-     font-size:1.125rem;
-     line-height: 1.3;
-     margin-top:14px;
-   } 
-  }
-  & .about-skill-summary{
-    & .about-skill-summary-icons{
-      color:#6699FF;
-      margin-right:10px;
-    }
-    h2{
-      font-size:1.5rem;
-      font-weight:500;
-      margin-bottom:10px;
-      div{
-         border:1px solid black;
-      }
-    }
-    div{
-      line-height: 1.4;
-      padding-left:20px;
-      font-size:1.125rem;
-    }
-  }
-  & .about__me_etc{
-    & .about-etc-icons{
-      color:#6699FF;
-      margin-right:10px;
-    }
-    h2{
-      font-size:1.5rem;
-      font-weight:500;
-      margin-bottom:10px;
-      div{
-         border:1px solid black;
-      }
-    }
-    div{
-      line-height: 1.4;
-      //padding-left:20px;
-      font-size:1.125rem;
-    }  
-    nav{
-      li{
-        font-size:1.125rem;
-        line-height: 1.5;
-      }
-    }
-  }
-  & .about__me-book{
-   & .about-book-icons{
-      margin-right:10px;
-      color:#6699FF;
-   }
-   h2{
-      font-size:1.5rem;
-      font-weight:500;
-      margin-bottom:10px;
-      div{
-         border:1px solid black;
-      }
-   }
-   nav{
-      li{
-        font-size:1.125rem;
-        line-height: 1.5;
-      }
-    }
-  }
-  & .about__me-data{
-    border:1px solid black;
     margin-top:40px;
+    h1{
+      font-size:1.3rem;
+      margin-bottom:20px;
+    }
+    ul{
+      padding-left: 20px;
+    }
+    li{
+      list-style: circle;
+      font-size:1.2rem;
+      font-weight: bolder;
+      margin-top:30px;
+    }
+    section{
+      span{
+        font-weight: bold;
+        color: #6699FF;
+      }
+      div{
+        line-height: 1.4;
+        margin-top:10px;
+        font-size:1.2rem;
+        margin-bottom:20px;
+      }
+      img{
+        margin-top:20px;
+        margin-bottom:20px;
+      }
+      a{
+        color: #6699FF;
+        display: block;
+        margin-top:6px;
+        text-decoration: underline;
+      }
+    }
   }
-  @media(max-width:900px){
-    width:100%
+  & .sd-chap{
+    margin-top:50px;
+    ul{
+    }
+    li{
+      list-style: circle;
+      margin-left:20px;
+      font-size:1.2rem;
+      
+    }
+  }
+  footer{
+    font-size:2rem;
+    margin-top:60px;
+    font-weight:bolder
   }
 `;

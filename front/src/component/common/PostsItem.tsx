@@ -59,7 +59,7 @@ const PostItem = ({ data, onDelete, login }: IPostItem) => {
                      ? "/images/Logo.svg"
                      : !data.thumbnail
                         ? "/images/Logo.svg"
-                        : `https://junggri.com/thumbnail/${data.thumbnail}`} alt="썸네일" />
+                        : `https://www.junggri.com/thumbnail/${data.thumbnail}`} alt="썸네일" />
                </div>
             </Link>
          </section>
