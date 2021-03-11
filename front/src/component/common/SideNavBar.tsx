@@ -78,7 +78,6 @@ const SideNavBar = ({ data, count }: ISideNavBar) => {
             ))}
          </ul>
          <ul>
-
          </ul>
          <div className="sidebar-meta-data">
             <div>
@@ -93,6 +92,12 @@ const SideNavBar = ({ data, count }: ISideNavBar) => {
                   ? <span className="count-num">{count.data.rows[count.data.rows.length - 1][1]}</span>
                   : <AiOutlineLoading3Quarters className="loading-icon" />}
             </div>
+         </div>
+
+         <div className="sidenav-about">
+            <Link to="/about">
+               <img src="./images/about.svg" alt="" />
+            </Link>
          </div>
       </SideBarComp>
    );

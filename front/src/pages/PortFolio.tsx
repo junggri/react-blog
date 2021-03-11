@@ -14,6 +14,7 @@ const Portfolio: React.FC = () => {
             <img src="../images/portfolio.svg" alt="포트폴리오 이미지" />
             <h1>1. 블로그</h1>
             <nav className="blog__used_list">
+               <h1>- 사용기술</h1>
                <ul>
                   <li>React</li>
                   <ul>
@@ -29,8 +30,14 @@ const Portfolio: React.FC = () => {
                   <li>Docker</li>
                </ul>
             </nav>
+            <div className="goal">
+               <h1>- 개설목적</h1>
+               <article>
+                  배운것들을 정리하고 나누기위하여 블로그를 개설하였습니다. 이블로그를 통하여 많은사람들이 유익한 정보를 얻어갈 수 있게하는 것이 이 블로그의 목표이자 목적입니다.
+               </article>
+            </div>
             <article>
-               <h1>사용목적</h1>
+               <h1>- 사용목적</h1>
                <ul>
                   <li>React</li>
                   <section>

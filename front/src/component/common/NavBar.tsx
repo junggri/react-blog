@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavBarComp, NavBarContainer, SearchBoxComp } from "@src/styledComponent";
 import { BiUpArrowAlt } from "react-icons/bi";
 import _ from "lodash";
@@ -72,19 +72,19 @@ const NavBar = () => {
                   <img src="/images/Logo.svg" alt="" ref={logoRef} />
                </div>
             </Link>
-            <nav>
-               <ul>
-                  <li>
-                     <NavLink to="/about">ABOUT</NavLink>
-                  </li>
-                  <li>
-                     <NavLink to="/post">POST</NavLink>
-                  </li>
-                  <li>
-                     <NavLink to="/bookk">BOOK</NavLink>
-                  </li>
-               </ul>
-            </nav>
+            {/*<nav>*/}
+            {/*<ul>*/}
+            {/*   <li>*/}
+            {/*      <NavLink to="/about">ABOUT</NavLink>*/}
+            {/*   </li>*/}
+            {/*<li>*/}
+            {/*   <NavLink to="/post">POST</NavLink>*/}
+            {/*</li>*/}
+            {/*<li>*/}
+            {/*   <NavLink to="/bookk">BOOK</NavLink>*/}
+            {/*</li>*/}
+            {/*</ul>*/}
+            {/*</nav>*/}
             <div className="navbar-icons-box" ref={icons} onClick={onClickSearchBtn}>
                {/*<GrFormSearch className="navbar-icon" />*/}
             </div>

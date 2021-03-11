@@ -68,18 +68,18 @@ app.listen(5000, () => {
 });
 
 
-const typeScript = {
-   past: "javascript",
-   now: "typescript",
-};
-
-interface ITypescript {
-   past: string
-   now: string
-}
-
-function ILoveTypescript<T, K extends keyof T>(obj: T, key: K): T[K] {
-   return obj[key];
-}
-
-console.log(ILoveTypescript<ITypescript, keyof ITypescript>(typeScript, "now"));
+// const typeScript = {
+//    past: "javascript",
+//    now: "typescript",
+// };
+//
+// interface ITypescript {
+//    past: string
+//    now: string
+// }
+//
+// function ILoveTypescript<T, K extends keyof T>(obj: T, key: K): T[K] {
+//    return obj[key];
+// }
+//
+// console.log(ILoveTypescript<ITypescript, keyof ITypescript>(typeScript, "now"));

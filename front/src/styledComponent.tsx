@@ -168,8 +168,8 @@ export const NavBarComp = styled.section`
     width:95%
   }
   & .navbar-logo {
-    height: 40px;
-    width:40px;
+    height: 35px;
+    width:35px;
     display: flex;   
   }
   nav > ul {
@@ -355,6 +355,9 @@ export const SideBarComp = styled.div`
    }
    
    & .sidebar-meta-data{
+    @media(max-width:368px){
+      display: none;
+    }
     @media(min-width:369px){
       display: none; 
     }
@@ -376,17 +379,24 @@ export const SideBarComp = styled.div`
       }
     }
    }    
+   & .sidenav-about{
+    width:60px;
+    margin-top:30px;
+    cursor:pointer;
+   }
 `;
 
 export const PostItemComp = styled.article`
   position: relative;
-  @media(min-width:120px){
-    margin: 0 auto;
-    margin-bottom:30px;
+  border:1px solid black;
+  @media(max-width:368px){
+    margin-bottom:60px;
+    padding:0 4px;
   }
   @media(min-width:369px){
     margin-bottom:70px;
     padding:0 13px;
+   
   }
   @media(min-width:700px){
     width:700px;
@@ -406,6 +416,9 @@ export const PostItemComp = styled.article`
     border-radius: 4px;
     background-color: #6699FF;
     color:white; 
+    @media(max-width:500px){
+      display: none;
+    }
   }
   & .post-like__icons{
     position:absolute;
@@ -422,7 +435,7 @@ export const PostItemComp = styled.article`
       width:20px;
     }
     & .content-metadata{
-      flex-grow: 1;    
+      height: 100%;
       h1{
         position: relative;
         word-break: break-all;
@@ -430,19 +443,19 @@ export const PostItemComp = styled.article`
         font-weight: bolder;
         line-height: 1.4;
         @media(min-width:369px){
-          font-size:1rem;
+          font-size:1.2rem;
        }
         @media(min-width:500px){
-          font-size:1.5rem;
-        }
-        @media(min-width:768px){
-         font-size:1.85rem;
+          font-size:1.6rem;
         }
       }
       h2{
         margin-top:10px;
         font-size:1.1rem;
         line-height: 1.2;
+        @media(min-width:1px){
+          font-size:0.9rem;
+        }
         @media(min-width:369px){
           font-size:0.9rem;
         }
@@ -478,10 +491,13 @@ export const PostItemComp = styled.article`
     }
   }
   footer{
-  position: absolute;
-    bottom:0;
-    display: flex;
+    display:inline-flex;
     align-items: center;
+    position: absolute;
+    bottom:0;
+    @media(max-width:500px){
+      bottom:-12px;
+    }
     & .comment{
       display: flex;
       align-items: center;
@@ -493,6 +509,9 @@ export const PostItemComp = styled.article`
       margin-right:12px;
       font-size:0.95rem;
       opacity:0.7;
+      @media(max-width:500px){
+        font-size:0.8rem;
+      }
     }
   }
   & .post-control-icon-box{
@@ -1289,8 +1308,24 @@ export const PortFolioComp = styled.div`
     font-weight: bolder;
     margin-top:20px;
   }
+  & .goal{
+    margin-top:30px;
+    h1{
+      font-size:1.5rem;
+    }
+    article{
+      margin-top:10px;
+      font-size:1.2rem;
+      line-height: 1.4;
+      padding-left:20px;
+    }
+  }
   & .blog__used_list{
-    margin-top:20px;
+    h1{
+      font-size:1.5rem;
+      margin-bottom:10px;
+    }
+    margin-top:40px;
     font-size:1.1rem;
     ul{
       padding-left: 20px;
@@ -1307,7 +1342,7 @@ export const PortFolioComp = styled.div`
   article{
     margin-top:40px;
     h1{
-      font-size:1.3rem;
+      font-size:1.5rem;
       margin-bottom:20px;
     }
     ul{
@@ -1317,7 +1352,7 @@ export const PortFolioComp = styled.div`
       list-style: circle;
       font-size:1.2rem;
       font-weight: bolder;
-      margin-top:30px;
+      margin-top:20px;
     }
     section{
       span{
