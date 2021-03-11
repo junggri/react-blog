@@ -387,16 +387,15 @@ export const SideBarComp = styled.div`
 `;
 
 export const PostItemComp = styled.article`
-  position: relative;
-  border:1px solid black;
-  @media(max-width:368px){
+ position: relative;
+  @media(min-width:120px){
+    margin: 0 auto;
     margin-bottom:60px;
-    padding:0 4px;
+    padding:4px;
   }
   @media(min-width:369px){
     margin-bottom:70px;
     padding:0 13px;
-   
   }
   @media(min-width:700px){
     width:700px;
@@ -407,17 +406,32 @@ export const PostItemComp = styled.article`
     height: auto;
     left:-32px;
     top:3px;
+    @media(max-width:700px){
+     display: none;
+    }
   }
   & .categories{
     position: absolute;
-    padding:5px 10px;
     bottom:-36px;
-    left:13px;
     border-radius: 4px;
     background-color: #6699FF;
     color:white; 
-    @media(max-width:500px){
-      display: none;
+    @media(min-width:1px){
+      padding:4px 8px;
+      font-size:0.8rem;
+      left:6px;
+      bottom:-44px;
+    }
+    @media(min-width:300px){
+      padding:4px 8px;
+      font-size:0.8rem;
+      left:6px;
+      bottom:-44px;
+    }
+    @media(min-width:700px){
+      padding:5px 10px;
+      font-size:1rem;
+      left:13px;
     }
   }
   & .post-like__icons{
@@ -435,32 +449,36 @@ export const PostItemComp = styled.article`
       width:20px;
     }
     & .content-metadata{
-      height: 100%;
+      flex-grow: 1;    
       h1{
         position: relative;
         word-break: break-all;
         //padding-left:12px;
         font-weight: bolder;
         line-height: 1.4;
-        @media(min-width:369px){
+        @media(min-width:1px){
           font-size:1.2rem;
+        }
+        @media(min-width:369px){
+          font-size:1.3rem;
        }
         @media(min-width:500px){
-          font-size:1.6rem;
+          font-size:1.5rem;
         }
       }
       h2{
-        margin-top:10px;
         font-size:1.1rem;
         line-height: 1.2;
         @media(min-width:1px){
-          font-size:0.9rem;
+          font-size:1.1rem;
         }
         @media(min-width:369px){
-          font-size:0.9rem;
+          font-size:1.1rem;
+          margin-top:3px;
         }
         @media(min-width:500px){
           font-size:1.1rem;
+          margin-top:10px;
         }
       }
     }
@@ -491,12 +509,12 @@ export const PostItemComp = styled.article`
     }
   }
   footer{
-    display:inline-flex;
-    align-items: center;
     position: absolute;
     bottom:0;
-    @media(max-width:500px){
-      bottom:-12px;
+    display: flex;
+    align-items: center;
+    @media(max-width:499px){
+      bottom:-16px;
     }
     & .comment{
       display: flex;
@@ -510,7 +528,7 @@ export const PostItemComp = styled.article`
       font-size:0.95rem;
       opacity:0.7;
       @media(max-width:500px){
-        font-size:0.8rem;
+        font-size:0.85rem; 
       }
     }
   }
