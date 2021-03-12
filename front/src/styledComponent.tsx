@@ -1260,6 +1260,9 @@ export const AboutContainerComp = styled.section`
     margin-top:70px;
     border-bottom:1px solid rgba(0,0,0,0.1);
     padding-bottom:10px;
+    @media(max-width:699px){
+      font-size: 1.3rem;
+    }
   }
   ul{
     margin-top:10px;
@@ -1272,6 +1275,9 @@ export const AboutContainerComp = styled.section`
   }
   margin:0 auto;
   width:700px;
+  @media(max-width:699px){
+    width:98%;
+  }
   & .about_me{
     margin-top:50px;
     h1{
@@ -1318,6 +1324,9 @@ export const AboutContainerComp = styled.section`
 
 export const PortFolioComp = styled.div`
   width:800px;
+  @media(max-width:799px){
+    width:98%;
+  }
   position:relative;
   margin :0 auto;
   padding-bottom:100px;
@@ -1325,23 +1334,35 @@ export const PortFolioComp = styled.div`
     font-size:2rem;
     font-weight: bolder;
     margin-top:20px;
+    @media(max-width:799px){
+      font-size:1.5rem;
+    }
   }
   & .goal{
     margin-top:30px;
     h1{
       font-size:1.5rem;
+      @media(max-width:799px){
+        font-size:1.3rem;
+      }
     }
     article{
       margin-top:10px;
       font-size:1.2rem;
       line-height: 1.4;
       padding-left:20px;
+      @media(max-width:799px){
+        font-size:1rem;
+     }
     }
   }
   & .blog__used_list{
     h1{
       font-size:1.5rem;
       margin-bottom:10px;
+      @media(max-width:799px){
+        font-size:1.3rem;
+      }
     }
     margin-top:40px;
     font-size:1.1rem;
@@ -1362,6 +1383,9 @@ export const PortFolioComp = styled.div`
     h1{
       font-size:1.5rem;
       margin-bottom:20px;
+      @media(max-width:799px){
+        font-size:1.3rem;
+      }
     }
     ul{
       padding-left: 20px;
@@ -1382,6 +1406,10 @@ export const PortFolioComp = styled.div`
         margin-top:10px;
         font-size:1.2rem;
         margin-bottom:20px;
+        word-break: break-all;
+        @media(max-width:799px){
+          font-size:1rem;
+        }
       }
       img{
         margin-top:20px;
@@ -1403,12 +1431,14 @@ export const PortFolioComp = styled.div`
       list-style: circle;
       margin-left:20px;
       font-size:1.2rem;
-      
     }
   }
   footer{
     font-size:2rem;
     margin-top:60px;
-    font-weight:bolder
+    font-weight:bolder;
+    @media(max-width:699px){
+      font-size:1.5rem;
+    }
   }
 `;

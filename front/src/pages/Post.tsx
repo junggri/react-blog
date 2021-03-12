@@ -11,7 +11,6 @@ import Meta from "@useHooks/UseMeta";
 import { CommentContainer } from "@component/index";
 import { usePreloader } from "@lib/PreloadContext";
 import { onRequsetPost } from "@modules/Posts";
-import "../styles/highlight/atom-one-light.css";
 
 
 interface IMatchParams {

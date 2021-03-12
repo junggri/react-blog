@@ -9,7 +9,8 @@ import App from "./shared/App";
 import GlobalStyles from "./styles/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "./lib/store";
+import { store } from "@lib/store";
+import "../src/styles/highlight/atom-one-light.css";
 import { loadableReady } from "@loadable/component";
 import { Provider } from "react-redux";
 
